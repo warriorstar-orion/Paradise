@@ -684,7 +684,6 @@
 /area/security/prisonershuttle)
 "adN" = (
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "barber"
 	},
 /area/security/permabrig)
@@ -2445,14 +2444,12 @@
 	},
 /obj/structure/bedsheetbin,
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "barber"
 	},
 /area/security/permabrig)
 "ajc" = (
 /obj/structure/table,
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "barber"
 	},
 /area/security/permabrig)
@@ -2477,7 +2474,6 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "barber"
 	},
 /area/security/permabrig)
@@ -3034,7 +3030,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "barber"
 	},
 /area/security/permabrig)
@@ -5100,9 +5095,7 @@
 /obj/effect/decal/warning_stripes/red/partial{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 1
-	},
+/turf/simulated/floor/plasteel,
 /area/security/main)
 "aoF" = (
 /obj/effect/decal/warning_stripes/red/partial{
@@ -5111,9 +5104,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 1
-	},
+/turf/simulated/floor/plasteel,
 /area/security/main)
 "aoG" = (
 /obj/effect/decal/warning_stripes/red/partial{
@@ -5122,9 +5113,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/turf/simulated/floor/plasteel{
-	dir = 1
-	},
+/turf/simulated/floor/plasteel,
 /area/security/main)
 "aoH" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
@@ -18505,7 +18494,6 @@
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/plasteel{
-	dir = 4;
 	icon_regular_floor = "yellowsiding";
 	icon_state = "tranquillite"
 	},
@@ -19173,7 +19161,6 @@
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/plasteel{
-	dir = 4;
 	icon_regular_floor = "yellowsiding";
 	icon_state = "tranquillite"
 	},
@@ -21020,7 +21007,6 @@
 /area/chapel/main)
 "aXi" = (
 /turf/simulated/floor/plasteel{
-	dir = 4;
 	icon_regular_floor = "yellowsiding";
 	icon_state = "tranquillite"
 	},
@@ -21346,7 +21332,6 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plasteel{
-	dir = 4;
 	icon_regular_floor = "yellowsiding";
 	icon_state = "tranquillite"
 	},
@@ -21358,7 +21343,6 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/plasteel{
-	dir = 4;
 	icon_regular_floor = "yellowsiding";
 	icon_state = "tranquillite"
 	},
@@ -21615,7 +21599,6 @@
 /obj/item/paper/tcommskey,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "neutralfull"
 	},
 /area/engine/chiefs_office)
@@ -22148,7 +22131,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "neutralfull"
 	},
 /area/engine/chiefs_office)
@@ -22227,7 +22209,6 @@
 /obj/item/paper_bin,
 /obj/item/toy/crayon/mime,
 /turf/simulated/floor/plasteel{
-	dir = 4;
 	icon_regular_floor = "yellowsiding";
 	icon_state = "tranquillite"
 	},
@@ -22238,7 +22219,6 @@
 	pixel_x = 24
 	},
 /turf/simulated/floor/plasteel{
-	dir = 4;
 	icon_regular_floor = "yellowsiding";
 	icon_state = "tranquillite"
 	},
@@ -22988,7 +22968,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/plasteel{
-	dir = 4;
 	icon_regular_floor = "yellowsiding";
 	icon_state = "tranquillite"
 	},
@@ -22999,7 +22978,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	dir = 4;
 	icon_regular_floor = "yellowsiding";
 	icon_state = "tranquillite"
 	},
@@ -23037,7 +23015,6 @@
 	},
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/plasteel{
-	dir = 4;
 	icon_regular_floor = "yellowsiding";
 	icon_state = "tranquillite"
 	},
@@ -23863,7 +23840,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/plasteel{
-	dir = 4;
 	icon_regular_floor = "yellowsiding";
 	icon_state = "tranquillite"
 	},
@@ -23875,7 +23851,6 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/plasteel{
-	dir = 4;
 	icon_regular_floor = "yellowsiding";
 	icon_state = "tranquillite"
 	},
@@ -24735,7 +24710,6 @@
 	req_access_txt = "46"
 	},
 /turf/simulated/floor/plasteel{
-	dir = 4;
 	icon_regular_floor = "yellowsiding";
 	icon_state = "tranquillite"
 	},
@@ -27819,7 +27793,6 @@
 	},
 /turf/simulated/floor/plasteel{
 	desc = "\"This is a plaque in honour of our comrades on the G4407 Stations. Hopefully TG4407 model can live up to your fame and fortune.\" Scratched in beneath that is a crude image of a meteor and a spaceman. The spaceman is laughing. The meteor is exploding.";
-	dir = 4;
 	icon_state = "plaque";
 	name = "Comemmorative Plaque"
 	},
@@ -32772,7 +32745,6 @@
 /area/bridge)
 "bwT" = (
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "barber"
 	},
 /area/crew_quarters/locker)
@@ -33534,7 +33506,6 @@
 	name = "Assistant"
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "barber"
 	},
 /area/crew_quarters/locker)
@@ -33940,7 +33911,6 @@
 "bzd" = (
 /turf/simulated/floor/plasteel{
 	desc = "\"This is a plaque in honour of those who died in the great space lube airlock incident.\" Scratched in beneath that is a crude image of a clown and a spaceman. The spaceman is slipping. The clown is laughing.";
-	dir = 4;
 	icon_state = "plaque";
 	name = "Memorial Plaque"
 	},
@@ -34100,7 +34070,6 @@
 /obj/machinery/washing_machine,
 /obj/machinery/light,
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "barber"
 	},
 /area/crew_quarters/locker)
@@ -34111,14 +34080,12 @@
 	pixel_y = 2
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "barber"
 	},
 /area/crew_quarters/locker)
 "bzA" = (
 /obj/machinery/washing_machine,
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "barber"
 	},
 /area/crew_quarters/locker)
@@ -35053,7 +35020,6 @@
 "bBM" = (
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel{
-	dir = 4;
 	icon_state = "white"
 	},
 /area/medical/reception)
@@ -35094,7 +35060,6 @@
 	},
 /obj/structure/closet/wardrobe/pjs,
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "barber"
 	},
 /area/crew_quarters/locker)
@@ -35104,7 +35069,6 @@
 	},
 /obj/structure/dresser,
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "barber"
 	},
 /area/crew_quarters/locker)
@@ -35513,7 +35477,6 @@
 /area/medical/reception)
 "bDf" = (
 /turf/simulated/floor/plasteel{
-	dir = 4;
 	icon_state = "white"
 	},
 /area/medical/reception)
@@ -35522,13 +35485,11 @@
 	dir = 8
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "white"
 	},
 /area/medical/reception)
 "bDh" = (
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "white"
 	},
 /area/medical/reception)
@@ -36802,7 +36763,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/plasteel{
-	dir = 1;
 	icon_state = "white"
 	},
 /area/medical/reception)
@@ -43310,9 +43270,7 @@
 	pixel_x = -12;
 	pixel_y = 2
 	},
-/turf/simulated/floor/plasteel{
-	dir = 1
-	},
+/turf/simulated/floor/plasteel,
 /area/medical/genetics)
 "bSG" = (
 /obj/item/storage/box/monkeycubes,
@@ -43321,17 +43279,13 @@
 /obj/structure/table/glass,
 /obj/item/storage/box/monkeycubes/wolpincubes,
 /obj/item/storage/box/monkeycubes/farwacubes,
-/turf/simulated/floor/plasteel{
-	dir = 1
-	},
+/turf/simulated/floor/plasteel,
 /area/medical/genetics)
 "bSH" = (
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 1
-	},
+/turf/simulated/floor/plasteel,
 /area/medical/genetics)
 "bSI" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -44038,9 +43992,7 @@
 /area/medical/genetics_cloning)
 "bUd" = (
 /obj/structure/window/reinforced,
-/turf/simulated/floor/plasteel{
-	dir = 1
-	},
+/turf/simulated/floor/plasteel,
 /area/medical/genetics)
 "bUe" = (
 /obj/structure/disposalpipe/segment,
@@ -44055,9 +44007,7 @@
 	name = "Primate Pen";
 	req_access_txt = "9"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 1
-	},
+/turf/simulated/floor/plasteel,
 /area/medical/genetics)
 "bUg" = (
 /obj/structure/plasticflaps/mining,
@@ -46827,7 +46777,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "whitepurplefull"
 	},
 /area/medical/genetics)
@@ -47753,7 +47702,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "whitepurplefull"
 	},
 /area/medical/genetics)
@@ -54726,7 +54674,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "white"
 	},
 /area/medical/virology/lab{
@@ -57815,7 +57762,6 @@
 /area/medical/psych)
 "cuy" = (
 /turf/simulated/floor/plasteel{
-	dir = 4;
 	icon_state = "bluefull"
 	},
 /area/medical/cmostore)
@@ -58626,7 +58572,6 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plasteel{
-	dir = 4;
 	icon_state = "bluefull"
 	},
 /area/medical/cmostore)
@@ -63770,7 +63715,6 @@
 	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "neutralfull"
 	},
 /area/engine/chiefs_office)
@@ -63830,7 +63774,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "neutralfull"
 	},
 /area/engine/chiefs_office)
@@ -64312,7 +64255,6 @@
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "neutralfull"
 	},
 /area/engine/chiefs_office)
@@ -64328,7 +64270,6 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "neutralfull"
 	},
 /area/engine/chiefs_office)
@@ -68145,7 +68086,6 @@
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "neutralfull"
 	},
 /area/engine/chiefs_office)
@@ -68228,7 +68168,6 @@
 	req_access_txt = "56"
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "neutralfull"
 	},
 /area/engine/chiefs_office)
@@ -68806,7 +68745,6 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "neutralfull"
 	},
 /area/engine/chiefs_office)
@@ -68818,7 +68756,6 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "neutralfull"
 	},
 /area/engine/chiefs_office)
@@ -69114,7 +69051,6 @@
 /obj/machinery/hologram/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "neutralfull"
 	},
 /area/engine/chiefs_office)
@@ -69198,7 +69134,6 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "neutralfull"
 	},
 /area/engine/chiefs_office)
@@ -69431,7 +69366,6 @@
 	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "neutralfull"
 	},
 /area/engine/chiefs_office)
@@ -69443,7 +69377,6 @@
 	req_access_txt = "56"
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "neutralfull"
 	},
 /area/engine/chiefs_office)
@@ -69459,7 +69392,6 @@
 	pixel_y = 24
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "neutralfull"
 	},
 /area/engine/chiefs_office)
@@ -69660,7 +69592,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "neutralfull"
 	},
 /area/engine/chiefs_office)
@@ -69717,7 +69648,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "neutralfull"
 	},
 /area/engine/chiefs_office)
@@ -70074,7 +70004,6 @@
 /obj/item/megaphone,
 /mob/living/simple_animal/parrot/Poly,
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "neutralfull"
 	},
 /area/engine/chiefs_office)
@@ -70085,7 +70014,6 @@
 "cUw" = (
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "neutralfull"
 	},
 /area/engine/chiefs_office)
@@ -70100,7 +70028,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "neutralfull"
 	},
 /area/engine/chiefs_office)
@@ -70917,7 +70844,6 @@
 "cWD" = (
 /obj/structure/closet/secure_closet/engineering_chief,
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "neutralfull"
 	},
 /area/engine/chiefs_office)
@@ -71366,7 +71292,6 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "neutralfull"
 	},
 /area/engine/chiefs_office)
@@ -71386,7 +71311,6 @@
 	location = "Kitchen"
 	},
 /turf/simulated/floor/plasteel{
-	dir = 1;
 	icon_state = "bot"
 	},
 /area/maintenance/fsmaint)
@@ -75435,7 +75359,6 @@
 	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel{
-	dir = 1;
 	icon_state = "bot"
 	},
 /area/maintenance/fsmaint)
@@ -75631,7 +75554,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/aisat_interior)
@@ -75639,7 +75561,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/aisat_interior)
@@ -75654,7 +75575,6 @@
 	pixel_y = 24
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/aisat_interior)
@@ -75683,7 +75603,6 @@
 	pixel_y = 30
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/aisat_interior)
@@ -75707,7 +75626,6 @@
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/aisat_interior)
@@ -75726,7 +75644,6 @@
 	name = "AI Satellite Teleport Access"
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/aisat_interior)
@@ -75754,7 +75671,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/aisat_interior)
@@ -75779,7 +75695,6 @@
 	dir = 10
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/aisat_interior)
@@ -75943,7 +75858,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/aisat_interior)
@@ -76104,7 +76018,6 @@
 	pixel_x = 24
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/aisat_interior)
@@ -76132,7 +76045,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/aisat_interior)
@@ -76145,7 +76057,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/aisat_interior)
@@ -76195,7 +76106,6 @@
 	network = list("SS13","MiniSat")
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/aisat_interior)
@@ -76284,7 +76194,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/aisat_interior)
@@ -76339,7 +76248,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/aisat_interior)
@@ -76580,7 +76488,6 @@
 	dir = 6
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/aisat/maintenance{
@@ -76615,7 +76522,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/aisat/maintenance{
@@ -76651,7 +76557,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/aisat/entrance{
@@ -76717,7 +76622,6 @@
 	dir = 5
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/aisat/entrance{
@@ -76744,7 +76648,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/aisat/entrance{
@@ -76766,7 +76669,6 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/aisat/entrance{
@@ -76795,7 +76697,6 @@
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /mob/living/simple_animal/bot/secbot/pingsky,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/aisat_interior)
@@ -76824,7 +76725,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/aisat_interior)
@@ -76846,7 +76746,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/aisat/maintenance{
@@ -76873,7 +76772,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/aisat/maintenance{
@@ -76933,7 +76831,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/aisat/maintenance{
@@ -76959,7 +76856,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/aisat/maintenance{
@@ -76975,7 +76871,6 @@
 "dlq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/aisat/entrance{
@@ -77014,7 +76909,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/aisat_interior)
@@ -77104,7 +76998,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/aisat/maintenance{
@@ -77179,7 +77072,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/aisat{
@@ -77290,7 +77182,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/aisat{
@@ -77397,7 +77288,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/aisat{
@@ -77562,7 +77452,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/aisat{
@@ -77664,7 +77553,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/aisat{
@@ -77694,7 +77582,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/aisat{
@@ -77725,7 +77612,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/ai)
@@ -77771,7 +77657,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/ai)
@@ -77793,7 +77678,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/ai)
@@ -77802,7 +77686,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/ai)
@@ -77817,7 +77700,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/ai)
@@ -77832,7 +77714,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/ai)
@@ -77850,7 +77731,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/ai)
@@ -77887,7 +77767,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/ai)
@@ -77901,7 +77780,6 @@
 	dir = 6
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/ai)
@@ -77924,7 +77802,6 @@
 	dir = 9
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/ai)
@@ -77948,7 +77825,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/ai)
@@ -77964,7 +77840,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/ai)
@@ -77979,7 +77854,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/ai)
@@ -77989,7 +77863,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/ai)
@@ -78003,7 +77876,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/ai)
@@ -78038,7 +77910,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/ai)
@@ -78476,7 +78347,6 @@
 	},
 /obj/item/pen/multi,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/aisat_interior)
@@ -78567,7 +78437,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/aisat_interior)
@@ -78584,7 +78453,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/aisat_interior)
@@ -78643,7 +78511,6 @@
 	pixel_x = -24
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/aisat_interior)
@@ -78696,7 +78563,6 @@
 	pixel_y = -28
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/aisat_interior)
@@ -78707,7 +78573,6 @@
 	pixel_y = -32
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/aisat_interior)
@@ -78810,7 +78675,6 @@
 /obj/machinery/hologram/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/aisat/entrance{
@@ -78820,7 +78684,6 @@
 /obj/effect/decal/warning_stripes/northwest,
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/aisat/entrance{
@@ -79047,7 +78910,6 @@
 	},
 /obj/item/pen/multi,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/ai)
@@ -79059,7 +78921,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/ai)
@@ -79067,7 +78928,6 @@
 /obj/structure/table/reinforced,
 /obj/item/folder,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/ai)
@@ -79090,20 +78950,17 @@
 	},
 /obj/structure/chair/office/dark,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/ai)
 "drB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/ai)
 "drE" = (
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/ai)
@@ -79128,7 +78985,6 @@
 	dir = 10
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/ai)
@@ -79294,7 +79150,6 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/ai)
@@ -79339,7 +79194,6 @@
 	},
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/ai)
@@ -79349,7 +79203,6 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/ai)
@@ -79501,7 +79354,6 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "neutralfull"
 	},
 /area/engine/chiefs_office)
@@ -81324,7 +81176,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/tcommsat/chamber)
@@ -81672,7 +81523,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
 	icon_state = "whitepurplefull"
 	},
 /area/medical/genetics)
@@ -81732,7 +81582,6 @@
 	name = "Cyborg"
 	},
 /turf/simulated/floor/plasteel{
-	dir = 5;
 	icon_state = "dark"
 	},
 /area/turret_protected/aisat_interior)
