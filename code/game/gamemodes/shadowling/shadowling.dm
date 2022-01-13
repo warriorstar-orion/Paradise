@@ -73,8 +73,23 @@ Made by Xhuis
 	required_players = 30
 	required_enemies = 2
 	recommended_enemies = 2
-	restricted_jobs = list("AI", "Cyborg")
-	protected_jobs = list("Security Officer", "Warden", "Detective", "Head of Security", "Head of Personnel", "Captain", "Blueshield", "Nanotrasen Representative", "Magistrate", "Internal Affairs Agent", "Nanotrasen Navy Officer", "Special Operations Officer", "Syndicate Officer", "Solar Federation General")
+	restricted_jobs = list(ROLE_AI, ROLE_CYBORG)
+	protected_jobs = list(
+		ROLE_BLUESHIELD,
+		ROLE_CAPTAIN,
+		ROLE_DETECTIVE,
+		ROLE_HOP,
+		ROLE_HOS,
+		ROLE_IAA,
+		ROLE_MAGISTRATE,
+		ROLE_NNO,
+		ROLE_NTR,
+		ROLE_SEC_OFFICER,
+		ROLE_SOLFED_GENERAL,
+		ROLE_SOO,
+		ROLE_SYNDI_OFFICER,
+		ROLE_WARDEN,
+	)
 
 /datum/game_mode/shadowling/announce()
 	to_chat(world, "<b>The current game mode is - Shadowling!</b>")
