@@ -236,16 +236,25 @@
 		else
 			D.f_style = random_facial_hair_style(gender, D.dna.species.name)
 		D.facial_colour = rand_hex_color()
+
 	if(skin_tone)
-		H.change_skin_tone(skin_tone)
+		H.s_tone = skin_tone
 	else
-		H.change_skin_tone(random_skin_tone())
-		H.change_skin_color(rand_hex_color())
-	H.update_hair()
-	H.update_fhair()
-	H.update_body()
-	H.update_dna()
+		H.s_tone = random_skin_tone()
+		H.skin_colour = rand_hex_color()
+
+	if(H.dna.dirtySE)
+		H.dna.UpdateSE()
+
+	H.dna.ready_dna(H, flatten_SE = FALSE)
+	H.sync_organ_dna(assimilate = TRUE)
+	H.UpdateAppearance()
+
+	// Do the initial caching of the player's body icons.
+	H.force_update_limbs()
+	H.update_eyes()
 	H.regenerate_icons()
+
 	if(outfit)
 		var/static/list/slots = list("uniform", "r_hand", "l_hand", "suit", "shoes", "gloves", "ears", "glasses", "mask", "head", "belt", "r_pocket", "l_pocket", "back", "id", "neck", "backpack_contents", "suit_store")
 		for(var/slot in slots)
