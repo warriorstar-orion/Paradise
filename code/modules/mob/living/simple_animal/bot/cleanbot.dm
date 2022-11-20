@@ -19,10 +19,30 @@
 	pass_flags = PASSMOB
 	path_image_color = "#993299"
 
+	var/cmag_messes = list(
+		/obj/effect/decal/cleanable/blood/splatter,
+		/obj/effect/decal/cleanable/blood/oil,
+		/obj/effect/decal/cleanable/vomit,
+		/obj/effect/decal/cleanable/tomato_smudge,
+		/obj/effect/decal/cleanable/egg_smudge,
+		/obj/effect/decal/cleanable/pie_smudge,
+		/obj/effect/decal/cleanable/flour,
+	)
+	var/blood_colors = list(
+		"#A10808",
+		"#004400",
+		"#a3d4eb",
+		"#A200FF",
+		"#FB9800",
+		"#b9ae9c",
+		"#1D2CBF",
+		"#2299FC"
+	)
 
 	var/blood = TRUE
 	var/list/target_types = list()
 	var/obj/effect/decal/cleanable/target
+	var/turf/simulated/floor/floor_target
 	var/max_targets = 50 //Maximum number of targets a cleanbot can ignore.
 	var/oldloc = null
 	var/closest_dist
@@ -80,16 +100,57 @@
 		if(user)
 			to_chat(user, "<span class='danger'>[src] buzzes and beeps.</span>")
 
-/mob/living/simple_animal/bot/cleanbot/process_scan(obj/effect/decal/cleanable/D)
-	for(var/T in target_types)
-		if(istype(D, T))
-			return D
+/mob/living/simple_animal/bot/cleanbot/cmag_act(mob/user)
+	if(HAS_TRAIT(src, TRAIT_CMAGGED))
+		return
+	to_chat(user, "<span class='warning'>[src] hiccups.</span>")
+	ADD_TRAIT(src, TRAIT_CMAGGED, CLOWN_EMAG)
+
+/mob/living/simple_animal/bot/cleanbot/process_scan(atom/scan_target)
+	if(HAS_TRAIT(src, TRAIT_CMAGGED))
+		if(issimulatedturf(scan_target))
+			if(!locate(/obj/effect/decal/cleanable) in scan_target.contents)
+				return scan_target
+	else
+		for(var/T in target_types)
+			if(istype(scan_target, T))
+				return scan_target
+
+/mob/living/simple_animal/bot/cleanbot/proc/handle_cmag_behavior()
+	if(!floor_target)
+		floor_target = scan(/turf/simulated/floor, null, 5)
+
+	if(floor_target && loc == floor_target)
+		start_dirty(floor_target)
+		path = list()
+		floor_target = null
+
+	if(floor_target)
+		if(!path || !length(path)) //No path, need a new one
+			//Try to produce a path to the target, and ignore airlocks to which it has access.
+			path = get_path_to(src, floor_target, 30, id=access_card)
+			if(!bot_move(floor_target))
+				add_to_ignore(floor_target)
+				floor_target = null
+				path = list()
+				return
+			mode = BOT_MOVING
+		else if(!bot_move(floor_target))
+			floor_target = null
+			mode = BOT_IDLE
+			return
+
+	oldloc = loc
 
 /mob/living/simple_animal/bot/cleanbot/handle_automated_action()
 	if(!..())
 		return
 
 	if(mode == BOT_CLEANING)
+		return
+
+	if(HAS_TRAIT(src, TRAIT_CMAGGED))
+		handle_cmag_behavior()
 		return
 
 	if(emagged == 2) //Emag functions
@@ -162,6 +223,41 @@
 		target_types += /obj/effect/decal/cleanable/blood/tracks
 		target_types += /obj/effect/decal/cleanable/dirt
 		target_types += /obj/effect/decal/cleanable/trail_holder
+
+/mob/living/simple_animal/bot/cleanbot/proc/start_dirty(turf/simulated/floor/target)
+	anchored = TRUE
+	icon_state = "cleanbot-c"
+	mode = BOT_CLEANING
+	addtimer(CALLBACK(src, PROC_REF(do_dirty), target), 2 SECONDS)
+
+/mob/living/simple_animal/bot/cleanbot/proc/do_dirty(turf/simulated/floor/target)
+	if(mode == BOT_CLEANING)
+		var/t = pick(cmag_messes)
+		var/d = new t(target)
+		if(istype(d, /obj/effect/decal/cleanable/blood/splatter))
+			var/obj/effect/decal/cleanable/blood/splatter/splatter = d
+			splatter.bloodiness = pick(0, MAX_SHOE_BLOODINESS)
+			splatter.basecolor = pick(blood_colors)
+			splatter.update_icon()
+		else if(istype(d, /obj/effect/decal/cleanable/blood))
+			var/obj/effect/decal/cleanable/blood/blood = d
+			blood.basecolor = pick(blood_colors)
+			blood.update_icon()
+
+		playsound(get_turf(src), 'sound/effects/splat.ogg', 50, 1)
+		anchored = FALSE
+		var/list/messages = list(
+			"Hooray!",
+			"Yay!",
+			"I'm helping! I'm helping!",
+			"I'M HELPING!",
+			"Never fear, [src] is here!",
+			"I'm an expert on messes!",
+		)
+		var/message = pick(messages)
+		speak(message)
+	mode = BOT_IDLE
+	icon_state = "cleanbot[on]"
 
 /mob/living/simple_animal/bot/cleanbot/proc/start_clean(obj/effect/decal/cleanable/target)
 	anchored = TRUE
