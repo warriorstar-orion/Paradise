@@ -119,6 +119,7 @@
 	custom_emote(EMOTE_VISIBLE, pick("sits down.", "crouches on its hind legs.", "looks alert."))
 	icon_state = "[icon_living]_sit"
 	collar_type = "[initial(collar_type)]_sit"
+	regenerate_icons()
 
 /mob/living/simple_animal/pet/cat/handle_automated_action()
 	if(!stat && !buckled)
