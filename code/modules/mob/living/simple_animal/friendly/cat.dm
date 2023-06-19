@@ -111,26 +111,33 @@
 
 	if(resting)
 		resting = FALSE
+		custom_emote(EMOTE_VISIBLE, "MOVES SIT->STANDING")
 		stand_up()
 		return
 
-	lay_down()
+	custom_emote(EMOTE_VISIBLE, "MOVES TO SITTING")
 	resting = TRUE
-	custom_emote(EMOTE_VISIBLE, pick("sits down.", "crouches on its hind legs.", "looks alert."))
+	lay_down()
+	// custom_emote(EMOTE_VISIBLE, pick("sits down.", "crouches on its hind legs.", "looks alert."))
 	icon_state = "[icon_living]_sit"
 	collar_type = "[initial(collar_type)]_sit"
 	regenerate_icons()
 
+#define ACTION_PROBABILITY 10
+
 /mob/living/simple_animal/pet/cat/handle_automated_action()
 	if(!stat && !buckled)
-		if(prob(1))
-			custom_emote(EMOTE_VISIBLE, pick("stretches out for a belly rub.", "wags its tail.", "lies down."))
+		if(prob(ACTION_PROBABILITY))
+			custom_emote(EMOTE_VISIBLE, "MOVES TO LYING DOWN")
+			resting = TRUE
+			// custom_emote(EMOTE_VISIBLE, pick("stretches out for a belly rub.", "wags its tail.", "lies down."))
 			lay_down()
-		else if(prob(1))
+		else if(prob(ACTION_PROBABILITY))
 			sit()
-		else if(prob(1))
+		else if(prob(ACTION_PROBABILITY))
 			if(IS_HORIZONTAL(src))
-				custom_emote(EMOTE_VISIBLE, pick("gets up and meows.", "walks around.", "stops resting."))
+				custom_emote(EMOTE_VISIBLE, "MOVES HORIZONTAL->STANDING")
+				resting = FALSE
 				stand_up()
 			else
 				custom_emote(EMOTE_VISIBLE, pick("grooms its fur.", "twitches its whiskers.", "shakes out its coat."))
