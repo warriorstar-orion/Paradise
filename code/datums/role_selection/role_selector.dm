@@ -1,5 +1,6 @@
 /datum/role_selector
 	var/list/candidates = list()
+	var/list/assigned_candidates = list()
 	var/probability_of_antag_role_restriction = 100
 
 /datum/role_selector/proc/Debug(text)
@@ -33,6 +34,8 @@
 		// 	new objectiveType(player.mind)
 
 		// unassigned -= player
+		assigned_candidates[candidate] = candidates[candidate]
+		candidates -= candidate
 		job.current_positions++
 		SSblackbox.record_feedback("nested tally", "manifest", 1, list(job.title, (latejoin ? "latejoin" : "roundstart")))
 		return 1
@@ -83,8 +86,8 @@
 			candidates += candidate
 	return candidates
 
-/datum/role_selector/proc/assign_random_job(mob/new_player/player)
-	Debug("GRJ Giving random job, Player: [player]")
+/datum/role_selector/proc/assign_random_job(datum/role_candidate/candidate)
+	// Debug("GRJ Giving random job, Player: [player]")
 	for(var/datum/job/job in shuffle(SSjobs.occupations))
 		if(!job)
 			continue
@@ -98,39 +101,49 @@
 		if(job.admin_only) // No admin positions either.
 			continue
 
-		if(jobban_isbanned(player, job.title))
-			Debug("GRJ isbanned failed, Player: [player], Job: [job.title]")
+		if(!candidate.get_job_eligibility(job))
 			continue
 
-		if(!job.player_old_enough(player.client))
-			Debug("GRJ player not old enough, Player: [player]")
-			continue
+		// if(candidate.is_jobbanned(job))
+		// // if(jobban_isbanned(player, job.title))
+		// 	// Debug("GRJ isbanned failed, Player: [player], Job: [job.title]")
+		// 	continue
 
-		if(job.get_exp_restrictions(player.client))
-			Debug("GRJ player not enough playtime, Player: [player]")
-			continue
+		// if(!candidate.is_account_old_enough(job))
+		// // if(!job.player_old_enough(player.client))
+		// 	// Debug("GRJ player not old enough, Player: [player]")
+		// 	continue
 
-		if(job.barred_by_disability(player.client))
-			Debug("GRJ player has disability rendering them ineligible for job, Player: [player]")
-			continue
+		// if(candidate.get_job_exp_restrictions(job))
+		// // if(job.get_exp_restrictions(player.client))
+		// 	// Debug("GRJ player not enough playtime, Player: [player]")
+		// 	continue
 
-		if(job.barred_by_missing_limbs(player.client))
-			Debug("GRJ player has missing limbs rendering them ineligible for job, Player: [player]")
-			continue
+		// if(candidate.is_barred_by_disability(job))
+		// // if(job.barred_by_disability(player.client))
+		// 	// Debug("GRJ player has disability rendering them ineligible for job, Player: [player]")
+		// 	continue
 
-		if(player.mind && (job.title in player.mind.restricted_roles))
-			Debug("GRJ incompatible with antagonist role, Player: [player], Job: [job.title]")
-			continue
-		if(player.mind && (job.title in SSticker.mode.single_antag_positions))
+		// if(candidate.is_barred_by_missing_limbs(job))
+		// // if(job.barred_by_missing_limbs(player.client))
+		// 	// Debug("GRJ player has missing limbs rendering them ineligible for job, Player: [player]")
+		// 	continue
+
+		// if(candidate.is_incompatible_role(job))
+		// // if(player.mind && (job.title in player.mind.restricted_roles))
+		// // 	Debug("GRJ incompatible with antagonist role, Player: [player], Job: [job.title]")
+		// 	continue
+
+		if(job.title in SSticker.mode.single_antag_positions)
 			if(!prob(probability_of_antag_role_restriction))
-				Debug("Failed probability of getting a second antagonist position in this job, Player: [player], Job:[job.title]")
+				// Debug("Failed probability of getting a second antagonist position in this job, Player: [player], Job:[job.title]")
 				continue
 			else
 				probability_of_antag_role_restriction /= 10
 		if((job.current_positions < job.spawn_positions) || job.spawn_positions == -1)
-			Debug("GRJ Random job given, Player: [player], Job: [job]")
-			assign_role(player, job.title)
-			unassigned -= player
+			// Debug("GRJ Random job given, Player: [player], Job: [job]")
+			assign_role(candidate, job)
+			// unassigned -= player
 			break
 
 ///This proc is called before the level loop of assign_all_roles() and will try to select a head, ignoring ALL non-head preferences for every level until it locates a head or runs out of levels to check
@@ -266,57 +279,68 @@
 	// Hopefully this will add more randomness and fairness to job giving.
 
 	// Loop through all levels from high to low
-	var/list/shuffledoccupations = shuffle(occupations)
+	var/list/shuffledoccupations = shuffle(SSjobs.occupations)
 	for(var/level = 1 to 3)
 		//Check the head jobs first each level
 		check_command_positions(level)
 
 		// Loop through all unassigned players
-		for(var/mob/new_player/player in unassigned)
+		for(var/datum/role_candidate/candidate in candidates)
+			// if(candidate.is_assigned())
+			// 	continue
+		// for(var/mob/new_player/player in unassigned)
 
 			// Loop through all jobs
 			for(var/datum/job/job in shuffledoccupations) // SHUFFLE ME BABY
 				if(!job)
 					continue
 
-				if(jobban_isbanned(player, job.title))
-					Debug("DO isbanned failed, Player: [player], Job:[job.title]")
+				if(candidate.is_jobbanned(job))
+				// if(jobban_isbanned(player, job.title))
+					// Debug("DO isbanned failed, Player: [player], Job:[job.title]")
 					continue
 
-				if(!job.player_old_enough(player.client))
-					Debug("DO player not old enough, Player: [player], Job:[job.title]")
+				if(!candidate.is_account_old_enough(job))
+				// if(!job.player_old_enough(player.client))
+					// Debug("DO player not old enough, Player: [player], Job:[job.title]")
 					continue
 
-				if(job.get_exp_restrictions(player.client))
-					Debug("DO player not enough playtime, Player: [player], Job:[job.title]")
+				if(candidate.get_job_exp_restrictions(job))
+				// if(job.get_exp_restrictions(player.client))
+				// 	Debug("DO player not enough playtime, Player: [player], Job:[job.title]")
 					continue
 
-				if(job.barred_by_disability(player.client))
-					Debug("DO player has disability rendering them ineligible for job, Player: [player], Job:[job.title]")
+				if(candidate.is_barred_by_disability(job))
+				// if(job.barred_by_disability(player.client))
+				// 	Debug("DO player has disability rendering them ineligible for job, Player: [player], Job:[job.title]")
 					continue
 
-				if(job.barred_by_missing_limbs(player.client))
-					Debug("DO player has missing limbs rendering them ineligible for job, Player: [player], Job:[job.title]")
+				if(candidate.is_barred_by_missing_limbs(job))
+				// if(job.barred_by_missing_limbs(player.client))
+				// 	Debug("DO player has missing limbs rendering them ineligible for job, Player: [player], Job:[job.title]")
 					continue
 
-				if(player.mind && (job.title in player.mind.restricted_roles))
-					Debug("DO incompatible with antagonist role, Player: [player], Job:[job.title]")
+				if(candidate.is_incompatible_role(job))
+				// if(player.mind && (job.title in player.mind.restricted_roles))
+					// Debug("DO incompatible with antagonist role, Player: [player], Job:[job.title]")
 					continue
-				if(player.mind && (job.title in SSticker.mode.single_antag_positions))
+				if(job.title in SSticker.mode.single_antag_positions)
+				// if(player.mind && (job.title in SSticker.mode.single_antag_positions))
 					if(!prob(probability_of_antag_role_restriction))
-						Debug("Failed probability of getting a second antagonist position in this job, Player: [player], Job:[job.title]")
+						// Debug("Failed probability of getting a second antagonist position in this job, Player: [player], Job:[job.title]")
 						continue
 					else
 						probability_of_antag_role_restriction /= 10
 				// If the player wants that job on this level, then try give it to him.
-				if(player.client.prefs.active_character.SSjobs.GetJobDepartment(job, level) & job.flag)
+				if(candidate.wants_job(job, level))
+				// if(player.client.prefs.active_character.GetJobDepartment(job, level) & job.flag)
 
 					// If the job isn't filled
 					if(job.is_spawn_position_available())
-						Debug("DO pass, Player: [player], Level:[level], Job:[job.title]")
-						Debug(" - Job Flag: [job.flag] Job Department: [player.client.prefs.active_character.SSjobs.GetJobDepartment(job, level)] Job Current Pos: [job.current_positions] Job Spawn Positions = [job.spawn_positions]")
+						// Debug("DO pass, Player: [player], Level:[level], Job:[job.title]")
+						// Debug(" - Job Flag: [job.flag] Job Department: [player.client.prefs.active_character.SSjobs.GetJobDepartment(job, level)] Job Current Pos: [job.current_positions] Job Spawn Positions = [job.spawn_positions]")
 						assign_role(player, job.title)
-						unassigned -= player
+						// unassigned -= player
 						break
 
 	// Hand out random jobs to the people who didn't get any in the last check
