@@ -19,29 +19,16 @@
 
 	var/eligible = candidate.get_job_eligibility(job)
 	var/available = latejoin ? job.is_position_available() : job.is_spawn_position_available()
-	// Debug("Running AR, Player: [player], Rank: [rank], LJ: [latejoin]")
 
 	if(eligible && available)
 		candidate.assigned_job_title = job.title
-		// candidate.role_alt_title = GetPlayerAltTitle(player, job.title)
-		// Debug("Player: [player] is now Rank: [rank], JCP:[job.current_positions], JTP:[job.total_positions], JSP:[job.spawn_positions]")
-		// player.mind.assigned_role = rank
-		// player.mind.role_alt_title = GetPlayerAltTitle(player, rank)
-
-		// JOB OBJECTIVES OH SHIT
-		// player.mind.job_objectives.Cut()
-		// for(var/objectiveType in job.required_objectives)
-		// 	new objectiveType(player.mind)
-
-		// unassigned -= player
 		assigned_candidates[candidate] = candidates[candidate]
 		candidates -= candidate
 		job.current_positions++
 		SSblackbox.record_feedback("nested tally", "manifest", 1, list(job.title, (latejoin ? "latejoin" : "roundstart")))
-		return 1
+		return TRUE
 
-	// Debug("AR has failed, Player: [player], Rank: [rank]")
-	return 0
+	return FALSE
 
 /datum/role_selector/proc/apply_roles_to_players()
 	for(var/datum/role_candidate/candidate in assigned_candidates)
@@ -56,27 +43,11 @@
 
 /datum/role_selector/proc/find_job_candidates(datum/job/job, level, flag)
 	// Debug("Running FOC, Job: [job], Level: [level], Flag: [flag]")
-	var/list/candidates = list()
+	var/list/job_candidates = list()
 	for(var/datum/role_candidate/candidate in candidates)
 		var/eligible = candidate.get_job_eligibility(job)
 		if(!eligible)
 			continue
-		// // Debug(" - Player: [player] Banned: [jobban_isbanned(player, job.title)] Old Enough: [!job.player_old_enough(player.client)] AvInPlaytime: [job.get_exp_restrictions(player.client)] Flag && Be Special: [flag] && [player.client.prefs.be_special] Job Department: [player.client.prefs.active_character.SSjobs.GetJobDepartment(job, level)] Job Flag: [job.flag] Job Department Flag = [job.department_flag]")
-		// if(jobban_isbanned(player, job.title))
-		// 	// Debug("FOC isbanned failed, Player: [player]")
-		// 	continue
-		// if(!job.player_old_enough(player.client))
-		// 	// Debug("FOC player not old enough, Player: [player]")
-		// 	continue
-		// if(job.get_exp_restrictions(player.client))
-		// 	// Debug("FOC player not enough playtime, Player: [player]")
-		// 	continue
-		// if(job.barred_by_disability(player.client))
-		// 	// Debug("FOC player has disability rendering them ineligible for job, Player: [player]")
-		// 	continue
-		// if(job.barred_by_missing_limbs(player.client))
-		// 	// Debug("FOC player has missing limbs rendering them ineligible for job, Player: [player]")
-		// 	continue
 		if(flag && !(flag in candidate.be_special))
 		// if(flag && !(flag in player.client.prefs.be_special))
 			// Debug("FOC flag failed, Player: [player], Flag: [flag], ")
@@ -94,8 +65,8 @@
 				probability_of_antag_role_restriction /= 10
 		if(candidate.active_character.GetJobDepartment(job, level) & job.flag)
 			// Debug("FOC pass, Player: [player], Level:[level]")
-			candidates += candidate
-	return candidates
+			job_candidates += candidate
+	return job_candidates
 
 /datum/role_selector/proc/assign_random_job(datum/role_candidate/candidate)
 	// Debug("GRJ Giving random job, Player: [player]")
@@ -114,36 +85,6 @@
 
 		if(!candidate.get_job_eligibility(job))
 			continue
-
-		// if(candidate.is_jobbanned(job))
-		// // if(jobban_isbanned(player, job.title))
-		// 	// Debug("GRJ isbanned failed, Player: [player], Job: [job.title]")
-		// 	continue
-
-		// if(!candidate.is_account_old_enough(job))
-		// // if(!job.player_old_enough(player.client))
-		// 	// Debug("GRJ player not old enough, Player: [player]")
-		// 	continue
-
-		// if(candidate.get_job_exp_restrictions(job))
-		// // if(job.get_exp_restrictions(player.client))
-		// 	// Debug("GRJ player not enough playtime, Player: [player]")
-		// 	continue
-
-		// if(candidate.is_barred_by_disability(job))
-		// // if(job.barred_by_disability(player.client))
-		// 	// Debug("GRJ player has disability rendering them ineligible for job, Player: [player]")
-		// 	continue
-
-		// if(candidate.is_barred_by_missing_limbs(job))
-		// // if(job.barred_by_missing_limbs(player.client))
-		// 	// Debug("GRJ player has missing limbs rendering them ineligible for job, Player: [player]")
-		// 	continue
-
-		// if(candidate.is_incompatible_role(job))
-		// // if(player.mind && (job.title in player.mind.restricted_roles))
-		// // 	Debug("GRJ incompatible with antagonist role, Player: [player], Job: [job.title]")
-		// 	continue
 
 		if(job.title in SSticker.mode.single_antag_positions)
 			if(!prob(probability_of_antag_role_restriction))
@@ -164,26 +105,28 @@
 			var/datum/job/job = SSjobs.GetJob(command_position)
 			if(!job)
 				continue
-			var/list/candidates = find_job_candidates(job, level)
-			if(!candidates.len)
+			var/list/job_candidates = find_job_candidates(job, level)
+			if(!job_candidates.len)
 				continue
 
-			var/list/filteredCandidates = list()
+			var/list/filtered_candidates = list()
 
-			for(var/mob/V in candidates)
+			for(var/datum/role_candidate/candidate in job_candidates)
+				var/mob/new_player/real_player = candidates[candidate]
+				if(real_player && !real_player.client)
 				// Log-out during round-start? What a bad boy, no head position for you!
-				if(!V.client)
 					continue
-				filteredCandidates += V
+				filtered_candidates += candidate
 
-			if(!filteredCandidates.len)
+			if(!filtered_candidates.len)
 				continue
 
-			var/mob/new_player/candidate = pick(filteredCandidates)
-			if(assign_role(candidate, command_position))
-				return 1
+			var/datum/role_candidate/candidate = pick(filtered_candidates)
+			// var/mob/new_player/candidate = pick(filteredCandidates)
+			if(assign_role(candidate, job))
+				return TRUE
 
-	return 0
+	return FALSE
 
 ///This proc is called at the start of the level loop of assign_all_roles() and will cause head jobs to be checked before any other jobs of the same level
 /datum/role_selector/proc/check_command_positions(level)
@@ -196,7 +139,6 @@
 			continue
 		var/datum/role_candidate/candidate = pick(candidates)
 		assign_role(candidate, command_position)
-
 
 /datum/role_selector/proc/fill_ai_position()
 	if(!GLOB.configuration.jobs.allow_ai)
@@ -305,33 +247,6 @@
 			for(var/datum/job/job in shuffledoccupations) // SHUFFLE ME BABY
 				if(!candidate.get_job_eligibility(job))
 					continue
-				// if(!job)
-				// 	continue
-
-				// if(candidate.is_jobbanned(job))
-				// // if(jobban_isbanned(player, job.title))
-				// 	// Debug("DO isbanned failed, Player: [player], Job:[job.title]")
-				// 	continue
-
-				// if(!candidate.is_account_old_enough(job))
-				// // if(!job.player_old_enough(player.client))
-				// 	// Debug("DO player not old enough, Player: [player], Job:[job.title]")
-				// 	continue
-
-				// if(candidate.get_job_exp_restrictions(job))
-				// // if(job.get_exp_restrictions(player.client))
-				// // 	Debug("DO player not enough playtime, Player: [player], Job:[job.title]")
-				// 	continue
-
-				// if(candidate.is_barred_by_disability(job))
-				// // if(job.barred_by_disability(player.client))
-				// // 	Debug("DO player has disability rendering them ineligible for job, Player: [player], Job:[job.title]")
-				// 	continue
-
-				// if(candidate.is_barred_by_missing_limbs(job))
-				// // if(job.barred_by_missing_limbs(player.client))
-				// // 	Debug("DO player has missing limbs rendering them ineligible for job, Player: [player], Job:[job.title]")
-				// 	continue
 
 				if(candidate.is_incompatible_role(job))
 				// if(player.mind && (job.title in player.mind.restricted_roles))

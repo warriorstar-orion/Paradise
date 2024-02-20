@@ -1,22 +1,22 @@
 /// A datum representing all the information needed to perform roundstart job
-/// selection, without actually needing clients.
+/// selection, without actually needing clients. This allows for the creation
+/// of fake candidates, allowing testing of the role selection system independent
+/// of the number of actual players.
 /datum/role_candidate
 	var/account_age_in_days
-	var/is_admin = FALSE
 	var/admin_rights = 0
-	var/is_guest_key = FALSE
-
+	var/assigned_job_title = null
 	var/datum/character_save/active_character
 	var/datum/job_ban_holder/jbh
-	var/assigned_job_title = null
-	var/list/job_objectives = list()
-	var/special_role
-	var/latejoin = FALSE
 	var/exp
-	var/return_to_lobby = FALSE
-
+	var/is_admin = FALSE
+	var/is_guest_key = FALSE
+	var/latejoin = FALSE
 	var/list/be_special = list()
+	var/list/job_objectives = list()
 	var/list/restricted_roles = list()
+	var/return_to_lobby = FALSE
+	var/special_role
 
 /datum/role_candidate/New()
 	active_character = new()
@@ -40,14 +40,10 @@
 	return active_character.GetJobDepartment(job, level) & job.flag
 
 /datum/role_candidate/proc/is_account_old_enough(datum/job/job)
-	if(!GLOB.configuration.jobs.restrict_jobs_on_account_age)
-		return 0
-	if(!isnum(account_age_in_days))
-		return 0
-	if(!isnum(job.minimal_player_age))
-		return 0
+	if(GLOB.configuration.jobs.restrict_jobs_on_account_age && isnum(account_age_in_days) && isnum(job.minimal_player_age))
+		return max(0, job.minimal_player_age - account_age_in_days) == 0
 
-	return max(0, job.minimal_player_age - account_age_in_days)
+	return TRUE
 
 /datum/role_candidate/proc/load_from_player(mob/new_player/player)
 	active_character = player.client.prefs.active_character
@@ -85,6 +81,8 @@
 		return FALSE
 	if(is_barred_by_missing_limbs(job))
 		return FALSE
+
+	return TRUE
 
 /datum/role_candidate/proc/is_barred_by_missing_limbs(datum/job/job)
 	if(!job.missing_limbs_allowed)
