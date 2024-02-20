@@ -15,6 +15,7 @@
 #include "origin_tech.dm"
 #include "purchase_reference_test.dm"
 #include "reagent_id_typos.dm"
+#include "role_selection.dm"
 #include "rustg_version.dm"
 #include "spawn_humans.dm"
 #include "spell_targeting_test.dm"

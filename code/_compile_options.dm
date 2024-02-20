@@ -12,9 +12,9 @@
 // Uncomment this to enable support for multiple instances
 // #define MULTIINSTANCE
 
-#ifdef CIBUILDING
+// #ifdef CIBUILDING
 #define UNIT_TESTS
-#endif
+// #endif
 
 /***** All toggles for the GC ref finder *****/
 

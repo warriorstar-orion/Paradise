@@ -69,7 +69,7 @@
 	return job_candidates
 
 /datum/role_selector/proc/assign_random_job(datum/role_candidate/candidate)
-	// Debug("GRJ Giving random job, Player: [player]")
+	Debug("GRJ Giving random job, Player: [candidate.active_character.real_name]")
 	for(var/datum/job/job in shuffle(SSjobs.occupations))
 		if(!job)
 			continue
@@ -86,6 +86,9 @@
 		if(!candidate.get_job_eligibility(job))
 			continue
 
+		if(job.title in candidate.restricted_roles)
+			continue
+
 		if(job.title in SSticker.mode.single_antag_positions)
 			if(!prob(probability_of_antag_role_restriction))
 				// Debug("Failed probability of getting a second antagonist position in this job, Player: [player], Job:[job.title]")
@@ -93,7 +96,7 @@
 			else
 				probability_of_antag_role_restriction /= 10
 		if((job.current_positions < job.spawn_positions) || job.spawn_positions == -1)
-			// Debug("GRJ Random job given, Player: [player], Job: [job]")
+			Debug("GRJ Random job given, Player: [candidate.active_character.real_name], Job: [job]")
 			assign_role(candidate, job)
 			// unassigned -= player
 			break
@@ -207,10 +210,6 @@
 	Debug("AC1, Candidates: [assistant_candidates.len]")
 	for(var/datum/role_candidate/candidate in assistant_candidates)
 		assign_role(candidate, ast)
-	// for(var/mob/new_player/player in assistant_candidates)
-	// 	Debug("AC1 pass, Player: [player]")
-	// 	assign_role(player, "Assistant")
-	// 	assistant_candidates -= player
 	Debug("DO, AC1 end")
 
 	//Select one head
@@ -250,12 +249,12 @@
 
 				if(candidate.is_incompatible_role(job))
 				// if(player.mind && (job.title in player.mind.restricted_roles))
-					// Debug("DO incompatible with antagonist role, Player: [player], Job:[job.title]")
+					Debug("assign_all_roles: incompatible with antagonist role, Player: [candidate.active_character.real_name], Job:[job.title]")
 					continue
 				if(job.title in SSticker.mode.single_antag_positions)
 				// if(player.mind && (job.title in SSticker.mode.single_antag_positions))
 					if(!prob(probability_of_antag_role_restriction))
-						// Debug("Failed probability of getting a second antagonist position in this job, Player: [player], Job:[job.title]")
+						Debug("Failed probability of getting a second antagonist position in this job, Player: [candidate.active_character.real_name], Job:[job.title]")
 						continue
 					else
 						probability_of_antag_role_restriction /= 10
@@ -265,8 +264,8 @@
 
 					// If the job isn't filled
 					if(job.is_spawn_position_available())
-						// Debug("DO pass, Player: [player], Level:[level], Job:[job.title]")
-						// Debug(" - Job Flag: [job.flag] Job Department: [player.client.prefs.active_character.SSjobs.GetJobDepartment(job, level)] Job Current Pos: [job.current_positions] Job Spawn Positions = [job.spawn_positions]")
+						Debug("DO pass, Player: [candidate.active_character.real_name], Level:[level], Job:[job.title]")
+						Debug(" - Job Flag: [job.flag] Job Department: [candidate.active_character.GetJobDepartment(job, level)] Job Current Pos: [job.current_positions] Job Spawn Positions = [job.spawn_positions]")
 						assign_role(candidate, job)
 						// unassigned -= player
 						break

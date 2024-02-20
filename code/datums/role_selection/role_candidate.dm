@@ -13,7 +13,6 @@
 	var/is_guest_key = FALSE
 	var/latejoin = FALSE
 	var/list/be_special = list()
-	var/list/job_objectives = list()
 	var/list/restricted_roles = list()
 	var/return_to_lobby = FALSE
 	var/special_role
