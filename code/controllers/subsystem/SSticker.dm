@@ -249,7 +249,8 @@ SUBSYSTEM_DEF(ticker)
 	else
 		log_debug("Playercount: [playercount] versus trigger: [highpop_trigger] - keeping standard job config")
 
-	SSjobs.assign_all_roles() //Distribute jobs
+	var/datum/role_selector/role_selector = new()
+	role_selector.assign_all_roles()
 
 	if(hide_mode)
 		var/list/modes = new

@@ -134,7 +134,7 @@
 			break
 
 ///This proc is called before the level loop of assign_all_roles() and will try to select a head, ignoring ALL non-head preferences for every level until it locates a head or runs out of levels to check
-/datum/role_selector/proc/FillHeadPosition()
+/datum/role_selector/proc/fill_head_position()
 	for(var/level = 1 to 3)
 		for(var/command_position in GLOB.command_positions)
 			var/datum/job/job = SSjobs.GetJob(command_position)
@@ -174,7 +174,7 @@
 		assign_role(candidate, command_position)
 
 
-/datum/controller/subsystem/jobs/proc/FillAIPosition()
+/datum/role_selector/proc/fill_ai_position()
 	if(!GLOB.configuration.jobs.allow_ai)
 		return FALSE
 
@@ -221,36 +221,40 @@
 	//Get the players who are ready
 	for(var/mob/new_player/player in GLOB.player_list)
 		if(player.ready && player.mind && !player.mind.assigned_role)
-			unassigned += player
+			add_candidate(player)
 
-	Debug("DO, Len: [unassigned.len]")
-	if(!length(unassigned))
+	// Debug("DO, Len: [unassigned.len]")
+	// if(!length(unassigned))
+	if(!length(candidates))
 		return FALSE
 
 	//Shuffle players and jobs
-	unassigned = shuffle(unassigned)
+	candidates = shuffle(candidates)
+	// unassigned = shuffle(unassigned)
 
-	HandleFeedbackGathering()
+	// HandleFeedbackGathering()
 
 	//People who wants to be assistants, sure, go on.
 	Debug("DO, Running Assistant Check 1")
-	var/datum/job/ast = new /datum/job/assistant()
+	var/datum/job/ast = SSjobs.GetJob("Assistant")
 	var/list/assistant_candidates = find_job_candidates(ast, 3)
 	Debug("AC1, Candidates: [assistant_candidates.len]")
-	for(var/mob/new_player/player in assistant_candidates)
-		Debug("AC1 pass, Player: [player]")
-		assign_role(player, "Assistant")
-		assistant_candidates -= player
+	for(var/datum/role_candidate/candidate in assistant_candidates)
+		assign_role(candidate, ast)
+	// for(var/mob/new_player/player in assistant_candidates)
+	// 	Debug("AC1 pass, Player: [player]")
+	// 	assign_role(player, "Assistant")
+	// 	assistant_candidates -= player
 	Debug("DO, AC1 end")
 
 	//Select one head
 	Debug("DO, Running Head Check")
-	FillHeadPosition()
+	fill_head_position()
 	Debug("DO, Head Check end")
 
 	//Check for an AI
 	Debug("DO, Running AI Check")
-	FillAIPosition()
+	fill_ai_position()
 	Debug("DO, AI Check end")
 
 	//Other jobs are now checked
