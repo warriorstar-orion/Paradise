@@ -251,6 +251,7 @@ SUBSYSTEM_DEF(ticker)
 
 	var/datum/role_selector/role_selector = new()
 	role_selector.assign_all_roles()
+	role_selector.apply_roles_to_players()
 
 	if(hide_mode)
 		var/list/modes = new

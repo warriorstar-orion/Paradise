@@ -11,7 +11,7 @@
 	if(player)
 		candidate.load_from_player(player)
 
-	candidates[candidate] = player ? player : FALSE
+	candidates[candidate] = player
 
 /datum/role_selector/proc/assign_role(datum/role_candidate/candidate, datum/job/job, latejoin = FALSE)
 	if(!job)
@@ -42,6 +42,17 @@
 
 	// Debug("AR has failed, Player: [player], Rank: [rank]")
 	return 0
+
+/datum/role_selector/proc/apply_roles_to_players()
+	for(var/datum/role_candidate/candidate in assigned_candidates)
+		var/mob/new_player/player = assigned_candidates[candidate]
+		if(player)
+			candidate.apply_to_player(player)
+
+/datum/role_selector/proc/return_to_lobby(datum/role_candidate/candidate)
+	candidate.return_to_lobby = TRUE
+	assigned_candidates[candidate] = candidates[candidate]
+	candidates -= candidate
 
 /datum/role_selector/proc/find_job_candidates(datum/job/job, level, flag)
 	// Debug("Running FOC, Job: [job], Level: [level], Flag: [flag]")
@@ -183,7 +194,7 @@
 		var/list/candidates = find_job_candidates(job, level)
 		if(!candidates.len)
 			continue
-		var/mob/new_player/candidate = pick(candidates)
+		var/datum/role_candidate/candidate = pick(candidates)
 		assign_role(candidate, command_position)
 
 
@@ -292,33 +303,35 @@
 
 			// Loop through all jobs
 			for(var/datum/job/job in shuffledoccupations) // SHUFFLE ME BABY
-				if(!job)
+				if(!candidate.get_job_eligibility(job))
 					continue
+				// if(!job)
+				// 	continue
 
-				if(candidate.is_jobbanned(job))
-				// if(jobban_isbanned(player, job.title))
-					// Debug("DO isbanned failed, Player: [player], Job:[job.title]")
-					continue
+				// if(candidate.is_jobbanned(job))
+				// // if(jobban_isbanned(player, job.title))
+				// 	// Debug("DO isbanned failed, Player: [player], Job:[job.title]")
+				// 	continue
 
-				if(!candidate.is_account_old_enough(job))
-				// if(!job.player_old_enough(player.client))
-					// Debug("DO player not old enough, Player: [player], Job:[job.title]")
-					continue
+				// if(!candidate.is_account_old_enough(job))
+				// // if(!job.player_old_enough(player.client))
+				// 	// Debug("DO player not old enough, Player: [player], Job:[job.title]")
+				// 	continue
 
-				if(candidate.get_job_exp_restrictions(job))
-				// if(job.get_exp_restrictions(player.client))
-				// 	Debug("DO player not enough playtime, Player: [player], Job:[job.title]")
-					continue
+				// if(candidate.get_job_exp_restrictions(job))
+				// // if(job.get_exp_restrictions(player.client))
+				// // 	Debug("DO player not enough playtime, Player: [player], Job:[job.title]")
+				// 	continue
 
-				if(candidate.is_barred_by_disability(job))
-				// if(job.barred_by_disability(player.client))
-				// 	Debug("DO player has disability rendering them ineligible for job, Player: [player], Job:[job.title]")
-					continue
+				// if(candidate.is_barred_by_disability(job))
+				// // if(job.barred_by_disability(player.client))
+				// // 	Debug("DO player has disability rendering them ineligible for job, Player: [player], Job:[job.title]")
+				// 	continue
 
-				if(candidate.is_barred_by_missing_limbs(job))
-				// if(job.barred_by_missing_limbs(player.client))
-				// 	Debug("DO player has missing limbs rendering them ineligible for job, Player: [player], Job:[job.title]")
-					continue
+				// if(candidate.is_barred_by_missing_limbs(job))
+				// // if(job.barred_by_missing_limbs(player.client))
+				// // 	Debug("DO player has missing limbs rendering them ineligible for job, Player: [player], Job:[job.title]")
+				// 	continue
 
 				if(candidate.is_incompatible_role(job))
 				// if(player.mind && (job.title in player.mind.restricted_roles))
@@ -339,38 +352,43 @@
 					if(job.is_spawn_position_available())
 						// Debug("DO pass, Player: [player], Level:[level], Job:[job.title]")
 						// Debug(" - Job Flag: [job.flag] Job Department: [player.client.prefs.active_character.SSjobs.GetJobDepartment(job, level)] Job Current Pos: [job.current_positions] Job Spawn Positions = [job.spawn_positions]")
-						assign_role(player, job.title)
+						assign_role(candidate, job)
 						// unassigned -= player
 						break
 
 	// Hand out random jobs to the people who didn't get any in the last check
 	// Also makes sure that they got their preference correct
-	for(var/mob/new_player/player in unassigned)
-		if(player.client.prefs.active_character.alternate_option == GET_RANDOM_JOB)
-			assign_random_job(player)
+	for(var/datum/role_candidate/candidate in candidates)
+		if(candidate.active_character.alternate_option == GET_RANDOM_JOB)
+			assign_random_job(candidate)
 
-	Debug("DO, Standard Check end")
-
-	Debug("DO, Running AC2")
+	// Debug("DO, Standard Check end")
+	// Debug("DO, Running AC2")
 
 	// Antags, who have to get in, come first
-	for(var/mob/new_player/player in unassigned)
-		if(player.mind.special_role)
-			if(player.client.prefs.active_character.alternate_option != BE_ASSISTANT)
-				assign_random_job(player)
-				if(player in unassigned)
-					assign_role(player, "Assistant")
+	for(var/datum/role_candidate/candidate in candidates)
+	// for(var/mob/new_player/player in unassigned)
+		if(candidate.special_role)
+			if(candidate.active_character.alternate_option != BE_ASSISTANT)
+				assign_random_job(candidate)
+				if(!candidate.is_assigned())
+				// if(player in unassigned)
+					assign_role(candidate, ast)
 			else
-				assign_role(player, "Assistant")
+				assign_role(candidate, ast)
 
 	// Then we assign what we can to everyone else.
-	for(var/mob/new_player/player in unassigned)
-		if(player.client.prefs.active_character.alternate_option == BE_ASSISTANT)
-			Debug("AC2 Assistant located, Player: [player]")
-			assign_role(player, "Assistant")
-		else if(player.client.prefs.active_character.alternate_option == RETURN_TO_LOBBY)
-			player.ready = FALSE
-			unassigned -= player
+	for(var/datum/role_candidate/candidate in candidates)
+	// for(var/mob/new_player/player in unassigned)
+		if(candidate.active_character.alternate_option == BE_ASSISTANT)
+			// Debug("AC2 Assistant located, Player: [player]")
+			assign_role(candidate, ast)
+		else if(candidate.active_character.alternate_option == RETURN_TO_LOBBY)
+			return_to_lobby(candidate)
+			// candidate.return_to_lobby = TRUE
+			// player.ready = FALSE
+
+			// unassigned -= player
 
 	log_debug("Dividing Occupations took [stop_watch(watch)]s")
 	return TRUE

@@ -13,6 +13,7 @@
 	var/special_role
 	var/latejoin = FALSE
 	var/exp
+	var/return_to_lobby = FALSE
 
 	var/list/be_special = list()
 	var/list/restricted_roles = list()
