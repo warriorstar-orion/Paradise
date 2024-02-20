@@ -496,6 +496,8 @@
 #include "code\datums\outfits\outfit_debug.dm"
 #include "code\datums\outfits\plasmamen_outfits.dm"
 #include "code\datums\outfits\vv_outfit.dm"
+#include "code\datums\role_selection\role_candidate.dm"
+#include "code\datums\role_selection\role_selector.dm"
 #include "code\datums\ruins\lavaland.dm"
 #include "code\datums\ruins\space_ruins.dm"
 #include "code\datums\ruins\bridges\bridges.dm"
