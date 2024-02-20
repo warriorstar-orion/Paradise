@@ -249,7 +249,7 @@ SUBSYSTEM_DEF(ticker)
 	else
 		log_debug("Playercount: [playercount] versus trigger: [highpop_trigger] - keeping standard job config")
 
-	SSjobs.DivideOccupations() //Distribute jobs
+	SSjobs.assign_all_roles() //Distribute jobs
 
 	if(hide_mode)
 		var/list/modes = new

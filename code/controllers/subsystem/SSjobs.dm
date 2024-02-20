@@ -92,6 +92,7 @@ SUBSYSTEM_DEF(jobs)
 		if((player) && (player.mind))
 			player.mind.assigned_role = null
 			player.mind.special_role = null
+	occupations.Cut()
 	SetupOccupations()
 	unassigned = list()
 	return

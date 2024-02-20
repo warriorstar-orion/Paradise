@@ -83,7 +83,7 @@
 			candidates += candidate
 	return candidates
 
-/datum/role_selector/proc/GiveRandomJob(mob/new_player/player)
+/datum/role_selector/proc/assign_random_job(mob/new_player/player)
 	Debug("GRJ Giving random job, Player: [player]")
 	for(var/datum/job/job in shuffle(SSjobs.occupations))
 		if(!job)
@@ -133,7 +133,7 @@
 			unassigned -= player
 			break
 
-///This proc is called before the level loop of DivideOccupations() and will try to select a head, ignoring ALL non-head preferences for every level until it locates a head or runs out of levels to check
+///This proc is called before the level loop of assign_all_roles() and will try to select a head, ignoring ALL non-head preferences for every level until it locates a head or runs out of levels to check
 /datum/role_selector/proc/FillHeadPosition()
 	for(var/level = 1 to 3)
 		for(var/command_position in GLOB.command_positions)
@@ -161,8 +161,8 @@
 
 	return 0
 
-///This proc is called at the start of the level loop of DivideOccupations() and will cause head jobs to be checked before any other jobs of the same level
-/datum/controller/subsystem/jobs/proc/CheckHeadPositions(level)
+///This proc is called at the start of the level loop of assign_all_roles() and will cause head jobs to be checked before any other jobs of the same level
+/datum/role_selector/proc/check_command_positions(level)
 	for(var/command_position in GLOB.command_positions)
 		var/datum/job/job = SSjobs.GetJob(command_position)
 		if(!job)
@@ -199,21 +199,22 @@
 		return 0
 
 
-/** Proc DivideOccupations
+/** Proc assign_all_roles
 *  fills var "assigned_role" for all ready players.
 *  This proc must not have any side effect besides of modifying "assigned_role".
 **/
-/datum/role_selector/proc/DivideOccupations()
+/datum/role_selector/proc/assign_all_roles()
 	// Lets roughly time this
 	var/watch = start_watch()
 	//Setup new player list and get the jobs list
 	Debug("Running DO")
-	if(!length(occupations))
-		SetupOccupations()
+	SSjobs.SetupOccupations()
+	// if(!length(SSjobs.occupations))
+	// 	SSjobs.SetupOccupations()
 
 	//Holder for Triumvirate is stored in the ticker, this just processes it
 	if(SSticker)
-		for(var/datum/job/ai/A in occupations)
+		for(var/datum/job/ai/A in SSjobs.occupations)
 			if(SSticker.triai)
 				A.spawn_positions = 3
 
@@ -264,7 +265,7 @@
 	var/list/shuffledoccupations = shuffle(occupations)
 	for(var/level = 1 to 3)
 		//Check the head jobs first each level
-		CheckHeadPositions(level)
+		check_command_positions(level)
 
 		// Loop through all unassigned players
 		for(var/mob/new_player/player in unassigned)
@@ -318,7 +319,7 @@
 	// Also makes sure that they got their preference correct
 	for(var/mob/new_player/player in unassigned)
 		if(player.client.prefs.active_character.alternate_option == GET_RANDOM_JOB)
-			GiveRandomJob(player)
+			assign_random_job(player)
 
 	Debug("DO, Standard Check end")
 
@@ -328,7 +329,7 @@
 	for(var/mob/new_player/player in unassigned)
 		if(player.mind.special_role)
 			if(player.client.prefs.active_character.alternate_option != BE_ASSISTANT)
-				GiveRandomJob(player)
+				assign_random_job(player)
 				if(player in unassigned)
 					assign_role(player, "Assistant")
 			else

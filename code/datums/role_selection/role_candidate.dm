@@ -39,7 +39,6 @@
 
 	return max(0, job.minimal_player_age - account_age_in_days)
 
-
 /datum/role_candidate/proc/load_from_player(mob/new_player/player)
 	active_character = player.client.prefs.active_character
 	jbh.reload_jobbans(player.client)
