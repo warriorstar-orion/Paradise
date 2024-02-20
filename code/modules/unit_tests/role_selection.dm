@@ -4,10 +4,30 @@
 	var/datum/role_selector/selector = new()
 	var/datum/game_mode/traitor/mode = new()
 
+	var/medium_job_preferences_per_candidate = list(
+		list(/datum/job/bartender),
+		list(/datum/job/clown),
+		list(/datum/job/chemist)
+	)
+
+	var/high_job_preferences_per_candidate = list(
+		/datum/job/cargo_tech,
+		/datum/job/chef,
+		/datum/job/chief_engineer
+	)
+
 	for(var/i in 1 to 100)
 		var/datum/role_candidate/candidate = new()
 		candidate.active_character.alternate_option = pick(GET_RANDOM_JOB, BE_ASSISTANT)
 		selector.candidates.Add(candidate)
+
+		if(length(medium_job_preferences_per_candidate) >= i)
+			for(var/med_jobpref in medium_job_preferences_per_candidate[i])
+				candidate.active_character.SetJobPreferenceLevel(med_jobpref, 2)
+
+		if(length(high_job_preferences_per_candidate) >= i)
+			var/high_jobpref = high_job_preferences_per_candidate[i]
+			candidate.active_character.SetJobPreferenceLevel(high_jobpref, 1)
 
 		if(i < 5)
 			candidate.special_role = SPECIAL_ROLE_TRAITOR

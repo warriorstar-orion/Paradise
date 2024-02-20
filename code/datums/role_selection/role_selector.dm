@@ -54,7 +54,7 @@
 			continue
 		if(job.title in candidate.restricted_roles)
 		// if(player.mind && (job.title in player.mind.restricted_roles))
-			// Debug("FOC incompatbile with antagonist role, Player: [player]")
+			Debug("FOC incompatbile with antagonist role, Player: [candidate.active_character.real_name]")
 			continue
 		if(job.title in SSticker.mode.single_antag_positions)
 		// if(player.mind && (job.title in SSticker.mode.single_antag_positions))
