@@ -328,8 +328,7 @@
 		to_chat(src, alert("[rank] is not available due to your character having amputated limbs without a prosthetic replacement. Please try another."))
 		return 0
 
-	CRASH("can't assign latejoin roles yet")
-	// SSjobs.assign_role(src, rank, 1)
+	SSjobs.role_selector.latejoin_assign(src, rank)
 
 	var/mob/living/character = create_character()	//creates the human and transfers vars and mind
 	character = SSjobs.AssignRank(character, rank, TRUE)					//equips the human

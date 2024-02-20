@@ -30,6 +30,13 @@
 
 	return FALSE
 
+/// Convenience proc for handling a single latejoin player
+/datum/role_selector/proc/latejoin_assign(mob/new_player/player, rank)
+	var/datum/role_candidate/candidate = new()
+	candidate.load_from_player(player)
+	assign_role(candidate, rank, latejoin = TRUE)
+	candidate.apply_to_player(player)
+
 /datum/role_selector/proc/apply_roles_to_players()
 	for(var/datum/role_candidate/candidate in assigned_candidates)
 		var/mob/new_player/player = assigned_candidates[candidate]

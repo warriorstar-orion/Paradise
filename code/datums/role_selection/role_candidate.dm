@@ -57,13 +57,18 @@
 		admin_rights = player.client.holder.rights
 
 /datum/role_candidate/proc/apply_to_player(mob/new_player/player)
-	var/datum/job/job = SSjobs.GetJob(assigned_job_title)
-	player.mind.assigned_role = assigned_job_title
-	player.mind.role_alt_title = active_character.GetPlayerAltTitle(job)
-	player.mind.job_objectives.Cut()
+	if(return_to_lobby)
+		player.ready = FALSE
+		return
 
-	for(var/objective_type in job.required_objectives)
-		new objective_type(player.mind)
+	var/datum/job/job = SSjobs.GetJob(assigned_job_title)
+	if(job)
+		player.mind.assigned_role = assigned_job_title
+		player.mind.role_alt_title = active_character.GetPlayerAltTitle(job)
+		player.mind.job_objectives.Cut()
+
+		for(var/objective_type in job.required_objectives)
+			new objective_type(player.mind)
 
 /datum/role_candidate/proc/get_job_eligibility(datum/job/job)
 	if(!job)

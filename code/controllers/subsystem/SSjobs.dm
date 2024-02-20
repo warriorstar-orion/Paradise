@@ -25,6 +25,8 @@ SUBSYSTEM_DEF(jobs)
 	var/late_arrivals_spawning = FALSE
 	/// Do we spawn people drunkenly due to the party last night?
 	var/drunken_spawning = FALSE
+	/// Role selector, used for roundstart and late join job assignment
+	var/datum/role_selector/role_selector
 
 /datum/controller/subsystem/jobs/Initialize()
 	if(!length(occupations))

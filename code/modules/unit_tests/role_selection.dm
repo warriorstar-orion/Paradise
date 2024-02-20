@@ -13,7 +13,7 @@
 	var/high_job_preferences_per_candidate = list(
 		/datum/job/cargo_tech,
 		/datum/job/chef,
-		/datum/job/chief_engineer
+		/datum/job/captain
 	)
 
 	for(var/i in 1 to 100)
