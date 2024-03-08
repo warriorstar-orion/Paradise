@@ -6,6 +6,7 @@ on:
   pull_request:
     branches:
     - master
+  merge_group:
 
 jobs:
   run_linters:
@@ -124,3 +125,26 @@ jobs:
         python-version: '3.8.2' # Script was made for 3.8.2
         architecture: 'x86' # This MUST be x86
     - run: python tools/ci/validate_rustg_windows.py
+
+  map_merge:
+    name: Check and commit map merge script output
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+      - run: pip install -r tools/requirements.txt
+
+      - name: Map merge
+        run: |
+          python tools/ci/map_merge.py
+
+      - uses: actions/checkout@v4
+      - run: |
+          date > generated.txt
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "generated"
+          git push
