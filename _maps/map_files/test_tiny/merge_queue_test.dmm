@@ -4,7 +4,8 @@
 /turf/simulated,
 /area/station/public/dorms)
 "v" = (
-/obj/item/paper,
+/obj/item/crowbar,
+/obj/item/wrench,
 /turf/simulated,
 /area/station/public/dorms)
 "x" = (
@@ -12,7 +13,7 @@
 /turf/simulated,
 /area/station/public/dorms)
 "S" = (
-/obj/item/multitool,
+/obj/item/weldingtool,
 /turf/simulated,
 /area/station/public/dorms)
 
