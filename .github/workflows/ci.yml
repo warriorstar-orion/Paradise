@@ -135,6 +135,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          # allegedly this is as deep as necessary to always receive the base ref
+          fetch-depth: 2
 
       - name: Setup python
         uses: actions/setup-python@v5
@@ -143,20 +146,23 @@ jobs:
           cache: 'pip'
       - run: pip install -r tools/requirements.txt
 
-      - name: Run Mapmerge
-        run: python tools/ci/map_merge.py
-
-      - name: Check if Mapmerge can resolve diffs automatically
+      - name: Verify map merge
         run: |
-          if grep -q "!!! Manual merge required!" output.log; then
-            echo "Mapmerge failed to automatically deconflict, please resolve conflicts manually"
+          # assume we're at the head ref and give it a name we know
+          git switch -c gh/mergequeue/head
+          # go back to the base ref and attempt our own merge
+          git checkout ${{ github.event.merge_group.base_sha }}
+          git switch -c gh/mergequeue/base
+          git merge gh/mergequeue/head
+
+          # the merge was not concluded cleanly
+          if [ -e ".git/MERGE_HEAD" ]; then
+            echo "Merge state detected; manual resolution most likely required"
             exit 1
           fi
 
-      - name: Commit Mapmerge autoresolved diffs
-        if: success()
-        run: |
-          git config --local user.name github-actions
-          git config --local user.email github-actions@github.com
-          git commit -am "Automated mapmerge commit"
-          git push
+          # if our merge was clean but our's and GitHubs differ, then complain
+          if [[ `git diff --exit-code gh/mergequeue/head` ]]; then
+            echo "Queue merge does not match driver merge; manual resolution most likely required"
+            exit 1
+          fi
