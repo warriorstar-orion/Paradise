@@ -147,7 +147,7 @@ jobs:
         run: |
           git switch -c gh/mergequeue/head
           # git checkout ${{ github.event.merge_group.base_sha }}
-          git checkout ${{ github.event.pull_request.base.label }}
+          git checkout ${{ github.event.pull_request.base.ref }}
           # git switch -c gh/mergequeue/base
           git merge ${{ github.event.pull_request.head.sha }}
           if [ -e ".git/MERGE_HEAD" ]; then
