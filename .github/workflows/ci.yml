@@ -127,24 +127,36 @@ jobs:
     - run: python tools/ci/validate_rustg_windows.py
 
   map_merge:
-    name: Check and commit map merge script output
+    name: Check and commit Mapmerge script output
     runs-on: ubuntu-latest
+    if: ${{ vars.GITHUB_EVENT_NAME == 'merge_group' }}
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/setup-python@v5
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
           cache: 'pip'
       - run: pip install -r tools/requirements.txt
 
-      - name: Map merge
-        run: |
-          python tools/ci/map_merge.py
+      - name: Run Mapmerge
+        run: python tools/ci/map_merge.py
 
-      - uses: actions/checkout@v4
-      - run: |
-          date > generated.txt
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add .
-          git commit -m "generated"
+      - name: Check if Mapmerge can resolve diffs automatically
+        run: |
+          if grep -q "!!! Manual merge required!" output.log; then
+            echo "Mapmerge failed to automatically deconflict, please resolve conflicts manually"
+            exit 1
+          fi
+
+      - name: Commit Mapmerge autoresolved diffs
+        if: success()
+        run: |
+          git config --local user.name github-actions
+          git config --local user.email github-actions@github.com
+          git commit -am "Automated mapmerge commit"
           git push
