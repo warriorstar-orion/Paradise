@@ -129,7 +129,6 @@ jobs:
   map_merge:
     name: Check and commit Mapmerge script output
     runs-on: ubuntu-latest
-    if: ${{ vars.GITHUB_EVENT_NAME == 'merge_group' }}
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -144,7 +143,15 @@ jobs:
       - run: pip install -r tools/requirements.txt
 
       - name: Run Mapmerge
-        run: python tools/ci/map_merge.py
+        run: |
+          git switch -c gh/mergequeue/head
+          git checkout ${{ github.event.merge_group.base_sha }}
+          git switch -c gh/mergequeue/base
+          git merge ${{ github.event.merge_group.head_sha }}
+          if [ -e ".git/MERGE_HEAD" ]; then
+            echo "Merge state detected; manual merge most likely required"
+            exit 1
+          fi
 
       - name: Check if Mapmerge can resolve diffs automatically
         run: |
