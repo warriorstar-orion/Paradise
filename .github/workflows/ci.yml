@@ -146,6 +146,7 @@ jobs:
       - name: Run Mapmerge
         run: |
           git switch -c gh/mergequeue/head
+          git log --oneline -10
           # git checkout ${{ github.event.merge_group.base_sha }}
           git checkout ${{ github.event.pull_request.base.ref }}
           # git switch -c gh/mergequeue/base
