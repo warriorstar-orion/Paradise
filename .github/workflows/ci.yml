@@ -155,17 +155,12 @@ jobs:
             exit 1
           fi
 
-      - name: Check if Mapmerge can resolve diffs automatically
-        run: |
-          if grep -q "!!! Manual merge required!" output.log; then
-            echo "Mapmerge failed to automatically deconflict, please resolve conflicts manually"
-            exit 1
-          fi
-
       - name: Commit Mapmerge autoresolved diffs
         if: success()
         run: |
+        if [[ `git diff --exit-code --staged` ]]; then
           git config --local user.name github-actions
           git config --local user.email github-actions@github.com
           git commit -am "Automated mapmerge commit"
           git push
+        fi
