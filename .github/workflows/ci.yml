@@ -148,13 +148,8 @@ jobs:
       - name: Run Mapmerge
         run: |
           git switch -c gh/mergequeue/head
-          git log --oneline -10
-          echo "base_ref=${{ github.event.pull_request.base.ref }}"
-          echo "base_sha=${{ github.event.pull_request.base.sha }}"
-          # git checkout ${{ github.event.merge_group.base_sha }}
-          git checkout ${{ github.event.pull_request.base.ref }}
-          # git switch -c gh/mergequeue/base
-          git merge ${{ github.event.pull_request.head.sha }}
+          git checkout maptestprmainline
+          git merge gh/mergequeue/head
           if [ -e ".git/MERGE_HEAD" ]; then
             echo "Merge state detected; manual merge most likely required"
             exit 1
