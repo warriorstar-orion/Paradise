@@ -1,0 +1,26 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/item/wrench,
+/turf/simulated,
+/area/station/public/dorms)
+"v" = (
+/obj/item/paper,
+/turf/simulated,
+/area/station/public/dorms)
+"x" = (
+/obj/item/crowbar,
+/turf/simulated,
+/area/station/public/dorms)
+"S" = (
+/obj/item/multitool,
+/turf/simulated,
+/area/station/public/dorms)
+
+(1,1,1) = {"
+v
+x
+"}
+(2,1,1) = {"
+S
+a
+"}
