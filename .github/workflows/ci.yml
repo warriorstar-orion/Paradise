@@ -158,7 +158,8 @@ jobs:
       - name: Commit Mapmerge autoresolved diffs
         if: success()
         run: |
-          if [[ `git diff --exit-code --staged` ]]; then
+          if [[ `git diff --exit-code` ]]; then
+            git add .
             git config --local user.name github-actions
             git config --local user.email github-actions@github.com
             git commit -am "Automated mapmerge commit"
