@@ -154,6 +154,7 @@ jobs:
             echo "Merge state detected; manual merge most likely required"
             exit 1
           fi
+          git status
 
       - name: Commit Mapmerge autoresolved diffs
         if: success()
