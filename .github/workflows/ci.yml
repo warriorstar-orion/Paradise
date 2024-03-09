@@ -147,8 +147,8 @@ jobs:
         run: |
           git switch -c gh/mergequeue/head
           # git checkout ${{ github.event.merge_group.base_sha }}
-          git checkout ${{ github.event.pull_request.base.sha }}
-          git switch -c gh/mergequeue/base
+          git checkout ${{ github.event.pull_request.base.label }}
+          # git switch -c gh/mergequeue/base
           git merge ${{ github.event.pull_request.head.sha }}
           if [ -e ".git/MERGE_HEAD" ]; then
             echo "Merge state detected; manual merge most likely required"
