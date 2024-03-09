@@ -135,6 +135,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: maptestprmainline
 
       - name: Setup python
         uses: actions/setup-python@v5
