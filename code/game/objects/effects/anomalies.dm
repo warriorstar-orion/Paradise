@@ -65,6 +65,14 @@
 			detonate()
 		qdel(src)
 
+/obj/effect/anomaly/examine(mob/user)
+	. = ..()
+	if(user.research_scanner)
+		if(in_range(src, user))
+			to_chat(user, "<span class='notice'>Analyzing... [src]'s unstable field is fluctuating along frequency [format_frequency(aSignal.frequency)], code [aSignal.code].</span>")
+		else
+			to_chat(user, "<span class='notice'>[src] is too far away for your research analyzer to get a reading!</span>")
+
 /obj/effect/anomaly/proc/anomalyEffect()
 	if(prob(movechance))
 		step(src, pick(GLOB.alldirs))
@@ -89,7 +97,7 @@
 
 /obj/effect/anomaly/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/analyzer))
-		to_chat(user, "<span class='notice'>Analyzing... [src]'s unstable field is fluctuating along frequency [format_frequency(aSignal.frequency)], code [aSignal.code].</span>")
+		to_chat(user, "<span class='warning'>The analyzer does nothing!</span>")
 
 ///////////////////////
 
