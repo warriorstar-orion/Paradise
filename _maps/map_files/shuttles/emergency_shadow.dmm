@@ -1145,6 +1145,7 @@
 	name = "Engine Room"
 	},
 /obj/machinery/door/firedoor/heavy,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /turf/simulated/floor/plasteel/dark,
 /area/shuttle/escape)
 "WQ" = (
