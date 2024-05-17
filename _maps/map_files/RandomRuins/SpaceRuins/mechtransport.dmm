@@ -565,6 +565,7 @@
 	pixel_y = -32;
 	name = "secure supplies blast door control"
 	},
+/mob/living/simple_animal/hostile/pirate/ranged,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/mech_transport)
 "Nq" = (
