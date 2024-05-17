@@ -97,7 +97,7 @@
 	parent_rune.attack_hand(user)
 
 /obj/machinery/shield/cult/barrier/attack_animal(mob/living/simple_animal/user)
-	if(iscultist(user))
+	if(IS_CULTIST(user))
 		parent_rune.attack_animal(user)
 	else
 		..()
@@ -295,6 +295,12 @@
 
 /obj/machinery/shieldgen/update_icon_state()
 	icon_state = "shield[active ? "on" : "off"][malfunction ? "br" : ""]"
+
+/obj/machinery/shieldgen/onShuttleMove(turf/oldT, turf/T1, rotation, mob/caller)
+	. = ..()
+	if(active)
+		shields_down()
+		addtimer(CALLBACK(src, PROC_REF(shields_up)), 1 SECONDS)//Lets docking finish, prevents placing shields on shuttle tiles.
 
 /obj/machinery/shieldgen/raven
 	name = "military shield generator"
@@ -547,7 +553,7 @@
 	if(istype(mover) && mover.checkpass(PASSGLASS))
 		return prob(20)
 	else
-		if(istype(mover, /obj/item/projectile))
+		if(isprojectile(mover))
 			return prob(10)
 		else
 			return !density
@@ -563,7 +569,7 @@
 		var/mob/living/M = mover
 		if("syndicate" in M.faction)
 			return TRUE
-	if(istype(mover, /obj/item/projectile))
+	if(isprojectile(mover))
 		return FALSE
 	return ..(mover, target, height)
 

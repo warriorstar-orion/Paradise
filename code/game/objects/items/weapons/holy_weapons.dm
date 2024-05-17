@@ -360,7 +360,7 @@
 	if(ishuman(loc))
 		var/mob/living/carbon/human/our_location = loc
 		if(istype(our_location))
-			if(src != our_location.l_hand && src != our_location.r_hand)
+			if(!our_location.is_holding(src))
 				return
 			if(our_location.Adjacent(attacking_atom)) // with a buddy we deal 12 damage :D
 				our_location.do_attack_animation(attacking_atom, used_item = src)
@@ -570,8 +570,10 @@
 			var/mob/living/carbon/human/target = M
 
 			if(target.mind)
-				if(iscultist(target))
-					SSticker.mode.remove_cultist(target.mind, TRUE, TRUE) // This proc will handle message generation.
+				if(IS_CULTIST(target))
+					var/datum/antagonist/cultist/cultist = IS_CULTIST(target)
+					cultist.remove_gear_on_removal = TRUE
+					target.mind.remove_antag_datum(/datum/antagonist/cultist)
 					praying = FALSE
 					return
 				var/datum/antagonist/vampire/V = M.mind?.has_antag_datum(/datum/antagonist/vampire)
@@ -755,7 +757,7 @@
 
 	if(!target || !ishuman(target) || !missionary || !ishuman(missionary))
 		return
-	if(ismindslave(target) || target.mind.zealot_master)	//mindslaves and zealots override the staff because the staff is just a temporary mindslave
+	if(IS_MINDSLAVE(target) || target.mind.zealot_master)	//mindslaves and zealots override the staff because the staff is just a temporary mindslave
 		to_chat(missionary, "<span class='warning'>Your faith is strong, but [target.p_their()] mind is already slaved to someone else's ideals. Perhaps an inquisition would reveal more...</span>")
 		faith -= 25		//same faith cost as losing sight of them mid-conversion, but did you just find someone who can lead you to a fellow traitor?
 		return

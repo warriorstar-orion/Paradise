@@ -16,12 +16,16 @@ GLOBAL_PROTECT(href_token)
 	var/rights = 0
 	var/fakekey
 	var/big_brother	= FALSE
+	var/current_tab = 0
 
 	/// Unique-to-session randomly generated token given to each admin to help add detail to logs on admin interactions with hrefs
 	var/href_token
 
 	/// Our currently linked marked datum
 	var/datum/marked_datum
+
+	/// Our index into GLOB.antagonist_teams, so that admins can have pretty tabs in the Check Teams menu.
+	var/team_switch_tab_index = 1
 
 /datum/admins/New(initial_rank = "Temporary Admin", initial_rights = 0, ckey)
 	if(IsAdminAdvancedProcCall())
