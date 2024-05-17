@@ -195,24 +195,6 @@
 	icon_state = "surgcap_black"
 	dog_fashion = /datum/dog_fashion/head/surgery
 
-//Special Roles
-/obj/item/clothing/head/beret/solgov/command
-	name = "\improper Trans-Solar Federation Lieutenant's beret"
-	desc = "A beret worn by marines of the Trans-Solar Federation. The insignia signifies the wearer bears the rank of a Lieutenant."
-	icon_state = "solgovcberet"
-	item_color = "solgovc"
-	dog_fashion = null
-	armor = list(MELEE = 10, BULLET = 20, LASER = 20, ENERGY = 5, BOMB = 15, RAD = 0, FIRE = 50, ACID = 75)
-	strip_delay = 80
-
-/obj/item/clothing/head/beret/solgov/command/elite
-	name = "\improper Trans-Solar Federation Specops Lieutenant's beret"
-	desc = "A beret worn by marines of the Trans-Solar Federation Specops division. The insignia signifies the wearer bears the rank of a Lieutenant."
-	armor = list(MELEE = 25, BULLET = 75, LASER = 5, ENERGY = 5, BOMB = 15, RAD = 50, FIRE = 200, ACID = 200)
-	icon_state = "solgovceliteberet"
-	item_color = "solgovcelite"
-	resistance_flags = FIRE_PROOF
-
 /obj/item/clothing/head/beret/expedition
 	name = "expedition beret"
 	desc = "A brown beret with a blue Nanotrasen insignia emblazoned on it. Not much good for space protection, but stylish all the same."
