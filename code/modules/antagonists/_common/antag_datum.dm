@@ -2,6 +2,8 @@ RESTRICT_TYPE(/datum/antagonist)
 
 GLOBAL_LIST_EMPTY(antagonists)
 
+#define SUCCESSFUL_DETACH "dont touch this string numbnuts"
+
 /datum/antagonist
 	/// The name of the antagonist.
 	var/name = "Antagonist"
@@ -60,8 +62,8 @@ GLOBAL_LIST_EMPTY(antagonists)
 /datum/antagonist/Destroy(force, ...)
 	qdel(objective_holder)
 	GLOB.antagonists -= src
-	if(!QDELETED(owner))
-		detach_from_owner()
+	if(!QDELETED(owner) && detach_from_owner() != SUCCESSFUL_DETACH)
+		stack_trace("[src] ([type]) failed to detach from owner! This is very bad!")
 
 	return ..()
 
@@ -83,6 +85,7 @@ GLOBAL_LIST_EMPTY(antagonists)
 	LAZYREMOVE(owner.antag_datums, src)
 	restore_last_hud_and_role()
 	owner = null
+	return SUCCESSFUL_DETACH
 
 /**
  * Adds the owner to their respective gamemode's list. For example `SSticker.mode.traitors |= owner`.
@@ -412,3 +415,5 @@ GLOBAL_LIST_EMPTY(antagonists)
 /// This is the custom blurb message used on login for an antagonist.
 /datum/antagonist/proc/custom_blurb()
 	return FALSE
+
+#undef SUCCESSFUL_DETACH

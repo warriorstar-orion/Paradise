@@ -20,8 +20,8 @@
 	if(!length(possible_wizards))
 		return FALSE
 	var/datum/mind/wizard = pick(possible_wizards)
-	pre_wizards += wizard
 
+	pre_wizards += wizard
 	wizard.assigned_role = SPECIAL_ROLE_WIZARD //So they aren't chosen for other jobs.
 	wizard.special_role = SPECIAL_ROLE_WIZARD
 	if(!length(GLOB.wizardstart))

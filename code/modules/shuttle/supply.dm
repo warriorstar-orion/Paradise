@@ -222,6 +222,7 @@
 
 	return CARGO_OK
 
+
 /obj/docking_port/mobile/supply/proc/sell()
 	SEND_SIGNAL(src, COMSIG_CARGO_BEGIN_SELL)
 	SSeconomy.sold_atoms = list()
@@ -824,6 +825,7 @@
 	var/zero_is_good = FALSE
 
 #undef MAX_CRATE_DELIVERY
+
 #undef CARGO_OK
 #undef CARGO_PREVENT_SHUTTLE
 #undef CARGO_SKIP_ATOM

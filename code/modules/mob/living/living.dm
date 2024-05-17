@@ -384,6 +384,7 @@
 
 
 /mob/proc/get_contents()
+	return
 
 
 //Recursive function to find everything a mob is holding.
@@ -841,6 +842,7 @@
 	return 0
 
 /mob/living/proc/check_ear_prot()
+	return
 
 /mob/living/singularity_act()
 	investigate_log("([key_name(src)]) has been consumed by the singularity.","singulo") //Oh that's where the clown ended up!
