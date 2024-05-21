@@ -8,7 +8,6 @@
 	del_on_death = TRUE
 	var/baton_type
 
-	COOLDOWN_DECLARE(next_attack)
 	var/obj/item/abductor_baton/baton
 
 /mob/living/simple_animal/hostile/abductor/agent/Initialize(mapload)
@@ -23,29 +22,25 @@
 	. = list()
 	for(var/mob/possible_target in initial_result)
 		var/mob/living/L = possible_target
-		if(L && L.has_status_effect(STATUS_EFFECT_STUN))
+		if(baton_type != "sleep" && L && L.has_status_effect(STATUS_EFFECT_STUN))
+			continue
+
+		if(L && L.has_status_effect(STATUS_EFFECT_SLEEPING))
+			continue
+
+		var/mob/living/carbon/C = L
+		if(istype(C) && C.handcuffed)
 			continue
 
 		. += possible_target
 
 /mob/living/simple_animal/hostile/abductor/agent/AttackingTarget()
-	if(!COOLDOWN_FINISHED(src, next_attack))
-		return FALSE
-
 	if(SEND_SIGNAL(target, COMSIG_HOSTILE_ATTACKINGTARGET, src) & COMPONENT_CANCEL_ATTACK_CHAIN)
 		return FALSE
 
 	in_melee = TRUE
 	var/mob/living/L = target
 	if(!istype(L))
-		return FALSE
-
-	if(L.has_status_effect(STATUS_EFFECT_STUN))
-		LoseAggro()
-		return FALSE
-
-	if(L.has_status_effect(STATUS_EFFECT_SLEEPING))
-		LoseAggro()
 		return FALSE
 
 	if(ishuman(L))
@@ -57,8 +52,16 @@
 	do_attack_animation(L)
 	switch(baton_type)
 		if("sleep")
+			if(L.has_status_effect(STATUS_EFFECT_SLEEPING))
+				LoseAggro()
+				return FALSE
+
 			baton.SleepAttack(L, src)
 		if("stun")
+			if(L.has_status_effect(STATUS_EFFECT_STUN))
+				LoseAggro()
+				return FALSE
+
 			baton.StunAttack(L, src)
 		if("cuff")
 			var/mob/living/carbon/C = L
@@ -70,6 +73,5 @@
 				baton.CuffAttack(C, src)
 
 	playsound(loc, 'sound/weapons/egloves.ogg', 50, 1, -1) // this is in baton but baton's loc is in us
-	COOLDOWN_START(src, next_attack, 20 SECONDS)
 	LoseAggro()
 
