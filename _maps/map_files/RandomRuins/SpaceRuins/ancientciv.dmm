@@ -17,12 +17,6 @@
 /obj/machinery/door/airlock/abductor,
 /turf/simulated/floor/pod/dark,
 /area/ruin/space/powered/abductor_base)
-"D" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/space,
-/area/space)
 "G" = (
 /mob/living/simple_animal/hostile/abductor/agent,
 /turf/simulated/floor/pod/dark,
@@ -838,7 +832,7 @@ a
 a
 a
 a
-D
+a
 a
 a
 a
