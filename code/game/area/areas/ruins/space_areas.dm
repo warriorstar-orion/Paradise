@@ -383,3 +383,7 @@
 
 /area/ruin/space/powered/ragnarok/atmos
 	name = "Ragnarok Atmospherics Bay"
+
+/area/ruin/space/powered/abductor_base
+	name = "Abductor Base"
+	there_can_be_many = FALSE

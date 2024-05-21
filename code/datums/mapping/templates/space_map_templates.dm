@@ -495,3 +495,9 @@
 	name = "The Kappa Lab"
 	description = "An all-around lab held once in pristine condition has now fallen to into less desirable hands."
 	allow_duplicates = FALSE
+
+/datum/map_template/ruin/space/abductor_base
+	id = "abductor_base"
+	suffix = "ancientciv.dmm"
+	name = "Abductor Base"
+	allow_duplicates = FALSE
