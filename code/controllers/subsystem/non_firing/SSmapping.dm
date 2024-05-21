@@ -53,6 +53,8 @@ SUBSYSTEM_DEF(mapping)
 	var/list/used_turfs = list() //list of turf = datum/turf_reservation
 	/// List of lists of turfs to reserve
 	var/list/lists_to_reserve = list()
+	/// The coordinates of the abductor base docking port, if spawned.
+	var/obj/effect/landmark/ruin/abductor_base_port
 
 // This has to be here because world/New() uses [station_name()], which looks this datum up
 /datum/controller/subsystem/mapping/PreInit()
@@ -326,7 +328,46 @@ SUBSYSTEM_DEF(mapping)
 	space_ruins_placer = new()
 	space_ruins_placer.place_ruins(levels_by_trait(SPAWN_RUINS))
 	log_startup_progress("Placed space ruins in [stop_watch(watch)]s.")
+	seed_abductor_coordinates()
 	seed_space_salvage(levels_by_trait(SPAWN_RUINS))
+
+/datum/controller/subsystem/mapping/proc/seed_abductor_coordinates()
+	var/space_z_levels = levels_by_trait(SPAWN_RUINS)
+
+	for(var/obj/effect/landmark/ruin/ruin_landmark in GLOB.ruin_landmarks)
+		if(ruin_landmark.ruin_template.id == "abductor_base_hidden")
+			var/list/spawnpoints = list()
+			var/list/valid_ruintypes = list(
+				/area/ruin/space/onehalf/abandonedbridge,
+				/area/ruin/space/syndicate_druglab,
+				/area/ruin/space/syndicate_listening_station,
+				/area/ruin/space/unpowered/syndicakes_factory,
+				/area/ruin/space/unpowered/turreted_outpost,
+				/area/ruin/space/wreck_cargoship
+			)
+
+			for(var/z_level in space_z_levels)
+				var/list/turf/z_level_turfs = block(locate(1, 1, z_level), locate(world.maxx, world.maxy, z_level))
+				for(var/z_level_turf in z_level_turfs)
+					var/turf/T = z_level_turf
+					var/area/A = get_area(T)
+					if(!(A.type in valid_ruintypes))
+						continue
+
+					for(var/obj/structure/table/table in T)
+						if(locate(/obj/machinery) in T)
+							continue // Machinery on tables tend to take up all the visible space
+						spawnpoints |= table
+
+			if(length(spawnpoints) < 3)
+				return
+
+			abductor_base_port = ruin_landmark
+			var/coords = list("X" = abductor_base_port.x, "Y" = abductor_base_port.y, "Z" = abductor_base_port.z)
+			for(var/coord in coords)
+				var/obj/spawnpoint = pick_n_take(spawnpoints)
+				var/obj/item/paper/abductorpaper/paper = new(spawnpoint.loc)
+				paper.info = "<font size=\"8\"><b><tt>[coord] = [coords[coord]]</b></tt></font>"
 
 // Loads in the station
 /datum/controller/subsystem/mapping/proc/loadStation()

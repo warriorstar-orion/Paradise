@@ -967,6 +967,15 @@
 	width = 12
 	preferred_direction = WEST
 	port_direction = SOUTH
+	var/first_abductor_dock = FALSE
+
+/obj/docking_port/mobile/whiteship/request(obj/docking_port/stationary/S)
+	. = ..()
+	if(mode == SHUTTLE_IGNITING)
+		if(SSmapping.abductor_base_port && S.loc == SSmapping.abductor_base_port.loc)
+			if(!first_abductor_dock)
+				var/datum/map_template/ruin/space/abductor_base/ruin = new
+				ruin.load(S.loc, centered = TRUE)
 
 // MARK: Shuttle Comp
 /obj/machinery/computer/shuttle

@@ -496,8 +496,25 @@
 	description = "An all-around lab held once in pristine condition has now fallen to into less desirable hands."
 	allow_duplicates = FALSE
 
+/datum/map_template/ruin/space/abductor_base_hidden
+	id = "abductor_base_hidden"
+	suffix = "ancientciv_hidden.dmm"
+	name = "Abductor Base (Hidden)"
+	allow_duplicates = FALSE
+
 /datum/map_template/ruin/space/abductor_base
 	id = "abductor_base"
 	suffix = "ancientciv.dmm"
 	name = "Abductor Base"
 	allow_duplicates = FALSE
+
+/obj/abductor_port
+
+/obj/item/paper/abductorpaper
+	name = "Abductor Signal Coordinate"
+	icon_state = "alienpaper_words"
+	paper_width = 200
+	paper_height = 200
+
+/obj/item/paper/abductorpaper/update_icon_state()
+	return

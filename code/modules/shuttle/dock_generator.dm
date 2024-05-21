@@ -75,6 +75,9 @@
 			qdel(port, force = TRUE)
 			return
 		for(var/obj/O in T.contents)
+			var/obj/effect/landmark/ruin/R = O
+			if(istype(R) && R.ruin_template.id == "abductor_base_hidden")
+				continue
 			if(O == port)
 				continue
 			else
@@ -109,6 +112,11 @@
 	port.name = name
 	port.id = "whiteship_custom_[dock_count]"
 	port.register()
+
+	if(SSmapping.abductor_base_port && port.loc == SSmapping.abductor_base_port.loc)
+		to_chat(user, "<span class='notice'>You suddenly feel surrounded by something powerful.</span>")
+		// Force this for sanity
+		port.dir = SOUTH
 
 	for(var/obj/machinery/computer/shuttle/white_ship/S in SSmachines.get_by_type(/obj/machinery/computer/shuttle/white_ship))
 		S.possible_destinations = null

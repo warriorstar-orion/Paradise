@@ -169,6 +169,12 @@
 	name = "Faint Signal"
 	icon_state = "yellow"
 
+/area/ruin/space/unpowered/syndicakes_factory
+	name = "Syndicakes Factory"
+
+/area/ruin/space/unpowered/turreted_outpost
+	name = "Turreted Outpost"
+
 // Syndicate Listening Station
 
 /area/ruin/space/syndicate_listening_station
