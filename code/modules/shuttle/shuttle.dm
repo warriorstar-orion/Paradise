@@ -974,6 +974,7 @@
 	if(mode == SHUTTLE_IGNITING)
 		if(SSmapping.abductor_base_port && S.loc == SSmapping.abductor_base_port.loc)
 			if(!first_abductor_dock)
+				first_abductor_dock = TRUE
 				var/datum/map_template/ruin/space/abductor_base/ruin = new
 				ruin.load(S.loc, centered = TRUE)
 
