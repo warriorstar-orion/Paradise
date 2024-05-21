@@ -9,6 +9,7 @@
 	var/max_docks = 6
 	var/shuttleId = "whiteship"
 	var/possible_destinations
+	var/abductor_signal_chips = 0
 
 /obj/item/whiteship_port_generator/examine(mob/user)
 	. = ..()
@@ -17,11 +18,35 @@
 	. += SPAN_NOTICE("There [plural ? "are" : "is"] [count] use[plural ? "s" : ""] left.")
 	. += SPAN_NOTICE("<b>Alt-Click</b> to call the ship to an existing docking area.")
 
+/obj/item/whiteship_port_generator/attackby(obj/item/I, mob/user, params)
+	..()
+	if(abductor_signal_chips >= 3)
+		return
+	if(istype(I, /obj/item/abductor_signal_chip))
+		abductor_signal_chips++
+		to_chat(user, "<span class='notice'>You slot [I.name] into [src].")
+		qdel(I)
+		if(abductor_signal_chips == 3 && SSmapping?.abductor_base_port)
+			var/obj/docking_port/stationary/whiteship/port = new(SSmapping.abductor_base_port.loc)
+			port.dir = SOUTH
+			port.name = "High-tech Signal"
+			port.id = "whiteship_abductor_port"
+			port.register()
+
+			for(var/obj/machinery/computer/shuttle/white_ship/S in GLOB.machines)
+				S.possible_destinations = null
+				S.connect()
+
+			to_chat(user, "<span class='notice'>[src] pings, indicating a new docking area has been added.</span>")
+
 /obj/item/whiteship_port_generator/activate_self(mob/user)
 	. = FINISH_ATTACK
 
 	if(..())
 		return
+
+	if(length(placed_docks) >= max_docks)
+		to_chat(user, "<span class='notice'>[src] buzzes, indicating no more docking areas can be placed.</span>")
 
 	if(is_station_level(user.z))
 		log_admin("[key_name(user)] attempted to create a whiteship dock in the station's sector at [COORD(user)].")

@@ -363,11 +363,9 @@ SUBSYSTEM_DEF(mapping)
 				return
 
 			abductor_base_port = ruin_landmark
-			var/coords = list("X" = abductor_base_port.x, "Y" = abductor_base_port.y, "Z" = abductor_base_port.z)
-			for(var/coord in coords)
+			for(var/i in 1 to 3)
 				var/obj/spawnpoint = pick_n_take(spawnpoints)
-				var/obj/item/paper/abductorpaper/paper = new(spawnpoint.loc)
-				paper.info = "<font size=\"8\"><b><tt>[coord] = [coords[coord]]</b></tt></font>"
+				new/obj/item/abductor_signal_chip(spawnpoint.loc)
 
 // Loads in the station
 /datum/controller/subsystem/mapping/proc/loadStation()
