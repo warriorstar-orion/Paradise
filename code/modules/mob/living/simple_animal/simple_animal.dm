@@ -62,24 +62,6 @@
 	/// This damage is taken when atmos doesn't fit all the requirements above
 	var/unsuitable_atmos_damage = 2
 
-	/// How much damage this simple animal does to objects, if any
-	var/obj_damage = 0
-	/// Flat armour reduction, occurs after percentage armour penetration.
-	var/armour_penetration_flat = 0
-	/// Percentage armour reduction, happens before flat armour reduction.
-	var/armour_penetration_percentage = 0
-	/// Damage type of a simple mob's melee attack, should it do damage.
-	var/melee_damage_type = BRUTE
-	/// 1 for full damage , 0 for none , -1 for 1:1 heal from that source
-	var/list/damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
-
-	///Attacking verb in present continuous tense.
-	var/attack_verb_continuous = "attacks"
-	///Attacking verb in present simple tense.
-	var/attack_verb_simple = "attack"
-
-	var/attacktext = "attacks"
-	var/attack_sound = null
 	/// If the mob does no damage with it's attack
 	var/friendly = "nuzzles"
 	/// Set to 1 to allow breaking of crates,lockers,racks,tables; 2 for walls; 3 for Rwalls

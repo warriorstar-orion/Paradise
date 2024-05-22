@@ -16,12 +16,8 @@
 	///How much stamina the mob recovers per second
 	var/stamina_recovery = 5
 
-	///how much damage this basic mob does to objects, if any.
-	var/obj_damage = 0
 	///How much armour they ignore, as a flat reduction from the targets armour value.
 	var/armour_penetration = 0
-	///Damage type of a simple mob's melee attack, should it do damage.
-	var/melee_damage_type = BRUTE
 	///How much wounding power it has
 	//var/wound_bonus = CANT_WOUND
 	///How much bare wounding power it has
@@ -29,8 +25,6 @@
 	///If the attacks from this are sharp
 	var/sharpness = NONE
 
-	/// Sound played when the critter attacks.
-	var/attack_sound
 	/// Override for the visual attack effect shown on 'do_attack_animation()'.
 	var/attack_vis_effect
 	///Played when someone punches the creature.
@@ -40,9 +34,6 @@
 
 	/// Variable maintained for compatibility with attack_animal procs until simple animals can be refactored away. Use element instead of setting manually.
 	var/environment_smash = ENVIRONMENT_SMASH_STRUCTURES
-
-	/// 1 for full damage, 0 for none, -1 for 1:1 heal from that source.
-	var/list/damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, STAMINA = 0, OXY = 1)
 
 	// ///Verbs used for speaking e.g. "Says" or "Chitters". This can be elementized
 	// var/list/speak_emote = list()
@@ -60,16 +51,6 @@
 	var/response_harm_continuous = "hits"
 	///Harm-intent verb in present simple tense.
 	var/response_harm_simple = "hit"
-
-	///Basic mob's own attacks verbs,
-	///Attacking verb in present continuous tense.
-	var/attack_verb_continuous = "attacks"
-	///Attacking verb in present simple tense.
-	var/attack_verb_simple = "attack"
-	///Attacking, but without damage, verb in present continuous tense.
-	var/friendly_verb_continuous = "nuzzles"
-	///Attacking, but without damage, verb in present simple tense.
-	var/friendly_verb_simple = "nuzzle"
 
 	////////THIS SECTION COULD BE ITS OWN ELEMENT
 	///Icon to use
