@@ -165,7 +165,7 @@
 	based_off_us.working_queue = next_closest.Copy()
 	based_off_us.working_distances = working_distances.Copy()
 	based_off_us.working_index = working_index
-	if(!SSpathfinder.run_pathfind(based_off_us))
+	if(!SStgpathfinder.run_pathfind(based_off_us))
 		return FALSE
 
 	expanding = TRUE

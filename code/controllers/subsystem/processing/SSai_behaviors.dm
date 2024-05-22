@@ -14,7 +14,8 @@ PROCESSING_SUBSYSTEM_DEF(ai_behaviors)
 /datum/controller/subsystem/processing/ai_behaviors/Initialize()
 	SetupAIBehaviors()
 	SetupTargetingStrats()
-	return SS_INIT_SUCCESS
+	// para-port
+	// return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/processing/ai_behaviors/proc/SetupAIBehaviors()
 	ai_behaviors = list()

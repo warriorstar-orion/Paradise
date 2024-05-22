@@ -93,7 +93,7 @@ SUBSYSTEM_DEF(tgpathfinder)
 	empty.building = TRUE
 	path_map_cache(target, empty)
 	pass_in += CALLBACK(src, PROC_REF(path_map_fill), target, empty)
-	if(!SSpathfinder.can_pass_build_map(pass_info, target, max_distance, simulated_only, exclude, pass_in))
+	if(!SStgpathfinder.can_pass_build_map(pass_info, target, max_distance, simulated_only, exclude, pass_in))
 		return FALSE
 	return TRUE
 

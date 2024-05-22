@@ -887,7 +887,7 @@
 			if(closed[target] || isarea(target))  // avoid infinity situations
 				continue
 
-			if(isturf(target) || isturf(target.loc) || (target in direct_access) || target.loc?.atom_storage) //Directly accessible atoms
+			if(isturf(target) || isturf(target.loc) || (target in direct_access)) //Directly accessible atoms
 				if(Adjacent(target) || (tool && CheckToolReach(src, target, tool.reach))) //Adjacent or reaching attacks
 					return TRUE
 
@@ -895,9 +895,6 @@
 
 			if (!target.loc)
 				continue
-
-			if(target.loc.atom_storage)
-				next += target.loc
 
 		checking = next
 	return FALSE
@@ -910,3 +907,12 @@
 
 /mob/living/DirectAccess(atom/target)
 	return ..() + get_all_contents()
+
+/atom/movable/proc/set_glide_size(target = 8)
+	if (HAS_TRAIT(src, TRAIT_NO_GLIDE))
+		return
+	SEND_SIGNAL(src, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, target)
+	glide_size = target
+
+	for(var/mob/buckled_mob as anything in buckled_mobs)
+		buckled_mob.set_glide_size(target)

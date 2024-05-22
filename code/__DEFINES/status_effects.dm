@@ -223,3 +223,6 @@
 // Basically variants with differing effect times to their parent datums, nothing special
 
 #define STATUS_EFFECT_PACIFIED_BATTERER /datum/status_effect/pacifism/batterer
+
+/// If the incapacitated status effect will ignore a mob in stasis (stasis beds)
+#define IGNORE_STASIS (1<<1)
