@@ -111,10 +111,6 @@
 		stack_trace("Basic mob being instantiated in nullspace")
 
 	update_basic_mob_varspeed()
-
-	if(speak_emote)
-		speak_emote = string_list(speak_emote)
-
 	apply_atmos_requirements()
 	apply_temperature_requirements()
 
@@ -267,36 +263,36 @@
 /mob/living/basic/update_stamina()
 	set_varspeed(initial(speed) + (staminaloss * 0.06))
 
-/mob/living/basic/on_fire_stack(seconds_per_tick, datum/status_effect/fire_handler/fire_stacks/fire_handler)
-	adjust_bodytemperature((maximum_survivable_temperature + (fire_handler.stacks * 12)) * 0.5 * seconds_per_tick)
+// /mob/living/basic/on_fire_stack(seconds_per_tick, datum/status_effect/fire_handler/fire_stacks/fire_handler)
+// 	adjust_bodytemperature((maximum_survivable_temperature + (fire_handler.stacks * 12)) * 0.5 * seconds_per_tick)
 
-/mob/living/basic/get_fire_overlay(stacks, on_fire)
-	var/fire_icon = "generic_fire"
-	if(!GLOB.fire_appearances[fire_icon])
-		GLOB.fire_appearances[fire_icon] = mutable_appearance(
-			'icons/mob/effects/onfire.dmi',
-			fire_icon,
-			-HIGHEST_LAYER,
-			appearance_flags = RESET_COLOR,
-		)
+// /mob/living/basic/get_fire_overlay(stacks, on_fire)
+// 	var/fire_icon = "generic_fire"
+// 	if(!GLOB.fire_appearances[fire_icon])
+// 		GLOB.fire_appearances[fire_icon] = mutable_appearance(
+// 			'icons/mob/effects/onfire.dmi',
+// 			fire_icon,
+// 			-HIGHEST_LAYER,
+// 			appearance_flags = RESET_COLOR,
+// 		)
 
-	return GLOB.fire_appearances[fire_icon]
+// 	return GLOB.fire_appearances[fire_icon]
 
-/mob/living/basic/put_in_hands(obj/item/I, del_on_fail = FALSE, merge_stacks = TRUE, ignore_animation = TRUE)
-	. = ..()
-	if (.)
-		update_held_items()
+// /mob/living/basic/put_in_hands(obj/item/I, del_on_fail = FALSE, merge_stacks = TRUE, ignore_animation = TRUE)
+// 	. = ..()
+// 	if (.)
+// 		update_held_items()
 
-/mob/living/basic/update_held_items()
-	. = ..()
-	if(isnull(client) || isnull(hud_used) || hud_used.hud_version == HUD_STYLE_NOHUD)
-		return
-	var/turf/our_turf = get_turf(src)
-	for(var/obj/item/held in held_items)
-		var/index = get_held_index_of_item(held)
-		SET_PLANE(held, ABOVE_HUD_PLANE, our_turf)
-		held.screen_loc = ui_hand_position(index)
-		client.screen |= held
+// /mob/living/basic/update_held_items()
+// 	. = ..()
+// 	if(isnull(client) || isnull(hud_used) || hud_used.hud_version == HUD_STYLE_NOHUD)
+// 		return
+// 	var/turf/our_turf = get_turf(src)
+// 	for(var/obj/item/held in held_items)
+// 		var/index = get_held_index_of_item(held)
+// 		SET_PLANE(held, ABOVE_HUD_PLANE, our_turf)
+// 		held.screen_loc = ui_hand_position(index)
+// 		client.screen |= held
 
 /mob/living/basic/get_body_temp_heat_damage_limit()
 	return maximum_survivable_temperature

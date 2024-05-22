@@ -102,7 +102,7 @@ SUBSYSTEM_DEF(movement)
 		// This makes assoc buckets and sorted buckets point to the same place, allowing for quicker inserts
 		var/list/new_bucket = list(list(loop.queued_time, our_bucket))
 		var/list/compare_item = list(loop.queued_time)
-		BINARY_INSERT_TG(new_bucket, sorted_buckets, SORT_VAR_NO_TYPE, compare_item, SORT_FIRST_INDEX, COMPARE_KEY)
+		BINARY_INSERT_DEFINE(new_bucket, sorted_buckets, SORT_VAR_NO_TYPE, compare_item, SORT_FIRST_INDEX, COMPARE_KEY)
 
 	our_bucket += loop
 
