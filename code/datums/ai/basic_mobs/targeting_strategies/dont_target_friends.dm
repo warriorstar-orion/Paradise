@@ -7,7 +7,7 @@
 
 ///Returns true or false depending on if the target can be attacked by the mob
 /datum/targeting_strategy/basic/not_friends/can_attack(mob/living/living_mob, atom/target, vision_range)
-	if(attack_closed_turf && isclosedturf(target))
+	if(attack_closed_turf && iswallturf(target))
 		return TRUE
 
 	if(target in living_mob.ai_controller.blackboard[BB_FRIENDS_LIST])

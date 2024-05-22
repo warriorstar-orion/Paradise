@@ -372,3 +372,8 @@
 #define INCORPOREAL_MOVE_NORMAL			1
 #define INCORPOREAL_MOVE_NINJA			2
 #define INCORPOREAL_MOVE_HOLY_BLOCK		3
+
+/// Default minimum body temperature mobs can exist in before taking damage
+#define NPC_DEFAULT_MIN_TEMP 250
+/// Default maximum body temperature mobs can exist in before taking damage
+#define NPC_DEFAULT_MAX_TEMP 350

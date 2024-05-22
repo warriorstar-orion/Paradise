@@ -19,8 +19,6 @@
 		return
 	var/mob/living/living_pawn = pawn
 	var/incap_flags = NONE
-	if (ai_traits & CAN_ACT_IN_STASIS)
-		incap_flags |= IGNORE_STASIS
 	if(!(ai_traits & CAN_ACT_WHILE_DEAD) && (living_pawn.incapacitated(incap_flags) || living_pawn.stat))
 		return FALSE
 	if(ai_traits & PAUSE_DURING_DO_AFTER && LAZYLEN(living_pawn.do_afters))
