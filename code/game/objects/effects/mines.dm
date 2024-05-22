@@ -5,7 +5,7 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "uglyminearmed"
 	var/triggered = FALSE
-	var/faction = "syndicate"
+	faction = list("syndicate")
 
 /obj/effect/mine/proc/mineEffect(mob/living/victim)
 	to_chat(victim, "<span class='danger'>*click*</span>")

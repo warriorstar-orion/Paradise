@@ -120,7 +120,7 @@
 
 	var/voice_name = "unidentifiable voice"
 
-	var/list/faction = list("neutral") //Used for checking whether hostile simple animals will attack you, possibly more stuff later
+	faction = list("neutral") //Used for checking whether hostile simple animals will attack you, possibly more stuff later
 
 	var/move_on_shuttle = TRUE // Can move on the shuttle.
 

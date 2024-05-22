@@ -1168,3 +1168,16 @@
 
 /// from mob/proc/dropItemToGround()
 #define COMSIG_MOB_DROPPING_ITEM "mob_dropping_item"
+
+///called when the movable's glide size is updated: (new_glide_size)
+#define COMSIG_MOVABLE_UPDATE_GLIDE_SIZE "movable_glide_size"
+
+// /mob/living/simple_animal/hostile signals
+///before attackingtarget has happened, source is the attacker and target is the attacked
+#define COMSIG_HOSTILE_PRE_ATTACKINGTARGET "hostile_pre_attackingtarget"
+
+///after attackingtarget has happened, source is the attacker and target is the attacked, extra argument for if the attackingtarget was successful
+#define COMSIG_HOSTILE_POST_ATTACKINGTARGET "hostile_post_attackingtarget"
+
+//from base of atom/attack_basic_mob(): (/mob/user)
+#define COMSIG_ATOM_ATTACK_BASIC_MOB "attack_basic_mob"

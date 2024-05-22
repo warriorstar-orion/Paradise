@@ -1169,3 +1169,13 @@
 /// Can a mob interact with the apc remotely like a pulse demon, cyborg, or AI?
 /mob/living/proc/can_remote_apc_interface(obj/machinery/power/apc/ourapc)
 	return FALSE
+
+/mob/living/proc/resolve_unarmed_attack(atom/attack_target, list/modifiers)
+	attack_target.attack_animal(src, modifiers)
+
+/**
+ * Helper proc for basic and simple animals to return true if the passed sentience type matches theirs
+ * Living doesn't have a sentience type though so it always returns false if not a basic or simple mob
+ */
+/mob/living/proc/compare_sentience_type(compare_type)
+	return FALSE

@@ -711,7 +711,8 @@
 #define LAZYNULL(L) L = null
 ///Removes all elements from the list
 #define LAZYCLEARLIST(L) if(L) L.Cut()
-//Clears a list and then re-initializes it
+
+// LAZYING PT 2: THE LAZENING
 #define LAZYREINITLIST(L) LAZYCLEARLIST(L); LAZYINITLIST(L);
 ///Use LAZYLISTDUPLICATE instead if you want it to null with no entries
 #define LAZYCOPY(L) (L ? L.Copy() : list() )

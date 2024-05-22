@@ -74,6 +74,9 @@
 	  */
 	var/movement_type = GROUND
 
+	/// The list of factions this atom belongs to
+	var/list/faction
+
 /atom/movable/attempt_init(loc, ...)
 	var/turf/T = get_turf(src)
 	if(T && SSatoms.initialized != INITIALIZATION_INSSATOMS && GLOB.space_manager.is_zlevel_dirty(T.z))
@@ -923,3 +926,18 @@
 
 	for(var/mob/buckled_mob as anything in buckled_mobs)
 		buckled_mob.set_glide_size(target)
+
+/atom/movable/proc/get_default_say_verb()
+	return atom_say_verb
+
+/atom/movable/proc/faction_check_atom(atom/movable/target, exact_match)
+	if(!exact_match)
+		return faction_check(faction, target.faction, FALSE)
+
+	var/list/faction_src = LAZYCOPY(faction)
+	var/list/faction_target = LAZYCOPY(target.faction)
+	if(!("[UID(src)]" in faction_target)) //if they don't have our ref faction, remove it from our factions list.
+		faction_src -= "[UID(src)]" //if we don't do this, we'll never have an exact match.
+	if(!("[UID(target)]" in faction_src))
+		faction_target -= "[UID(target)]" //same thing here.
+	return faction_check(faction_src, faction_target, TRUE)
