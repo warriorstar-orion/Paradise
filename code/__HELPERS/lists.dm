@@ -27,45 +27,6 @@
 #define SORT_VAR_NO_TYPE(varname) var/varname
 
 /****
-	* Binary search sorted insert from TG
-	* INPUT: Object to be inserted
-	* LIST: List to insert object into
-	* TYPECONT: The typepath of the contents of the list
-	* COMPARE: The object to compare against, usualy the same as INPUT
-	* COMPARISON: The variable on the objects to compare
-	* COMPTYPE: How should the values be compared? Either COMPARE_KEY or COMPARE_VALUE.
-	*/
-#define BINARY_INSERT_TG(INPUT, LIST, TYPECONT, COMPARE, COMPARISON, COMPTYPE) \
-	do {\
-		var/list/__BIN_LIST = LIST;\
-		var/__BIN_CTTL = length(__BIN_LIST);\
-		if(!__BIN_CTTL) {\
-			__BIN_LIST += INPUT;\
-		} else {\
-			var/__BIN_LEFT = 1;\
-			var/__BIN_RIGHT = __BIN_CTTL;\
-			var/__BIN_MID = (__BIN_LEFT + __BIN_RIGHT) >> 1;\
-			var ##TYPECONT/__BIN_ITEM;\
-			while(__BIN_LEFT < __BIN_RIGHT) {\
-				__BIN_ITEM = COMPTYPE;\
-				if(__BIN_ITEM.##COMPARISON <= COMPARE.##COMPARISON) {\
-					__BIN_LEFT = __BIN_MID + 1;\
-				} else {\
-					__BIN_RIGHT = __BIN_MID;\
-				};\
-				__BIN_MID = (__BIN_LEFT + __BIN_RIGHT) >> 1;\
-			};\
-			__BIN_ITEM = COMPTYPE;\
-			__BIN_MID = __BIN_ITEM.##COMPARISON > COMPARE.##COMPARISON ? __BIN_MID : __BIN_MID + 1;\
-			__BIN_LIST.Insert(__BIN_MID, INPUT);\
-		};\
-	} while(FALSE)
-
-#define SORT_FIRST_INDEX(list) (list[1])
-#define SORT_COMPARE_DIRECTLY(thing) (thing)
-#define SORT_VAR_NO_TYPE(varname) var/varname
-
-/****
 	* Even more custom binary search sorted insert, using defines instead of vars
 	* INPUT: Item to be inserted
 	* LIST: List to insert INPUT into
@@ -991,3 +952,10 @@
 			key = deep_copy_list(key)
 			.[i] = key
 			.[key] = value
+
+/// Turns an associative list into a flat list of keys
+/proc/assoc_to_keys(list/input)
+	var/list/keys = list()
+	for(var/key in input)
+		UNTYPED_LIST_ADD(keys, key)
+	return keys
