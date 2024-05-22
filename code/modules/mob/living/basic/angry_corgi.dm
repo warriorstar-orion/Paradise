@@ -8,3 +8,11 @@
 	attack_verb_continuous = "bites"
 	attack_verb_simple = "bite"
 	attack_sound = 'sound/weapons/bite.ogg'
+
+/mob/living/carbon/human/skrell/angry_skrell
+	ai_controller = /datum/ai_controller/carbon_controller/carbon_hostile
+	faction = list("angry_skrell")
+
+/mob/living/carbon/human/angry_human
+	ai_controller = /datum/ai_controller/carbon_controller/carbon_hostile
+	faction = list("angry_human")
