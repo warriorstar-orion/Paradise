@@ -22,10 +22,6 @@
 /// Passed into BINARY_INSERT to compare values
 #define COMPARE_VALUE __BIN_LIST[__BIN_LIST[__BIN_MID]]
 
-#define SORT_FIRST_INDEX(list) (list[1])
-#define SORT_COMPARE_DIRECTLY(thing) (thing)
-#define SORT_VAR_NO_TYPE(varname) var/varname
-
 /****
 	* Binary search sorted insert from TG
 	* INPUT: Object to be inserted
@@ -61,6 +57,19 @@
 		};\
 	} while(FALSE)
 
+#define SORT_FIRST_INDEX(list) (list[1])
+#define SORT_COMPARE_DIRECTLY(thing) (thing)
+#define SORT_VAR_NO_TYPE(varname) var/varname
+
+/****
+	* Even more custom binary search sorted insert, using defines instead of vars
+	* INPUT: Item to be inserted
+	* LIST: List to insert INPUT into
+	* TYPECONT: A define setting the var to the typepath of the contents of the list
+	* COMPARE: The item to compare against, usualy the same as INPUT
+	* COMPARISON: A define that takes an item to compare as input, and returns their comparable value
+	* COMPTYPE: How should the list be compared? Either COMPARE_KEY or COMPARE_VALUE.
+	*/
 #define BINARY_INSERT_DEFINE(INPUT, LIST, TYPECONT, COMPARE, COMPARISON, COMPTYPE) \
 	do {\
 		var/list/__BIN_LIST = LIST;\
