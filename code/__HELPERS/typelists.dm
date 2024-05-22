@@ -41,3 +41,6 @@ GLOBAL_LIST_EMPTY(typelistkeys)
 	for(var/saving in savings)
 		to_chat(world, "Savings for [saving]: [savings[saving]] lists, [saveditems[saving]] items")
 #endif
+
+/proc/return_typenames(type)
+	return splittext("[type]", "/")
