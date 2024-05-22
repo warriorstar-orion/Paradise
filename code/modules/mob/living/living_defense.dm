@@ -355,8 +355,8 @@
 	if(M.attack_sound)
 		playsound(loc, M.attack_sound, 50, TRUE, 1)
 	M.do_attack_animation(src)
-	visible_message("<span class='danger'>\The [M] [M.attacktext] [src]!</span>", \
-					"<span class='userdanger'>\The [M] [M.attacktext] [src]!</span>")
+	visible_message("<span class='danger'>\The [M] [M.attack_verb_continuous] [src]!</span>", \
+					"<span class='userdanger'>\The [M] [M.attack_verb_continuous] [src]!</span>")
 	add_attack_logs(M, src, "Animal attacked")
 	return TRUE
 

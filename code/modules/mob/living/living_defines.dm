@@ -112,3 +112,7 @@
 	var/last_taste_time
 	/// Stores a var of the last tast message we got. used so we don't spam people messages while they eat
 	var/last_taste_text
+
+	var/melee_damage_lower = 0
+	var/melee_damage_upper = 0
+

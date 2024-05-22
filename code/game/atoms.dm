@@ -192,6 +192,9 @@
 			smoothing_flags |= SMOOTH_OBJ
 		SET_BITFLAG_LIST(canSmoothWith)
 
+	if(ispath(ai_controller))
+		ai_controller = new ai_controller(src)
+
 	return INITIALIZE_HINT_NORMAL
 
 //called if Initialize returns INITIALIZE_HINT_LATELOAD
