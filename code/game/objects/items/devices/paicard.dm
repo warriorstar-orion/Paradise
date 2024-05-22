@@ -12,7 +12,7 @@
 	var/obj/item/radio/radio
 	var/looking_for_personality = 0
 	var/mob/living/silicon/pai/pai
-	var/list/faction = list("neutral") // The factions the pAI will inherit from the card
+	faction = list("neutral") // The factions the pAI will inherit from the card
 	var/current_emotion = 1
 	resistance_flags = FIRE_PROOF | ACID_PROOF | INDESTRUCTIBLE
 

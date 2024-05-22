@@ -1405,3 +1405,11 @@ GLOBAL_LIST_INIT(holy_areas, typecacheof(list(
 	if(user.incapacitated())
 		return
 	return relaydrive(user, direction)
+
+/mob/proc/is_holding_item_of_type(typepath)
+	if(istype(l_hand, typepath))
+		return l_hand
+	if(istype(r_hand, typepath))
+		return r_hand
+
+	return FALSE

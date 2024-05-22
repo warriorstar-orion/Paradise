@@ -31,25 +31,25 @@ SUBSYSTEM_DEF(tgpathfinder)
 		currentmaps = deep_copy_list(source_to_maps)
 
 	// Dies of sonic speed from caching datum var reads
-	var/list/currentrun = currentrun
-	while(length(currentrun))
-		var/datum/pathfind/path = currentrun[length(currentrun)]
+	var/list/currentrun_ = currentrun
+	while(length(currentrun_))
+		var/datum/pathfind/path = currentrun_[length(currentrun_)]
 		if(!path.search_step()) // Something's wrong
 			path.early_exit()
-			currentrun.len--
+			currentrun_.len--
 			continue
 		if(MC_TICK_CHECK)
 			return
 		path.finished()
 		// Next please
-		currentrun.len--
+		currentrun_.len--
 
 	// Go over our existing pathmaps, clear out the ones we aren't using
-	var/list/currentmaps = currentmaps
+	var/list/currentmaps_ = currentmaps
 	var/oldest_time = world.time - MAP_REUSE_SLOWEST
-	while(length(currentmaps))
-		var/turf/source = currentmaps[length(currentmaps)]
-		var/list/datum/path_map/owned_maps = currentmaps[source]
+	while(length(currentmaps_))
+		var/turf/source = currentmaps_[length(currentmaps_)]
+		var/list/datum/path_map/owned_maps = currentmaps_[source]
 		for(var/datum/path_map/map as anything in owned_maps)
 			if(map.creation_time < oldest_time && !map.building)
 				source_to_maps[source] -= map
@@ -59,7 +59,7 @@ SUBSYSTEM_DEF(tgpathfinder)
 		if(!length(source_to_maps[source]))
 			source_to_maps -= source
 
-		currentmaps.len--
+		currentmaps_.len--
 
 /// Initiates a pathfind. Returns true if we're good, FALSE if something's failed
 /datum/controller/subsystem/tgpathfinder/proc/pathfind(atom/movable/caller, atom/end, max_distance = 30, mintargetdist, access = list(), simulated_only = TRUE, turf/exclude, skip_first = TRUE, diagonal_handling = DIAGONAL_REMOVE_CLUNKY, list/datum/callback/on_finish)
