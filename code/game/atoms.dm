@@ -132,7 +132,7 @@
 	var/datum/ai_controller/ai_controller
 
 	/// How this atom should react to having its astar blocking checked
-	var/can_astar_pass = CANASTARPASS_DENSITY
+	var/can_astar_pass = CANPATHFINDPASS_DENSITY
 
 
 /atom/New(loc, ...)
