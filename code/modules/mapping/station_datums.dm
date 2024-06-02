@@ -28,3 +28,8 @@
 	technical_name = "test_tiny"
 	map_path = "_maps/map_files/test_tiny/test_tiny.dmm"
 	voteable = FALSE
+
+/datum/map/arenastation
+	fluff_name = "arenastation"
+	technical_name = "arenastation"
+	map_path = "_maps/map_files/arenastation.dmm"
