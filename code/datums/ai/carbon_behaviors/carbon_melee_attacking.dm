@@ -28,9 +28,6 @@
 
 	. = ..()
 
-	if(isnull(controller.blackboard[BB_TARGET_GUN_WORKED]))
-		controller.set_blackboard_key(BB_TARGET_GUN_WORKED, TRUE)
-
 	//targeting strategy will kill the action if not real anymore
 	var/atom/target = controller.blackboard[target_key]
 	var/datum/targeting_strategy/targeting_strategy = GET_TARGETING_STRATEGY(controller.blackboard[targeting_strategy_key])
@@ -51,31 +48,9 @@
 	var/obj/item/weapon = locate(/obj/item) in held_items
 
 	if(resolved_target)
-		if(prob(10)) // Artificial miss
-			resolved_target = pick(oview(2, resolved_target))
-
 		if(weapon)
-			var/obj/item/gun/gun = locate() in held_items
-			var/can_shoot = gun?.can_shoot() || FALSE
-
-			if(gun)
-				if(controller.blackboard[BB_TARGET_GUN_WORKED] && prob(95))
-					// We attempt to attack even if we can't shoot so we get the effects of pulling the trigger
-					gun.afterattack(resolved_target, carbon, FALSE)
-					controller.set_blackboard_key(BB_TARGET_GUN_WORKED, can_shoot ? TRUE : prob(80)) // Only 20% likely to notice it didn't work
-					if(can_shoot)
-						controller.set_blackboard_key(BB_TARGET_FOUND_WORKING_GUN, TRUE)
-			else if(weapon)
-				weapon.melee_attack_chain(carbon, target)
-			else
-				carbon.UnarmedAttack(resolved_target)
-
-			// else
-			// 	carbon.throw_item(real_target)
-			// 	controller.set_blackboard_key(BB_TARGET_GUN_WORKED, TRUE) // 'worked'
-
-		else //Slap it!
-			carbon.face_atom(resolved_target)
+			weapon.melee_attack_chain(carbon, target)
+		else
 			carbon.UnarmedAttack(resolved_target)
 
 	if(terminate_after_action)
