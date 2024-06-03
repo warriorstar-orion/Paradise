@@ -371,6 +371,8 @@ multiple modular subtrees with behaviors
 		return !QDELETED(key_value)
 	if (islist(key_value))
 		return length(key_value) > 0
+	if(key_value == 0)
+		return TRUE
 	return !!key_value
 
 /**

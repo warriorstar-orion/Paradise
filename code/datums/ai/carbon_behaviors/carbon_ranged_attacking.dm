@@ -1,8 +1,9 @@
 /datum/ai_behavior/carbon_ranged_attack
 	action_cooldown = 0.2 SECONDS // We gotta check unfortunately often because we're in a race condition with nextmove
-	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT | AI_BEHAVIOR_REQUIRE_REACH | AI_BEHAVIOR_CAN_PLAN_DURING_EXECUTION
+	behavior_flags = AI_BEHAVIOR_REQUIRE_REACH | AI_BEHAVIOR_CAN_PLAN_DURING_EXECUTION
 	///do we finish this action after hitting once?
 	var/terminate_after_action = FALSE
+	required_distance = 10
 
 /datum/ai_behavior/carbon_ranged_attack/setup(datum/ai_controller/controller, target_key, targeting_strategy_key, hiding_location_key)
 	. = ..()
@@ -43,10 +44,12 @@
 
 	var/resolved_target = target || hiding_target
 
-	var/list/held_items = list()
-	held_items += carbon.l_hand
-	held_items += carbon.r_hand
-	var/obj/item/gun/gun = locate() in held_items
+	var/obj/item/gun/gun = carbon.get_active_hand()
+	if(!istype(gun))
+		gun = carbon.get_inactive_hand()
+		if(gun)
+			carbon.swap_hand()
+
 	var/can_shoot = gun?.can_shoot() || FALSE
 
 	if(resolved_target && gun)
@@ -55,10 +58,11 @@
 
 		if(controller.blackboard[BB_TARGET_GUN_WORKED] && prob(95))
 			// We attempt to attack even if we can't shoot so we get the effects of pulling the trigger
+			carbon.face_atom(resolved_target)
 			gun.afterattack(resolved_target, carbon, FALSE)
-			controller.set_blackboard_key(BB_TARGET_GUN_WORKED, can_shoot ? TRUE : prob(80)) // Only 20% likely to notice it didn't work
+			controller.set_blackboard_key(BB_TARGET_GUN_WORKED, can_shoot ? TRUE : prob(10)) // Only 20% likely to notice it didn't work
 			if(can_shoot)
-				controller.set_blackboard_key(BB_TARGET_FOUND_WORKING_GUN, TRUE)
+				controller.set_blackboard_key(BB_TARGET_GUN_WORKED, TRUE)
 
 	if(terminate_after_action)
 		finish_action(controller, TRUE, target_key)
