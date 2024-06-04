@@ -52,6 +52,8 @@
 
 	var/can_shoot = gun?.can_shoot() || FALSE
 
+	controller.set_blackboard_key(BB_TARGET_HAS_GUN, gun ? TRUE : FALSE)
+
 	if(resolved_target && gun)
 		if(prob(10)) // Artificial miss
 			resolved_target = pick(oview(2, resolved_target))
