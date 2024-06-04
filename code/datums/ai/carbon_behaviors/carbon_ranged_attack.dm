@@ -8,6 +8,8 @@
 	. = ..()
 	if(!controller.blackboard_key_exists(BB_BASIC_MOB_CURRENT_TARGET))
 		return
+	if(controller.blackboard_key_exists(BB_TARGET_HAS_GUN) && !controller.blackboard[BB_TARGET_HAS_GUN])
+		return
 	if(controller.blackboard_key_exists(BB_TARGET_GUN_WORKED) && !controller.blackboard[BB_TARGET_GUN_WORKED])
 		return
 	controller.queue_behavior(ranged_attack_behavior, BB_BASIC_MOB_CURRENT_TARGET, BB_TARGETING_STRATEGY, BB_BASIC_MOB_CURRENT_TARGET_HIDING_LOCATION)

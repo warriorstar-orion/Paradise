@@ -15,7 +15,9 @@
 
 /mob/living/carbon/human/skrell/angry_skrell/Initialize(mapload)
 	. = ..()
-	l_hand = new /obj/item/gun/energy/gun(src)
+	var/obj/item/gun/energy/gun/gun = new(src)
+	l_hand = gun
+	gun.select_fire(src)
 
 /mob/living/carbon/human/angry_human
 	ai_controller = /datum/ai_controller/carbon_controller/carbon_hostile

@@ -63,6 +63,7 @@
 
 #define BB_TARGET_GUN_WORKED "BB_target_gun_worked"
 #define BB_TARGET_FOUND_WORKING_GUN "BB_target_found_working_gun"
+#define BB_TARGET_HAS_GUN "BB_target_has_gun"
 
 /// Blackboard key storing how long your targeting strategy has held a particular target
 #define BB_BASIC_MOB_HAS_TARGET_TIME "BB_basic_mob_has_target_time"
