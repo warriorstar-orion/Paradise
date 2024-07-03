@@ -7535,7 +7535,7 @@
 /area/ruin/space/derelict/crew_quarters)
 "Nv" = (
 /obj/effect/spawner/airlock{
-	req_access_txt = 0
+	req_access_txt = "0"
 	},
 /turf/simulated/wall/mineral/titanium/nodecon/nodiagonal,
 /area/ruin/space/derelict/arrival)
@@ -7548,7 +7548,7 @@
 /area/template_noop)
 "Oh" = (
 /obj/effect/spawner/airlock/w_to_e{
-	req_access_txt = 0
+	req_access_txt = "0"
 	},
 /turf/simulated/wall/mineral/titanium/nodecon/nodiagonal,
 /area/ruin/space/derelict/crew_quarters)
@@ -7570,7 +7570,7 @@
 /area/ruin/space/derelict/arrival)
 "Ud" = (
 /obj/effect/spawner/airlock{
-	req_access_txt = 0
+	req_access_txt = "0"
 	},
 /turf/simulated/wall/mineral/titanium/nodecon,
 /area/ruin/space/derelict/arrival)

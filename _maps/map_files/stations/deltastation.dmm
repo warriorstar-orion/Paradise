@@ -73267,7 +73267,7 @@
 "iYu" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/effect/spawner/airlock/e_to_w/engineer{
-	req_access_txt = 13
+	req_access_txt = "13"
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/auxsolarport)
@@ -74125,7 +74125,7 @@
 "jEE" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/effect/spawner/airlock/w_to_e/engineer{
-	req_access_txt = 13
+	req_access_txt = "13"
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/auxsolarstarboard)
@@ -79411,7 +79411,7 @@
 /area/station/engineering/equipmentstorage)
 "mPU" = (
 /obj/effect/spawner/airlock/s_to_n{
-	req_access_txt = 32
+	req_access_txt = "32"
 	},
 /turf/simulated/wall,
 /area/station/engineering/gravitygenerator)
@@ -79768,7 +79768,7 @@
 /area/station/maintenance/starboard)
 "mVF" = (
 /obj/effect/spawner/airlock/s_to_n{
-	req_access_txt = 1
+	req_access_txt = "1"
 	},
 /turf/simulated/wall/r_wall,
 /area/station/security/permasolitary)
@@ -87456,7 +87456,7 @@
 "rtH" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/effect/spawner/airlock/e_to_w/engineer{
-	req_access_txt = 13
+	req_access_txt = "13"
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/portsolar)
@@ -90550,7 +90550,7 @@
 /area/station/hallway/primary/central/north)
 "sWx" = (
 /obj/effect/spawner/airlock/e_to_w/engineer{
-	req_access_txt = "11,13"
+	req_access_txt = "11;13"
 	},
 /turf/simulated/wall,
 /area/station/engineering/ai_transit_tube)
@@ -92459,7 +92459,7 @@
 "udZ" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/effect/spawner/airlock/w_to_e/engineer{
-	req_access_txt = 13
+	req_access_txt = "13"
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/starboardsolar)
@@ -97375,7 +97375,7 @@
 /area/station/maintenance/fsmaint)
 "wZD" = (
 /obj/effect/spawner/airlock/e_to_w/engineer{
-	req_access_txt = 13
+	req_access_txt = "13"
 	},
 /turf/simulated/wall,
 /area/station/maintenance/port)

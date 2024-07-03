@@ -24944,7 +24944,7 @@
 /area/station/hallway/primary/central/west)
 "bzN" = (
 /obj/effect/spawner/airlock/w_to_e/long{
-	req_access_txt = 32
+	req_access_txt = "32"
 	},
 /turf/simulated/wall/r_wall,
 /area/station/engineering/ai_transit_tube)
@@ -54728,7 +54728,7 @@
 "eXd" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/effect/spawner/airlock/s_to_n/engineer{
-	req_access_txt = 13
+	req_access_txt = "13"
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/auxsolarstarboard)
@@ -71432,7 +71432,7 @@
 "nee" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/effect/spawner/airlock/s_to_n{
-	req_access_txt = "11,13"
+	req_access_txt = "11;13"
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/auxsolarport)
@@ -71660,7 +71660,7 @@
 "nnF" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/effect/spawner/airlock/s_to_n/engineer{
-	req_access_txt = 13
+	req_access_txt = "13"
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
@@ -72130,7 +72130,7 @@
 "nBq" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/effect/spawner/airlock/long/engineer{
-	req_access_txt = 13
+	req_access_txt = "13"
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
@@ -77444,7 +77444,7 @@
 "qaB" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/effect/spawner/airlock/engineer{
-	req_access_txt = 13
+	req_access_txt = "13"
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
@@ -86219,7 +86219,7 @@
 "unh" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/effect/spawner/airlock/w_to_e/engineer{
-	req_access_txt = 13
+	req_access_txt = "13"
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
