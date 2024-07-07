@@ -131,7 +131,7 @@
 
 /atom/New(loc, ...)
 	SHOULD_CALL_PARENT(TRUE)
-	if(GLOB.use_preloader && (src.type == GLOB._preloader.target_path))//in case the instanciated atom is creating other atoms in New()
+	if(!rustdmm_apply_varedits(src) && GLOB.use_preloader && (src.type == GLOB._preloader.target_path))
 		GLOB._preloader.load(src)
 	. = ..()
 	attempt_init(arglist(args))
