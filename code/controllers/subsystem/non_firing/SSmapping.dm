@@ -256,11 +256,12 @@ SUBSYSTEM_DEF(mapping)
 		to_chat(world, "<span class='narsie'>ERROR: The path specified for the map to load is invalid. No station has been loaded!</span>")
 		return
 
-	var/watch = start_watch()
-	log_startup_progress("Loading [map_datum.fluff_name]...")
 	// This should always be Z2, but you never know
 	var/map_z_level = GLOB.space_manager.add_new_zlevel(MAIN_STATION, linkage = CROSSLINKED, traits = list(STATION_LEVEL, STATION_CONTACT, REACHABLE_BY_CREW, REACHABLE_SPACE_ONLY, AI_OK))
-	GLOB.maploader.load_map(wrap_file(map_datum.map_path), z_offset = map_z_level)
+	var/watch = start_watch()
+	log_startup_progress("Loading [map_datum.fluff_name]...")
+	rustdmm_load_station(map_datum.map_path, map_z_level)
+	// GLOB.maploader.load_map(wrap_file(map_datum.map_path), z_offset = map_z_level)
 	log_startup_progress("Loaded [map_datum.fluff_name] in [stop_watch(watch)]s")
 
 	// Save station name in the DB

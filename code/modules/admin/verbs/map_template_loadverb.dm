@@ -43,16 +43,25 @@
 	var/map = input(usr, "Choose a Map Template to upload to template storage","Upload Map Template") as null|file
 	if(!map)
 		return
-	if(copytext("[map]",-4) != ".dmm")
-		to_chat(usr, "Bad map file: [map]")
-		return
 
-	var/timer = start_watch()
-	message_admins("<span class='adminnotice'>[key_name_admin(usr)] has begun uploading a map template ([map])</span>")
+	var/turf/T = get_turf(mob)
+	map_template_upload_and_place(map, T)
+	// if(copytext("[map]",-4) != ".dmm")
+	// 	to_chat(usr, "Bad map file: [map]")
+	// 	return
+
+	// var/timer = start_watch()
+	// message_admins("<span class='adminnotice'>[key_name_admin(usr)] has begun uploading a map template ([map])</span>")
+	// var/datum/map_template/M = new(map=map, rename="[map]")
+	// if(M.preload_size(map))
+	// 	to_chat(usr, "Map template '[map]' ready to place ([M.width]x[M.height])")
+	// 	GLOB.map_templates[M.name] = M
+	// 	message_admins("<span class='adminnotice'>[key_name_admin(usr)] has uploaded a map template ([map]). Took [stop_watch(timer)]s.</span>")
+	// else
+	// 	to_chat(usr, "Map template '[map]' failed to load properly")
+
+/proc/map_template_upload_and_place(map, turf/T)
 	var/datum/map_template/M = new(map=map, rename="[map]")
 	if(M.preload_size(map))
-		to_chat(usr, "Map template '[map]' ready to place ([M.width]x[M.height])")
-		GLOB.map_templates[M.name] = M
-		message_admins("<span class='adminnotice'>[key_name_admin(usr)] has uploaded a map template ([map]). Took [stop_watch(timer)]s.</span>")
-	else
-		to_chat(usr, "Map template '[map]' failed to load properly")
+		if(M.load(T, centered = FALSE))
+			log_chat_debug("success")

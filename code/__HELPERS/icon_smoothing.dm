@@ -53,6 +53,30 @@ DEFINE_BITFIELD(smoothing_junction, list(
 #define DEFAULT_UNDERLAY_ICON 			'icons/turf/floors.dmi'
 #define DEFAULT_UNDERLAY_ICON_STATE 	"plating"
 
+/proc/set_adj_in_dir(atom/source, junction, direction, direction_flag)
+	var/turf/neighbor = get_step(source, direction)
+	if(!neighbor)
+		if(source.smoothing_flags & SMOOTH_BORDER)
+			junction |=  direction_flag
+	else
+		if(!isnull(neighbor.smoothing_groups))
+			for(var/target in source.canSmoothWith)
+				if(!(source.canSmoothWith[target] & neighbor.smoothing_groups[target]))
+					continue
+				junction |= direction_flag
+				break
+		if(!(junction & direction_flag) && source.smoothing_flags & SMOOTH_OBJ)
+			for(var/obj/thing in neighbor)
+				if(!thing.anchored || isnull(thing.smoothing_groups))
+					continue
+				for(var/target in source.canSmoothWith)
+					if(!(source.canSmoothWith[target] & thing.smoothing_groups[target]))
+						continue
+					junction |= direction_flag
+					break
+				if(junction & direction_flag)
+					break
+
 
 #define SET_ADJ_IN_DIR(source, junction, direction, direction_flag) \
 	do { \
