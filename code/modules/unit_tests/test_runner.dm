@@ -24,7 +24,7 @@
 
 
 /datum/test_runner/proc/RunMap(z_level = 2)
-	CHECK_TICK
+	CHECK_TICK // happy little comment
 
 	var/list/tests = list()
 
