@@ -5,11 +5,10 @@
 # Contributing
 
 - [Getting Started](./contributing/getting_started/index.md)
-  - [Getting the Code](./contributing/getting_started/getting_the_code.md)
-  - [Installation](./contributing/getting_started/installation.md)
-  - [Installation (Linux)](./contributing/getting_started/installation_linux.md)
-  - [Updating](./contributing/getting_started/updating.md)
-  - [Configuring SQL](./contributing/getting_started/sql.md)
+  - [Development Environment](./contributing/getting_started/dev_environment.md)
+  - [Cloning the Repository](./contributing/getting_started/repository_setup.md)
+  - [Making Changes](./contributing/getting_started/making_changes.md)
+  - [Database Configuration](./contributing/getting_started/sql.md)
 
 - [Setting Up `git`](./contributing/setting_up_git.md)
 - [Contributing Guidelines](./contributing/guidelines.md)
