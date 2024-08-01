@@ -32,5 +32,7 @@
 
 # References
 
+- [Current Staff](./references/current_staff.md)
+- [Glossary](./references/glossary.md)
 - [Using Feedback Data](./references/feedback_data.md)
 - [Tick Order](./references/tick_order.md)

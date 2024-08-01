@@ -58,24 +58,6 @@ For introductory videos on Git, see:
 - [Git From Bits Up](https://www.youtube.com/watch?v=MYP56QJpDr4)
 - [Linus Torvalds (inventor of Linux and Git) on Git](https://www.youtube.com/watch?v=4XpnKHJAok8)
 
-## Installing Recommended Visual Studio Code Extensions
-
-When you first open the Paradise repository in Visual Studio Code, you will also
-get a notification to install some recommended extensions. These plugins are
-extremely useful for programming with BYOND and should be considered essential.
-If you don't see the prompt to install the recommended extensions, they can be
-installed from the list below.
-
-- [DreamMaker Syntax Highlighting](https://marketplace.visualstudio.com/items?itemName=gbasood.byond-dm-language-support)
-- [BYOND Language Support](https://marketplace.visualstudio.com/items?itemName=platymuus.dm-langclient)
-- [EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
-- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-- [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
-- [ErrorLens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens)
-- [DreamMaker Icon Editor](https://marketplace.visualstudio.com/items?itemName=anturk.dmi-editor)
-- [Prettier Code Formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-- [ZipFS](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs)
-
 ## Installation for Linux Users
 
 The code is fully able to run on Linux, however Windows is still the recommended

@@ -1,3 +1,5 @@
+# Making Changes
+
 First, let's talk about **branches**. First thing to do is to make a new
 branch on your fork. This is important because you should never make
 changes to the default(master) branch of your fork. It should remain as
