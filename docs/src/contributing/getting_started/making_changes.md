@@ -1,7 +1,8 @@
 First, let's talk about **branches**. First thing to do is to make a new
 branch on your fork. This is important because you should never make
 changes to the default(master) branch of your fork. It should remain as
-a clean copy of the main ParadiseSS13 github.\
+a clean copy of the main ParadiseSS13 github.
+
 **For every PR you make, make a new branch.** This way, each of your
 individual projects have their own branch. A commit you make to one
 branch will not affect the other branches, so you can work on multiple

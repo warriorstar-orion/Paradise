@@ -48,7 +48,7 @@ For introductory videos on Git, see:
 
 ## Installing Recommended Visual Studio Code Extensions
 
-When you open the Paradise repository in Visual Studio Code, you will also get a notification to install some recommended extensions. These plugins are extremely useful for programming with BYOND and should be considered essential. If you don't see the prompt to install the recommended extensions, they can be installed from the list below.
+When you first open the Paradise repository in Visual Studio Code, you will also get a notification to install some recommended extensions. These plugins are extremely useful for programming with BYOND and should be considered essential. If you don't see the prompt to install the recommended extensions, they can be installed from the list below.
 
 - [DreamMaker Syntax Highlighting](https://marketplace.visualstudio.com/items?itemName=gbasood.byond-dm-language-support)
 - [BYOND Language Support](https://marketplace.visualstudio.com/items?itemName=platymuus.dm-langclient)

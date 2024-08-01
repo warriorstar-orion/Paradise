@@ -10,7 +10,6 @@
   - [Making Changes](./contributing/getting_started/making_changes.md)
   - [Database Configuration](./contributing/getting_started/sql.md)
 
-- [Setting Up `git`](./contributing/setting_up_git.md)
 - [Contributing Guidelines](./contributing/guidelines.md)
 - [Autodoc Guide](./contributing/autodoc.md)
 
