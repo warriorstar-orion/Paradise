@@ -1,15 +1,51 @@
 # Design Guidelines
 
-Maps are one of the most visible ways of conveying the world and setting of the server to players. Maps should work to preserve that setting. Paradise Station takes place in a 26th century universe where multiple space-faring species work on stations owned by a pangalactic corporate conglomerate. New maps, ruins, and remaps should make sense within that world.
+Maps are one of the most visible ways of conveying the world and setting of the
+server to players. Maps should work to preserve that setting. Paradise Station
+takes place in a 26th century universe where multiple space-faring species work
+on stations owned by a pangalactic corporate conglomerate. New maps, ruins, and
+remaps should make sense within that world.
 
-1. ***Use the appropriate decorative elements and turf types.*** Department flooring should use their associated colors: red for Security, brown for Cargo, blue for Medbay, and so on. Stations should always use standard walls and reinforced walls, and not e.g. plastitanium walls. Stations should always use standard airlocks, and not e.g. syndicate hatches or Centcomm airlocks.
+1. ***Use the appropriate decorative elements and turf types.*** Department
+   flooring should use their associated colors: red for Security, brown for
+   Cargo, blue for Medbay, and so on. Stations should always use standard walls
+   and reinforced walls, and not e.g. plastitanium walls. Stations should always
+   use standard airlocks, and not e.g. syndicate hatches or Centcomm airlocks.
 
-2. ***Avoid “Big Room Disease”.*** “Big Room Disease” refers to areas on a map that are unnecessarily large, empty, and/or square. Rooms should be large enough to handle crew foot traffic and facilitate their use, but no larger. Furniture should be placed appropriately inside rooms, not just lined along their walls. Large rooms should rarely be perfectly square or rectangular.
+2. ***Avoid “Big Room Disease”.*** “Big Room Disease” refers to areas on a map
+   that are unnecessarily large, empty, and/or square. Rooms should be large
+   enough to handle crew foot traffic and facilitate their use, but no larger.
+   Furniture should be placed appropriately inside rooms, not just lined along
+   their walls. Large rooms should rarely be perfectly square or rectangular.
 
-3. ***Public areas should be interesting.*** “Interesting” is subjective, but generally, areas such as public hallways should include space for crew interaction; decorations  such as posters, flags, and other decorative structures; windows that look out onto space, and floor tiles and decals that delineate the space.
+3. ***Public areas should be interesting.*** “Interesting” is subjective, but
+   generally, areas such as public hallways should include space for crew
+   interaction; decorations  such as posters, flags, and other decorative
+   structures; windows that look out onto space, and floor tiles and decals that
+   delineate the space.
 
-4. ***Use appropriate hall sizes.*** Primary hallways should be three tiles wide. Arterial hallways off the primary halls should be two tiles wide. Intradepartmental corridors should be one or two tiles wide. Exceptions to this include the Brig, Medbay, and Science, whose main halls can be three tiles wide due to the amount of foot traffic and number of sub departments within their space.
+4. ***Use appropriate hall sizes.*** Primary hallways should be three tiles
+   wide. Arterial hallways off the primary halls should be two tiles wide.
+   Intradepartmental corridors should be one or two tiles wide. Exceptions to
+   this include the Brig, Medbay, and Science, whose main halls can be three
+   tiles wide due to the amount of foot traffic and number of sub departments
+   within their space.
 
-5. ***Properly signpost maintenance areas.*** “Signposting” refers to environmental factors that make it clear what part of maintenance the player is in. For example, while “med maints” on Cyberiad is the area around medbay, it is also distinguishable  from its abandoned cryo tube, medical dufflebag, operating table, and so on. Note however that this signposting does not need to be directly related to nearby departments: for example, mining maints on Cyberiad has a small abandoned gambling room, a laundry room, and several abandoned shower/bathroom areas. This distinguishes it from other maintenance areas despite not directly referencing mining, as players will eventually associate these distinct features with that area of maintenance.
+5. ***Properly signpost maintenance areas.*** “Signposting” refers to
+   environmental factors that make it clear what part of maintenance the player
+   is in. For example, while “med maints” on Cyberiad is the area around medbay,
+   it is also distinguishable  from its abandoned cryo tube, medical dufflebag,
+   operating table, and so on. Note however that this signposting does not need
+   to be directly related to nearby departments: for example, mining maints on
+   Cyberiad has a small abandoned gambling room, a laundry room, and several
+   abandoned shower/bathroom areas. This distinguishes it from other maintenance
+   areas despite not directly referencing mining, as players will eventually
+   associate these distinct features with that area of maintenance.
 
-6. ***Ensure continuity of scale.*** The size of rooms should make sense relative to one another. The chef’s freezer should not be larger than their kitchen. The dorm’s bathroom should not be larger than the Captain’s office. The scale of rooms should make sense for their expected occupancy and purpose. For example, the Heads of Staff Meeting Room should be large enough to seat all staff comfortably around a table, with extra space for navigating foot traffic around the table.
+6. ***Ensure continuity of scale.*** The size of rooms should make sense
+   relative to one another. The chef’s freezer should not be larger than their
+   kitchen. The dorm’s bathroom should not be larger than the Captain’s office.
+   The scale of rooms should make sense for their expected occupancy and
+   purpose. For example, the Heads of Staff Meeting Room should be large enough
+   to seat all staff comfortably around a table, with extra space for navigating
+   foot traffic around the table.

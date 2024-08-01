@@ -2,23 +2,44 @@
 
 ## Initial setup and Installation
 
-1. Download and install [MariaDB](https://mariadb.com/downloads/mariadb-tx) for your operating system. The default installation settings should work. You need TCP enabled and to set a root password. If it offers, do _not_ set it up to use Windows authentication. If you've ticked Install as a Windows Service (should be ticked by default), it will run whenever you boot up your computer, so there's no need to worry about starting it manually.
+1. Download and install [MariaDB](https://mariadb.com/downloads/mariadb-tx) for
+   your operating system. The default installation settings should work. You
+   need TCP enabled and to set a root password. If it offers, do _not_ set it up
+   to use Windows authentication. If you've ticked Install as a Windows Service
+   (should be ticked by default), it will run whenever you boot up your
+   computer, so there's no need to worry about starting it manually.
 
-2. Open HeidiSQL (comes with MariaDB) and connect it to the database. Click on *New* to create a new session, check *prompt for credentials* and leave the rest as default.
+2. Open HeidiSQL (comes with MariaDB) and connect it to the database. Click on
+   *New* to create a new session, check *prompt for credentials* and leave the
+   rest as default.
 
-3. Click *Save*, then click open and enter in `root` for the username and the password you set up during the installation.
+3. Click *Save*, then click open and enter in `root` for the username and the
+   password you set up during the installation.
 
-4. Select the database you just created and then select *File -> Load SQL File*, and open the `paradise_schema.sql` file found in the `SQL/` directory of the game.
+4. Select the database you just created and then select *File -> Load SQL File*,
+   and open the `paradise_schema.sql` file found in the `SQL/` directory of the
+   game.
 
-5. Press the blue "play" icon in the topic bar of icons. If the schema imported correctly you should have no errors in the message box on the bottom.
+5. Press the blue "play" icon in the topic bar of icons. If the schema imported
+   correctly you should have no errors in the message box on the bottom.
 
-6. Refresh the panel on the left by right clicking it and ensure there's a new database called `paradise_gamedb` created.
+6. Refresh the panel on the left by right clicking it and ensure there's a new
+   database called `paradise_gamedb` created.
 
-7. Create a new user account for the server by going to *Tools -> User Manager*. 'From Host' should be `127.0.0.1`, not `localhost` if hosted locally. Otherwise, use the IP of the game server. For permissions, do not give it any global permissions. Instead click *Add Object*,  select the database you created for the server, click *OK*, then give it `SELECT`, `DELETE`, `INSERT`, and `UPDATE` permissions on that database.
+7. Create a new user account for the server by going to *Tools -> User Manager*.
+   'From Host' should be `127.0.0.1`, not `localhost` if hosted locally.
+   Otherwise, use the IP of the game server. For permissions, do not give it any
+   global permissions. Instead click *Add Object*,  select the database you
+   created for the server, click *OK*, then give it `SELECT`, `DELETE`,
+   `INSERT`, and `UPDATE` permissions on that database.
 
-8. You can click the arrow on the password field to get a randomly generated password of certain lengths. copy the password before saving as it will be cleared the moment you hit *Save*.
+8. You can click the arrow on the password field to get a randomly generated
+   password of certain lengths. copy the password before saving as it will be
+   cleared the moment you hit *Save*.
 
-9. Open the file `config/config.toml` in your text editor (such as VSCode) scroll down to the `[database_configuration]` section. You should've copied the file over from the `config/example` folder beforehand.
+9. Open the file `config/config.toml` in your text editor (such as VSCode)
+   scroll down to the `[database_configuration]` section. You should've copied
+   the file over from the `config/example` folder beforehand.
 
 10. Make sure that these settings are changed:
     -   `sql_enabled` is set to `true`.

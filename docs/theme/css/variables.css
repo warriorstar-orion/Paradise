@@ -147,7 +147,7 @@
 }
 
 .navy {
-    --bg: #21040d;
+    --bg: #150208;
     --fg: #bcbdd0;
 
     --sidebar-bg: #46041a;
@@ -161,7 +161,7 @@
     --icons: #7c577d;
     --icons-hover: #c58bca;
 
-    --links: #b939cd;
+    --links: #8c86ff;
 
     --inline-code-color: #c5c8c6;
 

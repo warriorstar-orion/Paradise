@@ -3,17 +3,18 @@
 ## Introduction
 
 This is the contribution guide for Paradise Station. These guidelines apply to
-both new issues and new pull requests. If you are making a pull request, please refer to
-the [Pull request](#pull-requests) section, and if you are making an issue report, please
-refer to the [Issue Report](#issues) section, as well as the
-[Issue Report Template](ISSUE_TEMPLATE.md).
+both new issues and new pull requests. If you are making a pull request, please
+refer to the [Pull request](#pull-requests) section, and if you are making an
+issue report, please refer to the [Issue Report](#issues) section, as well as
+the [Issue Report Template](ISSUE_TEMPLATE.md).
 
 ## Commenting
 
-If you comment on an active pull request or issue report, make sure your comment is
-concise and to the point. Comments on issue reports or pull requests should be relevant
-and friendly, not attacks on the author or adages about something minimally relevant.
-If you believe an issue report is not a "bug", please point out specifically and concisely your reasoning in a comment on the issue itself.
+If you comment on an active pull request or issue report, make sure your comment
+is concise and to the point. Comments on issue reports or pull requests should
+be relevant and friendly, not attacks on the author or adages about something
+minimally relevant. If you believe an issue report is not a "bug", please point
+out specifically and concisely your reasoning in a comment on the issue itself.
 
 ### Comment Guidelines
 

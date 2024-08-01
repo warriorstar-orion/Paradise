@@ -15,15 +15,20 @@
 
 # Guides
 
-- [SS13 for Experienced Programmers](./guides/experienced.md)
+## SS13 for Experienced Programmers
+
+- [Introduction](./guides/experienced/index.md)
+  - [Syntax](./guides/experienced/syntax.md)
+  - [Important Procs](./guides/experienced/important_procs.md)
+  - [Common Variables](./guides/experienced/common_vars.md)
 
 # Mapping
 
+- [Mapping Standards](./mapping/standards.md)
 - [Design Guidelines](./mapping/design/index.md)
   - [Design](./mapping/design/design.md)
   - [Function](./mapping/design/function.md)
   - [Balance](./mapping/design/balance.md)
-- [Mapping Standards](./mapping/standards.md)
 
 # References
 
