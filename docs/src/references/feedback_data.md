@@ -30,7 +30,7 @@ Feedback data can be reocrded in 5 formats. `amount`, `associative`, `nested tal
 
 These DM calls:
 
-```dm
+```c
 SSblackbox.record_feedback("amount", "example", 8)
 SSblackbox.record_feedback("amount", "example", 2)
 // Note that you can use negative increments to decrease the value
@@ -59,16 +59,16 @@ Will produce the following JSON:
 
 ```json
 {
-    "data":{
-        "1":{
-            "text":"example",
-            "path":"/obj/item",
-            "number":"4"
+    "data": {
+        "1": {
+            "text": "example",
+            "path": "/obj/item",
+            "number": "4"
         },
-        "2":{
-            "number":"7",
-            "text":"example",
-            "other text":"sample"
+        "2": {
+            "number": "7",
+            "text": "example",
+            "other text": "sample"
         }
     }
 }

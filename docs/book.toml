@@ -1,0 +1,11 @@
+[book]
+authors = ["warriorstar-orion"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Paradise Station Development"
+
+[output.html]
+additional-css = ["custom.css"]
+default-theme = "navy"
+preferred-dark-theme = "navy"
