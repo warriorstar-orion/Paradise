@@ -9,3 +9,7 @@ title = "Paradise Station Development"
 additional-css = ["custom.css"]
 default-theme = "navy"
 preferred-dark-theme = "navy"
+
+[preprocessor.toc]
+command = "mdbook-toc"
+renderer = ["html"]

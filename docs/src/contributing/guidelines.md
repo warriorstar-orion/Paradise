@@ -8,6 +8,8 @@ refer to the [Pull request](#pull-requests) section, and if you are making an
 issue report, please refer to the [Issue Report](#issues) section, as well as
 the [Issue Report Template](ISSUE_TEMPLATE.md).
 
+<!-- toc -->
+
 ## Commenting
 
 If you comment on an active pull request or issue report, make sure your comment
