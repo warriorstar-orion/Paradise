@@ -30,6 +30,13 @@
   - [Function](./mapping/design/function.md)
   - [Balance](./mapping/design/balance.md)
 
+# TGUI
+
+- [Tutorial](./tgui/tutorial-and-examples.md)
+- [Writing Tests](./tgui/writing-tests.md)
+- [Migrating from v3 to v4](./tgui/migration-to-v4-from-v3.md)
+- [Component Reference](./tgui/component-reference.md)
+
 # References
 
 - [Current Staff](./references/current_staff.md)
