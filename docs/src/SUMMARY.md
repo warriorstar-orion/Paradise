@@ -4,23 +4,19 @@
 
 # Contributing
 
+- [Code of Conduct](./contributing/code_of_conduct.md)
+- [Contributing Guidelines](./contributing/guidelines.md)
+
 - [Getting Started](./contributing/getting_started/index.md)
   - [Development Environment](./contributing/getting_started/dev_environment.md)
   - [Cloning the Repository](./contributing/getting_started/repository_setup.md)
-  - [Making Changes](./contributing/getting_started/making_changes.md)
   - [Database Configuration](./contributing/getting_started/sql.md)
 
-- [Contributing Guidelines](./contributing/guidelines.md)
-- [Autodoc Guide](./contributing/autodoc.md)
+# Coding
 
-# Guides
-
-## SS13 for Experienced Programmers
-
-- [Introduction](./guides/experienced/index.md)
-  - [Syntax](./guides/experienced/syntax.md)
-  - [Important Procs](./guides/experienced/important_procs.md)
-  - [Common Variables](./guides/experienced/common_vars.md)
+- [Code Contribution Quickstart](./coding/quickstart.md)
+- [Making Changes](./coding/making_changes.md)
+- [Autodoc Guide](./coding/autodoc.md)
 
 # Mapping
 
@@ -43,3 +39,7 @@
 - [Glossary](./references/glossary.md)
 - [Using Feedback Data](./references/feedback_data.md)
 - [Tick Order](./references/tick_order.md)
+- [SS13 for Experienced Programmers](./guides/experienced/index.md)
+  - [Syntax](./guides/experienced/syntax.md)
+  - [Important Procs](./guides/experienced/important_procs.md)
+  - [Common Variables](./guides/experienced/common_vars.md)
