@@ -11,20 +11,21 @@
   - [Development Environment](./contributing/getting_started/dev_environment.md)
   - [Cloning the Repository](./contributing/getting_started/repository_setup.md)
   - [Database Configuration](./contributing/getting_started/sql.md)
+  - [Making Changes](./coding/making_changes.md)
 
 # Coding
 
 - [Code Contribution Quickstart](./coding/quickstart.md)
-- [Making Changes](./coding/making_changes.md)
 - [Autodoc Guide](./coding/autodoc.md)
 
 # Mapping
 
 - [Mapping Standards](./mapping/standards.md)
-- [Design Guidelines](./mapping/design/index.md)
-  - [Design](./mapping/design/design.md)
-  - [Function](./mapping/design/function.md)
-  - [Balance](./mapping/design/balance.md)
+- [Design Guidelines](./mapping/design.md)
+
+# Spriting
+
+- [Spriting Guidelines]()
 
 # TGUI
 
