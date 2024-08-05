@@ -4,6 +4,8 @@ The purpose of this guide is to familiarize you with the technical aspects of
 mapping for Paradise Station, as well as lay out the rules we have in place for
 making mapping changes that meet our standards.
 
+<!-- toc -->
+
 ## Tooling
 
 Once you have set up your [development environment][env], you will need several
@@ -133,15 +135,15 @@ and in-game systems, there are several requirements that must be followed.
     areas, such as the brig, bridge, and head of staff offices, should be
     electrified by placing a wire node under the window.
 
-15. Lights are to be used sparingly, they draw a significant amount of power.
+15. Use lights sparingly. They draw a significant amount of power.
 
 16. Door and windoor access must be correctly set by the
     `/obj/effect/mapping_helpers/airlock/access` and
-    `/obj/effect/mapping_helpers/airlock/windoor/access` helpers, respectively.
-	Pay attention to the `any` and `all` subtypes; the `any` subtype allows
-    someone with any of the accesses on the airlock to use it, and the `all`
-    subtypes requires the user to have all of the access on the airlock to use
-    it.
+    `/obj/effect/mapping_helpers/airlock/windoor/access` [helpers][],
+	respectively. Pay attention to the `any` and `all` subtypes; the `any`
+    subtype allows someone with any of the accesses on the airlock to use it,
+    and the `all` subtypes requires the user to have all of the access on the
+    airlock to use it.
 
 	For example, on the Cerebron (Metastation), miners must walk through the
     Cargo Bay to access the Mining Dock. They do not have Cargo Bay access,
@@ -158,6 +160,13 @@ and in-game systems, there are several requirements that must be followed.
 17. Edits in mapping tools should almost always be possible to replicate
     in-game. For this reason, avoid stacking multiple structures on the same
     tile (e.g. placing a light and an APC on the same wall).
+
+18. Engine areas, or areas with a high probability of receiving explosions,
+    should use reinforced flooring if appropriate.
+
+19. External areas, or areas where depressurisation is expected and normal, should use airless turf variants to prevent additional atmospherics load.
+
+[helpers]: https://github.com/ParadiseSS13/Paradise/blob/master/code/modules/mapping/access_helpers.dm
 
 ### Varedits
 
@@ -188,35 +197,31 @@ altered instance or not, are considered the same area within the code, and
 editing their variables on a map can lead to issues with powernets and event
 subsystems which are difficult to debug.
 
-  - While var-editing an item within the editor is fine, it is preferred that when you are changing the base behavior of an item (how it functions) that you make a new subtype of that item within the code, especially if you plan to use the item in multiple locations on the same map, or across multiple maps. This makes it easier to make corrections as needed to all instances of the item at one time, as opposed to having to find each instance of it and change them all individually.
-    - Subtypes only intended to be used on ruin maps should be contained within an .dm file with a name corresponding to that map within `code\modules\ruins`. This is so in the event that the map is removed, that subtype will be removed at the same time as well to minimize leftover/unused data within the repo.
-  - When not using StrongDMM (which handles the following automatically) please attempt to clean out any dirty variables that may be contained within items you alter through var-editing. For example changing the `pixel_x` variable from 23 to 0 will leave a dirty record in the map's code of `pixel_x = 0`.
-  - Unless they require custom placement, when placing the following items use the relevant directional mapper, as it has predefined pixel offsets and directions that are standardised: APC, Air alarm, Fire alarm, station intercom, newscaster, extinguisher cabient, light switches.
+Subtypes only intended to be used on ruins should be contained within an .dm file with a name corresponding to that map within `code\modules\ruins`. This is so in the event that the map is removed, that subtype will be removed at the same time as well to minimize leftover/unused data within the repo.
+
+When not using StrongDMM (which handles the following automatically) please attempt to clean out any dirty variables that may be contained within items you alter through var-editing. For example changing the `pixel_x` variable from 23 to 0 will leave a dirty record in the map's code of `pixel_x = 0`.
+
+Unless they require custom placement, when placing the following items use the
+relevant directional mapper, as it has predefined pixel offsets and directions
+that are standardised: APC, Air alarm, Fire alarm, station intercom, newscaster,
+extinguisher cabient, light switches.
 
 ## Mapper Contribution Guidelines
 
+These guidelines apply to **all** mapping contributors.
+
 For mapping PRs, we do not accept 'change for the sake of change' remaps, unless
 you have very good reasoning to do so. Maintainers reserve the right to close
-your PR if we disagree with your reasoning.
+your PR if we disagree with your reasoning. Large remaps, such as those to a department, must be justified with clear, specific reasons.
 
-- Map Merge
+Before committing a map change, you **MUST** run mapmerge2 to normalise your
+changes. You can do this manually before every commit with
+`"\tools\mapmerge2\Run Before Committing.bat"` or automatically by installing
+the hooks at `"\tools\hooks\Install.bat"`. Failure to run Map Merge on a map
+after editing greatly increases the risk of the map's key dictionary becoming
+corrupted by future edits after running map merge. Resolving the corruption
+issue involves rebuilding the map's key dictionary;
 
-  - The following guideline for map merging applies to **ALL** mapping contributers.
-    - Before committing a map change, you **MUST** run mapmerge2 to normalise your changes. You can do this manually before every commit with `"\tools\mapmerge2\Run Before Committing.bat"` or automatically by installing the hooks at `"\tools\hooks\Install.bat"`.
-    - Failure to run Map Merge on a map after editing greatly increases the risk of the map's key dictionary becoming corrupted by future edits after running map merge. Resolving the corruption issue involves rebuilding the map's key dictionary;
-
-- StrongDMM
-
-- If you are making non-minor edits to an area or room, (non-minor being anything more than moving a few objects or fixing small bugs) then you should ensure the entire area/room is updated to meet these standards.
-
-- When making a change to an area or room, follow these guidelines:
-
-
-
-  - Departments should be connected to maintenance through a back or side door. This lets players escape and allows antags to break in.
-    - If this is not possible, departments should have extra entry and exit points.
-  - Engine areas, or areas with a high probability of receiving explosions, should use reinforced flooring if appropriate.
-  - External areas, or areas where depressurisation is expected and normal, should use airless turf variants to prevent additional atmospherics load.
-  -
-
-[helpers]: ../../code/modules/mapping/access_helpers.dm
+If you are making non-minor edits to an area or room, (non-minor being anything
+more than moving a few objects or fixing small bugs) then you should ensure the
+entire area/room is updated to meet these standards.

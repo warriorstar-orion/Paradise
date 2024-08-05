@@ -119,6 +119,11 @@ specific station layout to gain unique advantages over other players.
    projectiles; ensuring that dead ends are rare; and providing places for
    antagonists to hide using hidden walls or similarly difficult to find places.
 
+8. ***Allow for escape routes and antag break-in routes.*** Departments should
+   be connected to maintenance through a back or side door. This lets players
+   escape and allows antags to break in. If this is not possible, departments
+   should have extra entry and exit points.
+
 ## Functional Guidelines
 
 Stations are malleable. Players can build, rebuild, decorate, upholster, and
