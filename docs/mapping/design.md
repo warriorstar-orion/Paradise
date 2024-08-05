@@ -22,7 +22,9 @@ remaps should make sense within that world.
    use standard airlocks, and not e.g. syndicate hatches or Centcomm airlocks.
 
 2. ***Avoid excessive use of decals or floor tile variants.*** Using too many
-   decals or floor tile variants causes unnecessary visual noise. Only use decals such as warning tape where it is sensible, e.g. around airlocks that lead to space. Decal overuse contributes to maptick slowdown.
+   decals or floor tile variants causes unnecessary visual noise. Only use
+   decals such as warning tape where it is sensible, e.g. around airlocks that
+   lead to space. Decal overuse contributes to maptick slowdown.
 
 2. ***Avoid “Big Room Disease”.*** “Big Room Disease” refers to areas on a map
    that are unnecessarily large, empty, and/or square. Rooms should be large
