@@ -147,6 +147,10 @@ We need to add the main Paradise repository as a remote now.
 
 # Configuring a Local Database
 
+While configuring a local database is not required, it is recommended because it
+tracks local round IDs, stores local player characters, and allows you to verify
+the output of blackbox entries.
+
 ## Initial setup and Installation
 
 1. Download and install [MariaDB](https://mariadb.com/downloads/mariadb-tx) for
@@ -189,22 +193,21 @@ We need to add the main Paradise repository as a remote now.
    the file over from the `config/example` folder beforehand.
 
 10. Make sure that these settings are changed:
-    -   `sql_enabled` is set to `true`.
-    -   `sql_version` to the correct version. By starting the server
-        with a mismatched version here and all the other settings set
-        up, the chat box will tell you the current version in red text,
-        between the messages for all the subsystems initializing. Set
-        this to the current version.
-    -   `sql_address` is set to `"127.0.0.1"`. (Replace with the
-        database server's IP if not hosted locally)
-    -   `sql_port` is set to whatever port was selected during the
-        MariaDB install, usually `3306`.
-    -   `sql_database` is set to the name of your database, usually
-        `"paradise_gamedb"`.
-    -   `sql_username` is set to the 'User name' of the user you
-        created above.
-    -   `sql_password` is set to the randomly generated 'Password' of
-        the user you created above.
+
+  - `sql_enabled` is set to `true`.
+  - `sql_version` to the correct version. By starting the server with a
+    mismatched version here and all the other settings set up, the chat box
+    will tell you the current version in red text, between the messages for
+    all the subsystems initializing. Set this to the current version.
+  - `sql_address` is set to `"127.0.0.1"`. (Replace with the database server's
+    IP if not hosted locally)
+  - `sql_port` is set to whatever port was selected during the MariaDB
+    install, usually `3306`.
+  - `sql_database` is set to the name of your database, usually
+    `"paradise_gamedb"`.
+  - `sql_username` is set to the 'User name' of the user you created above.
+  - `sql_password` is set to the randomly generated 'Password' of the user you
+      created above.
 
 The database is now set up for death logging, population logging, polls,
 library, privacy poll, connection logging and player logging. There are two more
@@ -226,7 +229,7 @@ the database.
 
 To enable database based administration:
 
--   Open \\config\\config.toml and scroll to the `[admin_configuration]`
+-   Open `\config\config.toml` and scroll to the `[admin_configuration]`
     section.
 -   Set `use_database_admins` to `true`.
 -   Add a database entry for the first administrator (likely yourself).
@@ -237,6 +240,45 @@ To enable database based administration:
     `admin_ranks` set up with some admins too, just so that the loss of
     the database doesn't completely destroy everything.
 
+## Working with `config.toml`
+
+Paradise relies on a configuration file for many key aspects of its operation.
+That file is `config\config.toml`, and it contains many setting that are useful
+when developing locally. When you first clone the Paradise repository,
+that file will not exist; that is because it is ignored by git so that people's
+individual configurations do not get uploaded to the master repository.
+
+In order to modify the settings in it, you must copy the file
+`config\example\config.toml` to its parent directory.
+
+Some helpful uses of `config.toml` follow.
+
+### Overriding the next map
+
+If you are testing a specific map, the `override_map` setting under the
+`system_configuration` setting can be set to any map datum listed in
+[`code/modules/mapping/station_datums.dm`][datums]. If you are testing something
+that doesn't require a station map, such as ruins, you can avoid loading a large
+map altogether and save yourself some time starting the server by setting
+`override_map` to `"/datum/map/test_tiny"`.
+
+[datums]: https://github.com/ParadiseSS13/Paradise/blob/master/code/modules/mapping/station_datums.dm
+
+### Enabling or disabling Lavaland and Space levels
+
+If you do not need to load Lavaland, any of its ruins, or any space ruins, you
+can change these settings under `ruin_configuration`:
+
+- `enable_lavaland`: whether to load the Lavaland z-level.
+- `enable_space_ruins`: despite its name, this controls whether ruins are
+  spawned for both space _and_ Lavaland.
+- `minimum_zlevels` and `maximum_zlevels` control the number of space z-levels
+  generated. If you don't need any, set both to `0`.
+
+### Enabling or disabling station traits
+
+You can control whether roundstart station traits roll with the
+`add_random_station_traits` setting unde the `gamemode_configuration` section.
 
 # Publishing Changes
 
