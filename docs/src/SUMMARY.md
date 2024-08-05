@@ -39,7 +39,6 @@
 
 # References
 
-- [Current Staff](./references/current_staff.md)
 - [Glossary](./references/glossary.md)
 - [Autodoc Guide](./coding/autodoc.md)
 - [Using Feedback Data](./references/feedback_data.md)
