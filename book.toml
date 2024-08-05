@@ -12,6 +12,10 @@ additional-js = ["./docs/js/highlight-dm.js"]
 default-theme = "navy"
 preferred-dark-theme = "navy"
 
+# [output.linkcheck]
+# traverse-parent-directories = true
+# follow-web-links = true
+
 [preprocessor.toc]
 command = "mdbook-toc"
 renderer = ["html"]
