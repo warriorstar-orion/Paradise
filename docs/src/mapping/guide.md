@@ -1,4 +1,4 @@
-# Mapping Guidelines
+# Guide to Mapping
 
 ## Mapping Standards
 

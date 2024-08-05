@@ -1,4 +1,4 @@
 <!-- GitHub expects this file to be in a specific place -->
 <!-- so we interpolate it here. -->
 
-{{#include ../../../CONTRIBUTING.md}}
+{{#include ../../../.github/CONTRIBUTING.md}}

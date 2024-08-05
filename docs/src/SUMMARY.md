@@ -21,13 +21,14 @@
 
 # Mapping
 
-- [Mapping Guidelines](./mapping/guidelines.md)
-- [Guide to Mapmerge]()
+- [Guide to Mapping](./mapping/guide.md)
 - [Design Guidelines](./mapping/design.md)
+- [Guide to Mapmerge]()
 
 # Spriting
 
-- [Spriting Guidelines]()
+- [Guide to Spriting]()
+- [Design Guidelines]()
 - [Guide to Iconmerge]()
 
 # TGUI

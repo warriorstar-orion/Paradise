@@ -5,6 +5,8 @@ there are many resources on the technical aspects of mapping, this guide instead
 focuses on considering mapping from a thematic, functional, and balance
 perspective.
 
+<!-- toc -->
+
 ## Design Guidelines
 
 Maps are one of the most visible ways of conveying the world and setting of the
