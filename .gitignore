@@ -74,3 +74,6 @@ $RECYCLE.BIN
 
 # Rust output.
 /milla/target/*
+
+# mdbook HTML output.
+book
