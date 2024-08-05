@@ -1,3 +1,26 @@
+/* Paradise Developer Documentation Style Overrides */
+
+:root {
+    font-size: 75%;
+}
+
+h2, h3 { margin-block-start: 2em; }
+h4, h5 { margin-block-start: 1.5em; }
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
+font-weight: normal;
+}
+
+.hljs {
+	background-color: #281828;
+}
+
+#glossary h2 {
+	font-size:100%;
+}
+
+
 /* Paradise Developer Documentation Theme */
 .navy {
     --bg: #150208;
