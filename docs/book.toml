@@ -6,7 +6,11 @@ src = "src"
 title = "Paradise Station Development"
 
 [output.html]
-additional-css = ["custom.css"]
+additional-css = [
+	"./src/css/general.css",
+	"./src/css/variables.css",
+	"./src/css/custom.css",
+]
 default-theme = "navy"
 preferred-dark-theme = "navy"
 

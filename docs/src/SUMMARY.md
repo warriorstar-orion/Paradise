@@ -15,7 +15,8 @@
 # Coding
 
 - [Code Contribution Quickstart](./coding/quickstart.md)
-- [Code Style Guidelines]()
+- [Coding Guidelines](./coding/guidelines.md)
+- [Code Style Guide]()
 - [Guide to Testing]()
 - [Guide to Debugging](./coding/debugging.md)
 
