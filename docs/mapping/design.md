@@ -21,6 +21,9 @@ remaps should make sense within that world.
    and reinforced walls, and not e.g. plastitanium walls. Stations should always
    use standard airlocks, and not e.g. syndicate hatches or Centcomm airlocks.
 
+2. ***Avoid excessive use of decals or floor tile variants.*** Using too many
+   decals or floor tile variants causes unnecessary visual noise. Only use decals such as warning tape where it is sensible, e.g. around airlocks that lead to space. Decal overuse contributes to maptick slowdown.
+
 2. ***Avoid “Big Room Disease”.*** “Big Room Disease” refers to areas on a map
    that are unnecessarily large, empty, and/or square. Rooms should be large
    enough to handle crew foot traffic and facilitate their use, but no larger.
@@ -85,8 +88,8 @@ specific station layout to gain unique advantages over other players.
    antagonists to accomplish their objectives _in situ_. It is not enough to
    have cameras that antagonists can disable, since an AI will notice that the
    camera is out, when it is not usually. Areas appropriate for lacking cameras
-   include Operating Rooms, the Therapist’s office, and Dormitory bathrooms and
-   shower rooms. Similarly:
+   include Operating Rooms, the Therapist’s office, the Execution Chamber, and
+   Dormitory bathrooms and shower rooms. Similarly:
 
 4. ***AI cameras should never be placed in maints.*** This is prohibited
    completely. It provides a disproportionately competitive advantage for sec
