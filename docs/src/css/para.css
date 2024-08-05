@@ -16,6 +16,10 @@ font-weight: normal;
 	background-color: #281828;
 }
 
+.hljs-operator {
+	color: #b294bb;
+}
+
 #glossary h2 {
 	font-size:100%;
 }

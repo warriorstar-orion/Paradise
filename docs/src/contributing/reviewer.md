@@ -123,7 +123,7 @@ over. I will go through each part of this code that I would leave comments or
 suggestions on, for the most part this covers all the basic things you will look
 out for as a beginner code reviewer.
 
-```c
+```dm
 /obj/item/omega
 	name = "Omega Item"
 	desc  = "This object is super duper cool!!!"
@@ -160,7 +160,7 @@ Second I immediately see a spacing problem with the list variable, there's not
 spacing between comma separators `list(cool,epic,sick,spectacular)`, you should
 correct this to be `list(cool, epic, sick, spectacular)`
 
-```c
+```dm
 /obj/item/omega
 	name = "Omega Item"
 	desc  = "This object is super duper cool!!!"
@@ -188,7 +188,7 @@ in `<span class='notice'>` and close it with `</span>` within the parentheses.
 With that in mind, we also notice that the second `to_chat` forgot to close
 their span, so we will do that aswell.
 
-```c
+```dm
 /obj/item/omega/attack_self(mob/user)
 	if(user)
 		if(is_user_cool(user) && istype(user, /mob/living/carbon/human))
@@ -204,7 +204,7 @@ Now lets take a look at the logic here. What does `if(is_user_cool(user) &&
 istype(user, /mob/living/carbon/human))` do? It's performing an istype check,
 and also checking for the return of `is_user_cool()`
 
-```c
+```dm
 /obj/item/omega/proc/is_user_cool(mob/user)
 	if(istype(usr, /mob/living/carbon/human))
 		return 1
@@ -218,13 +218,13 @@ final thing with this proc in particular when using istype's, we sometimes
 already have defines for specific types. In this case, we already have an
 `ishuman()` define
 
-```c
+```dm
 #define ishuman(A) (istype(A, /mob/living/carbon/human))
 ```
 
 Lets make those corrections
 
-```c
+```dm
 /obj/item/omega/proc/is_user_cool(mob/user)
 	if(ishuman(user))
 		return TRUE
@@ -233,13 +233,13 @@ Lets make those corrections
 
 Now lets looks at the big picture, you may have noticed that we perform the same `istype` check **twice**. The author appears to have accidently added redundant code in their if check. Let's fix that for them:
 
-```c
+```dm
 if(is_user_cool(user))
 ```
 
 Lets put all of our suggested changes together!
 
-```c
+```dm
 /obj/item/omega
 	name = "Omega Item"
 	desc  = "This object is super duper cool!!!"

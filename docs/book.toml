@@ -6,6 +6,7 @@ src = "src"
 title = "Paradise Station Development"
 
 [output.html]
+theme = "./src/theme"
 additional-css = ["./src/css/para.css"]
 additional-js = ["./src/js/highlight-dm.js"]
 default-theme = "navy"

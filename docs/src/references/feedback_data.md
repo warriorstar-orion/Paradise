@@ -39,7 +39,7 @@ numerical number which increase with each feedback increment. For example:
 
 These DM calls:
 
-```c
+```dm
 SSblackbox.record_feedback("amount", "example", 8)
 SSblackbox.record_feedback("amount", "example", 2)
 // Note that you can use negative increments to decrease the value
@@ -67,7 +67,7 @@ of an amount with its own key per mecha.
 pairs. (e.g: coordinates). Further calls to the same key will append a new list
 to existing data. For example:
 
-```c
+```dm
 SSblackbox.record_feedback("associative", "example", 1, list("text" = "example", "path" = /obj/item, "number" = 4))
 SSblackbox.record_feedback("associative", "example", 1, list("number" = 7, "text" = "example", "other text" = "sample"))
 ```
@@ -110,7 +110,7 @@ saved value of the data key if it already exists in the same multi-dimensional
 position, and append the key and it's value if it doesn't exist already. This
 one is quite complicated, but an example is below:
 
-```c
+```dm
 SSblackbox.record_feedback("nested tally", "example", 1, list("fruit", "orange", "apricot"))
 SSblackbox.record_feedback("nested tally", "example", 2, list("fruit", "orange", "orange"))
 SSblackbox.record_feedback("nested tally", "example", 3, list("fruit", "orange", "apricot"))

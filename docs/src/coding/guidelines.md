@@ -664,13 +664,13 @@ All new global vars must use the defines in [`code/__DEFINES/_globals.dm`](../co
 
 To declare a global var:
 
-```c
+```dm
 GLOBAL_VAR(my_global_here)
 ```
 
 To access it:
 
-```c
+```dm
 GLOB.my_global_here = X
 ```
 

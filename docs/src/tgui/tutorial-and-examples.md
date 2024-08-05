@@ -293,7 +293,7 @@ We all do it, even the best of us. If you just want to make a tgui **fast**,
 here's what you need (note that you'll probably be forced to clean your shit up
 upon code review):
 
-```c
+```dm
 /obj/copypasta/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
