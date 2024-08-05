@@ -152,107 +152,110 @@ entire Paradise codebase and server. Contact them or the Balance team about
 large changes or balance changes before making a PR, including map additions,
 new roles, new antagonists, and other similar things.
 
-**Runechat -** Chat appearing above peoples head, a feature added by
-[#14141](https://github.com/ParadiseSS13/Paradise/pull/14141/). Often a
-joke about players now missing important things in the chat window since
-they no longer have to look there for reading messages from people.
+#### Runechat Chat
+Chat messages which appear above player's characters, a feature added by
+[#14141](https://github.com/ParadiseSS13/Paradise/pull/14141/). Often a joke
+about players now missing important things in the chat window since they no
+longer have to look there for reading messages from people.
 
-**TGUI -** A javascript based format for displaying an interface. It is
+#### TGUI
+A JavaScript based format for displaying an interface. It is
 used for our user interfaces (except OOC stuff like admin panels), or
-are planned to be converted to TGUI. TGUI uses InfernoJS(based off of
-reactJS) which is an extension to javascript. More information can be
-found at [Guide to
-Contributing](Guide_to_Contributing#Learning_how_to_use_TGUI "wikilink")
-and [Guide to TGUI](Guide_to_TGUI "wikilink").
+are planned to be converted to TGUI. TGUI uses InfernoJS (based off of
+reactJS) which is an extension to JavaScript. More information can be
+found at the [TGUI Tutorial][].
 
-**Proc -** Procs or Procedures is a block of code that only runs when it
-is called. These are similar to something like functions in python.
+[TGUI Tutorial]: ../tgui/tutorial-and-examples.md
 
-**Verb -** A special type of Proc, which is available to mobs.
+#### Proc
+Procs or Procedures are block of code that only runs when it is called. These
+are similar to something like functions in other languages.
 
-**Var -** A variable, used for temporarily storing data. For more
+#### Verb
+A special type of proc, which is only available to mobs.
+
+#### Var
+A variable, used for temporarily storing data. For more
 permanent data, check out [#DEFINE](Github_Glossary#DEFINE "wikilink").
 
-**Datum -** "The datum object is the ancestor of all other data types
-in DM. (The only exceptions are currently /world, /client, /list, and
-/savefile, but those will be brought into conformance soon.) That means
-that the variables and procedures of /datum are inherited by all other
-types of objects."([Byond documentation
-excerpt](https://secure.byond.com/docs/ref/#/datum/)) This often used
-for things like spells and abilities.
+#### Datum
+From the [BYOND documentation](https://secure.byond.com/docs/ref/#/datum/):
 
-**Atom -** "The /atom object type is the ancestor of all mappable
+> "The datum object is the ancestor of all other data types in DM. (The only
+exceptions are currently /world, /client, /list, and /savefile, but those will
+be brought into conformance soon.) That means that the variables and procedures
+of /datum are inherited by all other types of objects."
+
+Datums are useful to represent abstractions that don't physically exist in the
+game world, such as information about a spell or a Syndicate uplink item. They
+are also useful for vars or procs that all other data-types use.
+
+#### Atom
+From the [BYOND documentation](https://secure.byond.com/docs/ref/#/atom/):
+
+> "The /atom object type is the ancestor of all mappable
 objects in the game. The types /area, /turf, /obj, and /mob are all
 derived from /atom. You should not create instances of /atom directly
 but should use /area, /turf, /obj, and /mob for actual objects. The
 /atom object type exists for the purpose of defining variables or
-procedures that are shared by all of the other "physical" objects.
+procedures that are shared by all of the other 'physical' objects.
 These are also the only objects for which verbs may be accessible to the
-user.
+user. /atom is derived from /datum, so it inherits the basic properties that
+are shared by all DM objects."
 
-/atom is derived from /datum, so it inherits the basic properties that
-are shared by all DM objects."([Byond documentation
-excerpt](https://secure.byond.com/docs/ref/#/atom/))
+#### Area
+From the [BYOND documentation](https://secure.byond.com/docs/ref/#/area/):
 
-**Area -** "Areas are derived from /area. Regions on the map may be
-assigned to an area by painting it onto the map. Areas off the map serve
-as rooms that objects may enter and exit.
+> "Areas are derived from /area. Regions on the map may be assigned to an area
+by painting it onto the map. Areas off the map serve as rooms that objects may
+enter and exit. For each area type defined, one area object is created at
+runtime. So for areas on the map, all squares with the same area type belong to
+the same instance of the area."
 
-For each area type defined, one area object is created at runtime. So
-for areas on the map, all squares with the same area type belong to the
-same instance of the area."([Byond documentation
-excerpt](https://secure.byond.com/docs/ref/#/area/)) In SS13, this is
-often used for stuff like APCs, Air alarms, and atmos.
+In SS13, this is often used to delineate station departments and station systems
+such as power and atmospherics networks.
 
-**Turf -** Turfs are floors, stuff like space, floors, carpets, or lava,
-or walls. This does not include windows, as they are objects.
+#### Turf
+Turfs are floors, stuff like space, floors, carpets, or lava, or walls. This
+does not include windows, as they are objects.
 
-**Object -** Objects are things you can interact with in game, including
-things that do not move. This includes weapons, items,
-machinery(Consoles and machines), and several other things.
+#### Object
+Objects are things you can interact with in game, including things that do not
+move. This includes weapons, items, machinery (consoles and machines), and
+several other things.
 
-**Mob -** Mobs are "mobile objects", these include players and
-animals. This does not include stuff like conveyors.
+#### Mob
+Mobs are "mobile objects", these include players and animals. This does not
+include stuff like conveyors.
 
 ### Advanced Definitions {#advanced_definitions}
 
-```{=mediawiki}
-{{anchor|DEFINE}}
-```
-**#DEFINE -** A way of declaring variable either global(across the whole
-game) or in a whole file. They should always be found at the beginning
-of a file. Defines should always be capitalized (LIKE_THIS) and if not
+#### Define
+A way of declaring variable either global (across the whole game) or in a whole
+file using DM's `#DEFINE` macro syntax. They should always be found at the
+beginning of a file. Defines should always be capitalized (LIKE_THIS) and if not
 global should undefined at the end of a file.
 
-**Baseturf -** An SS13 variable that saves the data of what is
-underneath if that that is removed. For example, under station floors
-there would be a space turf and under lavaland turfs there would be
-lava.
+#### Baseturf
+An SS13 variable that saves the data of what is underneath if that that is
+removed. For example, under station floors there would be a space turf and under
+lavaland turfs there would be lava.
 
-```{=mediawiki}
-{{anchor|Master Controller}}
-```
-**Master Controller -** The Master Controller controls all subsystems of
-the game, such as the [garbage
-collector](Github_Glossary#Garbage "wikilink").
+#### Master Controller
+The Master Controller controls all subsystems of
+the game, such as the [garbage collector](#garbage).
 
-**MC -** Short for Short for [Master
-Controller](Github_Glossary#Master_Controller "wikilink").
+#### MC
+Short for Short for [Master Controller](#master-controller).
 
-```{=mediawiki}
-{{anchor|Garbage}}
-```
-**Garbage -** The garbage collector handles items being deleted and
-allows them to clean up references, this allows objects to delete much
-more efficiently.
+#### Garbage
+The garbage collector handles items being deleted and allows them to clean up
+references, this allows objects to delete much more efficiently.
 
-```{=mediawiki}
-{{anchor|qdel}}
-```
-**qdel() -** A delete function which tells the [garbage
-collector](Github_Glossary#Garbage "wikilink") to handle this object.
-This should always be used over del().
+#### qdel
+A function, `qdel()`, which tells the [garbage collector](#garbage) to handle
+destruction of an object. This should always be used over `del()`.
 
-**QDEL_NULL() -** A [qdel](Github_Glossary#qdel "wikilink") function
-which first nulls out a variable before telling the garbage collector to
-handle it.
+#### QDEL_NULL
+A [qdel](#qdel) function which first nulls out a variable before telling the
+garbage collector to handle it.
