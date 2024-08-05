@@ -3,49 +3,111 @@
 // - Guide on writing highlighters: https://highlightjs.readthedocs.io/en/latest/language-guide.html
 // - possible values for `scope`/`className`: https://highlightjs.readthedocs.io/en/latest/css-classes-reference.html
 
-hljs.registerLanguage('Dream Maker', (hljs) => ({
-	name: 'dm',
-	aliases: ['DM', 'dm'],
-	keywords: {
-		keyword:
-			'sleep spawn break continue do else for goto if return switch while try catch throw'
-			+ 'const var proc return break stop input'
-			+ 'while break continue '
-			+ 'switch case default list',
-		literal: 'TRUE FALSE null DM_BUILD DM_VERSION __FILE__ __LINE__ __MAIN__ DEBUG FILE_DIR',
-		built_in: 'usr world src args vars',
+/*
+Language: Dream Maker
+Author: Pieter-Jan Briers <pieterjan.briers@gmail.com>
+Various bits taken from Javascript, Rust and C++'s file.
+Description: Dream Maker language used by the BYOND game engine.
+Category: common
+*/
+
+var BLOCK_COMMENT = hljs.COMMENT('/\\*', '\\*/', {contains: ['self']});
+var KEYWORDS =
+  'var proc verb global tmp static const set as ' +
+  'new del ' +
+  'sleep spawn break continue do else for in step goto if return switch while try catch throw';
+var BUILTINS =
+  'usr src world args ' +
+  'list datum area turf obj mob atom movable client database exception ' +
+  'icon image matrix mutable_appearance savefile sound regex operator';
+var LITERAL = 'null';
+var SUBST = {
+  className: 'subst',
+  begin: '\\[', end: '\\]',
+  keywords: {
+	built_in: BUILTINS,
+	literal: LITERAL
+  },
+  contains: []  // defined later
+};
+var STRING = {
+  className: 'string',
+  begin: '"', end: '"',
+  contains: [
+	hljs.BACKSLASH_ESCAPE,
+	SUBST
+  ]
+};
+var STRING_MULTILINE = {
+  className: 'string',
+  begin: '\\{"', end: '"\\}',
+  contains: [
+	hljs.BACKSLASH_ESCAPE,
+	SUBST
+  ]
+};
+var FILE_STRING = {
+  className: 'string',
+  begin: "'", end: "'"
+};
+var NUMBER = {
+  className: 'number',
+  variants: [
+	{ begin: '1\\.\\#IND' },
+	{ begin: '1\\.\\#INF' },
+	{ begin: hljs.C_NUMBER_RE },
+  ],
+  relevance: 0
+};
+var CONSTANT = {
+  className: 'literal',
+  begin: /\b[A-Z_][A-Z_0-9]*\b/
+};
+var PREPROCESSOR = {
+  className: 'meta',
+  begin: /#\s*[a-z]+\b/, end: /$/,
+  keywords: {
+	'meta-keyword':
+	  'if else elif endif define undef warn error ' +
+	  'ifdef ifndef include'
+  },
+  contains: [
+	{
+	  begin: /\\\n/, relevance: 0
 	},
-	contains: [
-		hljs.QUOTE_STRING_MODE,
-		hljs.C_NUMBER_MODE,
-		hljs.C_BLOCK_COMMENT_MODE,
+	STRING,
+	FILE_STRING,
+	NUMBER,
+	CONSTANT,
+	hljs.C_LINE_COMMENT_MODE,
+	BLOCK_COMMENT,
+  ]
+};
+SUBST.contains = [
+  STRING,
+  FILE_STRING,
+  NUMBER,
+  CONSTANT
+];
+
+hljs.registerLanguage('Dream Maker', (hljs) => ({
+	  aliases: ['dm', 'byond', 'dreammaker'],
+	  keywords: {
+		keyword: KEYWORDS,
+		literal: LITERAL,
+		built_in: BUILTINS
+	  },
+	  contains: [
 		hljs.C_LINE_COMMENT_MODE,
-		{
-			className: 'operator',
-			begin: /\bin\b|\bas\b|\bto\b/,
-		},
-		{
-			className: 'string',
-			begin: '\'',
-			end: '\'',
-			contains: [hljs.BACKSLASH_ESCAPE],
-			relevance: 0
-		},
-		{
-			className: 'meta',
-			begin: /^\s*#\s*[a-z]+\b/,
-			end: /$/,
-			keywords: {
-				keyword: 'if else elif endif define undef warning error line ifdef ifndef include'
-			}
-		},
-		{
-			className: 'built_in',
-			beginKeywords: 'datum obj atom area movable mob turf',
-			end: /[\/\s]/,
-			excludeEnd: true,
-		}
-	]
-}));
+		BLOCK_COMMENT,
+		PREPROCESSOR,
+		STRING,
+		FILE_STRING,
+		STRING_MULTILINE,
+		NUMBER,
+		CONSTANT
+	  ]
+  }));
 
 hljs.initHighlightingOnLoad();
+
