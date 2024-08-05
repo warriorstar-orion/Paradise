@@ -229,7 +229,7 @@ are planned to be converted to TGUI. TGUI uses InfernoJS (based off of
 reactJS) which is an extension to JavaScript. More information can be
 found at the [TGUI Tutorial][].
 
-[TGUI Tutorial]: ../tgui/tutorial-and-examples.md
+[TGUI Tutorial]: https://github.com/ParadiseSS13/Paradise/blob/master/tgui/docs/tutorial-and-examples.md
 
 ## Turf
 Turfs are floors, stuff like space, floors, carpets, or lava, or walls. This
@@ -241,7 +241,7 @@ is [ParadiseSS13/Paradise](https://github.com/ParadiseSS13/Paradise/).
 
 ## Var
 A variable, used for temporarily storing data. For more
-permanent data, check out [#DEFINE](Github_Glossary#DEFINE "wikilink").
+permanent data, check out [defines](#define).
 
 ## Verb
 A special type of proc, which is only available to mobs.

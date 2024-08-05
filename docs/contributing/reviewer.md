@@ -11,7 +11,9 @@ prospective reviewers can begin to start on.
 
 ### What is code review?
 
-> Code reviews act as quality assurance of the code base.... [and] can also act as a second step in identifying bugs, logic problems, or uncovered edge cases.  [[source]](https://about.gitlab.com/topics/version-control/what-is-code-review/)
+> Code reviews act as quality assurance of the code base.... *and* can also act
+> as a second step in identifying bugs, logic problems, or uncovered edge cases.
+> [(source)](https://about.gitlab.com/topics/version-control/what-is-code-review/)
 
 This is a quote from a gitlab article on the importance of code reviews and code
 reviewer teams. It refers to code reviews as a process in which code is
@@ -277,8 +279,8 @@ suggest to fix them as a PR reviewer.**
 ### The Art of Code
 
 > ... I like it because I could make the computer do what I wanted and every
-> time I did that, I got this little thrill and this rush and throughout [my
-> entire career] That thrill for me has never gone away [[The Art of Code - Dylan Beattie](https://www.youtube.com/watch?v=6avJHaC3C2U)]
+> time I did that, I got this little thrill and this rush and throughout *my
+> entire career*. That thrill for me has never gone away [[The Art of Code - Dylan Beattie](https://www.youtube.com/watch?v=6avJHaC3C2U)]
 
 This segment might be a bit corny but I figured it would be important to include
 because I felt like it was an important aspect of reviewing that I've always had

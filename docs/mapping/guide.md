@@ -24,7 +24,7 @@
     - Subtypes only intended to be used on ruin maps should be contained within an .dm file with a name corresponding to that map within `code\modules\ruins`. This is so in the event that the map is removed, that subtype will be removed at the same time as well to minimize leftover/unused data within the repo.
   - When not using StrongDMM (which handles the following automatically) please attempt to clean out any dirty variables that may be contained within items you alter through var-editing. For example changing the `pixel_x` variable from 23 to 0 will leave a dirty record in the map's code of `pixel_x = 0`.
   - Areas should **never** be var-edited on a map. All areas of a single type, altered instance or not, are considered the same area within the code, and editing their variables on a map can lead to issues with powernets and event subsystems which are difficult to debug.
-  - Unless they require custom placement, when placing the following items use the relevant "[direction] bump" instance, as it has predefined pixel offsets and directions that are standardised: APC, Air alarm, Fire alarm, station intercom, newscaster, extinguisher cabient, light switches.
+  - Unless they require custom placement, when placing the following items use the relevant directional mapper, as it has predefined pixel offsets and directions that are standardised: APC, Air alarm, Fire alarm, station intercom, newscaster, extinguisher cabient, light switches.
 
 - If you are making non-minor edits to an area or room, (non-minor being anything more than moving a few objects or fixing small bugs) then you should ensure the entire area/room is updated to meet these standards.
 
@@ -47,7 +47,7 @@
   - Every **room** should contain at least one fire alarm, air vent and scrubber, light switch, station intercom, and security camera.
     - Intercoms should be set to frequency 145.9, and be speaker ON Microphone OFF. This is so radio signals can reach people even without headsets on. Larger room will require more than one at a time.
     - Exceptions can be made to security camera placement for certain rooms, such as the execution room. Larger rooms may require more than one security camera. All security cameras should have a descriptive name that makes it easy to find on a camera console.
-      - A good example would be the template [Department name] - [Area], so Brig - Cell 1, or Medbay - Treatment Center. Consistency is key to good camera naming.
+      - A good example would be the template \[Department name\] - \[Area\], so Brig - Cell 1, or Medbay - Treatment Center. Consistency is key to good camera naming.
     - Fire alarms should not be placed next to expected heat sources.
     - Use the following "on" subtype of vents and scrubbers as opposed to var-editing: `/obj/machinery/atmospherics/unary/vent_scrubber/on` and `/obj/machinery/atmospherics/unary/vent_pump/on`
   - Head of staff offices should contain a requests console.
@@ -64,7 +64,7 @@
 
     - Multiple accesses can be added to a door by placing multiple access helpers on the same tile. Be sure to pay attention so as to avoid mixing up `all` and `any` subtypes.
     - Old doors that use var edited access should be updated to use the correct access helper, and the var edit on the door should be cleaned.
-      - See [`code\modules\mapping\access_helpers.dm`](../code/modules/mapping/access_helpers.dm) for a list of all access helpers.
+      - See [`code\modules\mapping\access_helpers.dm`][helpers] for a list of all access helpers.
     - Subtypes of `/obj/effect/mapping_helpers/airlock/access/any` lets anyone with ONE OF THE LISTED ACCESSES open the door.
     - Subtypes of `/obj/effect/mapping_helpers/airlock/access/all` requires ALL ACCESSES present to open the door.
 
@@ -73,3 +73,5 @@
   - Engine areas, or areas with a high probability of receiving explosions, should use reinforced flooring if appropriate.
   - External areas, or areas where depressurisation is expected and normal, should use airless turf variants to prevent additional atmospherics load.
   - Edits in mapping tools should almost always be possible to replicate in-game. For this reason, avoid stacking multiple structures on the same tile (i.e. placing a light and an APC on the same wall.)
+
+[helpers]: ../../code/modules/mapping/access_helpers.dm

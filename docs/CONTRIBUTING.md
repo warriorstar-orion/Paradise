@@ -1,10 +1,9 @@
 # Contributing Guidelines
 
 This is the contribution guide for Paradise Station. These guidelines apply to
-both new issues and new pull requests. If you are making a pull request, please refer to
-the [Pull request](#pull-requests) section, and if you are making an issue report, please
-refer to the [Issue Report](#issues) section, as well as the
-[Issue Report Template](ISSUE_TEMPLATE.md).
+both new issues and new pull requests. If you are making a pull request, please
+refer to the [Pull request](#pull-requests) section, and if you are making an
+issue report, please refer to the [Issue Report](#issues) section.
 
 <!-- toc -->
 
@@ -23,7 +22,7 @@ Under no circumstances are users to be attacked for their ideas or
 contributions. All participants on a given PR or issue are expected to be civil.
 Failure to do so will result in disciplinary action.
 
-For more details, see the [Code of Conduct](../CODE_OF_CONDUCT.md).
+For more details, see the [Code of Conduct](./CODE_OF_CONDUCT.md).
 
 ## Issues
 
@@ -31,7 +30,8 @@ The Issues section is not a place to request features, or ask for things to be
 changed because you think they should be that way; The Issues section is
 specifically for reporting bugs in the code.
 
-Issue reports should be as detailed as possible, and if applicable, should include instructions on how to reproduce the bug.
+Issue reports should be as detailed as possible, and if applicable, should
+include instructions on how to reproduce the bug.
 
 ## Pull Requests
 
@@ -96,8 +96,11 @@ be made.
 
 ### Using The Changelog
 
-- The tags able to be used in the changelog are: `add/soundadd/imageadd`, `del/sounddel/imagedel`, `tweak`, `fix`, `wip`, `spellcheck`, and `experiment`.
-- Without specifying a name it will default to using your GitHub name. Some examples include:
+- The tags able to be used in the changelog are: `add/soundadd/imageadd`,
+  `del/sounddel/imagedel`, `tweak`, `fix`, `wip`, `spellcheck`, and
+  `experiment`.
+- Without specifying a name it will default to using your GitHub name. Some
+  examples include:
 
 ```txt
     :cl:
@@ -135,27 +138,41 @@ performance reasons, which means it's not compiled the same way as the rest of
 the code. If you're on Windows, you get a pre-built copy by default. If you're
 on Linux, you built one already to run the server.
 
-If you make changes to MILLA, you'll want to rebuild. This will be very similar to RUSTG:
-https://github.com/ParadiseSS13/rust-g
-The only difference is that you run `cargo` from the `milla/` directory, and don't need to speify `--all-features` (though it doesn't hurt).
+If you make changes to MILLA, you'll want to rebuild. This will be very similar
+to RUSTG: https://github.com/ParadiseSS13/rust-g The only difference is that you
+run `cargo` from the `milla/` directory, and don't need to speify
+`--all-features` (though it doesn't hurt).
 
-The server will automatically detect that you have a local build, and use that over the default Windows one.
+The server will automatically detect that you have a local build, and use that
+over the default Windows one.
 
-When you're ready to make a PR, please DO NOT modify `milla.dll` or `tools/ci/libmilla_ci.so`. Leave "Allow edits and access to secrets by maintainers" enabled, and post a comment on your PR saying `!build_milla`. A bot will automatically build them for you and update your branch.
+When you're ready to make a PR, please DO NOT modify `milla.dll` or
+`tools/ci/libmilla_ci.so`. Leave "Allow edits and access to secrets by
+maintainers" enabled, and post a comment on your PR saying `!build_milla`. A bot
+will automatically build them for you and update your branch.
 
 ## Other Notes
 
-- Bloated code may be necessary to add a certain feature, which means there has to be a judgement over whether the feature is worth having or not. You can help make this decision easier by making sure your code is modular.
+- Bloated code may be necessary to add a certain feature, which means there has
+  to be a judgement over whether the feature is worth having or not. You can
+  help make this decision easier by making sure your code is modular.
 
-- You are expected to help maintain the code that you add, meaning that if there is a problem then you are likely to be approached in order to fix any issues, runtimes, or bugs.
+- You are expected to help maintain the code that you add, meaning that if there
+  is a problem then you are likely to be approached in order to fix any issues,
+  runtimes, or bugs.
 
-- If you used regex to replace code during development of your code, post the regex in your PR for the benefit of future developers and downstream users.
+- If you used regex to replace code during development of your code, post the
+  regex in your PR for the benefit of future developers and downstream users.
 
-- All new var/proc names should use the American English spelling of words. This is for consistency with BYOND.
+- All new var/proc names should use the American English spelling of words. This
+  is for consistency with BYOND.
 
-- All mentions of the company "Nanotrasen" should be written as such - 'Nanotrasen'. Use of CamelCase (NanoTrasen) is no longer proper.
+- All mentions of the company "Nanotrasen" should be written as such -
+  'Nanotrasen'. Use of CamelCase (NanoTrasen) is no longer proper.
 
-- If you are making a PR that adds a config option to change existing behaviour, said config option must default to as close to as current behaviour as possible.
+- If you are making a PR that adds a config option to change existing behaviour,
+  said config option must default to as close to as current behaviour as
+  possible.
 
 ## GitHub Staff
 

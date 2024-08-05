@@ -60,10 +60,10 @@ An object is defined the following way:
 Here we can see a `multitool` being defined. A `multitool` is an `item` which is an `obj`. This is how the class inheritance works for DM. A real-life example is that a dog is an animal and a cat is an animal. But a dog is not a cat. In DM it could look something like this:
 ```dm
 /mob/animal/cat
-        name = "Cat"
+	name = "Cat"
 
 /mob/animal/dog
-        name = "Dog"
+	name = "Dog"
 ```
 Where `mob` is a being in DM. Thus something that "lives" and can do things.
 
@@ -71,32 +71,32 @@ Where `mob` is a being in DM. Thus something that "lives" and can do things.
 The way DM groups a set of instructions is as follows. It uses a `proc` or in other languages also called a method or function.
 ```dm
 /obj/item/pen/multi/proc/select_colour(mob/user)
-        var/newcolour = input(user, "Which colour would you like to use?", name, colour) as null|anything in colour_choices
-        if(newcolour)
-                colour = newcolour
-                playsound(loc, 'sound/effects/pop.ogg', 50, 1)
-                update_icon()
+	var/newcolour = input(user, "Which colour would you like to use?", name, colour) as null|anything in colour_choices
+	if(newcolour)
+		colour = newcolour
+		playsound(loc, 'sound/effects/pop.ogg', 50, 1)
+		update_icon()
 ```
 `/obj/item/pen/multi/proc/select_colour` here is the proc definition. Meaning this is the first instance of this proc. For this, you need to add `proc/` in front of the method name (`select_colour` in this case). `mob/user` is here a parameter given to the proc. The name of the parameter is `user` and its type is `mob`.
 
 As with other languages you can also override the behaviour of a proc.
 ```dm
 /obj/item/pen/multi/attack_self(mob/living/user)
-        select_colour(user)
+	select_colour(user)
 ```
 Here the proc `attack_self` is overridden with new behaviour. It will call `select_colour` with as a parameter the given `user`.
 
 When overriding a proc you can also call the parents implementation. This is especially handy when you want to extend the existing behaviour with new behaviour.
 ```dm
 /obj/item/pen/multi/Initialize(mapload)
-        . = ..()
-        update_icon()
+	. = ..()
+	update_icon()
 ```
 Here `Initialize` is overridden with `mapload` as a parameter. `..()` means call the parent implementation of this proc with the parameters given to this version. So `mapload` will be passed through. `. = ..()` means assign the value that the parent's version returns as our default return value. `.` is the default return value in DM. So if you don't return an explicit value at the end of the proc then `.` will be returned.
 ```dm
 /proc/test()
-        . = "Yes"
-        return "No"
+	. = "Yes"
+	return "No"
 ```
 This will return `"No"` since you explicitly state to return `"No"`.
 
@@ -120,20 +120,19 @@ If you come from another language then you might think. "Hey, where are the {}'s
 Instead scoping is done by whitespace. Tabs in our case. One tab means one scope deeper.
 ```dm
 /mob
-        name = "Thing"
+	name = "Thing"
+
 /mob/proc/test()
-        world.log << name // We can access name here since we are in the mob
-        if(name == "Thing")
-                var/value = 10
-                world.log << "[value]" // We can also access value here since it is in the same scope or higher as us.
-                world.log << "Will only happen if name is Thing"
-        else
-                world.log << "Will only happen if name is not Thing"
-        world.log << "Will always happen even if name is not Thing"
-        world.log << "[value]" // This will produce an error since value is not defined in our current scope or higher
+	world.log << name // We can access name here since we are in the mob
+	if(name == "Thing")
+		var/value = 10
+		world.log << "[value]" // We can also access value here since it is in the same scope or higher as us.
+		world.log << "Will only happen if name is Thing"
+	else
+		world.log << "Will only happen if name is not Thing"
+	world.log << "Will always happen even if name is not Thing"
+	world.log << "[value]" // This will produce an error since value is not defined in our current scope or higher
 ```
-
-
 
 In VS Code you can make your life easier by turning on the rendering of whitespace. Go to the settings and search for whitespace.
 ![image](https://user-images.githubusercontent.com/15887760/114451471-91b89880-9bd7-11eb-8f5c-cacd59c7abc5.png)
@@ -211,61 +210,85 @@ Instead, we will try to look for a proc named gib. `/gib(` will be used as our s
 ![image](https://user-images.githubusercontent.com/15887760/114450043-ce839000-9bd5-11eb-82c5-588853cbff7f.png)
 Et voila, just 15 results.
 
-Say we want to delete the pet collar of animals such as Ian when he is gibbed. Here we need to find something stating that the `gib` belongs to an animal.
+Say we want to delete the pet collar of animals such as Ian when he is gibbed.
+Here we need to find something stating that the `gib` belongs to an animal.
+
 ![image](https://user-images.githubusercontent.com/15887760/114450233-0e4a7780-9bd6-11eb-88f1-3318e7b1620c.png)
+
 `/mob/living/simple_animal/gib()` is what we are looking for here. Ian is an animal. `simple_animal` in code.
 
 This will find us the following code (on my current branch)
 ```dm
 /mob/living/simple_animal/gib()
-        if(icon_gib)
-                flick(icon_gib, src)
-        if(butcher_results)
-                var/atom/Tsec = drop_location()
-                for(var/path in butcher_results)
-                        for(var/i in 1 to butcher_results[path])
-                                new path(Tsec)
-        if(pcollar)
-                pcollar.forceMove(drop_location())
-                pcollar = null
-        ..()
+	if(icon_gib)
+		flick(icon_gib, src)
+	if(butcher_results)
+		var/atom/Tsec = drop_location()
+		for(var/path in butcher_results)
+			for(var/i in 1 to butcher_results[path])
+				new path(Tsec)
+	if(pcollar)
+		pcollar.forceMove(drop_location())
+		pcollar = null
+	..()
 ```
-The behaviour we're looking for here has to do with the `pcollar` code there. It will currently move the attached pet collar (if any) to the drop location of the animal when they are gibbed.
+The behaviour we're looking for here has to do with the `pcollar` code there. It
+will currently move the attached pet collar (if any) to the drop location of the
+animal when they are gibbed.
 
 #### Finding A Suitable Place To Add A New Item
-When adding a new item you want to ensure that it is placed in a logical file or that you make a new file in a logical directory.
-I find that it is best to find other similar items and see how they are defined. For example a special jumpsuit without armour values.
-Here we first go look for the existing non-job-related jumpsuits such as the `"mailman's jumpsuit"`. Say we don't know the exact name of that jumpsuit but we do know that it is for a mailman.
-Our best bet will be to look for the term `mailman` and see what pops up. This is a rather uncommon term so it should give only a few results.
+When adding a new item you want to ensure that it is placed in a logical file or
+that you make a new file in a logical directory. I find that it is best to find
+other similar items and see how they are defined. For example a special jumpsuit
+without armour values. Here we first go look for the existing non-job-related
+jumpsuits such as the `"mailman's jumpsuit"`. Say we don't know the exact name
+of that jumpsuit but we do know that it is for a mailman.
+
+Our best bet will be to look for the term `mailman` and see what pops up. This
+is a rather uncommon term so it should give only a few results.
+
 ![image](https://user-images.githubusercontent.com/15887760/114454545-0214e900-9bdb-11eb-94d0-5315a380e540.png)
+
 Perfect. Even the item definition has the name mailman in it.
 
-We already see from the search results that the item is defined in the `miscellaneous.dm` file. Navigating to it will show us the directory it is in.
+We already see from the search results that the item is defined in the
+`miscellaneous.dm` file. Navigating to it will show us the directory it is in.
+
 ![image](https://user-images.githubusercontent.com/15887760/114454734-37213b80-9bdb-11eb-8226-c2fc65a82c91.png)
 
 As you can see most clothing items are defined in this `clothing` directory. Depending on your to add the item you can pick one of those files and see if it would fit in there. Feel free to ask for advice from others if you are unsure.
 
 ### Solving The Actual Issue
-Now comes the **Fun** part. How to achieve what you want to achieve?
-The answer is. "That depends" Fun, isn't it?
-Every problem has its own way of solving it. I will list some of the more common solutions to a problem down here. This list will of course not be complete.
+Now comes the **Fun** part. How to achieve what you want to achieve? The answer
+is. "That depends" Fun, isn't it? Every problem has its own way of solving it. I
+will list some of the more common solutions to a problem down here. This list
+will of course not be complete.
 
-A great hotkey for building your code quick is CTRL SHIFT B. Then press enter to select to build via Byond. This will start building your code in the console at the bottom of your screen (by default). It will also show any errors in the build process.
+A great hotkey for building your code quick is CTRL SHIFT B. Then press enter to
+select to build via Byond. This will start building your code in the console at
+the bottom of your screen (by default). It will also show any errors in the
+build process.
+
 ![image](https://user-images.githubusercontent.com/15887760/114458804-fa0b7800-9bdf-11eb-983e-7af277a3e9c4.png)
 
-Here I have "accidentally" placed some text where it should not belong. Going to the "Problems" tab and clicking on the error will bring you to where it goes wrong.
+Here I have "accidentally" placed some text where it should not belong. Going to
+the "Problems" tab and clicking on the error will bring you to where it goes
+wrong.
+
 ![image](https://user-images.githubusercontent.com/15887760/114458899-1e675480-9be0-11eb-8261-1b7ae9bb564c.png)
 
-This error does not tell much on its own (Byond is not great at telling you what goes wrong sometimes) but going to the location shows the problem quite easily.
-![image](https://user-images.githubusercontent.com/15887760/114458975-3343e800-9be0-11eb-9b57-240f57bc7b11.png)
+This error does not tell much on its own (Byond is not great at telling you what
+goes wrong sometimes) but going to the location shows the problem quite easily.
 
+![image](https://user-images.githubusercontent.com/15887760/114458975-3343e800-9be0-11eb-9b57-240f57bc7b11.png)
 
 More cases might be added later.
 
 #### Typo Or Grammar
-The easiest of them all if you can properly speak English.
-Say the multitool description text is as follows `"Used for pusling wires to test which to cut. Not recommended by doctors."`
-Then you can easily fix the typo by just changing the value of the string to the correct spelling.
+The easiest of them all if you can properly speak English. Say the multitool
+description text is: `"Used for pusling wires to test which to cut. Not
+recommended by doctors."` Then you can easily fix the typo by just changing the
+value of the string to the correct spelling.
 
 #### Wrong Logic
 This one really depends on the context. But let us take the following example. You cannot link machinery using a multitool. Something it should do.

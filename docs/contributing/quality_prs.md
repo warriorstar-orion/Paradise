@@ -235,11 +235,10 @@ the following:
 
 **Communicate Testing Results**
 
-In your PR description, clearly communicate the
-results of your testing. Did everything work as expected? Were there any
-unexpected issues? If you encountered bugs that you couldn't resolve, note them
-and explain why they are there, how they affect the game, and if there are plans
-to address them later.
+In your PR description, clearly communicate the results of your testing. Did
+everything work as expected? Were there any unexpected issues? If you
+encountered bugs that you couldn't resolve, note them and explain why they are
+there, how they affect the game, and if there are plans to address them later.
 
 **The Importance of Thorough Testing**
 

@@ -7,11 +7,11 @@ necessary to get started making contributions to Paradise Station.
 
 If you are new to writing code and contributing, start at [Getting Started][].
 
-[Getting Started]: ./contributing/getting_started/index.md
+[Getting Started]: ./getting_started.md
 
 ## Experienced Programmers
 
 If you are already proficient in coding in another language, you can learn more
 about the DM language at [SS13 For Experienced Programmers][].
 
-[SS13 For Experienced Programmers]: ./guides/experienced/index.md
+[SS13 For Experienced Programmers]: ./guides/ss13_for_experienced_coders.md

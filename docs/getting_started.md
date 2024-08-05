@@ -6,7 +6,7 @@ provides all the necessary steps to do so.
 
 <!-- toc -->
 
-![](images/flowchart.png)
+![](./images/flowchart.png)
 
 # Development Environment Setup
 
@@ -205,10 +205,11 @@ We need to add the main Paradise repository as a remote now.
         created above.
     -   `sql_password` is set to the randomly generated 'Password' of
         the user you created above.
--   The database is now set up for death logging, population logging,
-    polls, library, privacy poll, connection logging and player logging.
-    There are two more features which you should consider. And it's
-    best to do so now, since adopting them later can be a pain.
+
+The database is now set up for death logging, population logging, polls,
+library, privacy poll, connection logging and player logging. There are two more
+features which you should consider. And it's best to do so now, since adopting
+them later can be a pain.
 
 ## Database based administration
 
@@ -256,17 +257,21 @@ the Branches section and open it. You should only have the master
 branch. You can create a new branch by going and clicking on the Create
 Branch button.
 
-![](VSCodeBranching.png "VSCodeBranching.png")
+![](./images/VSCodeBranching.png)
 
 It will then prompt you at the top of your screen to name your new
 branch, then select Create Branch and Switch. For this guide, I'll be
 creating a new hat, so I'll name my branch `hat-landia`. If you look at
 the bottom left hand corner, you'll see that VS Code has automatically
 checked out our
-branch:![](VSCodeBranchExample.png "VSCodeBranchExample.png")\
+branch:
+
+![](./images/VSCodeBranchExample.png)
+
 Remember, **never commit changes to your master branch!** You can work
 on any branch as much as you want, as long as you commit the changes to
-the proper branch.\
+the proper branch.
+
 Go wild! Make your code changes! This is a guide on how to contribute,
 not what to contribute. So, I won't tell you how to code, make sprites,
 or map changes. If you need help, try asking in the `#spriting` or the
@@ -282,8 +287,7 @@ you save them, VS Code will detect what you’ve done and you’ll be able to fo
 the guide from there.
 
 If you do anything mapping related, it is highly recommended you use
-StrongDMM and check out the [Guide to
-Mapping](Guide_to_Mapping "wikilink").
+StrongDMM and check out the [Guide to Mapping](./mapping/guide.md).
 
 Now, save your changes. If we look at the Source Control tab, we'll see
 that we have some new changes. Git has found every change you made to
@@ -323,7 +327,7 @@ yourself an admin. For this, you will need to copy everything from
 `{ckey = "Your Name Here", rank = "Hosting Provider"}` line to the
 `admin_assignments` list.
 
-![](DreamDaemon.png "DreamDaemon.png")
+![](./images/DreamDaemon.png)
 
 Be sure to always test not only if your changes work, but also if you
 didn't actually break something else that might be related.
@@ -333,14 +337,14 @@ didn't actually break something else that might be related.
 Hover over the word **Changes** and press the plus sign to stage all
 modified files. It should look like this:
 
-![](VSCodeStageChanges.png "VSCodeStageChanges.png")
+![](./images/VSCodeStageChanges.png)
 
 Or, pick each file you want to change individually. Staged files are the
 changes you are going to be submitting in commit, and then in your pull
 request. Once you've done that, they'll appear in a new tab called
 Staged Changes.
 
-![](VSCodeStagedChanges.png "VSCodeStagedChanges.png")
+![](./images/VSCodeStagedChanges.png)
 
 Click on one of the code files you've changed now! You'll see a compare
 of the original file versus your new file pop up. Here you can see, line
@@ -357,17 +361,17 @@ Make sure you're checked out on the new branch you created earlier, and
 click the checkmark! This will make your commit and add it to your
 branch. It should look like this:
 
-![](VSCodeCommit.png "VSCodeCommit.png")
+![](./images/VSCodeCommit.png)
 
 There you go! You have successfully made a commit to your branch. This
 is still 'unpublished', and only on your local computer, as indicated by
 the little cloud and arrow icon in the bottom left corner.
 
-![](VSCodePublishBranch.png "VSCodePublishBranch.png")
+![](./images/VSCodePublishBranch.png)
 
 Once you have it committed, you\'ll need to push/publish to your github.
-You can do that by pressing the small cloud icon called \"publish
-branch\".
+You can do that by pressing the small cloud icon called "publish
+branch".
 
 ### Publishing to GitHub
 
@@ -376,7 +380,7 @@ once your branch is published, Github should then prompt you to create a
 pull request. This should automatically select the branch you just
 published and should look something like this.
 
-![](GithubCreatePR.png "GithubCreatePR.png")
+![](./images/GithubCreatePR.png)
 
 If not, you\'ll need to open a Pull Request manually. You\'ll need to
 select \`compare across forks\`, then select the upstream repo and
@@ -407,10 +411,7 @@ gifs to display your changes. you can download it,
 
 if all goes well, your PR should look like this:
 
-![](ExamplePR.png "ExamplePR.png"){width="600"}
+![](./images/ExamplePR.png)
 
 If you want to add more commits to your PR, all you need to do is just
 push those commits to the branch.
-
-</div>
-<div class="toccolours mw-collapsible" style="width:99%">

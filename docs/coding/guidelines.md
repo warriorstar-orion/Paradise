@@ -8,8 +8,10 @@ you don't have to make any changes and we don't have to ask you to.
 
 ### Object Oriented Code
 
-As BYOND's Dream Maker (henceforth "DM") is an object-oriented language, code must be object-oriented when possible in order to be more flexible when adding
-content to it. If you don't know what "object-oriented" means, we highly recommend you do some light research to grasp the basics.
+As BYOND's Dream Maker (henceforth "DM") is an object-oriented language, code
+must be object-oriented when possible in order to be more flexible when adding
+content to it. If you don't know what "object-oriented" means, we highly
+recommend you do some light research to grasp the basics.
 
 ### All BYOND paths must contain the full path
 
@@ -95,7 +97,8 @@ if(!other_thing)
 ### Use `pick(x, y, z)`, not `pick(list(x, y, z))`
 
 `pick()` will happily take a fixed set of options. Wrapping them in a list is redundant and slightly less efficient.
-'''dm
+
+```dm
 // Bad
 var/text = pick(list("test_1", "test_2", "test_3"))
 to_chat(world, text)
@@ -103,15 +106,23 @@ to_chat(world, text)
 // Good
 var/text = pick("test_1", "test_2", "test_3")
 to_chat(world, text)
-'''
+```
 
 ### User Interfaces
 
-All new user interfaces in the game must be created using the TGUI framework. Documentation can be found inside the [`tgui/docs`](../tgui/docs) folder, and the [`README.md`](../tgui/README.md) file. This is to ensure all ingame UIs are snappy and respond well. An exception is made for user interfaces which are purely for OOC actions (Such as character creation, or anything admin related)
+All new user interfaces in the game must be created using the TGUI framework.
+Documentation can be found inside the [`tgui/docs`][tgui_docs] folder, and the
+[`README.md`][tgui_readme] file. This is to ensure all ingame UIs are
+snappy and respond well. An exception is made for user interfaces which are
+purely for OOC actions (Such as character creation, or anything admin related)
+
+[tgui_docs]: https://github.com/ParadiseSS13/Paradise/tree/master/tgui/docs
+[tgui_readme]: https://github.com/ParadiseSS13/Paradise/blob/master/tgui/README.md
 
 ### No overriding type safety checks
 
-The use of the `:` operator to override type safety checks is not allowed. You must cast the variable to the proper type.
+The use of the `:` operator to override type safety checks is not allowed. You
+must cast the variable to the proper type.
 
 ### Do not access return value vars directly from functions
 
@@ -182,7 +193,9 @@ var/atom/A
 
 ### Use the pronoun library instead of `\his` macros
 
-We have a system in [`code/__HELPERS/pronouns.dm`](../code/__HELPERS/pronouns.dm) for addressing all forms of pronouns. This is useful in a number of ways;
+We have a system in
+[`code/__HELPERS/pronouns.dm`][pronouns] for addressing
+all forms of pronouns. This is useful in a number of ways;
 
 - BYOND's `\his` macro can be unpredictable on what object it references. Take this example: `"[user] waves \his [user.weapon] around, hitting \his opponents!"`. This will end up referencing the user's gender in the first occurence, but what about the second? It'll actually print the gender set on the weapon he's carrying, which is unintended - and there's no way around this.
 - It always prints the real `gender` variable of the atom it's referencing. This can lead to exposing a mob's gender even when their face is covered, which would normally prevent it's gender from being printed.
@@ -199,16 +212,24 @@ The way to avoid these problems is to use the pronoun system. Instead of `"[user
 "[user] waves [H.p_their()] [user.weapon] around, hitting [H.p_their()] opponents!"`
 ```
 
+[pronouns]: ../../code/__HELPERS/pronouns.dm
+
 ### Use `[A.UID()]` over `\ref[A]`
 
-BYOND has a system to pass "soft references" to datums, using the format `"\ref[datum]"` inside a string. This allows you to find the object just based
-off of a text string, which is especially useful when dealing with the bridge between BYOND code and HTML/JS in UIs. It's resolved back into an object
-reference by using `locate("\ref[datum]")` when the code comes back to BYOND. The issue with this is that locate() can return a unexpected datum
-if the original datum has been deleted - BYOND recycles the references.
+BYOND has a system to pass "soft references" to datums, using the format
+`"\ref[datum]"` inside a string. This allows you to find the object just based
+off of a text string, which is especially useful when dealing with the bridge
+between BYOND code and HTML/JS in UIs. It's resolved back into an object
+reference by using `locate("\ref[datum]")` when the code comes back to BYOND.
+The issue with this is that `locate()` can return a unexpected datum if the
+original datum has been deleted - BYOND recycles the references.
 
-UID's are actually unique; they work off of a global counter and are not recycled. Each datum has one assigned to it when it's created, which can be
-accessed by `[datum.UID()]`. You can use this as a snap-in replacement for `\ref` by changing any `locate(ref)` calls in your code to `locateUID(ref)`.
-Usage of this system is mandatory for any `Topic()` calls, and will produce errors in Dream Daemon if it's not used.
+UID's are actually unique; they work off of a global counter and are not
+recycled. Each datum has one assigned to it when it's created, which can be
+accessed by [`[datum.UID()]`][duid]. You can use this as a snap-in replacement for
+`\ref` by changing any `locate(ref)` calls in your code to `locateUID(ref)`.
+Usage of this system is mandatory for any `Topic()` calls, and will produce
+errors in Dream Daemon if it's not used.
 
 ```dm
 //Bad
@@ -217,6 +238,8 @@ Usage of this system is mandatory for any `Topic()` calls, and will produce erro
 //Good
 "<a href='byond://?src=[UID()];'>Link!</a>"
 ```
+
+[duid]: https://codedocs.paradisestation.org/datum.html#proc/UID
 
 ### Use `var/name` format when declaring variables
 
@@ -660,7 +683,8 @@ when reading BYOND code.
 
 ### Global Vars
 
-All new global vars must use the defines in [`code/__DEFINES/_globals.dm`](../code/__DEFINES/_globals.dm). Basic usage is as follows:
+All new global vars must use the defines in
+[`code/__DEFINES/_globals.dm`][globals]. Basic usage is as follows:
 
 To declare a global var:
 
@@ -674,6 +698,10 @@ To access it:
 GLOB.my_global_here = X
 ```
 
-There are a few other defines that do other things. `GLOBAL_REAL` shouldn't be used unless you know exactly what you're doing.
-`GLOBAL_VAR_INIT` allows you to set an initial value on the var, like `GLOBAL_VAR_INIT(number_one, 1)`.
-`GLOBAL_LIST_INIT` allows you to define a list global var with an initial value. Etc.
+There are a few other defines that do other things. `GLOBAL_REAL` shouldn't be
+used unless you know exactly what you're doing. `GLOBAL_VAR_INIT` allows you to
+set an initial value on the var, like `GLOBAL_VAR_INIT(number_one, 1)`.
+`GLOBAL_LIST_INIT` allows you to define a list global var with an initial value,
+etc.
+
+[globals]: https://github.com/ParadiseSS13/Paradise/blob/master/code/__DEFINES/_globals.dm
