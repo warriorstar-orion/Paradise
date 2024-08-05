@@ -164,7 +164,14 @@ and in-game systems, there are several requirements that must be followed.
 18. Engine areas, or areas with a high probability of receiving explosions,
     should use reinforced flooring if appropriate.
 
-19. External areas, or areas where depressurisation is expected and normal, should use airless turf variants to prevent additional atmospherics load.
+19. External areas, or areas where depressurisation is expected and normal,
+    should use airless turf variants to prevent additional atmospherics load.
+
+20. When adding new shuttles, or remapping departures areas, contributors must
+    ensure that all existing and new shuttles continue to fit and dock to the
+    correct airlocks as expected. Any time docking ports are edited, the author
+    needs to confirm the `width`, `height`, and `dwidth` variables between the
+    two permanent ports and mobile port are compatible.
 
 [helpers]: https://github.com/ParadiseSS13/Paradise/blob/master/code/modules/mapping/access_helpers.dm
 
@@ -197,9 +204,15 @@ altered instance or not, are considered the same area within the code, and
 editing their variables on a map can lead to issues with powernets and event
 subsystems which are difficult to debug.
 
-Subtypes only intended to be used on ruins should be contained within an .dm file with a name corresponding to that map within `code\modules\ruins`. This is so in the event that the map is removed, that subtype will be removed at the same time as well to minimize leftover/unused data within the repo.
+Subtypes only intended to be used on ruins should be contained within an .dm
+file with a name corresponding to that map within `code\modules\ruins`. This is
+so in the event that the map is removed, that subtype will be removed at the
+same time as well to minimize leftover/unused data within the repo.
 
-When not using StrongDMM (which handles the following automatically) please attempt to clean out any dirty variables that may be contained within items you alter through varediting. For example changing the `pixel_x` variable from 23 to 0 will leave a dirty record in the map's code of `pixel_x = 0`.
+When not using StrongDMM (which handles the following automatically) please
+attempt to clean out any dirty variables that may be contained within items you
+alter through varediting. For example changing the `pixel_x` variable from 23 to
+0 will leave a dirty record in the map's code of `pixel_x = 0`.
 
 Unless they require custom placement, when placing the following items use the
 relevant directional mapper, as it has predefined pixel offsets and directions
@@ -212,7 +225,8 @@ These guidelines apply to **all** mapping contributors.
 
 For mapping PRs, we do not accept 'change for the sake of change' remaps, unless
 you have very good reasoning to do so. Maintainers reserve the right to close
-your PR if we disagree with your reasoning. Large remaps, such as those to a department, must be justified with clear, specific reasons.
+your PR if we disagree with your reasoning. Large remaps, such as those to a
+department, must be justified with clear, specific reasons.
 
 Before committing a map change, you **MUST** run Mapmerge to normalise your
 changes. You can do this manually before every commit with
