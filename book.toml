@@ -1,14 +1,14 @@
 [book]
-authors = ["warriorstar-orion"]
+authors = ["Paradise Station"]
 language = "en"
 multilingual = false
 src = "docs"
 title = "Paradise Station Development"
 
 [output.html]
-theme = "./src/theme"
-additional-css = ["./src/css/para.css"]
-additional-js = ["./src/js/highlight-dm.js"]
+theme = "./docs/theme"
+additional-css = ["./docs/css/para.css"]
+additional-js = ["./docs/js/highlight-dm.js"]
 default-theme = "navy"
 preferred-dark-theme = "navy"
 

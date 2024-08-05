@@ -4,8 +4,8 @@
 
 # Contributing
 
-- [Code of Conduct](./contributing/code_of_conduct.md)
-- [Contributing Guidelines](./contributing/guidelines.md)
+- [Code of Conduct](./CODE_OF_CONDUCT.md)
+- [Contributing Guidelines](./CONTRIBUTING.md)
 
 - [Getting Started](./getting_started.md)
 
