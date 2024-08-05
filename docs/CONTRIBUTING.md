@@ -40,6 +40,9 @@ their own pull requests. If the work you are submitting is a new feature, or
 affects balance, it is strongly recommended you get approval/traction for it
 from our forums before starting the actual development.
 
+It is expected that all code contributors read and understand the
+[Guide to Quality PRs](./contributing/quality_prs.md).
+
 Keep your pull requests atomic. Each pull request should strive to address one
 primary goal, and should not include fixes or changes that aren't related to the
 main purpose of the pull request. Unrelated changes should be applied in new
