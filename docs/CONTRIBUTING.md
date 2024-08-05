@@ -131,6 +131,11 @@ Status of your pull request will be communicated via PR labels. This includes:
   commit access to merge it. **Note: Your PR may be delayed if it is pending
   testmerge or in the mapping queue**
 
+### Mapping Standards
+
+All PRs which modify maps are expected to follow all of our
+[mapping standards](./mapping/guide.md#technical-standards).
+
 ## Modifying MILLA
 
 Our atmos engine, MILLA, is in the `milla/` directory. It's written in Rust for

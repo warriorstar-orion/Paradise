@@ -39,7 +39,7 @@ to deal with a map merge conflict.
 
 [StrongDMM][] is the recommended tool for editing maps by a wide margin. It is
 fast, provides easy searching for both objects on maps and objects in the
-codebase, an intuitive var-editing system, the ability to hide categories of
+codebase, an intuitive varediting system, the ability to hide categories of
 objects on the map while editing, and more.
 
 When using StrongDMM, the following options must be enabled. They can be found under _File -> Preferences_:
@@ -192,14 +192,14 @@ instances on a map, or multiple instances across maps. If you need to change the
 variable, you will then have to find every instance of it across all of the
 maps, and change them all.
 
-Areas should **never** be var-edited on a map. All areas of a single type,
+Areas should **never** be varedited on a map. All areas of a single type,
 altered instance or not, are considered the same area within the code, and
 editing their variables on a map can lead to issues with powernets and event
 subsystems which are difficult to debug.
 
 Subtypes only intended to be used on ruins should be contained within an .dm file with a name corresponding to that map within `code\modules\ruins`. This is so in the event that the map is removed, that subtype will be removed at the same time as well to minimize leftover/unused data within the repo.
 
-When not using StrongDMM (which handles the following automatically) please attempt to clean out any dirty variables that may be contained within items you alter through var-editing. For example changing the `pixel_x` variable from 23 to 0 will leave a dirty record in the map's code of `pixel_x = 0`.
+When not using StrongDMM (which handles the following automatically) please attempt to clean out any dirty variables that may be contained within items you alter through varediting. For example changing the `pixel_x` variable from 23 to 0 will leave a dirty record in the map's code of `pixel_x = 0`.
 
 Unless they require custom placement, when placing the following items use the
 relevant directional mapper, as it has predefined pixel offsets and directions
@@ -214,13 +214,13 @@ For mapping PRs, we do not accept 'change for the sake of change' remaps, unless
 you have very good reasoning to do so. Maintainers reserve the right to close
 your PR if we disagree with your reasoning. Large remaps, such as those to a department, must be justified with clear, specific reasons.
 
-Before committing a map change, you **MUST** run mapmerge2 to normalise your
+Before committing a map change, you **MUST** run Mapmerge to normalise your
 changes. You can do this manually before every commit with
-`"\tools\mapmerge2\Run Before Committing.bat"` or automatically by installing
-the hooks at `"\tools\hooks\Install.bat"`. Failure to run Map Merge on a map
-after editing greatly increases the risk of the map's key dictionary becoming
-corrupted by future edits after running map merge. Resolving the corruption
-issue involves rebuilding the map's key dictionary;
+`"\tools\mapmerge2\Run Before Committing.bat"` or by letting the [git
+hooks](#mapmerge) do it for you. Failure to run Mapmerge on a map after editing
+greatly increases the risk of the map's key dictionary becoming corrupted by
+future edits after running map merge. Resolving the corruption issue involves
+rebuilding the map's key dictionary.
 
 If you are making non-minor edits to an area or room, (non-minor being anything
 more than moving a few objects or fixing small bugs) then you should ensure the

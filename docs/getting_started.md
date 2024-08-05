@@ -19,7 +19,7 @@ recommended editor for working with Paradise.
 Visual Studio Code is the recommended editor for working with Paradise and other
 SS13 codebases.
 
-1. Go to VSCode's website: <https://code.visualstudio.com/>
+1. Go to VS Code's website: <https://code.visualstudio.com/>
 2. Download the appropriate build for your system and install it.
 
 ## Setting Up Git
@@ -184,7 +184,7 @@ We need to add the main Paradise repository as a remote now.
    password of certain lengths. copy the password before saving as it will be
    cleared the moment you hit *Save*.
 
-9. Open the file `config/config.toml` in your text editor (such as VSCode)
+9. Open the file `config/config.toml` in your text editor (such as VS Code)
    scroll down to the `[database_configuration]` section. You should've copied
    the file over from the `config/example` folder beforehand.
 
