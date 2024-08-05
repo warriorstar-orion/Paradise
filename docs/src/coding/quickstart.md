@@ -29,10 +29,17 @@
 
 
 ## Intro
-Glad you're reading this and hopefully this guide will help you start contributing to this codebase!
-First a word of wisdom. Start small with your first set of PRs even if you are already experienced with developing for other languages or codebases. Every codebase has its own quirks and standards which you will discover by doing and receiving feedback on your work.
-This guide will help you set up your git and make your first PR. It will also include some tips on how to (in my opinion) best handle the codebase.
-This guide will assume that you have at least (very) minor knowledge of how programming works. Knowing what a `string` is and how `if` statements work for example. The guide will also assume that you will use VS Code which the [Setup](#Setup) section helps you set up.
+Glad you're reading this and hopefully this guide will help you start
+contributing to this codebase! First a word of wisdom. Start small with your
+first set of PRs even if you are already experienced with developing for other
+languages or codebases. Every codebase has its own quirks and standards which
+you will discover by doing and receiving feedback on your work. This guide will
+help you set up your git and make your first PR. It will also include some tips
+on how to (in my opinion) best handle the codebase. This guide will assume that
+you have at least (very) minor knowledge of how programming works. Knowing what
+a `string` is and how `if` statements work for example. The guide will also
+assume that you will use VS Code which the [Setup](#Setup) section helps you set
+up.
 
 Be sure to also take a look at the [contributing page](https://github.com/ParadiseSS13/Paradise/blob/master/.github/CONTRIBUTING.md) so you know what the coding standards are here.
 

@@ -2,6 +2,8 @@
 
 Hey everyone, I noticed some people were not sure how to approach reviewing PRs so I figured I would write up a small guide on PR reviewing and how people like our Headcoders, commit access, Lewcc, S34N, and I all do our jobs. In addition to some guidance and pointers on PR reviewing, I will also go over a few code examples and point out code standard corrections and basic errors that prospective reviewers can begin to start on.
 
+<!-- toc -->
+
 ### What is code review?
 
 > Code reviews act as quality assurance of the code base.... [and] can also act as a second step in identifying bugs, logic problems, or uncovered edge cases.  [[source]](https://about.gitlab.com/topics/version-control/what-is-code-review/)

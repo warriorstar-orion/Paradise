@@ -21,7 +21,7 @@
 
 # Mapping
 
-- [Mapping Standards](./mapping/standards.md)
+- [Mapping Guidelines](./mapping/guidelines.md)
 - [Guide to Mapmerge]()
 - [Design Guidelines](./mapping/design.md)
 

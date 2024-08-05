@@ -1,6 +1,8 @@
 # Getting Started
 
-This section contains all the relevant information for downloading and running a Paradise server locally.
+Whether you're looking to contribute code, mapping changes, or sprites to
+Paradise Station, you will need to set up a development environment. This guide
+provides all the necessary steps to do so.
 
 <!-- toc -->
 
@@ -273,9 +275,11 @@ or map changes. If you need help, try asking in the `#spriting` or the
 ### Changing Code
 
 You'll find your code to edit in the Explorer sidebar of VS Code; if you
-need to find something, the Search sidebar is just below that.\
+need to find something, the Search sidebar is just below that.
 
-    Old-school style: If you want to use DreamMaker instead, go ahead and edit your files there - once you save them, VS Code will detect what you’ve done and you’ll be able to follow the guide from there.
+If you want to use DreamMaker instead, go ahead and edit your files there - once
+you save them, VS Code will detect what you’ve done and you’ll be able to follow
+the guide from there.
 
 If you do anything mapping related, it is highly recommended you use
 StrongDMM and check out the [Guide to
