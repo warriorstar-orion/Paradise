@@ -36038,8 +36038,7 @@
 	},
 /obj/machinery/camera/autoname{
 	dir = 10;
-	c_tag = "Surgery Observation West";
-	req_access_txt = s
+	c_tag = "Surgery Observation West"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -36281,7 +36280,7 @@
 /area/station/engineering/break_room)
 "haU" = (
 /obj/structure/displaycase{
-	start_showpiece_type = /obj/item/food/snacks/donut/sprinkles
+	start_showpiece_type = /obj/item/food/donut/sprinkles
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -45937,8 +45936,7 @@
 	name = "Ian Effigy"
 	},
 /obj/item/decorations/sticky_decorations/flammable/heart_chain{
-	pixel_y = 11;
-	allowed = sss
+	pixel_y = 11
 	},
 /obj/effect/landmark/spawner/nukedisc_respawn,
 /turf/simulated/floor/wood,
@@ -62667,8 +62665,7 @@
 /area/station/security/evidence)
 "mos" = (
 /obj/item/decorations/sticky_decorations/flammable/heart_chain{
-	pixel_y = 11;
-	allowed = sss
+	pixel_y = 11
 	},
 /obj/item/decorations/sticky_decorations/flammable/arrowed_heart,
 /obj/item/organ/internal/heart/vulpkanin,
@@ -67775,8 +67772,7 @@
 	},
 /obj/machinery/camera/autoname{
 	dir = 1;
-	c_tag = "Surgery Observation West";
-	req_access_txt = s
+	c_tag = "Surgery Observation West"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -87117,8 +87113,7 @@
 	pixel_y = 32
 	},
 /obj/item/decorations/sticky_decorations/flammable/heart_chain{
-	pixel_y = 11;
-	allowed = sss
+	pixel_y = 11
 	},
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/simulated/floor/plating,
@@ -98430,9 +98425,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "caution"
 	},
-/area/station/engineering/break_room{
-	name = s
-	})
+/area/station/engineering/break_room)
 "tei" = (
 /obj/effect/spawner/window/reinforced,
 /obj/structure/sign/lifestar,
@@ -99682,8 +99675,7 @@
 	pixel_y = 32
 	},
 /obj/item/decorations/sticky_decorations/flammable/heart_chain{
-	pixel_y = 11;
-	allowed = sss
+	pixel_y = 11
 	},
 /obj/structure/bed,
 /obj/item/bedsheet/orange,
