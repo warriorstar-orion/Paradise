@@ -29,11 +29,3 @@
 /datum/ai_planning_subtree/flee_target/from_flee_key
 	target_key = BB_BASIC_MOB_FLEE_TARGET
 	hiding_place_key = BB_BASIC_MOB_FLEE_TARGET_HIDING_LOCATION
-
-/// A subtype that forces the mob to flee from targets with the scary fisherman trait anyway.
-/datum/ai_planning_subtree/flee_target/from_fisherman
-
-/datum/ai_planning_subtree/flee_target/from_fisherman/should_flee(datum/ai_controller/controller, atom/flee_from)
-	if (!QDELETED(flee_from) && HAS_TRAIT(flee_from, TRAIT_SCARY_FISHERMAN))
-		return TRUE
-	return ..()

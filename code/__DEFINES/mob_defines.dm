@@ -215,6 +215,11 @@
 
 #define DIRECTION_LOCK_SLOWDOWN 3
 
+/// Acts as a default faction for most violent creatures
+#define FACTION_HOSTILE "hostile"
+/// Acts as a default faction for most peaceful creatures
+#define FACTION_NEUTRAL "neutral"
+
 //Human sub-species
 #define isabductor(A) (is_species(A, /datum/species/abductor))
 #define isgolem(A) (is_species(A, /datum/species/golem))

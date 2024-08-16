@@ -7,8 +7,8 @@
 	icon_state = "corgi"
 	icon_living = "corgi"
 	icon_dead = "corgi_dead"
-	held_state = "corgi"
-	butcher_results = list(/obj/item/food/meat/slab/corgi = 3, /obj/item/stack/sheet/animalhide/corgi = 1)
+	// held_state = "corgi"
+	// butcher_results = list(/obj/item/food/meat/slab/corgi = 3, /obj/item/stack/sheet/animalhide/corgi = 1)
 	gold_core_spawnable = FRIENDLY_SPAWN
 	collar_icon_state = "corgi"
 	cult_icon_state = "narsian"
@@ -29,27 +29,29 @@
 	var/list/strippable_inventory_slots = list()
 	///can this mob breed?
 	var/can_breed = TRUE
+	var/nofur = FALSE 		//Corgis that have risen past the material plane of existence.
+	gender = MALE
 
 /mob/living/basic/pet/dog/corgi/Initialize(mapload)
 	. = ..()
 	update_appearance()
 	AddElement(/datum/element/strippable, length(strippable_inventory_slots) ? create_strippable_list(strippable_inventory_slots) : GLOB.strippable_corgi_items)
-	AddElement(/datum/element/swabable, CELL_LINE_TABLE_CORGI, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 5)
-	RegisterSignal(src, COMSIG_MOB_TRIED_ACCESS, PROC_REF(on_tried_access))
-	RegisterSignals(src, list(COMSIG_BASICMOB_LOOK_ALIVE, COMSIG_BASICMOB_LOOK_DEAD), PROC_REF(on_appearance_change))
-	if(!can_breed)
-		return
-	AddComponent(\
-		/datum/component/breed,\
-		can_breed_with = typecacheof(list(/mob/living/basic/pet/dog/corgi)),\
-		baby_path = /mob/living/basic/pet/dog/corgi/puppy,\
-	)
+	// AddElement(/datum/element/swabable, CELL_LINE_TABLE_CORGI, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 5)
+	// RegisterSignal(src, COMSIG_MOB_TRIED_ACCESS, PROC_REF(on_tried_access))
+	// RegisterSignals(src, list(COMSIG_BASICMOB_LOOK_ALIVE, COMSIG_BASICMOB_LOOK_DEAD), PROC_REF(on_appearance_change))
+	// if(!can_breed)
+	// 	return
+	// AddComponent(\
+	// 	/datum/component/breed,\
+	// 	can_breed_with = typecacheof(list(/mob/living/basic/pet/dog/corgi)),\
+	// 	baby_path = /mob/living/basic/pet/dog/corgi/puppy,\
+	// )
 
 /mob/living/basic/pet/dog/corgi/Destroy()
 	QDEL_NULL(inventory_head)
 	QDEL_NULL(inventory_back)
 	QDEL_NULL(access_card)
-	UnregisterSignal(src, list(COMSIG_BASICMOB_LOOK_ALIVE, COMSIG_BASICMOB_LOOK_DEAD))
+	// UnregisterSignal(src, list(COMSIG_BASICMOB_LOOK_ALIVE, COMSIG_BASICMOB_LOOK_DEAD))
 	return ..()
 
 /mob/living/basic/pet/dog/corgi/Exited(atom/movable/gone, direction)
@@ -77,56 +79,56 @@
 	inventory_head?.forceMove(drop_location())
 	inventory_back?.forceMove(drop_location())
 
-/mob/living/basic/pet/dog/corgi/examine(mob/user)
-	. = ..()
-	if(access_card)
-		. += "There appears to be [icon2html(access_card, user)] \a [access_card] pinned to [p_them()]."
+// /mob/living/basic/pet/dog/corgi/examine(mob/user)
+// 	. = ..()
+// 	if(access_card)
+// 		. += "There appears to be [icon2html(access_card, user)] \a [access_card] pinned to [p_them()]."
 
-/**
- * Corgis get full protection from their equipped fashion items if attacked in a way that passes def_zone,
- * which usually means any direct attack like melee or gunshot. Anything abstract like a bomb or acid or something
- * will instead give half the armor value.
- */
-/mob/living/basic/pet/dog/corgi/getarmor(def_zone, type)
-	var/armorval = 0
+// /**
+//  * Corgis get full protection from their equipped fashion items if attacked in a way that passes def_zone,
+//  * which usually means any direct attack like melee or gunshot. Anything abstract like a bomb or acid or something
+//  * will instead give half the armor value.
+//  */
+// /mob/living/basic/pet/dog/corgi/getarmor(def_zone, type)
+// 	var/armorval = 0
 
-	if(def_zone)
-		if(def_zone == BODY_ZONE_HEAD)
-			if(inventory_head)
-				armorval = inventory_head.get_armor_rating(type)
-		else
-			if(inventory_back)
-				armorval = inventory_back.get_armor_rating(type)
-		return armorval
-	else
-		if(inventory_head)
-			armorval += inventory_head.get_armor_rating(type)
-		if(inventory_back)
-			armorval += inventory_back.get_armor_rating(type)
-	return armorval * 0.5
+// 	if(def_zone)
+// 		if(def_zone == BODY_ZONE_HEAD)
+// 			if(inventory_head)
+// 				armorval = inventory_head.get_armor_rating(type)
+// 		else
+// 			if(inventory_back)
+// 				armorval = inventory_back.get_armor_rating(type)
+// 		return armorval
+// 	else
+// 		if(inventory_head)
+// 			armorval += inventory_head.get_armor_rating(type)
+// 		if(inventory_back)
+// 			armorval += inventory_back.get_armor_rating(type)
+// 	return armorval * 0.5
 
-/mob/living/basic/pet/dog/corgi/attackby(obj/item/attacking_item, mob/user, params)
-	if(istype(attacking_item, /obj/item/razor))
+/mob/living/basic/pet/dog/corgi/attackby(obj/item/O, mob/user, params)
+	if(istype(O, /obj/item/razor))
 		if(shaved)
-			to_chat(user, span_warning("You can't shave this corgi, [p_they()] has already been shaved!"))
+			to_chat(user, "<span class='warning'>You can't shave this corgi, it's already been shaved!</span>")
 			return
-		if(!can_be_shaved)
-			to_chat(user, span_warning("You can't shave this corgi, [p_they()] [p_do()]n't have a fur coat!"))
+		if(nofur)
+			to_chat(user, "<span class='warning'>You can't shave this corgi, it doesn't have a fur coat!</span>")
 			return
-		user.visible_message(span_notice("[user] starts to shave [src] using \the [attacking_item]."), span_notice("You start to shave [src] using \the [attacking_item]..."))
-		if(do_after(user, 5 SECONDS, target = src))
-			user.visible_message(span_notice("[user] shaves [src]'s hair using \the [attacking_item]."))
-			playsound(get_turf(src), 'sound/items/welder2.ogg', 20, TRUE)
+		user.visible_message("<span class='notice'>[user] starts to shave [src] using \the [O].", "<span class='notice'>You start to shave [src] using \the [O]...</span>")
+		if(do_after(user, 50, target = src))
+			user.visible_message("<span class='notice'>[user] shaves [src]'s hair using \the [O].</span>")
+			playsound(loc, O.usesound, 20, TRUE)
 			shaved = TRUE
-			icon_living = "[icon_living]_shaved"
-			icon_dead = "[icon_living]_shaved_dead"
+			icon_living = "[initial(icon_living)]_shaved"
+			icon_dead = "[initial(icon_living)]_shaved_dead"
 			if(stat == CONSCIOUS)
 				icon_state = icon_living
 			else
 				icon_state = icon_dead
-		return TRUE
-
-	return  ..()
+		return
+	..()
+	update_corgi_fluff()
 
 /mob/living/basic/pet/dog/corgi/update_dog_speech(datum/ai_planning_subtree/random_speech/speech)
 	. = ..()
@@ -139,18 +141,6 @@
 		var/datum/dog_fashion/equipped_back_fashion_item = new inventory_back.dog_fashion(src)
 		equipped_back_fashion_item.apply_to_speech(speech)
 
-/mob/living/basic/pet/dog/corgi/deadchat_plays(mode = ANARCHY_MODE, cooldown = 12 SECONDS)
-	. = AddComponent(/datum/component/deadchat_control/cardinal_movement, mode, list(
-		"speak" = CALLBACK(src, PROC_REF(bork)),
-		"wear_hat" = CALLBACK(src, PROC_REF(find_new_hat)),
-		"drop_hat" = CALLBACK(src, PROC_REF(drop_hat)),
-		"spin" = CALLBACK(src, TYPE_PROC_REF(/mob, emote), "spin")), cooldown, CALLBACK(src, PROC_REF(stop_deadchat_plays)))
-
-	if(. == COMPONENT_INCOMPATIBLE)
-		return
-
-	// Stop all automated behavior.
-	QDEL_NULL(ai_controller)
 
 /mob/living/basic/pet/dog/corgi/update_overlays()
 	. = ..()
@@ -194,54 +184,54 @@
 
 		. += back_icon
 
-//Corgis are supposed to be simpler, so only a select few objects can actually be put
-//to be compatible with them. The objects are below.
-//Many  hats added, Some will probably be removed, just want to see which ones are popular.
-// > some will probably be removed
+// //Corgis are supposed to be simpler, so only a select few objects can actually be put
+// //to be compatible with them. The objects are below.
+// //Many  hats added, Some will probably be removed, just want to see which ones are popular.
+// // > some will probably be removed
 
-/**
- * Places an item on the corgi's head, handling updating the corgi's appearance and the item's dog fashion modifiers
- * to the name, description, speech etc. Doesn't need the user to complete, and is also used in station traits/events/persistence reading.
-*/
-/mob/living/basic/pet/dog/corgi/proc/place_on_head(obj/item/item_to_add, mob/living/user)
-	if(inventory_head)
-		if(user)
-			balloon_alert(user, "already wearing a hat!")
-		return FALSE
+// /**
+//  * Places an item on the corgi's head, handling updating the corgi's appearance and the item's dog fashion modifiers
+//  * to the name, description, speech etc. Doesn't need the user to complete, and is also used in station traits/events/persistence reading.
+// */
+// /mob/living/basic/pet/dog/corgi/proc/place_on_head(obj/item/item_to_add, mob/living/user)
+// 	if(inventory_head)
+// 		if(user)
+// 			balloon_alert(user, "already wearing a hat!")
+// 		return FALSE
 
-	if(isnull(item_to_add))
-		if (!isnull(user))
-			user.visible_message(span_notice("[user] pets [src]."), span_notice("You rest your hand on [src]'s head for a moment."))
-			if(flags_1 & HOLOGRAM_1)
-				return
-			user.add_mood_event(REF(src), /datum/mood_event/pet_animal, src)
-		return FALSE
+// 	if(isnull(item_to_add))
+// 		if (!isnull(user))
+// 			user.visible_message(span_notice("[user] pets [src]."), span_notice("You rest your hand on [src]'s head for a moment."))
+// 			if(flags_1 & HOLOGRAM_1)
+// 				return
+// 			user.add_mood_event(REF(src), /datum/mood_event/pet_animal, src)
+// 		return FALSE
 
-	if(user && !user.temporarilyRemoveItemFromInventory(item_to_add))
-		to_chat(user, span_warning("\The [item_to_add] is stuck to your hand, you cannot put it on [src]'s head!"))
-		return FALSE
+// 	if(user && !user.temporarilyRemoveItemFromInventory(item_to_add))
+// 		to_chat(user, span_warning("\The [item_to_add] is stuck to your hand, you cannot put it on [src]'s head!"))
+// 		return FALSE
 
-	//Various hats and items (worn on his head) change Ian's behaviour. His attributes are reset when a hat is removed.
-	if(!ispath(item_to_add.dog_fashion, /datum/dog_fashion/head))
-		to_chat(user, span_warning("You set [item_to_add] on [src]'s head, but it falls off!"))
-		item_to_add.forceMove(drop_location())
-		if(prob(25))
-			step_rand(item_to_add)
-		dance_rotate(src, set_original_dir = TRUE)
-		return FALSE
+// 	//Various hats and items (worn on his head) change Ian's behaviour. His attributes are reset when a hat is removed.
+// 	if(!ispath(item_to_add.dog_fashion, /datum/dog_fashion/head))
+// 		to_chat(user, span_warning("You set [item_to_add] on [src]'s head, but it falls off!"))
+// 		item_to_add.forceMove(drop_location())
+// 		if(prob(25))
+// 			step_rand(item_to_add)
+// 		dance_rotate(src, set_original_dir = TRUE)
+// 		return FALSE
 
-	if (user)
-		if(stat == DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH))
-			to_chat(user, span_notice("There is merely a dull, lifeless look in [real_name]'s eyes as you put \the [item_to_add] on [p_them()]."))
-		else
-			user.visible_message(span_notice("[user] puts [item_to_add] on [real_name]'s head. [src] looks at [user] and barks once."),
-				span_notice("You put [item_to_add] on [real_name]'s head. [src] gives you a peculiar look, then wags [p_their()] tail once and barks."),
-				span_hear("You hear a friendly-sounding bark."))
-	item_to_add.forceMove(src)
-	inventory_head = item_to_add
-	update_corgi_fluff()
-	update_appearance(UPDATE_OVERLAYS)
-	return TRUE
+// 	if (user)
+// 		if(stat == DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH))
+// 			to_chat(user, span_notice("There is merely a dull, lifeless look in [real_name]'s eyes as you put \the [item_to_add] on [p_them()]."))
+// 		else
+// 			user.visible_message(span_notice("[user] puts [item_to_add] on [real_name]'s head. [src] looks at [user] and barks once."),
+// 				span_notice("You put [item_to_add] on [real_name]'s head. [src] gives you a peculiar look, then wags [p_their()] tail once and barks."),
+// 				span_hear("You hear a friendly-sounding bark."))
+// 	item_to_add.forceMove(src)
+// 	inventory_head = item_to_add
+// 	update_corgi_fluff()
+// 	update_appearance(UPDATE_OVERLAYS)
+// 	return TRUE
 
 /mob/living/basic/pet/dog/corgi/proc/update_corgi_fluff()
 	// First, change back to defaults
@@ -261,9 +251,9 @@
 		equipped_back_fashion_item.apply(src)
 
 ///Handler for COMSIG_MOB_TRIED_ACCESS
-/mob/living/basic/pet/dog/corgi/proc/on_tried_access(mob/accessor, obj/locked_thing)
-	SIGNAL_HANDLER
-	return locked_thing?.check_access(access_card) ? ACCESS_ALLOWED : ACCESS_DISALLOWED
+// /mob/living/basic/pet/dog/corgi/proc/on_tried_access(mob/accessor, obj/locked_thing)
+// 	SIGNAL_HANDLER
+// 	return locked_thing?.check_access(access_card) ? ACCESS_ALLOWED : ACCESS_DISALLOWED
 
 ///Handles updating any existing overlays for the corgi (such as fashion items) when it changes how it appears, as in, dead or alive.
 /mob/living/basic/pet/dog/corgi/proc/on_appearance_change()
@@ -276,40 +266,40 @@
 	manual_emote(emote)
 
 ///Deadchat plays command that picks a new hat for Ian.
-/mob/living/basic/pet/dog/corgi/proc/find_new_hat()
-	if(!isturf(loc))
-		return
-	var/list/possible_headwear = list()
-	for(var/obj/item/item in loc)
-		if(ispath(item.dog_fashion, /datum/dog_fashion/head))
-			possible_headwear += item
-	if(!length(possible_headwear))
-		for(var/obj/item/item in orange(1))
-			if(ispath(item.dog_fashion, /datum/dog_fashion/head) && CanReach(item))
-				possible_headwear += item
-	if(!length(possible_headwear))
-		return
-	if(inventory_head)
-		inventory_head.forceMove(drop_location())
-		inventory_head = null
-	place_on_head(pick(possible_headwear))
-	visible_message(span_notice("[src] puts [inventory_head] on [p_their()] own head, somehow."))
+// /mob/living/basic/pet/dog/corgi/proc/find_new_hat()
+// 	if(!isturf(loc))
+// 		return
+// 	var/list/possible_headwear = list()
+// 	for(var/obj/item/item in loc)
+// 		if(ispath(item.dog_fashion, /datum/dog_fashion/head))
+// 			possible_headwear += item
+// 	if(!length(possible_headwear))
+// 		for(var/obj/item/item in orange(1))
+// 			if(ispath(item.dog_fashion, /datum/dog_fashion/head) && CanReach(item))
+// 				possible_headwear += item
+// 	if(!length(possible_headwear))
+// 		return
+// 	if(inventory_head)
+// 		inventory_head.forceMove(drop_location())
+// 		inventory_head = null
+// 	place_on_head(pick(possible_headwear))
+// 	visible_message(span_notice("[src] puts [inventory_head] on [p_their()] own head, somehow."))
 
 ///Deadchat plays command that drops the current hat off Ian.
-/mob/living/basic/pet/dog/corgi/proc/drop_hat()
-	if(!inventory_head)
-		return
-	visible_message(span_notice("[src] vigorously shakes [p_their()] head, dropping [inventory_head] to the ground."))
-	inventory_head.forceMove(drop_location())
-	inventory_head = null
-	update_corgi_fluff()
-	update_appearance(UPDATE_OVERLAYS)
+// /mob/living/basic/pet/dog/corgi/proc/drop_hat()
+// 	if(!inventory_head)
+// 		return
+// 	visible_message(span_notice("[src] vigorously shakes [p_their()] head, dropping [inventory_head] to the ground."))
+// 	inventory_head.forceMove(drop_location())
+// 	inventory_head = null
+// 	update_corgi_fluff()
+// 	update_appearance(UPDATE_OVERLAYS)
 
 ///Turn AI back on.
-/mob/living/basic/pet/dog/corgi/proc/stop_deadchat_plays()
-	var/controller_type = initial(ai_controller)
-	ai_controller = new controller_type(src)
-	ai_controller?.set_blackboard_key(BB_DOG_IS_SLOW, is_slow)
+// /mob/living/basic/pet/dog/corgi/proc/stop_deadchat_plays()
+// 	var/controller_type = initial(ai_controller)
+// 	ai_controller = new controller_type(src)
+// 	ai_controller?.set_blackboard_key(BB_DOG_IS_SLOW, is_slow)
 
 //SUBTYPES!
 

@@ -332,10 +332,3 @@
 	for(var/obj/B in L)
 		if(B.type == path)
 			return B
-
-///Find number of held items, multihand compatible
-/mob/proc/get_num_held_items()
-	. = 0
-	for(var/i in 1 to held_items.len)
-		if(held_items[i])
-			.++

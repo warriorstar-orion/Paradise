@@ -48,7 +48,7 @@
 	speech_chance = 1
 
 /datum/ai_planning_subtree/random_speech/dog/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
-	if(!isdog(controller.pawn))
+	if(!istype(controller.pawn, /mob/living/basic/pet/dog))
 		return
 
 	// Stay in sync with dog fashion.

@@ -8,8 +8,8 @@
 	idle_behavior = /datum/idle_behavior/idle_dog
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/random_speech/dog,
-		/datum/ai_planning_subtree/pet_planning,
-		/datum/ai_planning_subtree/dog_harassment,
+		// /datum/ai_planning_subtree/pet_planning,
+		// /datum/ai_planning_subtree/dog_harassment,
 	)
 
 /**
@@ -31,13 +31,12 @@
 
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/random_speech/dog,
-		/datum/ai_planning_subtree/make_babies, // Ian WILL prioritise sex over following your instructions
-		/datum/ai_planning_subtree/pet_planning,
-		/datum/ai_planning_subtree/dog_harassment,
+		// /datum/ai_planning_subtree/pet_planning,
+		// /datum/ai_planning_subtree/dog_harassment,
 		// Find targets to run away from (uses the targeting strategy from above)
-		/datum/ai_planning_subtree/simple_find_target,
+		// /datum/ai_planning_subtree/simple_find_target,
 		// Flee from that target
-		/datum/ai_planning_subtree/flee_target,
+		// /datum/ai_planning_subtree/flee_target,
 	)
 
 /datum/ai_controller/basic_controller/dog/corgi/get_access()
@@ -58,7 +57,7 @@
 	)
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/random_speech/dog,
-		/datum/ai_planning_subtree/pet_planning,
+		// /datum/ai_planning_subtree/pet_planning,
 		/datum/ai_planning_subtree/dog_harassment,
 		/datum/ai_planning_subtree/simple_find_target,
 		/datum/ai_planning_subtree/flee_target,

@@ -244,7 +244,7 @@
 	if(!(basic_mob_flags & REMAIN_DENSE_WHILE_DEAD))
 		// ADD_TRAIT(src, TRAIT_UNDENSE, BASIC_MOB_DEATH_TRAIT)
 		density = FALSE
-	SEND_SIGNAL(src, COMSIG_BASICMOB_LOOK_DEAD)
+	// SEND_SIGNAL(src, COMSIG_BASICMOB_LOOK_DEAD)
 
 /mob/living/basic/revive(full_heal_flags = NONE, excess_healing = 0, force_grab_ghost = FALSE)
 	. = ..()
@@ -260,4 +260,4 @@
 	if(!(basic_mob_flags & REMAIN_DENSE_WHILE_DEAD))
 		// REMOVE_TRAIT(src, TRAIT_UNDENSE, BASIC_MOB_DEATH_TRAIT)
 		density = TRUE
-	SEND_SIGNAL(src, COMSIG_BASICMOB_LOOK_ALIVE)
+	// SEND_SIGNAL(src, COMSIG_BASICMOB_LOOK_ALIVE)
