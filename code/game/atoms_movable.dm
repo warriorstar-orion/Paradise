@@ -938,15 +938,6 @@
 /mob/living/DirectAccess(atom/target)
 	return ..() + get_all_contents()
 
-/atom/movable/proc/set_glide_size(target = 8)
-	if (HAS_TRAIT(src, TRAIT_NO_GLIDE))
-		return
-	SEND_SIGNAL(src, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, target)
-	glide_size = target
-
-	for(var/mob/buckled_mob as anything in buckled_mobs)
-		buckled_mob.set_glide_size(target)
-
 /atom/movable/proc/get_default_say_verb()
 	return atom_say_verb
 

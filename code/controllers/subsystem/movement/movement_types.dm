@@ -18,7 +18,7 @@
 	///Time till we stop processing in deci-seconds, defaults to forever
 	var/lifetime = INFINITY
 	///Delay between each move in deci-seconds
-	var/delay = 1
+	var/delay = 2
 	///The next time we should process
 	///Used primarially as a hint to be reasoned about by our [controller], and as the id of our bucket
 	var/timer = 0
