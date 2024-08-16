@@ -118,6 +118,8 @@ GLOBAL_LIST_INIT(glass_sheet_types, typecacheof(list(
 
 #define is_ancient_rock(A) (istype(A, /turf/simulated/mineral/ancient))
 
+#define isindestructiblewall(A) (istype(A, /turf/simulated/indestructible) || istype(A, /turf/simulated/wall/indestructible))
+
 // Areas
 //#define isarea(A, B, C...) BYOND proc, can test multiple arguments and only return TRUE if all are areas
 

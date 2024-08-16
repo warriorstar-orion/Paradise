@@ -35,7 +35,7 @@
 		if(other.ckey)
 			continue
 
-		if(other.gender != living_pawn.gender && !(other.flags_1 & HOLOGRAM_1)) //Better safe than sorry ;_;
+		if(other.gender != living_pawn.gender && !(other.flags_2 & HOLOGRAM_2)) //Better safe than sorry ;_;
 			controller.set_blackboard_key(target_key, other)
 			return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_SUCCEEDED
 
@@ -59,7 +59,7 @@
 	if(QDELETED(target) || target.stat != CONSCIOUS)
 		return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_FAILED
 	var/mob/living/basic/living_pawn = controller.pawn
-	living_pawn.set_combat_mode(FALSE)
+	living_pawn.intent = INTENT_HELP
 	living_pawn.melee_attack(target)
 	return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_SUCCEEDED
 
@@ -71,4 +71,4 @@
 	var/mob/living/living_pawn = controller.pawn
 	if(QDELETED(living_pawn)) // pawn can be null at this point
 		return
-	living_pawn.set_combat_mode(initial(living_pawn.combat_mode))
+	living_pawn.intent = INTENT_HARM

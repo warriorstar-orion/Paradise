@@ -12,6 +12,11 @@
 /datum/ai_behavior/proc/setup(datum/ai_controller/controller, ...)
 	return TRUE
 
+/// Returns the delay to use for this behavior in the moment
+/// Override to return a conditional delay
+/datum/ai_behavior/proc/get_cooldown(datum/ai_controller/cooldown_for)
+	return action_cooldown
+
 ///Called by the AI controller when this action is performed
 /datum/ai_behavior/proc/perform(seconds_per_tick, datum/ai_controller/controller, ...)
 	controller.behavior_cooldowns[src] = world.time + action_cooldown

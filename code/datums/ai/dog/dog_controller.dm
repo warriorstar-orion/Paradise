@@ -23,10 +23,10 @@
 		// Find nearby mobs ...
 		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic/holding_object,
 		// With tongs in hand!
-		BB_TARGET_HELD_ITEM = /obj/item/kitchen/tongs,
+		// BB_TARGET_HELD_ITEM = /obj/item/kitchen/tongs,
 		BB_BABIES_PARTNER_TYPES = list(/mob/living/basic/pet/dog),
 		// BB_BABIES_CHILD_TYPES = list(/mob/living/basic/pet/dog/corgi/puppy = 95, /mob/living/basic/pet/dog/corgi/puppy/void = 5),
-		BB_BABIES_CHILD_TYPES = list(/mob/living/basic/pet/dog/corgi/puppy = 1),
+		// BB_BABIES_CHILD_TYPES = list(/mob/living/basic/pet/dog/corgi/puppy = 1),
 	)
 
 	planning_subtrees = list(
@@ -54,7 +54,7 @@
 		BB_PET_TARGETING_STRATEGY = /datum/targeting_strategy/basic/not_friends,
 		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic/holding_object,
 		// With tongs in hand!
-		BB_TARGET_HELD_ITEM = /obj/item/kitchen/tongs,
+		// BB_TARGET_HELD_ITEM = /obj/item/kitchen/tongs,
 	)
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/random_speech/dog,

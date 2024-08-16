@@ -232,3 +232,32 @@
 
 // /mob/living/basic/get_body_temp_cold_damage_limit()
 // 	return minimum_survivable_temperature
+
+/**
+ * Apply the appearance and properties this mob has when it dies
+ * This is called by the mob pretending to be dead too so don't put loot drops in here or something
+ */
+/mob/living/basic/proc/look_dead()
+	icon_state = icon_dead
+	if(basic_mob_flags & FLIP_ON_DEATH)
+		transform = transform.Turn(180)
+	if(!(basic_mob_flags & REMAIN_DENSE_WHILE_DEAD))
+		// ADD_TRAIT(src, TRAIT_UNDENSE, BASIC_MOB_DEATH_TRAIT)
+		density = FALSE
+	SEND_SIGNAL(src, COMSIG_BASICMOB_LOOK_DEAD)
+
+/mob/living/basic/revive(full_heal_flags = NONE, excess_healing = 0, force_grab_ghost = FALSE)
+	. = ..()
+	if(!.)
+		return
+	look_alive()
+
+/// Apply the appearance and properties this mob has when it is alive
+/mob/living/basic/proc/look_alive()
+	icon_state = icon_living
+	if(basic_mob_flags & FLIP_ON_DEATH)
+		transform = transform.Turn(180)
+	if(!(basic_mob_flags & REMAIN_DENSE_WHILE_DEAD))
+		// REMOVE_TRAIT(src, TRAIT_UNDENSE, BASIC_MOB_DEATH_TRAIT)
+		density = TRUE
+	SEND_SIGNAL(src, COMSIG_BASICMOB_LOOK_ALIVE)

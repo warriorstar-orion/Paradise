@@ -68,10 +68,10 @@
 	var/mob/pawn = controller.pawn
 	var/obj/item/carried_item = controller.blackboard[storage_key]
 	if(QDELETED(carried_item) || carried_item.loc != pawn)
-		pawn.visible_message(span_notice("[pawn] looks around as if [pawn.p_they()] [pawn.p_have()] lost something."))
+		pawn.visible_message("<span class='notice'>[pawn] looks around as if [pawn.p_they()] [pawn.p_have()] lost something.</span>")
 		return FALSE
 
-	pawn.visible_message(span_notice("[pawn] delivers [carried_item] to [return_target]."))
+	pawn.visible_message("<span class='notice'>[pawn] delivers [carried_item] to [return_target].</span>")
 	carried_item.forceMove(get_turf(return_target))
 	controller.clear_blackboard_key(storage_key)
 	return TRUE
@@ -89,7 +89,7 @@
 /datum/ai_behavior/eat_fetched_snack/setup(datum/ai_controller/controller, target_key, delivery_key)
 	. = ..()
 	var/obj/item/snack = controller.blackboard[target_key]
-	if(!istype(snack) || !IS_EDIBLE(snack) || !(isturf(snack.loc) || ishuman(snack.loc)))
+	if(!istype(snack) || !(isturf(snack.loc) || ishuman(snack.loc)))
 		return FALSE // This isn't food at all!
 	set_movement_target(controller, snack)
 

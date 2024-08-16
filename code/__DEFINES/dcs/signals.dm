@@ -1099,3 +1099,6 @@
 
 //from base of atom/attack_basic_mob(): (/mob/user)
 #define COMSIG_ATOM_ATTACK_BASIC_MOB "attack_basic_mob"
+
+///from base of /mob/verb/pointed: (atom/A)
+#define COMSIG_MOB_POINTED "mob_pointed"
