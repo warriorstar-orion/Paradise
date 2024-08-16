@@ -261,3 +261,9 @@
 		// REMOVE_TRAIT(src, TRAIT_UNDENSE, BASIC_MOB_DEATH_TRAIT)
 		density = TRUE
 	// SEND_SIGNAL(src, COMSIG_BASICMOB_LOOK_ALIVE)
+
+/mob/living/simple_animal/movement_delay()
+	. = speed
+	if(forced_look)
+		. += DIRECTION_LOCK_SLOWDOWN
+	. += GLOB.configuration.movement.base_run_speed

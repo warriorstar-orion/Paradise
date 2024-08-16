@@ -8,20 +8,20 @@
 //Override this to setup the moveloop you want to use
 /datum/ai_movement/proc/start_moving_towards(datum/ai_controller/controller, atom/current_movement_target, min_distance)
 	SHOULD_CALL_PARENT(TRUE)
-	controller.pathing_attempts = 0
+	controller.consecutive_pathing_attempts = 0
 	controller.set_blackboard_key(BB_CURRENT_MIN_MOVE_DISTANCE, min_distance)
 	moving_controllers[controller] = current_movement_target
 
 /datum/ai_movement/proc/stop_moving_towards(datum/ai_controller/controller)
-	controller.pathing_attempts = 0
+	controller.consecutive_pathing_attempts = 0
 	moving_controllers -= controller
 	// We got deleted as we finished an action
 	if(!QDELETED(controller.pawn))
 		SSmove_manager.stop_looping(controller.pawn, SSai_movement)
 
 /datum/ai_movement/proc/increment_pathing_failures(datum/ai_controller/controller)
-	controller.pathing_attempts++
-	if(controller.pathing_attempts >= max_pathing_attempts)
+	controller.consecutive_pathing_attempts++
+	if(controller.consecutive_pathing_attempts >= max_pathing_attempts)
 		controller.CancelActions()
 
 ///Should the movement be allowed to happen? return TRUE if it can, FALSE otherwise
