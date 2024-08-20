@@ -26,6 +26,7 @@
 /area/ruin/powered/fountain_hall)
 "h" = (
 /obj/structure/fans/tiny/invisible,
+/obj/effect/mapping_helpers/tunnel_poi,
 /turf/simulated/floor/engine/cult,
 /area/ruin/powered/fountain_hall)
 "i" = (

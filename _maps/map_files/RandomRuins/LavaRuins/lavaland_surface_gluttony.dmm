@@ -71,6 +71,10 @@
 	},
 /turf/simulated/floor/plasteel/freezer,
 /area/ruin/powered/gluttony)
+"u" = (
+/obj/effect/mapping_helpers/tunnel_poi,
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
 "v" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/plasteel/freezer,
@@ -108,7 +112,7 @@ a
 b
 a
 b
-b
+u
 b
 b
 b
@@ -337,7 +341,7 @@ i
 i
 S
 b
-b
+u
 "}
 (12,1,1) = {"
 a
@@ -526,7 +530,7 @@ a
 b
 b
 b
-b
+u
 b
 b
 b

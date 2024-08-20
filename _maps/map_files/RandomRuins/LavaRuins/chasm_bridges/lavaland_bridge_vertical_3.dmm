@@ -15,6 +15,7 @@
 /obj/structure/stone_tile/slab/cracked{
 	dir = 10
 	},
+/obj/effect/mapping_helpers/tunnel_poi,
 /turf/template_noop,
 /area/lavaland/surface/outdoors/unexplored/danger)
 "I" = (

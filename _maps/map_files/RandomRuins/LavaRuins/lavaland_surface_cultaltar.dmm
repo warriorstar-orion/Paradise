@@ -77,6 +77,10 @@
 "s" = (
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/misc_lavaruin)
+"B" = (
+/obj/effect/mapping_helpers/tunnel_poi,
+/turf/simulated/floor/lava/mapping_lava,
+/area/ruin/unpowered/misc_lavaruin)
 
 (1,1,1) = {"
 a
@@ -86,7 +90,7 @@ a
 a
 a
 b
-c
+B
 b
 a
 a
@@ -198,7 +202,7 @@ b
 b
 "}
 (8,1,1) = {"
-c
+B
 b
 g
 b
@@ -212,7 +216,7 @@ b
 b
 g
 b
-c
+B
 "}
 (9,1,1) = {"
 b
@@ -324,7 +328,7 @@ a
 a
 a
 b
-c
+B
 b
 a
 a

@@ -1322,6 +1322,7 @@
 /obj/structure/stone_tile/cracked{
 	dir = 1
 	},
+/obj/effect/mapping_helpers/tunnel_poi,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "dw" = (

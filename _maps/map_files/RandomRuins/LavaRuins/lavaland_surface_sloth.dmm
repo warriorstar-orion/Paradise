@@ -43,6 +43,14 @@
 	slowdown = 10
 	},
 /area/ruin/powered/sloth)
+"l" = (
+/obj/machinery/door/airlock/wood,
+/obj/structure/fans/tiny/invisible,
+/obj/effect/mapping_helpers/tunnel_poi,
+/turf/simulated/floor/sepia{
+	slowdown = 10
+	},
+/area/ruin/powered/sloth)
 
 (1,1,1) = {"
 a
@@ -637,7 +645,7 @@ a
 a
 a
 a
-e
+l
 e
 a
 a

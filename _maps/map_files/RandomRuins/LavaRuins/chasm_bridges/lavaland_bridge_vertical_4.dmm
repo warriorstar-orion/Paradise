@@ -3,6 +3,7 @@
 /turf/simulated/floor/indestructible/hierophant/two,
 /area/lavaland/surface/outdoors/unexplored/danger)
 "b" = (
+/obj/effect/mapping_helpers/tunnel_poi,
 /turf/simulated/floor/indestructible/hierophant,
 /area/lavaland/surface/outdoors/unexplored/danger)
 "c" = (

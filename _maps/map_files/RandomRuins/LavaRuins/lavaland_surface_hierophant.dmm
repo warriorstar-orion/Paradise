@@ -30,6 +30,14 @@
 /obj/effect/baseturf_helper/lava/mapping_lava,
 /turf/simulated/floor/indestructible/hierophant/two,
 /area/ruin/unpowered/hierophant)
+"r" = (
+/obj/effect/mapping_helpers/tunnel_poi,
+/turf/simulated/floor/indestructible/hierophant,
+/area/ruin/unpowered/hierophant)
+"Z" = (
+/obj/effect/mapping_helpers/tunnel_poi,
+/turf/simulated/floor/indestructible/hierophant/two,
+/area/ruin/unpowered/hierophant)
 
 (1,1,1) = {"
 a
@@ -319,7 +327,7 @@ f
 e
 e
 d
-e
+Z
 g
 f
 e
@@ -600,7 +608,7 @@ a
 a
 b
 b
-b
+r
 b
 a
 a

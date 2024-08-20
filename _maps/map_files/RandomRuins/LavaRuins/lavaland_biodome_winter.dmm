@@ -408,6 +408,12 @@
 "HP" = (
 /turf/simulated/floor/pod/dark,
 /area/ruin/powered/snow_biodome)
+"IE" = (
+/obj/effect/mapping_helpers/no_lava,
+/obj/effect/mapping_helpers/no_lava,
+/obj/effect/mapping_helpers/tunnel_poi,
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/explored)
 "Mp" = (
 /obj/item/clothing/mask/balaclava,
 /turf/simulated/floor/pod/dark,
@@ -434,6 +440,7 @@
 "PD" = (
 /obj/machinery/door/airlock/hatch,
 /obj/structure/fans/tiny,
+/obj/effect/mapping_helpers/tunnel_poi,
 /turf/simulated/floor/pod/dark,
 /area/ruin/powered/snow_biodome)
 "PK" = (
@@ -951,7 +958,7 @@ aO
 tl
 tl
 Ez
-Qa
+IE
 "}
 (16,1,1) = {"
 Wg

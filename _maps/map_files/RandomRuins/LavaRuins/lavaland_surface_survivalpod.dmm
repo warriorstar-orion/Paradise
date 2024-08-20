@@ -129,6 +129,15 @@
 	},
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"K" = (
+/obj/effect/mapping_helpers/tunnel_poi,
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"L" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/mapping_helpers/tunnel_poi,
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
 
 (1,1,1) = {"
 a
@@ -136,7 +145,7 @@ a
 a
 b
 b
-b
+K
 b
 b
 a
@@ -193,10 +202,10 @@ q
 t
 v
 b
-b
+K
 "}
 (6,1,1) = {"
-b
+K
 b
 c
 d
@@ -254,7 +263,7 @@ a
 a
 a
 o
-j
+L
 b
 a
 a

@@ -680,6 +680,12 @@
 /obj/effect/decal/cleanable/ash,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"Zs" = (
+/obj/effect/mapping_helpers/tunnel_poi,
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface{
+	icon_state = "basalt_dug"
+	},
+/area/lavaland/surface/outdoors)
 
 (1,1,1) = {"
 NG
@@ -1490,7 +1496,7 @@ Yf
 SH
 dD
 SH
-SH
+Zs
 SH
 dD
 SH

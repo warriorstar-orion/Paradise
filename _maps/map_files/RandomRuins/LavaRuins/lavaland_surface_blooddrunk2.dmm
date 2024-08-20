@@ -1,9 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
+/obj/effect/mapping_helpers/no_lava,
 /turf/template_noop,
 /area/template_noop)
 "b" = (
-/turf/simulated/mineral/random/volcanic,
+/obj/effect/mapping_helpers/no_lava,
+/obj/effect/mapping_helpers/tunnel_poi,
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "c" = (
 /obj/structure/stone_tile/surrounding_tile{
@@ -24,9 +27,6 @@
 	dir = 1
 	},
 /obj/effect/mapping_helpers/no_lava,
-/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
-"f" = (
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "h" = (
@@ -181,71 +181,33 @@
 /obj/effect/mapping_helpers/no_lava,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"M" = (
+/obj/effect/mapping_helpers/no_lava,
+/obj/effect/mapping_helpers/no_lava,
+/obj/effect/mapping_helpers/tunnel_poi,
+/turf/template_noop,
+/area/template_noop)
 "Q" = (
 /obj/effect/mapping_helpers/no_lava,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 
 (1,1,1) = {"
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+Q
 a
-b
-a
-b
-b
-b
-b
-a
-a
-b
-b
-b
-b
-a
-b
 a
 a
 "}
 (2,1,1) = {"
-b
-b
-b
-b
-b
-f
-b
-b
-b
-b
-b
-b
-b
-b
-b
-a
-a
-"}
-(3,1,1) = {"
-a
-b
-Q
-Q
-Q
-Q
-Q
-Q
-Q
-Q
-Q
-Q
-b
-f
-b
-b
-a
-"}
-(4,1,1) = {"
-b
-b
 Q
 c
 h
@@ -258,13 +220,9 @@ Q
 Q
 Q
 Q
-b
-b
-b
+a
 "}
-(5,1,1) = {"
-b
-b
+(3,1,1) = {"
 Q
 d
 c
@@ -278,12 +236,8 @@ Q
 Q
 Q
 Q
-b
-a
 "}
-(6,1,1) = {"
-a
-b
+(4,1,1) = {"
 Q
 e
 i
@@ -297,13 +251,9 @@ Q
 Q
 Q
 Q
-b
-b
 "}
-(7,1,1) = {"
+(5,1,1) = {"
 a
-b
-b
 Q
 Q
 G
@@ -316,13 +266,9 @@ Q
 Q
 Q
 Q
-b
-b
 "}
-(8,1,1) = {"
-b
-b
-b
+(6,1,1) = {"
+M
 Q
 Q
 Q
@@ -334,13 +280,9 @@ Q
 q
 n
 A
-Q
-b
 b
 "}
-(9,1,1) = {"
-a
-b
+(7,1,1) = {"
 Q
 Q
 Q
@@ -354,12 +296,8 @@ Q
 z
 d
 Q
-b
-b
 "}
-(10,1,1) = {"
-b
-b
+(8,1,1) = {"
 Q
 G
 j
@@ -373,12 +311,23 @@ Q
 n
 y
 Q
-b
+"}
+(9,1,1) = {"
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+Q
 a
 "}
-(11,1,1) = {"
-b
-b
+(10,1,1) = {"
 Q
 Q
 Q
@@ -389,66 +338,7 @@ Q
 Q
 Q
 Q
-Q
-Q
-b
-b
 a
-"}
-(12,1,1) = {"
-a
-b
-Q
-Q
-Q
-Q
-Q
-Q
-Q
-Q
-Q
-Q
-f
-b
-b
-b
-b
-"}
-(13,1,1) = {"
-b
-b
-b
-b
-b
-f
-f
-b
-b
-b
-b
-b
-b
-b
-b
-b
-a
-"}
-(14,1,1) = {"
-a
-a
-b
-b
-b
-b
-b
-b
-b
-a
-b
-b
-a
-a
-b
 a
 a
 "}

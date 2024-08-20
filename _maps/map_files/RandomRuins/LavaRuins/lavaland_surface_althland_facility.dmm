@@ -115,6 +115,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating/lavaland_air,
 /area/ruin/unpowered/althland_processing)
+"cM" = (
+/obj/effect/mapping_helpers/no_lava,
+/obj/effect/mapping_helpers/tunnel_poi,
+/turf/template_noop,
+/area/lavaland/surface/outdoors/unexplored)
 "dh" = (
 /obj/effect/mapping_helpers/no_lava,
 /obj/structure/disposalpipe/segment/corner{
@@ -303,6 +308,10 @@
 /obj/machinery/door/airlock/maintenance_hatch,
 /turf/simulated/floor/plasteel/lavaland_air,
 /area/ruin/unpowered/althland_processing)
+"ip" = (
+/obj/effect/mapping_helpers/no_lava,
+/turf/template_noop,
+/area/lavaland/surface/outdoors/unexplored)
 "iq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -658,6 +667,9 @@
 /obj/machinery/economy/vending/chinese,
 /turf/simulated/floor/plating/lavaland_air,
 /area/ruin/unpowered/althland_processing)
+"yh" = (
+/turf/template_noop,
+/area/lavaland/surface/outdoors/unexplored)
 "zd" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -1255,6 +1267,10 @@
 	},
 /turf/simulated/floor/plating/lavaland_air,
 /area/ruin/unpowered/althland_processing)
+"Un" = (
+/obj/effect/mapping_helpers/tunnel_poi,
+/turf/template_noop,
+/area/lavaland/surface/outdoors/unexplored)
 "UP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -1471,26 +1487,26 @@ bV
 bV
 bV
 bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bL
-bL
-bL
+yh
+yh
+yh
+yh
+yh
+yh
+yh
+yh
+yh
+yh
+yh
+yh
+yh
+yh
+yh
+yh
+yh
+yh
+yh
+yh
 bL
 bL
 bL
@@ -1507,19 +1523,19 @@ bV
 bV
 ab
 ab
-bV
-bV
-bV
-bV
+yh
+yh
+yh
+yh
 ab
-bV
-bV
-bV
-bV
-bV
-ab
-ab
-ab
+yh
+yh
+yh
+yh
+yh
+Un
+yh
+yh
 ab
 GF
 ab
@@ -1552,7 +1568,7 @@ ab
 ab
 bT
 ab
-ab
+cb
 ab
 ab
 ab
@@ -2740,9 +2756,9 @@ ab
 ab
 ab
 ab
-ab
-ab
-ab
+ip
+cM
+ip
 ab
 ab
 bL
@@ -2776,9 +2792,9 @@ bV
 bV
 bV
 bV
-ab
-ab
-ab
+ip
+ip
+ip
 bV
 bV
 bV

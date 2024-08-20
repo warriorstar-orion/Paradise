@@ -9,6 +9,7 @@
 /turf/template_noop,
 /area/lavaland/surface/outdoors/unexplored/danger)
 "o" = (
+/obj/effect/mapping_helpers/tunnel_poi,
 /turf/simulated/floor/indestructible/hierophant/two,
 /area/lavaland/surface/outdoors/unexplored/danger)
 

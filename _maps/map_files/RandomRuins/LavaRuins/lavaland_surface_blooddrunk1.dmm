@@ -3,7 +3,12 @@
 /turf/template_noop,
 /area/template_noop)
 "b" = (
-/turf/simulated/mineral/random/volcanic,
+/obj/structure/stone_tile{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/no_lava,
+/obj/effect/mapping_helpers/tunnel_poi,
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "c" = (
 /obj/effect/mapping_helpers/no_lava,
@@ -174,49 +179,16 @@
 /obj/effect/mapping_helpers/no_lava,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"J" = (
+/obj/effect/mapping_helpers/no_lava,
+/obj/effect/mapping_helpers/tunnel_poi,
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
 
 (1,1,1) = {"
 a
 a
 a
-b
-a
-b
-a
-b
-b
-b
-b
-a
-b
-a
-a
-a
-"}
-(2,1,1) = {"
-a
-a
-a
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-a
-a
-"}
-(3,1,1) = {"
-a
-b
-b
-b
-b
 I
 d
 I
@@ -224,15 +196,11 @@ I
 I
 I
 I
-b
-b
-b
-b
+a
+a
 "}
-(4,1,1) = {"
-b
-b
-b
+(2,1,1) = {"
+a
 I
 I
 I
@@ -243,13 +211,9 @@ I
 c
 I
 I
-b
-b
 a
 "}
-(5,1,1) = {"
-a
-b
+(3,1,1) = {"
 I
 I
 d
@@ -262,12 +226,8 @@ I
 I
 I
 I
-b
-b
 "}
-(6,1,1) = {"
-b
-b
+(4,1,1) = {"
 I
 I
 I
@@ -280,13 +240,9 @@ I
 d
 e
 I
-b
-b
 "}
-(7,1,1) = {"
-a
-b
-I
+(5,1,1) = {"
+J
 I
 I
 I
@@ -297,13 +253,9 @@ w
 x
 y
 p
-e
-b
 b
 "}
-(8,1,1) = {"
-b
-b
+(6,1,1) = {"
 I
 I
 e
@@ -316,12 +268,8 @@ I
 f
 d
 y
-b
-b
 "}
-(9,1,1) = {"
-b
-b
+(7,1,1) = {"
 I
 I
 f
@@ -334,13 +282,9 @@ I
 I
 I
 I
-b
-b
 "}
-(10,1,1) = {"
+(8,1,1) = {"
 a
-b
-b
 I
 I
 I
@@ -351,16 +295,12 @@ I
 I
 I
 I
-b
-b
 a
 "}
-(11,1,1) = {"
-b
-b
-b
-b
-b
+(9,1,1) = {"
+a
+a
+a
 I
 n
 I
@@ -368,44 +308,6 @@ I
 I
 I
 I
-b
-b
-b
-b
-"}
-(12,1,1) = {"
-a
-a
-a
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-a
-a
-"}
-(13,1,1) = {"
-a
-a
-b
-a
-a
-a
-b
-b
-b
-a
-b
-a
-a
-b
 a
 a
 "}

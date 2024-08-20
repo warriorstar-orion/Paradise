@@ -11,6 +11,11 @@
 "c" = (
 /turf/template_noop,
 /area/lavaland/surface/outdoors/unexplored/danger)
+"e" = (
+/obj/structure/lattice/catwalk/mining,
+/obj/effect/mapping_helpers/tunnel_poi,
+/turf/template_noop,
+/area/lavaland/surface/outdoors/unexplored/danger)
 
 (1,1,1) = {"
 c
@@ -29,7 +34,7 @@ b
 (3,1,1) = {"
 b
 a
-b
+e
 a
 b
 "}

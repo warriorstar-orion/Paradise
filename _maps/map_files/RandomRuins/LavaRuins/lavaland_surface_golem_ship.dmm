@@ -258,6 +258,16 @@
 	},
 /turf/simulated/floor/plating/lavaland_air,
 /area/shuttle/freegolem)
+"W" = (
+/obj/machinery/door/airlock/titanium,
+/obj/structure/fans/tiny,
+/obj/effect/mapping_helpers/tunnel_poi,
+/turf/simulated/floor/mineral/titanium/purple,
+/area/shuttle/freegolem)
+"Y" = (
+/obj/effect/mapping_helpers/tunnel_poi,
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/ruin/powered/golem_ship)
 
 (1,1,1) = {"
 a
@@ -306,7 +316,7 @@ b
 x
 D
 b
-r
+W
 b
 b
 a
@@ -627,7 +637,7 @@ a
 a
 a
 A
-A
+Y
 A
 P
 a

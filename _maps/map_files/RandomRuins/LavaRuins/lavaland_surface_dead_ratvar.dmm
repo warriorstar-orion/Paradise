@@ -139,6 +139,10 @@
 /obj/effect/mapping_helpers/no_lava,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors/unexplored)
+"X" = (
+/obj/effect/mapping_helpers/tunnel_poi,
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/unexplored)
 
 (1,1,1) = {"
 a
@@ -154,7 +158,7 @@ a
 a
 a
 a
-b
+X
 s
 h
 b
@@ -505,7 +509,7 @@ h
 b
 "}
 (15,1,1) = {"
-b
+X
 b
 b
 l
@@ -579,7 +583,7 @@ l
 b
 l
 l
-b
+X
 a
 "}
 (18,1,1) = {"
@@ -932,7 +936,7 @@ b
 l
 b
 a
-b
+X
 l
 c
 f

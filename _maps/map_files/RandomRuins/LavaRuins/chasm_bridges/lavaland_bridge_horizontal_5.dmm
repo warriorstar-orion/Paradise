@@ -8,6 +8,10 @@
 "c" = (
 /turf/template_noop,
 /area/lavaland/surface/outdoors/unexplored/danger)
+"i" = (
+/obj/effect/mapping_helpers/tunnel_poi,
+/turf/simulated/floor/wood/lavaland_air,
+/area/lavaland/surface/outdoors/unexplored/danger)
 "v" = (
 /obj/effect/landmark/damageturf,
 /turf/simulated/floor/wood/lavaland_air,
@@ -30,7 +34,7 @@ c
 (3,1,1) = {"
 c
 c
-b
+i
 c
 c
 "}

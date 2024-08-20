@@ -9,6 +9,10 @@
 "c" = (
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"n" = (
+/obj/effect/mapping_helpers/tunnel_poi,
+/turf/template_noop,
+/area/lavaland/surface/outdoors)
 
 (1,1,1) = {"
 a
@@ -29,7 +33,7 @@ a
 c
 b
 c
-a
+n
 "}
 (4,1,1) = {"
 a

@@ -75,6 +75,10 @@
 /obj/structure/mirror/magic/pride,
 /turf/simulated/wall/mineral/diamond,
 /area/ruin/powered/pride)
+"P" = (
+/obj/effect/mapping_helpers/tunnel_poi,
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
 "Y" = (
 /obj/machinery/door/airlock/diamond,
 /obj/structure/fans/tiny/invisible,
@@ -189,7 +193,7 @@ g
 r
 G
 a
-a
+P
 "}
 (6,1,1) = {"
 c

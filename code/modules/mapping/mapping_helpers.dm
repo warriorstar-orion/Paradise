@@ -77,6 +77,16 @@
 	T.flags |= NO_LAVA_GEN
 	..()
 
+GLOBAL_LIST_EMPTY(lavaland_tunnel_pois)
+
+/obj/effect/mapping_helpers/tunnel_poi
+	icon_state = "tunnel_poi"
+	layer = ON_EDGED_TURF_LAYER
+
+/obj/effect/mapping_helpers/tunnel_poi/New()
+	. = ..()
+	GLOB.lavaland_tunnel_pois |= get_turf(src)
+
 /obj/effect/mapping_helpers/airlock
 	layer = DOOR_HELPER_LAYER
 	late = TRUE
