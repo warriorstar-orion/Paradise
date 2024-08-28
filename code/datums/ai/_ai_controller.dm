@@ -120,6 +120,10 @@ multiple modular subtrees with behaviors
 	pawn = new_pawn
 	pawn.ai_controller = src
 
+	var/turf/pawn_turf = get_turf(pawn)
+	if(pawn_turf)
+		SSai_controllers.ai_controllers_by_zlevel[pawn_turf.z] += src
+
 	SEND_SIGNAL(src, COMSIG_AI_CONTROLLER_POSSESSED_PAWN)
 
 	reset_ai_status()
@@ -137,23 +141,45 @@ multiple modular subtrees with behaviors
  * Returns AI_STATUS_ON otherwise.
  */
 /datum/ai_controller/proc/get_expected_ai_status()
-	var/final_status = AI_STATUS_ON
+	. = AI_STATUS_ON
 
 	if (!ismob(pawn))
-		return final_status
+		return
 
 	var/mob/living/mob_pawn = pawn
-
 	if(!continue_processing_when_client && mob_pawn.client)
-		final_status = AI_STATUS_OFF
+		. = AI_STATUS_OFF
 
 	if(ai_traits & CAN_ACT_WHILE_DEAD)
-		return final_status
+		return
 
 	if(mob_pawn.stat == DEAD)
-		final_status = AI_STATUS_OFF
+		. = AI_STATUS_OFF
 
-	return final_status
+	var/turf/pawn_turf = get_turf(mob_pawn)
+#ifdef TESTING
+	if(!pawn_turf)
+		CRASH("AI controller [src] controlling pawn ([pawn]) is not on a turf.")
+#endif
+	if(!length(SSmobs.clients_by_zlevel[pawn_turf.z]))
+		. = AI_STATUS_OFF
+
+///Called when the AI controller pawn changes z levels, we check if there's any clients on the new one and wake up the AI if there is.
+/datum/ai_controller/proc/on_changed_z_level(atom/source, turf/old_turf, turf/new_turf, same_z_layer, notify_contents)
+	SIGNAL_HANDLER
+	if (ismob(pawn))
+		var/mob/mob_pawn = pawn
+		if((mob_pawn?.client && !continue_processing_when_client))
+			return
+	if(old_turf)
+		SSai_controllers.ai_controllers_by_zlevel[old_turf.z] -= src
+	if(new_turf)
+		SSai_controllers.ai_controllers_by_zlevel[new_turf.z] += src
+		var/new_level_clients = SSmobs.clients_by_zlevel[new_turf.z].len
+		if(new_level_clients)
+			set_ai_status(AI_STATUS_IDLE)
+		else
+			set_ai_status(AI_STATUS_OFF)
 
 ///Abstract proc for initializing the pawn to the new controller
 /datum/ai_controller/proc/TryPossessPawn(atom/new_pawn)
@@ -167,6 +193,11 @@ multiple modular subtrees with behaviors
 	UnregisterSignal(pawn, list(COMSIG_MOB_LOGIN, COMSIG_MOB_LOGOUT, COMSIG_MOB_STATCHANGE, COMSIG_PARENT_QDELETING))
 	if(ai_movement.moving_controllers[src])
 		ai_movement.stop_moving_towards(src)
+	var/turf/pawn_turf = get_turf(pawn)
+	if(pawn_turf)
+		SSai_controllers.ai_controllers_by_zlevel[pawn_turf.z] -= src
+	if(ai_status)
+		SSai_controllers.ai_controllers_by_status[ai_status] -= src
 	pawn.ai_controller = null
 	pawn = null
 	if(destroy)
@@ -278,14 +309,16 @@ multiple modular subtrees with behaviors
 	if(ai_status == new_ai_status)
 		return FALSE //no change
 
+	//remove old status, if we've got one
+	if(ai_status)
+		SSai_controllers.ai_controllers_by_status[ai_status] -= src
 	ai_status = new_ai_status
+	SSai_controllers.ai_controllers_by_status[new_ai_status] += src
 	switch(ai_status)
 		if(AI_STATUS_ON)
-			SSai_controllers.active_ai_controllers += src
 			START_PROCESSING(SSai_behaviors, src)
-		if(AI_STATUS_OFF)
+		if(AI_STATUS_OFF, AI_STATUS_IDLE)
 			STOP_PROCESSING(SSai_behaviors, src)
-			SSai_controllers.active_ai_controllers -= src
 			CancelActions()
 
 /datum/ai_controller/proc/PauseAi(time)
