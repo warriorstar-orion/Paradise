@@ -65,6 +65,10 @@
 			controller.set_blackboard_key(BB_TARGET_GUN_WORKED, can_shoot ? TRUE : prob(10)) // Only 20% likely to notice it didn't work
 			if(can_shoot)
 				controller.set_blackboard_key(BB_TARGET_GUN_WORKED, TRUE)
+			if(prob(50))
+				var/obj/item/gun/energy/gun/energy_gun = gun
+				if(istype(energy_gun))
+					energy_gun.select_fire(src)
 
 	if(terminate_after_action)
 		finish_action(controller, TRUE, target_key)
