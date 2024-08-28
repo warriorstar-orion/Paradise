@@ -214,6 +214,20 @@
 	tastes = list("meat" = 1)
 	goal_difficulty = FOOD_GOAL_NORMAL
 
+/obj/item/food/meatsteak/pre_attack(atom/target, mob/living/user, params)
+	if (!istype(target, /mob/living/basic/pet/dog) || user.a_intent != INTENT_HELP)
+		return ..()
+	var/mob/living/basic/pet/dog/dog_target = target
+	if (dog_target.stat != CONSCIOUS)
+		return ..()
+	dog_target.emote("spin")
+	dog_target.revive()
+	if (dog_target.befriend(user))
+		dog_target.tamed(user)
+	new /obj/effect/temp_visual/heart(target.loc)
+	qdel(src)
+	return TRUE
+
 /obj/item/food/meatsteak/chicken
 	name = "cooked chicken"
 	desc = "Cluck cluck!"
@@ -345,7 +359,6 @@
 	icon_state = "monkeycube"
 	bitesize = 12
 	filling_color = "#ADAC7F"
-	var/faction
 	var/datum/species/monkey_type = /datum/species/monkey
 	list_reagents = list("nutriment" = 2)
 	tastes = list("the jungle" = 1, "bananas" = 1)

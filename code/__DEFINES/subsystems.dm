@@ -163,3 +163,5 @@
 #define SS_CPUDISPLAY_LOW 1
 #define SS_CPUDISPLAY_DEFAULT 2
 #define SS_CPUDISPLAY_HIGH 3
+
+#define SSMOBS_DT (SSmobs.wait/10)

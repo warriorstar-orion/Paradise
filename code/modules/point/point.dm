@@ -152,4 +152,5 @@
 
 	point_at(A)
 
+	SEND_SIGNAL(src, COMSIG_MOB_POINTED, A)
 	return TRUE

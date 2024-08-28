@@ -201,6 +201,8 @@ GLOBAL_LIST_EMPTY(channel_to_radio_key)
 	say_log += log_message
 	log_say(log_message, src, automatic = TRUE)
 
+	SEND_SIGNAL(src, COMSIG_MOB_SAY, args)
+
 	var/list/handle_v = handle_speech_sound()
 	var/sound/speech_sound = handle_v[1]
 	var/sound_vol = handle_v[2]

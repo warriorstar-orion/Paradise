@@ -70,6 +70,7 @@
 /// Called when blocking a teleport
 #define COMSIG_ATOM_INTERCEPT_TELEPORTED "intercept_teleported"
 	#define COMPONENT_BLOCK_TELEPORT (1<<0)
+
 ///from base of atom/movable/newtonian_move(): (inertia_direction, start_delay)
 #define COMSIG_MOVABLE_NEWTONIAN_MOVE "movable_newtonian_move"
 	#define COMPONENT_MOVABLE_NEWTONIAN_BLOCK (1<<0)

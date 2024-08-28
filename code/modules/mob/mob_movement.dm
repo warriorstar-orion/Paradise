@@ -369,6 +369,25 @@
 			var/mob/lover = rebound
 			if(lover.buckled)
 				continue
+			return A
+
+		var/atom/movable/AM = A
+		var/pass_allowed = AM.CanPass(src, get_dir(AM, src))
+		if(continuous_move && !pass_allowed)
+			var/datum/move_loop/move/rebound_engine = GLOB.move_manager.processing_on(AM, SSspacedrift)
+			// If you're moving toward it and you're both going the same direction, stop
+			if(moving_direction == get_dir(src, A) && rebound_engine && moving_direction == rebound_engine.direction)
+				continue
+		if(AM == buckled) //Kind of unnecessary but let's just be sure
+			continue
+		if(!AM.CanPass(src) || AM.density)
+			if(AM.anchored)
+				return AM
+			if(pulling == AM)
+				continue
+			if(get_turf(AM) == get_step(get_turf(src), moving_direction)) // No pushing off objects in front of you, while simultaneously pushing them fowards to go faster in space.
+				continue
+			. = AM
 
 		var/pass_allowed = rebound.CanPass(src, get_dir(rebound, src))
 		if(!rebound.density && pass_allowed)

@@ -19,7 +19,6 @@
 	var/flavour_text = ""	//flavour/fluff about the role, optional.
 	var/description = "A description for this has not been set. This is either an oversight or an admin-spawned spawner not in normal use."	//intended as OOC info about the role
 	var/important_info = ""	//important info such as rules that apply to you, etc. Optional.
-	var/faction = null
 	var/permanent = FALSE	//If true, the spawner will not disappear upon running out of uses.
 	var/random = FALSE		//Don't set a name or gender, just go random
 	var/objectives = null

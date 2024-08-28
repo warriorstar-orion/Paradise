@@ -160,7 +160,7 @@
 
 //Note: the following functions don't call the base for optimization and must copypasta:
 // /turf/Initialize
-// /turf/open/space/Initialize
+// /turf/space/Initialize
 
 /atom/proc/Initialize(mapload, ...)
 	SHOULD_CALL_PARENT(TRUE)

@@ -1433,7 +1433,6 @@ GLOBAL_LIST_INIT(holy_areas, typecacheof(list(
 		return
 	return relaydrive(user, direction)
 
-
 /**
  * Checks to see if the mob can cast normal magic spells.
  *

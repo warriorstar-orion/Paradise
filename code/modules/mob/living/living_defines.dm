@@ -22,7 +22,6 @@
 	VAR_PROTECTED/cloneloss = 0	//Damage caused by being cloned or ejected from the cloner early. slimes also deal cloneloss damage to victims
 	VAR_PROTECTED/staminaloss = 0 //Stamina damage, or exhaustion. You recover it slowly naturally, and are stunned if it gets too high. Holodeck and hallucinations deal this.
 
-
 	var/last_special = 0 //Used by the resist verb, likely used to prevent players from bypassing next_move by logging in/out.
 
 	/// Allows mobs to move through dense areas without restriction. For instance, in space or out of holder objects.
@@ -99,6 +98,9 @@
 
 	var/datum/middle_click_override/middleClickOverride = null
 
+	/// Generic bitflags for boolean conditions at the [/mob/living] level. Keep this for inherent traits of living types, instead of runtime-changeable ones.
+	var/living_flags = NONE
+
 	/// Famous last words -- if succumbing, what the user's last words were
 	var/last_words
 
@@ -117,3 +119,33 @@
 	var/last_taste_text
 	///If a creature gets to be super special and have extra range on their chat messages
 	var/extra_message_range = 0
+
+	var/melee_damage_lower = 0
+	var/melee_damage_upper = 0
+
+	/// How much damage this simple animal does to objects, if any
+	var/obj_damage = 0
+	/// Flat armour reduction, occurs after percentage armour penetration.
+	var/armour_penetration_flat = 0
+	/// Percentage armour reduction, happens before flat armour reduction.
+	var/armour_penetration_percentage = 0
+	/// Damage type of a simple mob's melee attack, should it do damage.
+	var/melee_damage_type = BRUTE
+	/// 1 for full damage , 0 for none , -1 for 1:1 heal from that source
+	var/list/damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
+
+	///Basic mob's own attacks verbs,
+	///Attacking verb in present continuous tense.
+	var/attack_verb_continuous = "attacks"
+	///Attacking verb in present simple tense.
+	var/attack_verb_simple = "attack"
+	///Attacking, but without damage, verb in present continuous tense.
+	var/friendly_verb_continuous = "nuzzles"
+	///Attacking, but without damage, verb in present simple tense.
+	var/friendly_verb_simple = "nuzzle"
+
+	var/attack_sound = null
+
+	/// legacy
+	var/attacktext = "attacks"
+
