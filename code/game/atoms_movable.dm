@@ -64,6 +64,9 @@
 	/// Used for icon smoothing. Won't smooth if it ain't anchored and can be unanchored. Only set to true on windows
 	var/can_be_unanchored = FALSE
 
+	///Holds information about any movement loops currently running/waiting to run on the movable. Lazy, will be null if nothing's going on
+	var/datum/movement_packet/move_packet
+
 /atom/movable/attempt_init(loc, ...)
 	var/turf/T = get_turf(src)
 	if(T && SSatoms.initialized != INITIALIZATION_INSSATOMS && GLOB.space_manager.is_zlevel_dirty(T.z))

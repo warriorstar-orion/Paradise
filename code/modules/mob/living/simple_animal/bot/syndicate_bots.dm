@@ -89,7 +89,7 @@
 	saved_turf = current_turf
 	switch(mode)
 		if(BOT_IDLE)
-			walk_to(src,0)
+			GLOB.move_manager.stop_looping(src)
 			set_path(null)
 			if(find_new_target())
 				return
@@ -98,7 +98,7 @@
 
 		if(BOT_HUNT)
 			if(frustration >= 8)
-				walk_to(src,0)
+				GLOB.move_manager.stop_looping(src)
 				set_path(null)
 				back_to_idle()
 				return
@@ -165,7 +165,7 @@
 	if(!QDELETED(src))
 		if(depotarea)
 			depotarea.list_remove(src, depotarea.guard_list)
-		walk_to(src,0)
+		GLOB.move_manager.stop_looping(src)
 		visible_message("<span class='userdanger'>[src] blows apart!</span>")
 		do_sparks(3, 1, src)
 		new /obj/effect/decal/cleanable/blood/oil(loc)

@@ -311,17 +311,23 @@
 	mergeable_decal = TRUE
 
 /obj/effect/decal/cleanable/blood/gibs/proc/streak(list/directions)
-	set waitfor = 0
-	var/direction = pick(directions)
-	for(var/i = 0, i < pick(1, 200; 2, 150; 3, 50; 4), i++)
-		sleep(3)
-		if(i > 0)
-			var/obj/effect/decal/cleanable/blood/b = new /obj/effect/decal/cleanable/blood/splatter(loc)
-			b.basecolor = src.basecolor
-			b.update_icon()
-		if(step_to(src, get_step(src, direction), 0))
-			break
+	var/delay = 2
+	var/range = pick(1, 200; 2, 150; 3, 50; 4)
+	if(!step_to(src, get_step(src, direction), 0))
+		return
 
+	var/direction = pick(directions)
+
+	var/datum/move_loop/loop = GLOB.move_manager.move_to(src, get_step(src, direction), delay = delay, timeout = range * delay, priority = MOVEMENT_ABOVE_SPACE_PRIORITY)
+	RegisterSignal(loop, COMSIG_MOVELOOP_POSTPROCESS, PROC_REF(spread_movement_effects))
+
+/obj/effect/decal/cleanable/blood/gibs/proc/spread_movement_effects(datum/move_loop/has_target/source)
+	SIGNAL_HANDLER // COMSIG_MOVELOOP_POSTPROCESS
+	var/obj/effect/decal/cleanable/blood/splatter/splatter = new(loc)
+	var/obj/effect/decal/cleanable/blood/target = source.target
+	if(istype(target))
+		splatter.basecolor = target.basecolor
+		splatter.update_icon()
 
 /obj/effect/decal/cleanable/blood/old/Initialize(mapload)
 	. = ..()
