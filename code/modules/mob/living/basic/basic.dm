@@ -7,7 +7,6 @@
 	gender = PLURAL
 	living_flags = MOVES_ON_ITS_OWN
 	status_flags = CANPUSH
-	// fire_stack_decay_rate = -5 // Reasonably fast as NPCs will not usually actively extinguish themselves
 
 	var/basic_mob_flags = NONE
 
@@ -35,9 +34,6 @@
 	/// Variable maintained for compatibility with attack_animal procs until simple animals can be refactored away. Use element instead of setting manually.
 	var/environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 
-	// ///Verbs used for speaking e.g. "Says" or "Chitters". This can be elementized
-	// var/list/speak_emote = list()
-
 	///When someone interacts with the simple animal.
 	///Help-intent verb in present continuous tense.
 	var/response_help_continuous = "pokes"
@@ -60,15 +56,23 @@
 	///We only try to show a gibbing animation if this exists.
 	var/icon_gib = null
 
+	var/obj/item/petcollar/pcollar = null
+	/// If the mob has collar sprites, define them.
+	var/collar_type
+	/// If the mob can be renamed
+	var/unique_pet = FALSE
+	/// Can add collar to mob or not, use the set_can_collar if you want to change this on runtime
+	var/can_collar = FALSE
+
 	///If the mob can be spawned with a gold slime core. HOSTILE_SPAWN are spawned with plasma, FRIENDLY_SPAWN are spawned with blood.
 	var/gold_core_spawnable = NO_SPAWN
 	///Sentience type, for slime potions. SHOULD BE AN ELEMENT BUT I DONT CARE ABOUT IT FOR NOW
 	var/sentience_type = SENTIENCE_ORGANIC
 
-	///Leaving something at 0 means it's off - has no maximum.
-	var/list/habitable_atmos = list("min_oxy" = 5, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
-	///This damage is taken when atmos doesn't fit all the requirements above. Set to 0 to avoid adding the atmos_requirements element.
-	var/unsuitable_atmos_damage = 1
+	/// Atmos effect - Yes, you can make creatures that require plasma or co2 to survive. N2O is a trace gas and handled separately, hence why it isn't here. It'd be hard to add it. Hard and me don't mix (Yes, yes make all the dick jokes you want with that.) - Errorage
+	var/list/atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0) //Leaving something at 0 means it's off - has no maximum
+	/// This damage is taken when atmos doesn't fit all the requirements above
+	var/unsuitable_atmos_damage = 2
 
 	///Minimal body temperature without receiving damage
 	var/minimum_survivable_temperature = NPC_DEFAULT_MIN_TEMP
@@ -78,6 +82,20 @@
 	var/unsuitable_cold_damage = 1
 	///This damage is taken when the body temp is too hot. Set both this and unsuitable_cold_damage to 0 to avoid adding the basic_body_temp_sensitive element.
 	var/unsuitable_heat_damage = 1
+
+	/// Old simple_animal behavior that needs to be componentized
+	var/can_hide = FALSE
+	/// Allows a mob to pass unbolted doors while hidden
+	var/pass_door_while_hidden = FALSE
+	/// What kind of footstep this mob should have. Null if it shouldn't have any.
+	var/footstep_type
+	/// Can this simple mob crawl or not? If FALSE, it won't get immobilized by crawling
+	var/can_crawl = FALSE
+
+	//Interaction
+	var/harm_intent_damage = 3
+	/// Minimum force required to deal any damage
+	var/force_threshold = 0
 
 /mob/living/basic/Initialize(mapload)
 	. = ..()
@@ -89,10 +107,33 @@
 		real_name = name
 
 	if(!loc)
-		stack_trace("Basic mob being instantiated in nullspace")
+		stack_trace("Basic mob [type] being instantiated in nullspace")
 
-/mob/living/basic/Life(seconds_per_tick = SSMOBS_DT, times_fired)
-	. = ..()
+	if(can_hide)
+		var/datum/action/innate/hide/hide = new()
+		hide.Grant(src)
+	if(pcollar)
+		pcollar = new(src)
+		regenerate_icons()
+	if(footstep_type)
+		AddComponent(/datum/component/footstep, footstep_type)
+	add_strippable_element()
+
+	apply_atmos_requirements()
+	apply_temperature_requirements()
+
+/mob/living/basic/proc/apply_atmos_requirements()
+	if(unsuitable_atmos_damage == 0)
+		return
+
+	atmos_requirements = string_assoc_list(atmos_requirements)
+	AddElement(/datum/element/atmos_requirements, atmos_requirements, unsuitable_atmos_damage)
+
+/// Ensures this mob can take temperature damage if it's supposed to
+/mob/living/basic/proc/apply_temperature_requirements(mapload)
+	if((unsuitable_cold_damage == 0 && unsuitable_heat_damage == 0) || (minimum_survivable_temperature <= 0 && maximum_survivable_temperature >= INFINITY))
+		return
+	AddElement(/datum/element/body_temperature, minimum_survivable_temperature, maximum_survivable_temperature, unsuitable_cold_damage, unsuitable_heat_damage, mapload)
 
 /mob/living/basic/get_default_say_verb()
 	return length(speak_emote) ? pick(speak_emote) : ..()
@@ -105,22 +146,18 @@
 	else
 		health = 0
 
-// /mob/living/basic/gib()
-// 	if(butcher_results || guaranteed_butcher_results)
-// 		var/list/butcher_loot = list()
-// 		if(butcher_results)
-// 			butcher_loot += butcher_results
-// 		if(guaranteed_butcher_results)
-// 			butcher_loot += guaranteed_butcher_results
-// 		var/atom/loot_destination = drop_location()
-// 		for(var/path in butcher_loot)
-// 			for(var/i in 1 to butcher_loot[path])
-// 				new path(loot_destination)
-// 	return ..()
-
-// /mob/living/basic/update_sight()
-// 	lighting_color_cutoffs = list(lighting_cutoff_red, lighting_cutoff_green, lighting_cutoff_blue)
-// 	return ..()
+/mob/living/basic/gib()
+	if(icon_gib)
+		flick(icon_gib, src)
+	if(butcher_results)
+		var/atom/Tsec = drop_location()
+		for(var/path in butcher_results)
+			for(var/i in 1 to butcher_results[path])
+				new path(Tsec)
+	if(pcollar)
+		pcollar.forceMove(drop_location())
+		pcollar = null
+	..()
 
 /mob/living/basic/examine(mob/user)
 	. = ..()
@@ -141,43 +178,6 @@
 /mob/living/basic/resolve_unarmed_attack(atom/attack_target, list/modifiers)
 	melee_attack(attack_target, modifiers)
 
-// /mob/living/basic/vv_edit_var(vname, vval)
-// 	switch(vname)
-// 		if(NAMEOF(src, habitable_atmos), NAMEOF(src, unsuitable_atmos_damage))
-// 			RemoveElement(/datum/element/atmos_requirements, habitable_atmos, unsuitable_atmos_damage)
-// 			. = TRUE
-// 		if(NAMEOF(src, minimum_survivable_temperature), NAMEOF(src, maximum_survivable_temperature), NAMEOF(src, unsuitable_cold_damage), NAMEOF(src, unsuitable_heat_damage))
-// 			RemoveElement(/datum/element/basic_body_temp_sensitive, minimum_survivable_temperature, maximum_survivable_temperature, unsuitable_cold_damage, unsuitable_heat_damage)
-// 			. = TRUE
-
-// 	. = ..()
-
-// 	switch(vname)
-// 		if(NAMEOF(src, habitable_atmos), NAMEOF(src, unsuitable_atmos_damage))
-// 			apply_atmos_requirements()
-// 		if(NAMEOF(src, minimum_survivable_temperature), NAMEOF(src, maximum_survivable_temperature), NAMEOF(src, unsuitable_cold_damage), NAMEOF(src, unsuitable_heat_damage))
-// 			apply_temperature_requirements()
-// 		if(NAMEOF(src, speed))
-// 			datum_flags |= DF_VAR_EDITED
-// 			set_varspeed(vval)
-
-// /mob/living/basic/proc/set_varspeed(var_value)
-// 	speed = var_value
-// 	update_basic_mob_varspeed()
-
-// /mob/living/basic/proc/update_basic_mob_varspeed()
-// 	if(speed == 0)
-// 		remove_movespeed_modifier(/datum/movespeed_modifier/simplemob_varspeed)
-// 	add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/simplemob_varspeed, multiplicative_slowdown = speed)
-// 	SEND_SIGNAL(src, POST_BASIC_MOB_UPDATE_VARSPEED)
-
-// /mob/living/basic/update_movespeed()
-// 	. = ..()
-// 	if (cached_multiplicative_slowdown > END_GLIDE_SPEED)
-// 		ADD_TRAIT(src, TRAIT_NO_GLIDE, SPEED_TRAIT)
-// 	else
-// 		REMOVE_TRAIT(src, TRAIT_NO_GLIDE, SPEED_TRAIT)
-
 /mob/living/basic/relaymove(mob/living/user, direction)
 	if(user.incapacitated())
 		return
@@ -190,48 +190,6 @@
 
 /mob/living/basic/compare_sentience_type(compare_type)
 	return sentience_type == compare_type
-
-/// Updates movement speed based on stamina loss
-/mob/living/basic/update_stamina()
-	return
-	// set_varspeed(initial(speed) + (staminaloss * 0.06))
-
-// /mob/living/basic/on_fire_stack(seconds_per_tick, datum/status_effect/fire_handler/fire_stacks/fire_handler)
-// 	adjust_bodytemperature((maximum_survivable_temperature + (fire_handler.stacks * 12)) * 0.5 * seconds_per_tick)
-
-// /mob/living/basic/get_fire_overlay(stacks, on_fire)
-// 	var/fire_icon = "generic_fire"
-// 	if(!GLOB.fire_appearances[fire_icon])
-// 		GLOB.fire_appearances[fire_icon] = mutable_appearance(
-// 			'icons/mob/effects/onfire.dmi',
-// 			fire_icon,
-// 			-HIGHEST_LAYER,
-// 			appearance_flags = RESET_COLOR,
-// 		)
-
-// 	return GLOB.fire_appearances[fire_icon]
-
-// /mob/living/basic/put_in_hands(obj/item/I, del_on_fail = FALSE, merge_stacks = TRUE, ignore_animation = TRUE)
-// 	. = ..()
-// 	if (.)
-// 		update_held_items()
-
-// /mob/living/basic/update_held_items()
-// 	. = ..()
-// 	if(isnull(client) || isnull(hud_used) || hud_used.hud_version == HUD_STYLE_NOHUD)
-// 		return
-// 	var/turf/our_turf = get_turf(src)
-// 	for(var/obj/item/held in held_items)
-// 		var/index = get_held_index_of_item(held)
-// 		SET_PLANE(held, ABOVE_HUD_PLANE, our_turf)
-// 		held.screen_loc = ui_hand_position(index)
-// 		client.screen |= held
-
-// /mob/living/basic/get_body_temp_heat_damage_limit()
-// 	return maximum_survivable_temperature
-
-// /mob/living/basic/get_body_temp_cold_damage_limit()
-// 	return minimum_survivable_temperature
 
 /**
  * Apply the appearance and properties this mob has when it dies
@@ -250,6 +208,17 @@
 	. = ..()
 	if(!.)
 		return
+
+	density = initial(density)
+	health = maxHealth
+	icon = initial(icon)
+	icon_state = icon_living
+	density = initial(density)
+	flying = initial(flying)
+	if(collar_type)
+		collar_type = "[initial(collar_type)]"
+		regenerate_icons()
+
 	look_alive()
 
 /// Apply the appearance and properties this mob has when it is alive
@@ -262,8 +231,47 @@
 		density = TRUE
 	// SEND_SIGNAL(src, COMSIG_BASICMOB_LOOK_ALIVE)
 
-/mob/living/simple_animal/movement_delay()
+/mob/living/basic/movement_delay()
 	. = speed
 	if(forced_look)
 		. += DIRECTION_LOCK_SLOWDOWN
-	. += GLOB.configuration.movement.base_run_speed
+	. += GLOB.configuration.movement.animal_delay
+
+/mob/living/basic/proc/add_strippable_element()
+	if(!can_collar)
+		return
+	AddElement(/datum/element/strippable, create_strippable_list(list(/datum/strippable_item/pet_collar)))
+
+/mob/living/basic/proc/add_collar(obj/item/petcollar/P, mob/user)
+	if(!istype(P) || QDELETED(P) || pcollar)
+		return
+	if(user && !user.unEquip(P))
+		return
+	P.forceMove(src)
+	P.equipped(src)
+	pcollar = P
+	regenerate_icons()
+	if(user)
+		to_chat(user, "<span class='notice'>You put [P] around [src]'s neck.</span>")
+	if(P.tagname && !unique_pet)
+		name = P.tagname
+		real_name = P.tagname
+
+/mob/living/basic/proc/remove_collar(atom/new_loc, mob/user)
+	if(!pcollar)
+		return
+
+	var/obj/old_collar = pcollar
+
+	unEquip(pcollar)
+
+	if(user)
+		user.put_in_hands(old_collar)
+
+	return old_collar
+
+/mob/living/basic/regenerate_icons()
+	cut_overlays()
+	if(pcollar && collar_type)
+		add_overlay("[collar_type]collar")
+		add_overlay("[collar_type]tag")

@@ -51,7 +51,7 @@ multiple modular subtrees with behaviors
 	///Reference to the movement datum we use. Is a type on initialize but becomes a ref afterwards.
 	var/datum/ai_movement/ai_movement = /datum/ai_movement/dumb
 	///Delay between movements. This is on the controller so we can keep the movement datum singleton
-	var/movement_delay = 0.1 SECONDS
+	var/movement_delay = 0.2 SECONDS
 
 	// The variables below are fucking stupid and should be put into the blackboard at some point.
 	///AI paused time

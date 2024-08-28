@@ -33,6 +33,8 @@
 
 #define issimple_animal(A) (istype(A, /mob/living/simple_animal))
 
+#define isbasicmob(A) (istype(A, /mob/living/basic))
+
 #define ismegafauna(A) istype(A, /mob/living/simple_animal/hostile/megafauna)
 
 #define isshade(A) (istype(A, /mob/living/simple_animal/shade))
