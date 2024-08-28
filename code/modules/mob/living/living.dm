@@ -1161,10 +1161,10 @@
 		return
 	return ..()
 
-/mob/living/Moved(OldLoc, Dir, Forced = FALSE)
+/mob/living/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
 	for(var/obj/O in src)
-		O.on_mob_move(Dir, src)
+		O.on_mob_move(movement_dir, src)
 
 /// Can a mob interact with the apc remotely like a pulse demon, cyborg, or AI?
 /mob/living/proc/can_remote_apc_interface(obj/machinery/power/apc/ourapc)
