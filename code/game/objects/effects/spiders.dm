@@ -59,7 +59,7 @@
 	icon_state = "eggs"
 	var/amount_grown = 0
 	var/player_spiders = FALSE
-	var/list/faction = list("spiders")
+	faction = list("spiders")
 	flags_2 = CRITICAL_ATOM_2
 
 /obj/structure/spider/eggcluster/Initialize(mapload)
@@ -96,7 +96,7 @@
 	var/obj/machinery/atmospherics/unary/vent_pump/entry_vent
 	var/travelling_in_vent = FALSE
 	var/player_spiders = FALSE
-	var/list/faction = list("spiders")
+	faction = list("spiders")
 	var/selecting_player = 0
 	///Is this spiderling created from a xenobiology mob?
 	var/xenobiology_spawned = FALSE

@@ -62,7 +62,6 @@
 	var/region_max = REGION_COMMAND
 
 	var/syndicate = FALSE		//is the turret a syndicate turret?
-	var/faction = ""
 	var/emp_vulnerable = TRUE // Can be empd
 	var/scan_range = 7
 	var/always_up = FALSE		//Will stay active
@@ -575,9 +574,11 @@ GLOBAL_LIST_EMPTY(turret_icons)
 				pop_down() // no valid targets, close the cover
 
 /obj/machinery/porta_turret/proc/in_faction(mob/living/target)
-	if(!(faction in target.faction))
-		return 0
-	return 1
+	for(var/f in faction)
+		if(f in target.faction)
+			return TRUE
+
+	return FALSE
 
 /obj/machinery/porta_turret/proc/assess_and_assign(atom/movable/AM, list/targets, list/secondarytargets)
 	var/target_priority
@@ -1080,7 +1081,7 @@ GLOBAL_LIST_EMPTY(turret_icons)
 	has_cover = FALSE
 	scan_range = 9
 
-	faction = "syndicate"
+	faction = list("syndicate")
 	emp_vulnerable = FALSE
 
 	lethal = TRUE
@@ -1186,7 +1187,7 @@ GLOBAL_LIST_EMPTY(turret_icons)
 	raised = TRUE
 	scan_range = 9
 
-	faction = "syndicate"
+	faction = list("syndicate")
 	emp_vulnerable = FALSE
 
 	lethal = TRUE

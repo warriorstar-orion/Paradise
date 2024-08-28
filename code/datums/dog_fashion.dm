@@ -38,6 +38,15 @@
 		corgI.color = obj_color
 		return corgI
 
+///Applies random speech modifiers to the dog
+/datum/dog_fashion/proc/apply_to_speech(datum/ai_planning_subtree/random_speech/speech)
+	if(length(emote_see))
+		speech.emote_see = string_assoc_list(emote_see)
+	if(length(emote_hear))
+		speech.emote_hear = string_assoc_list(emote_hear)
+	if(length(speak))
+		speech.speak = string_assoc_list(speak)
+
 
 /datum/dog_fashion/head
 	icon_file = 'icons/mob/corgi_head.dmi'

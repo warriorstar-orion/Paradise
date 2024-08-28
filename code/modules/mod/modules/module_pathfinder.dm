@@ -91,6 +91,18 @@
 	jet_icon = null
 	return ..()
 
+/proc/access_from_wear_id(obj/item/wear_id)
+	. = list()
+	var/obj/item/pda/P = wear_id
+	if(istype(P))
+		var/obj/item/card/id/id_card = P.id
+		. = id_card.access
+
+	var/obj/item/card/id/I = wear_id
+	if(istype(I))
+		. = I.access
+
+
 /obj/item/bio_chip/mod/proc/recall()
 	target = get_turf(imp_in)
 	if(!module?.mod)
