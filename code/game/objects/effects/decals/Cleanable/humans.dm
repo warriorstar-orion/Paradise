@@ -313,6 +313,7 @@
 /obj/effect/decal/cleanable/blood/gibs/proc/streak(list/directions)
 	var/delay = 2
 	var/range = pick(1, 200; 2, 150; 3, 50; 4)
+	var/direction = pick(directions)
 	if(!step_to(src, get_step(src, direction), 0))
 		return
 

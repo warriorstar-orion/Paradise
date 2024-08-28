@@ -21,10 +21,9 @@
 	var/face_while_pulling = FALSE
 	var/throwforce = 0
 
-	var/inertia_dir = 0
-	var/atom/inertia_last_loc
-	var/inertia_moving = 0
-	var/inertia_next_move = 0
+	///Are we moving with inertia? Mostly used as an optimization
+	var/inertia_moving = FALSE
+	///Delay in deciseconds between inertia based movement
 	var/inertia_move_delay = 5
 
 	var/moving_diagonally = 0 //0: not doing a diagonal move. 1 and 2: doing the first/second step of the diagonal move
@@ -361,19 +360,26 @@
 	update_runechat_msg_location()
 
 
-//Called whenever an object moves and by mobs when they attempt to move themselves through space
-//And when an object or action applies a force on src, see newtonian_move() below
-//return FALSE to have src start/keep drifting in a no-grav area and TRUE to stop/not start drifting
-//Mobs should return TRUE if they should be able to move of their own volition, see client/Move() in mob_movement.dm
-//movement_dir == 0 when stopping or any dir when trying to move
-/atom/movable/proc/Process_Spacemove(movement_dir = 0)
+/**
+ * Called whenever an object moves and by mobs when they attempt to move themselves through space
+ * And when an object or action applies a force on src, see [newtonian_move][/atom/movable/proc/newtonian_move]
+ *
+ * Return FALSE to have src start/keep drifting in a no-grav area and TRUE to stop/not start drifting
+ *
+ * Mobs should return TRUE if they should be able to move of their own volition, see [/client/proc/Move]
+ *
+ * Arguments:
+ * * movement_dir - 0 when stopping or any dir when trying to move
+ * * continuous_move - If this check is coming from something in the context of already drifting
+ */
+/atom/movable/proc/Process_Spacemove(movement_dir = 0, continuous_move = FALSE)
 	if(has_gravity(src))
 		return TRUE
 
 	if(pulledby && !pulledby.pulling)
 		return TRUE
 
-	if(SEND_SIGNAL(src, COMSIG_MOVABLE_SPACEMOVE, movement_dir) & COMSIG_MOVABLE_STOP_SPACEMOVE)
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_SPACEMOVE, movement_dir, continuous_move) & COMSIG_MOVABLE_STOP_SPACEMOVE)
 		return TRUE
 
 	if(throwing)
@@ -384,17 +390,15 @@
 
 	return FALSE
 
-/atom/movable/proc/newtonian_move(direction) //Only moves the object if it's under no gravity
+/atom/movable/proc/newtonian_move(direction, instant = FALSE) //Only moves the object if it's under no gravity
 	if(!loc || Process_Spacemove(0))
-		inertia_dir = 0
 		return FALSE
 
-	inertia_dir = direction
 	if(!direction)
 		return TRUE
 
-	inertia_last_loc = loc
-	SSspacedrift.processing[src] = src
+	AddComponent(/datum/component/drift, direction, instant, start_delay)
+
 	return TRUE
 
 //called when src is thrown into hit_atom
