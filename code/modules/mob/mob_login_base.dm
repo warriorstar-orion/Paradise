@@ -60,6 +60,8 @@
 	// For us, (1,1,1) is a space tile. This means roughly 200,000! calls to Move()
 	// You do not want this
 
+	SEND_SIGNAL(src, COMSIG_MOB_LOGIN)
+
 	reset_perspective(loc)
 
 
@@ -81,3 +83,5 @@
 	update_client_colour(0)
 	update_morgue()
 	client.init_verbs()
+
+	SEND_SIGNAL(src, COMSIG_MOB_CLIENT_LOGIN, client)
