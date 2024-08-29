@@ -14,6 +14,15 @@
 	var/stabilize = FALSE
 	var/thrust_callback
 
+/obj/item/tank/jetpack/Initialize(mapload)
+	. = ..()
+	thrust_callback = CALLBACK(src, PROC_REF(allow_thrust), 0.01)
+	configure_jetpack(stabilize)
+
+/obj/item/tank/jetpack/Destroy()
+	thrust_callback = null
+	return ..()
+
 /**
  * configures/re-configures the jetpack component
  *

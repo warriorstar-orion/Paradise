@@ -131,6 +131,15 @@
 	var/stabilize = FALSE
 	var/thrust_callback
 
+/obj/item/mod/module/jetpack/Initialize(mapload)
+	. = ..()
+	thrust_callback = CALLBACK(src, PROC_REF(allow_thrust))
+	configure_jetpack(stabilize)
+
+/obj/item/mod/module/jetpack/Destroy()
+	thrust_callback = null
+	return ..()
+
 /**
  * configures/re-configures the jetpack component
  *
@@ -160,19 +169,9 @@
 			configure_jetpack(value)
 
 /obj/item/mod/module/jetpack/proc/allow_thrust()
-	if(!active)
-		return
 	if(!drain_power(use_power_cost))
 		return FALSE
 	return TRUE
-
-/obj/item/mod/module/jetpack/on_activation()
-	. = ..()
-	mod.jetpack_active = TRUE
-
-/obj/item/mod/module/jetpack/on_deactivation(display_message, deleting)
-	. = ..()
-	mod.jetpack_active = FALSE
 
 /obj/item/mod/module/jetpack/advanced
 	name = "MOD advanced ion jetpack module"
