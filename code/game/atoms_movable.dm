@@ -269,7 +269,6 @@
 /atom/movable/proc/Moved(atom/OldLoc, Dir, Forced = FALSE)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, OldLoc, Dir, Forced)
 	if(!inertia_moving)
-		inertia_next_move = world.time + inertia_move_delay
 		newtonian_move(Dir)
 	if(length(client_mobs_in_contents))
 		update_parallax_contents()
@@ -389,11 +388,11 @@
 
 	return FALSE
 
-/atom/movable/proc/newtonian_move(direction, instant = FALSE) //Only moves the object if it's under no gravity
-	if(!loc || Process_Spacemove(0))
+/atom/movable/proc/newtonian_move(direction, instant = FALSE, start_delay = 0)
+	if(!loc || Process_Spacemove(0, continuous_move = TRUE))
 		return FALSE
 
-	if(!direction)
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_NEWTONIAN_MOVE, direction, start_delay) & COMPONENT_MOVABLE_NEWTONIAN_BLOCK)
 		return TRUE
 
 	AddComponent(/datum/component/drift, direction, instant, start_delay)
@@ -524,8 +523,6 @@
 		if(!buckled_mob.Move(newloc, direct, movetime))
 			forceMove(buckled_mob.loc)
 			last_move = buckled_mob.last_move
-			inertia_dir = last_move
-			buckled_mob.inertia_dir = last_move
 			return FALSE
 	return TRUE
 

@@ -367,7 +367,7 @@
 				break
 			continue
 
-		if(drifting && !user.inertia_dir)
+		if(drifting && !GLOB.move_manager.processing_on(user, SSspacedrift))
 			drifting = 0
 			user_loc = user.loc
 
@@ -426,7 +426,7 @@
 		if(progress)
 			progbar.update(world.time - starttime)
 		if(!allow_moving)
-			if(drifting && !user.inertia_dir)
+			if(drifting && !GLOB.move_manager.processing_on(user, SSspacedrift))
 				drifting = FALSE
 				Uloc = user.loc
 			if(!drifting && user.loc != Uloc)

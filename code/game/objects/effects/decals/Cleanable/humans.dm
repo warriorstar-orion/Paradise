@@ -156,8 +156,11 @@
 	..()
 
 /obj/effect/decal/cleanable/blood/proc/bloodyify_human(mob/living/carbon/human/H)
-	if(inertia_dir && H.inertia_dir == inertia_dir) //if they are moving the same direction we are, no collison
-		return
+	// Originally this code would check to see if both us and the human
+	// we collided with had inertia in the same direction, and avoided collision
+	// if so. This might be possible with movement loops but, realistically,
+	// if we've gotten here, the objects have collided no matter what direction
+	// they were going in.
 
 	var/list/obj/item/things_to_potentially_bloody = list()
 	var/count = amount + 1
@@ -317,7 +320,6 @@
 	if(!step_to(src, get_step(src, direction), 0))
 		return
 
-	var/direction = pick(directions)
 
 	var/datum/move_loop/loop = GLOB.move_manager.move_to(src, get_step(src, direction), delay = delay, timeout = range * delay, priority = MOVEMENT_ABOVE_SPACE_PRIORITY)
 	RegisterSignal(loop, COMSIG_MOVELOOP_POSTPROCESS, PROC_REF(spread_movement_effects))
