@@ -216,6 +216,9 @@
 		return FALSE
 	var/atom/oldloc = loc
 
+	// if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, newloc) & COMPONENT_MOVABLE_BLOCK_PRE_MOVE)
+	// 	return FALSE
+
 	if(loc != newloc)
 		if(movetime > 0)
 			glide_for(movetime)

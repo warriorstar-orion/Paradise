@@ -157,7 +157,7 @@
 	else if(display_message)
 		to_chat(mod.wearer, "<span class='notice'>[src] deactivated.</span>")
 	//mod.wearer.update_clothing(mod.slot_flags)
-	SEND_SIGNAL(src, COMSIG_MODULE_DEACTIVATED)
+	SEND_SIGNAL(src, COMSIG_MODULE_DEACTIVATED, mod.wearer)
 	mod.update_mod_overlays()
 	return TRUE
 
