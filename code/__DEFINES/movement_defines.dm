@@ -1,3 +1,9 @@
+/// The minimum for glide_size to be clamped to.
+#define MIN_GLIDE_SIZE 1
+/// The maximum for glide_size to be clamped to.
+/// This shouldn't be higher than the icon size, and generally you shouldn't be changing this, but it's here just in case.
+#define MAX_GLIDE_SIZE 32
+
 //Movement loop priority. Only one loop can run at a time, this dictates that
 // Higher numbers beat lower numbers
 ///Standard, go lower then this if you want to override, higher otherwise

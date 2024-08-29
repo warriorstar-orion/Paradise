@@ -310,14 +310,12 @@
 		to_chat(user, "<span class='cult'>A sudden calm fills the gnashing void of your mind- you're alone now.</span>")
 
 /mob/living/carbon/human/Process_Spacemove(movement_dir = 0, continuous_move = FALSE)
-	if(..())
-		return TRUE
-
 	if(istype(wear_suit, /obj/item/clothing/suit/hooded/carp_costume/dragon))
 		return TRUE
 	if(dna.species.spec_Process_Spacemove(src))
 		return TRUE
-	return FALSE
+
+	return ..()
 
 /obj/item/clothing/head/hooded/carp_hood/dragon
 	name = "space carp hood"

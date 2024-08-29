@@ -499,6 +499,7 @@
 
 /// This proc is recursive, and calls itself to constantly set the glide size of an atom/movable
 /atom/movable/proc/set_glide_size(target = 8)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, target)
 	glide_size = target
 
 	for(var/mob/buckled_mob as anything in buckled_mobs)
