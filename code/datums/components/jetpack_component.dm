@@ -112,9 +112,9 @@
 		return
 	if(!(user.mob_has_gravity()) || user.buckled)//You don't want use jet in gravity or while buckled.
 		return
-	if(user.pulledby)//You don't must use jet if someone pull you
+	if(user.pulledby)//You can't use jet if someone pull you
 		return
-	if(user.throwing)//You don't must use jet if you thrown
+	if(user.throwing)//You can't use jet if you thrown
 		return
 	if(user.client.calculate_move_dir())//You use jet when press keys. yes.
 		thrust()
