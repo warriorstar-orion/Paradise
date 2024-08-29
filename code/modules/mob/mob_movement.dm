@@ -119,6 +119,9 @@
 	if(!mob.Process_Spacemove(direct))
 		return 0
 
+	if(SEND_SIGNAL(mob, COMSIG_MOB_CLIENT_PRE_MOVE, args) & COMSIG_MOB_CLIENT_BLOCK_PRE_MOVE)
+		return FALSE
+
 	if(mob.restrained()) // Why being pulled while cuffed prevents you from moving
 		for(var/mob/M in orange(1, mob))
 			if(M.pulling == mob)
@@ -304,6 +307,7 @@
 ///Called by /client/Move()
 ///For moving in space
 ///Return 1 for movement 0 for none
+// TODO: OK to convert 1/0 to TRUE/FALSE for return values
 /mob/Process_Spacemove(movement_dir = 0, continuous_move = FALSE)
 	if(..())
 		return 1
@@ -314,6 +318,10 @@
 			if(backup.newtonian_move(opposite_dir)) //You're pushing off something movable, so it moves
 				to_chat(src, "<span class='notice'>You push off of [backup] to propel yourself.</span>")
 		return 1
+
+	if(continuous_move || !movement_dir)
+		return 1
+
 	return 0
 
 /mob/get_spacemove_backup(movement_dir)
