@@ -316,7 +316,7 @@
 
 	// TODO: if(buckled) may belong here
 
-	var/atom/movable/backup = get_spacemove_backup(movement_dir)
+	var/atom/movable/backup = get_spacemove_backup(movement_dir, continuous_move)
 	if(!backup)
 		return FALSE
 
@@ -328,7 +328,7 @@
 		to_chat(src, "<span class='notice'>You push off of [backup] to propel yourself.</span>")
 	return TRUE
 
-/mob/get_spacemove_backup(movement_dir)
+/mob/get_spacemove_backup(moving_direction, continuous_move)
 	for(var/A in orange(1, get_turf(src)))
 		if(isarea(A))
 			continue
@@ -339,18 +339,24 @@
 			if(!turf.density && !mob_negates_gravity())
 				continue
 			return A
-		else
-			var/atom/movable/AM = A
-			if(AM == buckled) //Kind of unnecessary but let's just be sure
+
+		var/atom/movable/AM = A
+		var/pass_allowed = AM.CanPass(src, get_dir(AM, src))
+		if(continuous_move && !pass_allowed)
+			var/datum/move_loop/move/rebound_engine = GLOB.move_manager.processing_on(AM, SSspacedrift)
+			// If you're moving toward it and you're both going the same direction, stop
+			if(moving_direction == get_dir(src, A) && rebound_engine && moving_direction == rebound_engine.direction)
 				continue
-			if(!AM.CanPass(src) || AM.density)
-				if(AM.anchored)
-					return AM
-				if(pulling == AM)
-					continue
-				if(get_turf(AM) == get_step(get_turf(src), movement_dir)) // No pushing off objects in front of you, while simultaneously pushing them fowards to go faster in space.
-					continue
-				. = AM
+		if(AM == buckled) //Kind of unnecessary but let's just be sure
+			continue
+		if(!AM.CanPass(src) || AM.density)
+			if(AM.anchored)
+				return AM
+			if(pulling == AM)
+				continue
+			if(get_turf(AM) == get_step(get_turf(src), moving_direction)) // No pushing off objects in front of you, while simultaneously pushing them fowards to go faster in space.
+				continue
+			. = AM
 
 
 /mob/proc/mob_has_gravity(turf/T)

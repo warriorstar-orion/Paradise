@@ -25,6 +25,9 @@
 	var/inertia_moving = FALSE
 	///Delay in deciseconds between inertia based movement
 	var/inertia_move_delay = 5
+	///The last time we pushed off something
+	///This is a hack to get around dumb him him me scenarios
+	var/last_pushoff
 
 	var/moving_diagonally = 0 //0: not doing a diagonal move. 1 and 2: doing the first/second step of the diagonal move
 	var/list/client_mobs_in_contents
