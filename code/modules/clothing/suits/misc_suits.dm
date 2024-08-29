@@ -309,7 +309,7 @@
 		user.faction -= "carp"
 		to_chat(user, "<span class='cult'>A sudden calm fills the gnashing void of your mind- you're alone now.</span>")
 
-/mob/living/carbon/human/Process_Spacemove(movement_dir = 0)
+/mob/living/carbon/human/Process_Spacemove(movement_dir = 0, continuous_move = FALSE)
 	if(..())
 		return TRUE
 

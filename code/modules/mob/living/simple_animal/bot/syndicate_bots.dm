@@ -195,7 +195,7 @@
 /mob/living/simple_animal/bot/ed209/syndicate/speak()
 	return
 
-/mob/living/simple_animal/bot/ed209/syndicate/Process_Spacemove(movement_dir = 0)
+/mob/living/simple_animal/bot/ed209/syndicate/Process_Spacemove(movement_dir = 0, continuous_move = FALSE)
 	return 1
 
 /mob/living/simple_animal/bot/ed209/syndicate/start_patrol()

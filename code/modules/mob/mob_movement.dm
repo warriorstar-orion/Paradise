@@ -304,7 +304,7 @@
 ///Called by /client/Move()
 ///For moving in space
 ///Return 1 for movement 0 for none
-/mob/Process_Spacemove(movement_dir = 0)
+/mob/Process_Spacemove(movement_dir = 0, continuous_move = FALSE)
 	if(..())
 		return 1
 	var/atom/movable/backup = get_spacemove_backup(movement_dir)

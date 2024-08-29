@@ -121,7 +121,7 @@
 /obj/effect/decal/cleanable/blood/try_merging_decal(turf/T)
 	..()
 
-/obj/effect/decal/cleanable/blood/Process_Spacemove(movement_dir)
+/obj/effect/decal/cleanable/blood/Process_Spacemove(movement_dir = 0, continuous_move = FALSE)
 	if(gravity_check)
 		return TRUE
 
