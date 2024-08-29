@@ -303,26 +303,30 @@
 	return TRUE
 
 
-///Process_Spacemove
-///Called by /client/Move()
-///For moving in space
-///Return 1 for movement 0 for none
-// TODO: OK to convert 1/0 to TRUE/FALSE for return values
+/**
+ * Handles mob/living movement in space (or no gravity)
+ *
+ * Called by /client/Move()
+ *
+ * return TRUE for movement or FALSE for none
+ */
 /mob/Process_Spacemove(movement_dir = 0, continuous_move = FALSE)
 	if(..())
-		return 1
+		return TRUE
+
+	// TODO: if(buckled) may belong here
+
 	var/atom/movable/backup = get_spacemove_backup(movement_dir)
-	if(backup)
-		if(istype(backup) && movement_dir && !backup.anchored)
-			var/opposite_dir = turn(movement_dir, 180)
-			if(backup.newtonian_move(opposite_dir)) //You're pushing off something movable, so it moves
-				to_chat(src, "<span class='notice'>You push off of [backup] to propel yourself.</span>")
-		return 1
+	if(!backup)
+		return FALSE
 
-	if(continuous_move || !movement_dir)
-		return 1
+	if(continuous_move || !istype(backup) || !movement_dir || backup.anchored)
+		return TRUE
 
-	return 0
+	var/opposite_dir = turn(movement_dir, 180)
+	if(backup.newtonian_move(opposite_dir)) //You're pushing off something movable, so it moves
+		to_chat(src, "<span class='notice'>You push off of [backup] to propel yourself.</span>")
+	return TRUE
 
 /mob/get_spacemove_backup(movement_dir)
 	for(var/A in orange(1, get_turf(src)))
