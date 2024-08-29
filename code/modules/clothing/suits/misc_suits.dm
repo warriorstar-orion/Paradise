@@ -326,7 +326,7 @@
 		var/obj/item/mod/control/C = back
 		thrust = locate(/obj/item/mod/module/jetpack) in C
 	if(thrust)
-		if((movement_dir || thrust.stabilizers) && thrust.allow_thrust(0.01, src))
+		if((movement_dir || thrust.stabilize) && thrust.allow_thrust(0.01, src))
 			return TRUE
 	if(dna.species.spec_Process_Spacemove(src))
 		return TRUE
