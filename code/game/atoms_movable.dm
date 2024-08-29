@@ -216,8 +216,8 @@
 		return FALSE
 	var/atom/oldloc = loc
 
-	// if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, newloc) & COMPONENT_MOVABLE_BLOCK_PRE_MOVE)
-	// 	return FALSE
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, newloc) & COMPONENT_MOVABLE_BLOCK_PRE_MOVE)
+		return FALSE
 
 	if(loc != newloc)
 		if(movetime > 0)
@@ -377,10 +377,10 @@
 	if(has_gravity(src))
 		return TRUE
 
-	if(pulledby && !pulledby.pulling)
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_SPACEMOVE, movement_dir, continuous_move) & COMSIG_MOVABLE_STOP_SPACEMOVE)
 		return TRUE
 
-	if(SEND_SIGNAL(src, COMSIG_MOVABLE_SPACEMOVE, movement_dir, continuous_move) & COMSIG_MOVABLE_STOP_SPACEMOVE)
+	if(pulledby && !pulledby.pulling)
 		return TRUE
 
 	if(throwing)
@@ -392,7 +392,7 @@
 	return FALSE
 
 /atom/movable/proc/newtonian_move(direction, instant = FALSE, start_delay = 0)
-	if(!loc || Process_Spacemove(0, continuous_move = TRUE))
+	if(!loc || Process_Spacemove(direction, continuous_move = TRUE))
 		return FALSE
 
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_NEWTONIAN_MOVE, direction, start_delay) & COMPONENT_MOVABLE_NEWTONIAN_BLOCK)
