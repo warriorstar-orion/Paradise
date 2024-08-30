@@ -101,3 +101,7 @@ RESTRICT_TYPE(/mob/living/basic/pet)
 	if(pcollar && collar_type)
 		add_overlay("[collar_type]collar")
 		add_overlay("[collar_type]tag")
+
+///Proc to run on a successful taming attempt
+/mob/living/basic/pet/proc/tamed(mob/living/tamer, atom/food)
+	visible_message("<span class='notice'>[src] licks at [tamer] in a friendly manner!</span>")

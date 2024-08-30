@@ -21,16 +21,42 @@
 	attack_sound = 'sound/weapons/bite.ogg'
 	attack_vis_effect = ATTACK_EFFECT_BITE
 	melee_attack_cooldown = 0.8 SECONDS
+	footstep_type = FOOTSTEP_MOB_CLAW
 	///icon state of the collar we can wear
 	var/collar_icon_state
 	///icon state of our cult icon
 	var/cult_icon_state
+
+	var/static/list/pet_commands = list(
+		// /datum/pet_command/follow/dog,
+		/datum/pet_command/point_targeting/fetch,
+	)
+
+/mob/living/basic/pet/dog/Initialize()
+	. = ..()
+	AddComponent(/datum/component/obeys_commands, pet_commands)
 
 ///Updates dog speech and emotes
 /mob/living/basic/pet/dog/proc/update_dog_speech(datum/ai_planning_subtree/random_speech/speech)
 	speech.speak = string_assoc_list(list("YAP", "Woof!", "Bark!", "AUUUUUU"))
 	speech.emote_hear = string_assoc_list(list("barks!", "woofs!", "yaps.","pants."))
 	speech.emote_see = string_assoc_list(list("shakes [p_their()] head.", "chases [p_their()] tail.","shivers."))
+
+/mob/living/basic/pet/dog/proc/update_held_icon()
+	underlays.Cut()
+
+	var/atom/held_item
+	if(length(contents))
+		held_item = contents[1]
+	else
+		return
+
+	var/matrix/m180 = matrix(held_item.transform)
+	m180.Turn(180)
+
+	var/held_item_icon = image(held_item, pixel_y = -8)
+	animate(held_item_icon, transform = m180)
+	underlays += held_item_icon
 
 //CORGIS!
 

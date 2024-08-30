@@ -4,7 +4,7 @@
 		BB_VISION_RANGE = AI_DOG_VISION_RANGE,
 		BB_PET_TARGETING_STRATEGY = /datum/targeting_strategy/basic/not_friends,
 	)
-	ai_movement = /datum/ai_movement/basic_avoidance
+	ai_movement = /datum/ai_movement/jps
 	idle_behavior = /datum/idle_behavior/idle_dog
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/random_speech/dog,
@@ -31,7 +31,7 @@
 
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/random_speech/dog,
-		// /datum/ai_planning_subtree/pet_planning,
+		/datum/ai_planning_subtree/pet_planning,
 		// /datum/ai_planning_subtree/dog_harassment,
 		// Find targets to run away from (uses the targeting strategy from above)
 		// /datum/ai_planning_subtree/simple_find_target,
