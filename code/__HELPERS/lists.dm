@@ -831,8 +831,6 @@
 		for(var/i = 0, i < len, ++i)
 			L.Swap(fromIndex++, toIndex++)
 
-#define reverseList(L) reverseRange(L.Copy())
-
 //replaces reverseList ~Carnie
 /proc/reverseRange(list/L, start = 1, end = 0)
 	if(length(L))
