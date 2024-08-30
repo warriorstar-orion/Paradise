@@ -9,14 +9,6 @@
  * Misc
  */
 
-// Generic listoflist safe add and removal macros:
-///If value is a list, wrap it in a list so it can be used with list add/remove operations
-#define LIST_VALUE_WRAP_LISTS(value) (islist(value) ? list(value) : value)
-///Add an untyped item to a list, taking care to handle list items by wrapping them in a list to remove the footgun
-#define UNTYPED_LIST_ADD(list, item) (list += LIST_VALUE_WRAP_LISTS(item))
-///Remove an untyped item to a list, taking care to handle list items by wrapping them in a list to remove the footgun
-#define UNTYPED_LIST_REMOVE(list, item) (list -= LIST_VALUE_WRAP_LISTS(item))
-
 /// Passed into BINARY_INSERT to compare keys
 #define COMPARE_KEY __BIN_LIST[__BIN_MID]
 /// Passed into BINARY_INSERT to compare values
@@ -62,13 +54,13 @@
 #define SORT_VAR_NO_TYPE(varname) var/varname
 
 /****
-	* Even more custom binary search sorted insert, using defines instead of vars
-	* INPUT: Item to be inserted
-	* LIST: List to insert INPUT into
-	* TYPECONT: A define setting the var to the typepath of the contents of the list
-	* COMPARE: The item to compare against, usualy the same as INPUT
-	* COMPARISON: A define that takes an item to compare as input, and returns their comparable value
-	* COMPTYPE: How should the list be compared? Either COMPARE_KEY or COMPARE_VALUE.
+	* Binary search sorted insert from TG
+	* INPUT: Object to be inserted
+	* LIST: List to insert object into
+	* TYPECONT: The typepath of the contents of the list
+	* COMPARE: The object to compare against, usualy the same as INPUT
+	* COMPARISON: The variable on the objects to compare
+	* COMPTYPE: How should the values be compared? Either COMPARE_KEY or COMPARE_VALUE.
 	*/
 #define BINARY_INSERT_DEFINE(INPUT, LIST, TYPECONT, COMPARE, COMPARISON, COMPTYPE) \
 	do {\
@@ -95,6 +87,14 @@
 			__BIN_LIST.Insert(__BIN_MID, INPUT);\
 		};\
 	} while(FALSE)
+
+// Generic listoflist safe add and removal macros:
+///If value is a list, wrap it in a list so it can be used with list add/remove operations
+#define LIST_VALUE_WRAP_LISTS(value) (islist(value) ? list(value) : value)
+///Add an untyped item to a list, taking care to handle list items by wrapping them in a list to remove the footgun
+#define UNTYPED_LIST_ADD(list, item) (list += LIST_VALUE_WRAP_LISTS(item))
+///Remove an untyped item to a list, taking care to handle list items by wrapping them in a list to remove the footgun
+#define UNTYPED_LIST_REMOVE(list, item) (list -= LIST_VALUE_WRAP_LISTS(item))
 
 //Returns a list in plain english as a string
 /proc/english_list(list/input, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "" )
