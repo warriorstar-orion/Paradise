@@ -1,10 +1,3 @@
-/mob/living/basic/attackby(obj/item/O, mob/living/user)
-	if(can_collar && istype(O, /obj/item/petcollar) && !pcollar)
-		add_collar(O, user)
-		return
-	else
-		return ..()
-
 /mob/living/basic/attack_hand(mob/living/carbon/human/M)
 	..()
 	switch(M.a_intent)

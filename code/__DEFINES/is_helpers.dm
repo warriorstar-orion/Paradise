@@ -76,8 +76,6 @@
 
 #define isstack(I) (istype(I, /obj/item/stack))
 
-#define isbasicmob(A) (istype(A, /mob/living/basic))
-
 GLOBAL_LIST_INIT(pointed_types, typecacheof(list(
 	/obj/item/pen,
 	/obj/item/screwdriver,
