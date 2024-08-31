@@ -44,7 +44,8 @@
 	if(!istype(corgi_pawn))
 		return
 
-	return corgi_pawn.access_card.GetAccess()
+	if(corgi_pawn.access_card)
+		return corgi_pawn.access_card.GetAccess()
 
 /datum/ai_controller/basic_controller/dog/puppy
 	blackboard = list(

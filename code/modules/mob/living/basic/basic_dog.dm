@@ -1,4 +1,7 @@
 //Dogs.
+// Add 'walkies' as valid input
+/datum/pet_command/follow/dog
+	speech_commands = list("heel", "follow", "walkies")
 
 /mob/living/basic/pet/dog
 	name = "dog"
@@ -28,7 +31,7 @@
 	var/cult_icon_state
 
 	var/static/list/pet_commands = list(
-		// /datum/pet_command/follow/dog,
+		/datum/pet_command/follow/dog,
 		/datum/pet_command/point_targeting/fetch,
 	)
 
