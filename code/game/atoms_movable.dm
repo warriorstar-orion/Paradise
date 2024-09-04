@@ -354,6 +354,7 @@
 			if(first_step_dir != 0)
 				if(!. && set_dir_on_move && update_dir)
 					setDir(first_step_dir)
+					Moved(oldloc, first_step_dir)
 				else if(!inertia_moving)
 					newtonian_move(direct)
 				if(client_mobs_in_contents)
