@@ -18,8 +18,6 @@
 	var/mob/pulledby = null
 
 	var/atom/movable/pulling
-	/// A list containing arguments for Moved().
-	VAR_PRIVATE/tmp/list/active_movement
 	/// Face towards the atom while pulling it
 	var/face_while_pulling = FALSE
 	/// Whether this atom should have its dir automatically changed when it
@@ -453,7 +451,7 @@
  */
 /atom/movable/Uncross()
 	SHOULD_NOT_OVERRIDE(TRUE)
-	CRASH("Uncross() should not be being called, please read the doc-comment for it for why.")
+	CRASH("Unexpected atom/movable/Uncross() call")
 
 /**
  * default byond proc that is normally called on everything inside the previous turf

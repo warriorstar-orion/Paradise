@@ -285,6 +285,9 @@
 	death_sound = 'sound/mecha/mechmove03.ogg'
 	loot = list(/obj/effect/mob_spawn/human/corpse/syndicatequartermaster, /obj/effect/decal/cleanable/blood/innards, /obj/effect/decal/cleanable/blood, /obj/effect/gibspawner/generic, /obj/effect/gibspawner/generic)
 
+/mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/armory/Process_Spacemove(movement_dir = 0, continuous_move = FALSE)
+	return TRUE // he should be able to chase us in space
+
 /mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/armory/Initialize(mapload)
 	. = ..()
 	if(prob(50))
