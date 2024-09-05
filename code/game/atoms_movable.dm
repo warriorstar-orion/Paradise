@@ -328,14 +328,10 @@
 
 	if(loc != newloc)
 		if(!IS_DIR_DIAGONAL(direct)) //Cardinal move
-			. = ..()
+			. = ..(newloc, direct)
 		else //Diagonal move, split it into cardinal moves
 			moving_diagonally = FIRST_DIAG_STEP
 			var/first_step_dir
-			// The `&& moving_diagonally` checks are so that a forceMove taking
-			// place due to a Crossed, Bumped, etc. call will interrupt
-			// the second half of the diagonal movement, or the second attempt
-			// at a first half if step() fails because we hit something.
 			var/direct_NS = direct & (NORTH | SOUTH)
 			var/direct_EW = direct & (EAST | WEST)
 			var/first_step_target = get_step(src, direct_NS)
@@ -403,11 +399,11 @@
  * * The old_locs is an optional argument, in case the moved movable was present in multiple locations before the movement.
  * * momentum_change represents whether this movement is due to a "new" force if TRUE or an already "existing" force if FALSE
  **/
-/atom/movable/proc/Moved(atom/old_loc, Dir, Forced = FALSE)
+/atom/movable/proc/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, old_loc, movement_dir, forced, old_locs, momentum_change)
-	if(!inertia_moving)
-		inertia_next_move = world.time + inertia_move_delay
-		newtonian_move(Dir)
+
+	if(!inertia_moving && momentum_change)
+		newtonian_move(movement_dir)
 	if(length(client_mobs_in_contents))
 		update_parallax_contents()
 
@@ -417,6 +413,11 @@
 	if(old_turf?.z != new_turf?.z)
 		on_changed_z_level(old_turf, new_turf)
 
+	var/datum/light_source/L
+	var/thing
+	for(thing in light_sources) // Cycle through the light sources on this atom and tell them to update.
+		L = thing
+		L.source_atom.update_light()
 	return TRUE
 
 /// Called when src is being moved to a target turf because another movable (puller) is moving around.
@@ -478,6 +479,7 @@
 	else
 		glide_size = initial(glide_size)
 
+<<<<<<< HEAD
 /atom/movable/Bump(atom/bumped_atom)
 	if(!bumped_atom)
 		CRASH("Bump was called with no argument.")
@@ -490,6 +492,48 @@
 		if(QDELETED(bumped_atom))
 			return
 	bumped_atom.Bumped(src)
+=======
+///default byond proc that is deprecated for us in lieu of signals. do not call
+/atom/movable/Crossed(atom/movable/crossed_atom, oldloc)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	CRASH("Unexpected atom/movable/Crossed() call")
+
+/**
+ * `Uncross()` is a default BYOND proc that is called when something is *going*
+ * to exit this atom's turf. It is prefered over `Uncrossed` when you want to
+ * deny that movement, such as in the case of border objects, objects that allow
+ * you to walk through them in any direction except the one they block
+ * (think side windows).
+ *
+ * While being seemingly harmless, most everything doesn't actually want to
+ * use this, meaning that we are wasting proc calls for every single atom
+ * on a turf, every single time something exits it, when basically nothing
+ * cares.
+ */
+/atom/movable/Uncross()
+	// TODO: Implement `/datum/element/connect_loc` if anyone needs old Uncross() behavior
+	SHOULD_NOT_OVERRIDE(TRUE)
+	CRASH("Unexpected atom/movable/Uncross() call")
+
+// Previously known as HasEntered()
+// This is automatically called when something enters your square
+/atom/movable/Crossed(atom/movable/AM, oldloc)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_CROSSED, AM)
+	SEND_SIGNAL(AM, COMSIG_CROSSED_MOVABLE, src)
+
+/atom/movable/Uncrossed(atom/movable/AM)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_UNCROSSED, AM)
+
+/atom/movable/Bump(atom/bumped_atom, yes) //the "yes" arg is to differentiate our Bump proc from byond's, without it every Bump() call would become a double Bump(). // suffering
+	if(bumped_atom && yes)
+		SEND_SIGNAL(src, COMSIG_MOVABLE_BUMP, bumped_atom)
+		if(!QDELETED(throwing))
+			throwing.finalize(TRUE, bumped_atom)
+			. = TRUE
+			if(QDELETED(bumped_atom))
+				return
+		bumped_atom.Bumped(src)
+>>>>>>> 6e48b4272ea (hmm)
 
 /atom/movable/proc/forceMove(atom/destination)
 	. = FALSE
