@@ -123,6 +123,14 @@
 	preloadShuttleTemplates()
 	preloadBridgeTemplates()
 	preloadEventTemplates()
+	preloadRandomRoomTemplates()
+
+/proc/preloadRandomRoomTemplates()
+	for(var/room_path in GLOB.configuration.ruins.random_rooms)
+		var/datum/map_template/T = new(path = room_path)
+		var/dim_string = "[T.width]x[T.height]"
+		LAZYINITLIST(SSmapping.random_room_templates[dim_string])
+		SSmapping.random_room_templates[dim_string] |= T
 
 /proc/preloadRuinTemplates()
 	// Merge the active lists together

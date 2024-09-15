@@ -1,0 +1,43 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating/airless,
+/area/template_noop)
+"s" = (
+/turf/simulated/floor/plating/airless,
+/area/template_noop)
+"w" = (
+/obj/structure/lattice,
+/turf/space,
+/area/space/nearstation)
+"A" = (
+/obj/structure/lattice,
+/obj/structure/closet,
+/obj/effect/spawner/random/maintenance,
+/turf/space,
+/area/space/nearstation)
+"D" = (
+/obj/item/paper/crumpled,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plasteel/airless,
+/area/template_noop)
+"Z" = (
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plasteel/airless,
+/area/template_noop)
+
+(1,1,1) = {"
+a
+s
+a
+"}
+(2,1,1) = {"
+s
+A
+w
+"}
+(3,1,1) = {"
+D
+a
+Z
+"}

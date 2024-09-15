@@ -1,0 +1,85 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/closet/crate/freezer,
+/obj/item/organ/internal/heart/vox,
+/obj/item/organ/internal/liver/vox,
+/obj/effect/spawner/random/maintenance,
+/obj/item/organ/internal/heart/vox,
+/turf/simulated/floor/plasteel{
+	icon_state = "freezerfloor"
+	},
+/area/template_noop)
+"d" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/restraints/handcuffs/cable/blue,
+/obj/structure/sink/kitchen/old{
+	pixel_y = 25
+	},
+/turf/simulated/floor/plating,
+/area/template_noop)
+"f" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/closet/crate/freezer,
+/obj/item/organ/internal/lungs/vox,
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/plasteel{
+	icon_state = "freezerfloor"
+	},
+/area/template_noop)
+"i" = (
+/obj/structure/bed/roller,
+/obj/item/organ/internal/kidneys/vox,
+/obj/item/storage/box/survival_vox,
+/turf/simulated/floor/plating,
+/area/template_noop)
+"q" = (
+/obj/structure/bed,
+/obj/item/toy/plushie/voxplushie,
+/turf/simulated/floor/plasteel{
+	icon_state = "freezerfloor"
+	},
+/area/template_noop)
+"t" = (
+/obj/item/organ/internal/heart/vox,
+/obj/item/food/fried_vox,
+/obj/structure/table,
+/obj/item/scalpel,
+/turf/simulated/floor/plating,
+/area/template_noop)
+"H" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/machinery/light/small,
+/obj/machinery/cooker/deepfryer,
+/turf/simulated/floor/plasteel{
+	icon_state = "freezerfloor"
+	},
+/area/template_noop)
+"T" = (
+/obj/item/storage/bag/plasticbag,
+/obj/item/trash/fried_vox,
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/plating,
+/area/template_noop)
+"U" = (
+/obj/effect/spawner/random/maintenance,
+/obj/item/clothing/gloves/color/blue,
+/turf/simulated/floor/plasteel{
+	icon_state = "freezerfloor"
+	},
+/area/template_noop)
+
+(1,1,1) = {"
+i
+q
+t
+"}
+(2,1,1) = {"
+d
+U
+H
+"}
+(3,1,1) = {"
+T
+f
+a
+"}

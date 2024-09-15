@@ -1,0 +1,64 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/effect/spawner/random/maintenance,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/wood,
+/area/template_noop)
+"c" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp/green,
+/turf/simulated/floor/carpet,
+/area/template_noop)
+"s" = (
+/obj/item/pen/fancy,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/wood,
+/area/template_noop)
+"v" = (
+/turf/simulated/floor/carpet,
+/area/template_noop)
+"A" = (
+/obj/item/clothing/under/misc/assistantformal,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/wood,
+/area/template_noop)
+"C" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/drinks/bottle/wine,
+/obj/item/reagent_containers/drinks/drinkingglass/shotglass{
+	pixel_x = -5
+	},
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/wood,
+/area/template_noop)
+"H" = (
+/obj/structure/table/wood,
+/obj/item/book/random,
+/turf/simulated/floor/carpet,
+/area/template_noop)
+"N" = (
+/obj/structure/chair/wood,
+/turf/simulated/floor/carpet,
+/area/template_noop)
+"W" = (
+/obj/structure/bookcase{
+	name = "bookcase (Adult)"
+	},
+/turf/simulated/floor/wood,
+/area/template_noop)
+
+(1,1,1) = {"
+A
+N
+H
+"}
+(2,1,1) = {"
+W
+v
+c
+"}
+(3,1,1) = {"
+a
+s
+C
+"}

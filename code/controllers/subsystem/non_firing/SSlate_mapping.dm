@@ -10,6 +10,8 @@ SUBSYSTEM_DEF(late_mapping)
 	var/list/obj/effect/mazegen/generator/maze_generators = list()
 	/// List of all bridge spawners to process
 	var/list/obj/effect/spawner/bridge/bridge_spawners = list()
+	/// List of all random room spawners to process
+	var/list/obj/effect/spawner/random_room/random_rooms = list()
 
 /datum/controller/subsystem/late_mapping/Initialize()
 	if(length(maze_generators))
@@ -37,3 +39,16 @@ SUBSYSTEM_DEF(late_mapping)
 		QDEL_LIST_CONTENTS(bridge_spawners)
 		var/duration = stop_watch(watch)
 		log_startup_progress("Spawned [bscount] bridges in [duration]s")
+
+	if(length(random_rooms))
+		var/watch = start_watch()
+		log_startup_progress("Spawning random rooms...")
+
+		for(var/i in random_rooms)
+			var/obj/effect/spawner/random_room/RR = i
+			RR.payload()
+
+		var/list/rrcount = length(random_rooms)
+		QDEL_LIST_CONTENTS(random_rooms)
+		var/duration = stop_watch(watch)
+		log_startup_progress("Spawned [rrcount] random rooms in [duration]s")

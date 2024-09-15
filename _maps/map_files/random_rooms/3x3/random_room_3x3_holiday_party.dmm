@@ -1,0 +1,73 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/effect/spawner/random_spawners/dirt_maybe,
+/obj/effect/spawner/random/trash,
+/turf/simulated/floor/plasteel{
+	icon_state = "redyellowfull"
+	},
+/area/template_noop)
+"d" = (
+/obj/effect/spawner/random_spawners/dirt_maybe,
+/obj/item/decorations/sticky_decorations/flammable/tinsel/blue{
+	pixel_y = 11
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "redyellowfull"
+	},
+/area/template_noop)
+"h" = (
+/obj/effect/spawner/random_spawners/dirt_maybe,
+/turf/simulated/floor/plasteel{
+	icon_state = "redyellowfull"
+	},
+/area/template_noop)
+"t" = (
+/obj/effect/spawner/random_spawners/dirt_maybe,
+/obj/effect/decal/cleanable/confetti,
+/obj/item/chair,
+/turf/simulated/floor/plasteel{
+	icon_state = "redyellowfull"
+	},
+/area/template_noop)
+"w" = (
+/obj/effect/spawner/random_spawners/dirt_maybe,
+/obj/effect/decal/cleanable/confetti,
+/obj/structure/closet/crate,
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/plasteel{
+	icon_state = "redyellowfull"
+	},
+/area/template_noop)
+"E" = (
+/obj/effect/spawner/random_spawners/dirt_maybe,
+/obj/effect/decal/cleanable/confetti,
+/obj/structure/table/wood/fancy/royalblue,
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/plasteel{
+	icon_state = "redyellowfull"
+	},
+/area/template_noop)
+"Y" = (
+/obj/effect/spawner/random_spawners/dirt_maybe,
+/obj/structure/table/wood/fancy/royalblue,
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/plasteel{
+	icon_state = "redyellowfull"
+	},
+/area/template_noop)
+
+(1,1,1) = {"
+h
+t
+Y
+"}
+(2,1,1) = {"
+d
+a
+E
+"}
+(3,1,1) = {"
+d
+h
+w
+"}

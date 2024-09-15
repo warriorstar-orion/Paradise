@@ -757,6 +757,24 @@ active_lava_ruins = [
 # Budget for lavaland ruins. A higher number means more will spawn
 lavaland_ruin_budget = 60
 
+# All map files for random station room generation are listed here.
+# There's no need to separate them out by dimensions; SSmapping will
+# take care of filtering them into the right buckets for the spawners
+# to use.
+#
+# If you don't want a room to be included in the spawn list, comment it out.
+random_rooms = [
+	"_maps/map_files/random_rooms/3x3/random_room_3x3_arcade.dmm",
+	"_maps/map_files/random_rooms/3x3/random_room_3x3_empty.dmm",
+	"_maps/map_files/random_rooms/3x3/random_room_3x3_engistuff.dmm",
+	"_maps/map_files/random_rooms/3x3/random_room_3x3_freezer.dmm",
+	"_maps/map_files/random_rooms/3x3/random_room_3x3_holiday_party.dmm",
+	"_maps/map_files/random_rooms/3x3/random_room_3x3_kfv.dmm",
+	"_maps/map_files/random_rooms/3x3/random_room_3x3_nature.dmm",
+	"_maps/map_files/random_rooms/3x3/random_room_3x3_spaced_locker.dmm",
+	"_maps/map_files/random_rooms/3x3/random_room_3x3_study.dmm",
+	"_maps/map_files/random_rooms/3x3/random_room_3x3_syndie.dmm",
+]
 
 ################################################################
 

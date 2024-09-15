@@ -1,0 +1,61 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/plating,
+/area/template_noop)
+"x" = (
+/obj/structure/closet,
+/obj/item/clothing/under/syndicate/tacticool,
+/obj/item/clothing/under/syndicate/tacticool,
+/obj/item/clothing/under/syndicate/tacticool,
+/obj/item/poster/syndicate_recruitment,
+/obj/item/poster/syndicate_recruitment,
+/obj/item/poster/syndicate_recruitment,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plating,
+/area/template_noop)
+"F" = (
+/obj/structure/sign/poster/contraband/grey_tide{
+	pixel_y = 32
+	},
+/turf/simulated/floor/plating,
+/area/template_noop)
+"G" = (
+/obj/effect/spawner/random/trash,
+/turf/simulated/floor/plating,
+/area/template_noop)
+"K" = (
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/plating,
+/area/template_noop)
+"P" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/decal/remains/human,
+/obj/effect/spawner/random_spawners/blood_often,
+/turf/simulated/floor/plating,
+/area/template_noop)
+"T" = (
+/obj/structure/table,
+/obj/item/toy/sword{
+	pixel_x = 4
+	},
+/obj/item/gun/projectile/automatic/toy/pistol{
+	pixel_y = 6
+	},
+/turf/simulated/floor/plating,
+/area/template_noop)
+
+(1,1,1) = {"
+a
+P
+x
+"}
+(2,1,1) = {"
+F
+T
+K
+"}
+(3,1,1) = {"
+a
+G
+G
+"}

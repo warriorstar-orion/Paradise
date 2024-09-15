@@ -2035,6 +2035,7 @@
 #include "code\modules\mapping\base_map_datum.dm"
 #include "code\modules\mapping\mapping_helpers.dm"
 #include "code\modules\mapping\merge_conflicts.dm"
+#include "code\modules\mapping\random_rooms.dm"
 #include "code\modules\mapping\station_datums.dm"
 #include "code\modules\mapping\windoor_access_helpers.dm"
 #include "code\modules\maptext_alerts\location_blurbs.dm"

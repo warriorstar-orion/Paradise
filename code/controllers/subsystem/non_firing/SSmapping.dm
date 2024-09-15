@@ -24,6 +24,9 @@ SUBSYSTEM_DEF(mapping)
 	/// A mapping of environment names to MILLA environment IDs.
 	var/list/environments
 
+	/// A nested list of random room templates keyed by dimension.
+	var/list/random_room_templates = list()
+
 // This has to be here because world/New() uses [station_name()], which looks this datum up
 /datum/controller/subsystem/mapping/PreInit()
 	. = ..()
