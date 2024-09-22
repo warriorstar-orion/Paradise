@@ -178,6 +178,7 @@ SUBSYSTEM_DEF(ticker)
 	var/duration = stop_watch(watch)
 	log_startup_progress("Station map and late mapping loaded in [duration]s.")
 
+	SSair.write_all_turfs_to_milla()
 	SSatoms.LateInitializeAtoms()
 
 	var/random_cult = pick(typesof(/datum/cult_info))
