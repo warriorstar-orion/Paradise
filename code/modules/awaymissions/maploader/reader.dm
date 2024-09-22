@@ -321,7 +321,7 @@ GLOBAL_DATUM_INIT(_preloader, /datum/dmm_suite/preloader, new())
 	if(T)
 		// Turfs need special attention
 		if(ispath(path, /turf))
-			T.ChangeTurf(path, defer_change = TRUE, keep_icon = FALSE, copy_existing_baseturf = FALSE)
+			T.ChangeTurf(path, defer_change = TRUE, keep_icon = FALSE, ignore_air = TRUE, copy_existing_baseturf = FALSE)
 			instance = T
 		else
 			// Anything that isnt an area, init!
