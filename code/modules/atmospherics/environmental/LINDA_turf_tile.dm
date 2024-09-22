@@ -1,5 +1,9 @@
 /turf/simulated/Initialize(mapload)
 	. = ..()
+
+	if(mapload)
+		return
+
 	if(!blocks_air)
 		blind_set_air(get_initial_air())
 

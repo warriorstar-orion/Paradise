@@ -8,6 +8,7 @@ SUBSYSTEM_DEF(machines)
 	flags = SS_KEEP_TIMING
 	offline_implications = "Machinery will no longer process. Shuttle call recommended."
 	cpu_display = SS_CPUDISPLAY_HIGH
+	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
 	/// Associative list of all machines that exist.
 	VAR_PRIVATE/list/machines_by_type = list()

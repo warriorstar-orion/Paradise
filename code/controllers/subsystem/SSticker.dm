@@ -170,6 +170,7 @@ SUBSYSTEM_DEF(ticker)
 	var/watch = start_watch()
 	log_startup_progress("Loading station map, please wait...")
 
+	SSatoms.initialized = INITIALIZATION_INNEW_MAPLOAD
 	SSmapping.load_station_map()
 	SSicon_smooth.smooth_everything()
 
@@ -178,7 +179,11 @@ SUBSYSTEM_DEF(ticker)
 	var/duration = stop_watch(watch)
 	log_startup_progress("Station map and late mapping loaded in [duration]s.")
 
+	watch = start_watch()
+	log_startup_progress("Preparing atmospherics...")
 	SSair.write_all_turfs_to_milla()
+	duration = stop_watch(watch)
+	log_startup_progress("Atmospherics prepared in [duration]s.")
 	SSatoms.LateInitializeAtoms()
 
 	var/random_cult = pick(typesof(/datum/cult_info))

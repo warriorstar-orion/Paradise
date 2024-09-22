@@ -14,6 +14,7 @@ SUBSYSTEM_DEF(atoms)
 	setupgenetics()
 	initialized = INITIALIZATION_INNEW_MAPLOAD
 	InitializeAtoms()
+	LateInitializeAtoms()
 
 /datum/controller/subsystem/atoms/proc/InitializeAtoms(list/atoms, noisy = TRUE)
 	if(initialized == INITIALIZATION_INSSATOMS)
