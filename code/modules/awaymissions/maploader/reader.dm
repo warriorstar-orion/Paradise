@@ -169,7 +169,7 @@ GLOBAL_DATUM_INIT(_preloader, /datum/dmm_suite/preloader, new())
 			for(var/t in block(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ], bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ]))
 				var/turf/T = t
 				// we do this after we load everything in. if we don't; we'll have weird atmos bugs regarding atmos adjacent turfs
-				T.AfterChange(TRUE, keep_cabling = TRUE)
+				T.AfterChange(ignore_air = TRUE, keep_cabling = TRUE)
 				CHECK_TICK
 		return bounds
 

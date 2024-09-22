@@ -184,6 +184,9 @@
 	var/list/connectivity = private_unsafe_recalculate_atmos_connectivity()
 	var/list/air = list(oxygen, carbon_dioxide, nitrogen, toxins, sleeping_agent, agent_b, temperature)
 	milla_data = connectivity[1] + list(atmos_mode, SSmapping.environments[atmos_environment]) +  air + connectivity[2]
+// /turf/proc/Initialize_Atmos(times_fired)
+// 	initialize_milla()
+// 	recalculate_atmos_connectivity()
 
 /turf/simulated/Initialize_Atmos(milla_tick)
 	..()
