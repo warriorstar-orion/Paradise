@@ -356,6 +356,7 @@
 
 	recalc_atom_opacity()
 
+	// if(SSlighting.initialized && lighting_object)
 	if(SSlighting.initialized)
 		recalc_atom_opacity()
 		lighting_object = old_lighting_object
