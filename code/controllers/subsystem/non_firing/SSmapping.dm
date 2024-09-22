@@ -70,23 +70,21 @@ SUBSYSTEM_DEF(mapping)
 	else
 		last_map = new /datum/map/cerestation // Assume cerestation if non-existent
 
-/datum/controller/subsystem/mapping/proc/load_station_map()
+/datum/controller/subsystem/mapping/proc/select_map()
 	if(map_datum) // Dont do this again if we are recovering
 		return
 	map_datum = new /datum/map/boxstation
-	// if(fexists("data/next_map.txt"))
-	// 	var/list/lines = file2list("data/next_map.txt")
-	// 	// Check its valid
-	// 	try
-	// 		map_datum = text2path(lines[1])
-	// 		map_datum = new map_datum
-	// 	catch
-	// 		map_datum = new /datum/map/boxstation // Assume cyberiad if non-existent
-	// 	fdel("data/next_map.txt") // Remove to avoid the same map existing forever
-	// else
-	// 	map_datum = new /datum/map/boxstation // Assume cyberiad if non-existent
-
-	loadStation()
+	if(fexists("data/next_map.txt"))
+		var/list/lines = file2list("data/next_map.txt")
+		// Check its valid
+		try
+			map_datum = text2path(lines[1])
+			map_datum = new map_datum
+		catch
+			map_datum = new /datum/map/boxstation // Assume cyberiad if non-existent
+		fdel("data/next_map.txt") // Remove to avoid the same map existing forever
+	else
+		map_datum = new /datum/map/boxstation // Assume cyberiad if non-existent
 
 /datum/controller/subsystem/mapping/Shutdown()
 	if(next_map) // Save map for next round

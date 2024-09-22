@@ -81,9 +81,19 @@
 	if(length(GLOB.configuration.system.region_map))
 		output += "<p><a href='byond://?src=[UID()];setregion=1'>Set region (reduces ping)</A></p>"
 
+	if(SSticker.post_lobby_station_mapload && SSmapping.map_datum)
+		output += "<h1>Now Loading: [station_name()]</h1>"
+
 	output += "</center>"
 
-	var/datum/browser/popup = new(src, "playersetup", "<div align='center'>New Player Options</div>", 240, 340)
+	var/width = 240
+	var/height = 340
+
+	if(SSticker.post_lobby_station_mapload)
+		width += 20
+		height += 20
+
+	var/datum/browser/popup = new(src, "playersetup", "<div align='center'>New Player Options</div>", nwidth = width, nheight = height)
 	popup.set_window_options("can_close=0")
 	popup.set_content(output)
 	popup.open(FALSE)

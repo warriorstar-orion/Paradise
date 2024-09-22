@@ -70,6 +70,7 @@ SUBSYSTEM_DEF(ticker)
 	/// List of biohazards keyed to the last time their population was sampled.
 	var/list/biohazard_pop_times = list()
 	var/list/biohazard_included_admin_spawns = list()
+	var/post_lobby_station_mapload = FALSE
 
 /datum/controller/subsystem/ticker/Initialize()
 	login_music = pick(\
@@ -170,8 +171,15 @@ SUBSYSTEM_DEF(ticker)
 	var/watch = start_watch()
 	log_startup_progress("Loading station map, please wait...")
 
+	SSmapping.select_map()
+	post_lobby_station_mapload = TRUE
+
+	for(var/mob/new_player/N in GLOB.mob_list)
+		if(N.client)
+			N.new_player_panel_proc()
+
 	SSatoms.initialized = INITIALIZATION_INNEW_MAPLOAD
-	SSmapping.load_station_map()
+	SSmapping.loadStation()
 	SSicon_smooth.smooth_everything()
 
 	SSlate_mapping.perform_late_mapping()
@@ -185,6 +193,8 @@ SUBSYSTEM_DEF(ticker)
 	duration = stop_watch(watch)
 	log_startup_progress("Atmospherics prepared in [duration]s.")
 	SSatoms.LateInitializeAtoms()
+
+	post_lobby_station_mapload = FALSE
 
 	var/random_cult = pick(typesof(/datum/cult_info))
 	cult_data = new random_cult()
