@@ -379,6 +379,7 @@ SUBSYSTEM_DEF(mapping)
 	log_startup_progress("Loaded [map_datum.fluff_name] in [stop_watch(watch)]s")
 
 	watch = start_watch()
+	SSticker.add_loading_text("Station lighting...")
 	log_startup_progress("Instantiating station lighting...")
 	create_all_lighting_objects_on_zlvl(map_z_level)
 	log_startup_progress("Instantiated station lighting in [stop_watch(watch)]s")

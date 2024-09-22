@@ -72,6 +72,8 @@ SUBSYSTEM_DEF(ticker)
 	var/list/biohazard_included_admin_spawns = list()
 	var/post_lobby_station_mapload = FALSE
 
+	var/list/loading_text_rows = list()
+
 /datum/controller/subsystem/ticker/Initialize()
 	login_music = pick(\
 	'sound/music/thunderdome.ogg',\
@@ -167,11 +169,23 @@ SUBSYSTEM_DEF(ticker)
 	else
 		reboot_helper("Round ended.", "proper completion")
 
+/datum/controller/subsystem/ticker/proc/reset_loading_text()
+	GLOB.title_splash.maptext = null
+	loading_text_rows.Cut()
+
+/datum/controller/subsystem/ticker/proc/add_loading_text(text)
+	loading_text_rows += "[text]"
+	GLOB.title_splash.maptext = "<span style='font-family: Courier New; background-color: rgba(39, 39, 39, 0.5);'>\n[loading_text_rows.Join("\n")]\n</span>"
+
 /datum/controller/subsystem/ticker/proc/setup()
+	var/total_watch = start_watch()
 	var/watch = start_watch()
+	reset_loading_text()
 	log_startup_progress("Loading station map, please wait...")
 
 	SSmapping.select_map()
+	add_loading_text("Selected [station_name()]. Loading...")
+
 	post_lobby_station_mapload = TRUE
 
 	for(var/mob/new_player/N in GLOB.mob_list)
@@ -181,14 +195,17 @@ SUBSYSTEM_DEF(ticker)
 	SSatoms.initialized = INITIALIZATION_INNEW_MAPLOAD
 	SSmapping.loadStation()
 	SSmapping.load_area_data()
+	add_loading_text("Smoothing icons...")
 	SSicon_smooth.smooth_everything()
 
+	add_loading_text("Late mapping...")
 	SSlate_mapping.perform_late_mapping()
 
 	var/duration = stop_watch(watch)
 	log_startup_progress("Station map and late mapping loaded in [duration]s.")
 
 	watch = start_watch()
+	add_loading_text("Station Atmospherics...")
 	log_startup_progress("Preparing atmospherics...")
 	SSair.write_all_turfs_to_milla()
 	duration = stop_watch(watch)
@@ -196,6 +213,8 @@ SUBSYSTEM_DEF(ticker)
 	SSatoms.LateInitializeAtoms()
 
 	post_lobby_station_mapload = FALSE
+	var/total_duration = stop_watch(total_watch)
+	add_loading_text("Station loaded in [total_duration]s.")
 
 	var/random_cult = pick(typesof(/datum/cult_info))
 	cult_data = new random_cult()

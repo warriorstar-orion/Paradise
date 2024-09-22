@@ -53,14 +53,15 @@
 		real_name = "Random Character Slot"
 	var/output = "<center><p><a href='byond://?src=[UID()];show_preferences=1'>Setup Character</A><br /><i>[real_name]</i></p>"
 
-	if(SSticker.current_state <= GAME_STATE_PREGAME)
-		if(!ready)
-			output += "<p><a href='byond://?src=[UID()];ready=1'>Declare Ready</A></p>"
+	if(SSticker && !SSticker.post_lobby_station_mapload)
+		if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)
+			if(!ready)
+				output += "<p><a href='byond://?src=[UID()];ready=1'>Declare Ready</A></p>"
+			else
+				output += "<p><b>You are ready</b> (<a href='byond://?src=[UID()];ready=2'>Cancel</A>)</p>"
 		else
-			output += "<p><b>You are ready</b> (<a href='byond://?src=[UID()];ready=2'>Cancel</A>)</p>"
-	else
-		output += "<p><a href='byond://?src=[UID()];manifest=1'>View the Crew Manifest</A></p>"
-		output += "<p><a href='byond://?src=[UID()];late_join=1'>Join Game!</A></p>"
+			output += "<p><a href='byond://?src=[UID()];manifest=1'>View the Crew Manifest</A></p>"
+			output += "<p><a href='byond://?src=[UID()];late_join=1'>Join Game!</A></p>"
 
 	var/list/antags = client.prefs.be_special
 	if(length(antags))
@@ -86,14 +87,7 @@
 
 	output += "</center>"
 
-	var/width = 240
-	var/height = 340
-
-	if(SSticker.post_lobby_station_mapload)
-		width += 30
-		height += 20
-
-	var/datum/browser/popup = new(src, "playersetup", "<div align='center'>New Player Options</div>", nwidth = width, nheight = height)
+	var/datum/browser/popup = new(src, "playersetup", "<div align='center'>New Player Options</div>", 260, 360)
 	popup.set_window_options("can_close=0")
 	popup.set_content(output)
 	popup.open(FALSE)
