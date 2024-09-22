@@ -90,7 +90,7 @@
 	var/height = 340
 
 	if(SSticker.post_lobby_station_mapload)
-		width += 20
+		width += 30
 		height += 20
 
 	var/datum/browser/popup = new(src, "playersetup", "<div align='center'>New Player Options</div>", nwidth = width, nheight = height)
