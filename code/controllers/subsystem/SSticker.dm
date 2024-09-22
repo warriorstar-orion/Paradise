@@ -180,6 +180,7 @@ SUBSYSTEM_DEF(ticker)
 
 	SSatoms.initialized = INITIALIZATION_INNEW_MAPLOAD
 	SSmapping.loadStation()
+	SSmapping.load_area_data()
 	SSicon_smooth.smooth_everything()
 
 	SSlate_mapping.perform_late_mapping()

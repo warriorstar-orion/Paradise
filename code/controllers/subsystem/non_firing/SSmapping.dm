@@ -150,57 +150,6 @@ SUBSYSTEM_DEF(mapping)
 	else
 		log_startup_progress("Skipping lavaland ruins...")
 
-	// Now we make a list of areas for teleport locs
-	// Located below is some of the worst code I've ever seen
-	// Checking all areas to see if they have a turf in them? Nice one ssmapping!
-
-	var/list/all_areas = list()
-	for(var/area/areas in world)
-		all_areas += areas
-
-	teleportlocs = list()
-	for(var/area/AR as anything in all_areas)
-		if(AR.no_teleportlocs)
-			continue
-		if(teleportlocs[AR.name])
-			continue
-		var/list/pickable_turfs = list()
-		for(var/turf/turfs in AR)
-			pickable_turfs += turfs
-			CHECK_TICK
-		var/turf/picked = safepick(pickable_turfs)
-		if(picked && is_station_level(picked.z))
-			teleportlocs[AR.name] = AR
-		CHECK_TICK
-
-	teleportlocs = sortAssoc(teleportlocs)
-
-	ghostteleportlocs = list()
-	for(var/area/AR as anything in all_areas)
-		if(ghostteleportlocs[AR.name])
-			continue
-		var/list/pickable_turfs = list()
-		for(var/turf/turfs in AR)
-			pickable_turfs += turfs
-			CHECK_TICK
-		if(length(pickable_turfs))
-			ghostteleportlocs[AR.name] = AR
-		CHECK_TICK
-
-	ghostteleportlocs = sortAssoc(ghostteleportlocs)
-
-	// Now we make a list of areas that exist on the station. Good for if you don't want to select areas that exist for one station but not others. Directly references
-	existing_station_areas = list()
-	for(var/area/AR as anything in all_areas)
-		var/list/pickable_turfs = list()
-		for(var/turf/turfs in AR)
-			pickable_turfs += turfs
-			CHECK_TICK
-		var/turf/picked = safepick(pickable_turfs)
-		if(picked && is_station_level(picked.z))
-			existing_station_areas += AR
-		CHECK_TICK
-
 	// World name
 	if(GLOB.configuration.general.server_name)
 		world.name = "[GLOB.configuration.general.server_name]: [station_name()]"
@@ -298,6 +247,67 @@ SUBSYSTEM_DEF(mapping)
 			traits = list(REACHABLE_BY_CREW, SPAWN_RUINS, REACHABLE_SPACE_ONLY),
 			transition_tag = TRANSITION_TAG_SPACE
 		)
+
+/datum/controller/subsystem/mapping/proc/load_area_data()
+	// Now we make a list of areas for teleport locs
+	// Located below is some of the worst code I've ever seen
+	// Checking all areas to see if they have a turf in them? Nice one ssmapping!
+
+	var/list/all_areas = list()
+	for(var/area/areas in world)
+		all_areas += areas
+
+	teleportlocs = list()
+	for(var/area/AR as anything in all_areas)
+		if(AR.no_teleportlocs)
+			continue
+		if(teleportlocs[AR.name])
+			continue
+		var/list/pickable_turfs = list()
+		for(var/turf/turfs in AR)
+			pickable_turfs += turfs
+			CHECK_TICK
+		var/turf/picked = safepick(pickable_turfs)
+		if(picked && is_station_level(picked.z))
+			teleportlocs[AR.name] = AR
+		CHECK_TICK
+
+	teleportlocs = sortAssoc(teleportlocs)
+
+	ghostteleportlocs = list()
+	for(var/area/AR as anything in all_areas)
+		if(ghostteleportlocs[AR.name])
+			continue
+		var/list/pickable_turfs = list()
+		for(var/turf/turfs in AR)
+			pickable_turfs += turfs
+			CHECK_TICK
+		if(length(pickable_turfs))
+			ghostteleportlocs[AR.name] = AR
+		CHECK_TICK
+
+	ghostteleportlocs = sortAssoc(ghostteleportlocs)
+
+	// Now we make a list of areas that exist on the station. Good for if you don't want to select areas that exist for one station but not others. Directly references
+	existing_station_areas = list()
+	for(var/area/AR as anything in all_areas)
+		var/list/pickable_turfs = list()
+		for(var/turf/turfs in AR)
+			pickable_turfs += turfs
+			CHECK_TICK
+		var/turf/picked = safepick(pickable_turfs)
+		if(picked && is_station_level(picked.z))
+			existing_station_areas += AR
+		CHECK_TICK
+
+// Do not confuse with seedRuins()
+/datum/controller/subsystem/mapping/proc/handleRuins()
+	// load in extra levels of space ruins
+	var/load_zlevels_timer = start_watch()
+	log_startup_progress("Creating random space levels...")
+	var/num_extra_space = rand(GLOB.configuration.ruins.extra_levels_min, GLOB.configuration.ruins.extra_levels_max)
+	for(var/i in 1 to num_extra_space)
+		GLOB.space_manager.add_new_zlevel("Ruin Area #[i]", linkage = CROSSLINKED, traits = list(REACHABLE_BY_CREW, SPAWN_RUINS, REACHABLE_SPACE_ONLY))
 		CHECK_TICK
 
 	log_startup_progress("Added [zlevel_count] space levels in [stop_watch(watch)]s.")
@@ -367,6 +377,11 @@ SUBSYSTEM_DEF(mapping)
 	GLOB.maploader.load_map(wrap_file(map_datum.map_path), z_offset = map_z_level)
 	GLOB.space_manager.remove_dirt(map_z_level)
 	log_startup_progress("Loaded [map_datum.fluff_name] in [stop_watch(watch)]s")
+
+	watch = start_watch()
+	log_startup_progress("Instantiating station lighting...")
+	create_all_lighting_objects_on_zlvl(map_z_level)
+	log_startup_progress("Instantiated station lighting in [stop_watch(watch)]s")
 
 	// Save station name in the DB
 	if(!SSdbcore.IsConnected())
