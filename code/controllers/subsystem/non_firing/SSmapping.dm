@@ -23,6 +23,8 @@ SUBSYSTEM_DEF(mapping)
 	// Tells if all station airlocks have emergency access enabled
 	var/station_all_access = FALSE
 
+	var/map_z_level
+
 	/// A mapping of environment names to MILLA environment IDs.
 	var/list/environments
 
@@ -68,6 +70,24 @@ SUBSYSTEM_DEF(mapping)
 	else
 		last_map = new /datum/map/cerestation // Assume cerestation if non-existent
 
+/datum/controller/subsystem/mapping/proc/load_station_map()
+	if(map_datum) // Dont do this again if we are recovering
+		return
+	map_datum = new /datum/map/boxstation
+	// if(fexists("data/next_map.txt"))
+	// 	var/list/lines = file2list("data/next_map.txt")
+	// 	// Check its valid
+	// 	try
+	// 		map_datum = text2path(lines[1])
+	// 		map_datum = new map_datum
+	// 	catch
+	// 		map_datum = new /datum/map/boxstation // Assume cyberiad if non-existent
+	// 	fdel("data/next_map.txt") // Remove to avoid the same map existing forever
+	// else
+	// 	map_datum = new /datum/map/boxstation // Assume cyberiad if non-existent
+
+	loadStation()
+
 /datum/controller/subsystem/mapping/Shutdown()
 	if(next_map) // Save map for next round
 		var/F = file("data/next_map.txt")
@@ -82,6 +102,8 @@ SUBSYSTEM_DEF(mapping)
 	environments[ENVIRONMENT_LAVALAND] = create_environment(oxygen = LAVALAND_OXYGEN, nitrogen = LAVALAND_NITROGEN, temperature = LAVALAND_TEMPERATURE)
 	environments[ENVIRONMENT_TEMPERATE] = create_environment(oxygen = MOLES_O2STANDARD, nitrogen = MOLES_N2STANDARD, temperature = T20C)
 	environments[ENVIRONMENT_COLD] = create_environment(oxygen = MOLES_O2STANDARD, nitrogen = MOLES_N2STANDARD, temperature = 180)
+
+	map_z_level = GLOB.space_manager.add_new_zlevel(MAIN_STATION, linkage = CROSSLINKED, traits = list(STATION_LEVEL, STATION_CONTACT, REACHABLE_BY_CREW, REACHABLE_SPACE_ONLY, AI_OK))
 
 	var/datum/lavaland_theme/lavaland_theme_type = pick(subtypesof(/datum/lavaland_theme))
 	ASSERT(lavaland_theme_type)
@@ -113,6 +135,22 @@ SUBSYSTEM_DEF(mapping)
 	GLOB.space_manager.add_new_zlevel("Empty Area", linkage = CROSSLINKED, traits = empty_z_traits)
 	// Add a reserved z-level
 	add_reservation_zlevel()
+
+	// Setup the Z-level linkage
+	GLOB.space_manager.do_transition_setup()
+
+	if(GLOB.configuration.ruins.enable_lavaland)
+		// Spawn Lavaland ruins and rivers.
+		log_startup_progress("Populating lavaland...")
+		var/lavaland_setup_timer = start_watch()
+		seedRuins(list(level_name_to_num(MINING)), GLOB.configuration.ruins.lavaland_ruin_budget, /area/lavaland/surface/outdoors/unexplored, GLOB.lava_ruins_templates)
+		if(lavaland_theme)
+			lavaland_theme.setup()
+			lavaland_theme.setup_caves()
+		var/time_spent = stop_watch(lavaland_setup_timer)
+		log_startup_progress("Successfully populated lavaland in [time_spent]s.")
+	else
+		log_startup_progress("Skipping lavaland ruins...")
 
 	// Now we make a list of areas for teleport locs
 	// Located below is some of the worst code I've ever seen
@@ -326,7 +364,10 @@ SUBSYSTEM_DEF(mapping)
 		traits = list(STATION_LEVEL, STATION_CONTACT, REACHABLE_BY_CREW, REACHABLE_SPACE_ONLY, AI_OK),
 		transition_tag = TRANSITION_TAG_SPACE
 	)
+
+	GLOB.space_manager.add_dirt(map_z_level)
 	GLOB.maploader.load_map(wrap_file(map_datum.map_path), z_offset = map_z_level)
+	GLOB.space_manager.remove_dirt(map_z_level)
 	log_startup_progress("Loaded [map_datum.fluff_name] in [stop_watch(watch)]s")
 
 	// Save station name in the DB

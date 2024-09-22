@@ -167,6 +167,19 @@ SUBSYSTEM_DEF(ticker)
 		reboot_helper("Round ended.", "proper completion")
 
 /datum/controller/subsystem/ticker/proc/setup()
+	var/watch = start_watch()
+	log_startup_progress("Loading station map, please wait...")
+
+	SSmapping.load_station_map()
+	SSicon_smooth.smooth_everything()
+
+	SSlate_mapping.perform_late_mapping()
+
+	var/duration = stop_watch(watch)
+	log_startup_progress("Station map and late mapping loaded in [duration]s.")
+
+	SSatoms.LateInitializeAtoms()
+
 	var/random_cult = pick(typesof(/datum/cult_info))
 	cult_data = new random_cult()
 	score = new()
@@ -273,7 +286,7 @@ SUBSYSTEM_DEF(ticker)
 		mode.announce()
 
 	// Behold, a rough way of figuring out what takes 10 years
-	var/watch = start_watch()
+	watch = start_watch()
 	create_characters() // Create player characters and transfer clients
 	log_debug("Creating characters took [stop_watch(watch)]s")
 

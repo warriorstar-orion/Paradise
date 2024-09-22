@@ -46,7 +46,10 @@ SUBSYSTEM_DEF(atoms)
 	if(noisy)
 		log_startup_progress("Initialized [count] atoms in [stop_watch(watch)]s")
 
-	initialized = INITIALIZATION_INNEW_REGULAR
+/datum/controller/subsystem/atoms/proc/LateInitializeAtoms(noisy = TRUE)
+	LAZYINITLIST(late_loaders)
+
+	var/watch
 
 	if(length(late_loaders))
 		watch = start_watch()
@@ -59,6 +62,8 @@ SUBSYSTEM_DEF(atoms)
 		if(noisy)
 			log_startup_progress("Late initialized [length(late_loaders)] atoms in [stop_watch(watch)]s")
 		late_loaders.Cut()
+
+	initialized = INITIALIZATION_INNEW_REGULAR
 
 /datum/controller/subsystem/atoms/proc/InitAtom(atom/A, list/arguments)
 	var/the_type = A.type
@@ -80,8 +85,6 @@ SUBSYSTEM_DEF(atoms)
 			if(INITIALIZE_HINT_LATELOAD)
 				if(arguments[1])	//mapload
 					late_loaders += A
-				else
-					A.LateInitialize()
 			if(INITIALIZE_HINT_QDEL)
 				qdel(A)
 				qdeleted = TRUE

@@ -214,9 +214,9 @@ GLOBAL_LIST_EMPTY(world_topic_handlers)
 	if(GLOB.configuration.general.server_name)
 		s += "<b>[GLOB.configuration.general.server_name]</b>] &#8212; "
 
-		s += "<b>[station_name()]</b>"
+		s += "<b>No Station Selected</b>"
 	else // else so it neatly closes the byond hub initial square bracket even without a server name
-		s += "<b>[station_name()]</b>]"
+		s += "<b>No Station Selected</b>]"
 
 	if(GLOB.configuration.url.discord_url)
 		s += " (<a href=\"[GLOB.configuration.url.discord_url]\">Discord</a>)"

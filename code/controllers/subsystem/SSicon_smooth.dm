@@ -20,6 +20,9 @@ SUBSYSTEM_DEF(icon_smooth)
 		can_fire = 0
 
 /datum/controller/subsystem/icon_smooth/Initialize()
+	return
+
+/datum/controller/subsystem/icon_smooth/proc/smooth_everything()
 	log_startup_progress("Smoothing atoms...")
 	// Smooth EVERYTHING in the world
 	for(var/turf/T in world)

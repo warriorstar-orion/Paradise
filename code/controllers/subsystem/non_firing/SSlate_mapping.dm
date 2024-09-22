@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(late_mapping)
 	/// List of all maze generators to process
 	var/list/obj/effect/mazegen/generator/maze_generators = list()
 
-/datum/controller/subsystem/late_mapping/Initialize()
+/datum/controller/subsystem/late_mapping/proc/perform_late_mapping()
 	// Sort all the air machines we initialized during mapload by name all at once
 	GLOB.air_alarms = sortAtom(GLOB.air_alarms)
 	GLOB.apcs = sortAtom(GLOB.apcs)

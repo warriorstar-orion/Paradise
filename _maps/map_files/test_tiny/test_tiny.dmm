@@ -11,6 +11,26 @@
 /obj/effect/landmark/spawner/late/crew,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
+"j" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/merge_conflict_marker{
+	name = "Merge Conflict Marker: <<<"
+	},
+/turf/simulated/wall/mineral/titanium,
+/turf/merge_conflict_marker{
+	name = "Merge Conflict Marker: ---"
+	},
+/turf/simulated/floor/mineral/titanium/blue,
+/turf/merge_conflict_marker{
+	name = "Merge Conflict Marker: >>>"
+	},
+/area/shuttle/arrival/station)
+"n" = (
+/obj/effect/spawner/window/grilled,
+/turf/simulated/floor/mineral/titanium/blue,
+/area/shuttle/arrival/station)
 "p" = (
 /obj/machinery/light{
 	dir = 1
@@ -20,12 +40,68 @@
 "u" = (
 /turf/simulated/wall/mineral/titanium,
 /area/shuttle/arrival/station)
+"w" = (
+/turf/merge_conflict_marker{
+	name = "Merge Conflict Marker: <<<"
+	},
+/turf/simulated/wall/mineral/titanium,
+/turf/merge_conflict_marker{
+	name = "Merge Conflict Marker: ---"
+	},
+/turf/simulated/floor/carpet,
+/turf/merge_conflict_marker{
+	name = "Merge Conflict Marker: >>>"
+	},
+/area/shuttle/arrival/station)
 "x" = (
 /turf/simulated/floor/mineral/titanium/blue,
+/area/shuttle/arrival/station)
+"B" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/merge_conflict_marker{
+	name = "Merge Conflict Marker: <<<"
+	},
+/turf/simulated/floor/mineral/titanium/blue,
+/turf/merge_conflict_marker{
+	name = "Merge Conflict Marker: ---"
+	},
+/turf/simulated/floor/carpet,
+/turf/merge_conflict_marker{
+	name = "Merge Conflict Marker: >>>"
+	},
+/area/shuttle/arrival/station)
+"D" = (
+/turf/merge_conflict_marker{
+	name = "Merge Conflict Marker: <<<"
+	},
+/turf/simulated/floor/mineral/titanium/blue,
+/turf/merge_conflict_marker{
+	name = "Merge Conflict Marker: ---"
+	},
+/turf/simulated/wall/mineral/titanium,
+/turf/merge_conflict_marker{
+	name = "Merge Conflict Marker: >>>"
+	},
 /area/shuttle/arrival/station)
 "F" = (
 /obj/machinery/light,
 /turf/simulated/floor/mineral/titanium/blue,
+/area/shuttle/arrival/station)
+"H" = (
+/obj/effect/spawner/window/grilled,
+/turf/merge_conflict_marker{
+	name = "Merge Conflict Marker: <<<"
+	},
+/turf/simulated/wall/mineral/titanium,
+/turf/merge_conflict_marker{
+	name = "Merge Conflict Marker: ---"
+	},
+/turf/simulated/floor/mineral/titanium/blue,
+/turf/merge_conflict_marker{
+	name = "Merge Conflict Marker: >>>"
+	},
 /area/shuttle/arrival/station)
 "I" = (
 /obj/machinery/light{
@@ -33,11 +109,59 @@
 	},
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
+"J" = (
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: <<<"
+	},
+/obj/machinery/light,
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: ---"
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/merge_conflict_marker{
+	name = "Merge Conflict Marker: >>>"
+	},
+/turf/simulated/floor/mineral/titanium/blue,
+/area/shuttle/arrival/station)
+"L" = (
+/turf/merge_conflict_marker{
+	name = "Merge Conflict Marker: <<<"
+	},
+/turf/simulated/floor/mineral/titanium/blue,
+/turf/merge_conflict_marker{
+	name = "Merge Conflict Marker: ---"
+	},
+/turf/simulated/floor/carpet,
+/turf/merge_conflict_marker{
+	name = "Merge Conflict Marker: >>>"
+	},
+/area/shuttle/arrival/station)
+"M" = (
+/turf/simulated/wall,
+/area/shuttle/arrival/station)
+"O" = (
+/turf/simulated/floor/carpet,
+/area/shuttle/arrival/station)
 "U" = (
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/mineral/titanium/blue,
+/area/shuttle/arrival/station)
+"V" = (
+/turf/merge_conflict_marker{
+	name = "Merge Conflict Marker: <<<"
+	},
+/turf/simulated/wall/mineral/titanium,
+/turf/merge_conflict_marker{
+	name = "Merge Conflict Marker: ---"
+	},
+/turf/simulated/floor/mineral/titanium/blue,
+/turf/merge_conflict_marker{
+	name = "Merge Conflict Marker: >>>"
+	},
 /area/shuttle/arrival/station)
 
 (1,1,1) = {"
@@ -31784,13 +31908,13 @@ x
 x
 x
 x
-x
-x
+D
+D
 u
-a
-a
-a
-a
+u
+u
+u
+u
 a
 a
 a
@@ -32042,12 +32166,12 @@ x
 x
 x
 x
-F
+J
+V
+x
+x
+x
 u
-a
-a
-a
-a
 a
 a
 a
@@ -32300,11 +32424,11 @@ x
 x
 x
 x
+V
+x
+x
+x
 u
-a
-a
-a
-a
 a
 a
 a
@@ -32553,15 +32677,15 @@ x
 x
 b
 x
+O
+L
+L
 x
-x
-x
-x
+w
+O
+O
+F
 u
-a
-a
-a
-a
 a
 a
 a
@@ -32810,15 +32934,15 @@ x
 x
 x
 x
+O
+L
+L
 x
-x
-x
+w
+O
+O
 x
 u
-a
-a
-a
-a
 a
 a
 a
@@ -33067,15 +33191,15 @@ x
 x
 x
 x
-x
-x
-x
+O
+L
+L
 F
+w
+O
+O
+x
 u
-a
-a
-a
-a
 a
 a
 a
@@ -33328,11 +33452,11 @@ x
 x
 x
 x
+w
+O
+O
+x
 u
-a
-a
-a
-a
 a
 a
 a
@@ -33576,20 +33700,20 @@ a
 u
 x
 x
+D
 x
 x
 x
 x
+L
+L
+L
 x
-x
-x
-x
+w
+O
+O
 x
 u
-a
-a
-a
-a
 a
 a
 a
@@ -33833,20 +33957,20 @@ a
 u
 x
 x
-x
+D
 U
 x
 x
 x
-U
+B
+L
+L
 x
-x
+w
+O
+O
 x
 u
-a
-a
-a
-a
 a
 a
 a
@@ -34091,19 +34215,19 @@ u
 u
 u
 u
+j
+H
+V
+V
+w
+w
+w
+V
+w
+O
+O
+F
 u
-u
-u
-u
-u
-u
-u
-u
-u
-a
-a
-a
-a
 a
 a
 a
@@ -34347,20 +34471,20 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+x
+n
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+u
 a
 a
 a
@@ -34604,20 +34728,20 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+x
+n
+n
+x
+M
+M
+M
+x
+M
+x
+x
+x
+u
 a
 a
 a
@@ -34861,20 +34985,20 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+x
+x
+n
+x
+M
+M
+M
+x
+M
+x
+x
+x
+u
 a
 a
 a
@@ -35118,20 +35242,20 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+x
+x
+U
+x
+x
+x
+x
+U
+x
+x
+x
+x
+u
 a
 a
 a
@@ -35375,20 +35499,20 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
