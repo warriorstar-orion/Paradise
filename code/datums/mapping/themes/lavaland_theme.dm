@@ -1,3 +1,73 @@
+#define ORE_VEIN_MAX_Y 240
+
+// Each successive ore type will clobber placement of previous ores,
+// so they should be sorted from least to most rare.
+GLOBAL_LIST_INIT(ore_vein_noise_parameters, list(
+	list(
+		"ore_type" = /datum/ore/iron,
+		"accuracy" = "10",
+		"stamp_size" = "10",
+		"lower_range" = "0.2",
+		"upper_range" = "0.5",
+	),
+	list(
+		"ore_type" = /datum/ore/plasma,
+		"accuracy" = "10",
+		"stamp_size" = "10",
+		"lower_range" = "0.25",
+		"upper_range" = "0.5",
+	),
+	list(
+		"ore_type" = /datum/ore/titanium,
+		"accuracy" = "50",
+		"stamp_size" = "15",
+		"lower_range" = "0.3",
+		"upper_range" = "0.5",
+	),
+	list(
+		"ore_type" = /datum/ore/silver,
+		"accuracy" = "50",
+		"stamp_size" = "15",
+		"lower_range" = "0.3",
+		"upper_range" = "0.5",
+	),
+	list(
+		"ore_type" = /datum/ore/uranium,
+		"accuracy" = "50",
+		"stamp_size" = "15",
+		"lower_range" = "0.35",
+		"upper_range" = "0.5",
+	),
+	list(
+		"ore_type" = /datum/ore/gold,
+		"accuracy" = "50",
+		"stamp_size" = "15",
+		"lower_range" = "0.35",
+		"upper_range" = "0.5",
+	),
+	list(
+		"ore_type" = /datum/ore/diamond,
+		"accuracy" = "50",
+		"stamp_size" = "10",
+		"lower_range" = "0.38",
+		"upper_range" = "0.5",
+	),
+	list(
+		"ore_type" = /datum/ore/bluespace,
+		"accuracy" = "50",
+		"stamp_size" = "10",
+		"lower_range" = "0.38",
+		"upper_range" = "0.5",
+	),
+	list(
+		"ore_type" = /datum/ore/gibtonite,
+		"accuracy" = "50",
+		"stamp_size" = "3",
+		"lower_range" = "0.37",
+		"upper_range" = "0.5",
+	),
+))
+
 /datum/lavaland_theme
 	/// Name of lavaland theme
 	var/name = "Not Specified"
@@ -23,7 +93,53 @@
  */
 /datum/lavaland_theme/proc/setup()
 	SHOULD_CALL_PARENT(TRUE)
+	setup_ore_veins()
 	setup_multisector()
+
+/datum/lavaland_theme/proc/setup_ore_veins()
+	for(var/zlvl in levels_by_trait(ORE_LEVEL))
+		var/seed
+		var/list/result[world.maxx * world.maxy]
+
+		for(var/idx in 1 to length(GLOB.ore_vein_noise_parameters))
+			seed = rand(1, 1e9)
+			var/parameters = GLOB.ore_vein_noise_parameters[idx]
+			var/ore_result = rustlibs_dbp_generate("[seed]", parameters["accuracy"], parameters["stamp_size"], "[world.maxx]", parameters["lower_range"], parameters["upper_range"])
+			for(var/char in 1 to length(result))
+				if(ore_result[char] == "1")
+					result[char] = idx
+
+			CHECK_TICK
+
+		var/list/final_counts = list()
+		for(var/turf/T in block(1, 1, zlvl, world.maxx, ORE_VEIN_MAX_Y, zlvl))
+			var/cell = result[world.maxx * (T.y - 1) + T.x]
+			if(!cell)
+				continue
+			if(!istype(get_area(T), /area/lavaland/surface/outdoors/unexplored))
+				continue
+			if(!istype(T, /turf/simulated/mineral/rock))
+				continue
+
+			var/parameters = GLOB.ore_vein_noise_parameters[cell]
+			if(!(parameters["ore_type"] in final_counts))
+				final_counts[parameters["ore_type"]] = 0
+			final_counts[parameters["ore_type"]]++
+
+			var/turf/simulated/mineral/M = T
+			if(rand(1, 2000) == 1)
+				if(prob(50))
+					M.set_ore(/datum/ore/bananium)
+				else
+					M.set_ore(/datum/ore/tranquillite)
+			else
+				M.should_reset_color = FALSE
+				M.set_ore(parameters["ore_type"])
+
+			CHECK_TICK
+
+		for(var/i in final_counts)
+			log_chat_debug("COUNT:[i]=[final_counts[i]]")
 
 /datum/lavaland_theme/proc/setup_multisector()
 	var/bridge_diameter = 14

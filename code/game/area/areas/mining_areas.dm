@@ -167,6 +167,9 @@
 	name = "Lavaland Wastes"
 	outdoors = TRUE
 
+/area/lavaland/surface/outpost_territory
+	name = "Outpost Territory"
+
 /area/lavaland/surface/outdoors
 	name = "Lavaland Wastes"
 	outdoors = TRUE

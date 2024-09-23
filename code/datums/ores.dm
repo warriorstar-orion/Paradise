@@ -10,6 +10,8 @@
 	/// The icon state of the ore used for mining scanner overlays.
 	var/scan_icon_state = ""
 
+	var/debug_color
+
 /**
  * Called when the containing turf is "mined", such as with a pickaxe or other
  * digging implement.
@@ -33,15 +35,18 @@
 	drop_type = /obj/item/stack/ore/iron
 	spread_chance = 20
 	scan_icon_state = "rock_Iron"
+	debug_color = "#cccccc"
 
 /datum/ore/uranium
 	drop_type = /obj/item/stack/ore/uranium
 	spread_chance = 5
 	scan_icon_state = "rock_Uranium"
+	debug_color = "#008800"
 
 /datum/ore/diamond
 	drop_type = /obj/item/stack/ore/diamond
 	scan_icon_state = "rock_Diamond"
+	debug_color = "#00ffff"
 
 /datum/ore/platinum
 	drop_type = /obj/item/stack/ore/platinum
@@ -59,26 +64,31 @@
 	drop_type = /obj/item/stack/ore/gold
 	spread_chance = 5
 	scan_icon_state = "rock_Gold"
+	debug_color = "#a2871b"
 
 /datum/ore/silver
 	drop_type = /obj/item/stack/ore/silver
 	spread_chance = 5
 	scan_icon_state = "rock_Silver"
+	debug_color = "#aaaaaa"
 
 /datum/ore/titanium
 	drop_type = /obj/item/stack/ore/titanium
 	spread_chance = 5
 	scan_icon_state = "rock_Titanium"
+	debug_color = "#aaaaff"
 
 /datum/ore/plasma
 	drop_type = /obj/item/stack/ore/plasma
 	spread_chance = 8
 	scan_icon_state = "rock_Plasma"
+	debug_color = "#ff00ff"
 
 /datum/ore/bluespace
 	drop_type = /obj/item/stack/ore/bluespace_crystal
 	drop_max = 1
 	scan_icon_state = "rock_BScrystal"
+	debug_color = "#0000ff"
 
 /datum/ore/bananium
 	drop_type = /obj/item/stack/ore/bananium

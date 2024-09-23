@@ -53,12 +53,8 @@
 		qdel(ore)
 
 	ore = new ore_type()
-	if(ore.spread_chance)
-		for(var/dir in GLOB.cardinal)
-			if(prob(ore.spread_chance))
-				var/turf/simulated/mineral/T = get_step(src, dir)
-				if(istype(T))
-					T.set_ore(ore_type)
+	if(ore.debug_color)
+		color = ore.debug_color
 
 /turf/simulated/mineral/shuttleRotate(rotation)
 	QUEUE_SMOOTH(src)
@@ -167,6 +163,17 @@
 				gets_drilled(null, 1)
 		if(1)
 			gets_drilled(null, 1)
+
+/turf/simulated/mineral/rock
+	environment_type = "basalt"
+	turf_type = /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface
+	baseturf = /turf/simulated/floor/lava/mapping_lava
+	oxygen = LAVALAND_OXYGEN
+	nitrogen = LAVALAND_NITROGEN
+	temperature = LAVALAND_TEMPERATURE
+	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
+	atmos_environment = ENVIRONMENT_LAVALAND
+	defer_change = 1
 
 /turf/simulated/mineral/random
 	var/mineralSpawnChanceList = list(
