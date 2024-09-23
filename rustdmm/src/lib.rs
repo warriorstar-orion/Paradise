@@ -161,22 +161,25 @@ fn test_apply_varedits(mut src: ByondValue, srctype: ByondValue) {
                 return Ok(ByondValue::new_num(1f32));
             }
         }
-        Err(e) => log_debug(format!("failed to acquire write to return varedits: {}", e)),
+        Err(e) => {
+            log_debug(format!("failed to acquire write to return varedits: {}", e));
+        },
     }
 
     Ok(ByondValue::new_num(0f32))
 }
 
-#[byondapi::bind]
-fn rustmap_import(byond_mappath: ByondValue) {
-    setup_panic_handler();
-    let mappath = byond_mappath.get_string().unwrap();
-    let dmm = dmm::Map::from_file(PathBuf::from(mappath).as_path());
-    if let Ok(dmm) = dmm {
-		let map_cache = MAP_CACHE.get().ok_or(eyre!("MAP_CACHE not initialized."))?;
-    } else {
-    }
-}
+// #[byondapi::bind]
+// fn rustmap_import(byond_mappath: ByondValue) {
+//     setup_panic_handler();
+//     let mappath = byond_mappath.get_string().unwrap();
+//     let dmm = dmm::Map::from_file(PathBuf::from(mappath).as_path());
+//     if let Ok(dmm) = dmm {
+// 		let map_cache = MAP_CACHE.get().ok_or(eyre!("MAP_CACHE not initialized."));
+//     } else {
+//         log_debug(format!("failed to open dmm {}", mappath));
+//     }
+// }
 
 #[byondapi::bind]
 fn test_read(mappath: ByondValue, x: ByondValue, y: ByondValue, z: ByondValue) {
