@@ -1,3 +1,5 @@
+#define CALL_EXT call_ext
+
 /datum/super_early_init
 
 /datum/super_early_init/New()
