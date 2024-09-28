@@ -37,6 +37,9 @@
 	var/record_spawn = FALSE
 	/// Where do we want to spawn an item (closet, safe etc.)
 	var/spawn_inside
+	/// Whether we should wait until LateInitialize to spawn our items.
+	/// Normally item spawning occurs on Initialize.
+	var/late_initialize_spawn = FALSE
 
 // Brief explanation:
 // Rather then setting up and then deleting spawners, we block all atomlike setup
@@ -48,8 +51,26 @@
 	if(initialized)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	initialized = TRUE
-	spawn_loot()
-	return INITIALIZE_HINT_QDEL
+	if(late_initialize_spawn)
+		return INITIALIZE_HINT_LATELOAD
+	else
+		spawn_loot()
+		return INITIALIZE_HINT_QDEL
+
+/obj/effect/spawner/random/LateInitialize()
+	. = ..()
+	if(late_initialize_spawn)
+		spawn_loot()
+		qdel(src)
+
+/obj/effect/spawner/random/proc/generate_loot_list()
+	if(loot_type_path)
+		loot += typesof(loot_type_path)
+
+	if(loot_subtype_path)
+		loot += subtypesof(loot_subtype_path)
+
+	return loot
 
 ///If the spawner has any loot defined, randomly picks some and spawns it. Does not cleanup the spawner.
 /obj/effect/spawner/random/proc/spawn_loot(lootcount_override)
@@ -66,19 +87,15 @@
 		spawn_loot_count = INFINITY
 		spawn_loot_double = FALSE
 
-	if(loot_type_path)
-		loot += typesof(loot_type_path)
+	var/list/loot_list = generate_loot_list()
 
-	if(loot_subtype_path)
-		loot += subtypesof(loot_subtype_path)
-
-	if(length(loot))
+	if(length(loot_list))
 		var/loot_spawned = 0
 		var/pixel_divider = FLOOR(spawn_random_offset_max_pixels / spawn_loot_split_pixel_offsets, 1)
-		while((spawn_loot_count-loot_spawned) && length(loot))
-			var/lootspawn = pick_weight_recursive(loot)
+		while((spawn_loot_count-loot_spawned) && length(loot_list))
+			var/lootspawn = pick_weight_recursive(loot_list)
 			if(!spawn_loot_double)
-				loot.Remove(lootspawn)
+				loot_list.Remove(lootspawn)
 			if(lootspawn)
 				var/turf/spawn_loc = loc
 				if(spawn_scatter_radius > 0 && length(spawn_locations))

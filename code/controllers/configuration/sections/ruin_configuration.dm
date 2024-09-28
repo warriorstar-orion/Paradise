@@ -15,6 +15,14 @@
 	/// Budget for lavaland ruins
 	var/lavaland_ruin_budget = 60
 
+	/// Minimum budget for space ruins
+	var/space_ruin_budget_min = 800
+	var/space_ruin_budget_max = 1200
+	var/space_loot_pool_min = 10
+	var/space_loot_pool_max = 20
+
+
+
 /datum/configuration_section/ruin_configuration/load_data(list/data)
 	// Use the load wrappers here. That way the default isnt made 'null' if you comment out the config line
 	CONFIG_LOAD_BOOL(enable_lavaland, data["enable_lavaland"])
@@ -24,3 +32,7 @@
 	CONFIG_LOAD_LIST(active_space_ruins, data["active_space_ruins"])
 	CONFIG_LOAD_LIST(active_lava_ruins, data["active_lava_ruins"])
 	CONFIG_LOAD_NUM(lavaland_ruin_budget, data["lavaland_ruin_budget"])
+	CONFIG_LOAD_NUM(space_ruin_budget_min, data["space_ruin_budget_min"])
+	CONFIG_LOAD_NUM(space_ruin_budget_max, data["space_ruin_budget_max"])
+	CONFIG_LOAD_NUM(space_loot_pool_min, data["space_loot_pool_min"])
+	CONFIG_LOAD_NUM(space_loot_pool_max, data["space_loot_pool_max"])

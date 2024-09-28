@@ -12,14 +12,6 @@
 "d" = (
 /turf/simulated/floor/plating,
 /area/ruin/space/unpowered)
-"e" = (
-/obj/effect/spawner/lootdrop/crate_spawner,
-/turf/simulated/floor/plating,
-/area/ruin/space/unpowered)
-"f" = (
-/obj/item/ammo_box/magazine/sniper_rounds,
-/turf/simulated/floor/plating,
-/area/ruin/space/unpowered)
 "g" = (
 /obj/item/stack/rods,
 /turf/simulated/floor/plating,
@@ -38,6 +30,10 @@
 /area/ruin/space/unpowered)
 "p" = (
 /mob/living/simple_animal/hostile/asteroid/hivelord,
+/turf/simulated/floor/plating,
+/area/ruin/space/unpowered)
+"J" = (
+/obj/effect/spawner/random/loot_pool/space_ruins/abandoned_zoo,
 /turf/simulated/floor/plating,
 /area/ruin/space/unpowered)
 "T" = (
@@ -169,13 +165,13 @@ a
 a
 c
 c
-e
+d
 T
 d
 g
-e
 d
-e
+d
+d
 d
 c
 c
@@ -203,11 +199,11 @@ b
 a
 c
 c
+J
 d
+J
 d
-d
-e
-d
+J
 d
 d
 d
@@ -220,13 +216,13 @@ a
 b
 c
 c
-f
 d
 d
 d
 d
 d
-e
+d
+d
 d
 c
 c
@@ -238,13 +234,13 @@ a
 c
 c
 d
-e
+d
 p
 d
 T
 g
 d
-e
+d
 c
 c
 a
