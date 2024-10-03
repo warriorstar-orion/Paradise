@@ -479,7 +479,6 @@
 	else
 		glide_size = initial(glide_size)
 
-<<<<<<< HEAD
 /atom/movable/Bump(atom/bumped_atom)
 	if(!bumped_atom)
 		CRASH("Bump was called with no argument.")
@@ -492,7 +491,7 @@
 		if(QDELETED(bumped_atom))
 			return
 	bumped_atom.Bumped(src)
-=======
+
 ///default byond proc that is deprecated for us in lieu of signals. do not call
 /atom/movable/Crossed(atom/movable/crossed_atom, oldloc)
 	SHOULD_NOT_OVERRIDE(TRUE)
@@ -523,17 +522,6 @@
 
 /atom/movable/Uncrossed(atom/movable/AM)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_UNCROSSED, AM)
-
-/atom/movable/Bump(atom/bumped_atom, yes) //the "yes" arg is to differentiate our Bump proc from byond's, without it every Bump() call would become a double Bump(). // suffering
-	if(bumped_atom && yes)
-		SEND_SIGNAL(src, COMSIG_MOVABLE_BUMP, bumped_atom)
-		if(!QDELETED(throwing))
-			throwing.finalize(TRUE, bumped_atom)
-			. = TRUE
-			if(QDELETED(bumped_atom))
-				return
-		bumped_atom.Bumped(src)
->>>>>>> 6e48b4272ea (hmm)
 
 /atom/movable/proc/forceMove(atom/destination)
 	. = FALSE
