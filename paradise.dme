@@ -94,7 +94,6 @@
 #include "code\__DEFINES\mob_defines.dm"
 #include "code\__DEFINES\mod.dm"
 #include "code\__DEFINES\move_force.dm"
-#include "code\__DEFINES\movement_info.dm"
 #include "code\__DEFINES\movement_defines.dm"
 #include "code\__DEFINES\muzzle_flash.dm"
 #include "code\__DEFINES\newscaster_defines.dm"

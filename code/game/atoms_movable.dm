@@ -3,8 +3,6 @@
 	appearance_flags = TILE_BOUND
 	glide_size = 8 // Default, adjusted when mobs move based on their movement delays
 	var/last_move = null
-	/// A list containing arguments for Moved().
-	VAR_PRIVATE/tmp/list/active_movement
 	var/anchored = FALSE
 	var/move_resist = MOVE_RESIST_DEFAULT
 	var/move_force = MOVE_FORCE_DEFAULT
@@ -24,7 +22,11 @@
 	VAR_PRIVATE/tmp/list/active_movement
 	/// Face towards the atom while pulling it
 	var/face_while_pulling = FALSE
-	/// Whether this atom should have its dir automatically changed when it moves. Setting this to FALSE allows for things such as directional windows to retain dir on moving without snowflake code all of the place.
+	/// Whether this atom should have its dir automatically changed when it
+	/// moves. Setting this to FALSE allows for things such as directional windows
+	/// to retain dir on moving without snowflake code all of the place.
+	/// PARA: Doesn't set this currently to maintain current behavior for pulling items around,
+	/// because modifying direction on pull is expected.
 	var/set_dir_on_move = TRUE
 	var/throwforce = 0
 
@@ -35,13 +37,6 @@
 	///The last time we pushed off something
 	///This is a hack to get around dumb him him me scenarios
 	var/last_pushoff
-
-	/// Whether this atom should have its dir automatically changed when it
-	/// moves. Setting this to FALSE allows for things such as directional windows
-	/// to retain dir on moving without snowflake code all of the place.
-	/// PARA: Doesn't set this currently to maintain current behavior for pulling items around,
-	/// because modifying direction on pull is expected.
-	var/set_dir_on_move = TRUE
 
 	var/moving_diagonally = 0 //0: not doing a diagonal move. 1 and 2: doing the first/second step of the diagonal move
 	var/list/client_mobs_in_contents
@@ -513,15 +508,6 @@
 	// TODO: Implement `/datum/element/connect_loc` if anyone needs old Uncross() behavior
 	SHOULD_NOT_OVERRIDE(TRUE)
 	CRASH("Unexpected atom/movable/Uncross() call")
-
-// Previously known as HasEntered()
-// This is automatically called when something enters your square
-/atom/movable/Crossed(atom/movable/AM, oldloc)
-	SEND_SIGNAL(src, COMSIG_MOVABLE_CROSSED, AM)
-	SEND_SIGNAL(AM, COMSIG_CROSSED_MOVABLE, src)
-
-/atom/movable/Uncrossed(atom/movable/AM)
-	SEND_SIGNAL(src, COMSIG_MOVABLE_UNCROSSED, AM)
 
 /atom/movable/proc/forceMove(atom/destination)
 	. = FALSE

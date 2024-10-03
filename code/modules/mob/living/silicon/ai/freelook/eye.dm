@@ -42,7 +42,7 @@
 /mob/camera/aiEye/Move()
 	return 0
 
-/mob/camera/aiEye/Process_Spacemove(movement_dir)
+/mob/camera/aiEye/Process_Spacemove(movement_dir, continuous_move = FALSE)
 	// Nothing in space can stop us from moving.
 	return 1
 
