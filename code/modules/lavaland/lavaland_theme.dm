@@ -44,6 +44,6 @@
 	planet_icon_state = "planet_chasm"
 
 /datum/lavaland_theme/chasm/setup()
-	var/datum/river_spawner/spawner = new(level_name_to_num(MINING), spread_prob_ = 10, spread_prob_loss_ = 5)
-	spawner.generate(nodes = 6, min_x = 50, min_y = 7, max_x = 250, max_y = 225)
+	var/datum/river_spawner/spawner = new(level_name_to_num(MINING), spread_prob_ = 15, spread_prob_loss_ = 3)
+	spawner.generate(nodes = 6)
 

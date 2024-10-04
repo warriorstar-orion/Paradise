@@ -1,8 +1,8 @@
-#define RIVER_MAX_X 200
+#define RIVER_MAX_X 230
 #define RIVER_MAX_Y 200
 
-#define RIVER_MIN_X 50
-#define RIVER_MIN_Y 50
+#define RIVER_MIN_X 10
+#define RIVER_MIN_Y 20
 
 GLOBAL_LIST_EMPTY(river_waypoint_presets)
 
@@ -25,16 +25,34 @@ GLOBAL_LIST_EMPTY(river_waypoint_presets)
 	/// The base type that makes up the river.
 	var/river_turf_type = /turf/simulated/floor/lava/mapping_lava
 	/// The area that the spawner is allowed to spread or detour to.
-	var/whitelist_area_type = /area/lavaland/surface/outdoors
+	var/whitelist_area_type = /area/lavaland/surface/outdoors/unexplored
 	/// The type that the spawner is allowed to spread or detour to.
 	var/whitelist_turf_type = /turf/simulated/mineral
 	/// The turf used when a spread of the tile stops.
 	var/shoreline_turf_type = /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface
 
-/datum/river_spawner/New(target_z_, spread_prob_ = 25, spread_prob_loss_ = 11)
+/datum/river_spawner/New(target_z_, spread_prob_ = 25, spread_prob_loss_ = 10)
 	target_z = target_z_
 	spread_prob = spread_prob_
 	spread_prob_loss = spread_prob_loss_
+
+/datum/river_spawner/proc/safe_replace(turf/T)
+	if(!T || !istype(T))
+		return FALSE
+	if(!istype(get_area(T), whitelist_area_type))
+		return FALSE
+	if(istype(T, river_turf_type))
+		return FALSE
+	if(!(istype(T, whitelist_turf_type) || istype(T, shoreline_turf_type)))
+		return FALSE
+	if(T.flags & NO_LAVA_GEN)
+		return FALSE
+	if(istype(T, /turf/simulated/floor/indestructible))
+		return FALSE
+	if(istype(T, /turf/simulated/wall/indestructible))
+		return FALSE
+
+	return TRUE
 
 /// Generate a river between the bounds specified by (`min_x`, `min_y`) and
 /// (`max_x`, `max_y`).
@@ -55,12 +73,12 @@ GLOBAL_LIST_EMPTY(river_waypoint_presets)
 			num_spawned++
 		else
 			var/turf/T = pick(possible_locs)
-			var/area/A = get_area(T)
-			if(!istype(A, whitelist_area_type) || (T.flags & NO_LAVA_GEN))
-				possible_locs -= T
-			else
+			if(safe_replace(T))
 				river_nodes += new /obj/effect/landmark/river_waypoint(T)
 				num_spawned++
+			else
+				log_chat_debug("skipping possible loc [T.x],[T.y],[T.z]")
+				possible_locs -= T
 
 	//make some randomly pathing rivers
 	for(var/A in river_nodes)
@@ -98,50 +116,51 @@ GLOBAL_LIST_EMPTY(river_waypoint_presets)
 			if(isnull(cur_turf))
 				stack_trace("Encountered a null turf in river loop, target turf was [target_turf], x=[target_turf.x], y=[target_turf.y].")
 				break
-			var/area/new_area = get_area(cur_turf)
-			if(!istype(new_area, whitelist_area_type) || (cur_turf.flags & NO_LAVA_GEN)) //Rivers will skip ruins
-				detouring = 0
-				cur_dir = get_dir(cur_turf, target_turf)
-				cur_turf = get_step(cur_turf, cur_dir)
-				continue
-			else
+			if(safe_replace(cur_turf))
 				var/turf/river_turf = cur_turf.ChangeTurf(river_turf_type, ignore_air = TRUE)
 				if(prob(1))
 					new /obj/effect/spawner/dynamic_bridge(river_turf)
-				spread_turf(river_turf, spread_prob, spread_prob_loss, whitelist_area_type)
+				spread_turf(river_turf, spread_prob, spread_prob_loss)
+			else
+				detouring = 0
+				cur_dir = get_dir(cur_turf, target_turf)
+				cur_turf = get_step(cur_turf, cur_dir)
 
-	for(var/WP in river_nodes)
-		qdel(WP)
+	QDEL_LIST_CONTENTS(river_nodes)
 
-/datum/river_spawner/proc/spread_turf(turf/start_turf, probability = 30, prob_loss = 25, whitelisted_area)
+/datum/river_spawner/proc/spread_turf(turf/start_turf, probability, prob_loss)
 	if(probability <= 0)
 		return
 	var/list/cardinal_turfs = list()
 	var/list/diagonal_turfs = list()
 
-	for(var/F in RANGE_TURFS(1, start_turf) - start_turf)
-		var/turf/T = F
-		var/area/new_area = get_area(T)
-		if(!T || (T.density && !istype(T, whitelist_turf_type)) || istype(T, /turf/simulated/floor/indestructible) || (whitelisted_area && !istype(new_area, whitelisted_area)) || (T.flags & NO_LAVA_GEN))
+	for(var/turf/T in RANGE_TURFS(1, start_turf) - start_turf)
+		if(!safe_replace(T))
 			continue
 
-		if(get_dir(start_turf, F) in GLOB.cardinal)
-			cardinal_turfs += F
+		if(get_dir(start_turf, T) in GLOB.cardinal)
+			cardinal_turfs += T
 		else
-			diagonal_turfs += F
+			diagonal_turfs += T
 
-	for(var/F in cardinal_turfs) //cardinal turfs are always changed but don't always spread
-		var/turf/T = F
-		if(!istype(T, start_turf.type) && T.ChangeTurf(start_turf.type, ignore_air = TRUE) && prob(probability))
-			spread_turf(T, probability - prob_loss, prob_loss, whitelisted_area)
+	for(var/turf/T in cardinal_turfs) //cardinal turfs are always changed but don't always spread
+		if(!safe_replace(T))
+			continue
+
+		T.ChangeTurf(river_turf_type, ignore_air = TRUE)
+		if(prob(probability))
+			spread_turf(T, probability - prob_loss, prob_loss)
 			if(prob(1))
 				new /obj/effect/spawner/dynamic_bridge(T)
 
-	for(var/F in diagonal_turfs) //diagonal turfs only sometimes change, but will always spread if changed
-		var/turf/T = F
-		if(!istype(T, shoreline_turf_type) && prob(probability) && T.ChangeTurf(start_turf.type, ignore_air = TRUE))
-			spread_turf(T, probability - prob_loss, prob_loss, whitelisted_area)
-		else if(istype(T, whitelist_turf_type) && !istype(T, start_turf.type))
+	for(var/turf/T in diagonal_turfs) //diagonal turfs only sometimes change, but will always spread if changed
+		if(!safe_replace(T))
+			continue
+
+		if(prob(probability))
+			T.ChangeTurf(river_turf_type, ignore_air = TRUE)
+			spread_turf(T, probability - prob_loss, prob_loss)
+		else if(istype(T, whitelist_turf_type))
 			T.ChangeTurf(shoreline_turf_type, ignore_air = TRUE)
 			if(prob(1))
 				new /obj/effect/spawner/dynamic_bridge(T)
