@@ -176,8 +176,10 @@
 	data["has_wirecutter"] = iswirecutter(user.get_active_hand())
 	return data
 
-/obj/machinery/power/breaker_box/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
+/obj/machinery/power/breaker_box/ui_act(action, params, datum/tgui/ui, datum/ui_state/state)
+	if(..())
+		return
+
 	switch(action)
 		if("flip_breaker")
 			message_admins("detected")
