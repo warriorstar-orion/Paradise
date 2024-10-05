@@ -7765,6 +7765,11 @@
 	icon_state = "0-2"
 	},
 /obj/effect/turf_decal/stripes/end,
+/obj/structure/cable/low_voltage/orange{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/transparent/glass/reinforced,
 /area/station/maintenance/port)
 "baz" = (
@@ -31459,6 +31464,10 @@
 /obj/machinery/power/breaker_box{
 	pixel_y = 31
 	},
+/obj/structure/cable/low_voltage/orange{
+	d2 = 2;
+	icon_state = "0-2"
+	},
 /turf/simulated/floor/transparent/glass/reinforced,
 /area/station/maintenance/fore)
 "dGH" = (
@@ -34674,6 +34683,11 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/structure/cable/low_voltage/orange{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/transparent/glass/reinforced,
 /area/station/maintenance/fore)
 "eDv" = (
@@ -35833,6 +35847,11 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/structure/cable/low_voltage/orange{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/transparent/glass/reinforced,
 /area/station/maintenance/starboard)
 "eUt" = (
@@ -36921,10 +36940,6 @@
 	icon_state = "dark"
 	},
 /area/station/service/chapel/office)
-"foP" = (
-/turf/space,
-/turf/simulated/wall/r_wall,
-/area/station/maintenance/asmaint)
 "fph" = (
 /obj/effect/spawner/window/reinforced,
 /turf/simulated/floor/plating,
@@ -57531,6 +57546,11 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/structure/cable/low_voltage/orange{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/transparent/glass/reinforced,
 /area/station/maintenance/asmaint)
 "lhK" = (
@@ -63343,6 +63363,10 @@
 /obj/machinery/power/breaker_box{
 	pixel_y = 31
 	},
+/obj/structure/cable/low_voltage/orange{
+	d2 = 4;
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/transparent/glass/reinforced,
 /area/station/maintenance/port)
 "mQb" = (
@@ -64759,6 +64783,11 @@
 /obj/structure/cable/low_voltage/orange{
 	d2 = 2;
 	icon_state = "0-2"
+	},
+/obj/structure/cable/low_voltage/orange{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/transparent/glass/reinforced,
 /area/station/maintenance/apmaint)
@@ -81746,6 +81775,10 @@
 /obj/machinery/power/breaker_box{
 	pixel_y = 31
 	},
+/obj/structure/cable/low_voltage/orange{
+	d2 = 2;
+	icon_state = "0-2"
+	},
 /turf/simulated/floor/transparent/glass/reinforced,
 /area/station/maintenance/starboard)
 "sfZ" = (
@@ -84235,6 +84268,10 @@
 /obj/item/storage/toolbox/mechanical,
 /obj/machinery/power/breaker_box{
 	pixel_y = 31
+	},
+/obj/structure/cable/low_voltage/orange{
+	d2 = 4;
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/transparent/glass/reinforced,
 /area/station/maintenance/apmaint)
@@ -95472,6 +95509,10 @@
 /obj/item/flashlight,
 /obj/machinery/power/breaker_box{
 	pixel_y = 32
+	},
+/obj/structure/cable/low_voltage/orange{
+	d2 = 2;
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/transparent/glass/reinforced,
 /area/station/maintenance/asmaint)
@@ -146285,7 +146326,7 @@ fbs
 fwd
 aXn
 vpJ
-foP
+mpB
 wJg
 jUk
 mpB
