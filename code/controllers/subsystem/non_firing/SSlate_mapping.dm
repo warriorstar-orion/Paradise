@@ -37,3 +37,5 @@ SUBSYSTEM_DEF(late_mapping)
 		QDEL_LIST_CONTENTS(bridge_spawners)
 		var/duration = stop_watch(watch)
 		log_startup_progress("Spawned [bscount] bridges in [duration]s")
+
+	GLOB.lavaland_spawn_pool_manager.process_spawners()

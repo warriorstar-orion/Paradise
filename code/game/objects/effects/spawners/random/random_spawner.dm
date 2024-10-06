@@ -51,6 +51,18 @@
 	spawn_loot()
 	return INITIALIZE_HINT_QDEL
 
+/obj/effect/spawner/random/proc/generate_loot_list()
+	if(loot_type_path)
+		loot += typesof(loot_type_path)
+
+	if(loot_subtype_path)
+		loot += subtypesof(loot_subtype_path)
+
+	return loot
+
+/obj/effect/spawner/random/proc/check_safe(type_path_to_make)
+	return TRUE
+
 ///If the spawner has any loot defined, randomly picks some and spawns it. Does not cleanup the spawner.
 /obj/effect/spawner/random/proc/spawn_loot(lootcount_override)
 	if(!prob(spawn_loot_chance))
@@ -66,19 +78,21 @@
 		spawn_loot_count = INFINITY
 		spawn_loot_double = FALSE
 
-	if(loot_type_path)
-		loot += typesof(loot_type_path)
+	var/list/loot_list = generate_loot_list()
+	var/safe_failure_count = 0
 
-	if(loot_subtype_path)
-		loot += subtypesof(loot_subtype_path)
-
-	if(length(loot))
+	if(length(loot_list))
 		var/loot_spawned = 0
 		var/pixel_divider = FLOOR(spawn_random_offset_max_pixels / spawn_loot_split_pixel_offsets, 1)
-		while((spawn_loot_count-loot_spawned) && length(loot))
-			var/lootspawn = pick_weight_recursive(loot)
+		while((spawn_loot_count-loot_spawned) && length(loot_list) && safe_failure_count <= 10)
+			var/lootspawn = pick_weight_recursive(loot_list)
+
+			if(!check_safe(lootspawn))
+				safe_failure_count++
+				continue
+
 			if(!spawn_loot_double)
-				loot.Remove(lootspawn)
+				loot_list.Remove(lootspawn)
 			if(lootspawn)
 				var/turf/spawn_loc = loc
 				if(spawn_scatter_radius > 0 && length(spawn_locations))
