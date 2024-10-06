@@ -732,3 +732,6 @@ do { \
 #define LAVALAND_TENDRIL_COLLAPSE_RANGE 2 //! The radius of the chasm created by killed tendrils.
 
 #define ALPHA_VISIBLE 255 // the max alpha
+
+#define SPAWN_POOL_LAVALAND_NATURE "lavaland_nature"
+#define SPAWN_POOL_SPACERUIN_LOOT "spaceruin_loot"

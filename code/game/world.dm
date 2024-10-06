@@ -68,12 +68,10 @@ GLOBAL_DATUM(test_runner, /datum/test_runner)
 
 	Master.Initialize(10, FALSE, TRUE)
 
-
 	#ifdef UNIT_TESTS
 	GLOB.test_runner = new
 	GLOB.test_runner.Start()
 	#endif
-
 
 /world/proc/InitTGS()
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED) // creates a new TGS object

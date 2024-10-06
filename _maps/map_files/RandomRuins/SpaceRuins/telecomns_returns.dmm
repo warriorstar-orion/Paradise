@@ -21,8 +21,7 @@
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'LETHAL TURRETS'. Enter at your own risk!";
 	name = "LETHAL TURRETS";
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /obj/machinery/porta_turret/ai_turret{
 	check_synth = 1;
@@ -44,7 +43,6 @@
 	dir = 8
 	},
 /obj/structure/sign/vacuum{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /obj/structure/cable{
@@ -94,9 +92,9 @@
 	},
 /area/ruin/space/telecomms/chamber)
 "bP" = (
-/obj/effect/spawner/lootdrop/telecomms_core_table,
 /obj/machinery/ai_slipper,
 /obj/structure/table/glass/reinforced/plastitanium,
+/obj/effect/spawner/random/pool/spaceloot/dvorak_core_table,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "vault";
@@ -204,9 +202,7 @@
 "dB" = (
 /obj/machinery/power/smes{
 	charge = 2.5e+006;
-	input_attempt = 1;
-	input_level = 200000;
-	inputting = 1
+	input_level = 200000
 	},
 /obj/structure/cable{
 	d2 = 4;
@@ -257,7 +253,6 @@
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
 /obj/machinery/status_display{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/plasteel,
@@ -284,8 +279,7 @@
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'LETHAL TURRETS'. Enter at your own risk!";
 	name = "LETHAL TURRETS";
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/telecomms/foyer)
@@ -346,8 +340,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4;
-	initialize_directions = 11;
-	level = 1
+	initialize_directions = 11
 	},
 /obj/structure/lattice,
 /turf/space,
@@ -365,8 +358,7 @@
 /area/ruin/space/telecomms/chamber)
 "gm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4;
-	level = 1
+	dir = 4
 	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/telecomms/tele)
@@ -385,8 +377,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/catwalk/airless,
 /area/space/nearstation/no_teleport)
@@ -429,9 +420,7 @@
 	dir = 4
 	},
 /obj/item/radio/intercom{
-	name = "station intercom (General)";
-	pixel_x = 29;
-	pixel_y = 0
+	pixel_x = 29
 	},
 /obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel,
@@ -449,7 +438,7 @@
 /turf/simulated/floor/plasteel,
 /area/ruin/space/telecomms/tele)
 "ia" = (
-/obj/effect/spawner/random_spawners/telecomms_emp_loot,
+/obj/effect/spawner/random/pool/spaceloot/dvorak_emp_loot,
 /turf/simulated/floor/engine,
 /area/ruin/space/telecomms/computer)
 "ik" = (
@@ -518,8 +507,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4;
-	level = 1
+	dir = 4
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/catwalk,
@@ -569,8 +557,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/catwalk/airless,
 /area/space/nearstation/no_teleport)
@@ -604,8 +591,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4;
-	level = 1
+	dir = 4
 	},
 /turf/simulated/floor/catwalk,
 /area/ruin/space/telecomms/powercontrol)
@@ -701,8 +687,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/structure/grille,
 /turf/simulated/floor/catwalk/airless,
@@ -741,8 +726,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/telecomms/computer)
@@ -803,8 +787,7 @@
 "nS" = (
 /obj/structure/table,
 /obj/machinery/status_display{
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /obj/effect/spawner/lootdrop/bluespace_tap/cultural,
 /turf/simulated/floor/plasteel,
@@ -841,9 +824,7 @@
 "oz" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
-	external_pressure_bound = 101.325;
-	on = 1;
-	pressure_checks = 1
+	on = 1
 	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/telecomms/foyer)
@@ -855,8 +836,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5;
-	level = 1
+	dir = 5
 	},
 /turf/simulated/floor/catwalk,
 /area/ruin/space/telecomms)
@@ -919,8 +899,7 @@
 /obj/structure/environmental_storytelling_holopad/first_turret_room,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4;
-	initialize_directions = 11;
-	level = 1
+	initialize_directions = 11
 	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/telecomms/foyer)
@@ -953,8 +932,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
@@ -998,9 +976,7 @@
 /obj/item/storage/toolbox/mechanical,
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
-	external_pressure_bound = 101.325;
-	on = 1;
-	pressure_checks = 1
+	on = 1
 	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/telecomms)
@@ -1091,8 +1067,7 @@
 /area/ruin/space/telecomms/computer)
 "sH" = (
 /obj/structure/sign/nosmoking_2{
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
@@ -1111,7 +1086,6 @@
 	on = 1
 	},
 /obj/machinery/status_display{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /obj/structure/table,
@@ -1128,7 +1102,6 @@
 	dir = 4
 	},
 /obj/machinery/status_display{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/catwalk,
@@ -1155,9 +1128,7 @@
 /area/ruin/space/telecomms)
 "tx" = (
 /obj/item/radio/intercom{
-	name = "station intercom (General)";
 	pixel_x = 29;
-	pixel_y = 0;
 	broadcasting = 1
 	},
 /obj/machinery/bluespace_beacon,
@@ -1193,7 +1164,6 @@
 	dir = 1
 	},
 /obj/machinery/status_display{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /obj/item/salvage/ruin/nanotrasen{
@@ -1203,9 +1173,7 @@
 /area/ruin/space/telecomms/computer)
 "tF" = (
 /obj/item/radio/intercom{
-	name = "station intercom (General)";
-	pixel_x = 29;
-	pixel_y = 0
+	pixel_x = 29
 	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/telecomms/computer)
@@ -1232,9 +1200,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	level = 1
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/catwalk,
 /area/ruin/space/telecomms)
 "ul" = (
@@ -1269,8 +1235,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/light{
 	dir = 1
@@ -1291,7 +1256,6 @@
 /area/ruin/space/telecomms)
 "ve" = (
 /obj/machinery/status_display{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/bluegrid{
@@ -1329,8 +1293,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/effect/decal/cleanable/blood/old,
 /turf/simulated/floor/catwalk,
@@ -1358,8 +1321,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4;
-	initialize_directions = 11;
-	level = 1
+	initialize_directions = 11
 	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/telecomms/tele)
@@ -1393,9 +1355,7 @@
 "wA" = (
 /obj/machinery/power/smes{
 	charge = 2.5e+006;
-	input_attempt = 1;
-	input_level = 200000;
-	inputting = 1
+	input_level = 200000
 	},
 /obj/structure/cable,
 /turf/simulated/floor/bluegrid{
@@ -1450,8 +1410,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating/airless,
 /area/space/nearstation/no_teleport)
@@ -1460,8 +1419,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1;
-	level = 1
+	dir = 1
 	},
 /turf/simulated/floor/catwalk,
 /area/ruin/space/telecomms)
@@ -1482,8 +1440,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/catwalk,
 /area/ruin/space/telecomms)
@@ -1554,8 +1511,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/recharge_station/upgraded,
 /mob/living/simple_animal/hostile/hivebot/strong/malfborg,
@@ -1598,8 +1554,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/hatch/syndicate/command/trapped,
 /obj/item/radio/intercom{
@@ -1719,8 +1674,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	level = 1
+	dir = 9
 	},
 /obj/structure/lattice,
 /turf/space,
@@ -1730,8 +1684,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/structure/grille,
 /turf/simulated/floor/plating/airless,
@@ -1764,8 +1717,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -1776,8 +1728,7 @@
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'LETHAL TURRETS'. Enter at your own risk!";
 	name = "LETHAL TURRETS";
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/telecomms/foyer)
@@ -1811,8 +1762,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8;
-	initialize_directions = 11;
-	level = 1
+	initialize_directions = 11
 	},
 /obj/structure/lattice,
 /turf/space,
@@ -1855,8 +1805,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/structure/cable{
 	d1 = 2;
@@ -1966,7 +1915,6 @@
 /area/ruin/space/telecomms)
 "DV" = (
 /obj/machinery/status_display{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /obj/structure/reagent_dispensers/fueltank,
@@ -2031,8 +1979,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4;
-	level = 1
+	dir = 4
 	},
 /obj/structure/barricade/sandbags,
 /turf/simulated/floor/plasteel,
@@ -2040,8 +1987,7 @@
 "FA" = (
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'SERVER ROOM'.";
-	name = "SERVER ROOM";
-	pixel_y = 0
+	name = "SERVER ROOM"
 	},
 /turf/simulated/wall/indestructible/riveted,
 /area/ruin/space/telecomms/chamber)
@@ -2111,7 +2057,6 @@
 	dir = 10
 	},
 /obj/machinery/status_display{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/plasteel,
@@ -2217,8 +2162,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/catwalk/airless,
 /area/space/nearstation/no_teleport)
@@ -2276,8 +2220,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/catwalk/airless,
 /area/space/nearstation/no_teleport)
@@ -2492,8 +2435,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4;
-	level = 1
+	dir = 4
 	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/telecomms/tele)
@@ -2512,8 +2454,7 @@
 /obj/structure/lattice,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4;
-	initialize_directions = 11;
-	level = 1
+	initialize_directions = 11
 	},
 /turf/space,
 /area/space/nearstation/no_teleport)
@@ -2551,9 +2492,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	level = 1
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -2687,20 +2626,17 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/structure/girder/reinforced,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	level = 1
+	dir = 9
 	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/telecomms/computer)
 "PA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4;
-	level = 1
+	dir = 4
 	},
 /turf/simulated/floor/catwalk,
 /area/ruin/space/telecomms/powercontrol)
@@ -2740,8 +2676,7 @@
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'LETHAL TURRETS'. Enter at your own risk!";
 	name = "LETHAL TURRETS";
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /obj/machinery/porta_turret/ai_turret{
 	check_synth = 1;
@@ -2757,8 +2692,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/light/small{
 	dir = 1
@@ -2776,9 +2710,7 @@
 "Qr" = (
 /obj/machinery/economy/vending/snack/trapped,
 /obj/item/radio/intercom{
-	name = "station intercom (General)";
 	pixel_x = -28;
-	pixel_y = 0;
 	broadcasting = 1
 	},
 /obj/structure/environmental_storytelling_holopad/vendor,
@@ -2916,9 +2848,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	level = 1
-	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/catwalk,
 /area/ruin/space/telecomms)
 "Sn" = (
@@ -2929,8 +2859,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8;
-	initialize_directions = 11;
-	level = 1
+	initialize_directions = 11
 	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/telecomms/tele)
@@ -3035,8 +2964,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/telecomms/tele)
@@ -3047,9 +2975,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	level = 1
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/telecomms_trap_tank,
 /obj/effect/abstract/cheese_trap,
 /turf/simulated/floor/catwalk,
@@ -3076,8 +3002,7 @@
 /area/space/nearstation/no_teleport)
 "Vb" = (
 /obj/structure/sign/nosmoking_2{
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /obj/machinery/light{
 	dir = 4
@@ -3125,8 +3050,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/light/small{
 	dir = 1
@@ -3173,8 +3097,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/firealarm/directional/north,
 /turf/simulated/floor/plasteel,
@@ -3198,8 +3121,7 @@
 /area/ruin/space/telecomms/chamber)
 "Xb" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1;
-	level = 1
+	dir = 1
 	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/telecomms/foyer)
@@ -3341,8 +3263,7 @@
 /area/ruin/space/telecomms/chamber)
 "ZB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4;
-	level = 1
+	dir = 4
 	},
 /obj/effect/spawner/random_spawners/oil_often,
 /turf/simulated/floor/catwalk,

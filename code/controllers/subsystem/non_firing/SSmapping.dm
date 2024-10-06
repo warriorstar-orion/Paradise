@@ -234,7 +234,7 @@ SUBSYSTEM_DEF(mapping)
 	log_startup_progress("Seeding ruins...")
 	var/seed_ruins_timer = start_watch()
 	var/space_z_levels = levels_by_trait(SPAWN_RUINS)
-	seedRuins(space_z_levels, rand(20, 30), /area/space, GLOB.space_ruins_templates)
+	seedRuins(space_z_levels, 30, /area/space, GLOB.space_ruins_templates)
 	log_startup_progress("Successfully seeded ruins in [stop_watch(seed_ruins_timer)]s.")
 	seed_space_salvage(space_z_levels)
 

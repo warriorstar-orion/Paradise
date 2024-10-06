@@ -8,6 +8,11 @@
 "c" = (
 /turf/simulated/mineral/random/high_chance,
 /area/ruin/space/unpowered)
+"u" = (
+/obj/effect/spawner/random/pool/spaceloot/all_tiers,
+/obj/structure/closet,
+/turf/simulated/floor/plating/asteroid/airless,
+/area/ruin/space/unpowered)
 "V" = (
 /mob/living/simple_animal/hostile/carp,
 /turf/template_noop,
@@ -267,8 +272,8 @@ a
 a
 a
 a
-b
-b
+u
+u
 a
 a
 a
@@ -289,8 +294,8 @@ a
 a
 a
 a
-b
-b
+u
+u
 b
 a
 a
@@ -311,8 +316,8 @@ a
 a
 a
 a
-c
-c
+u
+u
 b
 a
 a
@@ -333,8 +338,8 @@ a
 a
 b
 b
-c
-c
+u
+u
 a
 a
 a

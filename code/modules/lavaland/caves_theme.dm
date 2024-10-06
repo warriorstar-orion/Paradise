@@ -3,81 +3,8 @@
 /// Approximate upper bound of the walkable land area on Lavaland, south of the Legion entrance.
 #define LAVALAND_MAX_CAVE_Y 222
 
-#define SPAWN_MEGAFAUNA "bluh bluh huge boss"
-
 /// Effective probability modifier for spawning flora and fauna in oases.
 #define OASIS_SPAWNER_PROB_MODIFIER 43
-
-GLOBAL_LIST_INIT(megafauna_spawn_list, list(
-	/mob/living/simple_animal/hostile/megafauna/dragon = 4,
-	/mob/living/simple_animal/hostile/megafauna/colossus = 2,
-	/mob/living/simple_animal/hostile/megafauna/bubblegum = 6,
-	/mob/living/simple_animal/hostile/megafauna/ancient_robot = 4,
-))
-
-GLOBAL_LIST_INIT(caves_default_mob_spawns, list(
-	/obj/effect/landmark/mob_spawner/abandoned_minebot = 6,
-	/obj/effect/landmark/mob_spawner/goldgrub = 10,
-	/obj/effect/landmark/mob_spawner/goliath = 50,
-	/obj/effect/landmark/mob_spawner/gutlunch = 4,
-	/obj/effect/landmark/mob_spawner/legion = 30,
-	/obj/effect/landmark/mob_spawner/watcher = 40,
-
-	/obj/structure/spawner/lavaland = 2,
-	/obj/structure/spawner/lavaland/goliath = 3,
-	/obj/structure/spawner/lavaland/legion = 3,
-
-	SPAWN_MEGAFAUNA = 6,
-))
-
-GLOBAL_LIST_INIT(caves_default_flora_spawns, list(
-	/obj/structure/flora/ash/cacti = 1,
-	/obj/structure/flora/ash/cap_shroom = 2,
-	/obj/structure/flora/ash/leaf_shroom = 2,
-	/obj/structure/flora/ash/rock/style_random = 1,
-	/obj/structure/flora/ash/stem_shroom = 2,
-	/obj/structure/flora/ash/tall_shroom = 2,
-))
-
-/proc/lavaland_caves_spawn_mob(turf/T, mob_scan_range = 12, megafauna_scan_range = 7)
-	var/mob_spawn = pickweight(GLOB.caves_default_mob_spawns)
-
-	while(mob_spawn == SPAWN_MEGAFAUNA)
-		if(istype(get_area(T), /area/lavaland/surface/outdoors/unexplored/danger)) //this is danger. it's boss time.
-			mob_spawn = pickweight(GLOB.megafauna_spawn_list)
-		else //this is not danger, don't spawn a boss, spawn something else
-			mob_spawn = pickweight(GLOB.caves_default_mob_spawns)
-
-	for(var/thing in urange(mob_scan_range, T))
-		if(!(ishostile(thing) || istype(thing, /obj/structure/spawner) || istype(thing, /obj/effect/landmark/mob_spawner)))
-			continue
-		// don't spawn a megafauna if there's already one within view
-		if((ispath(mob_spawn, /mob/living/simple_animal/hostile/megafauna) || ismegafauna(thing)) && (get_dist(T, thing) <= megafauna_scan_range))
-			return
-		// if the random is a standard mob, avoid spawning if there's another one within the scan range
-		if(ispath(mob_spawn, /obj/effect/landmark/mob_spawner) && istype(thing, /obj/effect/landmark/mob_spawner))
-			return
-		// prevents tendrils spawning in each other's collapse range
-		if((ispath(mob_spawn, /obj/structure/spawner/lavaland) && istype(thing, /obj/structure/spawner/lavaland)) && get_dist(T, thing) <= LAVALAND_TENDRIL_COLLAPSE_RANGE)
-			return
-
-	// there can be only one bubblegum, so don't waste spawns on it
-	if(ispath(mob_spawn, /mob/living/simple_animal/hostile/megafauna/bubblegum))
-		GLOB.megafauna_spawn_list.Remove(mob_spawn)
-
-	// same as above, we do not want multiple of these robots
-	if(ispath(mob_spawn, /mob/living/simple_animal/hostile/megafauna/ancient_robot))
-		GLOB.megafauna_spawn_list.Remove(mob_spawn)
-
-	new mob_spawn(T)
-	SSblackbox.record_feedback("tally", "lavaland_mob_spawns", 1, "[mob_spawn]")
-
-/proc/lavaland_caves_spawn_flora(turf/T)
-	var/flora_spawn = pickweight(GLOB.caves_default_flora_spawns)
-	for(var/obj/structure/flora/ash/F in range(4, T)) //Allows for growing patches, but not ridiculous stacks of flora
-		if(!istype(F, flora_spawn))
-			return
-	new flora_spawn(T)
 
 /datum/caves_theme
 	var/name = "Not Specified"
@@ -107,10 +34,10 @@ GLOBAL_LIST_INIT(caves_default_flora_spawns, list(
 		CHECK_TICK
 
 /datum/caves_theme/proc/on_change(turf/T)
-	if(prob(2))
-		lavaland_caves_spawn_flora(T)
-	else if(prob(1))
-		lavaland_caves_spawn_mob(T)
+	if(prob(5))
+		new /obj/effect/spawner/random/pool/lavaland/combined(T)
+	else if(prob(5))
+		new /obj/effect/spawner/random/flora/lavaland(T)
 
 /datum/caves_theme/proc/safe_replace(turf/T)
 	if(T.flags & NO_LAVA_GEN)
@@ -137,12 +64,12 @@ GLOBAL_LIST_INIT(caves_default_flora_spawns, list(
 	perlin_upper_range = 0.3
 
 /datum/caves_theme/burrows/on_change(turf/T)
-	if(prob(9))
+	if(prob(6))
 		new /obj/structure/flora/ash/rock/style_random(T)
 	else if(prob(5))
-		lavaland_caves_spawn_flora(T)
-	else if(prob(1))
-		lavaland_caves_spawn_mob(T)
+		new /obj/effect/spawner/random/pool/lavaland/combined(T)
+	else if(prob(2))
+		new /obj/effect/spawner/random/flora/lavaland(T)
 
 /datum/caves_theme/deeprock/proc/maybe_make_room(turf/T)
 	if(rand(1, 150) != 1)
@@ -153,7 +80,6 @@ GLOBAL_LIST_INIT(caves_default_flora_spawns, list(
 			return
 
 	oasis_centroids |= T
-	var/new_scan_range = rand(4, 7)
 	var/tempradius = rand(10, 15)
 	var/probmodifer = OASIS_SPAWNER_PROB_MODIFIER * tempradius
 	var/list/oasis_turfs = list()
@@ -161,21 +87,21 @@ GLOBAL_LIST_INIT(caves_default_flora_spawns, list(
 		var/distance = (max(get_dist(T, NT), 1)) //Get dist throws -1 if same turf
 		if(safe_replace(NT) && prob(min(probmodifer / distance, 100)))
 			var/turf/changed = NT.ChangeTurf(/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface)
-			if(prob(5))
-				lavaland_caves_spawn_mob(changed, new_scan_range, new_scan_range)
-			else if(prob(10))
-				lavaland_caves_spawn_flora(changed)
+			if(prob(15))
+				new /obj/effect/spawner/random/pool/lavaland/combined(changed)
+			else if (prob(5))
+				new /obj/effect/spawner/random/flora/lavaland(T)
+
 			oasis_turfs |= NT
 
-	if(prob(50))
-		tempradius = round(tempradius / 3)
-		var/oasis_laketype = pickweight(lake_weights)
-		if(oasis_laketype == /turf/simulated/floor/plating/asteroid)
-			new /obj/effect/spawner/oasisrock(T, tempradius)
-		for(var/turf/oasis in circlerangeturfs(T, tempradius))
-			if(safe_replace(oasis))
-				oasis.ChangeTurf(oasis_laketype)
-				oasis_turfs -= oasis
+	tempradius = round(tempradius / 3)
+	var/oasis_laketype = pickweight(lake_weights)
+	if(oasis_laketype == /turf/simulated/floor/plating/asteroid)
+		new /obj/effect/spawner/oasisrock(T, tempradius)
+	for(var/turf/oasis in circlerangeturfs(T, tempradius))
+		if(safe_replace(oasis))
+			oasis.ChangeTurf(oasis_laketype)
+			oasis_turfs -= oasis
 
 		// Move tendrils out of the oasis
 		for(var/obj/structure/spawner/lavaland/O in circlerange(T, tempradius))
@@ -200,15 +126,12 @@ GLOBAL_LIST_INIT(caves_default_flora_spawns, list(
 	)
 
 /datum/caves_theme/deeprock/on_change(turf/T)
-	maybe_make_room(T)
-	if(prob(3))
-		lavaland_caves_spawn_flora(T)
-	else if(prob(2))
-		lavaland_caves_spawn_mob(T)
-
+	if(prob(1))
+		new /obj/effect/spawner/random/pool/lavaland/combined(T)
+	else
+		maybe_make_room(T)
 
 #undef OASIS_SPAWNER_PROB_MODIFIER
-#undef SPAWN_MEGAFAUNA
 
 #undef LAVALAND_MIN_CAVE_Y
 #undef LAVALAND_MAX_CAVE_Y
