@@ -36,7 +36,7 @@
 	for(var/obj/machinery/power/terminal/apc_terminal in terminal.powernet.nodes)
 		var/obj/machinery/power/apc/apc = apc_terminal.master
 		if(!istype(apc))
-			return // git out of here!
+			continue // git out of here!
 		breakers[apc.UID()] = apc.operating
 
 /obj/machinery/power/breaker_box/proc/make_terminal()
