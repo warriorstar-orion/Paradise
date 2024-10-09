@@ -11,17 +11,15 @@ export const BreakerBox = (props, context) => {
       <Window.Content scrollable className="BreakerBox-window-interior">
         <Section className="BreakerBox-window-interior">
           <Box className="WirePanel-wires-container">
-            {breaker_list.map((breaker) => {
-              return (
-                <SkeuomorphWire
-                  key={breaker}
-                  apc_id={breaker.apc_uid}
-                  name={breaker.name}
-                  toggled={breaker.toggled}
-                  value={breaker.breaker_color}
-                />
-              );
-            })}
+            {breaker_list.map((breaker) => (
+              <SkeuomorphWire
+                key={breaker.apc_uid}
+                apc_id={breaker.apc_uid}
+                name={breaker.name}
+                toggled={breaker.toggled}
+                value={breaker.breaker_color}
+              />
+            ))}
           </Box>
         </Section>
       </Window.Content>

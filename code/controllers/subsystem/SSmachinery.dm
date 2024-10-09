@@ -54,7 +54,7 @@ SUBSYSTEM_DEF(machines)
 		currentrun.len--
 		if(!QDELETED(C))
 			var/datum/regional_powernet/newPN = new(C) // create a new powernet...
-			newPN.propagate_network()//... and propagate it to the other side of the cable
+			newPN.propagate_network(C)//... and propagate it to the other side of the cable
 
 		deferred_powernet_rebuilds.Remove(C)
 		if(MC_TICK_CHECK)

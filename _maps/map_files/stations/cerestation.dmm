@@ -974,6 +974,12 @@
 	icon_state = "asteroidplating"
 	},
 /area/station/security/permabrig)
+"afE" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/simulated/floor/engine,
+/area/station/maintenance/maintcentral)
 "afH" = (
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating{
@@ -3524,6 +3530,11 @@
 	pixel_y = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/high_voltage{
+	d2 = 2;
+	icon_state = "1-2";
+	d1 = 1
+	},
 /turf/space,
 /area/station/hallway/spacebridge/cargocom)
 "awL" = (
@@ -9346,12 +9357,18 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/obj/structure/cable/low_voltage{
-	d2 = 4;
-	icon_state = "0-4"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
+	},
+/obj/structure/cable/low_voltage{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable/low_voltage{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating,
 /area/station/turret_protected/aisat/interior)
@@ -10570,10 +10587,16 @@
 /area/station/maintenance/fore)
 "bqR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 10
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/high_voltage{
+	d2 = 8;
+	icon_state = "2-8";
+	d1 = 2
+	},
+/obj/machinery/power/breaker_box{
+	pixel_x = 32
+	},
+/obj/structure/cable/low_voltage,
 /turf/simulated/floor/plating,
 /area/station/turret_protected/aisat/interior)
 "bqU" = (
@@ -11643,16 +11666,24 @@
 	},
 /area/station/maintenance/starboard)
 "bvN" = (
-/obj/machinery/camera{
-	c_tag = "AI Asteroid Hallway Maintenance";
+/obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
 	},
+/obj/machinery/power/apc/directional/south,
+/obj/structure/cable/low_voltage,
 /turf/simulated/floor/plating,
 /area/station/turret_protected/aisat/interior)
 "bvO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/visible,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 10
+	},
+/obj/structure/cable/high_voltage{
+	d2 = 2;
+	icon_state = "1-2";
+	d1 = 1
+	},
 /turf/simulated/floor/plating,
 /area/station/turret_protected/aisat/interior)
 "bvR" = (
@@ -12266,7 +12297,6 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
-/obj/structure/closet/secure_closet/engineering_electrical,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -13346,6 +13376,11 @@
 	id_tag = "ailockdown";
 	layer = 2.6;
 	name = "AI Asteroid Lockdown"
+	},
+/obj/structure/cable/high_voltage{
+	d2 = 2;
+	icon_state = "1-2";
+	d1 = 1
 	},
 /turf/simulated/floor/plating,
 /area/station/turret_protected/aisat/interior)
@@ -14529,6 +14564,7 @@
 	icon_state = "1-8";
 	d1 = 1
 	},
+/obj/machinery/light/small,
 /turf/simulated/floor/transparent/glass/reinforced,
 /area/station/maintenance/fore)
 "bIn" = (
@@ -14562,11 +14598,7 @@
 	icon_state = "2-4";
 	d1 = 2
 	},
-/obj/structure/cable/high_voltage{
-	d2 = 2;
-	icon_state = "1-2";
-	d1 = 1
-	},
+/obj/effect/turf_decal/delivery,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -15676,7 +15708,8 @@
 	d1 = 4
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "dark"
+	dir = 10;
+	icon_state = "darkyellow"
 	},
 /area/station/maintenance/maintcentral)
 "bNC" = (
@@ -15761,6 +15794,11 @@
 "bOg" = (
 /obj/machinery/light/small{
 	dir = 4
+	},
+/obj/structure/cable/high_voltage{
+	d2 = 2;
+	icon_state = "1-2";
+	d1 = 1
 	},
 /turf/simulated/floor/plating,
 /area/station/turret_protected/aisat/interior)
@@ -17823,6 +17861,12 @@
 	icon_state = "2-8";
 	d1 = 2
 	},
+/obj/effect/turf_decal/delivery,
+/obj/structure/cable/high_voltage{
+	d2 = 2;
+	icon_state = "1-2";
+	d1 = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -18440,6 +18484,11 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/high_voltage{
+	d2 = 2;
+	icon_state = "1-2";
+	d1 = 1
+	},
 /turf/space,
 /area/station/turret_protected/aisat/interior)
 "caM" = (
@@ -20190,6 +20239,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/hallway/primary/fore/north)
+"cmy" = (
+/obj/machinery/light/small,
+/obj/structure/cable/high_voltage{
+	d2 = 8;
+	icon_state = "4-8";
+	d1 = 4
+	},
+/turf/simulated/floor/plating,
+/area/station/hallway/primary/fore/north)
 "cmB" = (
 /obj/structure/cable/low_voltage/orange{
 	d1 = 1;
@@ -20643,12 +20701,19 @@
 	},
 /area/station/maintenance/fore)
 "cpR" = (
-/obj/effect/spawner/grouped_spawner{
-	group_id = "tunnelbats";
-	max_per_spawner = 1;
-	name = "bat spawner";
-	path_to_spawn = /mob/living/simple_animal/hostile/scarybat;
-	total_amount = 20
+/obj/machinery/camera{
+	c_tag = "AI Asteroid Hallway Maintenance";
+	dir = 6
+	},
+/obj/structure/cable/low_voltage{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable/low_voltage{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating,
 /area/station/turret_protected/aisat/interior)
@@ -23407,7 +23472,6 @@
 	pixel_x = 24;
 	name = "custom placement"
 	},
-/obj/structure/closet/secure_closet/engineering_electrical,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -27965,6 +28029,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
+/obj/structure/cable/high_voltage{
+	d2 = 4;
+	icon_state = "2-4";
+	d1 = 2
+	},
 /turf/simulated/floor/plating,
 /area/station/hallway/primary/fore/north)
 "djS" = (
@@ -28000,6 +28069,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/cable/high_voltage{
+	d2 = 8;
+	icon_state = "4-8";
+	d1 = 4
+	},
 /turf/simulated/floor/plating,
 /area/station/hallway/primary/fore/north)
 "dkg" = (
@@ -28017,6 +28091,11 @@
 /obj/machinery/light,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/cable/high_voltage{
+	d2 = 8;
+	icon_state = "4-8";
+	d1 = 4
 	},
 /turf/simulated/floor/plating,
 /area/station/hallway/primary/fore/north)
@@ -28043,18 +28122,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
+/obj/structure/cable/high_voltage{
+	d2 = 8;
+	icon_state = "4-8";
+	d1 = 4
+	},
 /turf/simulated/floor/plating,
 /area/station/hallway/primary/fore/north)
-"dku" = (
-/obj/structure/cable/low_voltage{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/station/maintenance/maintcentral)
 "dkw" = (
 /obj/structure/lattice/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -28062,6 +28136,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/cable/high_voltage{
+	d2 = 8;
+	icon_state = "4-8";
+	d1 = 4
 	},
 /turf/space,
 /area/station/hallway/spacebridge/cargocom)
@@ -28076,6 +28155,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
+	},
+/obj/structure/cable/high_voltage{
+	d2 = 8;
+	icon_state = "1-8";
+	d1 = 1
 	},
 /turf/space,
 /area/station/hallway/spacebridge/cargocom)
@@ -28384,6 +28468,11 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/high_voltage{
+	d2 = 2;
+	icon_state = "1-2";
+	d1 = 1
+	},
 /turf/simulated/floor/plating,
 /area/station/hallway/primary/fore/north)
 "dnb" = (
@@ -30575,6 +30664,11 @@
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/structure/cable/high_voltage{
+	d2 = 2;
+	icon_state = "1-2";
+	d1 = 1
+	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "bluecorner"
@@ -30736,13 +30830,13 @@
 	},
 /area/station/hallway/primary/fore/north)
 "dAd" = (
-/obj/structure/cable/high_voltage{
-	d2 = 8;
-	icon_state = "1-8";
-	d1 = 1
+/obj/structure/closet/secure_closet/engineering_electrical,
+/obj/structure/sign/electricshock{
+	pixel_x = 32
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "dark"
+	dir = 6;
+	icon_state = "darkyellow"
 	},
 /area/station/maintenance/maintcentral)
 "dAe" = (
@@ -31257,10 +31351,23 @@
 	},
 /area/station/supply/qm)
 "dDI" = (
-/obj/machinery/atmospherics/unary/portables_connector{
-	dir = 4
+/obj/structure/cable/high_voltage{
+	d2 = 8;
+	icon_state = "4-8";
+	d1 = 4
 	},
-/obj/machinery/atmospherics/portable/canister/air,
+/obj/effect/spawner/grouped_spawner{
+	group_id = "tunnelbats";
+	max_per_spawner = 1;
+	name = "bat spawner";
+	path_to_spawn = /mob/living/simple_animal/hostile/scarybat;
+	total_amount = 20
+	},
+/obj/structure/cable/low_voltage{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/station/turret_protected/aisat/interior)
 "dDJ" = (
@@ -31781,6 +31888,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/solar_maintenance/aft_starboard)
+"dLf" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/engine,
+/area/station/maintenance/maintcentral)
 "dLh" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -32528,6 +32644,15 @@
 	icon_state = "neutralfull"
 	},
 /area/station/hallway/primary/fore/north)
+"dTX" = (
+/obj/structure/sign/electricshock{
+	pixel_x = 32
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/turf/simulated/floor/engine,
+/area/station/maintenance/maintcentral)
 "dUb" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable/low_voltage/orange{
@@ -32704,11 +32829,44 @@
 	icon_state = "cafeteria"
 	},
 /area/station/service/kitchen)
+"dWn" = (
+/obj/structure/cable/low_voltage{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel{
+	dir = 9;
+	icon_state = "darkyellow"
+	},
+/area/station/maintenance/maintcentral)
 "dWr" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
 /area/station/security/prison/cell_block/A)
+"dWt" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	color = "#954535"
+	},
+/obj/structure/cable/high_voltage{
+	d2 = 8;
+	icon_state = "1-8";
+	d1 = 1
+	},
+/obj/structure/cable/high_voltage{
+	d2 = 8;
+	icon_state = "4-8";
+	d1 = 4
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "neutralcorner"
+	},
+/area/station/hallway/primary/fore/north)
 "dWD" = (
 /turf/simulated/wall,
 /area/station/hallway/primary/central/west)
@@ -35152,6 +35310,11 @@
 	dir = 4;
 	color = "#954535"
 	},
+/obj/structure/cable/high_voltage{
+	d2 = 8;
+	icon_state = "4-8";
+	d1 = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralcorner"
 	},
@@ -35381,6 +35544,12 @@
 	icon_state = "darkbluecorners"
 	},
 /area/station/service/chapel/office)
+"eMI" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/simulated/floor/engine,
+/area/station/maintenance/maintcentral)
 "eMK" = (
 /obj/structure/cable/low_voltage{
 	d1 = 1;
@@ -36944,6 +37113,17 @@
 /obj/effect/spawner/window/reinforced,
 /turf/simulated/floor/plating,
 /area/station/hallway/secondary/garden)
+"fpj" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/cable/high_voltage{
+	d2 = 2;
+	icon_state = "1-2";
+	d1 = 1
+	},
+/turf/simulated/floor/engine,
+/area/station/maintenance/maintcentral)
 "fpm" = (
 /obj/machinery/light{
 	dir = 1
@@ -41010,6 +41190,11 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	color = "#954535"
+	},
+/obj/structure/cable/high_voltage{
+	d2 = 8;
+	icon_state = "4-8";
+	d1 = 4
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralcorner"
@@ -50153,12 +50338,13 @@
 /area/station/hallway/secondary/entry/south)
 "jdc" = (
 /obj/structure/cable/low_voltage{
-	d1 = 4;
+	d1 = 1;
 	d2 = 8;
-	icon_state = "4-8"
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "dark"
+	icon_state = "darkyellow";
+	dir = 8
 	},
 /area/station/maintenance/maintcentral)
 "jdf" = (
@@ -55648,6 +55834,15 @@
 	icon_state = "neutralfull"
 	},
 /area/station/hallway/primary/central/north)
+"kDd" = (
+/obj/structure/sign/electricshock{
+	pixel_x = -32
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/simulated/floor/engine,
+/area/station/maintenance/maintcentral)
 "kDf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -56110,13 +56305,14 @@
 	},
 /area/station/turret_protected/aisat/interior)
 "kLp" = (
+/obj/machinery/power/transformer,
 /obj/structure/cable/low_voltage{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
+	d2 = 8;
+	icon_state = "0-8"
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "dark"
+	icon_state = "darkyellow";
+	dir = 1
 	},
 /area/station/maintenance/maintcentral)
 "kLr" = (
@@ -60363,16 +60559,11 @@
 "lVU" = (
 /obj/structure/cable/high_voltage{
 	d2 = 8;
-	icon_state = "2-8";
-	d1 = 2
-	},
-/obj/structure/cable/high_voltage{
-	d2 = 8;
 	icon_state = "4-8";
 	d1 = 4
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "dark"
+	icon_state = "darkyellow"
 	},
 /area/station/maintenance/maintcentral)
 "lVV" = (
@@ -62603,15 +62794,13 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/disposal)
 "mDs" = (
-/obj/machinery/power/hv_connector{
-	dir = 8
-	},
-/obj/structure/cable/high_voltage{
-	d2 = 2;
-	icon_state = "0-2"
+/obj/structure/closet/secure_closet/engineering_electrical,
+/obj/structure/sign/electricshock{
+	pixel_x = 32
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "dark"
+	dir = 5;
+	icon_state = "darkyellow"
 	},
 /area/station/maintenance/maintcentral)
 "mDv" = (
@@ -65976,13 +66165,16 @@
 	},
 /area/station/engineering/break_room)
 "nGn" = (
-/obj/machinery/power/transformer,
-/obj/structure/cable/low_voltage{
-	d2 = 8;
-	icon_state = "0-8"
+/obj/machinery/power/hv_connector{
+	dir = 8
+	},
+/obj/structure/cable/high_voltage{
+	d2 = 2;
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "dark"
+	icon_state = "darkyellow";
+	dir = 1
 	},
 /area/station/maintenance/maintcentral)
 "nGD" = (
@@ -69873,6 +70065,11 @@
 	color = "#954535"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/cable/high_voltage{
+	d2 = 8;
+	icon_state = "4-8";
+	d1 = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralcorner"
 	},
@@ -70801,6 +70998,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/disposal/north)
+"pci" = (
+/obj/machinery/atmospherics/portable/canister/air,
+/obj/machinery/atmospherics/unary/portables_connector{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/station/turret_protected/aisat/interior)
 "pcq" = (
 /turf/simulated/mineral/ancient,
 /area/station/public/storage/tools)
@@ -75468,6 +75672,10 @@
 	icon_state = "neutralfull"
 	},
 /area/station/hallway/primary/aft/west)
+"qnc" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/simulated/floor/engine,
+/area/station/maintenance/maintcentral)
 "qnd" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/plasteel{
@@ -80269,6 +80477,11 @@
 	name = "EXTERNAL AIRLOCK";
 	pixel_y = -32
 	},
+/obj/structure/cable/high_voltage{
+	d2 = 8;
+	icon_state = "4-8";
+	d1 = 4
+	},
 /turf/simulated/floor/plating,
 /area/station/hallway/primary/fore/north)
 "rLT" = (
@@ -82353,8 +82566,28 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
+/obj/structure/cable/high_voltage{
+	d2 = 8;
+	icon_state = "4-8";
+	d1 = 4
+	},
 /turf/simulated/floor/plating,
 /area/station/hallway/primary/fore/north)
+"son" = (
+/obj/structure/cable/high_voltage{
+	d2 = 8;
+	icon_state = "1-8";
+	d1 = 1
+	},
+/obj/structure/cable/high_voltage{
+	d2 = 8;
+	icon_state = "2-8";
+	d1 = 2
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "darkyellow"
+	},
+/area/station/maintenance/maintcentral)
 "sos" = (
 /obj/effect/spawner/window/reinforced/polarized/grilled{
 	id = "funeral"
@@ -84481,6 +84714,11 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/high_voltage{
+	d2 = 2;
+	icon_state = "1-2";
+	d1 = 1
+	},
 /turf/space,
 /area/station/hallway/spacebridge/cargocom)
 "sSf" = (
@@ -91562,6 +91800,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel,
 /area/station/security/prison/cell_block/A)
+"uPo" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/simulated/floor/engine,
+/area/station/maintenance/maintcentral)
 "uPq" = (
 /obj/structure/chair/sofa{
 	dir = 8
@@ -92294,6 +92538,11 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_often,
+/obj/structure/cable/high_voltage{
+	d2 = 8;
+	icon_state = "4-8";
+	d1 = 4
+	},
 /turf/simulated/floor/plating,
 /area/station/hallway/primary/fore/north)
 "uZB" = (
@@ -93065,6 +93314,15 @@
 /obj/machinery/computer/card,
 /turf/simulated/floor/wood,
 /area/station/command/office/captain)
+"vme" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/engine,
+/area/station/maintenance/maintcentral)
 "vmg" = (
 /obj/structure/lattice/catwalk,
 /obj/machinery/atmospherics/unary/outlet_injector/on{
@@ -94641,6 +94899,14 @@
 /obj/machinery/firealarm/directional/south,
 /turf/simulated/floor/carpet/green,
 /area/station/service/library)
+"vGM" = (
+/obj/machinery/power/transformer,
+/obj/structure/cable/low_voltage{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/plating,
+/area/station/turret_protected/aisat/interior)
 "vHe" = (
 /obj/structure/disposalpipe/sortjunction/reversed{
 	dir = 4;
@@ -96151,6 +96417,15 @@
 	icon_state = "darkyellow"
 	},
 /area/station/engineering/control)
+"wdO" = (
+/obj/machinery/power/breaker_box{
+	pixel_x = 33
+	},
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "darkyellow"
+	},
+/area/station/maintenance/maintcentral)
 "wei" = (
 /obj/item/radio/intercom{
 	pixel_x = -28;
@@ -99198,6 +99473,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/port2)
+"wQx" = (
+/obj/structure/cable/high_voltage{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/obj/machinery/power/hv_connector{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/station/turret_protected/aisat/interior)
 "wQz" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
 	level = 2
@@ -99444,6 +99729,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
+	},
+/obj/structure/cable/high_voltage{
+	d2 = 2;
+	icon_state = "1-2";
+	d1 = 1
 	},
 /turf/simulated/floor/plating,
 /area/station/turret_protected/aisat/interior)
@@ -140578,7 +140868,7 @@ cVX
 dmC
 dxx
 dTM
-wyo
+dWt
 hli
 gZI
 hVQ
@@ -141092,7 +141382,7 @@ rjd
 dmA
 dyD
 vuY
-sGY
+qtB
 nXZ
 hbW
 hZh
@@ -141349,7 +141639,7 @@ djn
 dmA
 eua
 vuY
-hcT
+cYa
 fXC
 hbZ
 hZq
@@ -141606,7 +141896,7 @@ djv
 dmA
 uRS
 vuY
-sGY
+qtB
 gch
 gch
 gch
@@ -142167,16 +142457,16 @@ sXj
 sXj
 sXj
 nVW
-nVW
-nVW
+sXj
+sXj
 qyT
 hLs
-nVW
-nVW
-nVW
-nVW
-nVW
-nVW
+sXj
+sXj
+sXj
+sXj
+sXj
+sXj
 nVW
 nVW
 nVW
@@ -142424,16 +142714,16 @@ fLT
 nVW
 nVW
 nVW
-nVW
-kBo
+sXj
+dWn
 jdc
 bNA
 sON
-kBo
-kBo
-kBo
-kBo
-nVW
+kDd
+eMI
+eMI
+dLf
+sXj
 nVW
 nVW
 nVW
@@ -142634,7 +142924,7 @@ aKp
 aKp
 xQT
 aVR
-sGY
+qtB
 rxO
 hhE
 ibP
@@ -142681,16 +142971,16 @@ fLT
 aQR
 nVW
 nVW
-nVW
+sXj
 kLp
-dku
+kBo
 lVU
-bFu
-eQQ
+nKc
+afE
 bIA
 kRG
-kBo
-nVW
+qnc
+sXj
 nVW
 nVW
 nVW
@@ -142890,8 +143180,8 @@ npV
 djH
 dmY
 dzo
-vuY
-sGY
+dTM
+wyo
 gch
 hkx
 idg
@@ -142938,16 +143228,16 @@ nRS
 nRS
 huj
 nVW
-nVW
+sXj
 nGn
-kBo
-bNA
-nKc
-kBo
+eQQ
+son
+bFu
+fpj
 bWx
 lQI
-kBo
-nVW
+qnc
+sXj
 nVW
 nVW
 nVW
@@ -143195,16 +143485,16 @@ dQC
 tHV
 nVW
 nVW
-nVW
+sXj
 mDs
-eQQ
+wdO
 dAd
 sON
-kBo
-kBo
-kBo
-kBo
-nVW
+dTX
+uPo
+uPo
+vme
+sXj
 nVW
 nVW
 nVW
@@ -143452,16 +143742,16 @@ aEs
 nna
 syB
 nVW
-nVW
-nVW
-nVW
-nVW
-nVW
-nVW
-nVW
-nVW
-nVW
-nVW
+sXj
+sXj
+sXj
+sXj
+sXj
+sXj
+sXj
+sXj
+sXj
+sXj
 nVW
 nVW
 nVW
@@ -143710,9 +144000,9 @@ qWf
 jtF
 nVW
 nVW
-hxE
-hxE
-hxE
+nVW
+nVW
+nVW
 xyI
 nVW
 nVW
@@ -144943,7 +145233,7 @@ rNK
 rNK
 rNK
 jSL
-ier
+cmy
 aKp
 dAv
 vuY
@@ -147757,10 +148047,10 @@ aBM
 vdu
 aWP
 atJ
-aaf
-wIp
-aaf
-aaf
+bke
+bke
+bke
+bke
 aaf
 aaf
 ahF
@@ -148014,9 +148304,9 @@ aBO
 vdu
 aWS
 atJ
-bke
-bke
-bke
+vGM
+wQx
+pci
 bke
 aaf
 aaf
