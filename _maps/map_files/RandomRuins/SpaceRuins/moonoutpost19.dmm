@@ -5516,10 +5516,6 @@
 	},
 /turf/simulated/floor/engine,
 /area/ruin/space/moonbase19)
-"sy" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/wall/r_wall,
-/area/ruin/space/moonbase19)
 "sF" = (
 /obj/effect/spawner/random_spawners/wall_rusted_always,
 /turf/simulated/wall/indestructible/riveted,
@@ -10040,6 +10036,18 @@
 	icon_state = "cautioncorner"
 	},
 /area/ruin/space/moonbase19)
+"Nn" = (
+/obj/machinery/camera{
+	c_tag = "South Cafeteria";
+	dir = 5;
+	network = list("MO19")
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "escape"
+	},
+/area/ruin/space/moonbase19)
 "Np" = (
 /obj/structure/chair/sofa/bench{
 	dir = 4
@@ -12704,18 +12712,6 @@
 	},
 /turf/simulated/floor/catwalk,
 /area/ruin/space/moonbase19)
-"YT" = (
-/obj/machinery/camera{
-	c_tag = "South Cafeteria";
-	dir = 5;
-	network = list("MO19")
-	},
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "escape"
-	},
-/area/ruin/space/moonbase19)
 "YX" = (
 /obj/structure/railing,
 /obj/effect/turf_decal/delivery/red/partial{
@@ -13864,7 +13860,7 @@ fy
 ak
 AH
 rW
-YT
+Nn
 CJ
 SV
 SV
@@ -14703,7 +14699,7 @@ Wd
 rL
 mh
 Mv
-sy
+ag
 tX
 tX
 Dd
@@ -16017,7 +16013,7 @@ OZ
 VR
 af
 bP
-sy
+ag
 af
 tX
 tX
