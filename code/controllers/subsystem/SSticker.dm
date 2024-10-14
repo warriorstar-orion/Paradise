@@ -90,6 +90,10 @@ SUBSYSTEM_DEF(ticker)
 			for(var/mob/new_player/N in GLOB.player_list)
 				if(N.client)
 					N.new_player_panel_proc() // to enable the observe option
+
+			SSticker.declare_completion()
+			SSticker.reboot_helper("TRUNCATED ROUND ENDING", "truncated round ended", 0)
+
 		if(GAME_STATE_PREGAME)
 			if(!SSticker.ticker_going) // This has to be referenced like this, and I dont know why. If you dont put SSticker. it will break
 				return

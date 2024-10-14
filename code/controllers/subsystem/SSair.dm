@@ -134,13 +134,13 @@ SUBSYSTEM_DEF(air)
 /datum/controller/subsystem/air/Initialize()
 	in_milla_safe_code = TRUE
 
-	setup_overlays() // Assign icons and such for gas-turf-overlays
-	setup_allturfs()
-	setup_write_to_milla()
-	setup_atmos_machinery(GLOB.machines)
-	setup_pipenets(GLOB.machines)
-	for(var/obj/machinery/atmospherics/A in machinery_to_construct)
-		A.initialize_atmos_network()
+	// setup_overlays() // Assign icons and such for gas-turf-overlays
+	// setup_allturfs()
+	// setup_write_to_milla()
+	// setup_atmos_machinery(GLOB.machines)
+	// setup_pipenets(GLOB.machines)
+	// for(var/obj/machinery/atmospherics/A in machinery_to_construct)
+	// 	A.initialize_atmos_network()
 
 	in_milla_safe_code = FALSE
 
