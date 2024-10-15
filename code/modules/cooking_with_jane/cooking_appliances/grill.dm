@@ -83,7 +83,7 @@
 	if(!..(user, 1))
 		return FALSE
 	if(contents)
-		extra_description += SPAN_NOTICE("\nCharcoal: [stored_wood]/[wood_maximum]")
+		extra_description += "<span class='notice'>\nCharcoal: [stored_wood]/[wood_maximum]</span>"
 
 //Process how a specific grill is interacting with material
 /obj/machinery/cooking_with_jane/grill/proc/cook_checkin(var/input)
@@ -156,14 +156,14 @@
 		var/obj/item/stack/material/wood/stack = used_item
 		var/used_sheets = min(stack.get_amount(), (wood_maximum - stored_wood))
 		if(!used_sheets)
-			to_chat(user, SPAN_NOTICE("The grill's hopper is full."))
+			to_chat(user, "<span class='notice'>The grill's hopper is full.</span>")
 			return
-		to_chat(user, SPAN_NOTICE("You add [used_sheets] wood plank[used_sheets>1?"s":""] into the grill's hopper."))
+		to_chat(user, "<span class='notice'>You add [used_sheets] wood plank[used_sheets>1?"s":""] into the grill's hopper.</span>")
 		if(!stack.use(used_sheets))
 			qdel(stack)	// Protects against weirdness
 		stored_wood += used_sheets
 		if(prob(5))
-			src.visible_message(SPAN_DANGER("The Grill exclaims: \"OM NOM NOM~! YUMMIE~~!\""))
+			src.visible_message("<span class='danger'>The Grill exclaims: \"OM NOM NOM~! YUMMIE~~!\"</span>")
 
 		flick("wood_load", hopper_insert)
 
@@ -177,7 +177,7 @@
 		container.process_item(used_item, params)
 
 	else if(istype(used_item, /obj/item/reagent_containers/cooking_with_jane/cooking_container/grill_grate))
-		to_chat(usr, SPAN_NOTICE("You put a [used_item] on the grill."))
+		to_chat(usr, "<span class='notice'>You put a [used_item] on the grill.</span>")
 		if(usr.canUnEquip(used_item))
 			usr.unEquip(used_item, src)
 		else
@@ -202,7 +202,7 @@
 							burn_victim.adjustFireLoss(5)
 						if("Medium")
 							burn_victim.adjustFireLoss(2)
-					to_chat(burn_victim, SPAN_DANGER("You burn your hand a little taking the [items[input]] off of the grill."))
+					to_chat(burn_victim, "<span class='danger'>You burn your hand a little taking the [items[input]] off of the grill.</span>")
 		user.put_in_hands(items[input])
 		items[input] = null
 		update_icon()

@@ -112,7 +112,7 @@
 			container.process_item(used_item, params)
 
 		else if(istype(used_item, /obj/item/reagent_containers/cooking_with_jane/cooking_container))
-			to_chat(usr, SPAN_NOTICE("You put a [used_item] on the oven."))
+			to_chat(usr, "<span class='notice'>You put a [used_item] on the oven.</span>")
 			if(usr.canUnEquip(used_item))
 				usr.unEquip(used_item, src)
 			else
@@ -168,7 +168,7 @@
 										burn_victim.adjustFireLoss(5)
 									if("Medium")
 										burn_victim.adjustFireLoss(2)
-								to_chat(burn_victim, SPAN_DANGER("You burn your hand a little taking the [items] off of the oven."))
+								to_chat(burn_victim, "<span class='danger'>You burn your hand a little taking the [items] off of the oven.</span>")
 					user.put_in_hands(items)
 					items = null
 				else
@@ -210,7 +210,7 @@
 	switch(center_selected)
 		if(TRUE)
 			if(!opened)
-				to_chat(user, SPAN_NOTICE("The oven must be open to retrieve the food."))
+				to_chat(user, "<span class='notice'>The oven must be open to retrieve the food.</span>")
 			else
 				if((items != null && istype(items, /obj/item/reagent_containers/cooking_with_jane/cooking_container)))
 					var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = items
@@ -283,7 +283,7 @@
 		cooking_timestamp = world.time
 	else
 		if(opened)
-			to_chat(user, SPAN_NOTICE("The oven must be closed in order to turn it on."))
+			to_chat(user, "<span class='notice'>The oven must be closed in order to turn it on.</span>")
 			return
 		playsound(src, 'sound/items/lighter.ogg', 100, 1, 0)
 		switches = 1
