@@ -1877,6 +1877,7 @@
 #include "code\modules\cooking_with_jane\cooking_items\spatula.dm"
 #include "code\modules\cooking_with_jane\recipes\_read_me.dm"
 #include "code\modules\cooking_with_jane\recipes\example_recipes.dm"
+#include "code\modules\cooking_with_jane\recipes\stable\burger.dm"
 #include "code\modules\cooking_with_jane\step_types\add_item.dm"
 #include "code\modules\cooking_with_jane\step_types\add_reagent.dm"
 #include "code\modules\cooking_with_jane\step_types\recipe_start.dm"
