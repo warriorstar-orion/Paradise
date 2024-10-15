@@ -3,7 +3,8 @@
 /obj/machinery/cooking_with_jane/oven
 	name = "Convection Oven"
 	desc = "A cozy oven for baking food."
-	description_info = "Ctrl+Click: Set Temperatures / Timers. \nShift+Ctrl+Click: Turn on the oven.\nAlt+Click: Empty container of physical food."
+	#warn fix description info
+	// description_info = "Ctrl+Click: Set Temperatures / Timers. \nShift+Ctrl+Click: Turn on the oven.\nAlt+Click: Empty container of physical food."
 	icon = 'icons/obj/cwj_cooking/oven.dmi'
 	icon_state = "oven"
 	density = TRUE
@@ -25,10 +26,11 @@
 
 	var/on_fire = FALSE //if the oven has caught fire or not.
 
-	circuit = /obj/item/electronics/circuitboard/cooking_with_jane/oven
+	#warn verify circuit
+	// circuit = /obj/item/circuitboard/cooking_with_jane/oven
 
 //Did not want to use this...
-/obj/machinery/cooking_with_jane/oven/Process()
+/obj/machinery/cooking_with_jane/oven/process()
 
 	//if(on_fire)
 		//Do bad things if it is on fire.
@@ -101,8 +103,9 @@
 	if(container.handle_ignition())
 		on_fire = TRUE
 /obj/machinery/cooking_with_jane/oven/attackby(var/obj/item/used_item, var/mob/user, params)
-	if(default_deconstruction(used_item, user))
-		return
+	#warn fix deconstruction
+	// if(default_deconstruction(used_item, user))
+	// 	return
 
 	var/center_selected = getInput(params)
 
@@ -329,8 +332,9 @@
 		container.process_item(src, user)
 
 
-
 /obj/machinery/cooking_with_jane/oven/update_icon()
+	..()
+
 	cut_overlays()
 	icon_state = "oven_base"
 	for(var/obj/item/our_item in vis_contents)

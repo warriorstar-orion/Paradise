@@ -9,11 +9,12 @@
 
 /obj/item/reagent_containers/cooking_with_jane/cooking_container
 	icon = 'icons/obj/cwj_cooking/kitchen.dmi'
-	description_info = "Can be emptied of physical food with alt-click."
+	#warn fix descp info
+	// description_info = "Can be emptied of physical food with alt-click."
 	var/shortname
 	var/place_verb = "into"
 	var/appliancetype //string
-	w_class = ITEM_SIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	volume = 240 //Don't make recipes using reagents in larger quantities than this amount; they won't work.
 	var/datum/cooking_with_jane/recipe_tracker/tracker = null //To be populated the first time the plate is interacted with.
 	var/lip //Icon state of the lip layer of the object
@@ -22,7 +23,9 @@
 	possible_transfer_amounts = list(5,10,30,60,90,120,240)
 	amount_per_transfer_from_this = 10
 
-	reagent_flags = OPENCONTAINER | NO_REACT
+	#warn fix "no react" flag
+	// reagent_flags = OPENCONTAINER | NO_REACT
+	container_type = OPENCONTAINER
 	var/list/stove_data = list("High"=0 , "Medium" = 0, "Low"=0) //Record of what stove-cooking has been done on this food.
 	var/list/grill_data = list("High"=0 , "Medium" = 0, "Low"=0) //Record of what grill-cooking has been done on this food.
 	var/list/oven_data = list("High"=0 , "Medium" = 0, "Low"=0) //Record of what oven-cooking has been done on this food.
@@ -62,8 +65,6 @@
 	return TRUE
 
 /obj/item/reagent_containers/cooking_with_jane/cooking_container/standard_pour_into(mob/user, atom/target)
-
-
 	#ifdef CWJ_DEBUG
 	log_debug("cooking_container/standard_pour_into() called!")
 	#endif
@@ -104,8 +105,9 @@
 	//OK, time to load the tracker
 	if(!tracker)
 		if(lower_quality_on_fail)
-			for (var/obj/item/contained in contents)
-				contained?:food_quality -= lower_quality_on_fail
+			#warn fix this
+			// for (var/obj/item/contained in contents)
+			// 	contained?:food_quality -= lower_quality_on_fail
 		else
 			tracker = new /datum/cooking_with_jane/recipe_tracker(src)
 
@@ -169,16 +171,18 @@
 	if(contents.len != 0)
 		if(tracker && removal_penalty)
 			for (var/obj/item/contained in contents)
-				contained?:food_quality -= removal_penalty
-			to_chat(user, SPAN_WARNING("The quality of ingredients in the [src] was reduced by the extra jostling."))
+				#warn fix food quality
+				// contained?:food_quality -= removal_penalty
+			to_chat(user, "<span class='warning'>The quality of ingredients in the [src] was reduced by the extra jostling.</span>")
 
 		//Handle quality reduction for reagents
 		if(reagents.total_volume != 0)
 			var/reagent_qual_reduction = round(reagents.total_volume/contents.len)
 			if(reagent_qual_reduction != 0)
 				for (var/obj/item/contained in contents)
-					contained?:food_quality -= reagent_qual_reduction
-				to_chat(user, SPAN_WARNING("The quality of ingredients in the [src] was reduced by the presence of reagents in the container."))
+					#warn fix food quality
+					// contained?:food_quality -= reagent_qual_reduction
+				to_chat(user, "<span class='warning'>The quality of ingredients in the [src] was reduced by the presence of reagents in the container.</span>")
 
 
 		for (var/contained in contents)
@@ -235,6 +239,8 @@
 	return . + "empty"
 
 /obj/item/reagent_containers/cooking_with_jane/cooking_container/update_icon()
+	..()
+
 	cut_overlays()
 	for(var/obj/item/our_item in vis_contents)
 		src.remove_from_visible(our_item)
@@ -265,7 +271,7 @@
 	shortname = "plate"
 	desc = "A shitty serving plate. You probably shouldn't be seeing this."
 	icon_state = "plate"
-	matter = list(MATERIAL_STEEL = 5)
+	materials = list(MAT_METAL = 5)
 	appliancetype = PLATE
 
 /obj/item/reagent_containers/cooking_with_jane/cooking_container/board
@@ -274,7 +280,7 @@
 	desc = "Good for making sandwiches on, too."
 	icon_state = "cutting_board"
 	item_state = "cutting_board"
-	matter = list(MATERIAL_WOOD = 5)
+	materials = list(MAT_WOOD = 5)
 	appliancetype = CUTTING_BOARD
 
 /obj/item/reagent_containers/cooking_with_jane/cooking_container/oven
@@ -284,7 +290,7 @@
 	icon_state = "oven_dish"
 	lip = "oven_dish_lip"
 	item_state = "oven_dish"
-	matter = list(MATERIAL_STEEL = 10)
+	materials = list(MAT_METAL = 10)
 	appliancetype = OVEN
 
 /obj/item/reagent_containers/cooking_with_jane/cooking_container/pan
@@ -294,7 +300,9 @@
 	icon_state = "pan" //Default state is the base icon so it looks nice in the map builder
 	lip = "pan_lip"
 	item_state = "pan"
-	matter = list(MATERIAL_PLASTEEL = 5)
+	// materials = list(MAT_PLASTEEL = 5)
+	#warn do we genuinely not have plasteel as a mat
+	materials = list(MAT_METAL = 5)
 	hitsound = 'sound/weapons/smash.ogg'
 	appliancetype = PAN
 
@@ -306,12 +314,12 @@
 	icon_state = "pot"
 	lip = "pot_lip"
 	item_state = "pot"
-	matter = list(MATERIAL_STEEL = 5)
+	materials = list(MAT_METAL = 5)
 
 	hitsound = 'sound/weapons/smash.ogg'
 	removal_penalty = 5
 	appliancetype = POT
-	w_class = ITEM_SIZE_BULKY
+	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/reagent_containers/cooking_with_jane/cooking_container/deep_basket
 	name = "deep fryer basket"
@@ -342,7 +350,7 @@
 	desc = "Primarily used to grill meat, place this on a grill and enjoy an ancient human tradition."
 
 	icon_state = "grill_grate"
-	matter = list(MATERIAL_STEEL = 5)
+	materials = list(MAT_METAL = 5)
 
 	appliancetype = GRILL
 
@@ -354,7 +362,7 @@
 	icon_state = "bowl"
 	lip = "bowl_lip"
 	item_state = "pot"
-	matter = list(MATERIAL_PLASTIC = 5)
+	materials = list(MAT_PLASTIC = 5)
 
 	removal_penalty = 2
 	appliancetype = BOWL

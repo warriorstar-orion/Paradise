@@ -28,7 +28,7 @@
 
 
 /datum/cooking_with_jane/recipe_step/add_reagent/check_conditions_met(var/obj/used_item, var/datum/cooking_with_jane/recipe_tracker/tracker)
-	var/obj/item/container = tracker.holder_ref.resolve()
+	var/obj/item/container = locateUID(tracker.holder_ref)
 
 
 	if((container.reagents.total_volume + required_reagent_amount - container.reagents.get_reagent_amount(required_reagent_id)) > container.reagents.maximum_volume)
@@ -36,7 +36,7 @@
 
 	if(!istype(used_item, /obj/item/reagent_containers))
 		return CWJ_CHECK_INVALID
-	if(!(used_item.reagent_flags & OPENCONTAINER))
+	if(!(used_item.container_type & OPENCONTAINER))
 		return CWJ_CHECK_INVALID
 
 	var/obj/item/reagent_containers/our_item = used_item
@@ -49,7 +49,7 @@
 
 //Reagents are calculated in two areas. Here and /datum/cooking_with_jane/recipe/proc/calculate_reagent_quality
 /datum/cooking_with_jane/recipe_step/add_reagent/calculate_quality(var/obj/used_item, var/datum/cooking_with_jane/recipe_tracker/tracker)
-	var/obj/item/container = tracker.holder_ref.resolve()
+	var/obj/item/container = locateUID(tracker.holder_ref)
 	var/data = container.reagents.get_data(required_reagent_id)
 	var/cooked_quality = 0
 	if(data && istype(data, /list) && data["FOOD_QUALITY"])
@@ -59,9 +59,9 @@
 
 /datum/cooking_with_jane/recipe_step/add_reagent/follow_step(var/obj/used_item, var/datum/cooking_with_jane/recipe_tracker/tracker)
 	var/obj/item/reagent_containers/our_item = used_item
-	var/obj/item/container = tracker.holder_ref.resolve()
+	var/obj/item/container = locateUID(tracker.holder_ref)
 
-	var/trans = our_item.reagents.trans_to_obj(container, our_item.amount_per_transfer_from_this)
+	var/trans = our_item.reagents.trans_to(container, our_item.amount_per_transfer_from_this)
 
 	playsound(usr,'sound/effects/Liquid_transfer_mono.ogg',50,1)
 	to_chat(usr, "<span class='notice'>You transfer [trans] units to \the [container].</span>")
@@ -70,7 +70,7 @@
 
 /datum/cooking_with_jane/recipe_step/add_reagent/is_complete(var/obj/used_item, var/datum/cooking_with_jane/recipe_tracker/tracker)
 	var/obj/item/reagent_containers/our_item = used_item
-	var/obj/item/container = tracker.holder_ref.resolve()
+	var/obj/item/container = locateUID(tracker.holder_ref)
 	var/part = our_item.reagents.get_reagent_amount(required_reagent_id) / our_item.reagents.total_volume
 
 	var/incoming_amount = max(0, min(our_item.amount_per_transfer_from_this, our_item.reagents.total_volume, container.reagents.get_free_space()))

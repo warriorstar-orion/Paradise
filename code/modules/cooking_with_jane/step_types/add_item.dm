@@ -57,14 +57,15 @@
 //passes it along.
 //May need "Balancing" with var/inherited_quality_modifier
 /datum/cooking_with_jane/recipe_step/add_item/calculate_quality(var/obj/added_item, var/datum/cooking_with_jane/recipe_tracker/tracker)
-	var/raw_quality = added_item?:food_quality * inherited_quality_modifier
-	return clamp_quality(raw_quality)
+	#warn fix this
+	// var/raw_quality = added_item?:food_quality * inherited_quality_modifier
+	// return clamp_quality(raw_quality)
 
 /datum/cooking_with_jane/recipe_step/add_item/follow_step(var/obj/added_item, var/datum/cooking_with_jane/recipe_tracker/tracker)
 	#ifdef CWJ_DEBUG
 	log_debug("Called: /datum/cooking_with_jane/recipe_step/add_item/follow_step")
 	#endif
-	var/obj/item/container = tracker.holder_ref.resolve()
+	var/obj/item/container = locateUID(tracker.holder_ref)
 	if(container)
 		if(usr.canUnEquip(added_item))
 			usr.unEquip(added_item, container)
