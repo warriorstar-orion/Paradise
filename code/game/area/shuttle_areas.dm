@@ -16,6 +16,7 @@
 
 /area/shuttle/arrival/station
 	icon_state = "shuttle"
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 /area/shuttle/auxillary_base
 	icon_state = "shuttle"
