@@ -1718,14 +1718,6 @@
 // bs12 food port stuff
 //////////////////////////////////////////
 
-/datum/recipe/microwave/taco
-	items = list(
-		/obj/item/food/sliced/dough,
-		/obj/item/food/cutlet,
-		/obj/item/food/sliced/cheesewedge
-	)
-	result = /obj/item/food/taco
-
 /datum/recipe/microwave/mint_2
 	reagents = list("sugar" = 5, "frostoil" = 5)
 	result = /obj/item/food/mint

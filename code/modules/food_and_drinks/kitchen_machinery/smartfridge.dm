@@ -454,6 +454,13 @@
 		/obj/item/reagent_containers/drinks/bottle/kahlua = 1,
 		/obj/item/reagent_containers/drinks/bottle/orangejuice = 2)
 
+
+/obj/machinery/smartfridge/food/everything/Initialize(mapload)
+	starting_items = list()
+	for(var/food_path in subtypesof(/obj/item/food))
+		starting_items[food_path] = 30
+	. = ..()
+
 ///The Chefs smartfridge. This smartfridge will spawn with a random condiment, then 3 stacks of 3 plants (or fish meat) to give chef some extra starting variety, or new ideas on what to cook!
 /obj/machinery/smartfridge/food/chef
 

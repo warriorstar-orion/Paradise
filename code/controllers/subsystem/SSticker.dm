@@ -369,6 +369,13 @@ SUBSYSTEM_DEF(ticker)
 	GLOB.test_runner.Run()
 	#endif
 
+	#ifdef WIKIGEN
+	for(var/wikigen_type in subtypesof(/datum/wikigen))
+		var/datum/wikigen/wikigen = new wikigen_type
+		to_chat(world, "Writing wiki contents for [wikigen.name]")
+		wikigen.write_to_output()
+	#endif
+
 	// Do this 10 second after roundstart because of roundstart lag, and make it more visible
 	addtimer(CALLBACK(src, PROC_REF(handle_antagfishing_reporting)), 10 SECONDS)
 	return TRUE
