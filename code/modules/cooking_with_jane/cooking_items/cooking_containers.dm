@@ -199,7 +199,7 @@
 	clear_cooking_data()
 
 	if(contents.len != 0)
-		to_chat(user, SPAN_NOTICE("You remove all the solid items from [src]."))
+		to_chat(user, "<span class='notice'>You remove all the solid items from [src].</span>")
 
 
 /obj/item/reagent_containers/cooking_with_jane/cooking_container/AltClick(var/mob/user)
@@ -208,7 +208,7 @@
 //Deletes contents of container.
 //Used when food is burned, before replacing it with a burned mess
 /obj/item/reagent_containers/cooking_with_jane/cooking_container/proc/clear()
-	QDEL_LIST(contents)
+	QDEL_LIST_CONTENTS(contents)
 	contents=list()
 	reagents.clear_reagents()
 	if(tracker)

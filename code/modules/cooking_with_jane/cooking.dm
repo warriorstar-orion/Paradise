@@ -696,7 +696,7 @@ Food quality is calculated based on the steps taken.
 					added_item.reagents.trans_to_holder(slurry, amount=added_item.reagents.total_volume)
 
 			//Purge the contents of the container we no longer need it
-			QDEL_LIST(container.contents)
+			QDEL_LIST_CONTENTS(container.contents)
 			container.contents = list()
 
 			var/reagent_quality = calculate_reagent_quality(pointer)
@@ -730,7 +730,7 @@ Food quality is calculated based on the steps taken.
 				//TODO: Consider making an item's base components show up in the reagents of the product.
 		else
 			//Purge the contents of the container we no longer need it
-			QDEL_LIST(container.contents)
+			QDEL_LIST_CONTENTS(container.contents)
 			container.contents = list()
 
 		container.reagents.clear_reagents()
