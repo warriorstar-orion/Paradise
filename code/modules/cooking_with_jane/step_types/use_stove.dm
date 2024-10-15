@@ -15,7 +15,8 @@
 	time = set_time
 	heat = set_heat
 
-	desc = "Cook on a stove set to [heat] for [ticks_to_text(time)]."
+	#warn fix description ticks_to_text
+	// desc = "Cook on a stove set to [heat] for [ticks_to_text(time)]."
 
 	..(our_recipe)
 
@@ -29,7 +30,7 @@
 
 //Reagents are calculated prior to object creation
 /datum/cooking_with_jane/recipe_step/use_stove/calculate_quality(var/obj/used_item, var/datum/cooking_with_jane/recipe_tracker/tracker)
-	var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = tracker.holder_ref.resolve()
+	var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = locateUID(tracker.holder_ref)
 
 	var/obj/machinery/cooking_with_jane/stove/our_stove = used_item
 
@@ -51,7 +52,7 @@
 
 /datum/cooking_with_jane/recipe_step/use_stove/is_complete(var/obj/used_item, var/datum/cooking_with_jane/recipe_tracker/tracker)
 
-	var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = tracker.holder_ref.resolve()
+	var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = locateUID(tracker.holder_ref)
 
 	if(container.stove_data[heat] >= time)
 		#ifdef CWJ_DEBUG

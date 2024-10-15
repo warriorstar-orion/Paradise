@@ -3,7 +3,8 @@
 /obj/machinery/cooking_with_jane/grill
 	name = "Grill"
 	desc = "A deep pit of charcoal for cooking food. A slot on the side of the machine takes wood and converts it into charcoal."
-	description_info = "Ctrl+Click: Set Temperatures / Timers. \nShift+Ctrl+Click: Turn on a burner.\nAlt+Click: Empty container of physical food."
+	#warn fix description
+	// description_info = "Ctrl+Click: Set Temperatures / Timers. \nShift+Ctrl+Click: Turn on a burner.\nAlt+Click: Empty container of physical food."
 	icon = 'icons/obj/cwj_cooking/grill.dmi'
 	icon_state = "grill"
 	density = FALSE
@@ -17,7 +18,8 @@
 	var/list/cooking_timestamp = list(0, 0) //Timestamp of when cooking initialized so we know if the prep was disturbed at any point.
 	var/list/items[2]
 
-	use_power = 0
+	#warn fix use power
+	// use_power = 0
 	interact_offline = TRUE
 
 	var/stored_wood = 0
@@ -29,16 +31,19 @@
 
 	var/on_fire = FALSE //if the grill has caught fire or not.
 
-	circuit = /obj/item/electronics/circuitboard/cooking_with_jane/grill
+	#warn verify circuit usage
+	// circuit = /obj/item/circuitboard/cooking_with_jane/grill
 
-	var/obj/effect/flick_light_overlay/hopper_insert //flick_light_overlay found in machinery/autolathe/autolathe.dm
+	#warn figure out wtf this is
+	// var/obj/effect/flick_light_overlay/hopper_insert //flick_light_overlay found in machinery/autolathe/autolathe.dm
 
 /obj/machinery/cooking_with_jane/grill/Initialize()
 	. = ..()
-	hopper_insert = new(src)
+	// hopper_insert = new(src)
+	component_parts += new /obj/item/circuitboard/cooking_with_jane/grill(null)
 
 //Did not want to use this...
-/obj/machinery/cooking_with_jane/grill/Process()
+/obj/machinery/cooking_with_jane/grill/process()
 
 	//if(on_fire)
 		//Do bad things if it is on fire.
@@ -148,12 +153,13 @@
 	return input
 
 /obj/machinery/cooking_with_jane/grill/attackby(var/obj/item/used_item, var/mob/user, params)
-	if(default_deconstruction(used_item, user))
-		return
+	#warn find correct default deconstruction
+	// if(default_deconstruction(used_item, user))
+	// 	return
 
 
-	if(istype(used_item, /obj/item/stack/material/wood))
-		var/obj/item/stack/material/wood/stack = used_item
+	if(istype(used_item, /obj/item/stack/sheet/wood))
+		var/obj/item/stack/sheet/wood/stack = used_item
 		var/used_sheets = min(stack.get_amount(), (wood_maximum - stored_wood))
 		if(!used_sheets)
 			to_chat(user, "<span class='notice'>The grill's hopper is full.</span>")
@@ -165,7 +171,8 @@
 		if(prob(5))
 			src.visible_message("<span class='danger'>The Grill exclaims: \"OM NOM NOM~! YUMMIE~~!\"</span>")
 
-		flick("wood_load", hopper_insert)
+		#warn fix
+		// flick("wood_load", hopper_insert)
 
 		return
 
@@ -347,6 +354,8 @@
 
 
 /obj/machinery/cooking_with_jane/grill/update_icon()
+	..()
+
 	cut_overlays()
 
 	for(var/obj/item/our_item in vis_contents)

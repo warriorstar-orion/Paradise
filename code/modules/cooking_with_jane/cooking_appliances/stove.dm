@@ -4,7 +4,8 @@
 /obj/machinery/cooking_with_jane/stove
 	name = "Stovetop"
 	desc = "A set of four burners for cooking food."
-	description_info = "Ctrl+Click: Set Temperatures / Timers. \nShift+Ctrl+Click: Turn on a burner.\nAlt+Click: Empty container of physical food."
+	#warn fix desc info
+	// description_info = "Ctrl+Click: Set Temperatures / Timers. \nShift+Ctrl+Click: Turn on a burner.\nAlt+Click: Empty container of physical food."
 	icon = 'icons/obj/cwj_cooking/stove.dmi'
 	icon_state = "stove"
 	density = FALSE
@@ -24,10 +25,11 @@
 
 	var/on_fire = FALSE //if the stove has caught fire or not.
 
-	circuit = /obj/item/electronics/circuitboard/cooking_with_jane/stove
+	#warn fix circuit
+	// circuit = /obj/item/circuitboard/cooking_with_jane/stove
 
 //Did not want to use this...
-/obj/machinery/cooking_with_jane/stove/Process()
+/obj/machinery/cooking_with_jane/stove/process()
 
 	//if(on_fire)
 		//Do bad things if it is on fire.
@@ -128,8 +130,9 @@
 	return input
 
 /obj/machinery/cooking_with_jane/stove/attackby(var/obj/item/used_item, var/mob/user, params)
-	if(default_deconstruction(used_item, user))
-		return
+	#warn fix default deconstruct
+	// if(default_deconstruction(used_item, user))
+	// 	return
 
 	var/input = getInput(params)
 
@@ -305,8 +308,8 @@
 		container.process_item(src, user)
 
 
-
 /obj/machinery/cooking_with_jane/stove/update_icon()
+	..()
 	cut_overlays()
 
 	for(var/obj/item/our_item in vis_contents)
