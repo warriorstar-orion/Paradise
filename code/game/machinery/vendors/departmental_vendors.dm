@@ -99,7 +99,7 @@
 					/obj/item/trash/bowl = 20,
 					/obj/item/kitchen/knife = 3,
 					/obj/item/kitchen/rollingpin = 2,
-					/obj/item/kitchen/sushimat = 3,
+					/obj/item/reagent_containers/cooking/sushimat = 3,
 					/obj/item/reagent_containers/drinks/drinkingglass = 8,
 					/obj/item/clothing/suit/chef/classic = 2,
 					/obj/item/storage/belt/chef = 2,

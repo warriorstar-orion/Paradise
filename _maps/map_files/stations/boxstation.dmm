@@ -19820,7 +19820,7 @@
 	layer = 4;
 	pixel_y = 32
 	},
-/obj/machinery/kitchen_machine/grill,
+/obj/structure/closet/crate/cookware,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -19861,10 +19861,7 @@
 /area/station/service/kitchen)
 "boo" = (
 /obj/structure/table,
-/obj/machinery/kitchen_machine/microwave{
-	pixel_x = -3;
-	pixel_y = 6
-	},
+/obj/machinery/cooking/grill,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -19909,10 +19906,10 @@
 	name = "east bump";
 	pixel_x = 27
 	},
-/obj/machinery/kitchen_machine/oven,
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/machinery/cooking/oven,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -20091,7 +20088,6 @@
 /turf/simulated/floor/carpet,
 /area/station/public/mrchangs)
 "boV" = (
-/obj/structure/closet/crate/freezer,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
@@ -21359,7 +21355,13 @@
 "bsS" = (
 /obj/structure/table,
 /obj/item/reagent_containers/condiment/enzyme{
-	layer = 5
+	layer = 5;
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/item/reagent_containers/drinks/bottle/cream{
+	pixel_x = 5;
+	pixel_y = 4
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
@@ -21864,11 +21866,11 @@
 /turf/simulated/floor/wood,
 /area/station/service/bar)
 "bur" = (
-/obj/structure/closet/secure_closet/freezer/fridge,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/closet/secure_closet/freezer/fridge,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -21889,7 +21891,7 @@
 /area/station/service/kitchen)
 "buu" = (
 /obj/structure/table,
-/obj/item/reagent_containers/drinks/bottle/cream,
+/obj/item/reagent_containers/cooking/board,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -46425,7 +46427,7 @@
 	},
 /area/station/turret_protected/ai)
 "dnu" = (
-/obj/structure/kitchenspike,
+/obj/machinery/cooking/ice_cream_mixer,
 /turf/simulated/floor/plasteel{
 	icon_state = "showroomfloor"
 	},
@@ -50531,6 +50533,13 @@
 /obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
+"eNo" = (
+/obj/structure/table,
+/obj/machinery/cooking/stovetop,
+/turf/simulated/floor/plasteel{
+	icon_state = "cafeteria"
+	},
+/area/station/service/kitchen)
 "eNs" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/maintenance,
@@ -126802,7 +126811,7 @@ bLU
 bjv
 dnE
 bmy
-boo
+eNo
 btP
 buv
 bof

@@ -9,35 +9,355 @@
 	name = "Observer-Start"
 	},
 /obj/effect/landmark/spawner/late/crew,
-/turf/simulated/floor/mineral/titanium/blue,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"c" = (
+/obj/structure/table,
+/obj/item/reagent_containers/glass/beaker/large,
+/obj/item/reagent_containers/glass/beaker/large,
+/obj/item/reagent_containers/glass/beaker/large,
+/obj/item/reagent_containers/glass/beaker/large,
+/obj/item/reagent_containers/glass/beaker/large,
+/obj/item/reagent_containers/glass/beaker/large,
+/obj/item/reagent_containers/glass/beaker/large,
+/obj/item/reagent_containers/glass/beaker/large,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"e" = (
+/obj/structure/table,
+/obj/machinery/chem_dispenser/beer{
+	pixel_y = 12
+	},
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"f" = (
+/obj/machinery/icemachine,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"g" = (
+/obj/item/reagent_containers/cooking/pan{
+	pixel_x = -6
+	},
+/obj/structure/table,
+/obj/item/reagent_containers/cooking/pot{
+	pixel_y = 15
+	},
+/obj/item/reagent_containers/cooking/pan{
+	pixel_x = 12
+	},
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"h" = (
+/obj/structure/table,
+/obj/item/food/carpmeat,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"i" = (
+/obj/item/reagent_containers/cooking/deep_basket,
+/obj/item/reagent_containers/cooking/deep_basket,
+/obj/item/reagent_containers/cooking/deep_basket,
+/obj/structure/table,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"k" = (
+/obj/structure/table,
+/obj/item/food/grown/tomato,
+/obj/item/food/grown/tomato,
+/obj/item/food/grown/tomato,
+/obj/item/food/grown/tomato,
+/obj/item/food/grown/tomato,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"l" = (
+/obj/structure/table,
+/obj/item/food/egg,
+/obj/item/food/egg,
+/obj/item/food/egg,
+/obj/item/food/egg,
+/obj/item/food/egg,
+/obj/item/food/egg,
+/obj/item/food/egg,
+/obj/item/food/egg,
+/obj/item/food/egg,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"m" = (
+/obj/item/reagent_containers/cooking/bowl,
+/obj/item/reagent_containers/cooking/bowl,
+/obj/item/reagent_containers/cooking/bowl,
+/obj/structure/table,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"n" = (
+/obj/structure/table,
+/obj/machinery/autochef,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"o" = (
+/obj/structure/table,
+/obj/item/reagent_containers/cooking/icecream_bowl,
+/turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "p" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/mineral/titanium/blue,
+/obj/machinery/cooking/oven,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"q" = (
+/obj/item/reagent_containers/cooking/board,
+/obj/item/reagent_containers/cooking/board,
+/obj/item/reagent_containers/cooking/board,
+/obj/item/reagent_containers/cooking/board,
+/obj/structure/table,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"r" = (
+/obj/structure/table,
+/obj/machinery/reagentgrinder,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"s" = (
+/obj/structure/table,
+/obj/item/storage/bag/tray,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"t" = (
+/obj/structure/table,
+/obj/item/food/grown/vanillapod,
+/obj/item/food/grown/vanillapod,
+/obj/item/food/grown/vanillapod,
+/obj/item/food/grown/vanillapod,
+/obj/item/food/grown/vanillapod,
+/obj/item/food/grown/vanillapod,
+/obj/item/food/grown/vanillapod,
+/obj/item/food/grown/vanillapod,
+/turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "u" = (
 /turf/simulated/wall/mineral/titanium,
 /area/shuttle/arrival/station)
+"v" = (
+/obj/structure/table,
+/obj/item/kitchen/utensil/fork,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"w" = (
+/obj/item/reagent_containers/cooking/pan,
+/obj/item/reagent_containers/cooking/pan,
+/obj/item/reagent_containers/cooking/pan,
+/obj/structure/table,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
 "x" = (
-/turf/simulated/floor/mineral/titanium/blue,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"y" = (
+/obj/item/reagent_containers/cooking/grill_grate,
+/obj/item/reagent_containers/cooking/grill_grate,
+/obj/item/reagent_containers/cooking/grill_grate,
+/obj/structure/table,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"z" = (
+/obj/structure/table,
+/obj/item/food/sliced/cheesewedge,
+/obj/item/food/sliced/cheesewedge,
+/obj/item/food/sliced/cheesewedge,
+/obj/item/food/sliced/cheesewedge,
+/obj/item/food/sliced/cheesewedge,
+/obj/item/food/sliced/cheesewedge,
+/obj/item/food/sliced/cheesewedge,
+/obj/item/food/sliced/cheesewedge,
+/obj/item/food/sliced/cheesewedge,
+/obj/item/food/sliced/cheesewedge,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"A" = (
+/obj/machinery/cooking/stovetop,
+/obj/structure/table,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"B" = (
+/obj/structure/table,
+/obj/machinery/chem_dispenser/soda{
+	pixel_y = 12
+	},
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"C" = (
+/obj/structure/table,
+/obj/item/storage/bag/tray,
+/obj/item/storage/bag/tray,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"D" = (
+/obj/structure/table,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"E" = (
+/obj/machinery/cooking/grill,
+/obj/structure/table,
+/turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "F" = (
-/obj/machinery/light,
-/turf/simulated/floor/mineral/titanium/blue,
+/obj/item/reagent_containers/cooking/pot,
+/obj/item/reagent_containers/cooking/pot,
+/obj/item/reagent_containers/cooking/pot,
+/obj/structure/table,
+/turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
-"I" = (
-/obj/machinery/light{
-	dir = 8
+"G" = (
+/obj/structure/table,
+/obj/item/autochef_remote,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"J" = (
+/obj/structure/table,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"K" = (
+/obj/machinery/cooking/ice_cream_mixer,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"O" = (
+/obj/item/stack/sheet/wood,
+/obj/item/stack/sheet/wood{
+	amount = 20
 	},
-/turf/simulated/floor/mineral/titanium/blue,
+/obj/structure/table,
+/turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
-"U" = (
-/obj/machinery/light{
+"Q" = (
+/obj/structure/table,
+/obj/item/food/sliceable/flatdough,
+/obj/item/food/sliceable/flatdough,
+/obj/item/food/sliceable/flatdough,
+/obj/item/food/sliceable/flatdough,
+/obj/item/food/sliceable/flatdough,
+/obj/item/food/sliceable/flatdough,
+/obj/item/food/sliceable/flatdough,
+/obj/item/food/sliceable/flatdough,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"R" = (
+/obj/structure/table,
+/obj/item/food/omelette,
+/obj/item/food/omelette,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"S" = (
+/obj/machinery/smartfridge/food/chef,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"T" = (
+/obj/item/reagent_containers/cooking/oven,
+/obj/item/reagent_containers/cooking/oven,
+/obj/item/reagent_containers/cooking/oven,
+/obj/structure/table,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"W" = (
+/obj/machinery/smartfridge/foodcart{
 	dir = 4
 	},
-/turf/simulated/floor/mineral/titanium/blue,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"X" = (
+/obj/structure/table,
+/obj/item/reagent_containers/condiment/saltshaker,
+/obj/item/kitchen/knife{
+	pixel_x = -7
+	},
+/obj/item/reagent_containers/condiment/peppermill{
+	pixel_x = 8
+	},
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"Y" = (
+/obj/structure/table,
+/obj/item/popsicle_stick{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/reagent_containers/drinks/sillycup{
+	pixel_y = 3;
+	pixel_x = 8
+	},
+/obj/item/reagent_containers/drinks/sillycup{
+	pixel_y = 3;
+	pixel_x = 8
+	},
+/obj/item/reagent_containers/drinks/sillycup{
+	pixel_y = 3;
+	pixel_x = 8
+	},
+/obj/item/reagent_containers/drinks/sillycup{
+	pixel_y = 3;
+	pixel_x = 8
+	},
+/obj/item/reagent_containers/drinks/sillycup{
+	pixel_y = 3;
+	pixel_x = 8
+	},
+/obj/item/reagent_containers/drinks/sillycup{
+	pixel_y = 3;
+	pixel_x = 8
+	},
+/obj/item/reagent_containers/drinks/sillycup{
+	pixel_y = 3;
+	pixel_x = 8
+	},
+/obj/item/reagent_containers/drinks/sillycup{
+	pixel_y = 3;
+	pixel_x = 8
+	},
+/obj/item/popsicle_stick{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/popsicle_stick{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/popsicle_stick{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/popsicle_stick{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"Z" = (
+/obj/structure/table,
+/obj/item/food/bun,
+/obj/item/food/bun,
+/obj/item/food/bun,
+/obj/item/food/bun,
+/obj/item/food/bun,
+/obj/item/food/bun,
+/obj/item/food/bun,
+/obj/item/food/bun,
+/obj/item/food/bun,
+/obj/item/food/bun,
+/turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 
 (1,1,1) = {"
@@ -31003,19 +31323,19 @@ a
 a
 a
 a
-u
-u
-u
-u
-u
-u
-u
-u
-u
-u
-u
-u
-u
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
 a
 a
 a
@@ -31260,19 +31580,19 @@ a
 a
 a
 a
-u
-x
-x
-x
-I
-x
-x
-x
-I
-x
-x
-x
-u
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
 a
 a
 a
@@ -31517,19 +31837,19 @@ a
 a
 a
 a
-u
-x
-x
-x
-x
-x
-x
-x
-x
-x
-x
-x
-u
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
 a
 a
 a
@@ -31774,20 +32094,20 @@ a
 a
 a
 a
-u
-x
-x
-x
-x
-x
-x
-x
-x
-x
-x
-x
-u
 a
+a
+a
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -32031,20 +32351,20 @@ a
 a
 a
 a
-u
-p
-x
-x
-x
-x
-x
-x
-x
-x
-x
-F
-u
 a
+a
+a
+u
+D
+x
+n
+n
+n
+f
+x
+x
+x
+u
 a
 a
 a
@@ -32288,20 +32608,20 @@ a
 a
 a
 a
-u
-x
-x
-x
-x
-x
-x
-x
-x
-x
-x
-x
-u
 a
+a
+a
+u
+G
+x
+x
+x
+x
+x
+x
+x
+x
+u
 a
 a
 a
@@ -32545,20 +32865,20 @@ a
 a
 a
 a
+a
+a
+a
 u
-x
-x
-x
-x
+A
 x
 b
 x
 x
 x
+K
 x
-x
+r
 u
-a
 a
 a
 a
@@ -32802,20 +33122,20 @@ a
 a
 a
 a
-u
-x
-x
-x
-x
-x
-x
-x
-x
-x
-x
-x
-u
 a
+a
+a
+u
+g
+x
+W
+x
+R
+x
+o
+x
+t
+u
 a
 a
 a
@@ -33059,20 +33379,20 @@ a
 a
 a
 a
+a
+a
+a
 u
 p
 x
+l
 x
+s
 x
+Y
 x
-x
-x
-x
-x
-x
-F
+C
 u
-a
 a
 a
 a
@@ -33316,20 +33636,20 @@ a
 a
 a
 a
-u
-x
-x
-x
-x
-x
-x
-x
-x
-x
-x
-x
-u
 a
+a
+a
+u
+E
+x
+z
+x
+k
+x
+c
+x
+x
+u
 a
 a
 a
@@ -33573,20 +33893,20 @@ a
 a
 a
 a
-u
-x
-x
-x
-x
-x
-x
-x
-x
-x
-x
-x
-u
 a
+a
+a
+u
+r
+x
+f
+x
+Z
+x
+D
+x
+x
+u
 a
 a
 a
@@ -33830,20 +34150,20 @@ a
 a
 a
 a
-u
-x
-x
-x
-U
-x
-x
-x
-U
-x
-x
-x
-u
 a
+a
+a
+u
+y
+x
+X
+x
+D
+x
+e
+x
+x
+u
 a
 a
 a
@@ -34087,20 +34407,20 @@ a
 a
 a
 a
-u
-u
-u
-u
-u
-u
-u
-u
-u
-u
-u
-u
-u
 a
+a
+a
+u
+O
+x
+D
+x
+J
+x
+B
+x
+x
+u
 a
 a
 a
@@ -34347,17 +34667,17 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+C
+x
+h
+x
+Q
+x
+x
+x
+x
+u
 a
 a
 a
@@ -34604,17 +34924,17 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+S
+x
+x
+x
+x
+x
+x
+x
+x
+u
 a
 a
 a
@@ -34861,17 +35181,17 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+F
+m
+w
+T
+y
+i
+q
+v
+O
+u
 a
 a
 a
@@ -35118,17 +35438,17 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a

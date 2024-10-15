@@ -420,7 +420,7 @@
 	result = /obj/item/food/sliceable/frosty_pie
 
 /datum/recipe/oven/grape_tart
-	reagents = list("milk = 5", "sugar" = 5)
+	reagents = list("milk" = 5, "sugar" = 5)
 	items = list(
 		/obj/item/food/sliceable/flatdough,
 		/obj/item/food/grown/grapes,
@@ -430,7 +430,7 @@
 	result = /obj/item/food/grape_tart
 
 /datum/recipe/oven/mime_tart
-	reagents = list("nothing" = 5, "milk = 5", "sugar" = 5)
+	reagents = list("nothing" = 5, "milk" = 5, "sugar" = 5)
 	items = list(
 		/obj/item/food/sliceable/flatdough
 	)
@@ -818,7 +818,7 @@
 	)
 	result = /obj/item/food/cracker
 
-/datum/recipe/oven/sugarcookie/make_food(obj/container)
+/datum/recipe/oven/sugarcookies/make_food(obj/container)
 	var/obj/item/food/sugarcookie/being_cooked = ..()
 	being_cooked.reagents.del_reagent("egg")
 	return being_cooked

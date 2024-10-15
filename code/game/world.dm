@@ -74,6 +74,12 @@ GLOBAL_DATUM(test_runner, /datum/test_runner)
 	GLOB.test_runner.Start()
 	#endif
 
+	#ifdef WIKIGEN
+	Master.sleep_offline_after_initializations = FALSE
+	SSticker.force_start = TRUE
+	SSticker.reboot_helper("Unit Test Reboot", "tests ended", 0)
+	#endif
+
 
 /world/proc/InitTGS()
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED) // creates a new TGS object
@@ -146,6 +152,12 @@ GLOBAL_LIST_EMPTY(world_topic_handlers)
 	// If we were running unit tests, finish that run
 	#ifdef GAME_TESTS
 	GLOB.test_runner.Finalize()
+	return
+	#endif
+
+	#ifdef WIKIGEN
+	sleep(0)	//yes, 0, this'll let Reboot finish and prevent byond memes
+	del(world)	//shut it down
 	return
 	#endif
 
