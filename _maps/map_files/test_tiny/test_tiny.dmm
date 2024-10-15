@@ -41,6 +41,11 @@
 /obj/item/reagent_containers/cooking_with_jane/cooking_container/board,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
+"s" = (
+/obj/structure/table,
+/obj/item/reagent_containers/cooking_with_jane/cooking_container/board,
+/turf/simulated/floor/mineral/titanium/blue,
+/area/shuttle/arrival/station)
 "u" = (
 /turf/simulated/wall/mineral/titanium,
 /area/shuttle/arrival/station)
@@ -59,6 +64,20 @@
 /obj/item/reagent_containers/cooking_with_jane/cooking_container/grill_grate,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
+"z" = (
+/obj/structure/table,
+/obj/item/food/cheesewedge,
+/obj/item/food/cheesewedge,
+/obj/item/food/cheesewedge,
+/obj/item/food/cheesewedge,
+/obj/item/food/cheesewedge,
+/obj/item/food/cheesewedge,
+/obj/item/food/cheesewedge,
+/obj/item/food/cheesewedge,
+/obj/item/food/cheesewedge,
+/obj/item/food/cheesewedge,
+/turf/simulated/floor/mineral/titanium/blue,
+/area/shuttle/arrival/station)
 "A" = (
 /obj/machinery/cooking_with_jane/stove,
 /obj/structure/table,
@@ -75,6 +94,34 @@
 /obj/item/reagent_containers/cooking_with_jane/cooking_container/pot,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
+"I" = (
+/obj/structure/table,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/turf/simulated/floor/mineral/titanium/blue,
+/area/shuttle/arrival/station)
+"N" = (
+/obj/structure/table,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/turf/simulated/floor/mineral/titanium/blue,
+/area/shuttle/arrival/station)
 "O" = (
 /obj/item/stack/sheet/wood,
 /obj/item/stack/sheet/wood,
@@ -86,11 +133,29 @@
 /obj/item/reagent_containers/cooking_with_jane/cooking_container/oven,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
+"U" = (
+/obj/structure/table,
+/turf/simulated/floor/mineral/titanium/blue,
+/area/shuttle/arrival/station)
 "Y" = (
 /obj/item/reagent_containers/cooking_with_jane/cooking_container/air_basket,
 /obj/item/reagent_containers/cooking_with_jane/cooking_container/air_basket,
 /obj/item/reagent_containers/cooking_with_jane/cooking_container/air_basket,
 /obj/item/reagent_containers/cooking_with_jane/cooking_container/air_basket,
+/turf/simulated/floor/mineral/titanium/blue,
+/area/shuttle/arrival/station)
+"Z" = (
+/obj/structure/table,
+/obj/item/food/bun,
+/obj/item/food/bun,
+/obj/item/food/bun,
+/obj/item/food/bun,
+/obj/item/food/bun,
+/obj/item/food/bun,
+/obj/item/food/bun,
+/obj/item/food/bun,
+/obj/item/food/bun,
+/obj/item/food/bun,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 
@@ -32091,9 +32156,9 @@ a
 u
 x
 x
-x
-x
-x
+U
+U
+U
 x
 x
 x
@@ -33119,7 +33184,7 @@ a
 u
 A
 x
-x
+s
 x
 w
 Y
@@ -33376,7 +33441,7 @@ a
 u
 E
 x
-x
+I
 x
 T
 O
@@ -33633,7 +33698,7 @@ a
 u
 x
 x
-x
+Z
 x
 y
 x
@@ -33890,7 +33955,7 @@ a
 u
 x
 x
-x
+z
 x
 i
 x
@@ -34147,7 +34212,7 @@ a
 u
 x
 x
-x
+N
 x
 x
 x
