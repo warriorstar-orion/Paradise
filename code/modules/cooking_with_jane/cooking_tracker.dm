@@ -2,7 +2,7 @@
 //You use other items on an items with this datum to advance its recipe.
 //Kept intentionally bare-bones because MANY of these objects are going to be made.
 /datum/cooking_with_jane/recipe_tracker
-	var/datum/weakref/holder_ref //The parent object holding the recipe tracker.
+	var/holder_ref //The parent object holding the recipe tracker.
 	var/step_flags //A collection of the classes of steps the recipe can take next.
 	//This variable is a little complicated.
 	//It specifically references recipe_pointer objects each pointing to a different point in a different recipe.
@@ -16,7 +16,7 @@
 	#ifdef CWJ_DEBUG
 	log_debug("Called /datum/cooking_with_jane/recipe_tracker/New")
 	#endif
-	holder_ref = WEAKREF(container)
+	holder_ref = container.UID()
 	src.generate_pointers()
 	src.populate_step_flags()
 
@@ -34,7 +34,7 @@
 	#ifdef CWJ_DEBUG
 	log_debug("Called /datum/cooking_with_jane/recipe_tracker/proc/generate_pointers")
 	#endif
-	var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = holder_ref.resolve()
+	var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = locateUID(holder_ref)
 
 	#ifdef CWJ_DEBUG
 	log_debug("Loading all references to [container] of type [container.type] using [container.appliancetype]")
@@ -286,7 +286,7 @@
 	var/datum/cooking_with_jane/recipe/current_recipe //The recipe being followed here.
 	var/datum/cooking_with_jane/recipe_step/current_step //The current step in the recipe we are following.
 
-	var/datum/weakref/parent_ref
+	var/parent_ref
 
 	var/tracked_quality = 0 //The current level of quality within that recipe.
 
@@ -298,7 +298,7 @@
 	log_debug("Called /datum/cooking_with_jane/recipe_pointer/pointer/New([start_type], [recipe_id], parent)")
 	#endif
 
-	parent_ref = WEAKREF(parent)
+	parent_ref = parent.UID()
 
 	#ifdef CWJ_DEBUG
 	if(!GLOB.cwj_recipe_dictionary[start_type][recipe_id])
@@ -424,7 +424,7 @@
 	#endif
 	if(!GLOB.cwj_step_dictionary["[id]"])
 		return FALSE
-	var/datum/cooking_with_jane/recipe_tracker/tracker = parent_ref.resolve()
+	var/datum/cooking_with_jane/recipe_tracker/tracker = locateUID(parent_ref)
 	var/datum/cooking_with_jane/recipe_step/active_step = GLOB.cwj_step_dictionary["[id]"]
 
 	var/is_valid_step =  FALSE

@@ -102,7 +102,7 @@ Food quality is calculated based on the steps taken.
 	if(!name)
 		name = "NO NAME!"
 
-	unique_id = sequential_id("recipe")
+	UID()
 
 //Build out the recipe steps for a recipe, based on the step_builder list
 /datum/cooking_with_jane/recipe/proc/build_steps()
@@ -162,26 +162,28 @@ Food quality is calculated based on the steps taken.
 						reason="Bad argument type for CWJ_USE_ITEM_OPTIONAL at arg 2"
 					else
 						create_step_use_item(step_list[2], TRUE)
-				if(CWJ_ADD_PRODUCE)
-					if(step_list.len < 2)
-						reason="Bad argument Length for CWJ_ADD_PRODUCE"
-					else
-						create_step_add_produce(step_list[2], FALSE)
-				if(CWJ_ADD_PRODUCE_OPTIONAL)
-					if(step_list.len < 2)
-						reason="Bad argument Length for CWJ_ADD_PRODUCE_OPTIONAL"
-					else
-						create_step_add_produce(step_list[2], TRUE)
-				if(CWJ_USE_TOOL)
-					if(step_list.len < 3)
-						reason="Bad argument Length for CWJ_USE_TOOL"
-					else
-						create_step_use_tool(step_list[2], step_list[3], FALSE)
-				if(CWJ_USE_TOOL_OPTIONAL)
-					if(step_list.len < 3)
-						reason="Bad argument Length for CWJ_USE_TOOL_OPTIONAL"
-					else
-						create_step_use_tool(step_list[2], step_list[3], TRUE)
+				#warn add add produce back
+				// if(CWJ_ADD_PRODUCE)
+				// 	if(step_list.len < 2)
+				// 		reason="Bad argument Length for CWJ_ADD_PRODUCE"
+				// 	else
+				// 		create_step_add_produce(step_list[2], FALSE)
+				// if(CWJ_ADD_PRODUCE_OPTIONAL)
+				// 	if(step_list.len < 2)
+				// 		reason="Bad argument Length for CWJ_ADD_PRODUCE_OPTIONAL"
+				// 	else
+				// 		create_step_add_produce(step_list[2], TRUE)
+				#warn add use_tool back
+				// if(CWJ_USE_TOOL)
+				// 	if(step_list.len < 3)
+				// 		reason="Bad argument Length for CWJ_USE_TOOL"
+				// 	else
+				// 		create_step_use_tool(step_list[2], step_list[3], FALSE)
+				// if(CWJ_USE_TOOL_OPTIONAL)
+				// 	if(step_list.len < 3)
+				// 		reason="Bad argument Length for CWJ_USE_TOOL_OPTIONAL"
+				// 	else
+				// 		create_step_use_tool(step_list[2], step_list[3], TRUE)
 				if(CWJ_USE_STOVE)
 					if(step_list.len < 3)
 						reason="Bad argument Length for CWJ_USE_STOVE"
@@ -408,14 +410,16 @@ Food quality is calculated based on the steps taken.
 
 //-----------------------------------------------------------------------------------
 //Add produce step shortcut commands
-/datum/cooking_with_jane/recipe/proc/create_step_add_produce(var/produce, var/optional)
-	var/datum/cooking_with_jane/recipe_step/add_produce/step = new /datum/cooking_with_jane/recipe_step/add_produce(produce, src)
-	return src.add_step(step, optional)
+#warn add add produce back
+// /datum/cooking_with_jane/recipe/proc/create_step_add_produce(var/produce, var/optional)
+// 	var/datum/cooking_with_jane/recipe_step/add_produce/step = new /datum/cooking_with_jane/recipe_step/add_produce(produce, src)
+// 	return src.add_step(step, optional)
 //-----------------------------------------------------------------------------------
 //Use Tool step shortcut commands
-/datum/cooking_with_jane/recipe/proc/create_step_use_tool(var/type, var/quality, var/optional)
-	var/datum/cooking_with_jane/recipe_step/use_tool/step = new (type, quality, src)
-	return src.add_step(step, optional)
+#warn add use_tool back
+// /datum/cooking_with_jane/recipe/proc/create_step_use_tool(var/type, var/quality, var/optional)
+// 	var/datum/cooking_with_jane/recipe_step/use_tool/step = new (type, quality, src)
+// 	return src.add_step(step, optional)
 
 //-----------------------------------------------------------------------------------
 //Use Stove step shortcut commands
@@ -619,11 +623,11 @@ Food quality is calculated based on the steps taken.
 //-----------------------------------------------------------------------------------
 //default function for creating a product
 /datum/cooking_with_jane/recipe/proc/create_product(var/datum/cooking_with_jane/recipe_pointer/pointer)
-	var/datum/cooking_with_jane/recipe_tracker/parent = pointer.parent_ref.resolve()
-	var/obj/item/container = parent.holder_ref.resolve()
+	var/datum/cooking_with_jane/recipe_tracker/parent = locateUID(pointer.parent_ref)
+	var/obj/item/container = locateUID(parent.holder_ref)
 	if(container)
 		//Build up a list of reagents that went into this.
-		var/datum/reagents/slurry = new /datum/reagents(max=1000000, A=container)
+		var/datum/reagents/slurry = container.create_reagents(max_vol = 1000000)
 
 		//Filter out reagents based on settings
 		if(GLOB.cwj_step_dictionary_ordered["[CWJ_ADD_REAGENT]"])
@@ -644,7 +648,7 @@ Food quality is calculated based on the steps taken.
 				#ifdef CWJ_DEBUG
 				log_debug("/recipe/proc/create_product: Transferring container reagents of [container.reagents.total_volume] to slurry of current volume [slurry.total_volume] max volume [slurry.maximum_volume]")
 				#endif
-				container.reagents.trans_to_holder(slurry, amount=container.reagents.total_volume)
+				container.reagents.trans_to(slurry, amount=container.reagents.total_volume)
 
 			//Do reagent filtering on added items and produce
 			var/list/exclude_list = list()
@@ -673,16 +677,17 @@ Food quality is calculated based on the steps taken.
 							can_add = FALSE
 							exclude_list += id
 							break
-					else if(GLOB.cwj_step_dictionary_ordered["[CWJ_ADD_PRODUCE]"] && GLOB.cwj_step_dictionary_ordered["[CWJ_ADD_PRODUCE]"][id])
-						var/datum/cooking_with_jane/recipe_step/add_produce/active_step = GLOB.cwj_step_dictionary_ordered["[CWJ_ADD_PRODUCE]"][id]
-						exclude_specific_reagents = active_step.exclude_reagents
-						if(active_step.reagent_skip)
-							#ifdef CWJ_DEBUG
-							log_debug("/recipe/proc/create_product: Reagent skip detected. Ignoring reagents from [added_item].")
-							#endif
-							can_add = FALSE
-							exclude_list += id
-							break
+					#warn add add produce back
+					// else if(GLOB.cwj_step_dictionary_ordered["[CWJ_ADD_PRODUCE]"] && GLOB.cwj_step_dictionary_ordered["[CWJ_ADD_PRODUCE]"][id])
+					// 	var/datum/cooking_with_jane/recipe_step/add_produce/active_step = GLOB.cwj_step_dictionary_ordered["[CWJ_ADD_PRODUCE]"][id]
+					// 	exclude_specific_reagents = active_step.exclude_reagents
+					// 	if(active_step.reagent_skip)
+					// 		#ifdef CWJ_DEBUG
+					// 		log_debug("/recipe/proc/create_product: Reagent skip detected. Ignoring reagents from [added_item].")
+					// 		#endif
+					// 		can_add = FALSE
+					// 		exclude_list += id
+					// 		break
 				if(can_add)
 					if(exclude_specific_reagents.len)
 						for(var/id in exclude_specific_reagents)
@@ -693,7 +698,7 @@ Food quality is calculated based on the steps taken.
 					#ifdef CWJ_DEBUG
 					log_debug("/recipe/proc/create_product: Adding [added_item.reagents.total_volume] units from [added_item] to slurry")
 					#endif
-					added_item.reagents.trans_to_holder(slurry, amount=added_item.reagents.total_volume)
+					added_item.reagents.trans_to(slurry, amount=added_item.reagents.total_volume)
 
 			//Purge the contents of the container we no longer need it
 			QDEL_LIST_CONTENTS(container.contents)
@@ -722,11 +727,12 @@ Food quality is calculated based on the steps taken.
 				#ifdef CWJ_DEBUG
 				log_debug("/recipe/proc/create_product: Transferring slurry of [slurry.total_volume] to [new_item] of total volume [new_item.reagents.total_volume]")
 				#endif
-				slurry.trans_to_holder(new_item.reagents, amount=slurry.total_volume, copy=1)
+				slurry.copy_to(new_item.reagents, amount=slurry.total_volume)
 
-				new_item?:food_quality = pointer.tracked_quality + reagent_quality
-				new_item?:cooking_description_modifier = cooking_description_modifier
-				new_item?:get_food_tier()
+				#warn fix
+				// new_item?:food_quality = pointer.tracked_quality + reagent_quality
+				// new_item?:cooking_description_modifier = cooking_description_modifier
+				// new_item?:get_food_tier()
 				//TODO: Consider making an item's base components show up in the reagents of the product.
 		else
 			//Purge the contents of the container we no longer need it
@@ -749,8 +755,8 @@ Food quality is calculated based on the steps taken.
 /datum/cooking_with_jane/recipe/proc/calculate_reagent_quality(var/datum/cooking_with_jane/recipe_pointer/pointer)
 	if(!GLOB.cwj_step_dictionary_ordered["[CWJ_ADD_REAGENT]"])
 		return 0
-	var/datum/cooking_with_jane/recipe_tracker/parent = pointer.parent_ref.resolve()
-	var/obj/item/container = parent.holder_ref.resolve()
+	var/datum/cooking_with_jane/recipe_tracker/parent = locateUID(pointer.parent_ref)
+	var/obj/item/container = locateUID(parent.holder_ref)
 	var/total_volume = container.reagents.total_volume
 
 	var/calculated_volume = 0

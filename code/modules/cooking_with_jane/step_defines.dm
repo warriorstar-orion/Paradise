@@ -35,7 +35,6 @@
 
 /datum/cooking_with_jane/recipe_step/New(var/datum/cooking_with_jane/recipe/our_recipe)
 	parent_recipe = our_recipe
-	unique_id = sequential_id("recipe_step")
 
 	if(!tooltip_image)
 		src.set_image()
@@ -43,11 +42,13 @@
 	//Add the recipe to our dictionary for future reference.
 	if(!GLOB.cwj_step_dictionary_ordered["[class]"])
 		GLOB.cwj_step_dictionary_ordered["[class]"] = list()
-	GLOB.cwj_step_dictionary_ordered["[class]"]["[unique_id]"] = src
-	GLOB.cwj_step_dictionary["[unique_id]"] = src
+	GLOB.cwj_step_dictionary_ordered["[class]"]["[UID()]"] = src
+	GLOB.cwj_step_dictionary["[UID()]"] = src
 
 /datum/cooking_with_jane/recipe_step/proc/set_image()
-	tooltip_image = image('icons/emoji.dmi', icon_state="gear")
+	#warn fix whatever this is
+	// tooltip_image = image('icons/emoji.dmi', icon_state="gear")
+	return
 
 //Calculate how well the recipe step was followed to the letter.
 /datum/cooking_with_jane/recipe_step/proc/calculate_quality(var/obj/added_item, var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container, var/mob/living/user)
@@ -84,7 +85,7 @@
 //Automatically clamps food based on their maximum and minimum quality, if they are set.
 /datum/cooking_with_jane/recipe_step/proc/clamp_quality(var/raw_quality)
 	if((flags & CWJ_BASE_QUALITY_ENABLED) && (flags & CWJ_MAX_QUALITY_ENABLED))
-		return CLAMP(raw_quality, base_quality_award, max_quality_award)
+		return clamp(raw_quality, base_quality_award, max_quality_award)
 	if(flags & CWJ_BASE_QUALITY_ENABLED)
 		return max(raw_quality, base_quality_award)
 	if(flags & CWJ_MAX_QUALITY_ENABLED)
