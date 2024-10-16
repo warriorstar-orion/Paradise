@@ -30,6 +30,8 @@
 	var/list/grill_data = list("High"=0 , "Medium" = 0, "Low"=0) //Record of what grill-cooking has been done on this food.
 	var/list/oven_data = list("High"=0 , "Medium" = 0, "Low"=0) //Record of what oven-cooking has been done on this food.
 
+	new_attack_chain = TRUE
+
 // /obj/item/reagent_containers/cooking_with_jane/cooking_container/Initialize()
 // 	.=..()
 // 	appearance_flags |= KEEP_TOGETHER
@@ -50,20 +52,17 @@
 /obj/item/reagent_containers/cooking_with_jane/cooking_container/proc/get_reagent_info()
 	return "It contains [reagents.total_volume] units of reagents."
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/attackby(var/obj/item/used_item, var/mob/user)
-	if(..())
-		return FALSE
-
+/obj/item/reagent_containers/cooking_with_jane/cooking_container/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	#ifdef CWJ_DEBUG
 	log_debug("cooking_container/attackby() called!")
 	#endif
 
 	if(!tracker && (contents.len || reagents.total_volume != 0))
 		to_chat(user, "The [src] is full. Empty its contents first.")
+		return ITEM_INTERACT_BLOCKING
 	else
-		process_item(used_item, user)
-
-	return TRUE
+		process_item(used, user)
+		return ITEM_INTERACT_SUCCESS
 
 /obj/item/reagent_containers/cooking_with_jane/cooking_container/standard_pour_into(mob/user, atom/target)
 	#ifdef CWJ_DEBUG
@@ -86,10 +85,10 @@
 	. = ..(user, target)
 
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/afterattack(var/obj/target, var/mob/user, var/flag)
+/obj/item/reagent_containers/cooking_with_jane/cooking_container/after_attack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(!istype(target, /obj/item/reagent_containers))
 		return
-	if(!flag)
+	if(!proximity_flag)
 		return
 	if(tracker)
 		return
