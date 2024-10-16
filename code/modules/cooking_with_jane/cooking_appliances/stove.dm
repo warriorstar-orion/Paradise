@@ -129,22 +129,22 @@
 	#endif
 	return input
 
-/obj/machinery/cooking_with_jane/stove/attackby(var/obj/item/used_item, var/mob/user, params)
+/obj/machinery/cooking_with_jane/stove/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	#warn fix default deconstruct
 	// if(default_deconstruction(used_item, user))
 	// 	return
 
-	var/input = getInput(params)
+	var/input = getInput(modifiers)
 
 	if(items[input] != null)
 		var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = items[input]
-		container.process_item(used_item, params)
+		container.process_item(used, user)
 
-	else if(istype(used_item, /obj/item/reagent_containers/cooking_with_jane/cooking_container))
-		to_chat(usr, "<span class='notice'>You put a [used_item] on the stove.</span>")
+	else if(istype(used, /obj/item/reagent_containers/cooking_with_jane/cooking_container))
+		to_chat(usr, "<span class='notice'>You put [used] on the stove.</span>")
 		if(usr.drop_item())
-			used_item.forceMove(src)
-		items[input] = used_item
+			used.forceMove(src)
+		items[input] = used
 		if(switches[input] == 1)
 			cooking_timestamp[input] = world.time
 	update_icon()

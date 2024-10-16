@@ -37,7 +37,7 @@
  * Handles [COMSIG_ATTACK_BY] returning [COMPONENT_SKIP_AFTERATTACK].
  * Returns TRUE if afterattack should not be called, FALSE otherwise.
  *
- * New uses of this proc are prohibited! Use [/atom/proc/attackby] or [/atom/proc/base_item_interaction] instead!
+ * New uses of this proc are prohibited! Use [/atom/proc/attack_by] or [/atom/proc/base_item_interaction] instead!
  * If you are modifiying an existing implementation of this proc, it is expected that you replace it with the proper alternative!
  */
 /atom/proc/attackby__legacy__attackchain(obj/item/W, mob/user, params)
