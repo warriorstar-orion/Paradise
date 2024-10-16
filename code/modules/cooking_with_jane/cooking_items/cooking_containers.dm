@@ -20,7 +20,7 @@
 	var/lip //Icon state of the lip layer of the object
 	var/removal_penalty = 0 //A flat quality reduction for removing an unfinished recipe from the container.
 
-	possible_transfer_amounts = list(5,10,30,60,90,120,240)
+	possible_transfer_amounts = list(5,10,30,50,100,200)
 	amount_per_transfer_from_this = 10
 
 	#warn fix "no react" flag
@@ -34,14 +34,13 @@
 	.=..()
 	appearance_flags |= KEEP_TOGETHER
 
+/obj/item/reagent_containers/cooking_with_jane/cooking_container/examine(var/mob/user)
+	. = ..()
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/examine(var/mob/user, extra_description = "")
-	if(!..(user, 1))
-		return FALSE
 	if(contents)
-		to_chat(user, get_content_info())
+		. += get_content_info()
 	if(reagents.total_volume)
-		to_chat(user, get_reagent_info())
+		. += get_reagent_info()
 
 /obj/item/reagent_containers/cooking_with_jane/cooking_container/proc/get_content_info()
 	var/string = "It contains:</br><ul><li>"

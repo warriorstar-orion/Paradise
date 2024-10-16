@@ -11,6 +11,15 @@
 /obj/effect/landmark/spawner/late/crew,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
+"e" = (
+/obj/structure/table,
+/obj/item/food/patty,
+/obj/item/food/patty,
+/obj/item/food/patty,
+/obj/item/food/patty,
+/obj/item/food/patty,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
 "i" = (
 /obj/item/reagent_containers/cooking/deep_basket,
 /obj/item/reagent_containers/cooking/deep_basket,
@@ -144,15 +153,6 @@
 /area/shuttle/arrival/station)
 "L" = (
 /obj/machinery/smartfridge/foodcart,
-/turf/simulated/floor/plasteel/freezer,
-/area/shuttle/arrival/station)
-"N" = (
-/obj/structure/table,
-/obj/item/food/patty,
-/obj/item/food/patty,
-/obj/item/food/patty,
-/obj/item/food/patty,
-/obj/item/food/patty,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "O" = (
@@ -34250,7 +34250,7 @@ a
 u
 x
 x
-N
+e
 x
 L
 x

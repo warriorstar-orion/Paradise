@@ -43,7 +43,7 @@
 	if(GLOB.cwj_recipe_dictionary[container.appliancetype])
 		for (var/key in GLOB.cwj_recipe_dictionary[container.appliancetype])
 			#ifdef CWJ_DEBUG
-			log_debug("Loading [container.appliancetype] , [key] into pointer.")
+			log_debug("Loading [container.appliancetype], [key] into pointer.")
 			#endif
 			active_recipe_pointers += new /datum/cooking_with_jane/recipe_pointer(container.appliancetype, key, src)
 
@@ -127,7 +127,7 @@
 
 				if(!valid_unique_id_list["[class_string]"])
 					valid_unique_id_list["[class_string]"] = list()
-				valid_unique_id_list["[class_string]"] += step.unique_id
+				valid_unique_id_list["[class_string]"] += step.UID()
 
 				if(!use_class)
 					use_class = class_string
@@ -163,13 +163,13 @@
 		var/used_id = FALSE
 		var/list/option_list = pointer.get_possible_steps()
 		for (var/datum/cooking_with_jane/recipe_step/step in option_list)
-			if(!(step.unique_id in valid_unique_id_list))
+			if(!(step.UID() in valid_unique_id_list))
 				continue
 			else
 				used_id = TRUE
 				if(step.is_complete(used_object, src))
 					has_traversed = TRUE
-					pointer.traverse(step.unique_id, used_object)
+					pointer.traverse(step.UID(), used_object)
 					break
 		if (!used_id)
 			active_recipe_pointers.Remove(pointer)
@@ -265,7 +265,7 @@
 				continue
 
 			if(step.is_complete(src))
-				pointer.traverse(step.unique_id, used_object)
+				pointer.traverse(step.UID(), used_object)
 				had_traversal = TRUE
 				break ///The first valid step is the only one we traverse, in the instance of multiple valid cases.
 
@@ -315,7 +315,7 @@
 	current_step = current_recipe.first_step
 
 	#ifdef CWJ_DEBUG
-	steps_taken["[current_step.unique_id]"]="Started with a [start_type]"
+	steps_taken["[current_step.UID()]"]="Started with a [start_type]"
 	#endif
 
 //A list returning the next possible steps in a given recipe
@@ -335,12 +335,12 @@
 	var/list/return_list = list(current_step.next_step)
 	for(var/datum/cooking_with_jane/recipe_step/step in current_step.optional_step_list)
 
-		if(steps_taken["[step.unique_id]"])
+		if(steps_taken["[step.UID()]"])
 			//Traverse an option chain if one is present.
 			if(step.flags & CWJ_IS_OPTION_CHAIN)
 				var/datum/cooking_with_jane/recipe_step/option_chain_step = step.next_step
-				while(option_chain_step.unique_id != current_step.unique_id)
-					if(!steps_taken["[option_chain_step.unique_id]"])
+				while(option_chain_step.UID() != current_step.UID())
+					if(!steps_taken["[option_chain_step.UID()]"])
 						return_list += option_chain_step
 						break
 					option_chain_step = option_chain_step.next_step
@@ -349,7 +349,7 @@
 		//Reference the global exclusion list to see if we can add this
 		var/exclude_step = FALSE
 		if(step.flags & CWJ_IS_EXCLUSIVE)
-			for (var/id in GLOB.cwj_optional_step_exclusion_dictionary["[step.unique_id]"])
+			for (var/id in GLOB.cwj_optional_step_exclusion_dictionary["[step.UID()]"])
 				//Reference the global exclusion list to see if any of the taken steps
 				//Have the current step marked as exclusive.
 				if(steps_taken["[id]"])
@@ -361,7 +361,7 @@
 			return_list += step
 		#ifdef CWJ_DEBUG
 		else
-			log_debug("Ignoring step [step.unique_id] due to exclusion.")
+			log_debug("Ignoring step [step.UID()] due to exclusion.")
 		#endif
 
 
@@ -385,12 +385,12 @@
 	var/return_flags = current_step.next_step.class
 	for(var/datum/cooking_with_jane/recipe_step/step in current_step.optional_step_list)
 
-		if(steps_taken["[step.unique_id]"])
+		if(steps_taken["[step.UID()]"])
 			//Traverse an option chain if one is present.
 			if(step.flags & CWJ_IS_OPTION_CHAIN)
 				var/datum/cooking_with_jane/recipe_step/option_chain_step = step.next_step
-				while(option_chain_step.unique_id != current_step.unique_id)
-					if(!steps_taken["[option_chain_step.unique_id]"])
+				while(option_chain_step.UID() != current_step.UID())
+					if(!steps_taken["[option_chain_step.UID()]"])
 						return_flags |= option_chain_step.class
 						break
 					option_chain_step = option_chain_step.next_step
@@ -399,7 +399,7 @@
 		//Reference the global exclusion list to see if we can add this
 		var/exclude_step = FALSE
 		if(step.flags & CWJ_IS_EXCLUSIVE)
-			for (var/id in GLOB.cwj_optional_step_exclusion_dictionary["[step.unique_id]"])
+			for (var/id in GLOB.cwj_optional_step_exclusion_dictionary["[step.UID()]"])
 				//Reference the global exclusion list to see if any of the taken steps
 				//Have the current step marked as exclusive.
 				if(steps_taken["[id]"])
@@ -420,7 +420,7 @@
 
 /datum/cooking_with_jane/recipe_pointer/proc/traverse(var/id, var/obj/used_obj)
 	#ifdef CWJ_DEBUG
-	log_debug("/recipe_pointer/traverse: Traversing pointer from [current_step.unique_id] to [id].")
+	log_debug("/recipe_pointer/traverse: Traversing pointer from [current_step.UID()] to [id].")
 	#endif
 	if(!GLOB.cwj_step_dictionary["[id]"])
 		return FALSE
@@ -430,13 +430,13 @@
 	var/is_valid_step =  FALSE
 	var/list/possible_steps = get_possible_steps()
 	for(var/datum/cooking_with_jane/recipe_step/possible_step in possible_steps)
-		if(active_step.unique_id == possible_step.unique_id)
+		if(active_step.UID() == possible_step.UID())
 			is_valid_step = TRUE
 			break
 
 	if(!is_valid_step)
 		#ifdef CWJ_DEBUG
-		log_debug("/recipe_pointer/traverse: step [id] is not valid for recipe [current_recipe.unique_id]")
+		log_debug("/recipe_pointer/traverse: step [id] is not valid for recipe [current_recipe.UID()]")
 		#endif
 		return FALSE
 
@@ -447,7 +447,7 @@
 		current_step = active_step
 
 	//The recipe has been completed.
-	if(!current_step.next_step && current_step.unique_id == id)
+	if(!current_step.next_step && current_step.UID() == id)
 
 		tracker.completed_list +=  src
 		return TRUE

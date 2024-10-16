@@ -67,8 +67,6 @@
 	#endif
 	var/obj/item/container = locateUID(tracker.holder_ref)
 	if(container)
-		if(usr.canUnEquip(added_item))
-			usr.unEquip(added_item, container)
-		else
+		if(usr.drop_item(added_item))
 			added_item.forceMove(container)
 	return CWJ_SUCCESS
