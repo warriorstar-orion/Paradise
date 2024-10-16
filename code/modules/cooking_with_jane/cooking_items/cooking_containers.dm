@@ -51,6 +51,8 @@
 	return "It contains [reagents.total_volume] units of reagents."
 
 /obj/item/reagent_containers/cooking_with_jane/cooking_container/attackby(var/obj/item/used_item, var/mob/user)
+	if(..())
+		return FALSE
 
 	#ifdef CWJ_DEBUG
 	log_debug("cooking_container/attackby() called!")
