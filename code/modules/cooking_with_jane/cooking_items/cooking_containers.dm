@@ -57,6 +57,9 @@
 	log_debug("cooking_container/attackby() called!")
 	#endif
 
+	if(istype(used, /obj/item/autochef))
+		return
+
 	if(!tracker && (contents.len || reagents.total_volume != 0))
 		to_chat(user, "The [src] is full. Empty its contents first.")
 		return ITEM_INTERACT_BLOCKING
