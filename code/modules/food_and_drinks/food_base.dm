@@ -127,6 +127,7 @@
 
 /obj/item/food/examine(mob/user)
 	. = ..()
+	#warn pull in cooking_description_modifier
 	if(in_range(user, src))
 		if(bitecount > 0)
 			if(bitecount==1)
