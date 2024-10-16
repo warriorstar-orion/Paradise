@@ -1,7 +1,5 @@
 //A step in a recipe, whether optional or required
 /datum/cooking_with_jane/recipe_step
-	var/unique_id //Special ID for a given recipe, allows for referencing later by food objects to save on memory.
-
 	var/class = CWJ_USE_OTHER //The classificaiton of the step involved.
 
 	var/group_identifier = "None" //Different for every type of recipe.
@@ -68,14 +66,14 @@
 	var/datum/cooking_with_jane/recipe_step/target_step = src.previous_step
 	//traverse backwards on the chain.
 	while(target_step && !(target_step & CWJ_IS_OPTION_CHAIN))
-		if(step.unique_id == target_step.unique_id)
+		if(step.UID() == target_step.UID())
 			return TRUE
 		target_step = target_step.previous_step
 
 	//Traverse forwards on the chain.
 	target_step = src.next_step
 	while(target_step && !(target_step & CWJ_IS_OPTION_CHAIN))
-		if(step.unique_id == target_step.unique_id)
+		if(step.UID() == target_step.UID())
 			return TRUE
 		target_step = src.next_step
 

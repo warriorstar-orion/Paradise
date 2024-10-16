@@ -84,11 +84,11 @@
 		bin_rating += M.rating
 	wood_maximum = 15 * bin_rating
 
-/obj/machinery/cooking_with_jane/grill/examine(var/mob/user, extra_description = "")
-	if(!..(user, 1))
-		return FALSE
+/obj/machinery/cooking_with_jane/grill/examine(var/mob/user)
+	. = ..()
+
 	if(contents)
-		extra_description += "<span class='notice'>\nCharcoal: [stored_wood]/[wood_maximum]</span>"
+		. += "<span class='notice'>\nCharcoal: [stored_wood]/[wood_maximum]</span>"
 
 //Process how a specific grill is interacting with material
 /obj/machinery/cooking_with_jane/grill/proc/cook_checkin(var/input)

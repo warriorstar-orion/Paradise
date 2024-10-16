@@ -110,16 +110,11 @@
 /area/shuttle/arrival/station)
 "N" = (
 /obj/structure/table,
-/obj/item/food/meat,
-/obj/item/food/meat,
-/obj/item/food/meat,
-/obj/item/food/meat,
-/obj/item/food/meat,
-/obj/item/food/meat,
-/obj/item/food/meat,
-/obj/item/food/meat,
-/obj/item/food/meat,
-/obj/item/food/meat,
+/obj/item/food/patty,
+/obj/item/food/patty,
+/obj/item/food/patty,
+/obj/item/food/patty,
+/obj/item/food/patty,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "O" = (

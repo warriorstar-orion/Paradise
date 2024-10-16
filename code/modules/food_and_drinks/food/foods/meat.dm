@@ -113,6 +113,14 @@
 		else
 			qdel(src)
 
+/obj/item/food/patty
+	name = "patty"
+	desc = "A juicy cooked patty, ready to be slapped between two buns."
+	icon = 'icons/obj/food/food_ingredients.dmi'
+	icon_state = "patty"
+	bitesize = 3
+	list_reagents = list("protein" = 3)
+
 //////////////////////////
 //		Monster Meat	//
 //////////////////////////
