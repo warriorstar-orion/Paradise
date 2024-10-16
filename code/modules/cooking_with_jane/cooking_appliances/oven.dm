@@ -102,27 +102,32 @@
 	var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = items
 	if(container.handle_ignition())
 		on_fire = TRUE
-/obj/machinery/cooking_with_jane/oven/attackby(var/obj/item/used_item, var/mob/user, params)
+
+/obj/machinery/cooking_with_jane/oven/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	#warn fix deconstruction
 	// if(default_deconstruction(used_item, user))
 	// 	return
 
-	var/center_selected = getInput(params)
+	var/center_selected = getInput(modifiers)
 
 	if(opened && center_selected)
 		if(items != null)
 			var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = items
-			container.process_item(used_item, params)
+			container.process_item(used, user)
+			return ITEM_INTERACT_SUCCESS
 
-		else if(istype(used_item, /obj/item/reagent_containers/cooking_with_jane/cooking_container))
-			to_chat(usr, "<span class='notice'>You put a [used_item] on the oven.</span>")
+		else if(istype(used, /obj/item/reagent_containers/cooking_with_jane/cooking_container))
+			to_chat(usr, "<span class='notice'>You put [used] on the oven.</span>")
 			if(usr.drop_item())
-				used_item.forceMove(src)
-			items = used_item
+				used.forceMove(src)
+			items = used
 			if(switches == 1)
 				cooking_timestamp = world.time
+			return ITEM_INTERACT_SUCCESS
 	else
 		handle_open(user)
+		return ITEM_INTERACT_SUCCESS
+
 	update_icon()
 
 //Retrieve whether or not the oven door has been clicked.

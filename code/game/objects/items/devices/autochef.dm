@@ -11,21 +11,23 @@
 		/obj/item/reagent_containers/cooking_with_jane/cooking_container/board,
 	)
 
+	new_attack_chain = TRUE
+
 /obj/item/autochef/Initialize(mapload)
 	. = ..()
 
-
-/obj/item/autochef/attack_obj(obj/O, mob/living/user, params)
+/obj/item/autochef/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!..())
-		return
+		return ITEM_INTERACT_BLOCKING
 
 	if(!is_type_in_list(allowed_machines))
 		to_chat(user, "<span class='notice'>This won't work with [src]!</span>")
-		return
+		return ITEM_INTERACT_BLOCKING
 
-	if(O in linked_machines)
-		to_chat(user, "<span class='notice'>[O] is already linked to [src]!</span>")
-		return
+	if(interacting_with in linked_machines)
+		to_chat(user, "<span class='notice'>[interacting_with] is already linked to [src]!</span>")
+		return ITEM_INTERACT_BLOCKING
 
-	linked_machines += O
-	to_chat(user, "<span class='notice'>You link [O] to [src].</span>")
+	linked_machines += interacting_with
+	to_chat(user, "<span class='notice'>You link [interacting_with] to [src].</span>")
+	return ITEM_INTERACT_SUCCESS

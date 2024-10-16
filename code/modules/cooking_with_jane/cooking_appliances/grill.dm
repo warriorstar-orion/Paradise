@@ -139,27 +139,25 @@
 		on_fire = TRUE
 
 //Retrieve which half of the baking pan is being used.
-/obj/machinery/cooking_with_jane/grill/proc/getInput(params)
-	var/list/click_params = params2list(params)
+/obj/machinery/cooking_with_jane/grill/proc/getInput(modifiers)
 	var/input
-	var/icon_x = text2num(click_params["icon-x"])
+	var/icon_x = text2num(modifiers["icon-x"])
 	if(icon_x <= ICON_SPLIT_X)
 		input = 1
 	else if(icon_x > ICON_SPLIT_X)
 		input = 2
 	#ifdef CWJ_DEBUG
-	log_debug("cooking_with_jane/grill/proc/getInput returned burner [input]. icon-x: [click_params["icon-x"]], icon-y: [click_params["icon-y"]]")
+	log_debug("cooking_with_jane/grill/proc/getInput returned burner [input]. icon-x: [modifiers["icon-x"]], icon-y: [modifiers["icon-y"]]")
 	#endif
 	return input
 
-/obj/machinery/cooking_with_jane/grill/attackby(var/obj/item/used_item, var/mob/user, params)
+/obj/machinery/cooking_with_jane/grill/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	#warn find correct default deconstruction
 	// if(default_deconstruction(used_item, user))
 	// 	return
 
-
-	if(istype(used_item, /obj/item/stack/sheet/wood))
-		var/obj/item/stack/sheet/wood/stack = used_item
+	if(istype(used, /obj/item/stack/sheet/wood))
+		var/obj/item/stack/sheet/wood/stack = used
 		var/used_sheets = min(stack.get_amount(), (wood_maximum - stored_wood))
 		if(!used_sheets)
 			to_chat(user, "<span class='notice'>The grill's hopper is full.</span>")
@@ -177,17 +175,17 @@
 		return
 
 
-	var/input = getInput(params)
+	var/input = getInput(modifiers)
 
 	if(items[input] != null)
 		var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = items[input]
-		container.process_item(used_item, user)
+		container.process_item(used, user)
 
-	else if(istype(used_item, /obj/item/reagent_containers/cooking_with_jane/cooking_container/grill_grate))
-		to_chat(usr, "<span class='notice'>You put a [used_item] on the grill.</span>")
-		if(usr.drop_item(used_item))
-			used_item.forceMove(src)
-		items[input] = used_item
+	else if(istype(used, /obj/item/reagent_containers/cooking_with_jane/cooking_container/grill_grate))
+		to_chat(usr, "<span class='notice'>You put a [used] on the grill.</span>")
+		if(usr.drop_item(used))
+			used.forceMove(src)
+		items[input] = used
 		if(switches[input] == 1)
 			cooking_timestamp[input] = world.time
 	update_icon()
