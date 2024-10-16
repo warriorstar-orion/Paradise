@@ -140,7 +140,7 @@
 		else
 			if(ismob(A))
 				changeNext_move(CLICK_CD_MELEE)
-			UnarmedAttack(A, 1)
+			UnarmedAttack(A, 1, params)
 		return
 
 	if(!isturf(loc)) // This is going to stop you from telekinesing from inside a closet, but I don't shed many tears for that
@@ -152,7 +152,7 @@
 		else
 			if(ismob(A))
 				changeNext_move(CLICK_CD_MELEE)
-			UnarmedAttack(A, 1)
+			UnarmedAttack(A, 1, params)
 	else
 		if(W)
 			if(W.new_attack_chain)
@@ -262,7 +262,7 @@
 	proximity_flag is not currently passed to attack_hand, and is instead used
 	in human click code to allow glove touches only at melee range.
 */
-/mob/proc/UnarmedAttack(atom/A, proximity_flag)
+/mob/proc/UnarmedAttack(atom/A, proximity_flag, params)
 	if(ismob(A))
 		changeNext_move(CLICK_CD_MELEE)
 	return

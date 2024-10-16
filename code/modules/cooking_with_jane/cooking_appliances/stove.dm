@@ -142,9 +142,7 @@
 
 	else if(istype(used_item, /obj/item/reagent_containers/cooking_with_jane/cooking_container))
 		to_chat(usr, "<span class='notice'>You put a [used_item] on the stove.</span>")
-		if(usr.canUnEquip(used_item))
-			usr.unEquip(used_item, src)
-		else
+		if(usr.drop_item())
 			used_item.forceMove(src)
 		items[input] = used_item
 		if(switches[input] == 1)

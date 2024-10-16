@@ -56,9 +56,6 @@
 	log_debug("Called: /datum/cooking_with_jane/recipe_step/add_produce/follow_step")
 	#endif
 	var/obj/item/container = tracker.holder_ref.resolve()
-	if(container)
-		if(usr.canUnEquip(added_item))
-			usr.unEquip(added_item, container)
-		else
-			added_item.forceMove(container)
+	if(container && usr.drop_item())
+		added_item.forceMove(container)
 	return CWJ_SUCCESS
