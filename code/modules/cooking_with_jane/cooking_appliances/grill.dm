@@ -181,13 +181,11 @@
 
 	if(items[input] != null)
 		var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = items[input]
-		container.process_item(used_item, params)
+		container.process_item(used_item, user)
 
 	else if(istype(used_item, /obj/item/reagent_containers/cooking_with_jane/cooking_container/grill_grate))
 		to_chat(usr, "<span class='notice'>You put a [used_item] on the grill.</span>")
-		if(usr.canUnEquip(used_item))
-			usr.unEquip(used_item, src)
-		else
+		if(usr.drop_item(used_item))
 			used_item.forceMove(src)
 		items[input] = used_item
 		if(switches[input] == 1)
