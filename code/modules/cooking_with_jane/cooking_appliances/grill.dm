@@ -172,7 +172,7 @@
 		#warn fix
 		// flick("wood_load", hopper_insert)
 
-		return
+		return ITEM_INTERACT_SUCCESS
 
 
 	var/input = getInput(modifiers)
@@ -180,7 +180,7 @@
 	if(items[input] != null)
 		var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = items[input]
 		container.process_item(used, user)
-
+		return ITEM_INTERACT_SUCCESS
 	else if(istype(used, /obj/item/reagent_containers/cooking_with_jane/cooking_container/grill_grate))
 		to_chat(usr, "<span class='notice'>You put a [used] on the grill.</span>")
 		if(usr.drop_item(used))
@@ -188,11 +188,12 @@
 		items[input] = used
 		if(switches[input] == 1)
 			cooking_timestamp[input] = world.time
+		return ITEM_INTERACT_SUCCESS
+
 	update_icon()
 
-
 /obj/machinery/cooking_with_jane/grill/attack_hand(mob/user as mob, params)
-	var/input = getInput(params)
+	var/input = getInput(params2list(params))
 	if(items[input] != null)
 		if(switches[input] == 1)
 			handle_cooking(user, input)
@@ -214,7 +215,7 @@
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return
 
-	var/input = getInput(params)
+	var/input = getInput(params2list(params))
 	#ifdef CWJ_DEBUG
 	log_debug("/cooking_with_jane/grill/CtrlClick called on burner [input]")
 	#endif
@@ -230,7 +231,7 @@
 
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return
-	var/input = getInput(params)
+	var/input = getInput(params2list(params))
 
 	#ifdef CWJ_DEBUG
 	log_debug("/cooking_with_jane/grill/CtrlClick called on burner [input]")
@@ -242,7 +243,7 @@
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return
 
-	var/input = getInput(params)
+	var/input = getInput(params2list(params))
 	if(!(items[input] && istype(items[input], /obj/item/reagent_containers/cooking_with_jane/cooking_container)))
 		return
 	var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = items[input]

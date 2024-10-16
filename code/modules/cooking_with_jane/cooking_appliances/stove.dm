@@ -150,7 +150,7 @@
 	update_icon()
 
 /obj/machinery/cooking_with_jane/stove/attack_hand(mob/user as mob, params)
-	var/input = getInput(params)
+	var/input = getInput(params2list(params))
 	if(items[input] != null)
 		if(switches[input] == 1)
 			handle_cooking(user, input)
@@ -172,7 +172,7 @@
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return
 
-	var/input = getInput(params)
+	var/input = getInput(params2list(params))
 	#ifdef CWJ_DEBUG
 	log_debug("/cooking_with_jane/stove/CtrlClick called on burner [input]")
 	#endif
@@ -187,7 +187,7 @@
 /obj/machinery/cooking_with_jane/stove/CtrlShiftClick(var/mob/user, params)
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return
-	var/input = getInput(params)
+	var/input = getInput(params2list(params))
 
 	#ifdef CWJ_DEBUG
 	log_debug("/cooking_with_jane/stove/CtrlShiftClick called on burner [input]")
@@ -199,7 +199,7 @@
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return
 
-	var/input = getInput(params)
+	var/input = getInput(params2list(params))
 	if(!(items[input] && istype(items[input], /obj/item/reagent_containers/cooking_with_jane/cooking_container)))
 		return
 	var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = items[input]

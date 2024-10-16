@@ -155,7 +155,7 @@
 
 
 /obj/machinery/cooking_with_jane/oven/attack_hand(mob/user as mob, params)
-	var/center_selected = getInput(params)
+	var/center_selected = getInput(params2list(params))
 
 	switch(center_selected)
 		if(TRUE)
@@ -212,7 +212,7 @@
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return
 
-	var/center_selected = getInput(params)
+	var/center_selected = getInput(params2list(params))
 	switch(center_selected)
 		if(TRUE)
 			if(!opened)
