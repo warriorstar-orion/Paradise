@@ -6,6 +6,6 @@
 		var/datum/cooking_with_jane/recipe/example_recipe = new path()
 		if(!GLOB.cwj_recipe_dictionary[example_recipe.cooking_container])
 			GLOB.cwj_recipe_dictionary[example_recipe.cooking_container] = list()
-		GLOB.cwj_recipe_dictionary[example_recipe.cooking_container]["[example_recipe.unique_id]"] = example_recipe
+		GLOB.cwj_recipe_dictionary[example_recipe.cooking_container]["[example_recipe.UID()]"] = example_recipe
 
 		GLOB.cwj_recipe_list += example_recipe

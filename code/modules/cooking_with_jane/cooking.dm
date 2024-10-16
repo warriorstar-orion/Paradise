@@ -522,13 +522,13 @@ Food quality is calculated based on the steps taken.
 	//Flatten exclusive options into the global list for easy referencing later.
 	//initiate the exclusive option list
 	for (var/datum/cooking_with_jane/recipe_step/exclusive_option in active_exclusive_option_list)
-		if (!GLOB.cwj_optional_step_exclusion_dictionary["[exclusive_option.unique_id]"])
-			GLOB.cwj_optional_step_exclusion_dictionary["[exclusive_option.unique_id]"] = list()
+		if (!GLOB.cwj_optional_step_exclusion_dictionary["[exclusive_option.UID()]"])
+			GLOB.cwj_optional_step_exclusion_dictionary["[exclusive_option.UID()]"] = list()
 	//populate the exclusive option list
 	for (var/datum/cooking_with_jane/recipe_step/exclusive_option in active_exclusive_option_list)
 		for (var/datum/cooking_with_jane/recipe_step/excluder in active_exclusive_option_list["[exclusive_option]"])
-			if (exclusive_option.unique_id != excluder.unique_id)
-				GLOB.cwj_optional_step_exclusion_dictionary["[exclusive_option.unique_id]"] = excluder.unique_id
+			if (exclusive_option.UID() != excluder.UID())
+				GLOB.cwj_optional_step_exclusion_dictionary["[exclusive_option.UID()]"] = excluder.UID()
 
 	active_exclusive_option_list = null
 
@@ -615,7 +615,7 @@ Food quality is calculated based on the steps taken.
 	if(exclusive_option_mode)
 		active_exclusive_option_list[step] = list()
 		for (var/datum/cooking_with_jane/recipe_step/ex_step in active_exclusive_option_list)
-			if(ex_step == step.unique_id || step.in_option_chain(ex_step))
+			if(ex_step == step.UID() || step.in_option_chain(ex_step))
 				continue
 			active_exclusive_option_list[ex_step] += step
 	return step
@@ -627,7 +627,8 @@ Food quality is calculated based on the steps taken.
 	var/obj/item/container = locateUID(parent.holder_ref)
 	if(container)
 		//Build up a list of reagents that went into this.
-		var/datum/reagents/slurry = container.create_reagents(max_vol = 1000000)
+		var/datum/reagents/slurry = new(maximum = 1000000)
+		slurry.my_atom = container
 
 		//Filter out reagents based on settings
 		if(GLOB.cwj_step_dictionary_ordered["[CWJ_ADD_REAGENT]"])
@@ -727,7 +728,7 @@ Food quality is calculated based on the steps taken.
 				#ifdef CWJ_DEBUG
 				log_debug("/recipe/proc/create_product: Transferring slurry of [slurry.total_volume] to [new_item] of total volume [new_item.reagents.total_volume]")
 				#endif
-				slurry.copy_to(new_item.reagents, amount=slurry.total_volume)
+				slurry.copy_to(new_item, amount=slurry.total_volume)
 
 				#warn fix
 				// new_item?:food_quality = pointer.tracked_quality + reagent_quality

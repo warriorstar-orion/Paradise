@@ -13,5 +13,5 @@
 		list(CWJ_ADD_REAGENT_OPTIONAL, "blackpepper", 1),
 		list(CWJ_ADD_ITEM_OPTIONAL, /obj/item/food/bacon, qmod=0.5),
 		list(CWJ_ADD_ITEM_OPTIONAL, /obj/item/food/cheesewedge, qmod=0.5),
-		list(CWJ_ADD_ITEM, /obj/item/food/meat)
+		list(CWJ_ADD_ITEM, /obj/item/food/patty)
 	)
