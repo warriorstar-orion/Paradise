@@ -1,5 +1,5 @@
 #define DEBUG
-#define CWJ_DEBUG
+// #define CWJ_DEBUG
 //#define TESTING
 
 // Uncomment the following line to compile unit tests on a local server. The output will be in a test_run-[DATE].log file in the ./data folder.
