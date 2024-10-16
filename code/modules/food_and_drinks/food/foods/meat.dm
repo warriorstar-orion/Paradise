@@ -121,6 +121,14 @@
 	bitesize = 3
 	list_reagents = list("protein" = 3)
 
+/obj/item/food/patty_raw
+	name = "raw patty"
+	desc = "A raw patty ready to be grilled into a juicy and delicious burger."
+	icon = 'icons/obj/food/food_ingredients.dmi'
+	icon_state = "patty_raw"
+	bitesize = 3
+	list_reagents = list("protein" = 2)
+
 //////////////////////////
 //		Monster Meat	//
 //////////////////////////

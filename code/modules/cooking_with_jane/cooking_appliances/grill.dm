@@ -375,10 +375,10 @@
 		switch(i)
 			if(1)
 				our_item.pixel_x = -7
-				our_item.pixel_y = 0
+				our_item.pixel_y = 4
 			if(2)
 				our_item.pixel_x = 7
-				our_item.pixel_y = 0
+				our_item.pixel_y = 4
 		src.add_to_visible(our_item, i)
 
 /obj/machinery/cooking_with_jane/grill/proc/add_to_visible(var/obj/item/our_item, input)

@@ -1,3 +1,13 @@
+/datum/cooking_with_jane/recipe/cooked_patty
+	cooking_container = GRILL
+	product_type = /obj/item/food/patty
+	step_builder = list(
+		list(CWJ_ADD_ITEM, /obj/item/food/patty_raw, qmod=0.5),
+		list(CWJ_ADD_REAGENT_OPTIONAL, "cornoil", 1, base=1),
+		list(CWJ_ADD_REAGENT_OPTIONAL, "sodiumchloride", 1, base=1),
+		list(CWJ_USE_GRILL, J_LO, 10 SECONDS)
+	)
+
 /datum/cooking_with_jane/recipe/burger
 	cooking_container = CUTTING_BOARD
 	product_type = /obj/item/food/burger/plain
