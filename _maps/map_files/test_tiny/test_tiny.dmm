@@ -25,6 +25,11 @@
 /obj/structure/table,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
+"n" = (
+/obj/structure/table,
+/obj/item/autochef,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
 "p" = (
 /obj/machinery/cooking_with_jane/oven,
 /turf/simulated/floor/plasteel/freezer,
@@ -32165,7 +32170,7 @@ a
 u
 x
 x
-U
+n
 U
 U
 x
