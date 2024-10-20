@@ -57,14 +57,14 @@
 	log_debug("cooking_container/attackby() called!")
 	#endif
 
-	if(istype(used, /obj/item/autochef))
+	if(istype(used, /obj/item/autochef_remote))
 		return
 
 	if(!tracker && (contents.len || reagents.total_volume != 0))
 		to_chat(user, "The [src] is full. Empty its contents first.")
 		return ITEM_INTERACT_BLOCKING
 	else
-		process_item(used, user)
+		process_item(used, user, send_message = istype(user))
 		return ITEM_INTERACT_SUCCESS
 
 /obj/item/reagent_containers/cooking_with_jane/cooking_container/standard_pour_into(mob/user, atom/target)
