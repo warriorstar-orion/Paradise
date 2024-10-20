@@ -27,7 +27,7 @@
 /area/shuttle/arrival/station)
 "n" = (
 /obj/structure/table,
-/obj/item/autochef,
+/obj/machinery/autochef,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "p" = (
@@ -112,6 +112,11 @@
 /obj/item/reagent_containers/cooking_with_jane/cooking_container/pot,
 /obj/item/reagent_containers/cooking_with_jane/cooking_container/pot,
 /obj/structure/table,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"G" = (
+/obj/structure/table,
+/obj/item/autochef_remote,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "I" = (
@@ -32181,7 +32186,7 @@ u
 x
 x
 n
-U
+G
 U
 x
 x

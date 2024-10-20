@@ -215,7 +215,7 @@
 	#ifdef CWJ_DEBUG
 	log_debug("/recipe_tracker/proc/process_item: Calling follow_step")
 	#endif
-	sample_step.follow_step(used_object, src)
+	sample_step.follow_step(used_object, src, user)
 
 	if(chosen_pointer)
 		chosen_pointer.current_recipe.create_product(chosen_pointer)

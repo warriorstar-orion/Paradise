@@ -56,17 +56,22 @@
 //The quality of add_item is special, in that it inherits the quality level of its parent and
 //passes it along.
 //May need "Balancing" with var/inherited_quality_modifier
-/datum/cooking_with_jane/recipe_step/add_item/calculate_quality(var/obj/added_item, var/datum/cooking_with_jane/recipe_tracker/tracker)
+/datum/cooking_with_jane/recipe_step/add_item/calculate_quality(var/obj/added_item, var/datum/cooking_with_jane/recipe_tracker/tracker, mob/user)
 	#warn fix this
 	// var/raw_quality = added_item?:food_quality * inherited_quality_modifier
 	// return clamp_quality(raw_quality)
 
-/datum/cooking_with_jane/recipe_step/add_item/follow_step(var/obj/added_item, var/datum/cooking_with_jane/recipe_tracker/tracker)
+/datum/cooking_with_jane/recipe_step/add_item/follow_step(var/obj/added_item, var/datum/cooking_with_jane/recipe_tracker/tracker, mob/user)
 	#ifdef CWJ_DEBUG
 	log_debug("Called: /datum/cooking_with_jane/recipe_step/add_item/follow_step")
 	#endif
 	var/obj/item/container = locateUID(tracker.holder_ref)
 	if(container)
-		if(usr.drop_item(added_item))
+		if(istype(user))
+			if(user.drop_item(added_item))
+				added_item.forceMove(container)
+			#warn what if you can't drop it
+		else
 			added_item.forceMove(container)
+
 	return CWJ_SUCCESS
