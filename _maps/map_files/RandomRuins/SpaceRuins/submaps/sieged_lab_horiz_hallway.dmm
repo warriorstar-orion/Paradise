@@ -13,6 +13,20 @@
 /obj/effect/map_effect/marker_helper/mapmanip/submap/edge,
 /turf/template_noop,
 /area/template_noop)
+"e" = (
+/obj/effect/spawner/random/storage,
+/obj/effect/spawner/random/maintenance,
+/obj/item/flashlight,
+/turf/template_noop,
+/area/template_noop)
+"g" = (
+/obj/item/trash/spentcasing/bullet,
+/turf/template_noop,
+/area/template_noop)
+"h" = (
+/obj/effect/mob_spawn/human/corpse/scientist,
+/turf/simulated/floor/plating/asteroid,
+/area/template_noop)
 "i" = (
 /obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/horiz_hallway,
 /obj/effect/spawner/random/barrier,
@@ -23,6 +37,11 @@
 /obj/effect/spawner/random/barrier/grille_maybe,
 /turf/template_noop,
 /area/template_noop)
+"k" = (
+/obj/effect/mob_spawn/human/corpse/engineer,
+/obj/item/trash/spentcasing/bullet,
+/turf/template_noop,
+/area/template_noop)
 "l" = (
 /obj/effect/spawner/random/barrier/possibly_welded_airlock,
 /turf/template_noop,
@@ -31,8 +50,29 @@
 /mob/living/simple_animal/hostile/syndicate,
 /turf/template_noop,
 /area/template_noop)
+"n" = (
+/obj/item/chair,
+/turf/template_noop,
+/area/template_noop)
 "s" = (
 /obj/machinery/economy/vending/cigarette,
+/turf/template_noop,
+/area/template_noop)
+"t" = (
+/obj/machinery/light,
+/turf/template_noop,
+/area/template_noop)
+"u" = (
+/obj/effect/spawner/random/trash,
+/turf/template_noop,
+/area/template_noop)
+"x" = (
+/obj/item/trash/spentcasing/bullet,
+/obj/item/trash/spentcasing/bullet,
+/turf/template_noop,
+/area/template_noop)
+"y" = (
+/obj/effect/mob_spawn/human/corpse/assistant,
 /turf/template_noop,
 /area/template_noop)
 "A" = (
@@ -62,6 +102,22 @@
 	},
 /turf/template_noop,
 /area/template_noop)
+"G" = (
+/obj/effect/spawner/random/storage,
+/obj/effect/spawner/random/maintenance,
+/turf/template_noop,
+/area/template_noop)
+"H" = (
+/turf/simulated/floor/plating/asteroid,
+/area/template_noop)
+"I" = (
+/obj/effect/mob_spawn/human/corpse/scientist,
+/turf/template_noop,
+/area/template_noop)
+"J" = (
+/obj/effect/mob_spawn/human/corpse/engineer,
+/turf/template_noop,
+/area/template_noop)
 "L" = (
 /obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/horiz_hallway,
 /mob/living/simple_animal/hostile/syndicate,
@@ -84,9 +140,28 @@
 /obj/effect/spawner/random/barrier,
 /turf/template_noop,
 /area/template_noop)
+"S" = (
+/obj/effect/spawner/random/syndicate/mine,
+/turf/template_noop,
+/area/template_noop)
 "T" = (
 /obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/horiz_hallway,
 /turf/template_noop,
+/area/template_noop)
+"V" = (
+/obj/item/flashlight/flare,
+/turf/simulated/floor/plating/asteroid,
+/area/template_noop)
+"W" = (
+/obj/effect/mob_spawn/human/corpse/scientist,
+/turf/simulated/floor/plating,
+/area/template_noop)
+"X" = (
+/obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/horiz_hallway,
+/turf/simulated/floor/plating/asteroid,
+/area/template_noop)
+"Y" = (
+/turf/simulated/mineral,
 /area/template_noop)
 "Z" = (
 /obj/machinery/floodlight/anchored,
@@ -255,15 +330,15 @@ a
 a
 a
 a
+T
 a
 a
 a
+X
 a
 a
-a
-a
-a
-a
+n
+T
 a
 a
 a
@@ -324,24 +399,24 @@ a
 a
 a
 a
+H
+H
+a
+a
+a
+u
+a
+a
+g
 a
 a
 a
 a
+u
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+A
+A
 a
 a
 a
@@ -387,23 +462,23 @@ a
 a
 a
 a
+S
+a
+a
+Y
+h
 a
 a
 a
+e
+a
+a
+g
+n
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
 a
 a
 A
@@ -419,7 +494,7 @@ a
 a
 a
 a
-a
+I
 a
 a
 "}
@@ -456,20 +531,20 @@ a
 a
 a
 a
+Y
+Y
 a
 a
 a
+G
 a
 a
+x
+k
 a
 a
-a
-a
-a
-a
-a
-a
-a
+u
+u
 a
 a
 A
@@ -477,7 +552,7 @@ A
 a
 a
 a
-N
+W
 a
 a
 a
@@ -523,14 +598,14 @@ a
 a
 a
 a
+Y
 a
 a
 a
+u
 a
 a
-a
-a
-a
+g
 m
 a
 a
@@ -584,24 +659,24 @@ a
 a
 a
 a
+S
 a
 a
 a
 a
+V
+a
+a
+u
 a
 a
 a
 a
+g
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
+J
 a
 a
 A
@@ -658,6 +733,7 @@ a
 a
 a
 a
+u
 a
 a
 a
@@ -666,12 +742,11 @@ a
 a
 a
 a
+y
 a
 a
-a
-a
-a
-a
+A
+A
 a
 a
 O
@@ -715,17 +790,17 @@ a
 a
 a
 a
+d
 a
+t
 a
+d
+H
+t
 a
+d
 a
-a
-a
-a
-a
-a
-a
-a
+t
 a
 d
 C
@@ -741,7 +816,7 @@ a
 a
 d
 a
-a
+t
 a
 d
 a
@@ -782,15 +857,15 @@ a
 a
 a
 a
+M
 a
 a
 a
+M
 a
 a
 a
-a
-a
-a
+M
 a
 a
 a
