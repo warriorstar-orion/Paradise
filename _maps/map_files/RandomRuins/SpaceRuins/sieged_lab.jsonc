@@ -4,7 +4,7 @@
 		"submap_size_x": 8,
 		"submap_size_y": 7,
 		"submap_size_z": 1,
-		"submaps_dmm": "submaps/sieged_lab_vert_hallway.dmm",
+		"submaps_dmm": "submaps/sieged_lab_submaps.dmm",
 		"marker_extract": "/obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/vert_hallway",
 		"marker_insert": "/obj/effect/map_effect/marker/mapmanip/submap/insert/ruin/sieged_lab/vert_hallway",
 		"submaps_can_repeat": false
@@ -15,7 +15,7 @@
 		"submap_size_x": 8,
 		"submap_size_y": 2,
 		"submap_size_z": 1,
-		"submaps_dmm": "submaps/sieged_lab_horiz_hallway.dmm",
+		"submaps_dmm": "submaps/sieged_lab_submaps.dmm",
 		"marker_extract": "/obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/horiz_hallway",
 		"marker_insert": "/obj/effect/map_effect/marker/mapmanip/submap/insert/ruin/sieged_lab/horiz_hallway",
 		"submaps_can_repeat": false
