@@ -51,6 +51,7 @@
 /turf/template_noop,
 /area/template_noop)
 "fp" = (
+/obj/structure/firelock_frame,
 /obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/vert_hallway,
 /turf/template_noop,
 /area/template_noop)
@@ -2500,13 +2501,13 @@ nA
 nK
 nK
 nK
+nK
 GZ
 ed
 UH
 FS
 Ps
 QX
-TZ
 fp
 nK
 nK
@@ -2566,6 +2567,7 @@ RP
 nK
 nK
 sn
+nK
 Cr
 ea
 UH
@@ -2573,7 +2575,6 @@ sS
 YG
 rn
 TZ
-nK
 nK
 nK
 sn
