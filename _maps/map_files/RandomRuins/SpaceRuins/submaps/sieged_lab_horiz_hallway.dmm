@@ -2,6 +2,96 @@
 "a" = (
 /turf/template_noop,
 /area/template_noop)
+"b" = (
+/obj/machinery/economy/vending/coffee{
+	tilted = 1;
+	stat = 1
+	},
+/turf/template_noop,
+/area/template_noop)
+"d" = (
+/obj/effect/map_effect/marker_helper/mapmanip/submap/edge,
+/turf/template_noop,
+/area/template_noop)
+"i" = (
+/obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/horiz_hallway,
+/obj/effect/spawner/random/barrier,
+/turf/template_noop,
+/area/template_noop)
+"j" = (
+/obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/horiz_hallway,
+/obj/effect/spawner/random/barrier/grille_maybe,
+/turf/template_noop,
+/area/template_noop)
+"l" = (
+/obj/effect/spawner/random/barrier/possibly_welded_airlock,
+/turf/template_noop,
+/area/template_noop)
+"m" = (
+/mob/living/simple_animal/hostile/syndicate,
+/turf/template_noop,
+/area/template_noop)
+"s" = (
+/obj/machinery/economy/vending/cigarette,
+/turf/template_noop,
+/area/template_noop)
+"A" = (
+/obj/effect/fire/mapping,
+/turf/template_noop,
+/area/template_noop)
+"B" = (
+/obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/horiz_hallway,
+/obj/structure/table/flipped{
+	dir = 8
+	},
+/turf/template_noop,
+/area/template_noop)
+"C" = (
+/obj/structure/table/flipped{
+	dir = 4
+	},
+/turf/template_noop,
+/area/template_noop)
+"E" = (
+/obj/effect/spawner/random/barrier,
+/turf/simulated/floor/plating,
+/area/template_noop)
+"F" = (
+/obj/structure/table/flipped{
+	dir = 8
+	},
+/turf/template_noop,
+/area/template_noop)
+"L" = (
+/obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/horiz_hallway,
+/mob/living/simple_animal/hostile/syndicate,
+/turf/template_noop,
+/area/template_noop)
+"M" = (
+/obj/effect/map_effect/marker_helper/mapmanip/submap/edge{
+	dir = 8
+	},
+/turf/template_noop,
+/area/template_noop)
+"N" = (
+/turf/simulated/floor/plating,
+/area/template_noop)
+"O" = (
+/obj/effect/spawner/random/barrier/grille_maybe,
+/turf/template_noop,
+/area/template_noop)
+"R" = (
+/obj/effect/spawner/random/barrier,
+/turf/template_noop,
+/area/template_noop)
+"T" = (
+/obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/horiz_hallway,
+/turf/template_noop,
+/area/template_noop)
+"Z" = (
+/obj/machinery/floodlight/anchored,
+/turf/template_noop,
+/area/template_noop)
 
 (1,1,1) = {"
 a
@@ -177,27 +267,27 @@ a
 a
 a
 a
+L
+a
+a
+F
+B
 a
 a
 a
+T
+a
+a
+l
+j
 a
 a
 a
+T
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+R
+i
 a
 a
 "}
@@ -255,7 +345,7 @@ a
 a
 a
 a
-a
+O
 a
 a
 a
@@ -316,15 +406,15 @@ a
 a
 a
 a
+A
+A
+a
+a
+N
 a
 a
 a
-a
-a
-a
-a
-a
-a
+Z
 a
 a
 a
@@ -382,19 +472,19 @@ a
 a
 a
 a
+A
+A
 a
 a
 a
+N
 a
 a
 a
+N
 a
 a
-a
-a
-a
-a
-a
+R
 a
 a
 a
@@ -441,27 +531,27 @@ a
 a
 a
 a
+m
+a
+a
+b
+s
+a
+a
+A
+A
 a
 a
 a
+N
 a
 a
 a
+N
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+E
 a
 a
 "}
@@ -514,16 +604,16 @@ a
 a
 a
 a
+A
+A
 a
 a
 a
 a
 a
 a
-a
-a
-a
-a
+Z
+N
 a
 a
 a
@@ -584,8 +674,8 @@ a
 a
 a
 a
-a
-a
+O
+O
 a
 a
 a
@@ -637,29 +727,29 @@ a
 a
 a
 a
+d
+C
+C
+a
+d
+C
+C
+a
+d
 a
 a
 a
+d
 a
 a
 a
+d
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+d
+R
+R
 a
 a
 "}
@@ -704,27 +794,27 @@ a
 a
 a
 a
+M
 a
 a
 a
+M
 a
 a
 a
+M
 a
 a
 a
+M
 a
 a
 a
+M
 a
 a
 a
-a
-a
-a
-a
-a
-a
+M
 a
 a
 a

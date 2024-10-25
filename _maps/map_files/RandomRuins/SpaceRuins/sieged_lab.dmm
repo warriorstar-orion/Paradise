@@ -5,11 +5,35 @@
 "g" = (
 /turf/template_noop,
 /area/template_noop)
+"n" = (
+/obj/effect/map_effect/marker_helper/mapmanip/submap/edge{
+	dir = 8
+	},
+/turf/simulated/wall,
+/area/ruin/space/powered)
+"v" = (
+/obj/effect/map_effect/marker/mapmanip/submap/insert/ruin/sieged_lab/horiz_hallway,
+/turf/simulated/floor/plasteel,
+/area/ruin/space/powered)
 "x" = (
+/turf/simulated/floor/plasteel,
+/area/ruin/space/powered)
+"B" = (
+/obj/effect/map_effect/marker_helper/mapmanip/submap/edge{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/powered)
 "E" = (
 /turf/simulated/mineral,
+/area/ruin/space/powered)
+"H" = (
+/obj/effect/map_effect/marker_helper/mapmanip/submap/edge,
+/turf/simulated/floor/plasteel,
+/area/ruin/space/powered)
+"P" = (
+/obj/effect/map_effect/marker_helper/mapmanip/submap/edge,
+/turf/simulated/wall,
 /area/ruin/space/powered)
 
 (1,1,1) = {"
@@ -387,7 +411,7 @@ x
 x
 a
 x
-x
+v
 a
 a
 a
@@ -444,7 +468,7 @@ x
 x
 x
 x
-x
+v
 a
 E
 g
@@ -474,7 +498,7 @@ x
 x
 a
 x
-x
+v
 a
 x
 x
@@ -665,7 +689,7 @@ a
 a
 a
 a
-a
+P
 x
 x
 a
@@ -706,14 +730,7 @@ a
 x
 x
 x
-x
-x
-a
-x
-x
-x
-a
-x
+B
 x
 a
 x
@@ -723,6 +740,13 @@ a
 x
 x
 a
+x
+x
+x
+a
+x
+x
+P
 x
 x
 a
@@ -752,7 +776,7 @@ a
 x
 x
 x
-a
+P
 x
 x
 a
@@ -763,7 +787,7 @@ a
 x
 x
 a
-x
+B
 x
 x
 a
@@ -784,7 +808,7 @@ x
 x
 a
 x
-x
+v
 a
 a
 a
@@ -793,7 +817,7 @@ a
 a
 a
 a
-x
+B
 x
 a
 a
@@ -1005,7 +1029,7 @@ x
 x
 a
 x
-x
+v
 a
 E
 E
@@ -1062,7 +1086,7 @@ x
 x
 x
 a
-x
+H
 x
 x
 a
@@ -1103,7 +1127,7 @@ x
 x
 a
 x
-x
+B
 x
 x
 x
@@ -1283,7 +1307,7 @@ x
 x
 x
 x
-x
+H
 x
 x
 a
@@ -1324,7 +1348,7 @@ a
 a
 a
 a
-a
+n
 a
 a
 E
