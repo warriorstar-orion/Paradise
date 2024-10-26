@@ -120,4 +120,10 @@ GLOBAL_LIST_EMPTY(flame_effects)
 	. = ..(mapload, T0C + 300, 4 HOURS, 1)
 	set_light(3, 3, LIGHT_COLOR_LAVA)
 
+/obj/effect/fire/water_act(volume, temperature, source, method)
+	. = ..()
+	duration -= 30 MINUTES
+	if(duration <= 0)
+		fizzle()
+
 #undef MAX_FIRE_EXIST_TIME

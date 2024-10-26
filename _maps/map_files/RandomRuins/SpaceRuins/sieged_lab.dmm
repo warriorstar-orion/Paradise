@@ -1,11 +1,19 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ay" = (
+/obj/effect/decal/cleanable/blood/tracks/mapped{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
 "aS" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "neutral"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "aW" = (
 /obj/structure/extinguisher_cabinet/empty{
 	pixel_x = 28
@@ -14,128 +22,247 @@
 	icon_state = "neutralcorner";
 	dir = 8
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
+"bl" = (
+/obj/effect/decal/cleanable/blood/tracks/mapped,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
 "bs" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "yellow"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
+"bx" = (
+/obj/effect/decal/cleanable/blood/tracks/mapped{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "neutralcorner"
+	},
+/area/ruin/space/sieged_lab)
 "cq" = (
 /obj/item/mounted/frame/extinguisher{
 	pixel_x = -28
 	},
 /turf/simulated/floor/plasteel,
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "cs" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "neutralcorner"
-	},
-/area/ruin/space/powered)
+/turf/simulated/floor/plating/asteroid,
+/area/ruin/space/sieged_lab)
 "cx" = (
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "neutral"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "dJ" = (
 /obj/effect/map_effect/marker/mapmanip/submap/insert/ruin/sieged_lab/vert_hallway,
 /obj/machinery/light{
-	dir = 8;
-	brightness_color = "#FF3232";
-	color = "#FF3232"
+	dir = 8
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "neutral"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "dY" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "eZ" = (
 /obj/machinery/door/airlock/engineering,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "yellow"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "fb" = (
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "neutral"
 	},
-/area/ruin/space/powered)
-"ft" = (
-/obj/machinery/light/small{
-	dir = 8;
-	brightness_color = "#FF3232";
-	color = "#FF3232"
+/area/ruin/space/sieged_lab)
+"ff" = (
+/obj/effect/spawner/random_spawners/blood_often,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "neutral"
 	},
-/turf/simulated/floor/plating,
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
+"fl" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/tracks/mapped{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
+"ft" = (
+/obj/machinery/power/apc/off_station/empty_charge/directional/south,
+/turf/simulated/floor/plasteel{
+	icon_state = "yellow"
+	},
+/area/ruin/space/sieged_lab)
 "gq" = (
 /turf/simulated/mineral,
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
+"gu" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
+"hm" = (
+/obj/effect/landmark/burnturf,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plating,
+/area/ruin/space/sieged_lab)
+"ix" = (
+/obj/structure/table,
+/obj/effect/spawner/random/bureaucracy,
+/obj/effect/spawner/random/bureaucracy,
+/obj/item/flashlight/lamp/green/off{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/turf/simulated/floor/carpet/black,
+/area/ruin/space/sieged_lab)
+"jv" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
+"jC" = (
+/obj/structure/table,
+/obj/effect/spawner/random/bureaucracy,
+/turf/simulated/floor/carpet/black,
+/area/ruin/space/sieged_lab)
 "jT" = (
 /turf/simulated/floor/plasteel,
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "kc" = (
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "neutralcorner"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
+"ld" = (
+/turf/simulated/mineral/ancient/outer,
+/area/ruin/space/sieged_lab)
+"lZ" = (
+/obj/effect/decal/cleanable/blood/tracks/mapped{
+	dir = 9
+	},
+/turf/simulated/floor/plasteel{
+	dir = 9;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
 "mq" = (
 /obj/machinery/power/smes/empty,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "yellow"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "mv" = (
 /obj/effect/map_effect/marker_helper/mapmanip/submap/edge,
 /turf/simulated/wall,
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "mU" = (
 /obj/structure/extinguisher_cabinet/empty{
 	pixel_x = 28
 	},
 /turf/simulated/floor/plasteel,
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "oo" = (
 /obj/machinery/economy/vending/cigarette,
 /turf/simulated/floor/plating,
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "oZ" = (
 /turf/simulated/floor/plating,
-/area/ruin/space/powered)
-"pY" = (
-/obj/machinery/light{
-	dir = 8;
-	brightness_color = "#FF3232";
-	color = "#FF3232"
+/area/ruin/space/sieged_lab)
+"pg" = (
+/obj/machinery/door/airlock/command,
+/turf/simulated/floor/plating,
+/area/ruin/space/sieged_lab)
+"pu" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "neutral"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
+"pQ" = (
+/obj/effect/landmark/burnturf,
+/obj/effect/decal/cleanable/blood/tracks/mapped{
+	dir = 5
+	},
+/turf/simulated/floor/plating,
+/area/ruin/space/sieged_lab)
+"pT" = (
+/obj/effect/map_effect/marker_helper/mapmanip/submap/edge{
+	color = "#00FFFF";
+	dir = 8
+	},
+/turf/simulated/wall,
+/area/ruin/space/sieged_lab)
+"pX" = (
+/obj/machinery/door/airlock/external{
+	name = "Arrival Airlock"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
+"pY" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
+"qr" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
 "qS" = (
 /obj/machinery/light{
-	dir = 8;
-	brightness_color = "#FF3232";
-	color = "#FF3232"
+	dir = 8
 	},
 /turf/simulated/floor/plasteel,
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "rt" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "neutral"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "rC" = (
 /obj/structure/shelf,
 /obj/effect/spawner/random/maintenance,
@@ -143,39 +270,95 @@
 	dir = 5;
 	icon_state = "yellow"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
+"rR" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/template_noop,
+/area/ruin/space/sieged_lab)
 "ss" = (
-/obj/machinery/light{
-	dir = 1;
-	brightness_color = "#FF3232";
-	color = "#FF3232"
+/obj/machinery/light/small{
+	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "neutral"
-	},
-/area/ruin/space/powered)
+/turf/simulated/floor/plating,
+/area/ruin/space/sieged_lab)
 "sK" = (
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "neutral"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "tn" = (
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "neutral"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
+"ut" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel{
+	dir = 6;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
+"uu" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/decal/cleanable/blood/tracks/mapped{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
+"uC" = (
+/obj/effect/map_effect/marker_helper/mapmanip/submap/edge{
+	color = "#00ff00"
+	},
+/turf/simulated/wall,
+/area/ruin/space/sieged_lab)
+"uQ" = (
+/obj/structure/lattice/catwalk,
+/turf/template_noop,
+/area/space/nearstation)
 "ve" = (
-/obj/effect/map_effect/marker_helper/mapmanip/submap/edge,
+/obj/effect/map_effect/marker_helper/mapmanip/submap/edge{
+	color = "#00FFFF"
+	},
 /turf/simulated/floor/plating,
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "vg" = (
 /obj/effect/map_effect/marker_helper/mapmanip/submap/edge{
 	dir = 8
 	},
 /turf/simulated/wall,
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
+"vy" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/tracks/mapped,
+/obj/effect/mob_spawn/human/corpse/scientist,
+/obj/effect/spawner/random_spawners/blood_often,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
+"vP" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/simulated/floor/plasteel,
+/area/ruin/space/sieged_lab)
+"wh" = (
+/obj/machinery/door/airlock,
+/obj/effect/decal/cleanable/blood/tracks/mapped{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel,
+/area/ruin/space/sieged_lab)
 "wz" = (
 /obj/effect/map_effect/marker_helper/mapmanip/submap/edge{
 	dir = 8
@@ -184,93 +367,207 @@
 	dir = 6;
 	icon_state = "neutral"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "xr" = (
 /obj/effect/map_effect/marker/mapmanip/submap/insert/ruin/sieged_lab/horiz_hallway,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "neutral"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "xF" = (
 /obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel{
 	icon_state = "yellow"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
+"xS" = (
+/obj/effect/decal/cleanable/blood/tracks/mapped{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	dir = 10;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
+"yn" = (
+/obj/effect/decal/cleanable/blood/tracks/mapped{
+	dir = 6
+	},
+/turf/simulated/floor/plasteel{
+	dir = 5;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
 "yD" = (
 /obj/machinery/door/airlock/command,
 /turf/simulated/floor/plasteel,
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
+"yN" = (
+/obj/effect/decal/cleanable/blood/tracks/mapped,
+/turf/simulated/floor/plasteel{
+	dir = 6;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
 "yO" = (
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "yellow"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "zd" = (
 /obj/effect/map_effect/marker_helper/mapmanip/submap/edge,
 /obj/machinery/door/airlock/maintenance_hatch,
 /turf/simulated/floor/plating,
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "zo" = (
 /obj/machinery/light/small{
-	dir = 4;
-	brightness_color = "#FF3232";
-	color = "#FF3232"
+	dir = 4
 	},
 /turf/simulated/floor/plasteel,
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
+"zA" = (
+/obj/effect/map_effect/marker_helper/mapmanip/submap/edge{
+	dir = 8;
+	color = "#00FFFF"
+	},
+/obj/machinery/door/airlock/maintenance_hatch,
+/turf/simulated/floor/plasteel,
+/area/ruin/space/sieged_lab)
 "Ag" = (
-/obj/machinery/door/airlock/research,
-/turf/simulated/floor/plasteel,
-/area/ruin/space/powered)
-"AI" = (
-/obj/effect/map_effect/marker_helper/mapmanip/submap/edge,
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "neutral"
-	},
-/area/ruin/space/powered)
-"AU" = (
-/obj/machinery/door/airlock/research,
+/obj/effect/map_effect/marker/mapmanip/submap/insert/ruin/sieged_lab/medium_room,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "neutral"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
+"Aq" = (
+/obj/effect/decal/cleanable/blood/tracks/mapped{
+	dir = 9
+	},
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
+"AI" = (
+/obj/effect/map_effect/marker_helper/mapmanip/submap/edge{
+	color = "#00FFFF"
+	},
+/turf/simulated/floor/plasteel{
+	dir = 9;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
+"AU" = (
+/obj/effect/map_effect/marker/mapmanip/submap/insert/ruin/sieged_lab/medium_room,
+/turf/simulated/floor/plasteel,
+/area/ruin/space/sieged_lab)
 "BT" = (
 /obj/machinery/door/airlock/engineering,
 /obj/effect/spawner/random_spawners/blood_often,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "yellow"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
+"CY" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "neutralcorner"
+	},
+/area/ruin/space/sieged_lab)
+"De" = (
+/obj/effect/decal/cleanable/blood/tracks/mapped,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
+"Dw" = (
+/obj/effect/decal/cleanable/blood/tracks/mapped{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
+"DB" = (
+/obj/structure/sign/poster/official/work_for_a_future{
+	pixel_y = 32
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
 "DW" = (
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "neutral"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
+"EK" = (
+/obj/machinery/door/airlock/external{
+	name = "Arrival Airlock"
+	},
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
+"Fc" = (
+/obj/effect/map_effect/marker_helper/mapmanip/submap/edge{
+	color = "#00FFFF"
+	},
+/turf/simulated/wall,
+/area/ruin/space/sieged_lab)
+"Gh" = (
+/obj/effect/decal/cleanable/blood/tracks/mapped{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
+"Gm" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
+"GH" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plasteel{
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
 "GQ" = (
 /obj/machinery/door/airlock/maintenance_hatch,
 /turf/simulated/floor/plating,
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "GU" = (
 /turf/template_noop,
 /area/template_noop)
 "HI" = (
-/obj/effect/mob_spawn/human/corpse/engineer,
-/turf/simulated/floor/plasteel{
-	icon_state = "yellow"
+/obj/effect/map_effect/marker_helper/mapmanip/submap/edge{
+	dir = 8;
+	color = "#00FFFF"
 	},
-/area/ruin/space/powered)
+/turf/simulated/wall,
+/area/ruin/space/sieged_lab)
 "Ik" = (
 /obj/effect/spawner/random/janitor/supplies,
 /obj/structure/shelf/service,
 /turf/simulated/floor/plasteel,
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "Iw" = (
 /obj/effect/map_effect/marker_helper/mapmanip/submap/edge{
 	dir = 8
@@ -278,105 +575,219 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "IQ" = (
 /obj/machinery/light/small{
-	dir = 4;
-	brightness_color = "#FF3232";
-	color = "#FF3232"
+	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "IS" = (
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "neutral"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "Jr" = (
-/obj/effect/map_effect/marker_helper/mapmanip/submap/edge,
+/obj/effect/map_effect/marker_helper/mapmanip/submap/edge{
+	color = "#00FFFF"
+	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "neutral"
 	},
-/area/ruin/space/powered)
-"Km" = (
-/obj/effect/map_effect/marker_helper/mapmanip/submap/edge{
-	dir = 8
+/area/ruin/space/sieged_lab)
+"KE" = (
+/obj/docking_port/stationary/whiteship{
+	dir = 8;
+	id = "whiteship_sieged_lab";
+	name = "Laboratory X-18"
 	},
-/obj/machinery/door/airlock/research,
-/turf/simulated/floor/plasteel{
-	icon_state = "neutral"
-	},
-/area/ruin/space/powered)
+/turf/template_noop,
+/area/template_noop)
 "KG" = (
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "yellow"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
+"KP" = (
+/obj/item/chair,
+/turf/simulated/floor/carpet/black,
+/area/ruin/space/sieged_lab)
+"KT" = (
+/obj/effect/decal/cleanable/blood/tracks/mapped,
+/obj/effect/spawner/random_spawners/blood_often,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
 "KZ" = (
 /obj/effect/map_effect/marker_helper/mapmanip/submap/edge{
 	dir = 8
 	},
 /obj/machinery/door/airlock/maintenance_hatch,
 /turf/simulated/floor/plasteel,
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
+"La" = (
+/obj/machinery/door/airlock/multi_tile/glass,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
 "Ld" = (
 /obj/effect/map_effect/marker/mapmanip/submap/insert/ruin/sieged_lab/vert_hallway,
 /turf/simulated/floor/plating,
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "Lf" = (
 /obj/effect/map_effect/marker/mapmanip/submap/insert/ruin/sieged_lab/horiz_hallway,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "neutral"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "Lg" = (
 /obj/effect/map_effect/marker/mapmanip/submap/insert/ruin/sieged_lab/horiz_hallway,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralcorner";
 	dir = 4
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
+"Lz" = (
+/obj/effect/landmark/burnturf,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plasteel{
+	dir = 6;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
 "Md" = (
 /obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "yellow"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
+"Nm" = (
+/obj/effect/spawner/random_spawners/blood_often,
+/turf/simulated/floor/plasteel,
+/area/ruin/space/sieged_lab)
+"NN" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/sign/poster/official/safety_eye_protection{
+	pixel_y = 32
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
 "Pa" = (
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "neutral"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
+"Pm" = (
+/turf/simulated/floor/carpet/black,
+/area/ruin/space/sieged_lab)
+"PZ" = (
+/obj/effect/spawner/airlock/long/square,
+/turf/simulated/mineral,
+/area/ruin/space/sieged_lab)
 "Qf" = (
 /obj/machinery/door/airlock/engineering,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "yellow"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "Qy" = (
 /obj/machinery/door/airlock/maintenance_hatch,
 /turf/simulated/floor/plasteel,
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
+"RH" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
+"Sd" = (
+/obj/effect/spawner/random/barrier/possibly_welded_airlock,
+/turf/simulated/floor/plating,
+/area/ruin/space/sieged_lab)
 "SI" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/plasteel,
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "SZ" = (
-/obj/effect/map_effect/marker_helper/mapmanip/submap/edge,
-/turf/simulated/floor/plasteel,
-/area/ruin/space/powered)
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
+"TI" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
 "Uw" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
+"UB" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plasteel{
+	icon_state = "neutralcorner"
+	},
+/area/ruin/space/sieged_lab)
+"US" = (
+/obj/item/flashlight/flare/used,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
+"VM" = (
+/obj/effect/landmark/damageturf,
+/obj/effect/decal/cleanable/blood/tracks/mapped{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
+"VQ" = (
+/obj/effect/map_effect/marker_helper/mapmanip/submap/edge{
+	dir = 8
+	},
+/obj/structure/sign/poster/official/science{
+	pixel_y = 32
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
+"Wa" = (
+/obj/structure/shelf,
+/obj/effect/spawner/random/maintenance,
+/obj/structure/sign/poster/official/build{
+	pixel_y = 32
+	},
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/ruin/space/sieged_lab)
 "Ws" = (
 /obj/structure/extinguisher_cabinet/empty{
 	pixel_x = 28
@@ -385,29 +796,52 @@
 	dir = 8;
 	icon_state = "neutral"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "Xb" = (
 /obj/machinery/door/airlock/maintenance_hatch,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "neutral"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 "Xs" = (
 /turf/simulated/wall,
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
+"XM" = (
+/obj/effect/map_effect/marker/mapmanip/submap/insert/ruin/sieged_lab/vert_hallway,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
 "YF" = (
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "yellow"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
+"YI" = (
+/obj/effect/map_effect/marker_helper/mapmanip/submap/edge{
+	dir = 8;
+	color = "#00ff00"
+	},
+/turf/simulated/wall,
+/area/ruin/space/sieged_lab)
 "YZ" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralcorner";
 	dir = 4
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
+"ZA" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "neutral"
+	},
+/area/ruin/space/sieged_lab)
 "ZK" = (
 /obj/structure/shelf,
 /obj/effect/spawner/random/maintenance,
@@ -415,9 +849,21 @@
 	dir = 1;
 	icon_state = "yellow"
 	},
-/area/ruin/space/powered)
+/area/ruin/space/sieged_lab)
 
 (1,1,1) = {"
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
 GU
 GU
 GU
@@ -489,7 +935,19 @@ GU
 GU
 GU
 GU
-gq
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
 GU
 GU
 GU
@@ -516,20 +974,32 @@ GU
 GU
 GU
 GU
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
 GU
 GU
 GU
 GU
-gq
-gq
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
 GU
 GU
 GU
@@ -542,11 +1012,6 @@ GU
 GU
 GU
 GU
-gq
-gq
-gq
-gq
-gq
 GU
 GU
 GU
@@ -554,23 +1019,40 @@ GU
 GU
 GU
 GU
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
 GU
 GU
 GU
@@ -581,36 +1063,48 @@ GU
 GU
 GU
 GU
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
 GU
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
 GU
 GU
 GU
@@ -621,36 +1115,48 @@ GU
 GU
 GU
 GU
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+cs
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
 GU
 GU
 GU
@@ -661,37 +1167,49 @@ GU
 GU
 GU
 GU
-gq
-gq
-gq
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-gq
-gq
-gq
-gq
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+cs
+cs
+cs
+cs
+cs
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
 GU
 GU
 GU
@@ -700,23 +1218,335 @@ GU
 (8,1,1) = {"
 GU
 GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+cs
+cs
+cs
+cs
+cs
+cs
+cs
+cs
+cs
+cs
+gq
+cs
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+"}
+(9,1,1) = {"
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
 gq
 gq
 gq
 gq
+gq
+gq
+gq
+gq
+cs
+cs
+cs
+cs
+gq
+gq
+cs
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+"}
+(10,1,1) = {"
+GU
+GU
+GU
+GU
+gq
+gq
+gq
+gq
+gq
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+cs
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+"}
+(11,1,1) = {"
+GU
+GU
+GU
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+GU
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+cs
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+"}
+(12,1,1) = {"
+GU
+GU
+GU
+gq
+gq
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+gq
+gq
+cs
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+"}
+(13,1,1) = {"
+GU
+GU
+GU
+gq
+gq
+ld
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+ld
+gq
+gq
+gq
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+"}
+(14,1,1) = {"
+GU
+GU
+gq
+gq
+gq
+ld
 Xs
 jT
 cq
 qS
 jT
 jT
-SI
-cs
-cx
-cx
-cx
-pY
-cx
+wh
+bx
+Gh
+Gh
+Gh
+fl
+Gh
 cx
 cx
 cx
@@ -728,22 +1558,34 @@ dJ
 cx
 YZ
 Xs
+ld
 gq
 gq
 gq
-gq
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
 GU
 GU
 GU
 GU
 "}
-(9,1,1) = {"
+(15,1,1) = {"
 GU
 GU
 gq
 gq
 gq
-gq
+ld
 Xs
 jT
 jT
@@ -753,9 +1595,9 @@ jT
 SI
 Uw
 DW
-Pa
-Pa
-Pa
+SZ
+SZ
+SZ
 Jr
 Pa
 sK
@@ -768,22 +1610,34 @@ Pa
 sK
 IS
 Xs
-gq
-gq
-gq
-gq
+ld
+ld
+ld
+ld
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
 GU
 GU
 GU
 GU
 "}
-(10,1,1) = {"
+(16,1,1) = {"
 GU
 gq
 gq
 gq
 gq
-gq
+ld
 Xs
 jT
 jT
@@ -797,9 +1651,9 @@ Xs
 Xs
 Xs
 Xs
-vg
-Uw
-IS
+pT
+GH
+TI
 Xs
 Xs
 Xs
@@ -811,19 +1665,31 @@ Xs
 Xs
 Xs
 Xs
-gq
+ld
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
 GU
 GU
 GU
 GU
 "}
-(11,1,1) = {"
+(17,1,1) = {"
 GU
 gq
 gq
 gq
 gq
-gq
+ld
 Xs
 jT
 jT
@@ -838,8 +1704,8 @@ jT
 jT
 jT
 Xs
-Uw
-IS
+GH
+TI
 Xs
 jT
 jT
@@ -851,19 +1717,31 @@ cx
 cx
 Lg
 Xs
-gq
+ld
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
 GU
 GU
 GU
 GU
 "}
-(12,1,1) = {"
+(18,1,1) = {"
 GU
 gq
 gq
 gq
 gq
-gq
+ld
 Xs
 jT
 jT
@@ -891,59 +1769,83 @@ Pa
 sK
 IS
 Xs
-gq
+ld
+cs
 GU
 GU
 GU
 GU
-"}
-(13,1,1) = {"
 GU
-gq
-gq
-gq
-gq
-gq
-Xs
-jT
-jT
-jT
-jT
-jT
-Xs
-Uw
-IS
-Xs
-jT
-jT
-jT
-Xs
-Uw
-IS
-Xs
-jT
-jT
-jT
-Xs
-Xs
-Xs
-Xs
-Uw
-IS
-Xs
-gq
+GU
+GU
+GU
+GU
+GU
+GU
 GU
 GU
 GU
 GU
 "}
-(14,1,1) = {"
+(19,1,1) = {"
 GU
 gq
 gq
 gq
 gq
+ld
+Xs
+jT
+jT
+jT
+jT
+jT
+Xs
+Uw
+IS
+Xs
+jT
+jT
+jT
+Xs
+Uw
+IS
+Xs
+jT
+jT
+jT
+Xs
+Xs
+Xs
+Xs
+Uw
+IS
+Xs
+ld
+cs
+cs
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+"}
+(20,1,1) = {"
+GU
 gq
+gq
+gq
+gq
+ld
 Xs
 jT
 jT
@@ -971,19 +1873,31 @@ Xs
 Uw
 IS
 Xs
+ld
 gq
+cs
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
 GU
 GU
 GU
 GU
 "}
-(15,1,1) = {"
+(21,1,1) = {"
 GU
 gq
 gq
 gq
 gq
-gq
+ld
 Xs
 jT
 jT
@@ -1011,19 +1925,31 @@ Qf
 Uw
 IS
 Xs
+ld
 gq
+cs
+GU
+GU
+GU
+GU
+KE
+GU
+GU
+GU
+GU
+GU
 GU
 GU
 GU
 GU
 "}
-(16,1,1) = {"
+(22,1,1) = {"
 GU
 GU
-gq
-gq
-gq
-gq
+ld
+ld
+ld
+ld
 Xs
 jT
 jT
@@ -1051,22 +1977,34 @@ eZ
 Uw
 IS
 Xs
-gq
+ld
+ld
+cs
+cs
+GU
+ld
+ld
+pX
+EK
+Xs
+GU
+GU
+GU
 GU
 GU
 GU
 GU
 "}
-(17,1,1) = {"
+(23,1,1) = {"
 GU
 GU
-gq
+ld
 Xs
 Xs
 Xs
 Xs
-Xs
-Xs
+jT
+AU
 Xs
 Xs
 Xs
@@ -1086,21 +2024,33 @@ jT
 jT
 Xs
 ZK
-HI
+ft
 Xs
 Uw
 IS
 Xs
 gq
-gq
+ld
+ld
+ld
+ld
+ld
+Xs
+RH
+Gm
+dY
+GU
+GU
+GU
+GU
 GU
 GU
 GU
 "}
-(18,1,1) = {"
+(24,1,1) = {"
 GU
 GU
-gq
+ld
 Xs
 jT
 jT
@@ -1108,9 +2058,9 @@ jT
 jT
 jT
 Xs
-cs
-cx
-cx
+UB
+pY
+gu
 wz
 IS
 Xs
@@ -1125,22 +2075,34 @@ jT
 jT
 jT
 Xs
-ZK
+Wa
 bs
 mv
 Uw
 IS
 Xs
 Xs
-gq
-gq
-gq
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+RH
+Gm
+dY
+GU
+GU
+GU
+GU
+GU
+GU
 GU
 "}
-(19,1,1) = {"
+(25,1,1) = {"
 GU
 GU
-gq
+ld
 Xs
 jT
 jT
@@ -1150,8 +2112,8 @@ jT
 Xs
 Uw
 xr
-Pa
-Pa
+SZ
+SZ
 kc
 Xs
 jT
@@ -1168,28 +2130,50 @@ Xs
 rC
 KG
 Xs
+VQ
+tn
+cx
+La
+ff
+US
+cx
+La
+pu
+qr
+ut
+Gm
+dY
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+"}
+(26,1,1) = {"
+GU
+gq
+ld
+Xs
+jT
+jT
+jT
+jT
+jT
+Xs
+Uw
+IS
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
 Iw
-IS
-jT
-Xs
-gq
-gq
-gq
-GU
-"}
-(20,1,1) = {"
-GU
-gq
-gq
-Xs
-jT
-jT
-jT
-jT
-jT
-Xs
-Uw
-IS
+uu
 Xs
 Xs
 Xs
@@ -1198,109 +2182,135 @@ Xs
 Xs
 Xs
 Xs
-Iw
-IS
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Uw
-IS
-jT
-Xs
-gq
-gq
-gq
-GU
-"}
-(21,1,1) = {"
-GU
-gq
-gq
-Xs
-jT
-jT
-jT
-jT
-jT
-Xs
-Uw
-IS
-Xs
+jv
+lZ
+KT
+bl
+bl
+vy
+Pa
+Pa
+ZA
+ZA
+ZA
+CY
+dY
 GU
 GU
 GU
 GU
 GU
-GU
-Xs
-Uw
-IS
-Xs
-GU
-GU
-GU
-GU
-Xs
-jT
-jT
-Uw
-IS
-jT
-Xs
-gq
-gq
 GU
 GU
 "}
-(22,1,1) = {"
+(27,1,1) = {"
 GU
 gq
+ld
+uC
+jT
+jT
+jT
+jT
+jT
+Xs
+Uw
+IS
+Xs
+GU
+GU
+GU
+GU
+GU
+GU
+Xs
+NN
+VM
+Xs
+GU
+GU
+GU
+GU
+Xs
+KP
+ix
+Uw
+Dw
+Nm
+Xs
+Xs
+Xs
+Xs
+Xs
+dY
+dY
+dY
+dY
+Xs
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+"}
+(28,1,1) = {"
+GU
 gq
+ld
+Xs
+YI
 Xs
 Xs
+pg
 Xs
 Xs
-jT
-jT
-Xs
-ss
+Uw
 IS
 Xs
 Xs
 dY
 dY
 dY
+dY
 Xs
 Xs
+GH
+VM
 Xs
+Xs
+dY
+dY
+Xs
+Xs
+Pm
+jC
 Uw
-IS
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-jT
-jT
-Uw
-IS
+Dw
 jT
 Xs
+ld
 gq
-gq
+PZ
+rR
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
 GU
 GU
 "}
-(23,1,1) = {"
+(29,1,1) = {"
 GU
 gq
-gq
+ld
 Xs
 jT
 jT
@@ -1316,31 +2326,43 @@ cx
 cx
 cx
 cx
-cx
-dJ
-fb
-tn
-cx
-cx
-cx
-cx
-cx
-dJ
-cx
-cx
-fb
-tn
-cx
 pY
+XM
+Lz
+pQ
+De
 cx
 cx
+cx
+cx
+dJ
+Aq
+De
+yN
+yn
+cx
+cx
+cx
+cx
+cx
+uQ
+uQ
+uQ
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
 GU
 GU
 "}
-(24,1,1) = {"
+(30,1,1) = {"
 GU
 gq
-gq
+ld
 Xs
 jT
 jT
@@ -1357,30 +2379,42 @@ Pa
 Pa
 Pa
 Pa
-SZ
-sK
-DW
 Pa
-Pa
-Pa
-Pa
+hm
+oZ
 sK
 DW
 Pa
 Ws
 Pa
+Pa
+xS
+DW
+Pa
 sK
 DW
 Pa
 Pa
 Pa
+cx
+uQ
+uQ
+uQ
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
 GU
 GU
 "}
-(25,1,1) = {"
+(31,1,1) = {"
 GU
 GU
-gq
+ld
 Xs
 jT
 jT
@@ -1390,7 +2424,7 @@ jT
 Xs
 Uw
 IS
-vg
+HI
 Xs
 dY
 dY
@@ -1398,29 +2432,41 @@ dY
 Xs
 Xs
 Xs
-Km
-AU
+HI
 Xs
-Xs
-Xs
-Xs
-Ag
+Uw
 Ag
 Xs
 Xs
+Xs
+Xs
+ay
+Ag
 Xs
 Uw
 Lf
 Xs
+ld
 gq
 gq
+rR
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
 GU
 GU
 "}
-(26,1,1) = {"
+(32,1,1) = {"
 GU
 GU
-gq
+ld
 Xs
 jT
 jT
@@ -1452,15 +2498,27 @@ Xs
 Uw
 IS
 Xs
+ld
 gq
-gq
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
 GU
 GU
 "}
-(27,1,1) = {"
+(33,1,1) = {"
 GU
 GU
-gq
+ld
 Xs
 jT
 jT
@@ -1492,15 +2550,27 @@ Xs
 Uw
 IS
 Xs
+ld
 gq
 gq
-gq
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
 GU
 "}
-(28,1,1) = {"
+(34,1,1) = {"
 GU
 GU
-gq
+ld
 Xs
 jT
 jT
@@ -1511,7 +2581,7 @@ oo
 oZ
 oZ
 oZ
-oZ
+ss
 oZ
 oZ
 oZ
@@ -1529,101 +2599,137 @@ jT
 jT
 jT
 Xs
-Uw
+DB
 IS
 Xs
+ld
 gq
 gq
-gq
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
 GU
 "}
-(29,1,1) = {"
+(35,1,1) = {"
 GU
 GU
-gq
+ld
 Xs
 jT
 jT
 Xs
 Xs
 Xs
-mv
+Fc
 oZ
 oZ
 oZ
 oZ
 oZ
-IQ
 oZ
 oZ
-Xs
-jT
-jT
-jT
-jT
-jT
-Xs
-jT
-jT
-jT
-jT
-jT
-Xs
-Uw
-IS
-Xs
-gq
-gq
-gq
-GU
-"}
-(30,1,1) = {"
-GU
-GU
-gq
-Xs
-Xs
-Xs
-Xs
-jT
-jT
-Xs
-vg
-Xs
-Xs
-Xs
-Xs
-Xs
 oZ
-oZ
-Xs
-Xs
-Xs
-Xs
-Qy
-Xs
-Xs
-Xs
-Xs
-Xs
-Qy
-Xs
+uC
+jT
+jT
+jT
+jT
+jT
+uC
+jT
+jT
+jT
+jT
+jT
 Xs
 Uw
 IS
 Xs
+ld
 gq
 gq
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
 GU
 GU
 "}
-(31,1,1) = {"
+(36,1,1) = {"
 GU
 GU
+ld
+Xs
+Xs
+Xs
+Xs
+jT
+jT
+Xs
+HI
+Xs
+Xs
+Xs
+Xs
+Xs
+oZ
+oZ
+Xs
+YI
+Xs
+Xs
+Sd
+Xs
+Xs
+YI
+Xs
+Xs
+Sd
+Xs
+Xs
+Uw
+IS
+Xs
+ld
 gq
-gq
-gq
-gq
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+"}
+(37,1,1) = {"
+GU
+GU
+ld
+ld
+ld
+ld
 Xs
 jT
 jT
@@ -1642,28 +2748,40 @@ oZ
 oZ
 oZ
 oZ
-oZ
+ss
 oZ
 oZ
 oZ
 Ld
-ft
+oZ
 GQ
 fb
 IS
 Xs
+ld
 gq
-gq
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
 GU
 GU
 "}
-(32,1,1) = {"
+(38,1,1) = {"
 GU
 GU
 GU
 gq
 gq
-gq
+ld
 Xs
 jT
 jT
@@ -1692,240 +2810,12 @@ zd
 Pa
 kc
 Xs
-gq
-GU
-GU
-GU
-"}
-(33,1,1) = {"
-GU
-GU
-GU
-GU
-gq
-gq
-Xs
-jT
-jT
-jT
-jT
-jT
-jT
-jT
-jT
-Xs
-Xs
-SI
-SI
-Xs
-Xs
-KZ
-Xs
-Xs
-Xs
-Qy
-Xs
-Xs
-Xs
-Xs
-Xs
-vg
-Xs
-Xs
-gq
-GU
-GU
-GU
-"}
-(34,1,1) = {"
-GU
-GU
-GU
-GU
-gq
-gq
-Xs
-jT
-jT
-jT
-jT
-jT
-jT
-jT
-jT
-jT
-jT
-jT
-jT
-Xs
-Ik
-jT
-jT
-Xs
-jT
-jT
-jT
-Xs
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-GU
-GU
-GU
-"}
-(35,1,1) = {"
-GU
-GU
-GU
-GU
-gq
-gq
-Xs
-jT
-jT
-jT
-jT
-jT
-jT
-jT
-jT
-jT
-jT
-jT
-jT
-Xs
-Ik
-zo
-jT
-Xs
-jT
-zo
-jT
-Xs
-gq
-gq
-gq
-GU
-gq
-gq
-GU
-GU
-GU
-GU
-"}
-(36,1,1) = {"
+ld
 GU
 GU
 GU
 GU
 GU
-gq
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-Xs
-gq
-gq
-GU
-GU
-GU
-GU
-GU
-GU
-GU
-GU
-"}
-(37,1,1) = {"
-GU
-GU
-GU
-GU
-GU
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-GU
-GU
-GU
-GU
-GU
-GU
-GU
-GU
-GU
-"}
-(38,1,1) = {"
-GU
-GU
-GU
-GU
-GU
-GU
-GU
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-GU
-gq
-gq
-gq
-gq
-gq
-gq
-gq
-GU
-GU
-gq
-gq
 GU
 GU
 GU
@@ -1942,25 +2832,37 @@ GU
 GU
 GU
 GU
-GU
-GU
-GU
-GU
-GU
-GU
-GU
-GU
-GU
-GU
-GU
-GU
-GU
-GU
-GU
 gq
-gq
-gq
-gq
+ld
+Xs
+jT
+jT
+jT
+jT
+jT
+jT
+jT
+jT
+Xs
+Xs
+SI
+SI
+Xs
+Xs
+zA
+Xs
+Xs
+Xs
+Qy
+Xs
+Xs
+Xs
+Xs
+Xs
+vg
+Xs
+Xs
+ld
 GU
 GU
 GU
@@ -1981,6 +2883,330 @@ GU
 GU
 GU
 GU
+GU
+gq
+ld
+Xs
+jT
+jT
+jT
+jT
+jT
+jT
+jT
+jT
+jT
+jT
+jT
+jT
+Xs
+Ik
+jT
+vP
+Xs
+jT
+jT
+jT
+Xs
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+"}
+(41,1,1) = {"
+GU
+GU
+GU
+GU
+gq
+ld
+Xs
+jT
+jT
+jT
+jT
+jT
+jT
+jT
+jT
+jT
+jT
+jT
+jT
+Xs
+Ik
+zo
+jT
+Xs
+jT
+zo
+jT
+Xs
+ld
+gq
+gq
+GU
+gq
+gq
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+"}
+(42,1,1) = {"
+GU
+GU
+GU
+GU
+GU
+ld
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+Xs
+ld
+gq
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+"}
+(43,1,1) = {"
+GU
+GU
+GU
+GU
+GU
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+"}
+(44,1,1) = {"
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+cs
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+GU
+GU
+gq
+gq
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+"}
+(45,1,1) = {"
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+cs
+cs
+cs
+cs
+cs
+cs
+cs
+cs
+cs
+gq
+gq
+gq
+gq
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+"}
+(46,1,1) = {"
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+GU
+cs
+cs
+cs
 GU
 GU
 GU
