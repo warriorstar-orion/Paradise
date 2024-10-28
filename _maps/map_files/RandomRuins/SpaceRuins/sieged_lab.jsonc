@@ -24,7 +24,7 @@
 		// Dvorak turret room, but randomized contents
 		"type": "SubmapExtractInsert",
 		"submap_size_x": 5,
-		"submap_size_y": 5,
+		"submap_size_y": 6,
 		"submap_size_z": 1,
 		"submaps_dmm": "submaps/sieged_lab_submaps.dmm",
 		"marker_extract": "/obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/medium_room",

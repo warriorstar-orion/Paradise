@@ -8,13 +8,31 @@
 	icon_state = "whitepurple"
 	},
 /area/template_noop)
+"an" = (
+/obj/structure/ore_box,
+/obj/effect/turf_decal/delivery/hollow,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/template_noop)
 "ax" = (
 /obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/horiz_hallway,
 /mob/living/simple_animal/hostile/syndicate/melee,
 /turf/template_noop,
 /area/template_noop)
+"aK" = (
+/obj/effect/landmark/burnturf,
+/obj/effect/spawner/random/syndicate/turret,
+/turf/template_noop,
+/area/template_noop)
 "aL" = (
 /turf/simulated/floor/catwalk,
+/area/template_noop)
+"aS" = (
+/obj/effect/landmark/burnturf,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
 /area/template_noop)
 "aY" = (
 /obj/effect/spawner/random/storage,
@@ -38,6 +56,17 @@
 	color = "#ff7f00"
 	},
 /turf/template_noop,
+/area/template_noop)
+"bt" = (
+/obj/structure/table_frame,
+/obj/item/shard,
+/obj/effect/decal/cleanable/glass,
+/obj/effect/landmark/burnturf,
+/obj/item/reagent_containers/iv_bag/blood/OMinus,
+/turf/simulated/floor/plasteel{
+	dir = 5;
+	icon_state = "whiteblue"
+	},
 /area/template_noop)
 "by" = (
 /obj/structure/table,
@@ -67,29 +96,10 @@
 /obj/structure/barricade/sandbags,
 /turf/simulated/floor/plating,
 /area/template_noop)
-"bN" = (
-/obj/structure/table_frame,
-/obj/item/shard,
-/obj/effect/decal/cleanable/glass,
-/obj/effect/landmark/burnturf,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "whiteblue"
-	},
-/area/template_noop)
 "cf" = (
 /obj/effect/decal/cleanable/glass,
 /turf/template_noop,
 /area/template_noop)
-"cp" = (
-/obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/vert_hallway,
-/obj/effect/decal/cleanable/shreds,
-/turf/template_noop,
-/area/template_noop)
-"cz" = (
-/obj/effect/landmark/burnturf,
-/turf/simulated/floor/plating,
-/area/space/nearstation)
 "cC" = (
 /obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/vert_hallway,
 /obj/effect/decal/cleanable/blood/tracks/mapped{
@@ -122,6 +132,11 @@
 	icon_regular_floor = "yellowsiding";
 	icon_state = "tranquillite"
 	},
+/area/template_noop)
+"dA" = (
+/obj/structure/coatrack,
+/obj/item/clothing/suit/jacket/miljacket,
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "dG" = (
 /turf/simulated/floor/plasteel{
@@ -156,6 +171,12 @@
 /obj/effect/spawner/random_spawners/oil_often,
 /turf/template_noop,
 /area/template_noop)
+"eH" = (
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/plasteel{
+	icon_state = "floorgrime"
+	},
+/area/template_noop)
 "eL" = (
 /obj/effect/spawner/random_spawners/dirt_often,
 /obj/machinery/alarm/directional/south,
@@ -180,6 +201,11 @@
 "fp" = (
 /obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/vert_hallway,
 /obj/machinery/door/firedoor/closed,
+/turf/template_noop,
+/area/template_noop)
+"fr" = (
+/obj/effect/landmark/burnturf,
+/obj/item/assembly/mousetrap/armed,
 /turf/template_noop,
 /area/template_noop)
 "ft" = (
@@ -228,6 +254,14 @@
 /obj/effect/decal/cleanable/blood/tracks/mapped,
 /turf/template_noop,
 /area/template_noop)
+"gB" = (
+/obj/effect/landmark/damageturf,
+/obj/effect/spawner/random_spawners/blood_maybe,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/template_noop)
 "gN" = (
 /mob/living/simple_animal/hostile/syndicate/melee/space{
 	wander = 0
@@ -268,6 +302,13 @@
 "ig" = (
 /obj/item/flashlight/flare/used,
 /turf/simulated/floor/plating/asteroid,
+/area/template_noop)
+"ih" = (
+/obj/machinery/constructable_frame/machine_frame,
+/obj/item/circuitboard/ore_redemption,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
 /area/template_noop)
 "in" = (
 /obj/effect/decal/cleanable/glass,
@@ -411,10 +452,24 @@
 	},
 /turf/simulated/floor/wood,
 /area/template_noop)
+"le" = (
+/obj/machinery/alarm/directional/east,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "whiteblue"
+	},
+/area/template_noop)
 "li" = (
 /obj/structure/mecha_wreckage/ripley/firefighter,
 /obj/machinery/alarm/directional/north,
 /turf/simulated/floor/mech_bay_recharge_floor,
+/area/template_noop)
+"lj" = (
+/obj/effect/landmark/damageturf,
+/obj/machinery/atmospherics/portable/pump,
+/turf/simulated/floor/plasteel{
+	icon_state = "floorgrime"
+	},
 /area/template_noop)
 "lk" = (
 /obj/effect/landmark/burnturf,
@@ -457,11 +512,29 @@
 	icon_state = "whiteblue"
 	},
 /area/template_noop)
+"lU" = (
+/obj/effect/landmark/burnturf,
+/obj/item/stack/cable_coil,
+/obj/effect/turf_decal/delivery/partial{
+	dir = 1
+	},
+/obj/effect/turf_decal/arrows{
+	pixel_y = 12
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/template_noop)
 "lX" = (
 /obj/effect/landmark/burnturf,
 /obj/effect/decal/cleanable/blood/tracks/mapped{
 	dir = 6
 	},
+/turf/template_noop,
+/area/template_noop)
+"me" = (
+/obj/effect/spawner/random_spawners/blood_maybe,
+/obj/effect/landmark/burnturf,
 /turf/template_noop,
 /area/template_noop)
 "mg" = (
@@ -528,10 +601,31 @@
 /obj/effect/spawner/random/trash,
 /turf/template_noop,
 /area/template_noop)
+"nk" = (
+/obj/item/trash/spentcasing/bullet,
+/turf/simulated/floor/plasteel{
+	icon_state = "floorgrime"
+	},
+/area/template_noop)
+"np" = (
+/obj/effect/turf_decal/delivery/partial,
+/obj/effect/turf_decal/caution{
+	pixel_y = -2
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/template_noop)
 "nA" = (
 /obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/vert_hallway,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/template_noop,
+/area/template_noop)
+"nB" = (
+/obj/machinery/suit_storage_unit,
+/turf/simulated/floor/plasteel{
+	icon_state = "floorgrime"
+	},
 /area/template_noop)
 "nD" = (
 /obj/structure/shelf,
@@ -620,6 +714,33 @@
 	},
 /turf/simulated/floor/wood,
 /area/template_noop)
+"pb" = (
+/obj/item/trash/spentcasing/bullet,
+/obj/item/trash/spentcasing/bullet,
+/obj/effect/spawner/random_spawners/blood_maybe,
+/turf/simulated/floor/plating,
+/area/template_noop)
+"pg" = (
+/obj/effect/spawner/random_spawners/dirt_maybe,
+/turf/simulated/floor/plasteel{
+	icon_state = "green"
+	},
+/area/template_noop)
+"pi" = (
+/turf/simulated/floor/plasteel,
+/area/template_noop)
+"pE" = (
+/obj/effect/landmark/damageturf,
+/obj/machinery/atmospherics/unary/thermomachine/freezer,
+/turf/simulated/floor/plasteel{
+	icon_state = "floorgrime"
+	},
+/area/template_noop)
+"pF" = (
+/obj/machinery/hydroponics/constructable,
+/obj/effect/landmark/burnturf,
+/turf/simulated/floor/plating,
+/area/template_noop)
 "pG" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/wood,
@@ -642,6 +763,21 @@
 /obj/effect/spawner/random/engineering/materials,
 /turf/template_noop,
 /area/template_noop)
+"qn" = (
+/obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/wide_room,
+/obj/machinery/suit_storage_unit,
+/turf/simulated/floor/plasteel{
+	icon_state = "floorgrime"
+	},
+/area/template_noop)
+"qo" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/template_noop)
 "qR" = (
 /obj/item/roller{
 	pixel_y = 9
@@ -651,6 +787,12 @@
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "whiteblue"
+	},
+/area/template_noop)
+"qX" = (
+/turf/simulated/floor/plasteel{
+	dir = 5;
+	icon_state = "green"
 	},
 /area/template_noop)
 "qZ" = (
@@ -671,6 +813,17 @@
 /obj/effect/spawner/random/barrier/grille_maybe,
 /obj/effect/landmark/burnturf,
 /turf/simulated/floor/plating,
+/area/template_noop)
+"ru" = (
+/obj/effect/spawner/random/barrier/grille_maybe,
+/obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/vert_hallway,
+/turf/simulated/floor/plating,
+/area/template_noop)
+"rw" = (
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "green"
+	},
 /area/template_noop)
 "rN" = (
 /obj/effect/mob_spawn/human/corpse/random_species/scientist{
@@ -694,6 +847,13 @@
 /obj/effect/map_effect/marker_helper/mapmanip/submap/edge,
 /turf/template_noop,
 /area/template_noop)
+"so" = (
+/obj/effect/spawner/random_spawners/dirt_maybe,
+/turf/simulated/floor/plasteel{
+	dir = 6;
+	icon_state = "green"
+	},
+/area/template_noop)
 "sp" = (
 /obj/effect/decal/cleanable/ash,
 /obj/effect/landmark/burnturf,
@@ -702,17 +862,22 @@
 	icon_state = "whiteblue"
 	},
 /area/template_noop)
-"ss" = (
-/obj/effect/landmark/burnturf,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "whiteblue"
-	},
-/area/space/nearstation)
 "su" = (
 /obj/effect/spawner/random_spawners/dirt_often,
 /obj/effect/spawner/random_spawners/oil_maybe,
 /turf/simulated/floor/plating,
+/area/template_noop)
+"sw" = (
+/obj/machinery/sleeper,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "whiteblue"
+	},
+/area/template_noop)
+"sF" = (
+/obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/horiz_hallway,
+/obj/structure/barricade/sandbags,
+/turf/template_noop,
 /area/template_noop)
 "sI" = (
 /obj/machinery/iv_drip,
@@ -722,10 +887,6 @@
 	icon_state = "whiteblue"
 	},
 /area/template_noop)
-"sS" = (
-/obj/effect/spawner/random/engineering/materials,
-/turf/space,
-/area/space)
 "te" = (
 /obj/effect/mob_spawn/human/corpse/random_species/engineer{
 	random = 1
@@ -742,6 +903,16 @@
 	dir = 8
 	},
 /turf/template_noop,
+/area/template_noop)
+"to" = (
+/obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/wide_room,
+/obj/effect/spawner/random/storage,
+/obj/effect/spawner/random/maintenance,
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/plasteel{
+	dir = 10;
+	icon_state = "green"
+	},
 /area/template_noop)
 "tq" = (
 /obj/structure/barricade/sandbags,
@@ -767,22 +938,20 @@
 /obj/effect/decal/cleanable/blood/tracks/mapped,
 /turf/simulated/floor/plating,
 /area/template_noop)
+"tW" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/effect/spawner/random_spawners/cobweb_left_frequent,
+/turf/simulated/floor/plasteel{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/template_noop)
 "ue" = (
 /obj/effect/mob_spawn/human/corpse/random_species/scientist{
 	random = 1
 	},
 /obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plating,
-/area/template_noop)
-"us" = (
-/obj/structure/table_frame,
-/obj/effect/decal/cleanable/glass,
-/obj/item/shard,
-/obj/machinery/alarm/directional/east,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "whiteblue"
-	},
 /area/template_noop)
 "uu" = (
 /obj/structure/closet/cabinet,
@@ -813,6 +982,12 @@
 	brightness_color = "#FF0000"
 	},
 /turf/template_noop,
+/area/template_noop)
+"vD" = (
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "green"
+	},
 /area/template_noop)
 "vL" = (
 /obj/machinery/firealarm/directional/east,
@@ -873,11 +1048,6 @@
 /obj/item/deck/cards,
 /turf/simulated/floor/plasteel,
 /area/template_noop)
-"wY" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "whiteblue"
-	},
-/area/template_noop)
 "xf" = (
 /obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/wide_room,
 /turf/simulated/floor/plating,
@@ -888,6 +1058,10 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
+/area/template_noop)
+"xy" = (
+/obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/vert_hallway,
+/turf/template_noop,
 /area/template_noop)
 "xE" = (
 /obj/effect/map_effect/marker_helper/mapmanip/submap/edge{
@@ -917,6 +1091,13 @@
 	},
 /obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel,
+/area/template_noop)
+"xV" = (
+/obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/wide_room,
+/obj/machinery/constructable_frame/machine_frame,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
 /area/template_noop)
 "yb" = (
 /obj/effect/landmark/burnturf,
@@ -963,12 +1144,25 @@
 	},
 /turf/simulated/floor/plating,
 /area/template_noop)
+"yY" = (
+/obj/effect/spawner/random_spawners/dirt_maybe,
+/obj/item/stack/ore/iron{
+	pixel_x = 5;
+	pixel_y = -6
+	},
+/turf/simulated/floor/plating,
+/area/template_noop)
 "zo" = (
 /obj/machinery/firealarm/directional/south,
 /obj/effect/mob_spawn/human/corpse/random_species/security_officer{
 	random = 1
 	},
 /turf/template_noop,
+/area/template_noop)
+"zs" = (
+/obj/machinery/light/small,
+/obj/machinery/atmospherics/portable/scrubber,
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "zt" = (
 /obj/effect/landmark/burnturf,
@@ -1024,6 +1218,23 @@
 /obj/effect/spawner/random_spawners/blood_often,
 /turf/template_noop,
 /area/template_noop)
+"zY" = (
+/obj/structure/rack,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"zZ" = (
+/obj/effect/landmark/burnturf,
+/turf/simulated/floor/plasteel{
+	icon_state = "green"
+	},
+/area/template_noop)
+"Af" = (
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/template_noop)
 "AS" = (
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -1041,6 +1252,15 @@
 	},
 /obj/item/trash/spentcasing/bullet,
 /turf/simulated/floor/plating,
+/area/template_noop)
+"Ba" = (
+/obj/machinery/mineral/processing_unit,
+/obj/machinery/mineral/processing_unit_console{
+	pixel_y = 32
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
 /area/template_noop)
 "Bo" = (
 /obj/effect/decal/cleanable/generic,
@@ -1096,6 +1316,16 @@
 	random = 1
 	},
 /turf/simulated/floor/plating,
+/area/template_noop)
+"Cj" = (
+/obj/effect/spawner/random_spawners/dirt_maybe,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "green"
+	},
 /area/template_noop)
 "Cw" = (
 /obj/item/chair,
@@ -1181,6 +1411,13 @@
 /obj/effect/landmark/damageturf,
 /turf/simulated/floor/plating,
 /area/template_noop)
+"Ei" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/engineering/materials,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/template_noop)
 "Er" = (
 /obj/machinery/light{
 	dir = 8
@@ -1209,6 +1446,10 @@
 /obj/effect/spawner/random/trash,
 /turf/simulated/floor/wood,
 /area/template_noop)
+"Fd" = (
+/obj/item/emptysandbag,
+/turf/template_noop,
+/area/template_noop)
 "Ff" = (
 /obj/structure/table,
 /obj/machinery/cell_charger{
@@ -1223,6 +1464,13 @@
 "Fj" = (
 /mob/living/simple_animal/hostile/syndicate/ranged,
 /turf/template_noop,
+/area/template_noop)
+"Fm" = (
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "green"
+	},
 /area/template_noop)
 "Fo" = (
 /obj/effect/landmark/burnturf,
@@ -1240,6 +1488,18 @@
 	icon_state = "whiteblue"
 	},
 /area/template_noop)
+"Fw" = (
+/obj/item/storage/box/large{
+	pixel_x = -3;
+	pixel_y = 2
+	},
+/obj/item/storage/box/large{
+	pixel_y = -2;
+	pixel_x = 2
+	},
+/obj/structure/rack,
+/turf/simulated/floor/plasteel,
+/area/template_noop)
 "FD" = (
 /obj/structure/closet/secure_closet/medical1,
 /obj/effect/spawner/random_spawners/cobweb_left_frequent,
@@ -1254,13 +1514,10 @@
 	},
 /turf/template_noop,
 /area/template_noop)
-"FS" = (
+"FH" = (
 /obj/effect/landmark/burnturf,
-/obj/effect/mob_spawn/human/corpse/random_species/scientist{
-	random = 1
-	},
-/obj/effect/spawner/random/engineering,
-/turf/simulated/floor/plating/airless,
+/obj/effect/spawner/random_spawners/blood_maybe,
+/turf/simulated/floor/plating,
 /area/template_noop)
 "FU" = (
 /obj/structure/table,
@@ -1305,6 +1562,12 @@
 	icon_state = "yellow"
 	},
 /area/template_noop)
+"Gm" = (
+/obj/machinery/light/small,
+/obj/effect/landmark/damageturf,
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/plasteel,
+/area/template_noop)
 "Gq" = (
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -1332,6 +1595,12 @@
 	dir = 4
 	},
 /turf/template_noop,
+/area/template_noop)
+"GI" = (
+/mob/living/simple_animal/hostile/syndicate/melee,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
 /area/template_noop)
 "GS" = (
 /obj/effect/spawner/random_spawners/blood_often,
@@ -1366,17 +1635,21 @@
 /mob/living/simple_animal/hostile/syndicate/melee,
 /turf/simulated/floor/plating,
 /area/template_noop)
+"HF" = (
+/obj/effect/spawner/random/trash,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/template_noop)
 "HS" = (
 /obj/effect/fire/mapping,
 /turf/simulated/floor/plating,
 /area/template_noop)
-"HY" = (
-/obj/machinery/sleeper,
-/obj/machinery/alarm/directional/east,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "whiteblue"
-	},
+"HX" = (
+/obj/effect/spawner/random/barrier/temporary,
+/obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/horiz_hallway,
+/turf/template_noop,
 /area/template_noop)
 "Id" = (
 /obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/wide_room,
@@ -1416,6 +1689,13 @@
 	icon_state = "whiteblue"
 	},
 /area/template_noop)
+"Jh" = (
+/obj/item/seeds/apple{
+	pixel_x = 5
+	},
+/obj/effect/spawner/random_spawners/dirt_maybe,
+/turf/simulated/floor/plasteel,
+/area/template_noop)
 "Jt" = (
 /obj/machinery/door/airlock/research,
 /obj/effect/mapping_helpers/airlock/access/all/science,
@@ -1424,11 +1704,22 @@
 	icon_state = "neutral"
 	},
 /area/template_noop)
+"Ju" = (
+/obj/effect/spawner/random_spawners/blood_often,
+/turf/simulated/floor/plasteel{
+	icon_state = "floorgrime"
+	},
+/area/template_noop)
 "JG" = (
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "whitepurple"
 	},
+/area/template_noop)
+"Ki" = (
+/obj/effect/spawner/random_spawners/blood_maybe,
+/obj/structure/barricade/sandbags,
+/turf/template_noop,
 /area/template_noop)
 "Kl" = (
 /obj/effect/landmark/burnturf,
@@ -1456,6 +1747,10 @@
 /obj/effect/decal/cleanable/ash,
 /obj/effect/landmark/burnturf,
 /turf/simulated/floor/plating,
+/area/template_noop)
+"Ld" = (
+/obj/effect/spawner/random_spawners/dirt_maybe,
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "Lm" = (
 /turf/space,
@@ -1485,8 +1780,8 @@
 	icon_state = "brown"
 	},
 /area/template_noop)
-"Mu" = (
-/obj/effect/spawner/random_spawners/blood_often,
+"Me" = (
+/obj/machinery/hydroponics/constructable,
 /turf/simulated/floor/plasteel,
 /area/template_noop)
 "MB" = (
@@ -1517,6 +1812,18 @@
 	},
 /turf/template_noop,
 /area/template_noop)
+"Nb" = (
+/turf/simulated/floor/plasteel{
+	icon_state = "floorgrime"
+	},
+/area/template_noop)
+"Nc" = (
+/obj/effect/mob_spawn/human/corpse/random_species/assistant,
+/obj/effect/spawner/random_spawners/blood_often,
+/turf/simulated/floor/plasteel{
+	icon_state = "floorgrime"
+	},
+/area/template_noop)
 "Nf" = (
 /obj/machinery/computer/nonfunctional,
 /turf/simulated/floor/plasteel{
@@ -1545,9 +1852,31 @@
 	},
 /turf/template_noop,
 /area/template_noop)
+"NI" = (
+/obj/effect/landmark/burnturf,
+/turf/simulated/floor/plasteel{
+	dir = 10;
+	icon_state = "whiteblue"
+	},
+/area/template_noop)
+"NZ" = (
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plasteel{
+	icon_state = "green"
+	},
+/area/template_noop)
 "Of" = (
 /obj/effect/spawner/random/barrier/grille_maybe,
 /turf/simulated/floor/plating,
+/area/template_noop)
+"Oh" = (
+/obj/item/stack/ore/glass{
+	pixel_y = 6;
+	pixel_x = 5
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
 /area/template_noop)
 "Oj" = (
 /turf/simulated/floor/plating/asteroid,
@@ -1564,6 +1893,11 @@
 /obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plating,
 /area/template_noop)
+"Or" = (
+/obj/effect/landmark/burnturf,
+/obj/structure/barricade/sandbags,
+/turf/template_noop,
+/area/template_noop)
 "Ou" = (
 /obj/effect/decal/cleanable/blood/gibs/robot/up,
 /turf/simulated/floor/plating/asteroid,
@@ -1571,6 +1905,12 @@
 "OG" = (
 /obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/vert_hallway,
 /turf/simulated/floor/plating,
+/area/template_noop)
+"OI" = (
+/obj/item/stack/ore/glass,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
 /area/template_noop)
 "OM" = (
 /obj/effect/mob_spawn/human/corpse/random_species/scientist{
@@ -1590,13 +1930,6 @@
 	icon_state = "yellow"
 	},
 /area/template_noop)
-"Ps" = (
-/obj/structure/lattice,
-/obj/item/stack/cable_coil{
-	amount = 1
-	},
-/turf/space,
-/area/space/nearstation)
 "Pv" = (
 /obj/effect/spawner/random/trash,
 /obj/effect/landmark/burnturf,
@@ -1608,6 +1941,19 @@
 	},
 /obj/effect/landmark/burnturf,
 /turf/template_noop,
+/area/template_noop)
+"PW" = (
+/turf/simulated/floor/plating/airless,
+/area/template_noop)
+"Qa" = (
+/obj/structure/sink{
+	pixel_y = 19
+	},
+/obj/item/reagent_containers/glass/bucket,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "green"
+	},
 /area/template_noop)
 "Qi" = (
 /obj/effect/spawner/random_spawners/oil_often,
@@ -1634,6 +1980,10 @@
 	dir = 8;
 	icon_state = "yellow"
 	},
+/area/template_noop)
+"QJ" = (
+/obj/effect/spawner/themed_mess/dirty,
+/turf/template_noop,
 /area/template_noop)
 "QX" = (
 /obj/structure/lattice,
@@ -1670,6 +2020,13 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/template_noop,
 /area/template_noop)
+"Sm" = (
+/obj/effect/landmark/burnturf,
+/obj/item/trash/spentcasing/bullet,
+/obj/item/trash/spentcasing/bullet,
+/obj/effect/spawner/random_spawners/blood_maybe,
+/turf/template_noop,
+/area/template_noop)
 "SG" = (
 /obj/item/trash/spentcasing/bullet,
 /obj/item/trash/spentcasing/bullet,
@@ -1685,6 +2042,10 @@
 	},
 /turf/template_noop,
 /area/template_noop)
+"SS" = (
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plasteel,
+/area/template_noop)
 "SW" = (
 /obj/structure/rack{
 	dir = 8;
@@ -1696,6 +2057,19 @@
 	icon_state = "whitepurple"
 	},
 /area/template_noop)
+"To" = (
+/obj/effect/spawner/themed_mess/engineering,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/template_noop)
+"Tr" = (
+/obj/effect/spawner/random_spawners/dirt_maybe,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/template_noop)
 "TC" = (
 /obj/structure/filingcabinet/medical,
 /turf/simulated/floor/plasteel{
@@ -1706,6 +2080,11 @@
 "TG" = (
 /obj/structure/table/flipped,
 /turf/simulated/floor/plating,
+/area/template_noop)
+"TQ" = (
+/obj/structure/coatrack,
+/obj/item/clothing/suit/jacket/bomber,
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "TS" = (
 /obj/effect/map_effect/marker_helper/mapmanip/submap/edge{
@@ -1765,11 +2144,20 @@
 	icon_state = "whitepurple"
 	},
 /area/template_noop)
+"VI" = (
+/obj/effect/spawner/random_spawners/blood_maybe,
+/turf/simulated/floor/plating,
+/area/template_noop)
 "VX" = (
 /obj/effect/decal/cleanable/blood/tracks/mapped{
 	dir = 9
 	},
 /turf/template_noop,
+/area/template_noop)
+"Wc" = (
+/obj/machinery/hydroponics/constructable,
+/obj/effect/spawner/random_spawners/dirt_maybe,
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "Wh" = (
 /obj/machinery/constructable_frame/machine_frame,
@@ -1787,6 +2175,13 @@
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "whitepurple"
+	},
+/area/template_noop)
+"WW" = (
+/obj/effect/spawner/random_spawners/dirt_maybe,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "green"
 	},
 /area/template_noop)
 "Xm" = (
@@ -1817,6 +2212,14 @@
 	icon_state = "tranquillite"
 	},
 /area/template_noop)
+"XV" = (
+/obj/machinery/washing_machine{
+	pixel_y = 4
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "floorgrime"
+	},
+/area/template_noop)
 "XW" = (
 /obj/structure/bed,
 /obj/item/bedsheet/blue,
@@ -1834,13 +2237,11 @@
 /obj/machinery/floodlight/anchored/darker_on,
 /turf/template_noop,
 /area/template_noop)
-"YG" = (
-/obj/item/stack/tile/plasteel{
-	pixel_y = 6;
-	pixel_x = 6
-	},
-/turf/space,
-/area/space)
+"Yw" = (
+/obj/effect/spawner/random_spawners/dirt_maybe,
+/obj/item/stack/ore/iron,
+/turf/simulated/floor/plating,
+/area/template_noop)
 "YH" = (
 /obj/structure/barricade/wooden,
 /obj/machinery/door/airlock/engineering,
@@ -1855,6 +2256,14 @@
 	icon_state = "white"
 	},
 /area/template_noop)
+"YP" = (
+/obj/effect/decal/cleanable/glass,
+/obj/effect/landmark/burnturf,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "whiteblue"
+	},
+/area/template_noop)
 "Zf" = (
 /obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/vert_hallway,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -1866,6 +2275,15 @@
 /obj/item/flashlight/flare,
 /obj/effect/decal/cleanable/blood/tracks/mapped,
 /turf/simulated/floor/plating,
+/area/template_noop)
+"Zw" = (
+/obj/item/rack_parts,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plasteel,
+/area/template_noop)
+"ZC" = (
+/obj/effect/decal/cleanable/shreds,
+/turf/template_noop,
 /area/template_noop)
 "ZD" = (
 /obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/sieged_lab/vert_hallway,
@@ -1879,6 +2297,14 @@
 /obj/effect/landmark/burnturf,
 /obj/effect/decal/cleanable/blood/tracks/mapped,
 /turf/template_noop,
+/area/template_noop)
+"ZL" = (
+/obj/effect/landmark/burnturf,
+/obj/effect/spawner/random_spawners/blood_maybe,
+/obj/effect/spawner/random/trash,
+/turf/simulated/floor/plasteel{
+	icon_state = "green"
+	},
 /area/template_noop)
 "ZN" = (
 /obj/effect/spawner/random/bureaucracy,
@@ -2031,27 +2457,27 @@ nK
 nK
 nK
 nK
-Jt
-hG
 nK
 nK
 nK
 nK
 nK
 nK
-Jt
-hG
 nK
 nK
 nK
 nK
 nK
 nK
-Jt
-hG
 nK
 nK
 nK
+nK
+EG
+nK
+nK
+tq
+sF
 nK
 nK
 yb
@@ -2086,38 +2512,38 @@ nK
 BT
 nK
 nK
-nK
-EG
+wC
+HX
 nK
 nK
 "}
 (4,1,1) = {"
 nK
 nK
-WS
-Vl
-kB
-BM
-DO
 nK
 nK
 nK
-Ec
-Vl
-zv
-su
-Vi
 nK
 nK
 nK
-Ec
-Vl
-BM
-bB
-Vi
 nK
 nK
 nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+fr
+nK
+nK
+Fd
+VI
 nK
 nK
 yb
@@ -2152,38 +2578,38 @@ nK
 GF
 nK
 nK
-wC
-wC
+nK
+nK
 nK
 nK
 "}
 (5,1,1) = {"
 nK
 nK
-Iy
-KG
-bD
-KG
-Ea
 nK
 nK
 nK
-li
-YN
-ox
-fP
-aa
 nK
 nK
 nK
-Iy
-YN
-Hq
-Yg
-aa
 nK
 nK
 nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+pb
+wT
 nK
 nK
 nK
@@ -2226,30 +2652,30 @@ nK
 (6,1,1) = {"
 nK
 nK
-jc
-KG
-LR
-KG
-SW
 nK
 nK
 nK
-Nf
-KG
-mT
-fP
-mZ
 nK
 nK
 nK
-Wh
-KG
-fQ
-pM
-eL
 nK
 nK
 nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+QJ
+nK
+nK
+nK
+wT
+aK
 nK
 nK
 nK
@@ -2291,31 +2717,31 @@ nK
 "}
 (7,1,1) = {"
 nK
-DX
-Ip
-vL
-fk
-fk
-Ff
-nK
-nK
-DX
-zJ
-lm
-vL
-fk
-JG
-nK
-nK
-DX
-mu
-lm
-MX
-lm
-JG
 nK
 nK
 nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+wC
+wC
+nK
+nK
+bf
+Sm
 nK
 nK
 yb
@@ -2358,7 +2784,6 @@ nK
 (8,1,1) = {"
 nK
 nK
-TS
 nK
 nK
 nK
@@ -2366,7 +2791,6 @@ nK
 nK
 nK
 nK
-TS
 nK
 nK
 nK
@@ -2374,13 +2798,15 @@ nK
 nK
 nK
 nK
-TS
 nK
 nK
 nK
 nK
 nK
+yb
 nK
+nK
+VI
 nK
 nK
 nK
@@ -2442,12 +2868,12 @@ nK
 nK
 nK
 nK
+yb
+yb
 nK
 nK
 nK
-nK
-nK
-nK
+me
 nK
 nK
 nK
@@ -2474,8 +2900,8 @@ Hh
 Hh
 nK
 nK
-uF
-uF
+nK
+nK
 nK
 nK
 RP
@@ -2507,13 +2933,13 @@ nK
 nK
 nK
 nK
+sn
 nK
 nK
 nK
-nK
-nK
-nK
-nK
+sn
+Or
+Ki
 nK
 sn
 ox
@@ -2540,8 +2966,8 @@ uP
 uP
 nK
 sn
-nK
-fV
+uF
+uF
 nK
 sn
 RP
@@ -2559,26 +2985,26 @@ nK
 nK
 nK
 nK
-Gb
-wD
 nK
 nK
 nK
 nK
 nK
 nK
-Gb
-wD
 nK
 nK
 nK
 nK
 nK
 nK
-YH
-kh
 nK
 nK
+nK
+tm
+nK
+nK
+nK
+tm
 nK
 nK
 nK
@@ -2622,27 +3048,27 @@ nK
 (12,1,1) = {"
 nK
 nK
-Fu
-lN
-dG
-dG
-zT
 nK
 nK
 nK
-FD
-pK
-IP
-KM
-ox
 nK
 nK
 nK
-nW
-Er
-yo
-QG
-nL
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
 nK
 nK
 nK
@@ -2688,27 +3114,27 @@ nK
 (13,1,1) = {"
 nK
 nK
-sI
-KG
-om
-KG
-wY
 nK
 nK
 nK
-ms
-ka
-BU
-id
-lm
 nK
 nK
 nK
-aY
-Mu
-xQ
-wU
-Pb
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
 nK
 nK
 nK
@@ -2754,27 +3180,12 @@ nK
 (14,1,1) = {"
 nK
 nK
-wn
-KG
-KG
-KG
-RA
 nK
 nK
 nK
-Gs
-dN
-js
-mX
-nR
 nK
 nK
 nK
-Kz
-lm
-DK
-lG
-by
 nK
 nK
 nK
@@ -2793,126 +3204,9 @@ nK
 nK
 nK
 nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-"}
-(15,1,1) = {"
-nK
-DX
-vA
-kp
-HY
-Gq
-FZ
-nK
-nK
-DX
-iJ
-us
-BS
-Gq
-Xq
-nK
-nK
-DX
-TC
-AS
-lm
-lm
-Gl
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-"}
-(16,1,1) = {"
-nK
-nK
-TS
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-TS
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-TS
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
+wC
+yb
+xy
 nK
 nK
 nK
@@ -2933,8 +3227,8 @@ zt
 RP
 RP
 KM
-Of
-cp
+ZC
+ru
 nK
 nK
 nK
@@ -2946,6 +3240,138 @@ WK
 fO
 SJ
 ZD
+nK
+nK
+"}
+(15,1,1) = {"
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+dL
+nK
+nK
+yb
+yb
+QJ
+wC
+nK
+nK
+nK
+nK
+dL
+nb
+tq
+tq
+ye
+Fj
+tq
+RP
+RP
+nK
+nK
+dL
+ei
+nK
+RP
+Ga
+oI
+MI
+yb
+rs
+nK
+nK
+dL
+nK
+nK
+zz
+tr
+yb
+TG
+ox
+nK
+nK
+nK
+"}
+(16,1,1) = {"
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+xE
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+xE
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+xE
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+xE
+nK
+nK
+nK
+nK
+nK
+nK
+nK
 nK
 nK
 "}
@@ -2981,36 +3407,36 @@ nK
 nK
 nK
 nK
-dL
-nb
-tq
-tq
-ye
-Fj
-tq
-RP
-RP
 nK
 nK
-dL
-ei
-nK
-RP
-Ga
-oI
-MI
-rs
-yb
 nK
 nK
-dL
 nK
 nK
-zz
-tr
-yb
-TG
-ox
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
 nK
 nK
 nK
@@ -3048,7 +3474,6 @@ nK
 nK
 nK
 nK
-xE
 nK
 nK
 nK
@@ -3059,7 +3484,6 @@ nK
 nK
 nK
 nK
-xE
 nK
 nK
 nK
@@ -3070,7 +3494,9 @@ nK
 nK
 nK
 nK
-xE
+nK
+nK
+nK
 nK
 nK
 nK
@@ -3087,140 +3513,8 @@ nK
 nK
 nK
 nK
-Gb
-wD
 nK
 nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-"}
-(20,1,1) = {"
-nK
-nK
-qR
-dG
-Lm
-QX
-ss
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-"}
-(21,1,1) = {"
-nK
-nK
-iv
-Lm
-RG
-QX
-cz
 nK
 nK
 nK
@@ -3279,14 +3573,14 @@ Pa
 nK
 nK
 "}
-(22,1,1) = {"
+(20,1,1) = {"
 nK
 nK
-xg
-QX
-CO
-Lm
-Lm
+nK
+nK
+nK
+nK
+nK
 nK
 nK
 nK
@@ -3345,14 +3639,14 @@ yb
 nK
 nK
 "}
-(23,1,1) = {"
+(21,1,1) = {"
 nK
-DX
-bN
-in
-Lc
-Lc
-sp
+nK
+nK
+nK
+nK
+nK
+nK
 nK
 nK
 nK
@@ -3411,10 +3705,141 @@ nK
 nK
 nK
 "}
+(22,1,1) = {"
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+xE
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+xE
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+"}
+(23,1,1) = {"
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+"}
 (24,1,1) = {"
 nK
 nK
-TS
 nK
 nK
 nK
@@ -3444,7 +3869,6 @@ nK
 nK
 nK
 nK
-xE
 nK
 nK
 nK
@@ -3455,7 +3879,9 @@ nK
 nK
 nK
 nK
-xE
+nK
+nK
+nK
 nK
 nK
 nK
@@ -3576,36 +4002,36 @@ nK
 nK
 nK
 nK
+TZ
+qf
+nK
+kK
+nK
+lk
+fA
+nA
 nK
 nK
 nK
+GZ
+ox
+ed
+UH
+PW
+QX
+Lm
+fp
 nK
 nK
 nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
+KM
+yv
+bf
+Rh
+yc
+BD
+yv
+OG
 nK
 nK
 "}
@@ -3641,37 +4067,37 @@ nK
 nK
 nK
 nK
+dL
+TZ
+nK
+re
+ts
+nK
+Bo
+RP
+RP
 nK
 nK
+dL
+GZ
+ox
+ea
+UH
+QX
+Lm
+nK
+RC
 nK
 nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
+dL
+ox
+aL
+KM
+yc
+ox
+KM
+aL
+ox
 nK
 nK
 "}
@@ -3708,36 +4134,36 @@ nK
 nK
 nK
 nK
-nK
-qf
-nK
-kK
-TZ
-lk
-fA
-nA
+xE
 nK
 nK
 nK
 nK
-GZ
-ed
-UH
-FS
-Ps
-QX
-fp
 nK
 nK
 nK
-KM
-yv
-bf
-Rh
-yc
-BD
-yv
-OG
+nK
+nK
+nK
+xE
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+xE
+nK
+nK
+nK
+nK
+nK
+nK
+nK
 nK
 nK
 "}
@@ -3773,37 +4199,37 @@ nK
 nK
 nK
 nK
-dL
 nK
 nK
-re
-ts
-TZ
-Bo
-RP
-RP
 nK
 nK
-dL
-nK
-GZ
-ea
-UH
-sS
-YG
-rn
-RC
 nK
 nK
-dL
-ox
-aL
-KM
-yc
-ox
-KM
-aL
-ox
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
+nK
 nK
 nK
 "}
@@ -3840,7 +4266,6 @@ nK
 nK
 nK
 nK
-xE
 nK
 nK
 nK
@@ -3851,7 +4276,6 @@ nK
 nK
 nK
 nK
-xE
 nK
 nK
 nK
@@ -3862,7 +4286,9 @@ nK
 nK
 nK
 nK
-xE
+nK
+nK
+nK
 nK
 nK
 nK
@@ -3982,6 +4408,8 @@ nK
 nK
 nK
 nK
+Jt
+hG
 nK
 nK
 nK
@@ -3989,6 +4417,8 @@ nK
 nK
 nK
 nK
+Jt
+hG
 nK
 nK
 nK
@@ -3996,12 +4426,8 @@ nK
 nK
 nK
 nK
-nK
-nK
-nK
-nK
-nK
-nK
+Jt
+hG
 nK
 nK
 "}
@@ -4044,30 +4470,30 @@ nK
 nK
 nK
 nK
+WS
+BM
+Vl
+kB
+BM
+DO
 nK
 nK
 nK
+Ec
+BM
+Vl
+zv
+su
+Vi
 nK
 nK
 nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
+Ec
+BM
+Vl
+BM
+bB
+Vi
 nK
 nK
 "}
@@ -4110,30 +4536,30 @@ nK
 nK
 nK
 nK
+Iy
+np
+KG
+bD
+KG
+Ea
 nK
 nK
 nK
+li
+lm
+YN
+ox
+fP
+aa
 nK
 nK
 nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
+Iy
+KG
+YN
+Hq
+Yg
+aa
 nK
 nK
 "}
@@ -4176,30 +4602,30 @@ nK
 nK
 nK
 nK
+jc
+KG
+KG
+LR
+KG
+SW
 nK
 nK
 nK
+Nf
+KG
+KG
+mT
+fP
+mZ
 nK
 nK
 nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
+Wh
+KG
+KG
+fQ
+pM
+eL
 nK
 nK
 "}
@@ -4241,31 +4667,31 @@ nK
 nK
 nK
 nK
+DX
+Ip
+fk
+vL
+fk
+fk
+Ff
 nK
 nK
+DX
+zJ
+fk
+lm
+vL
+fk
+JG
 nK
 nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
+DX
+mu
+fk
+lm
+MX
+lm
+JG
 nK
 nK
 "}
@@ -4308,6 +4734,7 @@ nK
 nK
 nK
 nK
+TS
 nK
 nK
 nK
@@ -4316,6 +4743,7 @@ nK
 nK
 nK
 nK
+TS
 nK
 nK
 nK
@@ -4324,9 +4752,7 @@ nK
 nK
 nK
 nK
-nK
-nK
-nK
+TS
 nK
 nK
 nK
@@ -4404,21 +4830,21 @@ nK
 (39,1,1) = {"
 nK
 nK
+Fw
+nB
+qn
 nK
 nK
 nK
+tW
+vD
+to
 nK
 nK
 nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
+Ei
+zY
+xV
 nK
 nK
 nK
@@ -4470,6 +4896,21 @@ nK
 (40,1,1) = {"
 nK
 nK
+Nb
+Nb
+Nb
+nK
+nK
+nK
+Qa
+Jh
+zZ
+nK
+nK
+nK
+qo
+OI
+aS
 nK
 nK
 nK
@@ -4495,6 +4936,8 @@ nK
 nK
 nK
 nK
+Gb
+wD
 nK
 nK
 nK
@@ -4502,6 +4945,8 @@ nK
 nK
 nK
 nK
+Gb
+wD
 nK
 nK
 nK
@@ -4509,33 +4954,29 @@ nK
 nK
 nK
 nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
+YH
+kh
 nK
 nK
 "}
 (41,1,1) = {"
 nK
 nK
+nk
+Nc
+Gm
+nK
+nK
+nK
+Cj
+Wc
+ZL
+nK
+nK
+nK
+Af
+lU
+ih
 nK
 nK
 nK
@@ -4557,51 +4998,51 @@ nK
 nK
 nK
 nK
+Fu
+dG
+lN
+dG
+dG
+zT
 nK
 nK
 nK
+FD
+dG
+pK
+IP
+KM
+ox
 nK
 nK
 nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
+nW
+QG
+Er
+yo
+QG
+nL
 nK
 nK
 "}
 (42,1,1) = {"
 nK
 nK
+nk
+lm
+Ju
+nK
+nK
+nK
+Fm
+Wc
+zZ
+nK
+nK
+nK
+aS
+aS
+Yw
 nK
 nK
 nK
@@ -4623,51 +5064,51 @@ nK
 nK
 nK
 nK
+sI
+KG
+GI
+om
+KG
+RA
 nK
 nK
 nK
+ms
+KG
+ka
+BU
+id
+lm
 nK
 nK
 nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
+aY
+pi
+pi
+xQ
+wU
+Pb
 nK
 nK
 "}
 (43,1,1) = {"
 nK
 nK
+nk
+lm
+Ju
+nK
+nK
+nK
+rw
+Me
+lm
+nK
+nK
+nK
+aS
+Lz
+Lz
 nK
 nK
 nK
@@ -4689,51 +5130,51 @@ nK
 nK
 nK
 nK
+wn
+KG
+KG
+KG
+KG
+RA
 nK
 nK
 nK
+Gs
+KG
+dN
+js
+mX
+nR
 nK
 nK
 nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
+Kz
+pi
+lm
+DK
+lG
+by
 nK
 nK
 "}
 (44,1,1) = {"
 nK
 nK
+pE
+eH
+lm
+nK
+nK
+nK
+HF
+pF
+FH
+nK
+nK
+nK
+Af
+To
+Oh
 nK
 nK
 nK
@@ -4754,52 +5195,52 @@ nK
 nK
 nK
 nK
+DX
+vA
+kp
+sw
+le
+Gq
+FZ
 nK
 nK
+DX
+iJ
+iJ
+Gq
+BS
+Gq
+Xq
 nK
 nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
+DX
+TC
+AS
+AS
+lm
+lm
+Gl
 nK
 nK
 "}
 (45,1,1) = {"
 nK
 nK
+lj
+pi
+zs
+nK
+nK
+nK
+gB
+pF
+NZ
+nK
+nK
+nK
+Ba
+Af
+Af
 nK
 nK
 nK
@@ -4821,6 +5262,7 @@ nK
 nK
 nK
 nK
+TS
 nK
 nK
 nK
@@ -4829,6 +5271,7 @@ nK
 nK
 nK
 nK
+TS
 nK
 nK
 nK
@@ -4837,24 +5280,7 @@ nK
 nK
 nK
 nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
+TS
 nK
 nK
 nK
@@ -4866,21 +5292,21 @@ nK
 (46,1,1) = {"
 nK
 nK
+TQ
+SS
+Zw
 nK
 nK
 nK
+lm
+Ld
+pg
 nK
 nK
 nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
+Tr
+yY
+an
 nK
 nK
 nK
@@ -4931,22 +5357,22 @@ nK
 "}
 (47,1,1) = {"
 nK
+bo
+dA
+Nb
+XV
 nK
 nK
+bo
+qX
+WW
+so
 nK
 nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
+bo
+Af
+an
+an
 nK
 nK
 nK
@@ -4998,6 +5424,19 @@ nK
 (48,1,1) = {"
 nK
 nK
+Nv
+nK
+nK
+nK
+nK
+nK
+Nv
+nK
+nK
+nK
+nK
+nK
+Nv
 nK
 nK
 nK
@@ -5025,21 +5464,8 @@ nK
 nK
 nK
 nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
+Gb
+wD
 nK
 nK
 nK
@@ -5100,12 +5526,12 @@ nK
 nK
 nK
 nK
-nK
-nK
-nK
-nK
-nK
-nK
+qR
+dG
+QX
+Lm
+QX
+NI
 nK
 nK
 nK
@@ -5166,12 +5592,12 @@ nK
 nK
 nK
 nK
-nK
-nK
-nK
-nK
-nK
-nK
+iv
+Lm
+Lm
+RG
+QX
+lm
 nK
 nK
 nK
@@ -5232,12 +5658,12 @@ nK
 nK
 nK
 nK
-nK
-nK
-nK
-nK
-nK
-nK
+xg
+QX
+QX
+CO
+Lm
+Lm
 nK
 nK
 nK
@@ -5297,13 +5723,13 @@ nK
 nK
 nK
 nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
+DX
+bt
+YP
+in
+Lc
+Lc
+sp
 nK
 nK
 nK
@@ -5364,7 +5790,7 @@ nK
 nK
 nK
 nK
-nK
+TS
 nK
 nK
 nK
