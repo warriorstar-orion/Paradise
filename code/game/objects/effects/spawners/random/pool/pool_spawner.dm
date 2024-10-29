@@ -69,7 +69,6 @@
 	if(!pool)
 		stack_trace("Could not find spawn pool with ID [spawn_pool_id]")
 
-	// Nested spawners are always safe but still need to check affordability
 	if(ispath(type_path_to_make, /obj/effect/spawner/random/pool))
 		return TRUE
 
