@@ -48,6 +48,7 @@
 			qdel(spawner)
 			continue
 
+		log_chat_debug("processing spawner [spawner.type] [COORD(spawner)]")
 		spawner.spawn_loot()
 		if(length(guaranteed_spawners))
 			WARNING("non-guaranteed spawner [spawner.type] spawned a guaranteed spawner, this should be avoided")

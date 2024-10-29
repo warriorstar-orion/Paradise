@@ -1052,6 +1052,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/ruin/space/abandoned_engi_sat)
+"Hv" = (
+/obj/structure/closet/secure_closet/engineering_personal/empty,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/wood/airless,
+/area/ruin/space/abandoned_engi_sat)
 "HK" = (
 /obj/machinery/light,
 /obj/item/radio/intercom{
@@ -1426,6 +1431,7 @@
 /area/ruin/space/abandoned_engi_sat)
 "Yz" = (
 /obj/structure/closet/emcloset,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plasteel{
 	icon_state = "bot";
 	dir = 1
@@ -2251,7 +2257,7 @@ wu
 kt
 kI
 mG
-pX
+Hv
 hB
 nH
 pX

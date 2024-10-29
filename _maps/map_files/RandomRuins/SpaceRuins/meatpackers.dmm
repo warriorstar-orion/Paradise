@@ -2324,6 +2324,14 @@
 /obj/item/salvage/ruin/pirate,
 /turf/simulated/floor/plating,
 /area/ruin/unpowered/BMPship/Midship)
+"sU" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plasteel,
+/area/ruin/unpowered/BMPship/Aft)
 "uK" = (
 /mob/living/simple_animal/hostile/pirate,
 /turf/simulated/floor/plasteel{
@@ -2356,9 +2364,7 @@
 /obj/structure/closet/crate/freezer,
 /obj/item/food/meat,
 /obj/item/food/hugemushroomslice,
-/obj/effect/turf_decal/stripes/line{
-	dir = 2
-	},
+/obj/effect/turf_decal/stripes/line,
 /turf/simulated/floor/plating,
 /area/ruin/unpowered/BMPship/Delta)
 "PP" = (
@@ -4940,7 +4946,7 @@ dj
 dF
 ed
 ez
-eM
+sU
 eM
 dF
 fw

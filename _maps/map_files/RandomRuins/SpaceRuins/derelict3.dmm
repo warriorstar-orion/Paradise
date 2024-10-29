@@ -30,6 +30,10 @@
 /mob/living/simple_animal/hostile/carp,
 /turf/template_noop,
 /area/space/nearstation)
+"o" = (
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plating/airless,
+/area/ruin/space/unpowered)
 "s" = (
 /mob/living/simple_animal/hostile/carp/megacarp,
 /turf/simulated/floor/plating/airless,
@@ -875,7 +879,7 @@ b
 c
 c
 c
-b
+o
 c
 b
 b
@@ -1075,7 +1079,7 @@ b
 b
 b
 c
-b
+o
 b
 b
 b
@@ -1295,7 +1299,7 @@ b
 s
 F
 m
-b
+o
 c
 b
 b

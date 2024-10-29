@@ -245,6 +245,7 @@
 /area/ruin/space/unpowered)
 "LD" = (
 /obj/structure/closet/cabinet,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/unpowered)
 "LZ" = (
@@ -290,6 +291,10 @@
 "TT" = (
 /turf/template_noop,
 /area/template_noop)
+"Ub" = (
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plasteel,
+/area/ruin/space/unpowered)
 "VL" = (
 /mob/living/simple_animal/cockroach,
 /obj/effect/decal/cleanable/dirt,
@@ -1325,7 +1330,7 @@ Qx
 Qx
 Qx
 Qx
-zN
+Ub
 vE
 hG
 bO

@@ -90,6 +90,7 @@
 /area/ruin/space/abandtele)
 "w" = (
 /obj/structure/closet,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/abandtele)
 "x" = (
@@ -122,15 +123,6 @@
 /area/ruin/space/abandtele)
 "M" = (
 /obj/machinery/atmospherics/binary/volume_pump,
-/turf/simulated/floor/plating/airless,
-/area/ruin/space/abandtele)
-"R" = (
-/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
-/turf/simulated/floor/plating/airless,
-/area/ruin/space/abandtele)
-"U" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/abandtele)
 
@@ -236,9 +228,9 @@ a
 b
 d
 h
-U
+l
 m
-R
+h
 h
 y
 b
@@ -250,10 +242,10 @@ a
 b
 e
 h
-R
+h
 q
 u
-U
+l
 h
 c
 c
@@ -265,8 +257,8 @@ b
 f
 h
 m
-R
-R
+h
+h
 h
 z
 h

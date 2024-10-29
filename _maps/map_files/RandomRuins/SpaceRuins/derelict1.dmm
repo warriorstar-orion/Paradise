@@ -76,6 +76,11 @@
 /mob/living/simple_animal/hostile/alien,
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/unpowered)
+"x" = (
+/obj/structure/alien/weeds,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plating/airless,
+/area/ruin/space/unpowered)
 "F" = (
 /obj/structure/alien/weeds/node,
 /mob/living/simple_animal/hostile/alien/maid,
@@ -871,7 +876,7 @@ f
 f
 f
 f
-f
+x
 f
 f
 f
@@ -912,7 +917,7 @@ f
 f
 f
 f
-f
+x
 f
 f
 f

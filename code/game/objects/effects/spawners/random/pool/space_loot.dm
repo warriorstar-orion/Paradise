@@ -1,6 +1,6 @@
 /datum/spawn_pool/spaceloot
 	id = "space_loot_spawn_pool"
-	available_points = 1000
+	available_points = 1600
 
 /obj/effect/spawner/random/pool/spaceloot
 	spawn_pool_id = "space_loot_spawn_pool"
@@ -168,9 +168,84 @@
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/mixed
 	loot = list(
-		/obj/effect/spawner/random/pool/spaceloot/syndicate/common = 20,
+		/obj/effect/spawner/random/pool/spaceloot/syndicate/common = 10,
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/rare = 4,
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/stetchkin = 3,
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/officer = 2,
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/armory = 1,
+	)
+
+// Only two of these
+/obj/effect/spawner/random/pool/spaceloot/zoo
+	unique_picks = TRUE
+	point_value = 15
+	loot = list(
+		/obj/item/gun/energy/floragun,
+		/obj/item/gun/energy/temperature,
+	)
+
+/obj/effect/spawner/random/pool/spaceloot/modsuit_syndie
+	point_value = 100
+	spawn_loot_chance = 50
+	loot = list(/mob/living/simple_animal/hostile/syndicate/ranged/space/autogib)
+
+/obj/effect/spawner/random/pool/spaceloot/safe_contents/mixed
+	point_value = 50
+	unique_picks = TRUE
+	guaranteed = TRUE
+	loot = list(
+		/obj/effect/spawner/random/pool/spaceloot/safe_contents/safe1,
+		/obj/effect/spawner/random/pool/spaceloot/safe_contents/safe2,
+		/obj/effect/spawner/random/pool/spaceloot/safe_contents/safe3,
+		/obj/effect/spawner/random/pool/spaceloot/safe_contents/safe4,
+		/obj/effect/spawner/random/pool/spaceloot/safe_contents/safe5,
+	)
+
+/obj/effect/spawner/random/pool/spaceloot/safe_contents/safe1
+	spawn_all_loot = TRUE
+	spawn_loot_double = FALSE
+	loot = list(
+		/obj/item/tank/internals/oxygen/red,
+		/obj/item/clothing/mask/gas/syndicate,
+		/obj/item/mod/control/pre_equipped/mining/asteroid,
+		/obj/item/reagent_containers/drinks/bottle/rum,
+		/obj/item/reagent_containers/drinks/bottle/rum,
+		/obj/item/folder/syndicate/blue,
+	)
+
+/obj/effect/spawner/random/pool/spaceloot/safe_contents/safe2
+	spawn_all_loot = TRUE
+	loot = list(
+		/obj/item/gun/projectile/revolver/doublebarrel,
+		/obj/item/stack/spacecash/c500,
+		/obj/item/stack/sheet/mineral/gold{amount = 15},
+	)
+
+/obj/effect/spawner/random/pool/spaceloot/safe_contents/safe3
+	spawn_all_loot = TRUE
+	loot = list(
+		/obj/item/stack/spacecash/c500,
+		/obj/item/circuitboard/teleporter_hub,
+	)
+
+/obj/effect/spawner/random/pool/spaceloot/safe_contents/safe4
+	spawn_all_loot = TRUE
+	loot = list(
+		/obj/item/stack/spacecash/c200,
+		/obj/item/stack/sheet/mineral/gold/fifty,
+		/obj/item/clothing/gloves/ring/plasma,
+		/obj/item/banhammer,
+	)
+
+/obj/effect/spawner/random/pool/spaceloot/safe_contents/safe5
+	spawn_all_loot = TRUE
+	loot = list(
+		/obj/item/circuitboard/teleporter,
+		/obj/item/circuitboard/teleporter_hub,
+		/obj/item/clothing/suit/hgpirate,
+		/obj/item/reagent_containers/drinks/cans/beer/sleepy_beer,
+		/obj/item/clothing/gloves/ring/gold,
+		/obj/item/id_decal/gold,
+		/obj/item/screwdriver,
+		/obj/item/toy/plushie/carpplushie/gold,
 	)

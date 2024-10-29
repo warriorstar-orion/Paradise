@@ -666,6 +666,7 @@
 	dir = 1
 	},
 /obj/structure/closet/crate/secure/loot,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/pod/light,
 /area/ruin/space/wreck_cargoship)
 "AN" = (
@@ -853,11 +854,7 @@
 "JR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/safe,
-/obj/item/gun/projectile/revolver/doublebarrel,
-/obj/item/stack/spacecash/c500,
-/obj/item/stack/sheet/mineral/gold{
-	amount = 15
-	},
+/obj/effect/spawner/random/pool/spaceloot/safe_contents/mixed,
 /turf/simulated/floor/pod/light,
 /area/ruin/space/wreck_cargoship)
 "JX" = (

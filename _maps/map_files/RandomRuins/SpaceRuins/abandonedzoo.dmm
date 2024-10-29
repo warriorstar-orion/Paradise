@@ -241,7 +241,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/item/gun/energy/floragun,
+/obj/effect/spawner/random/pool/spaceloot/zoo,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -417,7 +417,7 @@
 /area/ruin/space/unpowered)
 "aY" = (
 /obj/structure/table/reinforced,
-/obj/item/gun/energy/temperature,
+/obj/effect/spawner/random/pool/spaceloot/zoo,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},

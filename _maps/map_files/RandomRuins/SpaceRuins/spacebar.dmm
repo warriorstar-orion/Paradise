@@ -363,17 +363,7 @@
 /area/ruin/space/powered/bar)
 "ee" = (
 /obj/structure/safe,
-/obj/item/circuitboard/teleporter,
-/obj/item/circuitboard/teleporter_hub{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/obj/item/clothing/suit/hgpirate,
-/obj/item/reagent_containers/drinks/cans/beer/sleepy_beer,
-/obj/item/clothing/gloves/ring/gold,
-/obj/item/id_decal/gold,
-/obj/item/screwdriver,
-/obj/item/toy/plushie/carpplushie/gold,
+/obj/effect/spawner/random/pool/spaceloot/safe_contents/mixed,
 /turf/simulated/floor/plating/asteroid/ancient,
 /area/space/nearstation)
 "eC" = (
@@ -486,6 +476,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/ruin/space/powered/bar)
+"pn" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/mineral/titanium/blue/airless,
+/area/ruin/space/powered)
 "qZ" = (
 /obj/item/caution/proximity_sign,
 /turf/simulated/floor/plasteel{
@@ -1686,7 +1683,7 @@ JK
 bj
 JK
 ak
-ax
+pn
 ax
 aB
 JK

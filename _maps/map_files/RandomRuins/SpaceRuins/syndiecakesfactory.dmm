@@ -551,7 +551,7 @@
 /area/ruin/space/syndicakefactory)
 "uU" = (
 /obj/structure/rack,
-/obj/random/tool,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/engine,
 /area/ruin/space/syndicakefactory)
 "vo" = (
@@ -743,7 +743,7 @@
 /area/template_noop)
 "CR" = (
 /obj/structure/chair/office/dark,
-/mob/living/simple_animal/hostile/syndicate/ranged/space/autogib,
+/obj/effect/spawner/random/pool/spaceloot/modsuit_syndie,
 /turf/simulated/floor/engine,
 /area/ruin/space/syndicakefactory)
 "CW" = (

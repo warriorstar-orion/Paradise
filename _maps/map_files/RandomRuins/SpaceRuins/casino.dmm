@@ -342,18 +342,12 @@
 /area/ruin/space/powered/casino/kitchen)
 "id" = (
 /obj/structure/safe,
-/obj/item/stack/spacecash/c500{
-	pixel_y = -5
-	},
-/obj/item/circuitboard/teleporter_hub{
-	pixel_x = 3;
-	pixel_y = 6
-	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/effect/spawner/random/pool/spaceloot/safe_contents/mixed,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/casino/security)
 "in" = (
