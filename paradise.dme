@@ -1043,6 +1043,7 @@
 #include "code\game\objects\effects\spawners\random\random_spawner.dm"
 #include "code\game\objects\effects\spawners\random\trash_spawners.dm"
 #include "code\game\objects\effects\spawners\random\pool\pool_spawner.dm"
+#include "code\game\objects\effects\spawners\random\pool\space_loot.dm"
 #include "code\game\objects\effects\spawners\random\pool\spawn_pool.dm"
 #include "code\game\objects\effects\spawners\random\pool\spawn_pool_manager.dm"
 #include "code\game\objects\effects\temporary_visuals\clockcult.dm"

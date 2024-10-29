@@ -37,8 +37,14 @@
 			start_showpiece_type = showpiece_entry["type"]
 			if(showpiece_entry["trophy_message"])
 				trophy_message = showpiece_entry["trophy_message"]
-	if(start_showpiece_type)
-		showpiece = new start_showpiece_type(src)
+	new start_showpiece_type(src)
+
+/obj/structure/displaycase/Entered(atom/movable/AM, atom/oldLoc)
+	. = ..()
+	if(length(contents))
+		stack_trace("tried to add [AM] to display case with existing object")
+
+	showpiece = AM
 	update_icon(UPDATE_OVERLAYS)
 
 /obj/structure/displaycase/Destroy()
