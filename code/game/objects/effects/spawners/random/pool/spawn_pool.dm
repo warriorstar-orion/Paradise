@@ -49,7 +49,7 @@
 			qdel(spawner)
 			continue
 
-		log_chat_debug("processing spawner [spawner.type] [COORD(spawner)]")
+		log_chat_debug("[COORD(spawner)] processing spawner [spawner.type]")
 		spawner.spawn_loot()
 		if(length(guaranteed_spawners))
 			WARNING("non-guaranteed spawner [spawner.type] spawned a guaranteed spawner, this should be avoided")
@@ -57,6 +57,6 @@
 
 		qdel(spawner)
 
-	log_chat_debug("finished spawner [id] with [length(known_spawners)] remaining spawners and [available_points] remaining.")
+	log_chat_debug("finished spawner [id] with [length(known_spawners)] remaining spawners and [available_points] points remaining.")
 
 	QDEL_LIST_CONTENTS(known_spawners)

@@ -96,7 +96,7 @@
 	if(deduct_points)
 		pool.consume(point_value)
 
-	log_chat_debug("loc=[x],[y],[z]\tpoint_value=[point_value]\tremaining=[pool.available_points]\ttype_path=[type_path_to_make]")
+	log_chat_debug("[COORD(src)]\tpoint_value=[point_value]\tremaining=[pool.available_points]\ttype_path=[type_path_to_make]")
 
 	if(pool && unique_picks)
 		// We may have multiple instances of a given type so just remove the first instance we find
