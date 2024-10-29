@@ -124,6 +124,15 @@
 /obj/machinery/atmospherics/binary/volume_pump,
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/abandtele)
+"R" = (
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plating/airless,
+/area/ruin/space/abandtele)
+"U" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plating/airless,
+/area/ruin/space/abandtele)
 
 (1,1,1) = {"
 a
@@ -227,9 +236,9 @@ a
 b
 d
 h
-l
+U
 m
-h
+R
 h
 y
 b
@@ -241,10 +250,10 @@ a
 b
 e
 h
-h
+R
 q
 u
-l
+U
 h
 c
 c
@@ -256,8 +265,8 @@ b
 f
 h
 m
-h
-h
+R
+R
 h
 z
 h

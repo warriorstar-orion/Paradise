@@ -551,6 +551,7 @@
 /area/ruin/space/powered/casino/hall)
 "mA" = (
 /obj/structure/table/wood/poker,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/carpet/black,
 /area/ruin/space/powered/casino/floor)
 "mP" = (
@@ -777,6 +778,11 @@
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/casino/security)
+"uk" = (
+/obj/structure/table/wood/fancy,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/wood,
+/area/ruin/space/powered/casino/kitchen)
 "uv" = (
 /obj/structure/girder,
 /turf/simulated/floor/plating,
@@ -2653,7 +2659,7 @@ hM
 TV
 TV
 TV
-IJ
+uk
 dL
 TV
 TV
@@ -2699,7 +2705,7 @@ no
 nT
 TV
 TV
-IJ
+uk
 bH
 TV
 TV

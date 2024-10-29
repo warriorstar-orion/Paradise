@@ -55,5 +55,6 @@
 
 		qdel(spawner)
 
+	log_chat_debug("finished spawner [id] with [length(known_spawners)] remaining spawners and [available_points] remaining.")
 
 	QDEL_LIST_CONTENTS(known_spawners)

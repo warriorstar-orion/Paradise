@@ -1,0 +1,1 @@
+/obj/effect/spawner/random/syndicate/loot/@SUBTYPES : /obj/effect/spawner/random/pool/spaceloot/syndicate/@SUBTYPES/depot
