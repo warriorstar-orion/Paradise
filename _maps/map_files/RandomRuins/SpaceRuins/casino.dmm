@@ -415,6 +415,7 @@
 /area/ruin/space/powered/casino/arrivals)
 "jz" = (
 /obj/structure/closet/cabinet,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered/casino/floor)
 "jJ" = (
@@ -600,6 +601,10 @@
 /obj/item/food/grown/lily,
 /turf/simulated/floor/beach/away/water/deep,
 /area/ruin/space/powered/casino/hall)
+"oh" = (
+/obj/structure/table/wood/poker,
+/turf/simulated/floor/carpet/black,
+/area/ruin/space/powered/casino/floor)
 "oi" = (
 /turf/simulated/wall/mineral/iron,
 /area/ruin/space/powered/casino/teleporter)
@@ -713,6 +718,7 @@
 "rh" = (
 /obj/structure/grille/broken,
 /obj/structure/closet/crate/trashcart,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered/casino/maints)
 "rp" = (
@@ -772,11 +778,6 @@
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/casino/security)
-"uk" = (
-/obj/structure/table/wood/fancy,
-/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
-/turf/simulated/floor/wood,
-/area/ruin/space/powered/casino/kitchen)
 "uv" = (
 /obj/structure/girder,
 /turf/simulated/floor/plating,
@@ -1390,6 +1391,7 @@
 /area/ruin/space/powered/casino/security)
 "KH" = (
 /obj/structure/closet/emcloset,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered/casino/maints)
 "KJ" = (
@@ -1882,6 +1884,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/ruin/space/powered/casino/engine)
+"WL" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8;
+	color = "#888888"
+	},
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/mineral/plastitanium/red,
+/area/ruin/space/powered/casino/docked_ships)
 "WW" = (
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/plating,
@@ -1940,6 +1950,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/ruin/space/powered/casino/engine)
+"YL" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plasteel{
+	icon_state = "showroomfloor"
+	},
+/area/ruin/space/powered/casino/kitchen)
 "Zj" = (
 /obj/structure/table/glass/reinforced,
 /obj/item/ashtray/bronze,
@@ -2170,7 +2187,7 @@ wg
 wg
 Mt
 MG
-MG
+WL
 MG
 Mt
 wg
@@ -2408,7 +2425,7 @@ Yy
 qA
 Yy
 sO
-UO
+YL
 Is
 Is
 Is
@@ -2653,7 +2670,7 @@ hM
 TV
 TV
 TV
-uk
+IJ
 dL
 TV
 TV
@@ -2699,7 +2716,7 @@ no
 nT
 TV
 TV
-uk
+IJ
 bH
 TV
 TV
@@ -3252,7 +3269,7 @@ aD
 ZJ
 Th
 lu
-mA
+oh
 Sk
 mA
 Nj
@@ -3298,9 +3315,9 @@ aD
 ZJ
 Th
 Th
-mA
+oh
 jJ
-mA
+oh
 Th
 Th
 ON

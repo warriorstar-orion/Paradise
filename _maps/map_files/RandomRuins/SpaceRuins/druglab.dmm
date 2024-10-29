@@ -52,7 +52,7 @@
 /area/ruin/space/methlab)
 "l" = (
 /obj/structure/table,
-/obj/item/food/chips,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plating,
 /area/ruin/space/methlab)
 "m" = (
@@ -73,7 +73,13 @@
 /obj/structure/table,
 /obj/item/reagent_containers/glass/beaker/drugs/meth,
 /obj/item/reagent_containers/glass/beaker/drugs/meth,
-/obj/item/reagent_containers/glass/beaker/drugs/meth,
+/obj/item/reagent_containers/glass/beaker/drugs/meth{
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/obj/item/food/chips{
+	pixel_x = 7
+	},
 /turf/simulated/floor/plating,
 /area/ruin/space/methlab)
 "p" = (

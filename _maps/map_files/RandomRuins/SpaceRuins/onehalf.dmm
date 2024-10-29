@@ -616,11 +616,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/onehalf/drone_bay)
-"bz" = (
-/obj/structure/closet/emcloset,
-/obj/effect/mapping_helpers/turfs/damage,
-/turf/simulated/floor/plasteel/airless,
-/area/ruin/space/onehalf/hallway)
 "bA" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/disposalpipe/segment{
@@ -1101,6 +1096,7 @@
 /area/ruin/space/onehalf/abandonedbridge)
 "dd" = (
 /obj/structure/closet/firecloset/full,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/onehalf/abandonedbridge)
 "de" = (
@@ -1229,6 +1225,12 @@
 /mob/living/simple_animal/hostile/carp,
 /turf/template_noop,
 /area/space/nearstation)
+"tM" = (
+/obj/effect/mapping_helpers/turfs/damage,
+/obj/structure/closet/emcloset,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plasteel/airless,
+/area/ruin/space/onehalf/hallway)
 "xr" = (
 /obj/structure/cable{
 	d2 = 8;
@@ -1396,7 +1398,7 @@ aI
 aI
 bf
 bw
-bz
+tM
 bJ
 aa
 aa

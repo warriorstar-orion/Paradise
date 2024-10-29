@@ -117,6 +117,7 @@
 /area/ruin/space/unpowered)
 "aq" = (
 /obj/structure/flora/ausbushes/grassybush,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/grass,
 /area/ruin/space/unpowered)
 "ar" = (
@@ -785,6 +786,11 @@
 /obj/item/shard,
 /turf/space,
 /area/space/nearstation)
+"ll" = (
+/obj/structure/flora/ausbushes/lavendergrass,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/grass,
+/area/ruin/space/unpowered)
 "ov" = (
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/unpowered)
@@ -1110,7 +1116,7 @@ aa
 ac
 am
 am
-ao
+ll
 aB
 ac
 at

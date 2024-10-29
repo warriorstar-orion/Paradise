@@ -280,6 +280,7 @@
 	dir = 8
 	},
 /obj/structure/closet/emcloset,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plating,
 /area/ruin/space/syndicate_druglab)
 "FE" = (

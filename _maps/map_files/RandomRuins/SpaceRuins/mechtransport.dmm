@@ -93,6 +93,7 @@
 	pixel_y = -32
 	},
 /obj/structure/closet/emcloset,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/mineral/plastitanium/red/airless,
 /area/ruin/space/mech_transport)
 "gk" = (
@@ -218,18 +219,6 @@
 	},
 /turf/simulated/floor/mineral/plastitanium/red/airless,
 /area/ruin/space/mech_transport)
-"qE" = (
-/obj/effect/turf_decal/delivery/hollow,
-/obj/structure/sign/nosmoking_1{
-	pixel_y = 0;
-	pixel_x = 32
-	},
-/obj/effect/mapping_helpers/turfs/burn,
-/obj/item/light/tube{
-	status = 2
-	},
-/turf/simulated/floor/plasteel/dark,
-/area/ruin/space/mech_transport)
 "qJ" = (
 /obj/effect/mapping_helpers/turfs/damage,
 /obj/effect/spawner/random/dirt/maybe,
@@ -257,7 +246,6 @@
 "sr" = (
 /obj/structure/rack,
 /obj/item/stack/sheet/glass/fifty{
-	pixel_y = 0;
 	pixel_x = -2
 	},
 /obj/item/stack/sheet/metal/fifty{
@@ -272,6 +260,7 @@
 /area/ruin/space/mech_transport)
 "sY" = (
 /obj/structure/closet,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plating,
 /area/ruin/space/mech_transport)
 "ta" = (
@@ -297,6 +286,11 @@
 /obj/effect/spawner/random/blood/maybe,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/mech_transport)
+"uE" = (
+/obj/structure/closet/crate/secure/loot,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plasteel/dark,
+/area/ruin/space/mech_transport)
 "uU" = (
 /obj/structure/table,
 /obj/item/food/cornchips{
@@ -319,6 +313,17 @@
 /area/ruin/space/mech_transport)
 "vo" = (
 /turf/simulated/wall/mineral/plastitanium,
+/area/ruin/space/mech_transport)
+"wk" = (
+/obj/effect/mapping_helpers/turfs/burn,
+/obj/item/light/tube{
+	status = 2
+	},
+/obj/effect/turf_decal/delivery/hollow,
+/obj/structure/sign/nosmoking_1{
+	pixel_x = 32
+	},
+/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/mech_transport)
 "wo" = (
 /obj/structure/table,
@@ -1410,7 +1415,7 @@ HT
 Nd
 vo
 So
-qE
+wk
 bU
 AE
 dt
@@ -1540,7 +1545,7 @@ vo
 UK
 aZ
 FK
-aZ
+uE
 MK
 vo
 Vj

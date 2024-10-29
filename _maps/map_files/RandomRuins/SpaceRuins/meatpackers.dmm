@@ -1469,13 +1469,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/ruin/unpowered/BMPship/Aft)
-"eM" = (
-/obj/structure/rack,
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/simulated/floor/plasteel,
-/area/ruin/unpowered/BMPship/Aft)
 "eQ" = (
 /obj/machinery/door/airlock/silver,
 /turf/simulated/floor/carpet,
@@ -4947,7 +4940,7 @@ dF
 ed
 ez
 sU
-eM
+sU
 dF
 fw
 cS

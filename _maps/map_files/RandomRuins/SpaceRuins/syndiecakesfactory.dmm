@@ -322,11 +322,6 @@
 	icon_state = "cafeteria"
 	},
 /area/ruin/space/syndicakefactory)
-"nl" = (
-/obj/structure/rack,
-/obj/item/clothing/mask/gas/syndicate,
-/turf/simulated/floor/engine,
-/area/ruin/space/syndicakefactory)
 "nO" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -640,11 +635,6 @@
 	icon_state = "dark"
 	},
 /area/ruin/space/syndicakefactory)
-"xW" = (
-/obj/structure/rack,
-/obj/item/clothing/under/syndicate/silicon_cham,
-/turf/simulated/floor/engine,
-/area/ruin/space/syndicakefactory)
 "yU" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/simulated/floor/plasteel{
@@ -720,11 +710,6 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/turf/simulated/floor/engine,
-/area/ruin/space/syndicakefactory)
-"BR" = (
-/obj/structure/rack,
-/obj/item/clothing/suit/armor/vest,
 /turf/simulated/floor/engine,
 /area/ruin/space/syndicakefactory)
 "Cm" = (
@@ -2064,8 +2049,8 @@ wf
 TG
 pz
 PS
-nl
-BR
+uU
+uU
 up
 BM
 Hh
@@ -2232,7 +2217,7 @@ wf
 TG
 nO
 zo
-xW
+uU
 uU
 wW
 LW

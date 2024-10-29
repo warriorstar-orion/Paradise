@@ -353,15 +353,6 @@ GLOBAL_LIST_EMPTY(telecomms_trap_tank)
 	req_access = list(ACCESS_CAPTAIN)
 	trophy_message = "BEHOLD MY ONE SHINY THING TO LOOK AT. LOOK AT ITS VALUE. REALISE IT IS WORTH SO MUCH MORE THAN YOU PUNY ORGANICS."
 
-/obj/structure/displaycase/dvoraks_treat/Initialize(mapload)
-	if(prob(50))
-		start_showpiece_type = /obj/item/remote_ai_upload
-	else if(prob(25)) // Can't use anomaly/random due to how this works.
-		start_showpiece_type = pick(/obj/item/assembly/signaler/anomaly/pyro, /obj/item/assembly/signaler/anomaly/cryo, /obj/item/assembly/signaler/anomaly/grav, /obj/item/assembly/signaler/anomaly/flux, /obj/item/assembly/signaler/anomaly/bluespace, /obj/item/assembly/signaler/anomaly/vortex)
-	else
-		start_showpiece_type = pick(/obj/item/organ/internal/cyberimp/brain/sensory_enhancer, /obj/item/organ/internal/cyberimp/brain/hackerman_deck, /obj/item/storage/lockbox/experimental_weapon)
-	return ..()
-
 /obj/structure/displaycase/dvoraks_treat/trigger_alarm()
 	for(var/obj/structure/telecomms_doomsday_device/DD in GLOB.telecomms_doomsday_device)
 		DD.thief = TRUE

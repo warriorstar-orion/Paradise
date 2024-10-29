@@ -18,6 +18,21 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/wreck_cargoship)
+"ao" = (
+/obj/effect/mapping_helpers/turfs/damage,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/button/windowtint{
+	pixel_y = -32
+	},
+/obj/structure/closet/crate/secure/loot,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "blackcorner"
+	},
+/area/ruin/space/wreck_cargoship)
 "aW" = (
 /obj/structure/fans/tiny,
 /obj/effect/turf_decal/delivery,
@@ -524,8 +539,7 @@
 	dir = 1
 	},
 /obj/structure/closet/crate,
-/obj/item/clothing/under/syndicate,
-/obj/item/clothing/under/syndicate,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plasteel{
 	icon_state = "black"
 	},
@@ -590,6 +604,7 @@
 /area/ruin/space/wreck_cargoship)
 "uV" = (
 /obj/structure/closet/crate/secure/loot,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plasteel{
 	icon_state = "titanium";
 	dir = 4
@@ -784,6 +799,7 @@
 "Fk" = (
 /obj/structure/closet/crate,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plasteel{
 	icon_state = "yellowsiding";
 	dir = 1
@@ -1070,20 +1086,6 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "titanium";
 	dir = 4
-	},
-/area/ruin/space/wreck_cargoship)
-"Se" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/turfs/damage,
-/obj/machinery/button/windowtint{
-	pixel_y = -32
-	},
-/obj/structure/closet/crate/secure/loot,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "blackcorner"
 	},
 /area/ruin/space/wreck_cargoship)
 "Sj" = (
@@ -1685,7 +1687,7 @@ gE
 dk
 UQ
 LF
-Se
+ao
 gE
 hO
 hD

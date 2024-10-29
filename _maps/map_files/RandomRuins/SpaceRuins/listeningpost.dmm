@@ -15,6 +15,7 @@
 /obj/item/storage/toolbox/syndicate,
 /obj/structure/closet/syndicate,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plating,
 /area/ruin/space/syndicate_listening_station)
 "cB" = (
