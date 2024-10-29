@@ -50,7 +50,6 @@
 /obj/effect/spawner/random/pool/spaceloot/syndicate/common
 	name = "syndicate depot loot, common"
 	icon_state = "loot"
-	spawn_loot_chance = 50
 	point_value = 10
 	loot = list(
 		// Loot schema: costumes, toys, useless gimmick items
@@ -70,6 +69,7 @@
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/common/depot
 	spawn_inside = /obj/structure/closet/secure_closet/syndicate/depot
+	spawn_loot_chance = 50
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/stetchkin
 	name = "syndicate depot loot, 20pct stetchkin"
@@ -81,7 +81,6 @@
 /obj/effect/spawner/random/pool/spaceloot/syndicate/rare
 	name = "syndicate depot loot, rare"
 	icon_state = "doubleloot"
-	spawn_loot_chance = 50
 	point_value = 50
 	// Basic stealth, utility and environmental gear.
 	loot = list(
@@ -115,10 +114,10 @@
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/rare/depot
 	spawn_inside = /obj/structure/closet/secure_closet/syndicate/depot
+	spawn_loot_chance = 50
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/officer
 	name = "syndicate depot loot, officer"
-	spawn_loot_chance = 40
 	point_value = 100
 	// Primarily utility items with occasional low damage weaponry.
 	loot = list(
@@ -143,6 +142,7 @@
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/officer/depot
 	spawn_inside = /obj/structure/closet/secure_closet/syndicate/depot
+	spawn_loot_chance = 40
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/armory
 	name = "syndicate depot loot, armory"
