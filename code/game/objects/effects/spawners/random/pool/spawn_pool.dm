@@ -28,6 +28,7 @@
 /datum/spawn_pool/proc/process_guaranteed_spawners()
 	while(length(guaranteed_spawners))
 		var/obj/effect/spawner/random/pool/spawner = guaranteed_spawners[length(guaranteed_spawners)]
+		log_chat_debug("processing guaranteed spawner [spawner.type] [COORD(spawner)]")
 		guaranteed_spawners.len--
 		spawner.spawn_loot()
 		qdel(spawner)

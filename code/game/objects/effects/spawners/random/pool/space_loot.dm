@@ -204,6 +204,7 @@
 /obj/effect/spawner/random/pool/spaceloot/safe_contents/safe1
 	spawn_all_loot = TRUE
 	spawn_loot_double = FALSE
+	guaranteed = TRUE
 	loot = list(
 		/obj/item/tank/internals/oxygen/red,
 		/obj/item/clothing/mask/gas/syndicate,
@@ -215,6 +216,7 @@
 
 /obj/effect/spawner/random/pool/spaceloot/safe_contents/safe2
 	spawn_all_loot = TRUE
+	guaranteed = TRUE
 	loot = list(
 		/obj/item/gun/projectile/revolver/doublebarrel,
 		/obj/item/stack/spacecash/c500,
@@ -223,6 +225,7 @@
 
 /obj/effect/spawner/random/pool/spaceloot/safe_contents/safe3
 	spawn_all_loot = TRUE
+	guaranteed = TRUE
 	loot = list(
 		/obj/item/stack/spacecash/c500,
 		/obj/item/circuitboard/teleporter_hub,
@@ -230,6 +233,7 @@
 
 /obj/effect/spawner/random/pool/spaceloot/safe_contents/safe4
 	spawn_all_loot = TRUE
+	guaranteed = TRUE
 	loot = list(
 		/obj/item/stack/spacecash/c200,
 		/obj/item/stack/sheet/mineral/gold/fifty,
@@ -239,6 +243,7 @@
 
 /obj/effect/spawner/random/pool/spaceloot/safe_contents/safe5
 	spawn_all_loot = TRUE
+	guaranteed = TRUE
 	loot = list(
 		/obj/item/circuitboard/teleporter,
 		/obj/item/circuitboard/teleporter_hub,

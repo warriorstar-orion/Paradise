@@ -69,6 +69,7 @@
 	if(!pool)
 		stack_trace("Could not find spawn pool with ID [spawn_pool_id]")
 
+	// Nested spawners are always safe but still need to check affordability
 	if(ispath(type_path_to_make, /obj/effect/spawner/random/pool))
 		return TRUE
 
@@ -95,6 +96,8 @@
 
 	if(deduct_points)
 		pool.consume(point_value)
+
+	log_chat_debug("loc=[x],[y],[z]\tpoint_value=[point_value]\tremaining=[pool.available_points]\ttype_path=[type_path_to_make]")
 
 	if(pool && unique_picks)
 		// We may have multiple instances of a given type so just remove the first instance we find
