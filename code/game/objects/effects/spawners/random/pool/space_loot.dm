@@ -168,8 +168,8 @@
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/mixed
 	loot = list(
-		/obj/effect/spawner/random/pool/spaceloot/syndicate/common = 8,
-		/obj/effect/spawner/random/pool/spaceloot/syndicate/rare = 4,
+		/obj/effect/spawner/random/pool/spaceloot/syndicate/common = 15,
+		/obj/effect/spawner/random/pool/spaceloot/syndicate/rare = 5,
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/stetchkin = 3,
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/officer = 2,
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/armory = 1,
@@ -190,7 +190,6 @@
 	loot = list(/mob/living/simple_animal/hostile/syndicate/ranged/space/autogib)
 
 /obj/effect/spawner/random/pool/spaceloot/safe_contents/mixed
-	point_value = 50
 	unique_picks = TRUE
 	guaranteed = TRUE
 	loot = list(
