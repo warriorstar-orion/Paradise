@@ -20,13 +20,19 @@
 	},
 /area/shuttle/arrival/station)
 "i" = (
-/obj/machinery/atmospherics/portable/canister/sleeping_agent,
-/obj/machinery/atmospherics/unary/portables_connector{
-	dir = 1
+/obj/machinery/atmospherics/pipe/manifold/visible{
+	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkred"
 	},
+/area/shuttle/arrival/station)
+"l" = (
+/obj/machinery/atmospherics/unary/portables_connector{
+	dir = 4
+	},
+/obj/machinery/atmospherics/portable/canister/sleeping_agent,
+/turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "m" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -53,12 +59,6 @@
 /area/shuttle/arrival/station)
 "r" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
 /turf/simulated/floor/plating,
 /area/shuttle/arrival/station)
 "u" = (
@@ -101,6 +101,13 @@
 /obj/effect/landmark/spawner/roundstart_observer,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
+"P" = (
+/obj/machinery/atmospherics/portable/canister/sleeping_agent,
+/obj/machinery/atmospherics/unary/portables_connector{
+	dir = 1
+	},
+/turf/simulated/floor/mineral/titanium/blue,
+/area/shuttle/arrival/station)
 "U" = (
 /obj/machinery/light{
 	dir = 4
@@ -115,8 +122,12 @@
 /area/shuttle/arrival/station)
 "X" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "red"
 	},
@@ -34443,11 +34454,11 @@ u
 x
 x
 q
-x
 W
 x
 x
 x
+l
 x
 x
 x
@@ -34705,7 +34716,7 @@ r
 c
 Z
 i
-x
+P
 x
 x
 x
@@ -34957,8 +34968,8 @@ u
 x
 x
 G
-x
 B
+x
 x
 x
 x
