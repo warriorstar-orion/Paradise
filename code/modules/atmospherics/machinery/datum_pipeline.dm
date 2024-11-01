@@ -8,6 +8,7 @@
 	var/update = TRUE
 
 /datum/pipeline/New()
+	log_chat_debug("/datum/pipeline::[UID()]/proc/New")
 	SSair.pipenets += src
 
 /datum/pipeline/Destroy()
@@ -32,6 +33,7 @@
 	return
 
 /datum/pipeline/proc/build_pipeline(obj/machinery/atmospherics/base)
+	log_chat_debug("/datum/pipeline::[UID()]/proc/build_pipeline")
 	var/volume = 0
 	var/list/ghost_pipelines = list()
 	if(istype(base, /obj/machinery/atmospherics/pipe))
