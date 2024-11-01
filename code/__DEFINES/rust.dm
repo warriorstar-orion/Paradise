@@ -86,6 +86,20 @@
 /proc/mapmanip_read_dmm(mapname)
 	return RUSTLIB_CALL(mapmanip_read_dmm_file, mapname)
 
+/proc/mapload_apply_varedits(atom/A)
+	return RUSTLIB_CALL(mapload_apply_varedits, A, "[A.type]")
+
+/proc/mapload_materialize(map_path, x, y, z)
+	GLOB.space_manager.add_dirt(z)
+	var/datum/mapload_load_rect/rect = RUSTLIB_CALL(mapload_materialize, map_path, x, y, z)
+	GLOB.space_manager.remove_dirt(z)
+	var/datum/milla_safe/late_setup_level/milla = new()
+	milla.invoke_async(
+		block(rect.bottom_left, rect.top_right),
+		block(rect.smoothing_bottom_left, rect.smoothing_top_right))
+
+	return rect
+
 #undef RUSTLIB
 #undef RUSTLIB_CALL
 

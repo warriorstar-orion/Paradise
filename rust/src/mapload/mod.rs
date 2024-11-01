@@ -109,7 +109,7 @@ fn const_to_byond(constant: &Constant) -> ByondValue {
 }
 
 #[byondapi::bind]
-fn test_apply_varedits(mut src: ByondValue, srctype: ByondValue) {
+fn mapload_apply_varedits(mut src: ByondValue, srctype: ByondValue) {
     setup_panic_handler();
 
     if PENDING_VAREDITS.read().unwrap().pending.is_empty() {
@@ -177,7 +177,7 @@ fn test_apply_varedits(mut src: ByondValue, srctype: ByondValue) {
 // }
 
 #[byondapi::bind]
-fn test_read(mappath: ByondValue, x: ByondValue, y: ByondValue, z: ByondValue) {
+fn mapload_materialize(mappath: ByondValue, x: ByondValue, y: ByondValue, z: ByondValue) {
     setup_panic_handler();
     let origin_x = x.get_number()? as i16;
     let origin_y = y.get_number()? as i16;
@@ -288,7 +288,7 @@ fn test_read(mappath: ByondValue, x: ByondValue, y: ByondValue, z: ByondValue) {
 
         let (width, height, _) = dmm.dim_xyz();
         let mut bounds =
-            ByondValue::builtin_new(ByondValue::new_str("/datum/rustdmm_load_rect")?, &[])?;
+            ByondValue::builtin_new(ByondValue::new_str("/datum/mapload_load_rect")?, &[])?;
 
         let bottom_left_coords = ByondXYZ::with_coords((origin_x, origin_y, origin_z));
         let top_right_coords =
