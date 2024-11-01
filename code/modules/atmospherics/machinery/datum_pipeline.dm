@@ -12,6 +12,7 @@
 	SSair.pipenets += src
 
 /datum/pipeline/Destroy()
+	log_chat_debug("/datum/pipeline::[UID()]/proc/Destroy")
 	SSair.pipenets -= src
 	var/datum/gas_mixture/ghost = null
 	if(air && air.volume)
@@ -60,10 +61,11 @@
 						if(!members.Find(item))
 
 							if(item.parent)
-								log_chat_debug("[item.type] \[\ref[item]] added to a pipenet while still having one ([item.parent]) (pipes leading to the same spot stacking in one turf). Nearby: [item.x], [item.y], [item.z].")
+								log_chat_debug("[item.type]::[item.UID()] added to a pipenet::[UID()] while still having one ([item.parent.UID()]) (pipes leading to the same spot stacking in one turf). [COORD(item)].")
 							members += item
 							possible_expansions += item
 
+							log_chat_debug("/datum/pipeline::[UID()]/proc/build_pipeline: parenting [item.type]::[item.UID()]")
 							volume += item.volume
 							item.parent = src
 
@@ -97,6 +99,7 @@
 /datum/pipeline/proc/addMember(obj/machinery/atmospherics/A, obj/machinery/atmospherics/N)
 	update = TRUE
 	if(istype(A, /obj/machinery/atmospherics/pipe))
+		log_chat_debug("/datum/pipeline::[UID()]/proc/addMember(A=[A.type]@[COORD(A)], N=[N.type]@[COORD(N)])")
 		var/obj/machinery/atmospherics/pipe/P = A
 		P.parent = src
 		var/list/adjacent = P.pipeline_expansion()
@@ -113,6 +116,7 @@
 		addMachineryMember(A)
 
 /datum/pipeline/proc/merge(datum/pipeline/E)
+	log_chat_debug("/datum/pipeline::[UID()]/proc/merge(E=[E.UID()])")
 	air.volume += E.air.volume
 	members.Add(E.members)
 	for(var/obj/machinery/atmospherics/pipe/S in E.members)

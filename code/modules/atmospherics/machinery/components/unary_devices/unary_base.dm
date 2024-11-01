@@ -78,6 +78,7 @@
 	return list(node)
 
 /obj/machinery/atmospherics/unary/setPipenet(datum/pipeline/P)
+	log_chat_debug("/obj/machinery/atmospherics/unary::[UID()]/proc/setPipenet(P=[P.UID()])")
 	parent = P
 
 /obj/machinery/atmospherics/unary/returnPipenet()
@@ -85,6 +86,7 @@
 
 /obj/machinery/atmospherics/unary/replacePipenet(datum/pipeline/Old, datum/pipeline/New)
 	if(Old == parent)
+		log_chat_debug("/obj/machinery/atmospherics/unary::[UID()]/proc/replacePipenet(Old=[Old.UID()], New=[New.UID()])")
 		parent = New
 
 /obj/machinery/atmospherics/unary/unsafe_pressure_release(mob/user, pressures)
