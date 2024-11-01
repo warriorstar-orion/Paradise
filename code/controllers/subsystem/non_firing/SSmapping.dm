@@ -260,7 +260,7 @@ SUBSYSTEM_DEF(mapping)
 	var/map_z_level = GLOB.space_manager.add_new_zlevel(MAIN_STATION, linkage = CROSSLINKED, traits = list(STATION_LEVEL, STATION_CONTACT, REACHABLE_BY_CREW, REACHABLE_SPACE_ONLY, AI_OK))
 	var/watch = start_watch()
 	log_startup_progress("Loading [map_datum.fluff_name]...")
-	mapload_materialize(map_datum.map_path, 1, 1, map_z_level)
+	dmm_import_materialize(map_datum.map_path, 1, 1, map_z_level)
 	// GLOB.maploader.load_map(wrap_file(map_datum.map_path), z_offset = map_z_level)
 	log_startup_progress("Loaded [map_datum.fluff_name] in [stop_watch(watch)]s")
 

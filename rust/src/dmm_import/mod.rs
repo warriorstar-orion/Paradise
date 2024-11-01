@@ -109,7 +109,7 @@ fn const_to_byond(constant: &Constant) -> ByondValue {
 }
 
 #[byondapi::bind]
-fn mapload_apply_varedits(mut src: ByondValue, srctype: ByondValue) {
+fn dmm_import_apply_varedits(mut src: ByondValue, srctype: ByondValue) {
     setup_panic_handler();
 
     if PENDING_VAREDITS.read().unwrap().pending.is_empty() {
@@ -177,7 +177,7 @@ fn mapload_apply_varedits(mut src: ByondValue, srctype: ByondValue) {
 // }
 
 #[byondapi::bind]
-fn mapload_materialize(mappath: ByondValue, x: ByondValue, y: ByondValue, z: ByondValue) {
+fn dmm_import_materialize(mappath: ByondValue, x: ByondValue, y: ByondValue, z: ByondValue) {
     setup_panic_handler();
     let origin_x = x.get_number()? as i16;
     let origin_y = y.get_number()? as i16;
@@ -288,7 +288,7 @@ fn mapload_materialize(mappath: ByondValue, x: ByondValue, y: ByondValue, z: Byo
 
         let (width, height, _) = dmm.dim_xyz();
         let mut bounds =
-            ByondValue::builtin_new(ByondValue::new_str("/datum/mapload_load_rect")?, &[])?;
+            ByondValue::builtin_new(ByondValue::new_str("/datum/dmm_import_load_rect")?, &[])?;
 
         let bottom_left_coords = ByondXYZ::with_coords((origin_x, origin_y, origin_z));
         let top_right_coords =
@@ -297,25 +297,25 @@ fn mapload_materialize(mappath: ByondValue, x: ByondValue, y: ByondValue, z: Byo
         let bottom_left = byond_locatexyz(bottom_left_coords)?;
         let top_right = byond_locatexyz(top_right_coords)?;
 
-        if let Ok(turfs) = byond_block(bottom_left_coords, top_right_coords) {
-            for turf in turfs {
-                if let Ok(changing_turf) = turf.read_number("changing_turf") {
-                    if changing_turf != 0f32 {
-                        let args: [ByondValue; 2] = [
-                            ByondValue::new_num(1f32), // ignore_air = TRUE
-                            ByondValue::new_num(1f32), // keep_cabling = TRUE
-                        ];
-                        if let Err(e) = turf.call("AfterChange", &args) {
-                            let _ = call_global(
-                                "log_chat_debug",
-                                &[ByondValue::new_str(format!("AfterChange failed: e={}", e))
-                                    .unwrap()],
-                            );
-                        }
-                    }
-                }
-            }
-        }
+        // if let Ok(turfs) = byond_block(bottom_left_coords, top_right_coords) {
+        //     for turf in turfs {
+        //         if let Ok(changing_turf) = turf.read_number("changing_turf") {
+        //             if changing_turf != 0f32 {
+        //                 let args: [ByondValue; 2] = [
+        //                     ByondValue::new_num(1f32), // ignore_air = TRUE
+        //                     ByondValue::new_num(1f32), // keep_cabling = TRUE
+        //                 ];
+        //                 if let Err(e) = turf.call("AfterChange", &args) {
+        //                     let _ = call_global(
+        //                         "log_chat_debug",
+        //                         &[ByondValue::new_str(format!("AfterChange failed: e={}", e))
+        //                             .unwrap()],
+        //                     );
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
 
         let smoothing_bottom_left = byond_locatexyz(ByondXYZ::with_coords((
             origin_x - 1,
