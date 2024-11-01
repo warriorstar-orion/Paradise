@@ -208,11 +208,7 @@ fn dmm_import_materialize(mappath: ByondValue, x: ByondValue, y: ByondValue, z: 
 
                     let loc = match byond_locatexyz(loc_coords) {
                         Ok(l) => l,
-                        Err(e) => call_global(
-                            "log_chat_debug",
-                            &[ByondValue::new_str(format!("failed to create loc e={}", e))
-                                .unwrap()],
-                        )?,
+                        Err(e) => log_debug(format!("failed to create loc e={}", e))?,
                     };
 
                     if !prefab.vars.is_empty() {
@@ -223,14 +219,7 @@ fn dmm_import_materialize(mappath: ByondValue, x: ByondValue, y: ByondValue, z: 
                                 ByondValue::new_str(var_name.as_bytes()).unwrap(),
                                 val,
                             ) {
-                                let _ = call_global(
-                                    "log_chat_debug",
-                                    &[ByondValue::new_str(format!(
-                                        "failed to create prefab_vars e={}",
-                                        e
-                                    ))
-                                    .unwrap()],
-                                );
+                                let _ = log_debug(format!("failed to create prefab_vars e={}", e));
                             }
                         });
                         let pending_varedit = PendingVaredit {
