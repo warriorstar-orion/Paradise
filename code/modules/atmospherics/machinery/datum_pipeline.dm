@@ -33,8 +33,11 @@
 		reconcile_air()
 	return
 
+#define TOTAL_TYPE(src) "[src ? "[src.type]::[src.UID()]@[COORD(src)]" : "unknown atom"]"
+
+// "[src ? "([src.x],[src.y],[src.z])" : "nonexistent location"]"
 /datum/pipeline/proc/build_pipeline(obj/machinery/atmospherics/base)
-	log_chat_debug("/datum/pipeline::[UID()]/proc/build_pipeline")
+	log_chat_debug("/datum/pipeline::[UID()]/proc/build_pipeline(base=[TOTAL_TYPE(base)]")
 	var/volume = 0
 	var/list/ghost_pipelines = list()
 	if(istype(base, /obj/machinery/atmospherics/pipe))
@@ -61,11 +64,13 @@
 						if(!members.Find(item))
 
 							if(item.parent)
-								log_chat_debug("[item.type]::[item.UID()] added to a pipenet::[UID()] while still having one ([item.parent.UID()]) (pipes leading to the same spot stacking in one turf). [COORD(item)].")
+								var/msg = "[TOTAL_TYPE(item)] added to a pipenet::[UID()] while still having one ([item.parent.UID()]) (pipes leading to the same spot stacking in one turf)"
+								log_chat_debug(msg)
+								stack_trace(msg)
 							members += item
 							possible_expansions += item
 
-							log_chat_debug("/datum/pipeline::[UID()]/proc/build_pipeline: parenting [item.type]::[item.UID()]")
+							log_chat_debug("/datum/pipeline::[UID()]/proc/build_pipeline: parenting [TOTAL_TYPE(item)]")
 							volume += item.volume
 							item.parent = src
 
@@ -99,7 +104,7 @@
 /datum/pipeline/proc/addMember(obj/machinery/atmospherics/A, obj/machinery/atmospherics/N)
 	update = TRUE
 	if(istype(A, /obj/machinery/atmospherics/pipe))
-		log_chat_debug("/datum/pipeline::[UID()]/proc/addMember(A=[A.type]@[COORD(A)], N=[N.type]@[COORD(N)])")
+		log_chat_debug("/datum/pipeline::[UID()]/proc/addMember(A=[TOTAL_TYPE(A)], N=[TOTAL_TYPE(N)]")
 		var/obj/machinery/atmospherics/pipe/P = A
 		P.parent = src
 		var/list/adjacent = P.pipeline_expansion()
@@ -120,6 +125,7 @@
 	air.volume += E.air.volume
 	members.Add(E.members)
 	for(var/obj/machinery/atmospherics/pipe/S in E.members)
+		log_chat_debug("/datum/pipeline::[UID()]/proc/merge: parenting S=[TOTAL_TYPE(S)]")
 		S.parent = src
 	air.merge(E.air)
 	for(var/obj/machinery/atmospherics/A in E.other_atmosmch)
