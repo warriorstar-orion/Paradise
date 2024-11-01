@@ -8,6 +8,7 @@ pub(crate) const AREA_TEMPLATE_NOOP: &str = "/area/template_noop";
 pub(crate) const TURF_TEMPLATE_NOOP: &str = "/turf/template_noop";
 
 use std::{
+    borrow::BorrowMut,
     collections::HashMap,
     path::PathBuf,
     sync::{Mutex, OnceLock, RwLock},
@@ -73,7 +74,7 @@ pub(crate) static MAP_CACHE: OnceLock<MapCache> = OnceLock::new();
 // pub(crate) static UNIQUE_AREAS: OnceLock<UniqueAreas> = OnceLock::new();
 
 fn log_debug(msg: String) -> Result<ByondValue, byondapi::Error> {
-    call_global("log_debug", &[ByondValue::new_str(msg).unwrap()])
+    call_global("log_chat_debug", &[ByondValue::new_str(msg).unwrap()])
 }
 
 fn const_to_byond(constant: &Constant) -> ByondValue {
@@ -202,7 +203,11 @@ fn dmm_import_materialize(mappath: ByondValue, x: ByondValue, y: ByondValue, z: 
                     ));
                     // call_global(
                     //     "log_chat_debug",
-                    //     &[ByondValue::new_str(format!("loc_coords={:?}", loc_coords)).unwrap()],
+                    //     &[ByondValue::new_str(format!(
+                    //         "path={:?} loc_coords={:?}",
+                    //         prefab.path, loc_coords
+                    //     ))
+                    //     .unwrap()],
                     // )?;
 
                     let loc = match byond_locatexyz(loc_coords) {
@@ -245,43 +250,78 @@ fn dmm_import_materialize(mappath: ByondValue, x: ByondValue, y: ByondValue, z: 
                         //     ))?],
                         // );
 
-                        match PENDING_VAREDITS.try_write() {
-                            Ok(mut lock) => {
-                                lock.pending.push(pending_varedit);
-                            }
-                            Err(e) => {
-                                let _ = call_global(
-                                    "log_chat_debug",
-                                    &[ByondValue::new_str(format!(
-                                        "failed to acquire write to push pending: {}",
-                                        e
-                                    ))
-                                    .unwrap()],
-                                );
-                            }
-                        }
+                        // match PENDING_VAREDITS.try_write() {
+                        //     Ok(mut lock) => {
+                        //         lock.pending.push(pending_varedit);
+                        //     }
+                        //     Err(e) => {
+                        //         let _ = call_global(
+                        //             "log_chat_debug",
+                        //             &[ByondValue::new_str(format!(
+                        //                 "failed to acquire write to push pending: {}",
+                        //                 e
+                        //             ))
+                        //             .unwrap()],
+                        //         );
+                        //     }
+                        // }
                     }
 
-                    if !prefab.vars.is_empty()
-                        && (prefab.path.starts_with("/turf/") || prefab.path.eq("/turf"))
-                    {
-                        // How do you pass positional and named args together? Who knows!
-                        // Better hope this signature doesn't change, asshole!
-                        let args: [ByondValue; 5] = [
-                            ByondValue::new_str(prefab.path.as_bytes())?, // path
-                            ByondValue::new_num(1f32),                    // defer_change = TRUE
-                            ByondValue::new_num(0f32),                    // keep_icon = FALSE
-                            ByondValue::new_num(0f32),                    // ignore_air = FALSE
-                            ByondValue::new_num(0f32), // copy_existing_baseturf = FALSE
-                        ];
-                        if let Err(e) = loc.call("ChangeTurf", &args) {
-                            log_debug(format!("ChangeTurf failed: {}", e));
+                    match ByondValue::builtin_new(
+                        ByondValue::try_from(prefab.path.clone())?,
+                        &[loc],
+                    ) {
+                        Ok(mut result) => {
+                            if !prefab.vars.is_empty() {
+                                prefab.vars.iter().for_each(|(var_name, var_value)| {
+                                    let val = const_to_byond(var_value);
+                                    if (prefab.path.starts_with(
+                                        "/obj/machinery/atmospherics/pipe/manifold/visible",
+                                    )) {
+                                        log_debug(format!(
+                                            "path={:?} loc_coords={:?} var={:?} val={:?}",
+                                            prefab.path, loc_coords, var_name, val
+                                        ));
+                                    }
+                                    result.write_var(var_name.as_bytes(), &val);
+                                });
+                            }
+                            // call_global(
+                            //     "log_chat_debug",
+                            //     &[ByondValue::new_str(format!(
+                            //         "path={:?} loc_coords={:?} got result={:?}",
+                            //         prefab.path,
+                            //         loc_coords,
+                            //         result.get_ref()
+                            //     ))
+                            //     .unwrap()],
+                            // )?;
                         }
-                    } else if let Err(e) =
-                        ByondValue::builtin_new(ByondValue::try_from(prefab.path.clone())?, &[loc])
-                    {
-                        log_debug(format!("failed to create {}: {}", prefab.path, e));
-                    }
+                        Err(e) => {
+                            log_debug(format!("failed to create {}: {}", prefab.path, e));
+                        }
+                    };
+
+                    // if !prefab.vars.is_empty()
+                    // && (prefab.path.starts_with("/turf/") || prefab.path.eq("/turf"))
+                    // {
+                    //     // How do you pass positional and named args together? Who knows!
+                    //     // Better hope this signature doesn't change, asshole!
+                    //     let args: [ByondValue; 5] = [
+                    //         ByondValue::new_str(prefab.path.as_bytes())?, // path
+                    //         ByondValue::new_num(1f32),                    // defer_change = TRUE
+                    //         ByondValue::new_num(0f32),                    // keep_icon = FALSE
+                    //         ByondValue::new_num(0f32),                    // ignore_air = FALSE
+                    //         ByondValue::new_num(0f32), // copy_existing_baseturf = FALSE
+                    //     ];
+                    //     if let Err(e) = loc.call("ChangeTurf", &args) {
+                    //         log_debug(format!("ChangeTurf failed: {}", e));
+                    //     }
+                    // } else if let Err(e) =
+                    //     ByondValue::builtin_new(ByondValue::try_from(prefab.path.clone())?, &[loc])
+                    // {
+                    //     log_debug(format!("failed to create {}: {}", prefab.path, e));
+                    // }
                 }
             }
         }
@@ -297,25 +337,25 @@ fn dmm_import_materialize(mappath: ByondValue, x: ByondValue, y: ByondValue, z: 
         let bottom_left = byond_locatexyz(bottom_left_coords)?;
         let top_right = byond_locatexyz(top_right_coords)?;
 
-        // if let Ok(turfs) = byond_block(bottom_left_coords, top_right_coords) {
-        //     for turf in turfs {
-        //         if let Ok(changing_turf) = turf.read_number("changing_turf") {
-        //             if changing_turf != 0f32 {
-        //                 let args: [ByondValue; 2] = [
-        //                     ByondValue::new_num(1f32), // ignore_air = TRUE
-        //                     ByondValue::new_num(1f32), // keep_cabling = TRUE
-        //                 ];
-        //                 if let Err(e) = turf.call("AfterChange", &args) {
-        //                     let _ = call_global(
-        //                         "log_chat_debug",
-        //                         &[ByondValue::new_str(format!("AfterChange failed: e={}", e))
-        //                             .unwrap()],
-        //                     );
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
+        if let Ok(turfs) = byond_block(bottom_left_coords, top_right_coords) {
+            for turf in turfs {
+                if let Ok(changing_turf) = turf.read_number("changing_turf") {
+                    if changing_turf != 0f32 {
+                        let args: [ByondValue; 2] = [
+                            ByondValue::new_num(1f32), // ignore_air = TRUE
+                            ByondValue::new_num(1f32), // keep_cabling = TRUE
+                        ];
+                        if let Err(e) = turf.call("AfterChange", &args) {
+                            let _ = call_global(
+                                "log_chat_debug",
+                                &[ByondValue::new_str(format!("AfterChange failed: e={}", e))
+                                    .unwrap()],
+                            );
+                        }
+                    }
+                }
+            }
+        }
 
         let smoothing_bottom_left = byond_locatexyz(ByondXYZ::with_coords((
             origin_x - 1,

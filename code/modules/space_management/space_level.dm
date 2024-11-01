@@ -39,6 +39,7 @@
 	return ..()
 
 /datum/space_level/proc/build_space_destination_arrays()
+	log_chat_debug("/datum/space_level/proc/build_space_destination_arrays()")
 	// We skip `add_to_transit` here because we want to skip the checks in order to save time
 	// Bottom border
 	for(var/turf/space/S in block(locate(1,1,zpos),locate(world.maxx,TRANSITION_BORDER_SOUTH,zpos)))
@@ -95,6 +96,7 @@
 		transit_east -= S
 
 /datum/space_level/proc/apply_transition(turf/space/S)
+	log_chat_debug("/datum/space_level/proc/apply_transition([S.type]@[COORD(S)])")
 	if(src in GLOB.space_manager.unbuilt_space_transitions)
 		return // Let the space manager handle this one
 	switch(linkage)

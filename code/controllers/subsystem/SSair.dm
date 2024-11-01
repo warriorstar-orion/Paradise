@@ -453,6 +453,7 @@ SUBSYSTEM_DEF(air)
 //	all atmos machinery has to initalize before the first
 //	pipenet can be built.
 /datum/controller/subsystem/air/proc/setup_pipenets(list/pipes)
+	log_chat_debug("Initializing pipenets.")
 	var/watch = start_watch()
 	log_startup_progress("Initializing pipe pipenets...")
 	var/count = _setup_pipenets(pipes)

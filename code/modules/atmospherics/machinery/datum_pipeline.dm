@@ -58,7 +58,7 @@
 						if(!members.Find(item))
 
 							if(item.parent)
-								stack_trace("[item.type] \[\ref[item]] added to a pipenet while still having one ([item.parent]) (pipes leading to the same spot stacking in one turf). Nearby: [item.x], [item.y], [item.z].")
+								log_chat_debug("[item.type] \[\ref[item]] added to a pipenet while still having one ([item.parent]) (pipes leading to the same spot stacking in one turf). Nearby: [item.x], [item.y], [item.z].")
 							members += item
 							possible_expansions += item
 

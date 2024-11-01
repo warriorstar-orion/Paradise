@@ -75,6 +75,10 @@
 	output_dir = WEST
 	speed_process = TRUE
 
+/obj/machinery/mineral/stacking_machine/Initialize(mapload)
+	. = ..()
+	log_chat_debug("stacking machine @[COORD(src)]")
+
 /obj/machinery/mineral/stacking_machine/Destroy()
 	QDEL_LIST_CONTENTS(stack_list)
 	if(console)

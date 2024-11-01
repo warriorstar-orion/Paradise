@@ -90,13 +90,13 @@
 	return RUSTLIB_CALL(dmm_import_apply_varedits, A, "[A.type]")
 
 /proc/dmm_import_materialize(map_path, x, y, z)
-	GLOB.space_manager.add_dirt(z)
+	// GLOB.space_manager.add_dirt(z)
 	var/datum/dmm_import_load_rect/rect = RUSTLIB_CALL(dmm_import_materialize, map_path, x, y, z)
-	GLOB.space_manager.remove_dirt(z)
-	var/datum/milla_safe/late_setup_level/milla = new()
-	milla.invoke_async(
-		block(rect.bottom_left, rect.top_right),
-		block(rect.smoothing_bottom_left, rect.smoothing_top_right))
+	// GLOB.space_manager.remove_dirt(z)
+	// var/datum/milla_safe/late_setup_level/milla = new()
+	// milla.invoke_async(
+	// 	block(rect.bottom_left, rect.top_right),
+	// 	block(rect.smoothing_bottom_left, rect.smoothing_top_right))
 
 	return rect
 

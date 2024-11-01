@@ -131,9 +131,11 @@
 
 /atom/New(loc, ...)
 	SHOULD_CALL_PARENT(TRUE)
-	if(!dmm_import_apply_varedits(src) && GLOB.use_preloader && (src.type == GLOB._preloader.target_path))
-		GLOB._preloader.load(src)
+	// if(!dmm_import_apply_varedits(src) && GLOB.use_preloader && (src.type == GLOB._preloader.target_path))
+	// 	GLOB._preloader.load(src)
 	. = ..()
+	if(!istype(src, /turf) && !istype(src, /atom))
+		log_chat_debug("Attempting init [src.type]@[COORD(src)]")
 	attempt_init(arglist(args))
 
 // This is distinct from /tg/ because of our space management system
