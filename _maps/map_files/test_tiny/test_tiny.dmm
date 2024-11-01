@@ -13,68 +13,30 @@
 /area/shuttle/arrival/station)
 "c" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
+/obj/machinery/atmospherics/meter,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkred"
-	},
-/area/shuttle/arrival/station)
-"d" = (
-/obj/machinery/hologram/holopad,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/shuttle/arrival/station)
-"e" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "red"
 	},
 /area/shuttle/arrival/station)
 "i" = (
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 9
+/obj/machinery/atmospherics/portable/canister/sleeping_agent,
+/obj/machinery/atmospherics/unary/portables_connector{
+	dir = 1
 	},
-/obj/machinery/atmospherics/meter,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkred"
 	},
 /area/shuttle/arrival/station)
-"k" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
-/turf/simulated/floor/mineral/titanium/blue,
-/area/shuttle/arrival/station)
-"l" = (
-/obj/machinery/atmospherics/unary/portables_connector,
-/obj/machinery/atmospherics/portable/canister,
-/turf/simulated/floor/mineral/titanium/blue,
-/area/shuttle/arrival/station)
 "m" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
 /turf/simulated/floor/plasteel,
-/area/shuttle/arrival/station)
-"n" = (
-/obj/machinery/atmospherics/unary/outlet_injector/on{
-	dir = 4
-	},
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "red"
-	},
-/area/shuttle/arrival/station)
-"o" = (
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "red"
-	},
 /area/shuttle/arrival/station)
 "p" = (
 /obj/machinery/light{
@@ -83,65 +45,43 @@
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "q" = (
-/turf/simulated/floor/plating,
+/obj/machinery/atmospherics/unary/portables_connector{
+	dir = 4
+	},
+/obj/machinery/atmospherics/portable/canister/air,
+/turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "r" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
 /turf/simulated/floor/plating,
 /area/shuttle/arrival/station)
 "u" = (
 /turf/simulated/wall/mineral/titanium,
 /area/shuttle/arrival/station)
-"v" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 1
-	},
-/turf/simulated/floor/mineral/titanium/blue,
-/area/shuttle/arrival/station)
 "x" = (
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
-"y" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/turf/simulated/floor/mineral/titanium/blue,
-/area/shuttle/arrival/station)
-"z" = (
-/obj/machinery/atmospherics/binary/pump{
-	dir = 4;
-	name = "prisoner supression system";
-	target_pressure = 4500
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "darkred"
-	},
-/area/shuttle/arrival/station)
-"A" = (
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "darkred"
-	},
-/area/shuttle/arrival/station)
-"C" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "red"
-	},
-/area/shuttle/arrival/station)
-"D" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+"B" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
 	},
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "F" = (
 /obj/machinery/light,
+/turf/simulated/floor/mineral/titanium/blue,
+/area/shuttle/arrival/station)
+"G" = (
+/obj/machinery/atmospherics/unary/portables_connector{
+	dir = 8
+	},
+/obj/machinery/atmospherics/portable/canister,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "I" = (
@@ -151,65 +91,14 @@
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "K" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10
-	},
+/obj/machinery/atmospherics/unary/outlet_injector/on,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "red"
-	},
-/area/shuttle/arrival/station)
-"L" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "red"
-	},
-/area/shuttle/arrival/station)
-"M" = (
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 6
-	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "darkred"
 	},
 /area/shuttle/arrival/station)
 "N" = (
 /obj/effect/landmark/spawner/roundstart_observer,
-/turf/simulated/floor/mineral/titanium/blue,
-/area/shuttle/arrival/station)
-"S" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/machinery/atmospherics/portable/canister/sleeping_agent,
-/obj/machinery/atmospherics/unary/portables_connector{
-	dir = 1
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/shuttle/arrival/station)
-"T" = (
-/obj/machinery/atmospherics/unary/portables_connector{
-	dir = 1
-	},
-/obj/machinery/atmospherics/portable/canister/air,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "U" = (
@@ -219,24 +108,25 @@
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "W" = (
-/turf/simulated/wall/r_wall,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "X" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel{
 	icon_state = "red"
 	},
 /area/shuttle/arrival/station)
-"Y" = (
-/obj/machinery/atmospherics/pipe/manifold/visible{
-	dir = 1
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "darkred"
-	},
-/area/shuttle/arrival/station)
 "Z" = (
-/obj/machinery/atmospherics/pipe/simple/visible,
+/obj/machinery/atmospherics/binary/pump{
+	dir = 1;
+	name = "prisoner supression system";
+	target_pressure = 4500
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -33780,12 +33670,12 @@ a
 a
 u
 x
-n
 x
 x
 x
 x
-o
+x
+x
 x
 x
 x
@@ -34036,15 +33926,15 @@ a
 a
 a
 u
-k
-e
-v
 x
 x
 x
 x
-M
-S
+x
+x
+x
+x
+x
 x
 x
 x
@@ -34293,15 +34183,15 @@ a
 a
 a
 u
-p
-L
 x
 x
 x
 x
 x
-Y
-S
+x
+x
+x
+x
 x
 x
 x
@@ -34551,13 +34441,13 @@ a
 a
 u
 x
-L
+x
 q
-C
+x
 W
-A
-d
-z
+x
+x
+x
 x
 x
 x
@@ -35064,11 +34954,11 @@ a
 a
 a
 u
-p
-D
 x
 x
+G
 x
+B
 x
 x
 x
@@ -35322,7 +35212,7 @@ a
 a
 u
 x
-D
+x
 x
 x
 x
@@ -35578,9 +35468,9 @@ a
 a
 a
 u
-l
-y
-T
+x
+x
+x
 x
 x
 x
