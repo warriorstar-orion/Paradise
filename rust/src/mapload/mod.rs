@@ -7,7 +7,6 @@ pub(crate) const IMPORT_MAP_FAILURE: i32 = 1;
 pub(crate) const AREA_TEMPLATE_NOOP: &str = "/area/template_noop";
 pub(crate) const TURF_TEMPLATE_NOOP: &str = "/turf/template_noop";
 
-
 use std::{
     collections::HashMap,
     path::PathBuf,
@@ -17,9 +16,10 @@ use std::{
 use eyre::eyre;
 use eyre::Result;
 
-
 use byondapi::{
-    global_call::call_global, map::{byond_block, byond_locatexyz, ByondXYZ}, prelude::*,
+    global_call::call_global,
+    map::{byond_block, byond_locatexyz, ByondXYZ},
+    prelude::*,
 };
 
 // #[derive(PartialEq)]
@@ -29,8 +29,10 @@ use byondapi::{
 //     Loaded,
 // }
 
-use dmm_tools::dmm;
+use dmmtools::dmm;
 use dreammaker::{ast::FormatTreePath, constants::Constant};
+
+use crate::{logging::setup_panic_handler, mapmanip::internal_mapmanip_mutate_map};
 
 pub(crate) struct MapCache {
     pub maps: HashMap<String, dmm::Map>,
@@ -69,13 +71,6 @@ pub(crate) static PENDING_VAREDITS: RwLock<PendingVaredits> = RwLock::new(Pendin
 pub(crate) static MAP_CACHE: OnceLock<MapCache> = OnceLock::new();
 
 // pub(crate) static UNIQUE_AREAS: OnceLock<UniqueAreas> = OnceLock::new();
-
-// Panic handler that dumps info out to ./milla_panic.txt (overwriting) if we crash.
-fn setup_panic_handler() {
-    std::panic::set_hook(Box::new(|info| {
-        std::fs::write("./rustdmm_panic.txt", format!("Panic {:#?}", info)).unwrap();
-    }))
-}
 
 fn log_debug(msg: String) -> Result<ByondValue, byondapi::Error> {
     call_global("log_debug", &[ByondValue::new_str(msg).unwrap()])
@@ -163,7 +158,7 @@ fn test_apply_varedits(mut src: ByondValue, srctype: ByondValue) {
         }
         Err(e) => {
             log_debug(format!("failed to acquire write to return varedits: {}", e));
-        },
+        }
     }
 
     Ok(ByondValue::new_num(0f32))
@@ -188,9 +183,7 @@ fn test_read(mappath: ByondValue, x: ByondValue, y: ByondValue, z: ByondValue) {
     let origin_y = y.get_number()? as i16;
     let origin_z = z.get_number()? as i16;
 
-    let dmm_filename = mappath.get_string().unwrap();
-
-    let dmm = dmm::Map::from_file(PathBuf::from(dmm_filename).as_path());
+    let dmm = internal_mapmanip_mutate_map(mappath);
     if let Ok(dmm) = dmm {
         for (i, z) in dmm.iter_levels() {
             for (coord, key) in z.iter_top_down() {

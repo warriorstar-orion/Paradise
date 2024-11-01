@@ -4,6 +4,7 @@ use core::GridMap;
 
 use byondapi::byond_string;
 use byondapi::value::ByondValue;
+use dmmtools::dmm::Map;
 use eyre::Context;
 use eyre::ContextCompat;
 use itertools::Itertools;
@@ -174,7 +175,7 @@ fn mapmanip_read_dmm_file(path: ByondValue) {
     internal_mapmanip_read_dmm_file(path)
 }
 
-pub(crate) fn internal_mapmanip_read_dmm_file(path: ByondValue) -> eyre::Result<ByondValue> {
+pub(crate) fn internal_mapmanip_mutate_map(path: ByondValue) -> eyre::Result<Map> {
     setup_panic_handler();
 
     let path: String = path
@@ -187,7 +188,7 @@ pub(crate) fn internal_mapmanip_read_dmm_file(path: ByondValue) -> eyre::Result<
 
     // just return null if path is bad for whatever reason
     if !path.is_file() || !path.exists() {
-        return Ok(ByondValue::null());
+        return Err(eyre::eyre!("bad path {:?}", path));
     }
 
     // read file and parse with spacemandmm
@@ -213,8 +214,15 @@ pub(crate) fn internal_mapmanip_read_dmm_file(path: ByondValue) -> eyre::Result<
             .wrap_err(format!("mapmanip fail; dmm file path: {path:?}"))?;
     }
 
+    Ok(dmm)
+}
+
+pub(crate) fn internal_mapmanip_read_dmm_file(path: ByondValue) -> eyre::Result<ByondValue> {
+    let map = internal_mapmanip_mutate_map(path)
+        .wrap_err(format!("mapmanip fail; bad mutation: {path:?}"))?;
+
     // convert the map back to a string
-    let dmm = crate::mapmanip::core::map_to_string(&dmm).wrap_err(format!(
+    let dmm = crate::mapmanip::core::map_to_string(&map).wrap_err(format!(
         "error in converting map back to string; dmm file path: {path:?}"
     ))?;
 
