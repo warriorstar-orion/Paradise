@@ -33,6 +33,22 @@
 		reconcile_air()
 	return
 
+/datum/pipeline/proc/cmt()
+	for(var/obj/machinery/machine in members)
+		if(isturf(machine.loc))
+			machine.loc.color = "#ff0000"
+	for(var/obj/machinery/machine in other_atmosmch)
+		if(isturf(machine.loc))
+			machine.loc.color = "#ff0000"
+
+/datum/pipeline/proc/umt()
+	for(var/obj/machinery/machine in members)
+		if(isturf(machine.loc))
+			machine.loc.color = null
+	for(var/obj/machinery/machine in other_atmosmch)
+		if(isturf(machine.loc))
+			machine.loc.color = null
+
 #define TOTAL_TYPE(src) "[src ? "[src.type]::[src.UID()]@[COORD(src)]" : "unknown atom"]"
 
 // "[src ? "([src.x],[src.y],[src.z])" : "nonexistent location"]"

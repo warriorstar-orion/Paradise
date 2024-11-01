@@ -1,5 +1,3 @@
-#![crate_name = "rustdmm"]
-
 /// How many Z levels we allow before being suspicious that the wrong number was sent.
 pub(crate) const IMPORT_MAP_SUCCESS: i32 = 1;
 pub(crate) const IMPORT_MAP_FAILURE: i32 = 1;
@@ -8,10 +6,8 @@ pub(crate) const AREA_TEMPLATE_NOOP: &str = "/area/template_noop";
 pub(crate) const TURF_TEMPLATE_NOOP: &str = "/turf/template_noop";
 
 use std::{
-    borrow::BorrowMut,
     collections::HashMap,
-    path::PathBuf,
-    sync::{Mutex, OnceLock, RwLock},
+    sync::{OnceLock, RwLock},
 };
 
 use eyre::eyre;
