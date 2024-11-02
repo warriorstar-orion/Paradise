@@ -15,8 +15,8 @@
 	var/datum/pipeline/parent1
 	var/datum/pipeline/parent2
 
-/obj/machinery/atmospherics/binary/New()
-	..()
+/obj/machinery/atmospherics/binary/Initialize(mapload)
+	. = ..()
 	switch(dir)
 		if(NORTH)
 			initialize_directions = NORTH|SOUTH

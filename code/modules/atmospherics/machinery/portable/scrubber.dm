@@ -174,8 +174,8 @@
 	var/id = 0
 	var/stationary = FALSE
 
-/obj/machinery/atmospherics/portable/scrubber/huge/New()
-	..()
+/obj/machinery/atmospherics/portable/scrubber/huge/Initialize(mapload)
+	. = ..()
 	id = gid
 	gid++
 

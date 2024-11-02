@@ -5,6 +5,12 @@
 	plane = GAME_PLANE
 	layer = GAS_PIPE_VISIBLE_LAYER
 
+/obj/machinery/atmospherics/pipe/simple/visible/New()
+	. = ..()
+
+/obj/machinery/atmospherics/pipe/simple/visible/Initialize(mapload)
+	. = ..()
+
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers
 	name = "Scrubbers pipe"
 	desc = "A one meter section of scrubbers pipe"

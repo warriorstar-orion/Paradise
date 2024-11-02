@@ -228,23 +228,23 @@
 	on = TRUE
 	icon_state = "freezer_1"
 
-/obj/machinery/atmospherics/unary/thermomachine/freezer/on/New()
-	..()
+/obj/machinery/atmospherics/unary/thermomachine/freezer/on/Initialize(mapload)
+	. = ..()
 	if(target_temperature == initial(target_temperature))
 		target_temperature = min_temperature
 
 /obj/machinery/atmospherics/unary/thermomachine/freezer/on/coldroom
 	name = "Cold room temperature control unit"
 
-/obj/machinery/atmospherics/unary/thermomachine/freezer/on/coldroom/New()
-	..()
+/obj/machinery/atmospherics/unary/thermomachine/freezer/on/coldroom/Initialize(mapload)
+	. = ..()
 	target_temperature = COLD_ROOM_TEMP
 
 /obj/machinery/atmospherics/unary/thermomachine/freezer/on/server
 	name = "Server room temperature control unit"
 
-/obj/machinery/atmospherics/unary/thermomachine/freezer/on/server/New()
-	..()
+/obj/machinery/atmospherics/unary/thermomachine/freezer/on/server/Initialize(mapload)
+	. = ..()
 	target_temperature = SERVER_ROOM_TEMP
 
 /obj/machinery/atmospherics/unary/thermomachine/heater

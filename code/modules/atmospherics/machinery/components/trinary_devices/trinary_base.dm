@@ -20,8 +20,8 @@
 
 	var/flipped = FALSE
 
-/obj/machinery/atmospherics/trinary/New()
-	..()
+/obj/machinery/atmospherics/trinary/Initialize(mapload)
+	. = ..()
 
 	if(!flipped)
 		switch(dir)

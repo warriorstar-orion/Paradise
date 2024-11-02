@@ -62,8 +62,8 @@
 				buckled_mob.apply_damage(4 * log(pipe_air.temperature() - heat_limit), BURN, "chest")
 
 
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging/New()
-	..()
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging/Initialize(mapload)
+	. = ..()
 	initialize_directions_he = initialize_directions	// The auto-detection from /pipe is good enough for a simple HE pipe
 	color = "#404040"
 
@@ -102,8 +102,9 @@
 	minimum_temperature_difference = 300
 	thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
 
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction/New()
-	.. ()
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction/Initialize(mapload)
+	. = ..()
+
 	switch(dir)
 		if(SOUTH)
 			initialize_directions = NORTH
