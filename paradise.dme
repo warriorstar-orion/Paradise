@@ -1871,7 +1871,6 @@
 #include "code\modules\cooking_with_jane\cooking_appliances\appliance_defines.dm"
 #include "code\modules\cooking_with_jane\cooking_appliances\cooking_circuits.dm"
 #include "code\modules\cooking_with_jane\cooking_appliances\grill.dm"
-#include "code\modules\cooking_with_jane\cooking_appliances\machinery.dm"
 #include "code\modules\cooking_with_jane\cooking_appliances\oven.dm"
 #include "code\modules\cooking_with_jane\cooking_appliances\stove.dm"
 #include "code\modules\cooking_with_jane\cooking_items\cooking_containers.dm"
