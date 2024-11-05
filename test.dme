@@ -1,0 +1,6 @@
+
+/obj/foo
+    var/test = 3
+/obj/foo/proc/do_thing()
+    src.test = 4
+    test = 5

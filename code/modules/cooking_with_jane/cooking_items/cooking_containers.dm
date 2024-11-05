@@ -89,6 +89,8 @@
 
 
 /obj/item/reagent_containers/cooking_with_jane/cooking_container/after_attack(atom/target, mob/user, proximity_flag, click_parameters)
+	. = ..()
+
 	if(!istype(target, /obj/item/reagent_containers))
 		return
 	if(!proximity_flag)
