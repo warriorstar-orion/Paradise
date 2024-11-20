@@ -6,7 +6,7 @@
 /obj/structure/chair{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "ad" = (
 /obj/structure/railing,
@@ -29,12 +29,6 @@
 	dir = 5
 	},
 /area/ruin/space/unpowered)
-"ag" = (
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
 "ah" = (
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_animal/hostile/spaceinfected/default,
@@ -64,9 +58,7 @@
 "al" = (
 /obj/machinery/atmospherics/air_sensor,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "am" = (
 /obj/machinery/light/small,
@@ -96,16 +88,16 @@
 /obj/machinery/power/apc/off_station/empty_charge/directional/north{
 	cell_type = 15000
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "browncorner"
+/obj/effect/turf_decal/floor_markings/departmental/cargo/corner{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "aq" = (
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "whitegreen"
+/obj/effect/turf_decal/floor_markings/departmental/virology/directional{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "ar" = (
 /obj/effect/decal/cleanable/dirt,
@@ -144,16 +136,14 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "ay" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/chair/office/dark{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "az" = (
 /obj/structure/fence/door/opened{
@@ -195,13 +185,6 @@
 	dir = 8
 	},
 /area/ruin/space/unpowered)
-"aG" = (
-/obj/machinery/light/small,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
 "aH" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -225,9 +208,7 @@
 /area/ruin/space/unpowered)
 "aK" = (
 /obj/structure/blob/normal/deepstorage,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "aL" = (
 /obj/structure/window/reinforced{
@@ -263,9 +244,8 @@
 "aP" = (
 /obj/effect/turf_decal/box,
 /obj/structure/cable/yellow,
-/turf/simulated/floor/plasteel{
-	icon_state = "brown"
-	},
+/obj/effect/turf_decal/floor_markings/departmental/cargo/directional,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "aQ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -274,9 +254,7 @@
 "aR" = (
 /obj/effect/mapping_helpers/airlock/access/all/ruins/deepstorage,
 /obj/machinery/door/airlock/highsecurity,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "aS" = (
 /obj/structure/railing/cap,
@@ -297,9 +275,7 @@
 /obj/structure/chair{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "aV" = (
 /obj/structure/cable{
@@ -312,10 +288,10 @@
 	name = "Generator Storage"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "browncorner"
+/obj/effect/turf_decal/floor_markings/departmental/cargo/corner{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "aW" = (
 /obj/structure/railing/corner,
@@ -329,17 +305,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
-"aY" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "aZ" = (
 /obj/structure/railing/corner{
@@ -377,17 +343,14 @@
 /area/ruin/space/unpowered)
 "be" = (
 /obj/structure/table/glass,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "bf" = (
 /obj/structure/table,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 5
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "bg" = (
 /obj/structure/ore_box,
@@ -434,7 +397,7 @@
 /area/ruin/space/unpowered)
 "bl" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "bm" = (
 /obj/structure/fence{
@@ -602,9 +565,7 @@
 /area/ruin/space/unpowered)
 "bP" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "bQ" = (
 /obj/item/stack/ore/glass/basalt{
@@ -677,10 +638,7 @@
 	id = "DS_mostfrontshutter";
 	name = "emergency shutters"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "ca" = (
 /obj/structure/closet/crate/radiation,
@@ -729,9 +687,7 @@
 "ch" = (
 /obj/structure/table/reinforced,
 /obj/item/paper/fluff/ruins/deepstorage/log3,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "cj" = (
 /obj/effect/decal/cleanable/dirt,
@@ -769,9 +725,7 @@
 /obj/structure/barricade/wooden/crude{
 	layer = 4
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "cs" = (
 /obj/effect/decal/cleanable/blood/tracks{
@@ -783,10 +737,7 @@
 	pixel_y = 4;
 	pixel_x = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "white";
-	dir = 1
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "ct" = (
 /obj/structure/railing/corner{
@@ -795,13 +746,6 @@
 /obj/machinery/door/firedoor,
 /obj/structure/fans/tiny,
 /turf/simulated/floor/catwalk,
-/area/ruin/space/deepstorage)
-"cx" = (
-/obj/structure/table,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
 /area/ruin/space/deepstorage)
 "cA" = (
 /obj/effect/decal/cleanable/dirt,
@@ -822,20 +766,12 @@
 "cJ" = (
 /obj/structure/filingcabinet,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "blackcorner"
-	},
+/obj/effect/turf_decal/floor_markings/dark/corner,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "cN" = (
 /obj/item/trash/tastybread,
-/turf/simulated/floor/plasteel,
-/area/ruin/space/deepstorage)
-"cP" = (
-/obj/item/kirbyplants/large/plant10,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "cR" = (
 /obj/effect/decal/cleanable/dirt,
@@ -846,30 +782,23 @@
 /area/ruin/space/deepstorage)
 "cT" = (
 /obj/item/kirbyplants/large/plant4,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "cU" = (
 /obj/structure/closet,
 /obj/effect/spawner/random/maintenance,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "cX" = (
 /obj/structure/chair{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "cY" = (
 /obj/structure/railing,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "cZ" = (
 /obj/structure/railing{
@@ -883,44 +812,34 @@
 "dd" = (
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_animal/hostile/spaceinfected/default,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "dg" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/item/kirbyplants/large/plant4,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 9
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "dh" = (
 /obj/machinery/light/small,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "dj" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "dk" = (
 /obj/machinery/door/poddoor/shutters/preopen{
 	id_tag = "DS_Quartermaster"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "dn" = (
 /obj/structure/table/reinforced,
@@ -930,20 +849,20 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "dt" = (
 /obj/structure/blob/normal/deepstorage,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkredcorners";
+/obj/effect/turf_decal/floor_markings/departmental/security/corner{
 	dir = 4
 	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "dA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
 /obj/item/clothing/head/welding,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "dC" = (
 /obj/effect/decal/cleanable/dirt,
@@ -958,10 +877,7 @@
 	color = "red"
 	},
 /obj/effect/decal/cleanable/cobweb2,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "dL" = (
 /turf/simulated/floor/plasteel{
@@ -970,10 +886,10 @@
 /area/ruin/space/deepstorage)
 "dO" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 9
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "dR" = (
 /obj/structure/machine_frame,
@@ -994,10 +910,7 @@
 	dir = 1
 	},
 /obj/structure/filingcabinet,
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "ee" = (
 /obj/machinery/door/window/survival_pod{
@@ -1005,10 +918,7 @@
 	name = "lift doors"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "eh" = (
 /obj/effect/mapping_helpers/turfs/damage,
@@ -1068,14 +978,6 @@
 /obj/effect/decal/cleanable/cobweb2,
 /turf/simulated/floor/catwalk,
 /area/ruin/space/deepstorage)
-"eI" = (
-/obj/structure/closet,
-/obj/effect/spawner/random/maintenance,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
 "eN" = (
 /obj/structure/grille/broken,
 /turf/simulated/floor/plating,
@@ -1102,16 +1004,14 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "ff" = (
 /obj/machinery/computer/nonfunctional,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "whitegreen"
+/obj/effect/turf_decal/floor_markings/departmental/virology/directional{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "fi" = (
 /obj/structure/blob/normal/deepstorage,
@@ -1120,19 +1020,14 @@
 /area/ruin/space/deepstorage)
 "fj" = (
 /obj/structure/reagent_dispensers/water_cooler,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "fk" = (
 /obj/machinery/hydroponics/constructable{
 	pixel_y = 9
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "fn" = (
 /obj/item/reagent_containers/glass/beaker/waterbottle/empty,
@@ -1154,16 +1049,14 @@
 /obj/structure/chair/office/dark{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "fw" = (
 /obj/item/chair{
 	pixel_y = -5;
 	pixel_x = -2
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "fD" = (
 /obj/structure/sink/directional/south,
@@ -1189,10 +1082,7 @@
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "fN" = (
 /obj/machinery/light/small{
@@ -1212,10 +1102,7 @@
 	},
 /obj/item/organ/internal/kidneys,
 /mob/living/simple_animal/hostile/spaceinfected/default,
-/turf/simulated/floor/plasteel{
-	icon_state = "white";
-	dir = 1
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "fU" = (
 /obj/structure/flora/ausbushes/fullgrass,
@@ -1236,10 +1123,10 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "blackcorner"
+/obj/effect/turf_decal/floor_markings/dark/corner{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "fZ" = (
 /obj/structure/rack,
@@ -1248,35 +1135,26 @@
 	},
 /obj/machinery/light/small,
 /obj/effect/spawner/random/maintenance,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "ge" = (
 /obj/structure/table/glass,
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "whitegreen"
+/obj/effect/turf_decal/floor_markings/departmental/virology/directional{
+	dir = 9
 	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "gp" = (
 /obj/structure/chair/sofa/bench/right{
 	dir = 1
 	},
 /obj/machinery/light/small,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "gq" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/bluespace_tap/cultural_rare,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "gr" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1284,17 +1162,13 @@
 	color = "red"
 	},
 /obj/item/organ/internal/lungs,
-/turf/simulated/floor/plasteel{
-	icon_state = "white";
-	dir = 1
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "gC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/kirbyplants/large/plant8,
-/turf/simulated/floor/plasteel{
-	icon_state = "black"
-	},
+/obj/effect/turf_decal/floor_markings/dark/directional,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "gE" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1304,31 +1178,29 @@
 	pixel_x = -2;
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "darkredcorners";
+/obj/effect/turf_decal/floor_markings/departmental/security/corner{
 	dir = 1
 	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "gF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkredcorners";
+/obj/effect/turf_decal/floor_markings/departmental/security/corner{
 	dir = 1
 	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "gJ" = (
 /obj/item/chair,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "gK" = (
 /obj/structure/chair/office/dark{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "gO" = (
 /obj/structure/flora/ausbushes/fullgrass,
@@ -1362,16 +1234,11 @@
 /obj/structure/chair/sofa/bench{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "hg" = (
 /obj/item/kirbyplants/large/plant10,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "hh" = (
 /obj/effect/decal/cleanable/blood/tracks{
@@ -1391,9 +1258,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "hk" = (
 /obj/machinery/light/small{
@@ -1409,9 +1274,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "hn" = (
 /obj/structure/railing{
@@ -1435,16 +1298,11 @@
 /obj/structure/barricade/wooden/crude{
 	layer = 4
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "ht" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "hu" = (
 /obj/machinery/light/small{
@@ -1470,26 +1328,17 @@
 /obj/item/storage/firstaid/toxin,
 /obj/item/storage/firstaid/toxin,
 /obj/item/storage/pill_bottle/charcoal,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "hH" = (
 /obj/structure/blob/normal/deepstorage,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "hK" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/maintenance,
 /obj/structure/sign/poster/contraband/power/directional/west,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "hN" = (
 /obj/structure/blob/normal/deepstorage,
@@ -1499,18 +1348,10 @@
 /obj/structure/chair/sofa/bench{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 8
 	},
-/area/ruin/space/deepstorage)
-"hV" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/table,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "hW" = (
 /obj/structure/fans/tiny,
@@ -1534,9 +1375,7 @@
 "hZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/cardboard,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "ia" = (
 /obj/structure/window/reinforced{
@@ -1545,7 +1384,7 @@
 /obj/structure/rack,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/head/helmet/swat,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "ic" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1553,10 +1392,7 @@
 	color = "red"
 	},
 /mob/living/simple_animal/hostile/spaceinfected/default,
-/turf/simulated/floor/plasteel{
-	icon_state = "white";
-	dir = 1
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "if" = (
 /obj/structure/girder/reinforced,
@@ -1570,10 +1406,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "im" = (
 /obj/structure/filingcabinet/chestdrawer,
@@ -1581,10 +1414,10 @@
 /turf/simulated/floor/catwalk,
 /area/ruin/space/deepstorage)
 "iq" = (
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "brown"
+/obj/effect/turf_decal/floor_markings/departmental/cargo/directional{
+	dir = 10
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "ir" = (
 /obj/machinery/light/small{
@@ -1607,39 +1440,24 @@
 	dir = 4
 	},
 /obj/effect/spawner/random/maintenance,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "iG" = (
 /obj/structure/chair/sofa/bench/left{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "iJ" = (
 /obj/machinery/atmospherics/air_sensor,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/ruin/space/deepstorage)
-"iK" = (
-/obj/structure/blob/normal/deepstorage,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "iL" = (
 /obj/structure/blob/normal/deepstorage,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "whitegreen"
+/obj/effect/turf_decal/floor_markings/departmental/virology/directional{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "iM" = (
 /obj/machinery/atmospherics/air_sensor,
@@ -1650,9 +1468,7 @@
 /obj/machinery/door/window/reinforced/normal{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "iZ" = (
 /turf/simulated/mineral/random/high_chance/space,
@@ -1675,7 +1491,7 @@
 /area/ruin/space/deepstorage)
 "jf" = (
 /obj/effect/decal/remains/human,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "jj" = (
 /obj/effect/mapping_helpers/airlock/access/all/ruins/deepstorage,
@@ -1683,19 +1499,7 @@
 	name = "Guard Store Room"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/ruin/space/deepstorage)
-"jn" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "jo" = (
 /obj/machinery/shower/directional/east,
@@ -1718,10 +1522,7 @@
 	pixel_y = 4;
 	pixel_x = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "white";
-	dir = 1
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "jq" = (
 /obj/structure/table,
@@ -1731,10 +1532,7 @@
 "jr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "ju" = (
 /obj/machinery/light/small{
@@ -1742,10 +1540,7 @@
 	},
 /obj/effect/decal/cleanable/cobweb2,
 /obj/structure/sign/poster/contraband/missing_gloves/directional/north,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "jv" = (
 /obj/machinery/economy/vending/snack,
@@ -1782,22 +1577,12 @@
 	icon_state = "podfloor"
 	},
 /area/ruin/space/deepstorage)
-"jG" = (
-/obj/structure/filingcabinet,
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
 "jM" = (
 /obj/structure/chair{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "jN" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1808,9 +1593,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "jO" = (
 /obj/structure/railing{
@@ -1821,18 +1604,15 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "jP" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/machinery/computer/nonfunctional,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "blackcorner"
+/obj/effect/turf_decal/floor_markings/dark/corner{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "jT" = (
 /obj/structure/fans/tiny,
@@ -1878,18 +1658,18 @@
 /obj/effect/decal/cleanable/cobweb,
 /obj/item/bedsheet,
 /obj/effect/decal/remains/human,
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 9
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "ko" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "blackcorner"
+/obj/effect/turf_decal/floor_markings/dark/corner{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "kp" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1899,10 +1679,7 @@
 /obj/effect/turf_decal/loading_area{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "kr" = (
 /obj/item/flashlight{
@@ -1917,10 +1694,7 @@
 /obj/item/storage/box/donkpockets,
 /obj/item/storage/box/donkpockets,
 /obj/item/storage/box/donkpockets,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "ku" = (
 /obj/structure/rack,
@@ -1930,18 +1704,15 @@
 /obj/effect/spawner/random/maintenance,
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "kA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table_frame,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "blackcorner"
+/obj/effect/turf_decal/floor_markings/dark/corner{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "kC" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1954,10 +1725,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "kG" = (
 /obj/structure/table,
@@ -1975,10 +1743,7 @@
 /obj/item/clothing/gloves/combat,
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/mask/gas,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "kM" = (
 /obj/effect/turf_decal/stripes/line,
@@ -1991,7 +1756,7 @@
 	icon_state = "1-8"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "kY" = (
 /obj/effect/turf_decal/stripes/line{
@@ -2001,30 +1766,16 @@
 /obj/structure/blob/normal/deepstorage,
 /turf/simulated/floor/engine,
 /area/ruin/space/deepstorage)
-"kZ" = (
-/obj/structure/chair{
-	dir = 8
-	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
 "lb" = (
 /obj/structure/chair{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "lf" = (
 /obj/structure/table/glass/reinforced,
 /obj/machinery/computer/med_data/laptop,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "lg" = (
 /obj/machinery/light/small{
@@ -2044,7 +1795,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "ll" = (
 /obj/structure/table/reinforced,
@@ -2057,12 +1808,12 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/bedsheet,
 /obj/effect/decal/remains/human,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "lo" = (
 /obj/item/bedsheet,
 /obj/effect/decal/remains/human,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "lt" = (
 /obj/structure/railing{
@@ -2073,17 +1824,14 @@
 	},
 /obj/structure/rack,
 /obj/effect/spawner/random/maintenance,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "lE" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "blackcorner"
+/obj/effect/turf_decal/floor_markings/dark/corner{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "lH" = (
 /obj/structure/railing{
@@ -2099,10 +1847,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "lO" = (
 /obj/structure/chair{
@@ -2112,10 +1857,10 @@
 	dir = 8
 	},
 /obj/item/trash/cheesie,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "lQ" = (
 /obj/machinery/light/small{
@@ -2133,10 +1878,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "lY" = (
 /obj/machinery/light/small{
@@ -2165,13 +1907,6 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/simulated/floor/engine/airless,
 /area/ruin/space/unpowered)
-"mx" = (
-/obj/structure/blob/normal/deepstorage,
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
 "mA" = (
 /turf/simulated/floor/mineral/titanium/blue,
 /area/ruin/space/deepstorage)
@@ -2200,9 +1935,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "mI" = (
 /obj/machinery/light/small{
@@ -2210,9 +1943,7 @@
 	icon_state = "bulb-broken";
 	status = 2
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "mL" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2225,18 +1956,16 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "mN" = (
 /obj/effect/decal/cleanable/blood/splatter{
 	color = "red"
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "mO" = (
 /obj/structure/railing{
@@ -2250,37 +1979,30 @@
 /area/ruin/space/deepstorage)
 "mQ" = (
 /mob/living/simple_animal/hostile/spaceinfected/default/ranged,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "mR" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /mob/living/simple_animal/hostile/spaceinfected/default,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkredcorners";
+/obj/effect/turf_decal/floor_markings/departmental/security/corner{
 	dir = 1
 	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "mT" = (
 /obj/machinery/door/window/survival_pod{
 	dir = 4;
 	name = "lift doors"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "mU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small,
-/turf/simulated/floor/plasteel{
-	icon_state = "black"
-	},
+/obj/effect/turf_decal/floor_markings/dark/directional,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "na" = (
 /obj/structure/fans/tiny,
@@ -2296,17 +2018,17 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/can,
 /obj/item/trash/waffles,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "nk" = (
 /obj/structure/blob/normal/deepstorage,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "whitegreen"
+/obj/effect/turf_decal/floor_markings/departmental/virology/directional{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "nl" = (
 /obj/effect/turf_decal/stripes/line{
@@ -2318,10 +2040,7 @@
 	layer = 5
 	},
 /obj/item/paper/fluff/ruins/deepstorage/log9,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "no" = (
 /obj/structure/railing{
@@ -2331,10 +2050,7 @@
 	dir = 1
 	},
 /obj/structure/closet/cardboard,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "nt" = (
 /obj/structure/railing/cap{
@@ -2363,7 +2079,7 @@
 /obj/item/chair/stool{
 	pixel_y = -7
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "nG" = (
 /obj/structure/table/glass,
@@ -2373,31 +2089,17 @@
 	status = 2;
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "nJ" = (
 /obj/item/salvage/ruin/carp,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/ruin/space/deepstorage)
-"nK" = (
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "nM" = (
 /obj/item/kirbyplants/medium/medium6,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "nN" = (
 /obj/structure/table/reinforced,
@@ -2411,25 +2113,16 @@
 	id = "DS_FrontGate";
 	name = "front gate controls"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "nO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/blob/normal/deepstorage,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "nQ" = (
 /obj/structure/table/glass,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "nR" = (
 /obj/effect/decal/cleanable/blood/tracks{
@@ -2448,24 +2141,18 @@
 /obj/effect/decal/cleanable/blood/splatter{
 	color = "red"
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "white";
-	dir = 1
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "ob" = (
 /obj/item/trash/tapetrash,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "oj" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "ol" = (
 /obj/machinery/light/small{
@@ -2480,13 +2167,11 @@
 	pixel_y = 4
 	},
 /obj/item/storage/firstaid/regular,
-/turf/simulated/floor/plasteel{
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "or" = (
 /obj/machinery/light/small,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "os" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2495,10 +2180,10 @@
 /area/ruin/space/deepstorage)
 "ou" = (
 /obj/structure/table,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkredcorners";
+/obj/effect/turf_decal/floor_markings/departmental/security/corner{
 	dir = 1
 	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "oA" = (
 /obj/machinery/light/small{
@@ -2506,10 +2191,10 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkred";
+/obj/effect/turf_decal/floor_markings/departmental/security/directional{
 	dir = 9
 	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "oB" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2518,19 +2203,17 @@
 	},
 /obj/structure/rack,
 /obj/effect/spawner/random/maintenance,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkredcorners";
+/obj/effect/turf_decal/floor_markings/departmental/security/corner{
 	dir = 4
 	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "oE" = (
 /obj/structure/chair{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "oH" = (
 /obj/effect/decal/remains/human,
@@ -2538,15 +2221,6 @@
 	color = "red"
 	},
 /turf/simulated/floor/plating/asteroid/basalt/lowpressure,
-/area/ruin/space/deepstorage)
-"oI" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
 /area/ruin/space/deepstorage)
 "oN" = (
 /obj/structure/fans/tiny,
@@ -2572,10 +2246,7 @@
 /obj/structure/rack,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/maintenance,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "oX" = (
 /obj/structure/window/reinforced{
@@ -2586,9 +2257,8 @@
 /obj/item/restraints/handcuffs/cable/zipties{
 	pixel_y = 6
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "blackcorner"
-	},
+/obj/effect/turf_decal/floor_markings/dark/corner,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "pa" = (
 /obj/structure/chair{
@@ -2601,10 +2271,10 @@
 	status = 2;
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "blackcorner"
+/obj/effect/turf_decal/floor_markings/dark/corner{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "pc" = (
 /obj/structure/railing/cap{
@@ -2614,7 +2284,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "pf" = (
 /obj/effect/decal/cleanable/cobweb,
@@ -2636,10 +2306,7 @@
 "pj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/mapping_helpers/turfs/damage,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "pk" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2647,20 +2314,14 @@
 /obj/structure/rack,
 /obj/item/stack/spacecash/c500,
 /obj/effect/spawner/random/bluespace_tap/cultural_rare,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "ps" = (
 /obj/structure/rack,
 /obj/effect/turf_decal/delivery/hollow,
 /obj/item/stack/spacecash/c500,
 /obj/effect/spawner/random/bluespace_tap/organic_rare,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "pv" = (
 /obj/structure/railing,
@@ -2678,16 +2339,7 @@
 	dir = 2;
 	id_tag = "DScmoffice1"
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/ruin/space/deepstorage)
-"pH" = (
-/obj/structure/chair,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "pJ" = (
 /obj/structure/reagent_dispensers/oil,
@@ -2729,9 +2381,8 @@
 /area/ruin/space/deepstorage)
 "pZ" = (
 /obj/machinery/dna_scannernew,
-/turf/simulated/floor/plasteel{
-	icon_state = "whitegreen"
-	},
+/obj/effect/turf_decal/floor_markings/departmental/virology/directional,
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "qa" = (
 /obj/structure/rack,
@@ -2739,10 +2390,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "qc" = (
 /obj/effect/turf_decal/stripes/line{
@@ -2757,9 +2405,7 @@
 /obj/machinery/light/small,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/mapping_helpers/turfs/damage,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "qn" = (
 /turf/template_noop,
@@ -2767,49 +2413,23 @@
 "qp" = (
 /obj/machinery/light/small,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "blackcorner"
-	},
+/obj/effect/turf_decal/floor_markings/dark/corner,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "qt" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "black";
+/obj/effect/turf_decal/floor_markings/dark/directional{
 	dir = 4
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "qw" = (
 /mob/living/simple_animal/hostile/spaceinfected/gateopener,
 /turf/simulated/floor/plating/asteroid/basalt/airless,
 /area/ruin/space/unpowered)
-"qz" = (
-/obj/effect/turf_decal/delivery/partial{
-	dir = 8
-	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
-"qD" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/structure/table,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
 "qF" = (
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_animal/hostile/spaceinfected/default/ranged,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "qG" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2824,24 +2444,10 @@
 	dir = 1
 	},
 /area/ruin/space/deepstorage)
-"qK" = (
-/obj/item/chair{
-	pixel_y = -5;
-	pixel_x = -2;
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
 "qQ" = (
 /obj/structure/closet/crate/can,
 /obj/effect/spawner/random/maintenance,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "qR" = (
 /obj/effect/decal/remains/human,
@@ -2866,18 +2472,12 @@
 "re" = (
 /obj/item/kirbyplants/large/plant8,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "rf" = (
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "white";
-	dir = 1
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "rh" = (
 /obj/machinery/light{
@@ -2897,16 +2497,11 @@
 	id_tag = "DS_Quartermaster"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "rr" = (
 /obj/effect/turf_decal/delivery/partial,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "ru" = (
 /obj/machinery/light/small{
@@ -2920,34 +2515,29 @@
 	dir = 4
 	},
 /obj/item/trash/syndi_cakes,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "rA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/poddoor/shutters/preopen{
 	id_tag = "DS_Quartermaster"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "rE" = (
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkred";
+/obj/effect/turf_decal/floor_markings/departmental/security/directional{
 	dir = 8
 	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "rI" = (
 /obj/structure/table,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "rK" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2968,10 +2558,7 @@
 	dir = 4;
 	pixel_y = 4
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "white";
-	dir = 1
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "rP" = (
 /obj/structure/railing/cap{
@@ -2981,36 +2568,13 @@
 	dir = 1
 	},
 /mob/living/simple_animal/hostile/spaceinfected/default/ranged,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
-"rQ" = (
-/obj/structure/rack,
-/obj/effect/spawner/random/maintenance,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "rS" = (
 /obj/structure/closet,
 /obj/effect/spawner/random/maintenance,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/ruin/space/deepstorage)
-"rT" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "rZ" = (
 /obj/structure/table,
@@ -3059,9 +2623,7 @@
 	id = "DS_Medbay";
 	name = "medical wing shutters"
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "sG" = (
 /obj/effect/turf_decal/stripes/line{
@@ -3075,26 +2637,23 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkredcorners";
+/obj/effect/turf_decal/floor_markings/departmental/security/corner{
 	dir = 1
 	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "sJ" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "sK" = (
 /obj/machinery/seed_extractor,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "black"
-	},
+/obj/effect/turf_decal/floor_markings/dark/directional,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "sP" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3102,10 +2661,7 @@
 /obj/structure/window/reinforced/polarized{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "sT" = (
 /obj/structure/crematorium{
@@ -3115,17 +2671,6 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/simulated/floor/plasteel{
 	icon_state = "cult"
-	},
-/area/ruin/space/deepstorage)
-"sV" = (
-/obj/structure/rack,
-/obj/structure/window/reinforced/polarized{
-	dir = 4
-	},
-/obj/effect/spawner/random/maintenance,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
 	},
 /area/ruin/space/deepstorage)
 "sY" = (
@@ -3161,15 +2706,11 @@
 /obj/machinery/hydroponics/constructable{
 	pixel_y = 9
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "te" = (
 /obj/machinery/computer/nonfunctional,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "tf" = (
 /obj/structure/table/reinforced,
@@ -3196,26 +2737,20 @@
 "tk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "tl" = (
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/structure/table/reinforced,
-/turf/simulated/floor/plasteel{
-	icon_state = "blackcorner"
-	},
+/obj/effect/turf_decal/floor_markings/dark/corner,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "tm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/glass,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "tp" = (
 /obj/machinery/light/small{
@@ -3224,10 +2759,10 @@
 	status = 2;
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "blackcorner"
+/obj/effect/turf_decal/floor_markings/dark/corner{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "tq" = (
 /obj/structure/chair/office/dark{
@@ -3235,9 +2770,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_animal/hostile/spaceinfected/default/ranged,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "tr" = (
 /obj/structure/railing/corner{
@@ -3254,20 +2787,14 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "ts" = (
 /obj/structure/chair{
 	dir = 1
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "tt" = (
 /obj/structure/chair{
@@ -3289,17 +2816,10 @@
 	dir = 8
 	},
 /obj/structure/table,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkredcorners";
+/obj/effect/turf_decal/floor_markings/departmental/security/corner{
 	dir = 1
 	},
-/area/ruin/space/deepstorage)
-"ty" = (
-/obj/structure/blob/normal/deepstorage,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "tE" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3311,26 +2831,12 @@
 /obj/structure/chair{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "tF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/economy/vending/coffee,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/ruin/space/deepstorage)
-"tH" = (
-/obj/structure/closet,
-/obj/effect/spawner/random/maintenance,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "tJ" = (
 /obj/effect/turf_decal/stripes/line{
@@ -3357,16 +2863,13 @@
 /obj/structure/sign/biohazard{
 	pixel_x = -32
 	},
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "whitegreen"
+/obj/effect/turf_decal/floor_markings/departmental/virology/directional{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "tT" = (
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "tU" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3379,10 +2882,7 @@
 /obj/machinery/door/window/reinforced/normal{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "tZ" = (
 /obj/structure/rack,
@@ -3394,14 +2894,6 @@
 "uf" = (
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/deepstorage)
-"um" = (
-/obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/spaceinfected/default,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
 "un" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
@@ -3411,9 +2903,7 @@
 "uo" = (
 /obj/effect/decal/cleanable/cobweb2,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "us" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -3425,67 +2915,36 @@
 "uu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkred";
+/obj/effect/turf_decal/floor_markings/departmental/security/directional{
 	dir = 10
 	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "uw" = (
 /obj/structure/chair/sofa/bench/left{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "uz" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "whitegreencorner"
-	},
-/area/ruin/space/deepstorage)
-"uC" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
-"uJ" = (
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "blackcorner"
-	},
-/area/ruin/space/deepstorage)
-"uR" = (
-/obj/machinery/light/small{
+/obj/effect/turf_decal/floor_markings/departmental/virology/corner{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
-"uT" = (
-/obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/spaceinfected/default,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
+"uJ" = (
+/obj/effect/turf_decal/floor_markings/dark/corner{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "uV" = (
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "vc" = (
 /obj/structure/bed,
@@ -3496,23 +2955,19 @@
 /obj/structure/sign/singulo{
 	pixel_y = -32
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "vi" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 10
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "vo" = (
 /obj/item/salvage/ruin/soviet,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "vq" = (
 /obj/machinery/door/airlock/highsecurity,
@@ -3527,7 +2982,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "vu" = (
 /obj/structure/falsewall/rock_ancient,
@@ -3545,17 +3000,14 @@
 /area/ruin/space/deepstorage)
 "vC" = (
 /obj/structure/chair/office/dark,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "blackcorner"
+/obj/effect/turf_decal/floor_markings/dark/corner{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "vF" = (
 /obj/structure/railing/cap,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "vG" = (
 /obj/structure/table/reinforced,
@@ -3571,16 +3023,7 @@
 	id = "DS_Quartermaster";
 	name = "office lockdown"
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/ruin/space/deepstorage)
-"vH" = (
-/obj/machinery/computer/nonfunctional,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "vI" = (
 /turf/simulated/floor/engine,
@@ -3594,9 +3037,7 @@
 /obj/structure/railing/corner{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "vN" = (
 /obj/structure/bed,
@@ -3611,9 +3052,7 @@
 	dir = 8
 	},
 /obj/structure/closet/crate/can,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "vQ" = (
 /obj/machinery/light{
@@ -3660,51 +3099,43 @@
 /area/ruin/space/deepstorage)
 "wc" = (
 /obj/item/chair,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "we" = (
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_animal/hostile/spaceinfected/default,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "wf" = (
 /obj/machinery/atmospherics/portable/canister/oxygen,
 /turf/simulated/floor/catwalk,
 /area/ruin/space/deepstorage)
 "wh" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "wi" = (
 /obj/structure/chair/office/dark{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "whitegreencorner"
+/obj/effect/turf_decal/floor_markings/departmental/virology/corner{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "wj" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "whitegreen"
+/obj/effect/turf_decal/floor_markings/departmental/virology/directional{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "wo" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "wp" = (
 /obj/structure/table/reinforced,
@@ -3716,10 +3147,7 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "wu" = (
 /obj/structure/table,
@@ -3739,9 +3167,8 @@
 /area/ruin/space/deepstorage)
 "wz" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkred"
-	},
+/obj/effect/turf_decal/floor_markings/departmental/security/directional,
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "wD" = (
 /obj/structure/sign/lifestar{
@@ -3756,27 +3183,25 @@
 	dir = 2;
 	id_tag = "DS_Quartermaster"
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "wV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/computer/nonfunctional{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "whitegreen"
+/obj/effect/turf_decal/floor_markings/departmental/virology/directional{
+	dir = 10
 	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "xg" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/reagent_dispensers/water_cooler,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 10
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "xn" = (
 /obj/structure/table/glass/reinforced,
@@ -3794,24 +3219,19 @@
 /obj/item/paper/fluff/ruins/deepstorage/log5{
 	pixel_x = -6
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "xo" = (
 /obj/structure/table/reinforced,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/tray,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "xr" = (
 /obj/machinery/light/small,
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_animal/hostile/spaceinfected/default/ranged,
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "xs" = (
 /obj/machinery/light/small{
@@ -3825,19 +3245,17 @@
 "xw" = (
 /obj/structure/table/reinforced,
 /obj/machinery/kitchen_machine/microwave,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 10
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "xC" = (
 /obj/effect/mapping_helpers/airlock/access/all/ruins/deepstorage,
 /obj/machinery/door/airlock/highsecurity{
 	name = "Interrogation Room"
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "xF" = (
 /obj/machinery/atmospherics/unary/tank/oxygen{
@@ -3853,10 +3271,7 @@
 	name = "Medical Wing";
 	locked = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "xS" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3866,9 +3281,7 @@
 	status = 2;
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "xT" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3885,10 +3298,10 @@
 /obj/item/clothing/gloves/color/yellow,
 /obj/item/clothing/gloves/color/yellow,
 /obj/structure/rack,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "brown"
+/obj/effect/turf_decal/floor_markings/departmental/cargo/directional{
+	dir = 6
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "xZ" = (
 /turf/simulated/floor/plasteel{
@@ -3911,7 +3324,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "ye" = (
 /obj/structure/table/reinforced,
@@ -3920,10 +3333,7 @@
 /obj/item/grenade/confetti,
 /obj/item/grenade/confetti,
 /obj/item/grenade/confetti,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "yf" = (
 /obj/structure/cable{
@@ -3933,7 +3343,7 @@
 	icon_state = "2-8"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "yg" = (
 /obj/structure/railing,
@@ -3956,10 +3366,7 @@
 	status = 2;
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "yp" = (
 /obj/machinery/door/firedoor,
@@ -3988,7 +3395,7 @@
 /obj/structure/chair{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "yB" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4023,10 +3430,7 @@
 	dir = 8
 	},
 /obj/effect/mapping_helpers/turfs/damage,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "yQ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4037,9 +3441,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
 /obj/item/chair,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "yU" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4062,18 +3464,13 @@
 /obj/structure/railing/cap{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "zd" = (
 /obj/structure/rack,
 /obj/effect/decal/cleanable/cobweb2,
 /obj/item/defibrillator/loaded,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "zg" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4096,9 +3493,7 @@
 	dir = 5
 	},
 /obj/structure/closet/cardboard,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "zk" = (
 /obj/machinery/light/small{
@@ -4110,10 +3505,10 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "zs" = (
 /obj/structure/railing/cap,
@@ -4122,10 +3517,7 @@
 	dir = 4
 	},
 /obj/item/paper/fluff/ruins/deepstorage/log6,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "zt" = (
 /obj/structure/ore_box,
@@ -4166,9 +3558,7 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/all/ruins/deepstorage,
 /obj/machinery/door/airlock/hatch,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "zG" = (
 /obj/machinery/recharge_station,
@@ -4189,10 +3579,10 @@
 	dir = 1
 	},
 /obj/machinery/computer/nonfunctional,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "whitegreen"
+/obj/effect/turf_decal/floor_markings/departmental/virology/directional{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "zL" = (
 /obj/machinery/light/small{
@@ -4202,19 +3592,11 @@
 /obj/item/chair{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "zN" = (
 /obj/item/paper/fluff/ruins/deepstorage/log2,
-/turf/simulated/floor/plasteel,
-/area/ruin/space/deepstorage)
-"zU" = (
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "zX" = (
 /obj/effect/decal/cleanable/blood/tracks{
@@ -4233,10 +3615,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/cobweb2,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Ad" = (
 /obj/structure/railing{
@@ -4248,20 +3627,17 @@
 /area/ruin/space/unpowered)
 "Ai" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkredcorners";
+/obj/effect/turf_decal/floor_markings/departmental/security/corner{
 	dir = 4
 	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Aj" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced/tinted{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Al" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4271,10 +3647,10 @@
 	status = 2;
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "darkredcorners";
+/obj/effect/turf_decal/floor_markings/departmental/security/corner{
 	dir = 4
 	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Ao" = (
 /obj/structure/chair,
@@ -4304,36 +3680,34 @@
 "Av" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/computer/nonfunctional,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "whitegreen"
+/obj/effect/turf_decal/floor_markings/departmental/virology/directional{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "Aw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/remains/human,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "blackcorner"
+/obj/effect/turf_decal/floor_markings/dark/corner{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Az" = (
 /obj/structure/chair{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "AA" = (
 /obj/effect/mapping_helpers/airlock/access/all/ruins/deepstorage,
 /obj/machinery/door/airlock/highsecurity{
 	name = "Evidence Storage"
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "AB" = (
 /obj/machinery/light/small{
@@ -4372,10 +3746,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "AN" = (
 /obj/machinery/door/poddoor/multi_tile/impassable/triple{
@@ -4395,10 +3766,10 @@
 "AT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/blob/normal/deepstorage,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkredcorners";
+/obj/effect/turf_decal/floor_markings/departmental/security/corner{
 	dir = 4
 	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "AV" = (
 /obj/effect/decal/cleanable/cobweb2,
@@ -4406,10 +3777,10 @@
 	dir = 1
 	},
 /obj/structure/chair,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 5
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "AZ" = (
 /obj/effect/turf_decal/stripes/line{
@@ -4445,27 +3816,26 @@
 /area/ruin/space/deepstorage)
 "Bm" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "black";
+/obj/effect/turf_decal/floor_markings/dark/directional{
 	dir = 8
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Br" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machine_frame,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 5
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Bt" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "black"
-	},
+/obj/effect/turf_decal/floor_markings/dark/directional,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Bv" = (
 /obj/effect/turf_decal/stripes/line{
@@ -4489,10 +3859,10 @@
 /area/ruin/space/deepstorage)
 "BC" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "whitegreen"
+/obj/effect/turf_decal/floor_markings/departmental/virology/directional{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "BE" = (
 /turf/simulated/floor/plating,
@@ -4500,14 +3870,11 @@
 "BF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/kirbyplants/medium/medium6,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "BH" = (
 /obj/item/trash/candy,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "BI" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4515,7 +3882,7 @@
 	pixel_y = 9;
 	pixel_x = -11
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "BL" = (
 /obj/effect/decal/cleanable/spiderling_remains,
@@ -4532,33 +3899,17 @@
 /obj/effect/turf_decal{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
-"BO" = (
-/obj/structure/table,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "BS" = (
 /obj/structure/railing/cap{
 	dir = 10
 	},
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "BU" = (
 /obj/machinery/pandemic,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "BX" = (
 /obj/machinery/light/small{
@@ -4571,18 +3922,12 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/kitchen/knife/combat,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Cb" = (
 /obj/effect/decal/cleanable/glass,
 /obj/structure/blob/normal/deepstorage,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Ce" = (
 /obj/structure/rack,
@@ -4597,25 +3942,15 @@
 	status = 2;
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
-"Ch" = (
-/obj/structure/railing,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Ci" = (
 /obj/structure/railing,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "whitegreen"
+/obj/effect/turf_decal/floor_markings/departmental/virology/directional{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "Cj" = (
 /obj/structure/railing/cap{
@@ -4628,15 +3963,6 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "whiteredcorner";
 	dir = 1
-	},
-/area/ruin/space/deepstorage)
-"Cl" = (
-/obj/structure/closet,
-/obj/effect/spawner/random/maintenance,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
 	},
 /area/ruin/space/deepstorage)
 "Cm" = (
@@ -4652,10 +3978,7 @@
 /obj/structure/rack,
 /obj/effect/spawner/random/deepstorage_reward,
 /obj/effect/spawner/random/deepstorage_reward,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Cw" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4664,15 +3987,15 @@
 	pixel_y = -6;
 	pixel_x = -6
 	},
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "CA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/bedsheet,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "CB" = (
 /obj/structure/chair/comfy/shuttle{
@@ -4685,14 +4008,11 @@
 "CD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/sosjerky,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "CG" = (
 /obj/effect/mapping_helpers/turfs/damage,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "CI" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4705,31 +4025,23 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "CP" = (
 /obj/item/reagent_containers/glass/beaker/waterbottle/empty{
 	pixel_y = -5;
 	pixel_x = -10
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "CT" = (
 /mob/living/simple_animal/hostile/spaceinfected/default,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "CV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "CY" = (
 /obj/machinery/light/small{
@@ -4738,18 +4050,16 @@
 /obj/machinery/hydroponics/constructable{
 	pixel_y = 9
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "CZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/rack,
 /obj/effect/spawner/random/maintenance,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Da" = (
 /obj/machinery/light/small{
@@ -4766,9 +4076,7 @@
 	dir = 10
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Dc" = (
 /obj/effect/turf_decal/stripes/line{
@@ -4778,19 +4086,14 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Dm" = (
 /obj/structure/railing{
 	dir = 8
 	},
 /obj/item/salvage/ruin/soviet,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Dn" = (
 /obj/structure/grille/broken,
@@ -4826,10 +4129,7 @@
 	locked = 1;
 	name = "Medical Storage"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "Dr" = (
 /obj/effect/turf_decal/box,
@@ -4839,16 +4139,12 @@
 "Ds" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/blob/normal/deepstorage,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Dt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/photocopier,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Du" = (
 /obj/machinery/light/small,
@@ -4892,9 +4188,7 @@
 	dir = 1
 	},
 /obj/machinery/computer/nonfunctional,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "DH" = (
 /obj/structure/railing/corner{
@@ -4909,10 +4203,10 @@
 /obj/structure/table/glass,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/cobweb,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "whitegreen"
+/obj/effect/turf_decal/floor_markings/departmental/virology/directional{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "DK" = (
 /obj/machinery/light/small,
@@ -4924,31 +4218,28 @@
 	},
 /obj/structure/rack,
 /obj/item/gun/energy/laser/retro,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "DR" = (
 /obj/structure/table/glass,
 /obj/item/scalpel{
 	pixel_y = 5
 	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "DZ" = (
 /obj/effect/decal/cleanable/blood/splatter{
 	color = "red"
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Ei" = (
 /obj/structure/table,
 /obj/item/chair,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Ej" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4973,7 +4264,7 @@
 "Es" = (
 /obj/machinery/biogenerator,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Eu" = (
 /obj/structure/window/reinforced/tinted,
@@ -5000,24 +4291,17 @@
 /area/ruin/space/unpowered)
 "Ez" = (
 /obj/effect/decal/cleanable/cobweb2,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "EA" = (
 /obj/structure/table,
 /obj/machinery/light/small,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "EB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/computer/nonfunctional,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "EI" = (
 /obj/effect/decal/cleanable/dirt,
@@ -5041,10 +4325,10 @@
 /obj/structure/chair/sofa/bench/left{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "EP" = (
 /obj/effect/decal/cleanable/dirt,
@@ -5075,13 +4359,6 @@
 	dir = 1
 	},
 /area/ruin/space/deepstorage)
-"Fi" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
 "Fk" = (
 /turf/simulated/floor/chasm/space_ruin,
 /area/ruin/space/deepstorage)
@@ -5097,9 +4374,7 @@
 	name = "Medical Wing";
 	locked = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Fy" = (
 /obj/structure/rack,
@@ -5116,10 +4391,10 @@
 /area/ruin/space/unpowered)
 "FE" = (
 /obj/structure/table,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkredcorners";
+/obj/effect/turf_decal/floor_markings/departmental/security/corner{
 	dir = 4
 	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "FL" = (
 /obj/item/trash/cheesie,
@@ -5139,13 +4414,6 @@
 /obj/structure/blob/normal/deepstorage,
 /turf/simulated/floor/engine,
 /area/ruin/space/deepstorage)
-"FY" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
 "Gb" = (
 /obj/effect/decal/cleanable/glass,
 /obj/structure/blob/normal/deepstorage,
@@ -5154,9 +4422,7 @@
 "Gg" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/door_assembly/door_assembly_mhatch,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Gl" = (
 /turf/simulated/floor/catwalk/airless,
@@ -5166,14 +4432,11 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Gt" = (
 /obj/structure/closet/crate,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Gy" = (
 /obj/structure/railing{
@@ -5183,10 +4446,10 @@
 /area/ruin/space/deepstorage)
 "GA" = (
 /obj/item/bedsheet,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "GB" = (
 /obj/structure/blob/normal/deepstorage,
@@ -5198,39 +4461,26 @@
 /obj/item/clothing/mask/gas/explorer,
 /turf/simulated/floor/catwalk/airless,
 /area/ruin/space/unpowered)
-"GE" = (
-/obj/structure/rack,
-/obj/effect/spawner/random/maintenance,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
 "GH" = (
 /obj/structure/table/glass,
 /obj/item/toy/figure/crew/cmo{
 	pixel_y = 2;
 	pixel_x = 6
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "GI" = (
 /obj/structure/table/glass/reinforced,
 /obj/machinery/computer/id_upgrader{
 	access_to_give = list(512)
 	},
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "GJ" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "darkredcorners";
+/obj/effect/turf_decal/floor_markings/departmental/security/corner{
 	dir = 4
 	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "GL" = (
 /obj/structure/railing,
@@ -5244,37 +4494,25 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "GN" = (
 /obj/structure/table/reinforced,
 /obj/machinery/recharger{
 	pixel_y = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "GP" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /mob/living/simple_animal/hostile/spaceinfected/default,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "GR" = (
 /obj/structure/railing/corner,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "GS" = (
 /obj/effect/decal/remains/human,
@@ -5315,10 +4553,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Hj" = (
 /obj/effect/decal/cleanable/dirt,
@@ -5329,16 +4564,13 @@
 /area/ruin/space/deepstorage)
 "Hl" = (
 /mob/living/simple_animal/hostile/spaceinfected/default,
-/turf/simulated/floor/plasteel{
-	icon_state = "black"
-	},
+/obj/effect/turf_decal/floor_markings/dark/directional,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Hx" = (
 /obj/effect/mapping_helpers/airlock/access/all/ruins/deepstorage,
 /obj/machinery/door/airlock/hatch,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "HC" = (
 /obj/structure/railing{
@@ -5351,10 +4583,7 @@
 	dir = 1
 	},
 /obj/structure/reagent_dispensers/water_cooler,
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "HK" = (
 /turf/simulated/floor/plasteel/airless,
@@ -5364,10 +4593,10 @@
 /obj/structure/chair/office/dark{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "blackcorner"
+/obj/effect/turf_decal/floor_markings/dark/corner{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "HP" = (
 /obj/structure/window/reinforced,
@@ -5395,9 +4624,7 @@
 /area/ruin/space/deepstorage)
 "Ir" = (
 /obj/structure/door_assembly/door_assembly_mhatch,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Is" = (
 /obj/structure/flora/ausbushes/fullgrass,
@@ -5413,10 +4640,10 @@
 /area/ruin/space/deepstorage)
 "Iw" = (
 /obj/item/salvage/ruin/pirate,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "II" = (
 /obj/effect/decal/cleanable/dirt,
@@ -5424,23 +4651,16 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "IJ" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/maintenance,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "IN" = (
 /obj/machinery/door/airlock/glass,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "IP" = (
 /obj/effect/spawner/window/reinforced/grilled,
@@ -5450,10 +4670,7 @@
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/rack,
 /obj/effect/spawner/random/bluespace_tap/organic_rare,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "IY" = (
 /obj/machinery/light/small{
@@ -5466,10 +4683,7 @@
 /obj/effect/decal/cleanable/blood/splatter{
 	color = "red"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Je" = (
 /obj/structure/railing/corner,
@@ -5479,10 +4693,7 @@
 /obj/structure/chair{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Ji" = (
 /obj/effect/decal/cleanable/dirt,
@@ -5490,10 +4701,7 @@
 /obj/effect/decal/cleanable/blood/splatter{
 	color = "red"
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "white";
-	dir = 1
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "Jl" = (
 /obj/effect/decal/cleanable/cobweb2,
@@ -5501,15 +4709,12 @@
 /area/ruin/space/unpowered)
 "Js" = (
 /obj/item/bedsheet,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Jx" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/chair/office/dark,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "Jy" = (
 /mob/living/simple_animal/hostile/spaceinfected/default,
@@ -5529,10 +4734,10 @@
 /turf/simulated/floor/plating/asteroid/basalt/lowpressure,
 /area/ruin/space/deepstorage)
 "JF" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "darkred";
+/obj/effect/turf_decal/floor_markings/departmental/security/directional{
 	dir = 6
 	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "JH" = (
 /turf/simulated/floor/plasteel{
@@ -5547,19 +4752,15 @@
 /obj/structure/chair{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "JK" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "blackcorner"
-	},
+/obj/effect/turf_decal/floor_markings/dark/corner,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "JR" = (
 /obj/machinery/light/small,
@@ -5573,17 +4774,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
-"JU" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "vault";
-	dir = 8
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "JV" = (
 /obj/machinery/door/firedoor,
@@ -5598,14 +4789,11 @@
 /obj/machinery/door/airlock/virology/glass{
 	name = "Virology"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "JZ" = (
 /obj/structure/chair,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Ka" = (
 /obj/effect/turf_decal/stripes/line{
@@ -5614,10 +4802,10 @@
 /obj/structure/table,
 /obj/item/wrench,
 /obj/machinery/light/small,
-/turf/simulated/floor/plasteel{
-	icon_state = "browncorner";
+/obj/effect/turf_decal/floor_markings/departmental/cargo/corner{
 	dir = 8
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Kg" = (
 /obj/structure/toilet/directional/north,
@@ -5638,10 +4826,10 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "browncorner"
+/obj/effect/turf_decal/floor_markings/departmental/cargo/corner{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Kq" = (
 /obj/structure/railing/cap{
@@ -5667,9 +4855,7 @@
 	dir = 8
 	},
 /obj/structure/table,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Kx" = (
 /obj/structure/toilet/directional/north,
@@ -5688,10 +4874,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "KB" = (
 /turf/simulated/floor/engine/airless,
@@ -5730,19 +4913,17 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 9
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "KQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/noticeboard{
 	pixel_y = -32
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "KS" = (
 /obj/structure/sign/poster/official/safety_internals/directional/east,
@@ -5757,26 +4938,22 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "La" = (
 /obj/machinery/door/window{
 	dir = 4
 	},
 /obj/item/salvage/ruin/brick,
-/turf/simulated/floor/plasteel{
-	icon_state = "black"
-	},
+/obj/effect/turf_decal/floor_markings/dark/directional,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Ld" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkredcorners";
+/obj/effect/turf_decal/floor_markings/departmental/security/corner{
 	dir = 1
 	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Lf" = (
 /obj/effect/mapping_helpers/turfs/damage,
@@ -5801,23 +4978,14 @@
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/deepstorage)
-"Lm" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/blob/normal/deepstorage,
-/turf/simulated/floor/plasteel{
-	icon_state = "white";
-	dir = 1
-	},
-/area/ruin/space/deepstorage)
 "Ln" = (
 /obj/structure/ore_box,
 /turf/simulated/floor/plating/asteroid/basalt/airless,
 /area/ruin/space/unpowered)
 "Lo" = (
 /obj/structure/table,
-/turf/simulated/floor/plasteel{
-	icon_state = "blackcorner"
-	},
+/obj/effect/turf_decal/floor_markings/dark/corner,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Lp" = (
 /obj/structure/flora/rock/jungle,
@@ -5838,21 +5006,15 @@
 	},
 /turf/simulated/floor/plating/asteroid/basalt/lowpressure,
 /area/ruin/space/deepstorage)
-"LA" = (
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
 "LE" = (
 /obj/item/reagent_containers/drinks/sillycup{
 	pixel_y = 9;
 	pixel_x = 6
 	},
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "blackcorner"
+/obj/effect/turf_decal/floor_markings/dark/corner{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "LJ" = (
 /obj/structure/fans/tiny,
@@ -5892,23 +5054,18 @@
 "LT" = (
 /obj/item/kirbyplants/medium/medium6,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "LX" = (
 /obj/structure/chair/office/dark{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "LY" = (
 /obj/machinery/economy/vending/hydronutrients,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Ma" = (
 /obj/machinery/power/port_gen/pacman/super,
@@ -5925,7 +5082,7 @@
 	pixel_x = 32
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Mh" = (
 /obj/machinery/light/small{
@@ -5934,16 +5091,14 @@
 /obj/machinery/hydroponics/constructable{
 	pixel_y = 9
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Mm" = (
 /obj/item/reagent_containers/glass/beaker/waterbottle/empty{
 	pixel_y = 11;
 	pixel_x = 9
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Mn" = (
 /obj/structure/railing{
@@ -5953,34 +5108,22 @@
 	dir = 1
 	},
 /obj/structure/table,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Mp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/fried_vox,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 4
 	},
-/area/ruin/space/deepstorage)
-"Mr" = (
-/obj/structure/blob/normal/deepstorage,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "MR" = (
 /obj/structure/rack,
 /obj/effect/turf_decal/delivery/hollow,
 /obj/effect/spawner/random/pool/spaceloot/deepstorage/main,
 /obj/item/paper/researchnotes,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "MS" = (
 /obj/machinery/light/small,
@@ -5990,24 +5133,13 @@
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/catwalk,
 /area/ruin/space/deepstorage)
-"MV" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/blob/normal/deepstorage,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
 "MW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/splatter{
 	color = "red"
 	},
 /obj/effect/mapping_helpers/turfs/damage,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "MZ" = (
 /obj/machinery/light/small{
@@ -6024,10 +5156,10 @@
 /area/ruin/space/deepstorage)
 "Nc" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "black";
+/obj/effect/turf_decal/floor_markings/dark/directional{
 	dir = 1
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Ne" = (
 /obj/structure/railing{
@@ -6036,16 +5168,15 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Nh" = (
 /obj/machinery/economy/vending/hydroseeds{
 	slogan_delay = 700
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "black"
-	},
+/obj/effect/turf_decal/floor_markings/dark/directional,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "No" = (
 /obj/effect/turf_decal/stripes/line,
@@ -6064,26 +5195,12 @@
 	dir = 1
 	},
 /obj/structure/blob/normal/deepstorage,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "white"
-	},
-/area/ruin/space/deepstorage)
-"NI" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "NN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/delivery/partial,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "NT" = (
 /obj/structure/closet,
@@ -6105,10 +5222,10 @@
 	id = "DS_Storage";
 	name = "storage room lockdown"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "blackcorner"
+/obj/effect/turf_decal/floor_markings/dark/corner{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "NY" = (
 /obj/effect/decal/cleanable/blood/splatter{
@@ -6120,18 +5237,15 @@
 /obj/structure/chair{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "Ob" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/maintenance,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Od" = (
 /obj/machinery/light/small,
@@ -6146,16 +5260,14 @@
 "Og" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/salvage/ruin/soviet,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Oh" = (
 /obj/structure/chair{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Oi" = (
 /obj/effect/decal/cleanable/dirt,
@@ -6169,17 +5281,13 @@
 /area/ruin/space/deepstorage)
 "Oo" = (
 /obj/item/trash/chips,
-/turf/simulated/floor/plasteel{
-	icon_state = "black"
-	},
+/obj/effect/turf_decal/floor_markings/dark/directional,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Oq" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/structure/filingcabinet,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Or" = (
 /obj/structure/closet/crate,
@@ -6214,29 +5322,15 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "OU" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "blackcorner"
-	},
-/area/ruin/space/deepstorage)
-"Pg" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "white";
-	dir = 1
-	},
+/obj/effect/turf_decal/floor_markings/dark/corner,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Pi" = (
 /obj/structure/railing,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "Pl" = (
 /obj/effect/decal/cleanable/dirt,
@@ -6246,50 +5340,37 @@
 	},
 /obj/effect/spawner/random/maintenance,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Pm" = (
 /obj/machinery/computer/nonfunctional{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Po" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "whitegreencorner"
+/obj/effect/turf_decal/floor_markings/departmental/virology/corner{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "Pp" = (
 /obj/effect/decal/cleanable/blood/splatter{
 	color = "red"
 	},
 /obj/item/organ/internal/heart,
-/turf/simulated/floor/plasteel{
-	icon_state = "white";
-	dir = 1
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "Pq" = (
 /obj/item/kirbyplants/large/plant11,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Pu" = (
 /obj/structure/chair/office/dark{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "Px" = (
 /obj/effect/turf_decal/stripes/line{
@@ -6316,36 +5397,31 @@
 /area/ruin/space/deepstorage)
 "PC" = (
 /obj/structure/table,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "PD" = (
 /obj/structure/chair/sofa/bench/right{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "PE" = (
 /obj/structure/rack,
 /obj/machinery/disco,
 /obj/effect/decal/cleanable/cobweb,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "PF" = (
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "PG" = (
 /obj/structure/railing{
@@ -6360,9 +5436,8 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "black"
-	},
+/obj/effect/turf_decal/floor_markings/dark/directional,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "PR" = (
 /obj/effect/decal/cleanable/dirt,
@@ -6377,10 +5452,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "PY" = (
 /obj/machinery/light/small{
@@ -6396,18 +5468,7 @@
 	pixel_x = 2
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
-"PZ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/blob/normal/deepstorage,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Qa" = (
 /mob/living/simple_animal/hostile/megafauna/fleshling,
@@ -6436,9 +5497,7 @@
 /obj/item/stack/sheet/plasteel{
 	amount = 10
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Qh" = (
 /turf/simulated/floor/plasteel{
@@ -6450,7 +5509,7 @@
 /obj/structure/chair/stool{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Qk" = (
 /obj/effect/turf_decal/stripes/corner{
@@ -6463,9 +5522,7 @@
 /area/ruin/space/deepstorage)
 "Qt" = (
 /obj/structure/filingcabinet,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Qx" = (
 /obj/structure/railing{
@@ -6478,10 +5535,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Qy" = (
 /obj/effect/decal/cleanable/dirt,
@@ -6491,45 +5545,29 @@
 /obj/structure/chair/sofa/bench/right{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "QD" = (
 /obj/machinery/economy/vending/medical,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "QE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
-"QF" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "QJ" = (
 /obj/structure/table,
 /obj/item/chair,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "QL" = (
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "QN" = (
 /obj/structure/chair/comfy/shuttle{
@@ -6573,10 +5611,10 @@
 	},
 /area/ruin/space/powered)
 "Rd" = (
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "whitegreen"
+/obj/effect/turf_decal/floor_markings/departmental/virology/directional{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "Ri" = (
 /obj/machinery/light/small{
@@ -6598,17 +5636,13 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Rp" = (
 /obj/structure/table/reinforced,
 /obj/item/clothing/shoes/combat,
 /obj/item/clothing/shoes/combat,
-/turf/simulated/floor/plasteel{
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Ru" = (
 /obj/structure/railing/corner,
@@ -6617,23 +5651,19 @@
 "Rw" = (
 /obj/effect/decal/cleanable/glass,
 /obj/structure/closet/crate/trashcart,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Rx" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "blackcorner"
-	},
+/obj/effect/turf_decal/floor_markings/dark/corner,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Ry" = (
 /obj/structure/sign/custodian{
 	pixel_x = 32
 	},
 /mob/living/simple_animal/hostile/spaceinfected/default/ranged,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "RB" = (
 /obj/effect/decal/cleanable/blood/tracks{
@@ -6654,27 +5684,19 @@
 	dir = 1
 	},
 /area/ruin/space/deepstorage)
-"RG" = (
-/mob/living/simple_animal/hostile/spaceinfected/default,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
 "RH" = (
 /obj/structure/chair{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "blackcorner"
-	},
+/obj/effect/turf_decal/floor_markings/dark/corner,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "RJ" = (
 /obj/structure/table,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 6
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "RK" = (
 /obj/structure/blob/normal/deepstorage,
@@ -6683,38 +5705,27 @@
 "RQ" = (
 /obj/structure/table/reinforced,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "RY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/chair/sofa/bench{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Sc" = (
 /obj/item/kirbyplants/large/plant8,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Sf" = (
 /obj/structure/door_assembly/door_assembly_hatch,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Sh" = (
 /obj/structure/table,
 /obj/item/salvage/ruin/brick,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Sl" = (
 /obj/effect/decal/cleanable/dirt,
@@ -6728,10 +5739,7 @@
 "Sn" = (
 /obj/structure/table/glass,
 /obj/machinery/light/small,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Su" = (
 /obj/effect/decal/cleanable/dirt,
@@ -6739,44 +5747,18 @@
 	dir = 4;
 	name = "lift doors"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
-"Sv" = (
-/obj/structure/railing/corner{
-	dir = 8
-	},
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Sw" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "black"
-	},
-/area/ruin/space/deepstorage)
-"Sy" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/railing/corner{
-	dir = 1
-	},
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/obj/effect/turf_decal/floor_markings/dark/directional,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Sz" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "SC" = (
 /obj/machinery/door/airlock,
@@ -6812,10 +5794,7 @@
 	},
 /obj/effect/spawner/random/loot_crate,
 /obj/structure/rack,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Tg" = (
 /turf/simulated/floor/plating/asteroid/basalt,
@@ -6831,10 +5810,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/glass,
 /obj/item/storage/fancy/vials,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "whitegreencorner"
+/obj/effect/turf_decal/floor_markings/departmental/virology/corner{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "Tl" = (
 /obj/structure/table,
@@ -6850,10 +5829,10 @@
 /area/ruin/space/deepstorage)
 "Tn" = (
 /obj/structure/chair/office/dark,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "whitegreen"
+/obj/effect/turf_decal/floor_markings/departmental/virology/directional{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "To" = (
 /obj/effect/mapping_helpers/airlock/access/all/ruins/deepstorage,
@@ -6862,25 +5841,21 @@
 /area/ruin/space/deepstorage)
 "Tq" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "black"
-	},
+/obj/effect/turf_decal/floor_markings/dark/directional,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "TE" = (
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "blackcorner"
+/obj/effect/turf_decal/floor_markings/dark/corner{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "TH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/chair{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "TK" = (
 /obj/effect/mapping_helpers/airlock/access/all/ruins/deepstorage,
@@ -6888,9 +5863,7 @@
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "DS_Storage"
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "TL" = (
 /obj/item/chair{
@@ -6898,35 +5871,19 @@
 	pixel_x = -2;
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "TO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/filingcabinet,
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "TQ" = (
 /obj/structure/blob/normal/deepstorage,
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "whitegreen"
+/obj/effect/turf_decal/floor_markings/departmental/virology/directional{
+	dir = 9
 	},
-/area/ruin/space/deepstorage)
-"TT" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "TW" = (
 /obj/item/trash/candy,
@@ -6965,18 +5922,14 @@
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "DS_Storage"
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Uk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Us" = (
 /obj/structure/chair,
@@ -6987,9 +5940,7 @@
 /area/ruin/space/deepstorage)
 "Ut" = (
 /obj/structure/table/reinforced,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Uu" = (
 /obj/machinery/light/small,
@@ -7000,10 +5951,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Uv" = (
 /obj/structure/sink/directional/south,
@@ -7022,9 +5970,7 @@
 /obj/structure/railing/cap{
 	dir = 6
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "UB" = (
 /obj/effect/decal/cleanable/blood/tracks{
@@ -7048,9 +5994,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "UF" = (
 /turf/simulated/wall/mineral/titanium,
@@ -7064,31 +6008,29 @@
 "UM" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/maintenance,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkredcorners";
+/obj/effect/turf_decal/floor_markings/departmental/security/corner{
 	dir = 1
 	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "UO" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "UR" = (
 /obj/effect/turf_decal/delivery/partial{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "UT" = (
 /obj/machinery/economy/vending/coffee,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkred";
+/obj/effect/turf_decal/floor_markings/departmental/security/directional{
 	dir = 10
 	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Va" = (
 /obj/machinery/light{
@@ -7133,10 +6075,10 @@
 /turf/simulated/floor/catwalk,
 /area/ruin/space/deepstorage)
 "Vv" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "black";
+/obj/effect/turf_decal/floor_markings/dark/directional{
 	dir = 1
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Vw" = (
 /obj/structure/closet/body_bag,
@@ -7153,10 +6095,7 @@
 	dir = 4
 	},
 /obj/item/paper/fluff/ruins/deepstorage/log8,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "VA" = (
 /obj/effect/decal/cleanable/dirt,
@@ -7175,34 +6114,15 @@
 /obj/item/stack/sheet/glass{
 	amount = 50
 	},
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "VE" = (
 /obj/structure/closet/cardboard,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
-"VF" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small{
-	dir = 8
-	},
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "VH" = (
 /mob/living/simple_animal/hostile/spaceinfected/default,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "VL" = (
 /obj/structure/table/reinforced,
@@ -7210,19 +6130,7 @@
 	pixel_y = 4;
 	pixel_x = 3
 	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
-"VP" = (
-/obj/effect/decal/cleanable/blood/splatter{
-	color = "red"
-	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "VQ" = (
 /obj/structure/chair/stool,
@@ -7250,7 +6158,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "VZ" = (
 /obj/structure/table,
@@ -7264,10 +6172,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Wi" = (
 /obj/structure/sign/radiation{
@@ -7282,10 +6187,10 @@
 	output_level = 200000;
 	outputting = 0
 	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "brown"
+/obj/effect/turf_decal/floor_markings/departmental/cargo/directional{
+	dir = 10
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Wj" = (
 /obj/effect/decal/cleanable/cobweb,
@@ -7298,18 +6203,14 @@
 /obj/structure/railing{
 	dir = 9
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Wn" = (
 /turf/simulated/floor/chasm,
 /area/ruin/space/deepstorage)
 "Wo" = (
 /obj/machinery/light/small,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Wq" = (
 /obj/structure/chair{
@@ -7321,30 +6222,20 @@
 	icon_state = "podfloor"
 	},
 /area/ruin/space/deepstorage)
-"Ww" = (
-/obj/item/kirbyplants/large/plant10,
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
 "Wz" = (
 /obj/effect/mapping_helpers/turfs/damage,
 /obj/structure/holosign/barrier/engineering,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "WB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "browncorner";
+/obj/effect/turf_decal/floor_markings/departmental/cargo/corner{
 	dir = 1
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "WG" = (
 /obj/machinery/door/window,
@@ -7361,10 +6252,10 @@
 /area/ruin/space/deepstorage)
 "WI" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "WJ" = (
 /obj/structure/railing{
@@ -7381,18 +6272,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
-"WL" = (
-/obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/spaceinfected/default,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "WM" = (
 /obj/structure/table/glass,
@@ -7400,10 +6280,7 @@
 	pixel_y = 4
 	},
 /obj/machinery/light/small,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "WX" = (
 /obj/effect/decal/cleanable/dirt,
@@ -7417,18 +6294,8 @@
 	dir = 4
 	},
 /obj/structure/table,
-/turf/simulated/floor/plasteel{
-	icon_state = "blackcorner"
-	},
-/area/ruin/space/deepstorage)
-"Xa" = (
-/obj/machinery/computer/nonfunctional{
-	dir = 1
-	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/obj/effect/turf_decal/floor_markings/dark/corner,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Xc" = (
 /obj/effect/spawner/window/plastitanium,
@@ -7445,7 +6312,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/twimsts,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Xg" = (
 /obj/structure/railing/corner{
@@ -7453,16 +6320,11 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_animal/hostile/spaceinfected/default,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Xj" = (
 /obj/item/kirbyplants/large/plant12,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Xo" = (
 /obj/structure/railing{
@@ -7473,28 +6335,11 @@
 	},
 /turf/simulated/floor/engine/airless,
 /area/ruin/space/unpowered)
-"Xp" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/structure/rack,
-/obj/effect/spawner/random/maintenance,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
 "Xr" = (
 /obj/structure/sign/cargo{
 	pixel_y = -32
 	},
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Xt" = (
 /obj/structure/noticeboard{
@@ -7512,19 +6357,14 @@
 /obj/item/food/beans,
 /obj/item/food/beans,
 /obj/item/food/beans,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Xy" = (
 /obj/structure/table/glass,
 /obj/item/kirbyplants/small/small4{
 	pixel_y = 13
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "XD" = (
 /obj/structure/railing{
@@ -7540,10 +6380,10 @@
 /area/ruin/space/deepstorage)
 "XF" = (
 /obj/structure/table,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "black"
+/obj/effect/turf_decal/floor_markings/dark/directional{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "XH" = (
 /obj/machinery/light/small{
@@ -7559,18 +6399,7 @@
 /obj/machinery/tcomms/relay/ruskie{
 	network_id = "STORAGE-RELAY"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
-/area/ruin/space/deepstorage)
-"XN" = (
-/obj/structure/rack,
-/obj/effect/spawner/random/maintenance,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "XO" = (
 /obj/structure/railing/cap{
@@ -7586,10 +6415,7 @@
 	icon_state = "tracks";
 	pixel_x = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "white";
-	dir = 1
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "XS" = (
 /obj/structure/window/reinforced{
@@ -7602,14 +6428,7 @@
 /obj/item/restraints/handcuffs/cable/zipties{
 	pixel_y = 6
 	},
-/turf/simulated/floor/plasteel,
-/area/ruin/space/deepstorage)
-"Ya" = (
-/mob/living/simple_animal/hostile/spaceinfected/default,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Yb" = (
 /obj/machinery/door/firedoor,
@@ -7622,32 +6441,22 @@
 "Yc" = (
 /obj/structure/table/reinforced,
 /obj/item/stack/tile/disco_light/thirty,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Ye" = (
 /obj/structure/railing/corner{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Yk" = (
 /obj/structure/table/reinforced,
 /obj/item/paper/researchnotes,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "vault"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Yo" = (
 /obj/structure/chair,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Yp" = (
 /obj/machinery/light/small{
@@ -7685,13 +6494,6 @@
 	pixel_y = -2
 	},
 /turf/simulated/floor/catwalk,
-/area/ruin/space/deepstorage)
-"Yy" = (
-/obj/structure/blob/normal/deepstorage,
-/turf/simulated/floor/plasteel{
-	icon_state = "white";
-	dir = 1
-	},
 /area/ruin/space/deepstorage)
 "Yz" = (
 /obj/machinery/door/firedoor,
@@ -7735,20 +6537,17 @@
 /area/ruin/space/deepstorage)
 "YU" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "blackcorner"
+/obj/effect/turf_decal/floor_markings/dark/corner{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/deepstorage)
 "Za" = (
 /obj/structure/table/tray,
 /obj/item/storage/surgical_tray{
 	pixel_y = 10
 	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "white"
-	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "Zd" = (
 /obj/effect/decal/cleanable/dirt,
@@ -7767,9 +6566,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/deepstorage)
 "Zt" = (
 /obj/structure/bed,
@@ -7783,10 +6580,10 @@
 "Zx" = (
 /obj/structure/table/glass,
 /obj/effect/decal/cleanable/cobweb2,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "whitebluecorner"
+/obj/effect/turf_decal/floor_markings/departmental/medical/corner{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "Zy" = (
 /obj/effect/decal/cleanable/blood/tracks{
@@ -7796,17 +6593,6 @@
 	icon_state = "tracks"
 	},
 /turf/simulated/floor/catwalk,
-/area/ruin/space/deepstorage)
-"ZA" = (
-/obj/item/chair{
-	pixel_y = -5;
-	pixel_x = -2;
-	dir = 4
-	},
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "vault"
-	},
 /area/ruin/space/deepstorage)
 "ZH" = (
 /mob/living/simple_animal/hostile/spaceinfected/default,
@@ -7831,10 +6617,10 @@
 /area/ruin/space/deepstorage)
 "ZM" = (
 /obj/machinery/dna_scannernew,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "whitegreen"
+/obj/effect/turf_decal/floor_markings/departmental/virology/directional{
+	dir = 5
 	},
+/turf/simulated/floor/plasteel/white/standard,
 /area/ruin/space/deepstorage)
 "ZN" = (
 /obj/structure/chair{
@@ -8963,9 +7749,9 @@ ge
 Pi
 LK
 Xy
-LA
-LA
-LA
+wh
+wh
+wh
 KQ
 jB
 ab
@@ -9034,7 +7820,7 @@ nQ
 Pi
 LK
 GH
-nK
+wh
 ZN
 lf
 vh
@@ -9176,7 +7962,7 @@ jB
 jB
 jB
 DF
-Fi
+bP
 Dy
 GI
 sE
@@ -9247,8 +8033,8 @@ Bf
 Zf
 pz
 bP
-aY
-nK
+bP
+wh
 We
 sk
 sk
@@ -9452,10 +8238,10 @@ YB
 Jy
 WX
 jB
-iK
-Mr
+aK
+aK
 GW
-JU
+bP
 GM
 oP
 jB
@@ -9520,10 +8306,10 @@ hH
 hH
 jB
 cn
-Lm
+nO
 Hj
 jB
-iK
+aK
 vF
 lH
 kp
@@ -9594,8 +8380,8 @@ RC
 Ji
 MZ
 jB
-LA
-um
+wh
+dd
 Ik
 BE
 BE
@@ -9662,11 +8448,11 @@ hH
 hH
 jB
 cn
-Yy
+hH
 EP
 jB
-TT
-QF
+Uk
+bP
 Ik
 BE
 ri
@@ -9733,11 +8519,11 @@ jB
 jB
 jB
 PR
-Lm
+nO
 zA
 ho
-Fi
-QF
+bP
+bP
 Ik
 yQ
 BE
@@ -9807,7 +8593,7 @@ cn
 gr
 Hj
 ho
-Fi
+bP
 BS
 tg
 KS
@@ -9871,15 +8657,15 @@ qn
 ab
 jB
 BL
-Pg
+ht
 fS
 rf
-Pg
+ht
 rM
 dL
 ho
-Fi
-QF
+bP
+bP
 Mb
 jB
 jB
@@ -9949,7 +8735,7 @@ XQ
 cs
 ir
 jB
-Fi
+bP
 Xr
 jB
 jB
@@ -10020,8 +8806,8 @@ Zd
 nW
 eh
 Fw
-Fi
-ag
+bP
+wh
 jB
 sk
 sk
@@ -10092,7 +8878,7 @@ eh
 eh
 gS
 eh
-QF
+bP
 jB
 sk
 Fk
@@ -10230,11 +9016,11 @@ VH
 tT
 Dq
 QR
-Pg
+ht
 eh
 jB
 eh
-um
+dd
 jB
 sk
 Fk
@@ -10301,11 +9087,11 @@ ht
 wc
 jB
 GS
-Pg
+ht
 hz
 jB
 Lh
-ag
+wh
 jB
 sk
 sk
@@ -10376,7 +9162,7 @@ Pp
 Bf
 jB
 ym
-QF
+bP
 jB
 sk
 sk
@@ -10446,8 +9232,8 @@ cA
 EI
 VZ
 jB
-LA
-QF
+wh
+bP
 jB
 sk
 sk
@@ -10517,8 +9303,8 @@ jB
 jB
 jB
 jB
-Fi
-ag
+bP
+wh
 jB
 sk
 sk
@@ -10661,7 +9447,7 @@ Fk
 Fk
 OO
 bU
-zU
+wh
 sk
 Fk
 Fk
@@ -10730,7 +9516,7 @@ ab
 sk
 Fk
 Fk
-qD
+Mn
 bU
 xr
 sk
@@ -10803,7 +9589,7 @@ zk
 Fk
 jO
 bU
-FY
+bP
 sk
 Fk
 Fk
@@ -10874,7 +9660,7 @@ Fk
 Fk
 no
 ah
-zU
+wh
 sk
 sk
 Fk
@@ -10893,11 +9679,11 @@ Tg
 sk
 jB
 Yc
-aY
+bP
 ps
-nK
+wh
 Cn
-aY
+bP
 pk
 jB
 aM
@@ -10943,9 +9729,9 @@ Fk
 Fk
 Fk
 Fk
-qD
+Mn
 bU
-uT
+dd
 bP
 oN
 Fk
@@ -10964,11 +9750,11 @@ Tg
 sk
 jB
 ye
-LA
+wh
 IR
-Fi
+bP
 MR
-LA
+wh
 Yk
 jB
 ai
@@ -11017,7 +9803,7 @@ Fk
 lt
 bU
 bU
-FY
+bP
 oN
 Fk
 UF
@@ -11027,19 +9813,19 @@ QN
 UF
 Fk
 Yb
-nK
+wh
 aQ
-Ch
+cY
 Tg
 Tg
 Tg
 jB
 jB
 zY
-nK
-aY
-nK
-rT
+wh
+bP
+wh
+Rl
 jB
 jB
 ai
@@ -11088,7 +9874,7 @@ Fk
 zj
 tr
 bU
-zU
+wh
 oN
 DK
 UF
@@ -11098,9 +9884,9 @@ vS
 UF
 ol
 Yb
-VP
+mN
 Ew
-Ch
+cY
 Tg
 sk
 Tg
@@ -11159,7 +9945,7 @@ Fk
 Fk
 Qx
 bU
-zU
+wh
 yl
 Gl
 hW
@@ -11169,7 +9955,7 @@ Qy
 hW
 Gl
 JV
-aY
+bP
 bU
 JR
 sk
@@ -11230,7 +10016,7 @@ Fk
 Fk
 Qx
 aQ
-zU
+wh
 Cm
 Gl
 hW
@@ -11240,7 +10026,7 @@ mA
 hW
 Gl
 Yz
-nK
+wh
 bU
 ts
 sk
@@ -11301,7 +10087,7 @@ Fk
 Fk
 Qx
 aQ
-zU
+wh
 oN
 DK
 UF
@@ -11311,7 +10097,7 @@ ZI
 UF
 ol
 Yb
-Ya
+CT
 bU
 ts
 sk
@@ -11372,7 +10158,7 @@ Fk
 Fk
 WJ
 aQ
-zU
+wh
 oN
 Fk
 UF
@@ -11382,7 +10168,7 @@ qZ
 UF
 Fk
 Yb
-nK
+wh
 bU
 Uu
 sk
@@ -11441,9 +10227,9 @@ ab
 sk
 zk
 Fk
-Xp
+lt
 bU
-FY
+bP
 oN
 Fk
 pQ
@@ -11453,9 +10239,9 @@ pQ
 pQ
 Fk
 Yb
-VP
+mN
 bU
-hV
+tk
 Wn
 sk
 rZ
@@ -11524,7 +10310,7 @@ pQ
 Fk
 Fk
 Yb
-nK
+wh
 bU
 MW
 Wn
@@ -11595,7 +10381,7 @@ jB
 jB
 jB
 ct
-nK
+wh
 bc
 Wn
 Od
@@ -11666,7 +10452,7 @@ rx
 xw
 jB
 jB
-aY
+bP
 hh
 Wn
 Wn
@@ -11796,7 +10582,7 @@ Mh
 fk
 sk
 sk
-rQ
+IJ
 jB
 nh
 JZ
@@ -11866,8 +10652,8 @@ uJ
 Bm
 Bm
 jB
-uC
-QF
+ih
+bP
 zD
 Ei
 Rw
@@ -11937,8 +10723,8 @@ Vv
 bl
 QL
 IN
-LA
-ag
+wh
+wh
 jB
 AV
 Aw
@@ -11950,7 +10736,7 @@ CD
 cN
 mU
 jB
-nK
+wh
 ZQ
 jy
 Wn
@@ -12008,8 +10794,8 @@ Vv
 Qi
 or
 jB
-LA
-ag
+wh
+wh
 jB
 jB
 Br
@@ -12023,7 +10809,7 @@ gC
 jB
 nJ
 pj
-VP
+mN
 CG
 ne
 yP
@@ -12079,8 +10865,8 @@ Nc
 nF
 QL
 IP
-Fi
-ag
+bP
+wh
 EA
 jB
 jB
@@ -12150,13 +10936,13 @@ Vv
 DZ
 bl
 IP
-LA
-QF
+wh
+bP
 jB
 jB
 Ha
-aY
-nK
+bP
+wh
 lV
 jB
 jB
@@ -12221,14 +11007,14 @@ TE
 qt
 qt
 IP
-LA
-QF
+wh
+bP
 jB
-jG
+Qt
 bP
 tq
 Ut
-aY
+bP
 jB
 Uk
 bP
@@ -12293,36 +11079,36 @@ CY
 fk
 jB
 mQ
-ag
+wh
 jB
 dX
 RQ
 ch
 vG
-nK
+wh
 wH
-nK
+wh
 bU
-rQ
+IJ
 jB
 XH
 JH
 rK
-aY
+bP
 bc
-rQ
+IJ
 jB
 VE
-GE
-Fi
+IJ
+bP
 hK
 cU
-GE
-LA
+IJ
+wh
 cU
 qa
-Fi
-uT
+bP
+dd
 CV
 jB
 jB
@@ -12342,9 +11128,9 @@ jB
 jB
 cb
 aB
-pH
+Yo
 bU
-aG
+Wo
 jB
 ab
 ab
@@ -12363,25 +11149,25 @@ jB
 jB
 jB
 jB
-uC
-ag
+ih
+wh
 jB
 TO
 Yo
 bP
 Oh
-nK
+wh
 Xc
-ty
+aK
 bU
 uw
 jB
 dT
 vN
 jB
-eI
+cU
 vL
-QF
+bP
 Hx
 wh
 bU
@@ -12413,9 +11199,9 @@ jB
 jB
 an
 zz
-ZA
+TL
 bU
-ag
+wh
 jB
 ab
 qn
@@ -12434,16 +11220,16 @@ Bh
 tZ
 jB
 jB
-Fi
-ag
+bP
+wh
 jB
 HE
 Yo
 bP
 aU
-aY
+bP
 Xc
-ty
+aK
 Lq
 hd
 jB
@@ -12452,19 +11238,19 @@ jB
 jB
 lL
 bU
-QF
+bP
 jB
 ju
-nK
-VP
-WL
+wh
+mN
+dd
 PU
 Gt
-nK
+wh
 Ry
-aY
-eI
-XN
+bP
+cU
+IJ
 Ja
 jB
 bf
@@ -12484,9 +11270,9 @@ bC
 jB
 bS
 NV
-WL
+dd
 bU
-ag
+wh
 jB
 ab
 ab
@@ -12504,26 +11290,26 @@ SC
 xZ
 tu
 jB
-Fi
-QF
-ag
-jB
-zU
+bP
 bP
 wh
-LA
+jB
+wh
+bP
+wh
+wh
 Cb
 Dn
-PZ
+Ds
 Lq
 hd
 jB
 Us
 kG
 jB
-BO
+rI
 bU
-aG
+Wo
 jB
 jB
 jB
@@ -12543,8 +11329,8 @@ VA
 JI
 JI
 rP
-oI
-oI
+uV
+uV
 yZ
 To
 bc
@@ -12554,8 +11340,8 @@ al
 bU
 To
 wh
-Fi
-nK
+bP
+wh
 bU
 be
 jB
@@ -12576,8 +11362,8 @@ VS
 tu
 mE
 qF
-ag
-rQ
+wh
+IJ
 jB
 rp
 dk
@@ -12585,16 +11371,16 @@ rp
 rA
 jB
 jB
-ty
+aK
 bU
 hd
 jB
 XH
 ew
 ZW
-ty
+aK
 bU
-ag
+wh
 Sh
 jB
 XH
@@ -12646,8 +11432,8 @@ SC
 tu
 fD
 jB
-LA
-ag
+wh
+wh
 jB
 jB
 AC
@@ -12656,16 +11442,16 @@ XD
 KI
 vA
 jB
-ty
+aK
 cj
 gp
 jB
 Zt
 pV
 RK
-ty
+aK
 bU
-MV
+Ds
 rI
 jB
 Zt
@@ -12676,18 +11462,18 @@ NT
 ri
 gZ
 jB
-LA
+wh
 bU
-zU
+wh
 Hx
 UR
-qz
-qz
-kZ
-kZ
-aY
+UR
+UR
+lb
+lb
+bP
 bU
-ag
+wh
 mc
 aQ
 iJ
@@ -12696,8 +11482,8 @@ iJ
 bU
 To
 bP
-nK
-nK
+wh
+wh
 bU
 tm
 jB
@@ -12717,26 +11503,26 @@ jB
 VS
 Uv
 jB
-LA
+wh
 dh
 jB
 Fy
 Nq
-aY
-aY
-nK
+bP
+bP
+wh
 aQ
 nC
-nK
+wh
 cj
-cP
+hg
 jB
 jB
 jB
 jB
-ty
+aK
 Lq
-MV
+Ds
 jB
 jB
 jB
@@ -12747,7 +11533,7 @@ jB
 jB
 jB
 jB
-TT
+Uk
 bU
 tE
 jB
@@ -12756,9 +11542,9 @@ iX
 sJ
 jB
 Kw
-aY
+bP
 aQ
-rQ
+IJ
 jB
 Fr
 aQ
@@ -12768,9 +11554,9 @@ ja
 jB
 cc
 Rj
-nK
+wh
 bU
-QF
+bP
 jB
 ab
 ab
@@ -12788,37 +11574,37 @@ SC
 xZ
 Uv
 jB
-LA
-ag
+wh
+wh
 jB
 Do
-zU
+wh
 hB
 kI
-RG
-Fi
+CT
+bP
 EZ
-nK
+wh
 ah
-LA
-LA
-VF
+wh
+wh
+QE
 bP
 jB
-aY
+bP
 Lq
-Mr
+aK
 RK
 aK
 QE
 iG
 RY
 QC
-Ww
+hg
 QE
-mx
-mx
-zU
+aK
+aK
+wh
 Ew
 TL
 jB
@@ -12827,9 +11613,9 @@ HN
 vC
 tY
 rr
-aY
+bP
 bU
-cx
+rI
 jB
 jB
 aD
@@ -12839,9 +11625,9 @@ jB
 jB
 Is
 fU
-pH
+Yo
 ah
-QF
+bP
 jB
 ab
 ab
@@ -12859,26 +11645,26 @@ jB
 xZ
 tu
 mE
-LA
+wh
 CT
 jB
 ll
-zU
+wh
 Qe
 Rp
 on
-Fi
+bP
 yg
-aY
+bP
 bU
 bU
 Lq
 bU
 wh
 TK
-ty
+aK
 Lq
-Mr
+aK
 Sf
 bP
 aQ
@@ -12891,7 +11677,7 @@ bU
 Lq
 Lq
 bU
-FY
+bP
 Hx
 TE
 bl
@@ -12902,17 +11688,17 @@ Zp
 wh
 hZ
 jB
-vH
+te
 VL
 bZ
 fK
-Xa
+Pm
 jB
 bb
 Lp
-pH
+Yo
 aQ
-aG
+Wo
 jB
 ab
 ab
@@ -12930,26 +11716,26 @@ tu
 xZ
 pL
 jB
-Fi
-ag
+bP
+wh
 jB
 Tb
-FY
-nK
+bP
+wh
 Xu
 ks
-LA
+wh
 nt
-nK
+wh
 bU
-ty
-PZ
-BO
+aK
+Ds
+rI
 IJ
 jB
 lL
 Lq
-QF
+bP
 jB
 jN
 mT
@@ -12959,10 +11745,10 @@ mT
 Su
 ee
 Vy
-QF
-MV
+bP
+Ds
 Lq
-mx
+aK
 jB
 ko
 cJ
@@ -13001,26 +11787,26 @@ Dx
 Eu
 jo
 jB
-uC
-ag
+ih
+wh
 jB
 Bi
 bU
-FY
-FY
-FY
+bP
+bP
+bP
 bU
 ZJ
-PZ
+Ds
 bU
-MV
+Ds
 jB
 jB
 jB
 jB
-Cl
+rS
 aQ
-tH
+rS
 jB
 HC
 bU
@@ -13082,16 +11868,16 @@ Yw
 Ep
 SP
 jB
-ty
+aK
 Lq
-ag
+wh
 jB
 vN
 JH
 jB
-aY
+bP
 bU
-rQ
+IJ
 jB
 HC
 bU
@@ -13153,16 +11939,16 @@ jB
 jB
 jB
 jB
-ty
+aK
 Lq
-QF
+bP
 jB
 fN
 ew
 ZW
-nK
+wh
 bU
-aG
+Wo
 jB
 Vb
 mO
@@ -13367,15 +12153,15 @@ aQ
 bU
 bU
 nl
-LA
+wh
 GP
-LA
-LA
-Fi
-NI
-LA
-Fi
-Fi
+wh
+wh
+bP
+lV
+wh
+bP
+bP
 cY
 Fk
 Fk
@@ -13400,9 +12186,9 @@ ku
 wh
 Pl
 jB
-QF
 bP
-VP
+bP
+mN
 im
 YU
 pa
@@ -13446,7 +12232,7 @@ AJ
 AJ
 Xg
 Cf
-QF
+bP
 Ye
 Db
 Fk
@@ -13473,7 +12259,7 @@ iu
 jB
 PY
 mF
-aY
+bP
 et
 YU
 bl
@@ -13518,14 +12304,14 @@ Fk
 jB
 jB
 Ez
-Fi
-Sv
-oI
+bP
+Ye
+uV
 KY
 II
-oI
-oI
-Sy
+uV
+uV
+vM
 wh
 jB
 jB
@@ -13538,13 +12324,13 @@ jB
 eN
 RK
 jB
-sV
+iu
 dd
 Te
 jB
 dJ
 bP
-VP
+mN
 Tl
 YU
 fw
@@ -13590,12 +12376,12 @@ Fk
 bK
 bK
 Pq
-uR
-qK
+Zp
+CO
 jM
 Jh
-ag
-uR
+wh
+Zp
 re
 bK
 bK
@@ -13680,7 +12466,7 @@ jB
 jB
 jq
 jB
-sV
+iu
 wh
 TH
 jB
@@ -13753,11 +12539,11 @@ jB
 jB
 jB
 uo
-aY
+bP
 aR
-zU
-jn
-FY
+wh
+Rl
+bP
 aR
 Rx
 Lo

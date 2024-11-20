@@ -35,7 +35,7 @@
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
 "i" = (
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/powered)
 "k" = (
 /obj/structure/window/reinforced{
@@ -56,7 +56,7 @@
 	},
 /obj/effect/decal/remains/human,
 /mob/living/simple_animal/shade,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/powered)
 "n" = (
 /obj/structure/table,
@@ -70,7 +70,7 @@
 	pixel_x = -10
 	},
 /obj/item/food/burger/ghost,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/powered)
 "o" = (
 /obj/structure/chair{
@@ -78,7 +78,7 @@
 	},
 /obj/effect/decal/remains/human,
 /mob/living/simple_animal/shade,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/powered)
 "p" = (
 /obj/structure/window/reinforced,
@@ -86,11 +86,11 @@
 /area/space/nearstation)
 "q" = (
 /obj/structure/cult/functional/pylon,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/powered)
 "r" = (
 /obj/item/salvage/ruin/tablet,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/powered)
 
 (1,1,1) = {"

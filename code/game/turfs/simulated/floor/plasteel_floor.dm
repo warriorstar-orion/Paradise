@@ -1,5 +1,16 @@
 /turf/simulated/floor/plasteel
 	icon_state = "floor"
+
+/turf/simulated/floor/plasteel/
+	icon_state = "tile_standard"
+	floor_tile = /obj/item/stack/tile/plasteel
+
+/turf/simulated/floor/plasteel/default/standard
+	icon_state = "tile_standard"
+	floor_tile = /obj/item/stack/tile/plasteel
+
+/turf/simulated/floor/plasteel/default/edge_tiling
+	icon_state = "tile_edge"
 	floor_tile = /obj/item/stack/tile/plasteel
 
 /turf/simulated/floor/plasteel/update_icon_state()
@@ -76,23 +87,41 @@
 	desc = "\"AMS Farragus, Commissioned on 13 April 2472 by the Althland Mining Company. Acquired and recommissioned as NSS Farragus by Nanotrasen on 3 January 2485.\"<br><br>\
 	Scratched in beneath is a crude image of a mime and a security officer. The security officer is hitting an invisible wall with a baton. The mime is silently laughing."
 
+
+
+
+/turf/simulated/floor/plasteel/fakestairs
+	// icon = 'icons/turf/floors/materials/floors_stairs.dmi'
+	icon_state = "stairs"
+
+/turf/simulated/floor/plasteel/fakestairs/left
+	icon_state = "stairs-l"
+
+/turf/simulated/floor/plasteel/fakestairs/center
+	icon_state = "stairs-m"
+
+/turf/simulated/floor/plasteel/fakestairs/right
+	icon_state = "stairs-r"
+
+
+
 //TODO: Make subtypes for all normal turf icons
-/turf/simulated/floor/plasteel/white
-	icon_state = "white"
+/turf/simulated/floor/plasteel/white/standard
+	icon_state = "tile_white_standard"
 /turf/simulated/floor/plasteel/white/side
-	icon_state = "whitehall"
+	icon_state = "tile_white_edge"
 /turf/simulated/floor/plasteel/white/corner
-	icon_state = "whitecorner"
+	icon_state = "tile_white_corner"
 
-/turf/simulated/floor/plasteel/dark
-	icon_state = "darkfull"
+/turf/simulated/floor/plasteel/dark/standard
+	icon_state = "tile_dark_standard"
 
-/turf/simulated/floor/plasteel/dark/telecomms
+/turf/simulated/floor/plasteel/dark/standard/telecomms
 	nitrogen = 100
 	oxygen = 0
 	temperature = 80
 
-/turf/simulated/floor/plasteel/dark/nitrogen
+/turf/simulated/floor/plasteel/dark/standard/nitrogen
 	nitrogen = 100
 	oxygen = 0
 
@@ -100,6 +129,7 @@
 	icon_state = "freezerfloor"
 
 /turf/simulated/floor/plasteel/stairs
+	// icon = 'icons/turf/floors/materials/floors_stairs.dmi'
 	icon_state = "stairs"
 
 /turf/simulated/floor/plasteel/stairs/left
@@ -110,6 +140,9 @@
 
 /turf/simulated/floor/plasteel/stairs/right
 	icon_state = "stairs-r"
+
+/turf/simulated/floor/plasteel/stairs/old
+	icon_state = "stairs-old"
 
 /turf/simulated/floor/plasteel/grimy
 	icon_state = "grimy"

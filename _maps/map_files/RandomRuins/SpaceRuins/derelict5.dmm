@@ -2,11 +2,11 @@
 "aN" = (
 /obj/effect/spawner/random/loot_crate/rarely,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "bO" = (
 /mob/living/basic/skeleton,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "bQ" = (
 /obj/structure/table,
@@ -22,17 +22,17 @@
 /obj/item/stack/ore/gold{
 	pixel_x = -5
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "dz" = (
 /obj/structure/closet/crate,
 /obj/item/storage/bag/ore,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "et" = (
 /mob/living/basic/cockroach,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "ez" = (
 /turf/simulated/mineral/random/high_chance/clown,
@@ -43,13 +43,13 @@
 /obj/item/clothing/shoes/laceup,
 /obj/item/clothing/glasses/sunglasses,
 /obj/item/paper/fluff/ruins/derelict5,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "fV" = (
 /obj/structure/closet/crate,
 /obj/item/clothing/suit/armor/vest,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "gx" = (
 /obj/structure/spawner/mining/basilisk/space,
@@ -57,7 +57,7 @@
 /area/ruin/space/unpowered)
 "hG" = (
 /obj/structure/kitchenspike,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "iS" = (
 /obj/structure/door_assembly,
@@ -66,13 +66,13 @@
 /area/ruin/space/unpowered)
 "jz" = (
 /obj/effect/spawner/random/loot_crate/rarely,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "kb" = (
 /obj/structure/table,
 /obj/item/storage/toolbox/mechanical,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "kO" = (
 /turf/simulated/floor/plating,
@@ -81,17 +81,17 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
 /obj/machinery/kitchen_machine/microwave,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "lE" = (
 /obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "mn" = (
 /obj/structure/closet/crate,
 /obj/item/toy/plushie/nianplushie,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "nb" = (
 /obj/structure/sign/biohazard{
@@ -125,18 +125,18 @@
 	pixel_x = -9
 	},
 /obj/effect/decal/cleanable/cobweb,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "qF" = (
 /obj/effect/spawner/random/loot_crate/rarely,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/cobweb2,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "qY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/chair,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "rc" = (
 /obj/structure/table,
@@ -145,39 +145,39 @@
 	pixel_x = -11;
 	pixel_y = 12
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "rI" = (
 /obj/structure/closet/crate,
 /obj/item/pickaxe,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "sd" = (
 /obj/item/kirbyplants/large/dead,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "vg" = (
 /obj/structure/table_frame,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "vE" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "wy" = (
 /obj/machinery/door/airlock,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "xs" = (
 /obj/effect/spawner/random/fungus/frequent,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "xQ" = (
 /obj/structure/table,
 /obj/item/toy/russian_revolver,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "yq" = (
 /mob/living/basic/carp,
@@ -186,12 +186,12 @@
 "yY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "zr" = (
 /obj/structure/table,
 /obj/item/storage/toolbox/electrical,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "zy" = (
 /obj/structure/table,
@@ -207,27 +207,27 @@
 	pixel_y = -15
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "zN" = (
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "Bm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/insectguts,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "Dt" = (
 /turf/simulated/mineral/random/high_chance/space,
 /area/ruin/space/unpowered)
 "Gx" = (
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "Gz" = (
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "KU" = (
 /obj/effect/decal/cleanable/dirt,
@@ -241,21 +241,21 @@
 "Li" = (
 /obj/structure/door_assembly,
 /obj/structure/barricade/wooden/crude,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "LA" = (
 /obj/structure/table,
 /obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "LD" = (
 /obj/structure/closet/cabinet,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "LZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/cobweb,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "Nv" = (
 /obj/structure/falsewall/rock_ancient,
@@ -264,13 +264,13 @@
 "Oc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "Oj" = (
 /obj/machinery/door/airlock/external,
 /obj/structure/barricade/wooden/crude,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "Pq" = (
 /obj/effect/mapping_helpers/turfs/rust,
@@ -290,7 +290,7 @@
 /obj/item/food/beans{
 	pixel_x = -5
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "TT" = (
 /turf/template_noop,
@@ -298,7 +298,7 @@
 "VL" = (
 /mob/living/basic/cockroach,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "VS" = (
 /turf/simulated/mineral,
@@ -314,7 +314,7 @@
 /obj/structure/table,
 /obj/item/storage/toolbox/syndicate,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "Yx" = (
 /obj/structure/table,
@@ -324,7 +324,7 @@
 /obj/item/reagent_containers/glass/bottle/salicylic{
 	pixel_x = 8
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "Zv" = (
 /obj/structure/table,
@@ -339,16 +339,16 @@
 /obj/item/stack/spacecash/c100{
 	pixel_y = 6
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "ZP" = (
 /obj/structure/table_frame,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 "ZZ" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/unpowered)
 
 (1,1,1) = {"
