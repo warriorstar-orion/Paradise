@@ -5,7 +5,7 @@
 	pixel_y = 3
 	},
 /obj/structure/table/reinforced,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/shuttle/escape)
 "ab" = (
 /turf/simulated/wall/mineral/titanium,
@@ -89,9 +89,8 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/floor_markings/dark/checker,
+/turf/simulated/floor/plasteel/white/standard,
 /area/shuttle/escape)
 "aw" = (
 /obj/machinery/computer/aifixer{
@@ -111,14 +110,12 @@
 /area/shuttle/escape)
 "az" = (
 /obj/item/kirbyplants/large,
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/floor_markings/dark/checker,
+/turf/simulated/floor/plasteel/white/standard,
 /area/shuttle/escape)
 "aA" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/floor_markings/dark/checker,
+/turf/simulated/floor/plasteel/white/standard,
 /area/shuttle/escape)
 "aB" = (
 /obj/item/kirbyplants/large,
@@ -130,7 +127,7 @@
 /obj/machinery/light/spot{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/shuttle/escape)
 "aD" = (
 /obj/machinery/computer/communications,
@@ -182,15 +179,14 @@
 /obj/item/tank/internals/emergency_oxygen/engi,
 /obj/item/tank/internals/emergency_oxygen/engi,
 /obj/effect/turf_decal/delivery/hollow,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/shuttle/escape)
 "aM" = (
 /obj/structure/chair/stool/bar{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/floor_markings/dark/checker,
+/turf/simulated/floor/plasteel/white/standard,
 /area/shuttle/escape)
 "aN" = (
 /obj/structure/table/wood,
@@ -292,9 +288,8 @@
 /obj/machinery/light/spot{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/floor_markings/dark/checker,
+/turf/simulated/floor/plasteel/white/standard,
 /area/shuttle/escape)
 "bh" = (
 /obj/effect/turf_decal/woodsiding{
@@ -383,7 +378,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/shuttle/escape)
 "bA" = (
 /obj/machinery/light/spot,
@@ -451,9 +446,8 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/floor_markings/dark/checker,
+/turf/simulated/floor/plasteel/white/standard,
 /area/shuttle/escape)
 "ec" = (
 /obj/machinery/computer/secure_data{
@@ -468,7 +462,7 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/shuttle/escape)
 "gH" = (
 /obj/item/radio/intercom{
@@ -511,7 +505,7 @@
 /turf/simulated/floor/carpet/royalblack,
 /area/shuttle/escape)
 "nk" = (
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/shuttle/escape)
 "nM" = (
 /obj/effect/turf_decal/woodsiding{
@@ -569,15 +563,13 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/floor_markings/dark/checker,
+/turf/simulated/floor/plasteel/white/standard,
 /area/shuttle/escape)
 "ss" = (
 /obj/machinery/light/spot,
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/floor_markings/dark/checker,
+/turf/simulated/floor/plasteel/white/standard,
 /area/shuttle/escape)
 "sK" = (
 /obj/structure/table/wood/poker,
@@ -680,7 +672,7 @@
 	dir = 1
 	},
 /obj/machinery/light/spot,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/shuttle/escape)
 "Ai" = (
 /obj/structure/table/wood,
@@ -715,9 +707,8 @@
 	name = "north bump";
 	pixel_y = 30
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/floor_markings/dark/checker,
+/turf/simulated/floor/plasteel/white/standard,
 /area/shuttle/escape)
 "Bt" = (
 /obj/structure/chair/comfy/shuttle{
@@ -751,9 +742,8 @@
 	aiControlDisabled = 1;
 	id_tag = "s_docking_airlock"
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/floor_markings/dark/checker,
+/turf/simulated/floor/plasteel/white/standard,
 /area/shuttle/escape)
 "Di" = (
 /obj/structure/table/wood,
@@ -793,9 +783,8 @@
 	dir = 4
 	},
 /obj/structure/closet/walllocker/emerglocker/directional/west,
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/floor_markings/dark/checker,
+/turf/simulated/floor/plasteel/white/standard,
 /area/shuttle/escape)
 "HU" = (
 /obj/structure/chair/comfy/brown{
@@ -810,24 +799,22 @@
 	name = "north bump";
 	pixel_y = 28
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/shuttle/escape)
 "IJ" = (
 /obj/machinery/light/spot,
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/floor_markings/dark/checker,
+/turf/simulated/floor/plasteel/white/standard,
 /area/shuttle/escape)
 "Jz" = (
 /obj/structure/chair/stool/bar{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/floor_markings/dark/checker,
+/turf/simulated/floor/plasteel/white/standard,
 /area/shuttle/escape)
 "JC" = (
 /obj/item/radio/intercom{
@@ -1032,9 +1019,8 @@
 	aiControlDisabled = 1;
 	id_tag = "s_docking_airlock"
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/floor_markings/dark/checker,
+/turf/simulated/floor/plasteel/white/standard,
 /area/shuttle/escape)
 "RQ" = (
 /obj/machinery/status_display{
@@ -1079,9 +1065,8 @@
 	name = "west bump";
 	pixel_x = -27
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/floor_markings/dark/checker,
+/turf/simulated/floor/plasteel/white/standard,
 /area/shuttle/escape)
 "Ul" = (
 /obj/effect/turf_decal/woodsiding{
@@ -1123,7 +1108,7 @@
 	pixel_y = 3
 	},
 /obj/structure/table/reinforced,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/shuttle/escape)
 
 (1,1,1) = {"

@@ -4,14 +4,14 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/tcommsat)
 "ad" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
 /obj/structure/closet/emcloset,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/tcommsat)
 "al" = (
 /obj/structure/window/reinforced{
@@ -42,7 +42,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/tcommsat)
 "bx" = (
 /obj/machinery/disposal,
@@ -74,7 +74,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/tcommsat)
 "eM" = (
 /obj/structure/window/reinforced{
@@ -155,7 +155,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/tcommsat)
 "jk" = (
 /obj/structure/door_assembly/door_assembly_hatch,
@@ -188,7 +188,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/tcommsat)
 "le" = (
 /obj/structure/rack,
@@ -209,9 +209,7 @@
 "lo" = (
 /obj/structure/closet/crate,
 /obj/item/clothing/glasses/night,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/tcommsat)
 "lq" = (
 /obj/effect/spawner/random/pool/spaceloot/syndicate/mob/modsuit,
@@ -229,20 +227,18 @@
 /turf/template_noop,
 /area/space/nearstation)
 "mL" = (
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/tcommsat)
 "nk" = (
 /obj/structure/rack,
 /obj/item/wirerod,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/tcommsat)
 "nv" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/tcommsat)
 "nG" = (
 /obj/structure/window/reinforced{
@@ -333,9 +329,7 @@
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/tcommsat)
 "sb" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/tcommsat)
 "sm" = (
 /obj/structure/chair{
@@ -360,7 +354,7 @@
 "tr" = (
 /obj/effect/turf_decal/stripes/corner,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/tcommsat)
 "tE" = (
 /obj/structure/window/reinforced{
@@ -373,7 +367,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/tcommsat)
 "wO" = (
 /obj/structure/lattice,
@@ -432,7 +426,7 @@
 /area/ruin/space/tcommsat)
 "BD" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/tcommsat)
 "Cq" = (
 /obj/machinery/door/airlock/hatch/syndicate{
@@ -495,7 +489,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/tcommsat)
 "GV" = (
 /obj/structure/door_assembly/door_assembly_hatch,
@@ -548,7 +542,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/tcommsat)
 "KH" = (
 /obj/structure/window/reinforced{
@@ -645,7 +639,7 @@
 	},
 /obj/structure/closet/firecloset,
 /obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/tcommsat)
 "PZ" = (
 /obj/structure/closet,
@@ -702,7 +696,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/tcommsat)
 "Sp" = (
 /obj/effect/mapping_helpers/turfs/damage,
@@ -785,7 +779,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/tcommsat)
 "Vx" = (
 /obj/structure/grille/broken,
@@ -827,7 +821,7 @@
 /area/space/nearstation)
 "Yt" = (
 /obj/effect/turf_decal/stripes/line,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/tcommsat)
 "Yu" = (
 /obj/item/electropack,
@@ -864,13 +858,11 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/default/standard,
 /area/ruin/space/tcommsat)
 "Zd" = (
 /obj/structure/closet/malf_suits,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark/standard,
 /area/ruin/space/tcommsat)
 "Zi" = (
 /obj/structure/window/reinforced{

@@ -112,6 +112,7 @@
 			DECAL_PAINTER_CATEGORY_THICK,
 			DECAL_PAINTER_CATEGORY_SQUARE,
 			DECAL_PAINTER_CATEGORY_ALPHANUM,
+			DECAL_PAINTER_CATEGORY_TILES,
 		)
 		data["icon"] = decal_icon
 		var/list/availableStyles = list()
