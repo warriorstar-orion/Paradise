@@ -42,8 +42,8 @@ GLOBAL_DATUM_INIT(_preloader, /datum/dmm_suite/preloader, new())
 		map_data = mapmanip_read_dmm(fname)
 		// if rustlib for whatever reason fails and returns null
 		// try to load it the old dm way instead
-		if(!tfile)
-			tfile = wrap_file2text(dmm_file)
+		if(!map_data)
+			map_data = wrap_file2text(dmm_file)
 
 		if(!length(map_data))
 			throw EXCEPTION("Map path '[fname]' does not exist!")
