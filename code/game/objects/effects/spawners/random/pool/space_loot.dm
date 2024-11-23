@@ -4,6 +4,13 @@
 
 /obj/effect/spawner/random/pool/spaceloot
 	spawn_pool_id = "space_loot_spawn_pool"
+	record_spawn = TRUE
+
+/obj/effect/spawner/random/pool/spaceloot/record_item(type_path_to_make)
+	if(ispath(type_path_to_make, /obj/effect))
+		return
+
+	SSblackbox.record_feedback("tally", "space_loot_spawns", 1, "[type_path_to_make]")
 
 /obj/effect/spawner/random/pool/spaceloot/dvorak_core_table
 	point_value = 100
