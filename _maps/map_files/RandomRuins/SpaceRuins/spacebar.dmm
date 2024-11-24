@@ -125,6 +125,7 @@
 /area/ruin/space/powered/bar)
 "aF" = (
 /obj/structure/closet/secure_closet/freezer/kitchen,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/wood,
 /area/ruin/space/powered/bar)
 "aG" = (
@@ -132,6 +133,7 @@
 /area/ruin/space/powered)
 "aH" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/wood,
 /area/ruin/space/powered/bar)
 "aI" = (
@@ -524,6 +526,11 @@
 	},
 /turf/template_noop,
 /area/ruin/space/powered)
+"sC" = (
+/obj/item/stack/ore/glass,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plating/asteroid/ancient,
+/area/space/nearstation)
 "tu" = (
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -707,6 +714,10 @@
 /obj/structure/door_assembly,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered/bar)
+"Ej" = (
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plating/asteroid/ancient,
+/area/space/nearstation)
 "Fj" = (
 /obj/machinery/economy/vending/coffee,
 /turf/simulated/floor/plasteel{
@@ -857,6 +868,7 @@
 /obj/structure/closet/secure_closet/bar{
 	anchored = 1
 	},
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/wood,
 /area/ruin/space/powered/bar)
 "NP" = (
@@ -945,6 +957,10 @@
 	icon_state = "black"
 	},
 /area/ruin/space/powered/bar)
+"VA" = (
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plating/asteroid/airless,
+/area/space/nearstation)
 "VR" = (
 /obj/item/stack/tile/mineral,
 /turf/simulated/floor/plating,
@@ -2169,7 +2185,7 @@ bk
 bn
 am
 ab
-bh
+sC
 lS
 ab
 ab
@@ -2379,7 +2395,7 @@ am
 ab
 Gv
 ab
-oJ
+Ej
 ab
 ab
 ad
@@ -3191,7 +3207,7 @@ ac
 ac
 ac
 ab
-ac
+VA
 ab
 ab
 ab

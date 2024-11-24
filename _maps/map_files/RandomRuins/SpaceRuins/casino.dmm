@@ -175,6 +175,7 @@
 "eu" = (
 /obj/effect/spawner/random/cobweb/right/frequent,
 /obj/structure/rack,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered/casino/security)
 "eP" = (
@@ -275,6 +276,7 @@
 /area/ruin/space/powered/casino/kitchen)
 "gH" = (
 /obj/structure/closet/crate/freezer,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plasteel{
 	icon_state = "showroomfloor"
 	},
@@ -844,6 +846,7 @@
 	icon_state = "4-8";
 	tag = ""
 	},
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered/casino/engine)
 "wb" = (
@@ -890,6 +893,7 @@
 	dir = 8
 	},
 /obj/effect/mob_spawn/human/corpse/random_species/gambler,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plasteel/freezer,
 /area/ruin/space/powered/casino/hall)
 "wo" = (
@@ -1076,6 +1080,13 @@
 /obj/machinery/light,
 /turf/simulated/floor/plasteel/freezer,
 /area/ruin/space/powered/casino/hall)
+"AV" = (
+/obj/structure/table,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plasteel{
+	icon_state = "cafeteria"
+	},
+/area/ruin/space/powered/casino/kitchen)
 "Bp" = (
 /obj/structure/cable{
 	d2 = 8;
@@ -1303,6 +1314,7 @@
 	dir = 8
 	},
 /mob/living/simple_animal/hostile/pirate,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plasteel/freezer,
 /area/ruin/space/powered/casino/hall)
 "Hx" = (
@@ -1789,12 +1801,6 @@
 /obj/machinery/economy/vending/cigarette,
 /turf/simulated/floor/mineral/silver,
 /area/ruin/space/powered/casino/hall)
-"UO" = (
-/obj/structure/closet/secure_closet/freezer/fridge,
-/turf/simulated/floor/plasteel{
-	icon_state = "showroomfloor"
-	},
-/area/ruin/space/powered/casino/kitchen)
 "UW" = (
 /obj/structure/table,
 /obj/item/kitchen/rollingpin{
@@ -1894,6 +1900,7 @@
 /area/ruin/space/powered/casino/docked_ships)
 "WW" = (
 /obj/structure/closet/firecloset,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered/casino/maints)
 "Xe" = (
@@ -2471,7 +2478,7 @@ cc
 cc
 fT
 sO
-UO
+YL
 RS
 Is
 Is
@@ -2708,7 +2715,7 @@ An
 IS
 sO
 UW
-DM
+AV
 ql
 DM
 sO

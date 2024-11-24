@@ -534,6 +534,7 @@
 "bm" = (
 /obj/structure/closet/wardrobe/toxins_white,
 /obj/structure/disposalpipe/segment,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},

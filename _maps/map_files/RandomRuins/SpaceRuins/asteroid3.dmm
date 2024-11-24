@@ -26,6 +26,10 @@
 /obj/structure/spawner/mining/basilisk,
 /turf/simulated/floor/plating/asteroid/airless,
 /area/ruin/space/unpowered)
+"H" = (
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plating/asteroid/airless,
+/area/ruin/space/unpowered)
 "N" = (
 /obj/structure/spawner/mining/hivelord,
 /turf/simulated/floor/plating/asteroid/airless,
@@ -220,7 +224,7 @@ c
 b
 N
 e
-b
+H
 b
 b
 c

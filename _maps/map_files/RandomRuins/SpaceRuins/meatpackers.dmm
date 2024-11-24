@@ -733,6 +733,7 @@
 /obj/structure/closet/secure_closet/freezer/meat{
 	opened = 1
 	},
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -1542,6 +1543,7 @@
 /area/ruin/unpowered/BMPship/Aft)
 "fd" = (
 /obj/structure/closet,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/carpet,
 /area/ruin/unpowered/BMPship/Fore)
 "fe" = (
@@ -1549,6 +1551,7 @@
 	dir = 4
 	},
 /obj/structure/closet,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/carpet,
 /area/ruin/unpowered/BMPship/Fore)
 "ff" = (
@@ -1939,6 +1942,7 @@
 "gn" = (
 /obj/structure/closet,
 /obj/item/clothing/under/misc/overalls,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plasteel,
 /area/ruin/unpowered/BMPship/Aft)
 "go" = (
@@ -2120,6 +2124,7 @@
 /obj/structure/closet,
 /obj/item/clothing/under/rank/procedure/iaa/blue,
 /obj/item/clothing/suit/apron,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plasteel,
 /area/ruin/unpowered/BMPship/Aft)
 "gU" = (
@@ -2309,6 +2314,14 @@
 /mob/living/simple_animal/hostile/pirate,
 /turf/simulated/floor/plating,
 /area/ruin/unpowered/BMPship/Midship)
+"pz" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plating,
+/area/ruin/unpowered/BMPship/Fore)
 "qM" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -2360,6 +2373,10 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/simulated/floor/plating,
 /area/ruin/unpowered/BMPship/Delta)
+"Oc" = (
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/engine,
+/area/ruin/unpowered/BMPship/Aft)
 "PP" = (
 /obj/structure/computerframe{
 	dir = 4
@@ -3143,7 +3160,7 @@ aa
 aa
 aa
 aD
-aS
+pz
 bk
 br
 bF
@@ -4546,7 +4563,7 @@ cC
 hj
 cl
 hp
-dJ
+Oc
 hp
 cl
 aa

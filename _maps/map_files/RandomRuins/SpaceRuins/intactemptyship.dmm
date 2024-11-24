@@ -38,6 +38,7 @@
 /area/ruin/space/powered)
 "j" = (
 /obj/structure/closet,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/mineral/titanium/purple,
 /area/ruin/space/powered)
 "k" = (

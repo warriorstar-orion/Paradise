@@ -886,6 +886,7 @@
 /obj/item/vending_refill/cigarette,
 /obj/item/vending_refill/cigarette,
 /obj/item/vending_refill/sovietsoda,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plasteel{
 	icon_state = "bar"
 	},

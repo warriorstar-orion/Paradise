@@ -286,6 +286,7 @@
 	pixel_x = 5
 	},
 /obj/structure/curtain/open/shower/engineering,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plasteel{
 	icon_state = "cmo"
 	},
@@ -372,6 +373,7 @@
 	name = "torn sign";
 	pixel_x = -1
 	},
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plating,
 /area/ruin/space/abandoned_engi_sat)
 "kT" = (
@@ -398,6 +400,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plating,
 /area/ruin/space/abandoned_engi_sat)
 "lu" = (
@@ -880,10 +883,6 @@
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
-/area/ruin/space/abandoned_engi_sat)
-"BR" = (
-/obj/structure/table,
-/turf/simulated/floor/plasteel,
 /area/ruin/space/abandoned_engi_sat)
 "CN" = (
 /obj/machinery/light,
@@ -2234,7 +2233,7 @@ CN
 IM
 zp
 ZS
-BR
+ef
 qu
 dB
 rr

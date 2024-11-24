@@ -4,6 +4,10 @@
 /obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/pod/dark,
 /area/ruin/space/syndicate_druglab)
+"dw" = (
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plating/asteroid/airless,
+/area/ruin/space/syndicate_druglab/asteroid)
 "dL" = (
 /obj/structure/reagent_dispensers/watertank/high,
 /turf/simulated/floor/pod/dark,
@@ -904,7 +908,7 @@ vZ
 vZ
 vZ
 xF
-xF
+dw
 Nr
 nP
 qD
@@ -916,7 +920,7 @@ os
 en
 Nr
 yI
-xF
+dw
 DG
 qf
 nj
@@ -1007,7 +1011,7 @@ vZ
 xF
 xF
 QL
-xF
+dw
 vZ
 vZ
 Nr

@@ -175,6 +175,7 @@
 	},
 /obj/machinery/door/window,
 /obj/effect/decal/cleanable/cobweb,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/mech_transport)
 "od" = (
@@ -474,6 +475,7 @@
 	dir = 4
 	},
 /obj/structure/closet,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/mech_transport)
 "Gk" = (
@@ -571,6 +573,7 @@
 	name = "secure supplies blast door control"
 	},
 /mob/living/simple_animal/hostile/pirate/ranged,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/mech_transport)
 "Nq" = (

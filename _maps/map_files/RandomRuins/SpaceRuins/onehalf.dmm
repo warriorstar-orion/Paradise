@@ -756,6 +756,7 @@
 /area/ruin/space/onehalf/abandonedbridge)
 "cf" = (
 /obj/structure/closet/emcloset,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/onehalf/abandonedbridge)
 "cg" = (
@@ -1205,6 +1206,12 @@
 /mob/living/simple_animal/hostile/carp,
 /turf/template_noop,
 /area/template_noop)
+"jm" = (
+/obj/structure/bed,
+/obj/item/bedsheet/brown,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plasteel,
+/area/ruin/space/onehalf/dorms_med)
 "jQ" = (
 /obj/structure/cable{
 	d2 = 8;
@@ -1241,6 +1248,11 @@
 	dir = 1
 	},
 /turf/simulated/floor/plasteel,
+/area/ruin/space/onehalf/drone_bay)
+"zJ" = (
+/obj/structure/disposalpipe/trunk,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plating/airless,
 /area/ruin/space/onehalf/drone_bay)
 "Ab" = (
 /obj/structure/safe/floor,
@@ -1524,7 +1536,7 @@ aa
 aa
 ac
 ag
-ao
+jm
 aC
 ao
 ag
@@ -1657,7 +1669,7 @@ aa
 aa
 aa
 as
-aE
+zJ
 aM
 ba
 bo
@@ -1789,7 +1801,7 @@ aa
 aa
 aa
 av
-aE
+zJ
 aR
 by
 bo

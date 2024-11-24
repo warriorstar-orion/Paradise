@@ -18,6 +18,10 @@
 "A" = (
 /turf/simulated/mineral/random/low_chance,
 /area/ruin/space/unpowered)
+"D" = (
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plating/asteroid/airless,
+/area/ruin/space/unpowered)
 "S" = (
 /mob/living/simple_animal/hostile/carp,
 /turf/template_noop,
@@ -648,7 +652,7 @@ b
 c
 c
 b
-d
+D
 d
 b
 d
@@ -1526,7 +1530,7 @@ b
 d
 d
 Y
-d
+D
 b
 b
 b

@@ -43,6 +43,7 @@
 /obj/item/clothing/shoes/laceup,
 /obj/item/clothing/glasses/sunglasses,
 /obj/item/paper/fluff/ruins/derelict5,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/unpowered)
 "fV" = (
@@ -241,6 +242,7 @@
 /area/ruin/space/unpowered)
 "LA" = (
 /obj/structure/table,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/unpowered)
 "LD" = (

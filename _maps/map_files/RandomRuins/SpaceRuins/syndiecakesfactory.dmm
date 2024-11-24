@@ -522,6 +522,10 @@
 	},
 /turf/simulated/floor/engine,
 /area/ruin/space/syndicakefactory)
+"uu" = (
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/grass,
+/area/ruin/space/syndicakefactory)
 "uA" = (
 /obj/structure/table/glass/reinforced/plastitanium,
 /obj/item/stack/sheet/animalhide/corgi,
@@ -540,6 +544,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -1240,6 +1245,10 @@
 	icon_state = "dark"
 	},
 /area/ruin/space/syndicakefactory)
+"WM" = (
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/mineral/plastitanium/red,
+/area/ruin/space/syndicakefactory)
 "WX" = (
 /obj/item/trash/waffles,
 /turf/simulated/floor/engine,
@@ -1924,7 +1933,7 @@ TG
 EJ
 gk
 SS
-gk
+uu
 jx
 gk
 EJ
@@ -2127,7 +2136,7 @@ OK
 TG
 AV
 cW
-cW
+WM
 cW
 cW
 rP

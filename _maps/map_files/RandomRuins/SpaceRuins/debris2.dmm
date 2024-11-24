@@ -15,6 +15,11 @@
 /obj/item/stack/cable_coil/cut,
 /turf/space,
 /area/template_noop)
+"g" = (
+/obj/effect/mapping_helpers/turfs/burn,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plasteel/airless,
+/area/space)
 "h" = (
 /obj/structure/girder,
 /turf/space,
@@ -226,7 +231,7 @@ a
 d
 G
 A
-U
+g
 F
 d
 z

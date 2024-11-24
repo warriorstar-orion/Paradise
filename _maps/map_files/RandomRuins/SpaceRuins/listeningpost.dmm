@@ -255,7 +255,7 @@
 /obj/machinery/shower{
 	pixel_y = 20
 	},
-/obj/item/soap/syndie,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/mineral/silver,
 /area/ruin/space/syndicate_listening_station)
 "Ab" = (
@@ -352,6 +352,7 @@
 "CG" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/wood,
 /area/ruin/space/syndicate_listening_station)
 "CI" = (

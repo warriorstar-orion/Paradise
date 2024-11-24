@@ -3,6 +3,8 @@
 	available_points = 1600
 
 /obj/effect/spawner/random/pool/spaceloot
+	icon = 'icons/effects/random_spawners.dmi'
+	icon_state = "giftbox"
 	spawn_pool_id = "space_loot_spawn_pool"
 	record_spawn = TRUE
 

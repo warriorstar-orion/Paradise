@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aD" = (
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/pod/dark,
+/area/ruin/space/unathi_breacher/hold)
 "aZ" = (
 /obj/machinery/door/airlock/maintenance_hatch,
 /obj/structure/cable{
@@ -168,6 +172,7 @@
 "kt" = (
 /obj/structure/table,
 /obj/item/screwdriver,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plasteel/airless,
 /area/ruin/space/unathi_breacher/engineering)
 "li" = (
@@ -546,6 +551,13 @@
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/plating/burnt/airless,
 /area/ruin/space/unathi_breacher/engineering)
+"Pc" = (
+/obj/structure/bed{
+	dir = 1
+	},
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plasteel/dark,
+/area/ruin/space/unathi_breacher/dorms)
 "Pq" = (
 /obj/machinery/atmospherics/unary/tank/oxygen,
 /turf/simulated/floor/plasteel/airless,
@@ -871,7 +883,7 @@ Gb
 (10,1,1) = {"
 Gb
 Zl
-hB
+Pc
 CZ
 iF
 aZ
@@ -945,7 +957,7 @@ XA
 GR
 Pr
 ri
-Za
+aD
 GR
 Ik
 mH

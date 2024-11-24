@@ -50,6 +50,11 @@
 	icon_state = "caution"
 	},
 /area/ruin/space/powered)
+"gN" = (
+/obj/structure/closet/crate,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/mineral/plastitanium,
+/area/ruin/space/powered)
 "hM" = (
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/plasteel,
@@ -639,6 +644,10 @@
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered)
+"Qv" = (
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/wall/mineral/plastitanium,
+/area/ruin/space/powered)
 "QM" = (
 /obj/structure/railing,
 /obj/item/flag/ussp,
@@ -757,7 +766,7 @@ LW
 LW
 LW
 LW
-LW
+Qv
 Kh
 Kh
 Kh
@@ -937,7 +946,7 @@ Nl
 Sp
 zu
 Nl
-Nl
+gN
 tV
 fY
 Kh
@@ -957,7 +966,7 @@ nq
 Nl
 AU
 mG
-Nl
+gN
 eI
 LW
 Kh

@@ -53,6 +53,10 @@
 "Q" = (
 /turf/simulated/mineral/random/low_chance,
 /area/ruin/space/unpowered)
+"U" = (
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plating,
+/area/ruin/space/unpowered)
 
 (1,1,1) = {"
 a
@@ -355,7 +359,7 @@ a
 c
 c
 b
-f
+U
 f
 i
 i

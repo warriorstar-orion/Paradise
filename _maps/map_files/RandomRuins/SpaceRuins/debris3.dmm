@@ -142,6 +142,10 @@
 /obj/structure/lattice,
 /turf/space,
 /area/template_noop)
+"T" = (
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plating/damaged/airless,
+/area/template_noop)
 "U" = (
 /obj/item/stack/sheet/wood,
 /obj/item/stack/sheet/wood,
@@ -458,7 +462,7 @@ A
 f
 B
 A
-z
+T
 B
 A
 m

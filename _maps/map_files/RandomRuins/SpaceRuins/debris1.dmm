@@ -124,6 +124,10 @@
 /obj/item/shard,
 /turf/space,
 /area/space)
+"M" = (
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plating/burnt/airless,
+/area/space)
 "O" = (
 /obj/machinery/power/apc/worn_out/directional/south,
 /obj/structure/cable,
@@ -373,7 +377,7 @@ X
 y
 v
 D
-y
+M
 U
 X
 X

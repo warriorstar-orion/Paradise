@@ -89,6 +89,10 @@
 /obj/structure/girder,
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/unpowered)
+"D" = (
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/turf/simulated/floor/plating/airless,
+/area/ruin/space/unpowered)
 "K" = (
 /obj/structure/spawner/mining/basilisk,
 /turf/simulated/floor/plating/asteroid/airless,
@@ -833,7 +837,7 @@ b
 b
 b
 g
-g
+D
 o
 b
 b
