@@ -177,10 +177,10 @@
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/mixed
 	loot = list(
-		/obj/effect/spawner/random/pool/spaceloot/syndicate/common = 15,
-		/obj/effect/spawner/random/pool/spaceloot/syndicate/rare = 5,
-		/obj/effect/spawner/random/pool/spaceloot/syndicate/stetchkin = 3,
-		/obj/effect/spawner/random/pool/spaceloot/syndicate/officer = 2,
+		/obj/effect/spawner/random/pool/spaceloot/syndicate/common = 14,
+		/obj/effect/spawner/random/pool/spaceloot/syndicate/rare = 3,
+		/obj/effect/spawner/random/pool/spaceloot/syndicate/officer = 1,
+		/obj/effect/spawner/random/pool/spaceloot/syndicate/stetchkin = 1,
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/armory = 1,
 	)
 
