@@ -2129,7 +2129,7 @@
 /area/ruin/unpowered/BMPship/Aft)
 "gU" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/clothing/mask/gas/syndicate,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plating/airless,
 /area/ruin/powered)
 "gV" = (

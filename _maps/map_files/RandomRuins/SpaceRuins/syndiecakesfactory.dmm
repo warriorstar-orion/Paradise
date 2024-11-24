@@ -678,7 +678,7 @@
 "AP" = (
 /obj/structure/table/reinforced,
 /obj/item/trash/syndi_cakes,
-/obj/item/storage/toolbox/syndicate,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/engine,
 /area/ruin/space/syndicakefactory)
 "AV" = (
