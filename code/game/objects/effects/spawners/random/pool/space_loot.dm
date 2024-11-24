@@ -84,13 +84,13 @@
 	name = "syndicate depot loot, 20pct stetchkin"
 	icon_state = "stetchkin"
 	spawn_loot_chance = 80
-	point_value = 20
+	point_value = 25
 	loot = list(/obj/item/gun/projectile/automatic/pistol)
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/rare
 	name = "syndicate depot loot, rare"
 	icon_state = "doubleloot"
-	point_value = 50
+	point_value = 60
 	// Basic stealth, utility and environmental gear.
 	loot = list(
 		/obj/item/ammo_box/magazine/m10mm,
@@ -177,8 +177,8 @@
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/mixed
 	loot = list(
-		/obj/effect/spawner/random/pool/spaceloot/syndicate/common = 14,
-		/obj/effect/spawner/random/pool/spaceloot/syndicate/rare = 3,
+		/obj/effect/spawner/random/pool/spaceloot/syndicate/common = 15,
+		/obj/effect/spawner/random/pool/spaceloot/syndicate/rare = 5,
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/officer = 1,
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/stetchkin = 1,
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/armory = 1,
@@ -187,7 +187,7 @@
 // Only two of these
 /obj/effect/spawner/random/pool/spaceloot/zoo
 	unique_picks = TRUE
-	point_value = 15
+	point_value = 20
 	loot = list(
 		/obj/item/gun/energy/floragun,
 		/obj/item/gun/energy/temperature,
