@@ -25,7 +25,7 @@
 	var/mob/living/M = entered
 	if(faction && (faction in M.faction))
 		return
-	if(M.flying)
+	if(HAS_TRAIT(M, TRAIT_FLYING))
 		return
 	triggermine(M)
 
@@ -110,7 +110,7 @@
 
 /obj/effect/mine/pickup
 	name = "pickup"
-	desc = "pick me up"
+	desc = "pick me up."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "electricity2"
 	density = FALSE

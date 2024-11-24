@@ -81,3 +81,8 @@
 
 ///signal sent out by an atom when it is no longer pulling something : (atom/pulling)
 #define COMSIG_ATOM_NO_LONGER_PULLING "movable_no_longer_pulling"
+/// Called before a movable is being teleported from multiple sources: (destination)
+#define COMSIG_MOVABLE_TELEPORTING "movable_teleporting"
+/// Called when blocking a teleport
+#define COMSIG_ATOM_INTERCEPT_TELEPORTED "intercept_teleported"
+	#define COMPONENT_BLOCK_TELEPORT (1<<0)

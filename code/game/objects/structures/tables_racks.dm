@@ -43,6 +43,7 @@
 	var/minimum_env_smash = ENVIRONMENT_SMASH_WALLS
 	/// Can this table be flipped?
 	var/can_be_flipped = TRUE
+	var/flipped_table_icon_base = "table"
 
 /obj/structure/table/Initialize(mapload)
 	. = ..()
@@ -83,19 +84,7 @@
 				type++
 				if(type == 1)
 					subtype = direction == turn(dir,90) ? "-" : "+"
-		var/base = "table"
-		if(istype(src, /obj/structure/table/wood))
-			base = "wood"
-		if(istype(src, /obj/structure/table/reinforced))
-			base = "rtable"
-		if(istype(src, /obj/structure/table/wood/poker))
-			base = "poker"
-		if(istype(src, /obj/structure/table/wood/fancy))
-			base = "fancy"
-		if(istype(src, /obj/structure/table/wood/fancy/black))
-			base = "fancyblack"
-
-		icon_state = "[base]flip[type][type == 1 ? subtype : ""]"
+		icon_state = "[flipped_table_icon_base]flip[type][type == 1 ? subtype : ""]"
 
 /obj/structure/table/proc/update_smoothing()
 	if((smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK)) && !flipped)
@@ -146,7 +135,7 @@
 		return check_cover(mover, border_dir)
 
 	var/mob/living/living_mover = mover
-	if(istype(living_mover) && (living_mover.flying || (IS_HORIZONTAL(living_mover) && HAS_TRAIT(living_mover, TRAIT_CONTORTED_BODY))))
+	if(istype(living_mover) && (HAS_TRAIT(living_mover, TRAIT_FLYING) || (IS_HORIZONTAL(living_mover) && HAS_TRAIT(living_mover, TRAIT_CONTORTED_BODY))))
 		return TRUE
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return TRUE
@@ -488,7 +477,7 @@
 	if(!isliving(crossed))
 		return
 	var/mob/living/L = crossed
-	if(L.incorporeal_move || L.flying || L.floating)
+	if(L.incorporeal_move || HAS_TRAIT(L, TRAIT_FLYING) || L.floating)
 		return
 
 	// Don't break if they're just flying past
@@ -654,6 +643,7 @@
 	icon = 'icons/obj/smooth_structures/tables/wood_table.dmi'
 	icon_state = "wood_table-0"
 	base_icon_state = "wood_table"
+	flipped_table_icon_base = "wood"
 	frame = /obj/structure/table_frame/wood
 	framestack = /obj/item/stack/sheet/wood
 	buildstack = /obj/item/stack/sheet/wood
@@ -673,6 +663,7 @@
 	icon = 'icons/obj/smooth_structures/tables/poker_table.dmi'
 	icon_state = "poker_table-0"
 	base_icon_state = "poker_table"
+	flipped_table_icon_base = "poker"
 	buildstack = /obj/item/stack/tile/carpet
 
 /obj/structure/table/wood/poker/narsie_act()
@@ -688,6 +679,7 @@
 	icon = 'icons/obj/smooth_structures/tables/fancy/fancy_table.dmi'
 	icon_state = "fancy_table-0"
 	base_icon_state = "fancy_table"
+	flipped_table_icon_base = "fancy"
 	frame = /obj/structure/table_frame
 	framestack = /obj/item/stack/rods
 	buildstack = /obj/item/stack/tile/carpet
@@ -697,13 +689,14 @@
 /obj/structure/table/wood/fancy/flip(direction)
 	return FALSE
 
-/obj/structure/table/wood/fancy/Initialize()
+/obj/structure/table/wood/fancy/Initialize(mapload)
 	. = ..()
 	QUEUE_SMOOTH(src)
 
 /obj/structure/table/wood/fancy/black
 	icon_state = "fancy_table_black-0"
 	base_icon_state = "fancy_table_black"
+	flipped_table_icon_base = "fancyblack"
 	buildstack = /obj/item/stack/tile/carpet/black
 	icon = 'icons/obj/smooth_structures/tables/fancy/fancy_table_black.dmi'
 
@@ -766,6 +759,7 @@
 	icon = 'icons/obj/smooth_structures/tables/reinforced_table.dmi'
 	icon_state = "reinforced_table-0"
 	base_icon_state = "reinforced_table"
+	flipped_table_icon_base = "rtables"
 	deconstruction_ready = FALSE
 	buildstack = /obj/item/stack/sheet/plasteel
 	smoothing_groups = list(SMOOTH_GROUP_REINFORCED_TABLES)
@@ -832,7 +826,7 @@
 	var/list/typecache_can_hold = list(/mob, /obj/item)
 	var/list/held_items = list()
 
-/obj/structure/table/tray/Initialize()
+/obj/structure/table/tray/Initialize(mapload)
 	. = ..()
 	typecache_can_hold = typecacheof(typecache_can_hold)
 	for(var/atom/movable/held in get_turf(src))

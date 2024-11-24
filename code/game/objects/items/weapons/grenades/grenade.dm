@@ -8,9 +8,10 @@
 	throw_speed = 3
 	throw_range = 20
 	flags = CONDUCT
-	slot_flags = SLOT_FLAG_BELT
+	slot_flags = ITEM_SLOT_BELT
 	resistance_flags = FLAMMABLE
 	max_integrity = 40
+	flags_2 = RANDOM_BLOCKER_2
 	/// Has the pin been pulled?
 	var/active = FALSE
 	/// Time between the pin being pulled and detonation.
@@ -124,8 +125,4 @@
 	if(!HAS_TRAIT(src, TRAIT_CMAGGED))
 		return
 	REMOVE_TRAIT(src, TRAIT_CMAGGED, "cmagged grenade")
-	var/datum/component/bomberang = GetComponent(/datum/component/boomerang)
-	if(!bomberang)
-		return
-	bomberang.RemoveComponent()
-	qdel(bomberang)
+	DeleteComponent(/datum/component/boomerang)
