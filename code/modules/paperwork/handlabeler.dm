@@ -14,7 +14,12 @@
 	if(..())
 		return NONE
 
-	if(mode == LABEL_MODE_OFF)	//if it's off, give up.
+	if(mode == LABEL_MODE_OFF)
+		// First attempt to remove any labels if off.
+		if(SEND_SIGNAL(target, COMSIG_LABEL_REMOVE))
+			playsound(src, 'sound/items/poster_ripped.ogg', 20, TRUE)
+			to_chat(user, "<span class='warning'>You remove the label from [target].</span>")
+
 		return ITEM_INTERACT_SUCCESS
 
 	if(!labels_left)
@@ -51,7 +56,7 @@
 /obj/item/hand_labeler/activate_self(mob/user)
 	if(..())
 		return
-	
+
 	// off -> normal
 	// normal or goal -> off
 	mode = !mode
@@ -68,25 +73,27 @@
 	else
 		to_chat(user, "<span class='notice'>You turn off \the [src].</span>")
 
-/obj/item/hand_labeler/attack_by(obj/item/I, mob/user, params)
+/obj/item/hand_labeler/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(..())
-		return FINISH_ATTACK
+		return ITEM_INTERACT_SUCCESS
 
-	if(istype(I, /obj/item/hand_labeler_refill))
-		to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
+	if(istype(used, /obj/item/hand_labeler_refill))
+		to_chat(user, "<span class='notice'>You insert [used] into [src].</span>")
 		user.drop_item()
-		qdel(I)
+		qdel(used)
 		labels_left = initial(labels_left)	//Yes, it's capped at its initial value
-	else if(istype(I, /obj/item/card/id))
-		var/obj/item/card/id/id = I
+		return ITEM_INTERACT_SUCCESS
+	else if(istype(used, /obj/item/card/id))
+		var/obj/item/card/id/id = used
 		if(istype(id, /obj/item/card/id/guest) || !id.registered_name)
 			to_chat(user, "<span class='warning'>Invalid ID card.</span>")
+			return ITEM_INTERACT_BLOCKING
 		else
 			label = id.registered_name
 			mode = LABEL_MODE_GOAL
-			to_chat(user, "<span class='notice'>You configure the hand labeler with [I].</span>")
+			to_chat(user, "<span class='notice'>You configure the hand labeler with [used].</span>")
 			icon_state = "labeler1"
-	return FINISH_ATTACK
+			return ITEM_INTERACT_SUCCESS
 
 /obj/item/hand_labeler_refill
 	name = "hand labeler paper roll"
