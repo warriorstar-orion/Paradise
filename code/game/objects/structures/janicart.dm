@@ -99,7 +99,7 @@
 			put_in_cart(user, used)
 			return
 		item_present = TRUE
-	
+
 	if(istype(used, /obj/item/storage/bag/trash))
 		if(!my_bag)
 			my_bag = used

@@ -14,12 +14,12 @@
 	var/icon_closed = "lockbox"
 	var/icon_broken = "lockbox+b"
 
-/obj/item/storage/lockbox/attackby__legacy__attackchain(obj/item/W as obj, mob/user as mob, params)
-	if(istype(W, /obj/item/card/id) || istype(W, /obj/item/pda))
+/obj/item/storage/lockbox/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(istype(used, /obj/item/card/id) || istype(used, /obj/item/pda))
 		if(broken)
 			to_chat(user, "<span class='warning'>It appears to be broken.</span>")
 			return
-		if(check_access(W))
+		if(check_access(used))
 			locked = !locked
 			if(locked)
 				to_chat(user, "<span class='warning'>You lock \the [src]!</span>")
@@ -33,14 +33,14 @@
 		else
 			to_chat(user, "<span class='warning'>Access denied.</span>")
 			return
-	else if((istype(W, /obj/item/card/emag) || (istype(W, /obj/item/melee/energy/blade)) && !broken))
+	else if((istype(used, /obj/item/card/emag) || (istype(used, /obj/item/melee/energy/blade)) && !broken))
 		emag_act(user)
-		return TRUE
+		return ITEM_INTERACT_COMPLETE
 	if(!locked)
 		..()
 	else
 		to_chat(user, "<span class='warning'>It's locked!</span>")
-	return
+		return ITEM_INTERACT_COMPLETE
 
 /obj/item/storage/lockbox/AltClick(mob/user)
 	if(!Adjacent(user))
@@ -173,9 +173,9 @@
 /obj/item/storage/lockbox/medal/hardmode_box/populate_contents()
 	return
 
-/obj/item/storage/lockbox/medal/hardmode_box/attackby__legacy__attackchain(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/disk/fauna_research))
-		var/obj/item/disk/fauna_research/disky = W
+/obj/item/storage/lockbox/medal/hardmode_box/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(istype(used, /obj/item/disk/fauna_research))
+		var/obj/item/disk/fauna_research/disky = used
 		var/obj/item/pride = new disky.output(get_turf(src))
 		to_chat(user, "<span class='notice'>[src] accepts [disky], and prints out [pride]!</span>")
 		qdel(disky)
@@ -186,7 +186,8 @@
 				var/obj/item/accomplishment = new /obj/item/clothing/accessory/medal/gold/heroism/hardmode_full(get_turf(src))
 				user.put_in_hands(accomplishment)
 		user.put_in_hands(pride)
-		return
+		return ITEM_INTERACT_COMPLETE
+
 	return ..()
 
 /obj/item/storage/lockbox/t4
