@@ -39,14 +39,14 @@
 	new /obj/item/paper(src)
 	new /obj/item/pen(src)
 
-/obj/item/storage/secure/attackby__legacy__attackchain(obj/item/W as obj, mob/user as mob, params)
+/obj/item/storage/secure/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(locked)
-		if((istype(W, /obj/item/melee/energy/blade)) && (!emagged))
-			emag_act(user, W)
+		if((istype(used, /obj/item/melee/energy/blade)) && (!emagged))
+			emag_act(user, used)
 
 		//At this point you have exhausted all the special things to do when locked
 		// ... but it's still locked.
-		return
+		return ITEM_INTERACT_COMPLETE
 
 	return ..()
 
@@ -126,7 +126,7 @@
 /obj/item/storage/secure/hear_message(mob/living/M as mob, msg)
 	return
 
-/obj/item/storage/secure/attack_self__legacy__attackchain(mob/user)
+/obj/item/storage/secure/activate_self(mob/user)
 	ui_interact(user)
 
 /obj/item/storage/secure/ui_state(mob/user)

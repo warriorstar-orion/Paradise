@@ -46,7 +46,7 @@
 	ADD_TRAIT(src, TRAIT_ADJACENCY_TRANSPARENT, ROUNDSTART_TRAIT)
 
 /obj/item/shared_storage/attackby__legacy__attackchain(obj/item/W, mob/user, params)
-	bag?.attackby__legacy__attackchain(W, user, params)
+	bag?.item_interaction(user, W, params)
 
 /obj/item/shared_storage/attack_ghost(mob/user)
 	if(isobserver(user))
