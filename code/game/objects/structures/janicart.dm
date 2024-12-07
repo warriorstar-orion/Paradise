@@ -89,7 +89,7 @@
 		to_chat(user, "<span class='notice'>There is already one of those in [src].</span>")
 
 	else if(mybag)
-		mybag.attackby__legacy__attackchain(I, user, params)
+		mybag.item_interaction(user, I, params)
 
 	else
 		to_chat(user, "<span class='notice'>There is already one of those in [src].</span>")

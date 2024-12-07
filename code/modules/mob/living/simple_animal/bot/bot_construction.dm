@@ -248,7 +248,7 @@
 	desc = "It's a toolbox with tiles sticking out the top and a sensor attached."
 	icon_state = "toolbox_tiles_sensor"
 
-/obj/item/storage/toolbox/attackby__legacy__attackchain(obj/item/stack/tile/plasteel/T, mob/user, params)
+/obj/item/storage/toolbox/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(!istype(T, /obj/item/stack/tile/plasteel))
 		..()
 		return
@@ -325,11 +325,11 @@
 		qdel(src)
 
 //Medbot Assembly
-/obj/item/storage/firstaid/attackby__legacy__attackchain(obj/item/I, mob/user, params)
-	if(!istype(I, /obj/item/robot_parts/l_arm) && !istype(I, /obj/item/robot_parts/r_arm))
+/obj/item/storage/firstaid/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(!istype(used, /obj/item/robot_parts/l_arm) && !istype(used, /obj/item/robot_parts/r_arm))
 		return ..()
 	else
-		robot_arm = I.type
+		robot_arm = used.type
 
 	//Making a medibot!
 	if(length(contents))
@@ -346,7 +346,7 @@
 	A.treatment_tox = treatment_tox
 	A.treatment_virus = treatment_virus
 
-	qdel(I)
+	qdel(used)
 	user.put_in_hands(A)
 	to_chat(user, "<span class='notice'>You add the robot arm to the first aid kit.</span>")
 	user.unEquip(src, 1)
@@ -612,22 +612,24 @@
 	return TRUE
 
 //Honkbot Assembly
-/obj/item/storage/box/clown/attackby__legacy__attackchain(obj/item/W, mob/user, params)
-	if(!istype(W, /obj/item/robot_parts/l_arm) && !istype(W, /obj/item/robot_parts/r_arm))
+/obj/item/storage/box/clown/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(!istype(used, /obj/item/robot_parts/l_arm) && !istype(used, /obj/item/robot_parts/r_arm))
 		return ..()
 	else
-		robot_arm = W.type
+		robot_arm = used.type
 
 	if(length(contents))
 		to_chat(user, "<span class='warning'>You need to empty [src] out first!</span>")
-		return
+		return ITEM_INTERACT_COMPLETE
 
 	var/obj/item/honkbot_arm_assembly/A = new /obj/item/honkbot_arm_assembly
-	qdel(W)
+	qdel(used)
 	user.put_in_hands(A)
 	to_chat(user, "<span class='notice'>You add the robot arm to the honkbot.</span>")
 	user.unEquip(src, 1)
 	qdel(src)
+
+	return ITEM_INTERACT_COMPLETE
 
 /obj/item/honkbot_arm_assembly
 	name = "incomplete honkbot assembly"
