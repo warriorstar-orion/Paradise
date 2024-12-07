@@ -43,8 +43,8 @@
 		return FALSE
 	return ..()
 
-/obj/item/storage/part_replacer/base_ranged_item_interaction(mob/living/user, obj/item/used, list/modifiers)
-	var/obj/machinery/machine = used
+/obj/item/storage/part_replacer/ranged_interact_with_atom(atom/target, mob/living/user, list/modifiers)
+	var/obj/machinery/machine = target
 	if(!istype(machine))
 		return ..()
 

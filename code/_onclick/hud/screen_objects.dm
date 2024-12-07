@@ -170,7 +170,7 @@
 	if(master)
 		var/obj/item/I = usr.get_active_hand()
 		if(I)
-			master.attackby__legacy__attackchain(I, usr, params)
+			I.melee_attack_chain(usr, master, params)
 	return TRUE
 
 /atom/movable/screen/storage/proc/is_item_accessible(obj/item/I, mob/user)
