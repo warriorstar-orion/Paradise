@@ -163,17 +163,17 @@
 	for(var/obj/item/toy/crayon/crayon in contents)
 		. += image('icons/obj/crayons.dmi', crayon.dye_color)
 
-/obj/item/storage/fancy/crayons/attackby__legacy__attackchain(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/toy/crayon))
-		var/obj/item/toy/crayon/C = I
+/obj/item/storage/fancy/crayons/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(istype(used, /obj/item/toy/crayon))
+		var/obj/item/toy/crayon/C = used
 		switch(C.dye_color)
 			if("mime")
 				to_chat(usr, "This crayon is too sad to be contained in this box.")
-				return
+				return ITEM_INTERACT_COMPLETE
 			if("rainbow")
 				to_chat(usr, "This crayon is too powerful to be contained in this box.")
-				return
-	..()
+				return ITEM_INTERACT_COMPLETE
+	return ..()
 
 /*
  * Matches Box
@@ -198,11 +198,13 @@
 	for(var/I in 1 to storage_slots)
 		new /obj/item/match(src)
 
-/obj/item/storage/fancy/matches/attackby__legacy__attackchain(obj/item/match/W, mob/user, params)
-	if(istype(W, /obj/item/match) && !W.lit)
-		W.matchignite()
+/obj/item/storage/fancy/matches/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	var/obj/item/match/match = used
+	if(istype(match) && !match.lit)
+		match.matchignite()
 		playsound(user.loc, 'sound/goonstation/misc/matchstick_light.ogg', 50, TRUE)
-	return
+		return ITEM_INTERACT_COMPLETE
+	return ..()
 
 /obj/item/storage/fancy/matches/update_icon_state()
 	. = ..()
@@ -247,21 +249,22 @@
 /obj/item/storage/fancy/cigarettes/update_icon_state()
 	icon_state = "[initial(icon_state)][length(contents)]"
 
-/obj/item/storage/fancy/cigarettes/attack__legacy__attackchain(mob/living/carbon/M, mob/living/user)
-	if(!ismob(M))
+/obj/item/storage/fancy/cigarettes/attack(mob/living/target, mob/living/user, params)
+	if(!ismob(target))
 		return
 
-	if(istype(M) && user.zone_selected == "mouth" && length(contents) > 0 && !M.wear_mask)
+	var/mob/living/carbon/carbon = target
+	if(istype(carbon) && user.zone_selected == "mouth" && length(contents) > 0 && !carbon.wear_mask)
 		var/got_cig = FALSE
 		for(var/num in 1 to length(contents))
 			var/obj/item/I = contents[num]
 			if(istype(I, /obj/item/clothing/mask/cigarette))
 				var/obj/item/clothing/mask/cigarette/C = I
-				M.equip_to_slot_if_possible(C, ITEM_SLOT_MASK)
-				if(M != user)
+				carbon.equip_to_slot_if_possible(C, ITEM_SLOT_MASK)
+				if(carbon != user)
 					user.visible_message(
-						"<span class='notice'>[user] takes \a [C.name] out of [src] and gives it to [M].</span>",
-						"<span class='notice'>You take \a [C.name] out of [src] and give it to [M].</span>"
+						"<span class='notice'>[user] takes \a [C.name] out of [src] and gives it to [carbon].</span>",
+						"<span class='notice'>You take \a [C.name] out of [src] and give it to [carbon].</span>"
 					)
 				else
 					to_chat(user, "<span class='notice'>You take \a [C.name] out of the pack.</span>")
@@ -447,8 +450,8 @@
 	else
 		. += "ledb"
 
-/obj/item/storage/lockbox/vials/attackby__legacy__attackchain(obj/item/I, mob/user, params)
-	..()
+/obj/item/storage/lockbox/vials/attack_by(obj/item/attacking, mob/user, params)
+	. = ..()
 	update_icon()
 
 /obj/item/storage/lockbox/vials/zombie_cure

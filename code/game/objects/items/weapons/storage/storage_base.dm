@@ -52,6 +52,8 @@
 	// Allow storage items of the same size to be put inside
 	var/allow_same_size = FALSE
 
+	new_attack_chain = TRUE
+
 /obj/item/storage/Initialize(mapload)
 	. = ..()
 	can_hold = typecacheof(can_hold)
@@ -546,25 +548,50 @@
 		remove_from_storage(I, drop_loc)
 	qdel(src)
 
-//This proc is called when you want to place an item into the storage item.
-/obj/item/storage/attackby__legacy__attackchain(obj/item/I, mob/user, params)
-	..()
-	if(istype(I, /obj/item/hand_labeler))
-		var/obj/item/hand_labeler/labeler = I
+/// This proc is called when you want to place an item into the storage item.
+/obj/item/storage/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(istype(used, /obj/item/hand_labeler))
+		var/obj/item/hand_labeler/labeler = used
 		if(labeler.mode)
-			return FALSE
+			return
+
 	if(user.a_intent != INTENT_HELP && issimulatedturf(loc)) // Stops you from putting your baton in the storage on accident
-		return FALSE
-	. = TRUE //no afterattack
+		return
+
 	if(isrobot(user))
-		return //Robots can't interact with storage items.
+		// Robots can't interact with storage items.
+		return ITEM_INTERACT_COMPLETE
 
-	if(!can_be_inserted(I))
-		if(length(contents) >= storage_slots) //don't use items on the backpack if they don't fit
-			return TRUE
-		return FALSE
+	if(can_be_inserted(used))
+		handle_item_insertion(used, user)
+		return ITEM_INTERACT_COMPLETE
 
-	handle_item_insertion(I, user)
+/obj/item/storage/interact_with_atom(atom/target, mob/living/user, list/modifiers)
+	if(use_to_pickup)
+		if(pickup_all_on_tile) // Mode is set to collect all items on a tile and we clicked on a valid one.
+			if(isturf(target.loc))
+				var/list/rejections = list()
+				var/success = 0
+				var/failure = 0
+
+				for(var/obj/item/IT in target.loc)
+					if(IT.type in rejections) // To limit bag spamming: any given type only complains once
+						continue
+					if(!can_be_inserted(IT))	// Note can_be_inserted still makes noise when the answer is no
+						rejections += IT.type	// therefore full bags are still a little spammy
+						failure = 1
+						continue
+					success = 1
+					handle_item_insertion(IT, user, TRUE)	// The TRUE stops the "You put the [src] into [S]" insertion message from being displayed.
+				if(success && !failure)
+					to_chat(user, "<span class='notice'>You put everything in [src].</span>")
+				else if(success)
+					to_chat(user, "<span class='notice'>You put some things in [src].</span>")
+				else
+					to_chat(user, "<span class='notice'>You fail to pick anything up with [src].</span>")
+
+		else if(can_be_inserted(target))
+			handle_item_insertion(target, user)
 
 /obj/item/storage/attack_hand(mob/user)
 	if(ishuman(user))
@@ -639,13 +666,17 @@
 	for(var/obj/O in contents)
 		O.hear_message(M, msg)
 
-/obj/item/storage/attack_self__legacy__attackchain(mob/user)
-	//Clicking on itself will empty it, if allow_quick_empty is TRUE
+/obj/item/storage/activate_self(mob/user)
+	if(..())
+		return FINISH_ATTACK
+
+	// Clicking on itself will empty it, if allow_quick_empty is TRUE
 	if(allow_quick_empty && user.is_in_active_hand(src))
 		drop_inventory(user)
-
+		return FINISH_ATTACK
 	else if(foldable)
 		fold(user)
+		return FINISH_ATTACK
 
 /obj/item/storage/proc/fold(mob/user)
 	if(length(contents))

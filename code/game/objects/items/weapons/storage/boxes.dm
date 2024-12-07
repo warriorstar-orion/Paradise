@@ -1085,37 +1085,38 @@
 	else
 		icon_state = "[item_state]_closed"
 
-/obj/item/storage/box/papersack/attackby__legacy__attackchain(obj/item/W, mob/user, params)
-	if(is_pen(W))
+/obj/item/storage/box/papersack/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(is_pen(used))
 		//if a pen is used on the sack, dialogue to change its design appears
 		if(length(contents))
 			to_chat(user, "<span class='warning'>You can't modify [src] with items still inside!</span>")
-			return
+			return ITEM_INTERACT_COMPLETE
 		var/list/designs = list(NODESIGN, NANOTRASEN, SYNDI, HEART, SMILE)
 		var/switchDesign = tgui_input_list(user, "Select a Design", "Paper Sack Design", designs)
 		if(!switchDesign)
-			return
+			return ITEM_INTERACT_COMPLETE
 		if(get_dist(usr, src) > 1 && !usr.incapacitated())
 			to_chat(usr, "<span class='warning'>You have moved too far away!</span>")
-			return
+			return ITEM_INTERACT_COMPLETE
 		if(design == switchDesign)
-			return
+			return ITEM_INTERACT_COMPLETE
 		to_chat(usr, "<span class='notice'>You make some modifications to [src] using your pen.</span>")
 		design = switchDesign
 		update_appearance(UPDATE_DESC|UPDATE_ICON_STATE)
-		return
-	else if(W.sharp)
+		return ITEM_INTERACT_COMPLETE
+	else if(used.sharp)
 		if(!length(contents))
 			if(item_state == "paperbag_None")
 				to_chat(user, "<span class='notice'>You cut eyeholes into [src].</span>")
 				new /obj/item/clothing/head/papersack(user.loc)
 				qdel(src)
-				return
+				return ITEM_INTERACT_COMPLETE
 			else if(item_state == "paperbag_SmileyFace")
 				to_chat(user, "<span class='notice'>You cut eyeholes into [src] and modify the design.</span>")
 				new /obj/item/clothing/head/papersack/smiley(user.loc)
 				qdel(src)
-				return
+				return ITEM_INTERACT_COMPLETE
+
 	return ..()
 
 /obj/item/storage/box/papersack/pbj_lunch
@@ -1277,7 +1278,7 @@
 	user.visible_message("<span class='suicide'>[user] clamps the box of hugs on [user.p_their()] jugular! Guess it wasn't such a hugbox after all..</span>")
 	return (BRUTELOSS)
 
-/obj/item/storage/box/hug/attack_self__legacy__attackchain(mob/user)
+/obj/item/storage/box/hug/activate_self(mob/user)
 	..()
 	user.changeNext_move(CLICK_CD_MELEE)
 	playsound(loc, "rustle", 50, TRUE, -5)

@@ -517,10 +517,11 @@
 		/obj/item/detective_scanner
 	)
 
-/obj/item/storage/belt/military/assault/attackby__legacy__attackchain(obj/item/I, mob/user, params)
-	if(I.w_class > WEIGHT_CLASS_NORMAL)
-		to_chat(user, "<span class='warning'>[I] is too big for [src].</span>")
-		return
+/obj/item/storage/belt/military/assault/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(used.w_class > WEIGHT_CLASS_NORMAL)
+		to_chat(user, "<span class='warning'>[used] is too big for [src].</span>")
+		return ITEM_INTERACT_COMPLETE
+
 	return ..()
 
 /obj/item/storage/belt/military/assault/marines/full/populate_contents()
@@ -618,7 +619,7 @@
 /obj/item/storage/belt/lazarus/update_icon_state()
 	icon_state = "[base_icon_state]_[length(contents)]"
 
-/obj/item/storage/belt/lazarus/attackby__legacy__attackchain(obj/item/I, mob/user)
+/obj/item/storage/belt/lazarus/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	var/amount = length(contents)
 	. = ..()
 	if(amount != length(contents))
@@ -651,7 +652,7 @@
 /obj/item/storage/belt/bandolier/update_icon_state()
 	icon_state = "bandolier_[min(length(contents), 8)]"
 
-/obj/item/storage/belt/bandolier/attackby__legacy__attackchain(obj/item/I, mob/user)
+/obj/item/storage/belt/bandolier/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	var/amount = length(contents)
 	..()
 	if(amount != length(contents))
@@ -874,6 +875,10 @@
 		/obj/item/handheld_defibrillator
 		)
 
+/obj/item/storage/belt/bluespace/Initialize(mapload)
+	. = ..()
+	RegisterSignal(src, COMSIG_ATTACK, TYPE_PROC_REF(/datum, signal_cancel_attack))
+
 /obj/item/storage/belt/bluespace/owlman
 	name = "Owlman's utility belt"
 	desc = "Sometimes people choose justice. Sometimes, justice chooses you..."
@@ -934,9 +939,6 @@
 			if(H.belt && H.belt == src)
 				if(H.s_active && H.s_active == src)
 					H.s_active.show_to(H)
-
-/obj/item/storage/belt/bluespace/attack__legacy__attackchain(mob/M, mob/user, def_zone)
-	return
 
 /obj/item/storage/belt/bluespace/admin
 	name = "Admin's Tool-belt"

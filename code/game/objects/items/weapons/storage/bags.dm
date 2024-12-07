@@ -300,6 +300,7 @@
 	desc = "A simple wooden tray with compartments for manually sorting seeds. It's better than nothing, but a plant analyzer would be more effective."
 	icon = 'icons/obj/hydroponics/equipment.dmi'
 	icon_state = "seed_sorting_tray"
+	allow_quick_empty = FALSE
 	can_hold = list(
 		/obj/item/seeds,
 		/obj/item/unsorted_seeds)
@@ -372,8 +373,10 @@
 		/obj/item/reagent_containers/condiment,
 	)
 
-/obj/item/storage/bag/tray/attack__legacy__attackchain(mob/living/M, mob/living/user)
-	..()
+/obj/item/storage/bag/tray/attack(mob/living/target, mob/living/user, params)
+	if(..())
+		return FINISH_ATTACK
+
 	// Drop all the things. All of them.
 	var/list/obj/item/oldContents = contents.Copy()
 	drop_inventory(user)
@@ -383,12 +386,12 @@
 		do_scatter(I)
 
 	if(prob(50))
-		playsound(M, 'sound/items/trayhit1.ogg', 50, 1)
+		playsound(target, 'sound/items/trayhit1.ogg', 50, 1)
 	else
-		playsound(M, 'sound/items/trayhit2.ogg', 50, 1)
+		playsound(target, 'sound/items/trayhit2.ogg', 50, 1)
 
-	if(ishuman(M) && prob(10))
-		M.KnockDown(4 SECONDS)
+	if(ishuman(target) && prob(10))
+		target.KnockDown(4 SECONDS)
 
 /obj/item/storage/bag/tray/proc/do_scatter(obj/item/tray_item)
 	var/delay = rand(2, 4)
@@ -413,7 +416,7 @@
 
 /obj/item/storage/bag/tray/cyborg
 
-/obj/item/storage/bag/tray/cyborg/afterattack__legacy__attackchain(atom/target, mob/user, proximity_flag)
+/obj/item/storage/bag/tray/cyborg/after_attack(atom/target, mob/user, proximity_flag, click_parameters)
 	// We cannot reach the target.
 	if(!proximity_flag)
 		return

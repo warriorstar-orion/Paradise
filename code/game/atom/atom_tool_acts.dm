@@ -123,22 +123,22 @@
  * *While this intuitively sounds combat related, it is not,
  * because a "combat use" of a gun is gun-butting.
  */
-/atom/proc/base_ranged_item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+/atom/proc/base_ranged_item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	SHOULD_CALL_PARENT(TRUE)
 	PROTECTED_PROC(TRUE)
 
 	// See [base_item_interaction] for defails on why this is using `||` (TL;DR it's short circuiting)
-	var/early_sig_return = SEND_SIGNAL(src, COMSIG_INTERACT_RANGED, user, tool, modifiers) \
-		|| SEND_SIGNAL(tool, COMSIG_INTERACTING_RANGED, user, src, modifiers)
+	var/early_sig_return = SEND_SIGNAL(src, COMSIG_INTERACT_RANGED, user, used, modifiers) \
+		|| SEND_SIGNAL(used, COMSIG_INTERACTING_RANGED, user, src, modifiers)
 
 	if(early_sig_return)
 		return early_sig_return
 
-	var/self_interaction = ranged_item_interaction(user, tool, modifiers)
+	var/self_interaction = ranged_item_interaction(user, used, modifiers)
 	if(self_interaction)
 		return self_interaction
 
-	var/interact_return = tool.ranged_interact_with_atom(src, user, modifiers)
+	var/interact_return = used.ranged_interact_with_atom(src, user, modifiers)
 	if(interact_return)
 		return interact_return
 

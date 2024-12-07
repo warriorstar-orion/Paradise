@@ -305,13 +305,8 @@
 		to_chat(user, "This ID has already been stamped!")
 		return ITEM_INTERACT_COMPLETE
 
-
 	else if(istype(used, /obj/item/card/id/guest))
 		attach_guest_pass(used, user)
-		return ITEM_INTERACT_COMPLETE
-
-	else if(istype(used, /obj/item/storage/wallet))
-		used.attackby__legacy__attackchain(src, user)
 		return ITEM_INTERACT_COMPLETE
 
 /obj/item/card/id/AltClick(mob/user)

@@ -22,7 +22,7 @@
 		"Grey" = 'icons/mob/clothing/species/grey/back.dmi'
 		)
 
-/obj/item/storage/backpack/attackby__legacy__attackchain(obj/item/W as obj, mob/user as mob, params)
+/obj/item/storage/backpack/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(Adjacent(user))
 		playsound(src.loc, "rustle", 50, TRUE, -5)
 		return ..()
@@ -63,8 +63,8 @@
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 60, ACID = 50)
 	allow_same_size = TRUE
 
-/obj/item/storage/backpack/holding/attackby__legacy__attackchain(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/storage/backpack/holding))
+/obj/item/storage/backpack/holding/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(istype(used, /obj/item/storage/backpack/holding))
 		var/response = tgui_alert(user, "This creates a singularity, destroying you and much of the station. Are you SURE?", "IMMINENT DEATH!", list("No", "Yes"))
 		if(response == "Yes")
 			user.visible_message("<span class='warning'>[user] grins as [user.p_they()] begin[user.p_s()] to put a Bag of Holding into a Bag of Holding!</span>", "<span class='warning'>You begin to put the Bag of Holding into the Bag of Holding!</span>")
@@ -74,11 +74,11 @@
 						to_chat(user, "<span class='userdanger'>You seem to stuff yourself into the quantum hellscape between the two bags. That wasn't wise.</span>")
 						user.gib()
 
-					return
+					return ITEM_INTERACT_COMPLETE
 
 				investigate_log("has become a singularity. Caused by [user.key]",INVESTIGATE_SINGULO)
 				user.visible_message("<span class='warning'>[user] erupts in evil laughter as [user.p_they()] put[user.p_s()] the Bag of Holding into another Bag of Holding!</span>", "<span class='warning'>You can't help but laugh wildly as you put the Bag of Holding into another Bag of Holding, complete darkness surrounding you.</span>","<span class='danger'> You hear the sound of scientific evil brewing!</span>")
-				qdel(W)
+				qdel(used)
 				var/obj/singularity/singulo = new /obj/singularity(get_turf(user))
 				singulo.energy = 300 //To give it a small boost
 				message_admins("[key_name_admin(user)] detonated a bag of holding <A href='byond://?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
@@ -86,8 +86,10 @@
 				qdel(src)
 			else
 				user.visible_message("After careful consideration, [user] has decided that putting a Bag of Holding inside another Bag of Holding would not yield the ideal outcome.","You come to the realization that this might not be the greatest idea.")
-	else
-		. = ..()
+
+		return ITEM_INTERACT_COMPLETE
+
+	return ..()
 
 /obj/item/storage/backpack/holding/singularity_act(current_size)
 	var/dist = max((current_size - 2), 1)

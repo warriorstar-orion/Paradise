@@ -306,6 +306,12 @@
 	return TRUE
 
 /// Used for signal registrars who wish to completely ignore all behavior
+/// in the attack chain from parent types calling `attack`. Should be used
+/// sparingly, as subtypes are meant to build on behavior from the parent type.
+/datum/proc/signal_cancel_attack(mob/user)
+	return COMPONENT_CANCEL_ATTACK_CHAIN
+
+/// Used for signal registrars who wish to completely ignore all behavior
 /// in the attack chain from parent types. Should be used sparingly, as
 /// subtypes are meant to build on behavior from the parent type.
 /datum/proc/signal_cancel_activate_self(mob/user)

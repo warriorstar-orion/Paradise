@@ -41,28 +41,28 @@
 		QDEL_NULL(stored_item)
 	return ..()
 
-/obj/item/storage/briefcase/false_bottomed/afterattack__legacy__attackchain(atom/A, mob/user, flag, params)
+/obj/item/storage/briefcase/false_bottomed/after_attack(atom/target, mob/user, proximity_flag, click_parameters)
 	..()
 	if(stored_item && isgun(stored_item))
 		var/obj/item/gun/stored_gun = stored_item
-		stored_gun.afterattack__legacy__attackchain(A, user, flag, params)
+		stored_gun.afterattack__legacy__attackchain(target, user, proximity_flag, click_parameters)
 
-/obj/item/storage/briefcase/false_bottomed/attackby__legacy__attackchain(obj/item/I, mob/user)
+/obj/item/storage/briefcase/false_bottomed/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(bottom_open)
 		if(stored_item)
 			to_chat(user, "<span class='warning'>There's already something in the false bottom!</span>")
-			return
-		if(I.w_class > WEIGHT_CLASS_NORMAL)
-			to_chat(user, "<span class='warning'>[I] is too big to fit in the false bottom!</span>")
-			return
-		if(!user.drop_item(I))
-			to_chat(user, "<span class='warning'>[I] is stuck to your hands!</span>")
-			return
+			return ITEM_INTERACT_COMPLETE
+		if(used.w_class > WEIGHT_CLASS_NORMAL)
+			to_chat(user, "<span class='warning'>[used] is too big to fit in the false bottom!</span>")
+			return ITEM_INTERACT_COMPLETE
+		if(!user.drop_item(used))
+			to_chat(user, "<span class='warning'>[used] is stuck to your hands!</span>")
+			return ITEM_INTERACT_COMPLETE
 
-		stored_item = I
+		stored_item = used
 		max_w_class = WEIGHT_CLASS_NORMAL - stored_item.w_class
-		I.moveToNullspace() // to stop it showing up in the briefcase
-		to_chat(user, "<span class='notice'>You place [I] into the false bottom of the briefcase.</span>")
+		used.moveToNullspace() // to stop it showing up in the briefcase
+		to_chat(user, "<span class='notice'>You place [used] into the false bottom of the briefcase.</span>")
 	else
 		return ..()
 

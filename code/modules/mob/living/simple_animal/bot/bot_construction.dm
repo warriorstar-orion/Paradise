@@ -248,16 +248,16 @@
 	desc = "It's a toolbox with tiles sticking out the top and a sensor attached."
 	icon_state = "toolbox_tiles_sensor"
 
-/obj/item/storage/toolbox/attackby__legacy__attackchain(obj/item/stack/tile/plasteel/T, mob/user, params)
-	if(!istype(T, /obj/item/stack/tile/plasteel))
+/obj/item/storage/toolbox/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(!istype(used, /obj/item/stack/tile/plasteel))
 		..()
-		return
+		return ITEM_INTERACT_COMPLETE
 	if(QDELETED(src))
-		return
+		return ITEM_INTERACT_COMPLETE
 	if(length(contents) >= 1)
 		to_chat(user, "<span class='warning'>They won't fit in, as there is already stuff inside.</span>")
-		return
-	if(T.use(10))
+		return ITEM_INTERACT_COMPLETE
+	if(used.use(10))
 		if(user.s_active)
 			user.s_active.close(user)
 		var/obj/item/toolbox_tiles/B = new /obj/item/toolbox_tiles
@@ -282,9 +282,10 @@
 		to_chat(user, "<span class='notice'>You add the tiles into the empty toolbox. They protrude from the top.</span>")
 		user.unequip(src, force = TRUE)
 		qdel(src)
+		return ITEM_INTERACT_COMPLETE
 	else
 		to_chat(user, "<span class='warning'>You need 10 floor tiles to start building a floorbot.</span>")
-		return
+		return ITEM_INTERACT_COMPLETE
 
 /obj/item/toolbox_tiles/update_icon_state()
 	icon_state = "[toolbox_color]toolbox_tiles"
@@ -325,11 +326,11 @@
 		qdel(src)
 
 //Medbot Assembly
-/obj/item/storage/firstaid/attackby__legacy__attackchain(obj/item/I, mob/user, params)
-	if(!istype(I, /obj/item/robot_parts/l_arm) && !istype(I, /obj/item/robot_parts/r_arm))
+/obj/item/storage/firstaid/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(!istype(used, /obj/item/robot_parts/l_arm) && !istype(used, /obj/item/robot_parts/r_arm))
 		return ..()
 	else
-		robot_arm = I.type
+		robot_arm = used.type
 
 	//Making a medibot!
 	if(length(contents))
@@ -346,7 +347,7 @@
 	A.treatment_tox = treatment_tox
 	A.treatment_virus = treatment_virus
 
-	qdel(I)
+	qdel(used)
 	user.put_in_hands(A)
 	to_chat(user, "<span class='notice'>You add the robot arm to the first aid kit.</span>")
 	user.unequip(src, force = TRUE)
@@ -612,22 +613,24 @@
 	return TRUE
 
 //Honkbot Assembly
-/obj/item/storage/box/clown/attackby__legacy__attackchain(obj/item/W, mob/user, params)
-	if(!istype(W, /obj/item/robot_parts/l_arm) && !istype(W, /obj/item/robot_parts/r_arm))
+/obj/item/storage/box/clown/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(!istype(used, /obj/item/robot_parts/l_arm) && !istype(used, /obj/item/robot_parts/r_arm))
 		return ..()
 	else
-		robot_arm = W.type
+		robot_arm = used.type
 
 	if(length(contents))
 		to_chat(user, "<span class='warning'>You need to empty [src] out first!</span>")
-		return
+		return ITEM_INTERACT_COMPLETE
 
 	var/obj/item/honkbot_arm_assembly/A = new /obj/item/honkbot_arm_assembly
-	qdel(W)
+	qdel(used)
 	user.put_in_hands(A)
 	to_chat(user, "<span class='notice'>You add the robot arm to the honkbot.</span>")
 	user.unequip(src, force = TRUE)
 	qdel(src)
+
+	return ITEM_INTERACT_COMPLETE
 
 /obj/item/honkbot_arm_assembly
 	name = "incomplete honkbot assembly"

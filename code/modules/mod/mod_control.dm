@@ -460,7 +460,7 @@
 	else if(istype(attacking_item, /obj/item/mod/skin_applier))
 		return ..()
 	else if(bag && istype(attacking_item))
-		bag.attackby__legacy__attackchain(attacking_item, user, params)
+		bag.handle_item_insertion(attacking_item, user)
 
 	return ..()
 

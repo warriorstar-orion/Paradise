@@ -50,7 +50,7 @@
 	if(istype(W, /obj/item/smithed_item/insert) && length(inserts) != insert_max)
 		return ..()
 	..()
-	return pockets?.attackby__legacy__attackchain(W, user, params)
+	return pockets?.item_interaction(user, W, params)
 
 /obj/item/clothing/suit/storage/emp_act(severity)
 	..()

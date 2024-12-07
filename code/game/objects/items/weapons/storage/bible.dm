@@ -71,42 +71,45 @@
 		H.heal_overall_damage(10, 10)
 	return
 
-/obj/item/storage/bible/attack__legacy__attackchain(mob/living/M, mob/living/user)
-	add_attack_logs(user, M, "Hit with [src]")
+/obj/item/storage/bible/attack(mob/living/target, mob/living/user, params)
+	if(..())
+		return FINISH_ATTACK
 
 	if(!(ishuman(user) || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
-		return
+		return COMPONENT_CANCEL_ATTACK_CHAIN
 	if(!HAS_MIND_TRAIT(user, TRAIT_HOLY))
 		to_chat(user, "<span class='warning'>The book sizzles in your hands.</span>")
 		user.take_organ_damage(0, 10)
-		return
+		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50))
 		to_chat(user, "<span class='warning'>[src] slips out of your hand and hits your head.</span>")
 		user.take_organ_damage(10)
 		user.Paralyse(40 SECONDS)
-		return
+		return COMPONENT_CANCEL_ATTACK_CHAIN
 
-	if(M.stat != DEAD && ishuman(M))
-		var/mob/living/carbon/human/H = M
+	add_attack_logs(user, target, "Hit with [src]")
+	if(target.stat != DEAD && ishuman(target))
+		var/mob/living/carbon/human/H = target
 		if(prob(60))
 			bless(H)
 			H.visible_message("<span class='danger'>[user] heals [H == user ? "[user.p_themselves()]" : "[H]"] with the power of [deity_name]!</span>",
 				"<span class='danger'>May the power of [deity_name] compel you to be healed!</span>")
 			playsound(loc, "punch", 25, TRUE, -1)
 		else
-			M.adjustBrainLoss(10)
-			to_chat(M, "<span class='warning'>You feel dumber.</span>")
+			target.adjustBrainLoss(10)
+			to_chat(target, "<span class='warning'>You feel dumber.</span>")
 			H.visible_message("<span class='danger'>[user] beats [H == user ? "[user.p_themselves()]" : "[H]"] over the head with [src]!</span>")
 			playsound(src.loc, "punch", 25, TRUE, -1)
 	else
-		M.visible_message("<span class='danger'>[user] smacks [M]'s lifeless corpse with [src].</span>")
+		target.visible_message("<span class='danger'>[user] smacks [target]'s lifeless corpse with [src].</span>")
 		playsound(src.loc, "punch", 25, TRUE, -1)
 
+	return COMPONENT_SKIP_ATTACK
 
-/obj/item/storage/bible/afterattack__legacy__attackchain(atom/target, mob/user, proximity, params)
-	if(!proximity)
+/obj/item/storage/bible/after_attack(atom/target, mob/user, proximity_flag, click_parameters)
+	if(!proximity_flag)
 		return
 
 	if(isfloorturf(target))
@@ -133,7 +136,9 @@
 			target.reagents.del_reagent("unholywater")
 			target.reagents.add_reagent("holywater", unholy2clean)
 
-/obj/item/storage/bible/attack_self__legacy__attackchain(mob/user)
+	return ..()
+
+/obj/item/storage/bible/activate_self(mob/user)
 	. = ..()
 	if(!customisable || !HAS_MIND_TRAIT(user, TRAIT_HOLY))
 		return

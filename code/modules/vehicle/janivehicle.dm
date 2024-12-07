@@ -116,7 +116,7 @@
 		return ITEM_INTERACT_COMPLETE
 
 	if(mybag && user.a_intent == INTENT_HELP && !is_key(used))
-		mybag.attackby__legacy__attackchain(used, user)
+		mybag.item_interaction(user, used)
 		return ITEM_INTERACT_COMPLETE
 
 	return ..()

@@ -34,7 +34,7 @@
 		..(over_object)
 
 /obj/item/clothing/accessory/storage/attackby__legacy__attackchain(obj/item/W as obj, mob/user as mob, params)
-	return hold.attackby__legacy__attackchain(W, user, params)
+	return hold.item_interaction(user, W, params)
 
 /obj/item/clothing/accessory/storage/emp_act(severity)
 	..()

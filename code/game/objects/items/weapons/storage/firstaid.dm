@@ -301,20 +301,21 @@
 		I.color = wrapper_color
 		overlays += I
 
-/obj/item/storage/pill_bottle/attack__legacy__attackchain(mob/M, mob/user)
-	if(iscarbon(M) && length(contents))
+/obj/item/storage/pill_bottle/interact_with_atom(atom/target, mob/living/user, list/modifiers)
+	if(iscarbon(target) && length(contents))
 		if(applying_meds)
 			to_chat(user, "<span class='warning'>You are already applying meds.</span>")
-			return
+			return ITEM_INTERACT_COMPLETE
 		applying_meds = TRUE
 		for(var/obj/item/reagent_containers/P in contents)
-			if(P.mob_act(M, user))
+			if(P.mob_act(target, user))
 				applying_meds = FALSE
 			else
 				applying_meds = FALSE
 			break
-	else
-		return ..()
+		return ITEM_INTERACT_COMPLETE
+
+	return ..()
 
 /obj/item/storage/pill_bottle/ert_red
 	wrapper_color = COLOR_NT_RED
@@ -363,11 +364,12 @@
 
 	return ..()
 
-/obj/item/storage/pill_bottle/attackby__legacy__attackchain(obj/item/I, mob/user, params)
-	if(is_pen(I))
-		rename_interactive(user, I)
-	else
-		return ..()
+/obj/item/storage/pill_bottle/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(is_pen(used))
+		rename_interactive(user, used)
+		return ITEM_INTERACT_COMPLETE
+
+	return ..()
 
 /obj/item/storage/pill_bottle/proc/apply_wrapper_color(color_number)
 	var/static/list/colors = list(COLOR_RED, COLOR_ORANGE, COLOR_YELLOW, COLOR_GREEN, COLOR_CYAN_BLUE, COLOR_VIOLET, COLOR_PURPLE)
