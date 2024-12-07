@@ -244,13 +244,18 @@
 		/obj/item/seeds,
 		/obj/item/unsorted_seeds)
 
-/obj/item/storage/bag/plants/seed_sorting_tray/attack_self__legacy__attackchain(mob/user)
+/obj/item/storage/bag/plants/seed_sorting_tray/activate_self(mob/user)
+	if(..())
+		return FINISH_ATTACK
+
 	var/depth = 0
 	for(var/obj/item/unsorted_seeds/unsorted in src)
 		if(!do_after(user, 1 SECONDS, TRUE, src, must_be_held = TRUE))
 			break
 		depth = min(8, depth + 1)
 		unsorted.sort(depth)
+
+	return FINISH_ATTACK
 
 ////////////////////////////////////////
 // MARK:	Cash bag
