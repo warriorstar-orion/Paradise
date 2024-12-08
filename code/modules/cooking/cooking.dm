@@ -162,17 +162,16 @@ Food quality is calculated based on the steps taken.
 						reason="Bad argument type for CWJ_USE_ITEM_OPTIONAL at arg 2"
 					else
 						create_step_use_item(step_list[2], TRUE)
-				#warn add add produce back
-				// if(CWJ_ADD_PRODUCE)
-				// 	if(step_list.len < 2)
-				// 		reason="Bad argument Length for CWJ_ADD_PRODUCE"
-				// 	else
-				// 		create_step_add_produce(step_list[2], FALSE)
-				// if(CWJ_ADD_PRODUCE_OPTIONAL)
-				// 	if(step_list.len < 2)
-				// 		reason="Bad argument Length for CWJ_ADD_PRODUCE_OPTIONAL"
-				// 	else
-				// 		create_step_add_produce(step_list[2], TRUE)
+				if(CWJ_ADD_PRODUCE)
+					if(step_list.len < 2)
+						reason="Bad argument Length for CWJ_ADD_PRODUCE"
+					else
+						create_step_add_produce(step_list[2], FALSE)
+				if(CWJ_ADD_PRODUCE_OPTIONAL)
+					if(step_list.len < 2)
+						reason="Bad argument Length for CWJ_ADD_PRODUCE_OPTIONAL"
+					else
+						create_step_add_produce(step_list[2], TRUE)
 				#warn add use_tool back
 				// if(CWJ_USE_TOOL)
 				// 	if(step_list.len < 3)
@@ -410,10 +409,9 @@ Food quality is calculated based on the steps taken.
 
 //-----------------------------------------------------------------------------------
 //Add produce step shortcut commands
-#warn add add produce back
-// /datum/cooking/recipe/proc/create_step_add_produce(var/produce, var/optional)
-// 	var/datum/cooking/recipe_step/add_produce/step = new /datum/cooking/recipe_step/add_produce(produce, src)
-// 	return src.add_step(step, optional)
+/datum/cooking/recipe/proc/create_step_add_produce(var/produce, var/optional)
+	var/datum/cooking/recipe_step/add_produce/step = new /datum/cooking/recipe_step/add_produce(produce, src)
+	return src.add_step(step, optional)
 //-----------------------------------------------------------------------------------
 //Use Tool step shortcut commands
 #warn add use_tool back
@@ -678,17 +676,16 @@ Food quality is calculated based on the steps taken.
 							can_add = FALSE
 							exclude_list += id
 							break
-					#warn add add produce back
-					// else if(GLOB.cwj_step_dictionary_ordered["[CWJ_ADD_PRODUCE]"] && GLOB.cwj_step_dictionary_ordered["[CWJ_ADD_PRODUCE]"][id])
-					// 	var/datum/cooking/recipe_step/add_produce/active_step = GLOB.cwj_step_dictionary_ordered["[CWJ_ADD_PRODUCE]"][id]
-					// 	exclude_specific_reagents = active_step.exclude_reagents
-					// 	if(active_step.reagent_skip)
-					// 		#ifdef CWJ_DEBUG
-					// 		log_debug("/recipe/proc/create_product: Reagent skip detected. Ignoring reagents from [added_item].")
-					// 		#endif
-					// 		can_add = FALSE
-					// 		exclude_list += id
-					// 		break
+					else if(GLOB.cwj_step_dictionary_ordered["[CWJ_ADD_PRODUCE]"] && GLOB.cwj_step_dictionary_ordered["[CWJ_ADD_PRODUCE]"][id])
+						var/datum/cooking/recipe_step/add_produce/active_step = GLOB.cwj_step_dictionary_ordered["[CWJ_ADD_PRODUCE]"][id]
+						exclude_specific_reagents = active_step.exclude_reagents
+						if(active_step.reagent_skip)
+							#ifdef CWJ_DEBUG
+							log_debug("/recipe/proc/create_product: Reagent skip detected. Ignoring reagents from [added_item].")
+							#endif
+							can_add = FALSE
+							exclude_list += id
+							break
 				if(can_add)
 					if(exclude_specific_reagents.len)
 						for(var/id in exclude_specific_reagents)
