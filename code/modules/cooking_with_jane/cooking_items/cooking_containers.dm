@@ -1,12 +1,12 @@
-//Cooking containers are used in ovens, fryers and so on, to hold multiple ingredients for a recipe.
-//They interact with the cooking process, and link up with the cooking code dynamically.
-
-//Originally sourced from the Aurora, heavily retooled to actually work with CWJ
-
-
-//Holder for a portion of an incomplete meal,
-//allows a cook to temporarily offload recipes to work on things factory-style, eliminating the need for 20 plates to get things done fast.
-
+/**
+ * Cooking containers are used in ovens, fryers and so on, to hold multiple
+ * ingredients for a recipe. They interact with the cooking process, and link
+ * up with the cooking code dynamically. Originally sourced from the Aurora,
+ * heavily retooled to actually work with CWJ Holder for a portion of an
+ * incomplete meal, allows a cook to temporarily offload recipes to work on
+ * things factory-style, eliminating the need for 20 plates to get things done
+ * fast.
+ **/
 /obj/item/reagent_containers/cooking_with_jane/cooking_container
 	icon = 'icons/obj/cwj_cooking/kitchen.dmi'
 	#warn fix descp info
@@ -87,7 +87,6 @@
 
 	. = ..(user, target)
 
-
 /obj/item/reagent_containers/cooking_with_jane/cooking_container/after_attack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
 
@@ -101,8 +100,6 @@
 		return 1
 
 /obj/item/reagent_containers/cooking_with_jane/cooking_container/proc/process_item(var/obj/I, var/mob/user, var/lower_quality_on_fail = 0, var/send_message = TRUE)
-
-
 	#ifdef CWJ_DEBUG
 	log_debug("cooking_container/process_item() called!")
 	#endif
@@ -210,8 +207,7 @@
 	if(contents.len != 0)
 		to_chat(user, "<span class='notice'>You remove all the solid items from [src].</span>")
 
-
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/AltClick(var/mob/user)
+/obj/item/reagent_containers/cooking_with_jane/cooking_container/AltClick(mob/user)
 	do_empty(user)
 
 //Deletes contents of container.
@@ -230,7 +226,8 @@
 	stove_data = list("High"=0 , "Medium" = 0, "Low"=0)
 	grill_data = list("High"=0 , "Medium" = 0, "Low"=0)
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/proc/label(var/number, var/CT = null)
+/obj/item/reagent_containers/cooking_with_jane/cooking_container/proc/label(number, CT)
+	#warn what is the CT param for
 	//This returns something like "Fryer basket 1 - empty"
 	//The latter part is a brief reminder of contents
 	//This is used in the removal menu
