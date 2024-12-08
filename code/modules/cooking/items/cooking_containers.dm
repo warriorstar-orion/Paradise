@@ -73,6 +73,7 @@
 	#endif
 
 	if(tracker)
+		#warn turn alert to tgui_alert
 		if(alert(user, "There is an ongoing recipe in the [src]. Dump it out?",,"Yes","No") == "No")
 			return FALSE
 		for(var/datum/reagent/our_reagent in reagents.reagent_list)
@@ -120,6 +121,7 @@
 				to_chat(user, "It doesn't seem like you can create a meal from that. Yet.")
 			if(lower_quality_on_fail)
 				for (var/datum/cooking/recipe_pointer/pointer in tracker.active_recipe_pointers)
+					#warn oh god
 					pointer?:tracked_quality -= lower_quality_on_fail
 		if(CWJ_CHOICE_CANCEL)
 			if(send_message)
