@@ -36,7 +36,7 @@
 		return 0
 //===================================================================================
 /proc/createCookingCatalogs()
-	for(var/datum/cooking_with_jane/recipe/our_recipe in GLOB.cwj_recipe_list)
+	for(var/datum/cooking/recipe/our_recipe in GLOB.cwj_recipe_list)
 		if(our_recipe.appear_in_default_catalog)
 			create_cooking_catalog_entry(our_recipe)
 
@@ -77,7 +77,7 @@
 
 	return cmp_catalog_entry_asc(a, b)
 
-/proc/create_cooking_catalog_entry(var/datum/cooking_with_jane/recipe/our_recipe)
+/proc/create_cooking_catalog_entry(var/datum/cooking/recipe/our_recipe)
 	var/catalog_id = CATALOG_COOKING
 	if(!GLOB.catalogs[catalog_id])
 		GLOB.catalogs[catalog_id] = new /datum/catalog(catalog_id)
@@ -92,9 +92,9 @@
 
 /datum/catalog_entry/cooking
 	associated_template = "catalog_entry_cooking.tmpl"
-	var/datum/cooking_with_jane/recipe/recipe
+	var/datum/cooking/recipe/recipe
 
-/datum/catalog_entry/cooking/New(var/datum/cooking_with_jane/recipe/our_recipe)
+/datum/catalog_entry/cooking/New(var/datum/cooking/recipe/our_recipe)
 	thing_type = our_recipe.type
 	title = our_recipe.name
 	recipe = our_recipe
@@ -193,7 +193,7 @@
 	keep_local_name = FALSE
 
 /datum/asset/simple/cooking_icons/register()
-	for(var/datum/cooking_with_jane/recipe/our_recipe in GLOB.cwj_recipe_list)
+	for(var/datum/cooking/recipe/our_recipe in GLOB.cwj_recipe_list)
 		var/icon/I = null
 		var/filename = null
 		if(our_recipe.product_type)

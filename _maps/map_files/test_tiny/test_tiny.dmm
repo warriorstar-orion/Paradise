@@ -12,16 +12,16 @@
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "i" = (
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/deep_basket,
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/deep_basket,
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/deep_basket,
+/obj/item/reagent_containers/cooking/deep_basket,
+/obj/item/reagent_containers/cooking/deep_basket,
+/obj/item/reagent_containers/cooking/deep_basket,
 /obj/structure/table,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "m" = (
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/bowl,
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/bowl,
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/bowl,
+/obj/item/reagent_containers/cooking/bowl,
+/obj/item/reagent_containers/cooking/bowl,
+/obj/item/reagent_containers/cooking/bowl,
 /obj/structure/table,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
@@ -31,20 +31,20 @@
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "p" = (
-/obj/machinery/cooking_with_jane/oven,
+/obj/machinery/cooking/oven,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "q" = (
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/board,
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/board,
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/board,
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/board,
+/obj/item/reagent_containers/cooking/board,
+/obj/item/reagent_containers/cooking/board,
+/obj/item/reagent_containers/cooking/board,
+/obj/item/reagent_containers/cooking/board,
 /obj/structure/table,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "s" = (
 /obj/structure/table,
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/board,
+/obj/item/reagent_containers/cooking/board,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "t" = (
@@ -63,9 +63,9 @@
 /turf/simulated/wall/mineral/titanium,
 /area/shuttle/arrival/station)
 "w" = (
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/pan,
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/pan,
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/pan,
+/obj/item/reagent_containers/cooking/pan,
+/obj/item/reagent_containers/cooking/pan,
+/obj/item/reagent_containers/cooking/pan,
 /obj/structure/table,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
@@ -73,9 +73,9 @@
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "y" = (
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/grill_grate,
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/grill_grate,
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/grill_grate,
+/obj/item/reagent_containers/cooking/grill_grate,
+/obj/item/reagent_containers/cooking/grill_grate,
+/obj/item/reagent_containers/cooking/grill_grate,
 /obj/structure/table,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
@@ -94,7 +94,7 @@
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "A" = (
-/obj/machinery/cooking_with_jane/stove,
+/obj/machinery/cooking/stove,
 /obj/structure/table,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
@@ -103,14 +103,14 @@
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "E" = (
-/obj/machinery/cooking_with_jane/grill,
+/obj/machinery/cooking/grill,
 /obj/structure/table,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "F" = (
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/pot,
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/pot,
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/pot,
+/obj/item/reagent_containers/cooking/pot,
+/obj/item/reagent_containers/cooking/pot,
+/obj/item/reagent_containers/cooking/pot,
 /obj/structure/table,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
@@ -155,9 +155,9 @@
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "T" = (
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/oven,
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/oven,
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/oven,
+/obj/item/reagent_containers/cooking/oven,
+/obj/item/reagent_containers/cooking/oven,
+/obj/item/reagent_containers/cooking/oven,
 /obj/structure/table,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
@@ -166,10 +166,10 @@
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "Y" = (
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/air_basket,
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/air_basket,
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/air_basket,
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/air_basket,
+/obj/item/reagent_containers/cooking/air_basket,
+/obj/item/reagent_containers/cooking/air_basket,
+/obj/item/reagent_containers/cooking/air_basket,
+/obj/item/reagent_containers/cooking/air_basket,
 /obj/structure/table,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)

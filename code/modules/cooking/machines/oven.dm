@@ -1,6 +1,4 @@
-
-
-/obj/machinery/cooking_with_jane/oven
+/obj/machinery/cooking/oven
 	name = "Convection Oven"
 	desc = "A cozy oven for baking food."
 	#warn fix description info
@@ -27,10 +25,10 @@
 	var/on_fire = FALSE //if the oven has caught fire or not.
 
 	#warn verify circuit
-	// circuit = /obj/item/circuitboard/cooking_with_jane/oven
+	// circuit = /obj/item/circuitboard/cooking/oven
 
 //Did not want to use this...
-/obj/machinery/cooking_with_jane/oven/process()
+/obj/machinery/cooking/oven/process()
 
 	//if(on_fire)
 		//Do bad things if it is on fire.
@@ -48,7 +46,7 @@
 	if(switches)
 		use_power(power_cost)
 
-/obj/machinery/cooking_with_jane/oven/RefreshParts()
+/obj/machinery/cooking/oven/RefreshParts()
 	..()
 
 	var/las_rating = 0
@@ -57,10 +55,10 @@
 	quality_mod = round(las_rating/2)
 
 //Process how a specific oven is interacting with material
-/obj/machinery/cooking_with_jane/oven/proc/cook_checkin()
+/obj/machinery/cooking/oven/proc/cook_checkin()
 	if(items)
 		#ifdef CWJ_DEBUG
-		log_debug("/cooking_with_jane/oven/proc/cook_checkin called on burner ")
+		log_debug("/cooking/oven/proc/cook_checkin called on burner ")
 		#endif
 		var/old_timestamp = cooking_timestamp
 		switch(temperature)
@@ -88,22 +86,22 @@
 					if(cooking_timestamp == old_timestamp)
 						handle_ignition()
 
-/obj/machinery/cooking_with_jane/oven/proc/handle_burning()
-	if(!(items && istype(items, /obj/item/reagent_containers/cooking_with_jane/cooking_container)))
+/obj/machinery/cooking/oven/proc/handle_burning()
+	if(!(items && istype(items, /obj/item/reagent_containers/cooking)))
 		return
 
-	var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = items
+	var/obj/item/reagent_containers/cooking/container = items
 	container.handle_burning()
 
-/obj/machinery/cooking_with_jane/oven/proc/handle_ignition()
-	if(!(items && istype(items, /obj/item/reagent_containers/cooking_with_jane/cooking_container)))
+/obj/machinery/cooking/oven/proc/handle_ignition()
+	if(!(items && istype(items, /obj/item/reagent_containers/cooking)))
 		return
 
-	var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = items
+	var/obj/item/reagent_containers/cooking/container = items
 	if(container.handle_ignition())
 		on_fire = TRUE
 
-/obj/machinery/cooking_with_jane/oven/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+/obj/machinery/cooking/oven/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	#warn fix deconstruction
 	// if(default_deconstruction(used_item, user))
 	// 	return
@@ -112,11 +110,11 @@
 
 	if(opened && center_selected)
 		if(items != null)
-			var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = items
+			var/obj/item/reagent_containers/cooking/container = items
 			container.process_item(used, user)
 			return ITEM_INTERACT_SUCCESS
 
-		else if(istype(used, /obj/item/reagent_containers/cooking_with_jane/cooking_container))
+		else if(istype(used, /obj/item/reagent_containers/cooking))
 			to_chat(usr, "<span class='notice'>You put [used] on the oven.</span>")
 			if(usr.drop_item())
 				used.forceMove(src)
@@ -135,7 +133,7 @@
 #define ICON_SPLIT_X_2 28
 #define ICON_SPLIT_Y_1 5
 #define ICON_SPLIT_Y_2 20
-/obj/machinery/cooking_with_jane/oven/proc/getInput(params)
+/obj/machinery/cooking/oven/proc/getInput(params)
 	var/list/click_params = params2list(params)
 	var/input
 	var/icon_x = text2num(click_params["icon-x"])
@@ -154,7 +152,7 @@
 #undef ICON_SPLIT_Y_2
 
 
-/obj/machinery/cooking_with_jane/oven/attack_hand(mob/user as mob, params)
+/obj/machinery/cooking/oven/attack_hand(mob/user as mob, params)
 	var/center_selected = getInput(params2list(params))
 
 	switch(center_selected)
@@ -183,12 +181,12 @@
 			handle_open(user)
 	update_icon()
 
-/obj/machinery/cooking_with_jane/oven/CtrlClick(var/mob/user, params)
+/obj/machinery/cooking/oven/CtrlClick(mob/user, params)
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return
 
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/oven/CtrlClick called ")
+	log_debug("/cooking/oven/CtrlClick called ")
 	#endif
 	var/choice = alert(user,"Select an action","Select One:","Set temperature","Set timer","Cancel")
 	switch(choice)
@@ -198,17 +196,17 @@
 			handle_timer(user)
 
 //Switch the cooking device on or off
-/obj/machinery/cooking_with_jane/oven/CtrlShiftClick(var/mob/user, params)
+/obj/machinery/cooking/oven/CtrlShiftClick(mob/user, params)
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return
 
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/oven/CtrlShiftClick called")
+	log_debug("/cooking/oven/CtrlShiftClick called")
 	#endif
 	handle_switch(user)
 
 //Empty a container without a tool
-/obj/machinery/cooking_with_jane/oven/AltClick(var/mob/user, params)
+/obj/machinery/cooking/oven/AltClick(mob/user, params)
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return
 
@@ -218,15 +216,15 @@
 			if(!opened)
 				to_chat(user, "<span class='notice'>The oven must be open to retrieve the food.</span>")
 			else
-				if((items != null && istype(items, /obj/item/reagent_containers/cooking_with_jane/cooking_container)))
-					var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = items
+				if((items != null && istype(items, /obj/item/reagent_containers/cooking)))
+					var/obj/item/reagent_containers/cooking/container = items
 
 					#ifdef CWJ_DEBUG
-					log_debug("/cooking_with_jane/oven/AltClick called on [container]")
+					log_debug("/cooking/oven/AltClick called on [container]")
 					#endif
 					container.do_empty(user)
 
-/obj/machinery/cooking_with_jane/oven/proc/handle_open(var/mob/user)
+/obj/machinery/cooking/oven/proc/handle_open(mob/user)
 	if(opened)
 		opened = FALSE
 	else
@@ -234,7 +232,7 @@
 		if(switches == 1)
 			handle_switch(user)
 
-/obj/machinery/cooking_with_jane/oven/proc/handle_temperature(var/mob/user)
+/obj/machinery/cooking/oven/proc/handle_temperature(mob/user)
 	var/old_temp = temperature
 	var/choice = input(user,"Select a heat setting for burner #.\nCurrent temp :[old_temp]","Select Temperature",old_temp) in list("High","Medium","Low","Cancel")
 	if(choice && choice != "Cancel" && choice != old_temp)
@@ -247,15 +245,14 @@
 			log_debug("Timerstamp no.  set! New timerstamp: [timerstamp]")
 			#endif
 
-
-/obj/machinery/cooking_with_jane/oven/proc/handle_timer(var/mob/user)
+/obj/machinery/cooking/oven/proc/handle_timer(mob/user)
 	var/old_time = timer? round((timer/(1 SECONDS)), 1 SECONDS): 1
 	timer = (input(user, "Enter a timer for burner # (In Seconds, 0 Stays On)","Set Timer", old_time) as num) SECONDS
 	if(timer != 0 && switches == 1)
 		timer_act(user)
 	update_icon()
 
-/obj/machinery/cooking_with_jane/oven/proc/timer_act(var/mob/user)
+/obj/machinery/cooking/oven/proc/timer_act(mob/user)
 
 	timerstamp=round(world.time)
 	#ifdef CWJ_DEBUG
@@ -276,8 +273,7 @@
 			update_icon()
 	update_icon()
 
-/obj/machinery/cooking_with_jane/oven/proc/handle_switch(user)
-
+/obj/machinery/cooking/oven/proc/handle_switch(user)
 	if(switches == 1)
 		playsound(src, 'sound/items/lighter.ogg', 100, 1, 0)
 		handle_cooking(user)
@@ -299,14 +295,12 @@
 			timer_act(user)
 	update_icon()
 
+/obj/machinery/cooking/oven/proc/handle_cooking(var/mob/user, set_timer=FALSE)
 
-
-/obj/machinery/cooking_with_jane/oven/proc/handle_cooking(var/mob/user, set_timer=FALSE)
-
-	if(!(items && istype(items, /obj/item/reagent_containers/cooking_with_jane/cooking_container)))
+	if(!(items && istype(items, /obj/item/reagent_containers/cooking)))
 		return
 
-	var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = items
+	var/obj/item/reagent_containers/cooking/container = items
 	if(set_timer)
 		reference_time = timer
 	else
@@ -335,7 +329,7 @@
 		container.process_item(src, user)
 
 
-/obj/machinery/cooking_with_jane/oven/update_icon()
+/obj/machinery/cooking/oven/update_icon()
 	..()
 
 	cut_overlays()
@@ -351,61 +345,61 @@
 	if(!opened)
 		add_overlay(image(src.icon, icon_state="oven_hatch[switches?"_on":""]", layer=ABOVE_OBJ_LAYER))
 
-/obj/machinery/cooking_with_jane/oven/proc/add_to_visible(var/obj/item/our_item)
+/obj/machinery/cooking/oven/proc/add_to_visible(var/obj/item/our_item)
 	our_item.vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID
 	src.vis_contents += our_item
 	our_item.transform *= 0.8
 
-/obj/machinery/cooking_with_jane/oven/proc/remove_from_visible(var/obj/item/our_item)
+/obj/machinery/cooking/oven/proc/remove_from_visible(var/obj/item/our_item)
 	our_item.vis_flags = 0
 	our_item.blend_mode = 0
 	our_item.transform =  null
 	src.vis_contents.Remove(our_item)
 
-/obj/machinery/cooking_with_jane/oven/verb/toggle_burner()
+/obj/machinery/cooking/oven/verb/toggle_burner()
 	set src in view(1)
 	set name = "Oven - Toggle"
 	set category = "Object"
 	set desc = "Turn on the oven"
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/oven/verb/toggle_burner_1() called")
+	log_debug("/cooking/oven/verb/toggle_burner_1() called")
 	#endif
 	if(!ishuman(usr) && !isrobot(usr))
 		return
 	handle_switch(usr)
 
 
-/obj/machinery/cooking_with_jane/oven/verb/change_temperature()
+/obj/machinery/cooking/oven/verb/change_temperature()
 	set src in view(1)
 	set name = "Oven - Set Temp"
 	set category = "Object"
 	set desc = "Set a temperature for the oven."
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/oven/verb/change_temperature_1() called")
+	log_debug("/cooking/oven/verb/change_temperature_1() called")
 	#endif
 	if(!ishuman(usr) && !isrobot(usr))
 		return
 	handle_temperature(usr)
 
-/obj/machinery/cooking_with_jane/oven/verb/change_timer()
+/obj/machinery/cooking/oven/verb/change_timer()
 	set src in view(1)
 	set name = "Oven - Set Timer"
 	set category = "Object"
 	set desc = "Set a timer for the oven."
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/oven/verb/change_timer() called")
+	log_debug("/cooking/oven/verb/change_timer() called")
 	#endif
 	if(!ishuman(usr) && !isrobot(usr))
 		return
 	handle_timer(usr)
 
-/obj/machinery/cooking_with_jane/oven/verb/toggle_door()
+/obj/machinery/cooking/oven/verb/toggle_door()
 	set src in view(1)
 	set name = "Oven - Open/Close door"
 	set category = "Object"
 	set desc = "Open/Close the door of the oven."
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/oven/verb/toggle_door() called")
+	log_debug("/cooking/oven/verb/toggle_door() called")
 	#endif
 	if(!ishuman(usr) && !isrobot(usr))
 		return

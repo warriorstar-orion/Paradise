@@ -1,6 +1,6 @@
 #define ICON_SPLIT_X 16
 
-/obj/machinery/cooking_with_jane/grill
+/obj/machinery/cooking/grill
 	name = "Grill"
 	desc = "A deep pit of charcoal for cooking food. A slot on the side of the machine takes wood and converts it into charcoal."
 	#warn fix description
@@ -32,18 +32,18 @@
 	var/on_fire = FALSE //if the grill has caught fire or not.
 
 	#warn verify circuit usage
-	// circuit = /obj/item/circuitboard/cooking_with_jane/grill
+	// circuit = /obj/item/circuitboard/cooking/grill
 
 	#warn figure out wtf this is
 	// var/obj/effect/flick_light_overlay/hopper_insert //flick_light_overlay found in machinery/autolathe/autolathe.dm
 
-/obj/machinery/cooking_with_jane/grill/Initialize()
+/obj/machinery/cooking/grill/Initialize()
 	. = ..()
 	// hopper_insert = new(src)
-	component_parts += new /obj/item/circuitboard/cooking_with_jane/grill(null)
+	component_parts += new /obj/item/circuitboard/cooking/grill(null)
 
 //Did not want to use this...
-/obj/machinery/cooking_with_jane/grill/process()
+/obj/machinery/cooking/grill/process()
 
 	//if(on_fire)
 		//Do bad things if it is on fire.
@@ -71,7 +71,7 @@
 		else
 			stored_wood -= 1
 
-/obj/machinery/cooking_with_jane/grill/RefreshParts()
+/obj/machinery/cooking/grill/RefreshParts()
 	..()
 
 	var/las_rating = 0
@@ -84,18 +84,18 @@
 		bin_rating += M.rating
 	wood_maximum = 15 * bin_rating
 
-/obj/machinery/cooking_with_jane/grill/examine(var/mob/user)
+/obj/machinery/cooking/grill/examine(var/mob/user)
 	. = ..()
 
 	if(contents)
 		. += "<span class='notice'>\nCharcoal: [stored_wood]/[wood_maximum]</span>"
 
 //Process how a specific grill is interacting with material
-/obj/machinery/cooking_with_jane/grill/proc/cook_checkin(var/input)
+/obj/machinery/cooking/grill/proc/cook_checkin(var/input)
 
 	if(items[input])
 		#ifdef CWJ_DEBUG
-		log_debug("/cooking_with_jane/grill/proc/cook_checkin called on burner [input]")
+		log_debug("/cooking/grill/proc/cook_checkin called on burner [input]")
 		#endif
 		var/old_timestamp = cooking_timestamp[input]
 		switch(temperature[input])
@@ -123,23 +123,23 @@
 					if(cooking_timestamp[input] == old_timestamp)
 						handle_ignition(input)
 
-/obj/machinery/cooking_with_jane/grill/proc/handle_burning(input)
-	if(!(items[input] && istype(items[input], /obj/item/reagent_containers/cooking_with_jane/cooking_container)))
+/obj/machinery/cooking/grill/proc/handle_burning(input)
+	if(!(items[input] && istype(items[input], /obj/item/reagent_containers/cooking)))
 		return
 
-	var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = items[input]
+	var/obj/item/reagent_containers/cooking/container = items[input]
 	container.handle_burning()
 
-/obj/machinery/cooking_with_jane/grill/proc/handle_ignition(input)
-	if(!(items[input] && istype(items[input], /obj/item/reagent_containers/cooking_with_jane/cooking_container)))
+/obj/machinery/cooking/grill/proc/handle_ignition(input)
+	if(!(items[input] && istype(items[input], /obj/item/reagent_containers/cooking)))
 		return
 
-	var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = items[input]
+	var/obj/item/reagent_containers/cooking/container = items[input]
 	if(container.handle_ignition())
 		on_fire = TRUE
 
 //Retrieve which half of the baking pan is being used.
-/obj/machinery/cooking_with_jane/grill/proc/getInput(modifiers)
+/obj/machinery/cooking/grill/proc/getInput(modifiers)
 	var/input
 	var/icon_x = text2num(modifiers["icon-x"])
 	if(icon_x <= ICON_SPLIT_X)
@@ -151,7 +151,7 @@
 	#endif
 	return input
 
-/obj/machinery/cooking_with_jane/grill/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+/obj/machinery/cooking/grill/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	#warn find correct default deconstruction
 	// if(default_deconstruction(used_item, user))
 	// 	return
@@ -178,10 +178,10 @@
 	var/input = getInput(modifiers)
 
 	if(items[input] != null)
-		var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = items[input]
+		var/obj/item/reagent_containers/cooking/container = items[input]
 		container.process_item(used, user)
 		return ITEM_INTERACT_SUCCESS
-	else if(istype(used, /obj/item/reagent_containers/cooking_with_jane/cooking_container/grill_grate))
+	else if(istype(used, /obj/item/reagent_containers/cooking/grill_grate))
 		to_chat(usr, "<span class='notice'>You put a [used] on the grill.</span>")
 		if(usr.drop_item(used))
 			used.forceMove(src)
@@ -192,7 +192,7 @@
 
 	update_icon()
 
-/obj/machinery/cooking_with_jane/grill/attack_hand(mob/user as mob, params)
+/obj/machinery/cooking/grill/attack_hand(mob/user as mob, params)
 	var/input = getInput(params2list(params))
 	if(items[input] != null)
 		if(switches[input] == 1)
@@ -211,13 +211,13 @@
 		items[input] = null
 		update_icon()
 
-/obj/machinery/cooking_with_jane/grill/CtrlClick(var/mob/user, params)
+/obj/machinery/cooking/grill/CtrlClick(var/mob/user, params)
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return
 
 	var/input = getInput(params2list(params))
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/grill/CtrlClick called on burner [input]")
+	log_debug("/cooking/grill/CtrlClick called on burner [input]")
 	#endif
 	var/choice = alert(user,"Select an action for burner #[input]","Select One:","Set temperature","Set timer","Cancel")
 	switch(choice)
@@ -227,33 +227,33 @@
 			handle_timer(user, input)
 
 //Switch the cooking device on or off
-/obj/machinery/cooking_with_jane/grill/CtrlShiftClick(var/mob/user, params)
+/obj/machinery/cooking/grill/CtrlShiftClick(var/mob/user, params)
 
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return
 	var/input = getInput(params2list(params))
 
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/grill/CtrlClick called on burner [input]")
+	log_debug("/cooking/grill/CtrlClick called on burner [input]")
 	#endif
 	handle_switch(user, input)
 
 //Empty a container without a tool
-/obj/machinery/cooking_with_jane/grill/AltClick(var/mob/user, params)
+/obj/machinery/cooking/grill/AltClick(var/mob/user, params)
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return
 
 	var/input = getInput(params2list(params))
-	if(!(items[input] && istype(items[input], /obj/item/reagent_containers/cooking_with_jane/cooking_container)))
+	if(!(items[input] && istype(items[input], /obj/item/reagent_containers/cooking)))
 		return
-	var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = items[input]
+	var/obj/item/reagent_containers/cooking/container = items[input]
 
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/grill/AltClick called on burner [input] [container]")
+	log_debug("/cooking/grill/AltClick called on burner [input] [container]")
 	#endif
 	container.do_empty(user)
 
-/obj/machinery/cooking_with_jane/grill/proc/handle_temperature(user, input)
+/obj/machinery/cooking/grill/proc/handle_temperature(user, input)
 	var/old_temp = temperature[input]
 	var/choice = input(user,"Select a heat setting for burner #[input].\nCurrent temp :[old_temp]","Select Temperature",old_temp) in list("High","Medium","Low","Cancel")
 	if(choice && choice != "Cancel" && choice != old_temp)
@@ -267,7 +267,7 @@
 			#endif
 
 
-/obj/machinery/cooking_with_jane/grill/proc/handle_timer(user, input)
+/obj/machinery/cooking/grill/proc/handle_timer(user, input)
 	var/old_time = timer[input]? round((timer[input]/(1 SECONDS)), 1 SECONDS): 1
 	timer[input] = (input(user, "Enter a timer for burner #[input] (In Seconds, 0 Stays On) ","Set Timer", old_time) as num) SECONDS
 	if(timer[input] != 0 && switches[input] == 1)
@@ -275,7 +275,7 @@
 	update_icon()
 
 //input: 1 thru 4, depends on which burner was selected
-/obj/machinery/cooking_with_jane/grill/proc/timer_act(var/mob/user, var/input)
+/obj/machinery/cooking/grill/proc/timer_act(var/mob/user, var/input)
 
 	timerstamp[input]=round(world.time)
 	#ifdef CWJ_DEBUG
@@ -296,7 +296,7 @@
 			update_icon()
 	update_icon()
 
-/obj/machinery/cooking_with_jane/grill/proc/handle_switch(user, input)
+/obj/machinery/cooking/grill/proc/handle_switch(user, input)
 	playsound(src, 'sound/items/lighter.ogg', 100, 1, 0)
 	if(switches[input] == 1)
 		handle_cooking(user, input)
@@ -316,12 +316,12 @@
 
 
 
-/obj/machinery/cooking_with_jane/grill/proc/handle_cooking(var/mob/user, var/input, set_timer=FALSE)
+/obj/machinery/cooking/grill/proc/handle_cooking(var/mob/user, var/input, set_timer=FALSE)
 
-	if(!(items[input] && istype(items[input], /obj/item/reagent_containers/cooking_with_jane/cooking_container)))
+	if(!(items[input] && istype(items[input], /obj/item/reagent_containers/cooking)))
 		return
 
-	var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = items[input]
+	var/obj/item/reagent_containers/cooking/container = items[input]
 	if(set_timer)
 		reference_time = timer[input]
 	else
@@ -350,7 +350,7 @@
 
 
 
-/obj/machinery/cooking_with_jane/grill/update_icon()
+/obj/machinery/cooking/grill/update_icon()
 	..()
 
 	cut_overlays()
@@ -380,7 +380,7 @@
 				our_item.pixel_y = 4
 		src.add_to_visible(our_item, i)
 
-/obj/machinery/cooking_with_jane/grill/proc/add_to_visible(var/obj/item/our_item, input)
+/obj/machinery/cooking/grill/proc/add_to_visible(var/obj/item/our_item, input)
 	our_item.vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID
 	src.vis_contents += our_item
 	if(input == 2 || input == 4)
@@ -389,79 +389,79 @@
 		our_item.transform = M
 	our_item.transform *= 0.8
 
-/obj/machinery/cooking_with_jane/grill/proc/remove_from_visible(var/obj/item/our_item, input)
+/obj/machinery/cooking/grill/proc/remove_from_visible(var/obj/item/our_item, input)
 	our_item.vis_flags = 0
 	our_item.blend_mode = 0
 	our_item.transform =  null
 	src.vis_contents.Remove(our_item)
 
-/obj/machinery/cooking_with_jane/grill/verb/toggle_burner_1()
+/obj/machinery/cooking/grill/verb/toggle_burner_1()
 	set src in view(1)
 	set name = "Grill burner 1 - Toggle"
 	set category = "Object"
 	set desc = "Turn on a burner on the grill"
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/grill/verb/toggle_burner_1() called to toggle burner 1")
+	log_debug("/cooking/grill/verb/toggle_burner_1() called to toggle burner 1")
 	#endif
 	if(!ishuman(usr) && !isrobot(usr))
 		return
 	handle_switch(usr, 1)
 
-/obj/machinery/cooking_with_jane/grill/verb/toggle_burner_2()
+/obj/machinery/cooking/grill/verb/toggle_burner_2()
 	set src in view(1)
 	set name = "Grill burner 2 - Toggle"
 	set category = "Object"
 	set desc = "Turn on a burner on the grill"
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/grill/verb/toggle_burner_2() called to toggle burner 2")
+	log_debug("/cooking/grill/verb/toggle_burner_2() called to toggle burner 2")
 	#endif
 	if(!ishuman(usr) && !isrobot(usr))
 		return
 	handle_switch(usr, 2)
 
-/obj/machinery/cooking_with_jane/grill/verb/change_temperature_1()
+/obj/machinery/cooking/grill/verb/change_temperature_1()
 	set src in view(1)
 	set name = "Grill burner 1 - Set Temp"
 	set category = "Object"
 	set desc = "Set a temperature for a burner."
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/grill/verb/change_temperature_1() called to change temperature on 1")
+	log_debug("/cooking/grill/verb/change_temperature_1() called to change temperature on 1")
 	#endif
 	if(!ishuman(usr) && !isrobot(usr))
 		return
 	handle_temperature(usr, 1)
 
-/obj/machinery/cooking_with_jane/grill/verb/change_temperature_2()
+/obj/machinery/cooking/grill/verb/change_temperature_2()
 	set src in view(1)
 	set name = "Grill burner 2 - Set Temp"
 	set category = "Object"
 	set desc = "Set a temperature for a burner."
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/grill/verb/change_temperature_2() called to change temperature on 2")
+	log_debug("/cooking/grill/verb/change_temperature_2() called to change temperature on 2")
 	#endif
 	if(!ishuman(usr) && !isrobot(usr))
 		return
 	handle_temperature(usr, 2)
 
-/obj/machinery/cooking_with_jane/grill/verb/change_timer_1()
+/obj/machinery/cooking/grill/verb/change_timer_1()
 	set src in view(1)
 	set name = "Grill burner 1 - Set Timer"
 	set category = "Object"
 	set desc = "Set a timer for a burner."
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/grill/verb/change_timer_1() called to change timer on 1")
+	log_debug("/cooking/grill/verb/change_timer_1() called to change timer on 1")
 	#endif
 	if(!ishuman(usr) && !isrobot(usr))
 		return
 	handle_timer(usr, 1)
 
-/obj/machinery/cooking_with_jane/grill/verb/change_timer_2()
+/obj/machinery/cooking/grill/verb/change_timer_2()
 	set src in view(1)
 	set name = "Grill burner 2 - Set Timer"
 	set category = "Object"
 	set desc = "Set a timer for a burner."
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/grill/verb/change_timer_2() called to change timer on 2")
+	log_debug("/cooking/grill/verb/change_timer_2() called to change timer on 2")
 	#endif
 	if(!ishuman(usr) && !isrobot(usr))
 		return

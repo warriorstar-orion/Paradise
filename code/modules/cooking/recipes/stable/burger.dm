@@ -1,4 +1,4 @@
-/datum/cooking_with_jane/recipe/cooked_patty
+/datum/cooking/recipe/cooked_patty
 	cooking_container = GRILL
 	product_type = /obj/item/food/patty
 	step_builder = list(
@@ -8,7 +8,7 @@
 		list(CWJ_USE_GRILL, J_LO, 10 SECONDS)
 	)
 
-/datum/cooking_with_jane/recipe/burger
+/datum/cooking/recipe/burger
 	cooking_container = CUTTING_BOARD
 	product_type = /obj/item/food/burger/plain
 
