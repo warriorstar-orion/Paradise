@@ -32,10 +32,10 @@
 	log_debug("Called add_produce/check_conditions_met for [added_item] against [required_produce_type]")
 	#endif
 
-	if(!istype(added_item, /obj/item/reagent_containers/food/snacks/grown))
+	if(!istype(added_item, /obj/item/food/grown))
 		return CWJ_CHECK_INVALID
 
-	var/obj/item/reagent_containers/food/snacks/grown/added_produce = added_item
+	var/obj/item/food/grown/added_produce = added_item
 
 	if(added_produce.seed.kitchen_tag == required_produce_type)
 		return CWJ_CHECK_VALID
@@ -43,7 +43,7 @@
 	return CWJ_CHECK_INVALID
 
 /datum/cooking/recipe_step/add_produce/calculate_quality(var/obj/added_item, var/datum/cooking/recipe_tracker/tracker)
-	var/obj/item/reagent_containers/food/snacks/grown/added_produce = added_item
+	var/obj/item/food/grown/added_produce = added_item
 	var/potency_raw = round(base_quality_award + (added_produce.potency - base_potency) * inherited_quality_modifier)
 	return clamp_quality(potency_raw)
 

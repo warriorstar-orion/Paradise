@@ -200,7 +200,7 @@
 			filename = sanitizeFileName("[our_recipe.product_type].png")
 			I = getFlatTypeIcon(our_recipe.product_type)
 		else if(our_recipe.reagent_id)
-			var/obj/item/reagent_containers/food/snacks/dollop/test_dollop = new(null, our_recipe.reagent_id, 1)
+			var/obj/item/food/dollop/test_dollop = new(null, our_recipe.reagent_id, 1)
 
 			filename = sanitizeFileName("[test_dollop.type][test_dollop.color].png")
 			I = getFlatIcon(test_dollop)
