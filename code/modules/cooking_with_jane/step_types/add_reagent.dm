@@ -26,7 +26,6 @@
 
 	..(our_recipe)
 
-
 /datum/cooking_with_jane/recipe_step/add_reagent/check_conditions_met(var/obj/used_item, var/datum/cooking_with_jane/recipe_tracker/tracker)
 	var/obj/item/container = locateUID(tracker.holder_ref)
 
@@ -54,7 +53,6 @@
 	if(data && istype(data, /list) && data["FOOD_QUALITY"])
 		cooked_quality = data["FOOD_QUALITY"]
 	return cooked_quality
-
 
 /datum/cooking_with_jane/recipe_step/add_reagent/follow_step(var/obj/used_item, var/datum/cooking_with_jane/recipe_tracker/tracker)
 	var/obj/item/reagent_containers/our_item = used_item

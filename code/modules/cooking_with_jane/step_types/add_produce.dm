@@ -1,11 +1,10 @@
-//A cooking step that involves using SPECIFICALLY Grown foods
+/// A cooking step that involves using grown foods.
 /datum/cooking_with_jane/recipe_step/add_produce
-	class=CWJ_ADD_PRODUCE
+	class = CWJ_ADD_PRODUCE
 	var/required_produce_type
 	var/base_potency
 	var/reagent_skip = FALSE
 	var/inherited_quality_modifier = 1
-
 	var/list/exclude_reagents = list()
 
 /datum/cooking_with_jane/recipe_step/add_produce/New(var/produce, var/datum/cooking_with_jane/recipe/our_recipe)
@@ -44,11 +43,8 @@
 	return CWJ_CHECK_INVALID
 
 /datum/cooking_with_jane/recipe_step/add_produce/calculate_quality(var/obj/added_item, var/datum/cooking_with_jane/recipe_tracker/tracker)
-
 	var/obj/item/reagent_containers/food/snacks/grown/added_produce = added_item
-
 	var/potency_raw = round(base_quality_award + (added_produce.potency - base_potency) * inherited_quality_modifier)
-
 	return clamp_quality(potency_raw)
 
 /datum/cooking_with_jane/recipe_step/add_produce/follow_step(var/obj/added_item, var/datum/cooking_with_jane/recipe_tracker/tracker)
