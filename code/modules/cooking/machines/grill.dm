@@ -170,6 +170,8 @@
 		if(prob(5))
 			src.visible_message("<span class='danger'>The Grill exclaims: \"OM NOM NOM~! YUMMIE~~!\"</span>")
 
+		update_appearance(UPDATE_ICON)
+
 		#warn fix
 		// flick("wood_load", hopper_insert)
 
@@ -189,9 +191,9 @@
 		items[input] = used
 		if(switches[input] == 1)
 			cooking_timestamp[input] = world.time
-		return ITEM_INTERACT_SUCCESS
 
-	update_icon()
+		update_appearance(UPDATE_ICON)
+		return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/cooking/grill/attack_hand(mob/user as mob, params)
 	var/input = getInput(params2list(params))
