@@ -1847,6 +1847,7 @@
 #include "code\modules\cooking\recipes\example_recipes.dm"
 #include "code\modules\cooking\recipes\stable\burger.dm"
 #include "code\modules\cooking\step_types\add_item.dm"
+#include "code\modules\cooking\step_types\add_produce.dm"
 #include "code\modules\cooking\step_types\add_reagent.dm"
 #include "code\modules\cooking\step_types\recipe_start.dm"
 #include "code\modules\cooking\step_types\use_grill.dm"

@@ -7,7 +7,7 @@
 	var/inherited_quality_modifier = 1
 	var/list/exclude_reagents = list()
 
-/datum/cooking/recipe_step/add_produce/New(var/produce, var/datum/cooking/recipe/our_recipe)
+/datum/cooking/recipe_step/add_produce/New(obj/item/food/grown/produce, datum/cooking/recipe/our_recipe)
 	if(!plant_controller)
 		CRASH("/datum/cooking/recipe_step/add_produce/New: Plant controller not initialized! Exiting.")
 	if(produce && plant_controller && plant_controller.seeds[produce])
@@ -27,7 +27,7 @@
 		CRASH("/datum/cooking/recipe_step/add_produce/New: Seed [produce] not found. Exiting.")
 	..(base_quality_award, our_recipe)
 
-/datum/cooking/recipe_step/add_produce/check_conditions_met(var/obj/added_item, var/datum/cooking/recipe_tracker/tracker)
+/datum/cooking/recipe_step/add_produce/check_conditions_met(obj/added_item, datum/cooking/recipe_tracker/tracker)
 	#ifdef CWJ_DEBUG
 	log_debug("Called add_produce/check_conditions_met for [added_item] against [required_produce_type]")
 	#endif
@@ -42,12 +42,12 @@
 
 	return CWJ_CHECK_INVALID
 
-/datum/cooking/recipe_step/add_produce/calculate_quality(var/obj/added_item, var/datum/cooking/recipe_tracker/tracker)
+/datum/cooking/recipe_step/add_produce/calculate_quality(obj/added_item, datum/cooking/recipe_tracker/tracker)
 	var/obj/item/food/grown/added_produce = added_item
 	var/potency_raw = round(base_quality_award + (added_produce.potency - base_potency) * inherited_quality_modifier)
 	return clamp_quality(potency_raw)
 
-/datum/cooking/recipe_step/add_produce/follow_step(var/obj/added_item, var/datum/cooking/recipe_tracker/tracker)
+/datum/cooking/recipe_step/add_produce/follow_step(obj/added_item, datum/cooking/recipe_tracker/tracker)
 	#ifdef CWJ_DEBUG
 	log_debug("Called: /datum/cooking/recipe_step/add_produce/follow_step")
 	#endif

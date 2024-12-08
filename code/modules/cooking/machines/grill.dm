@@ -11,6 +11,7 @@
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
 	cooking = FALSE
+	#warn maybe these should be lists of datums
 	var/list/temperature= list(J_LO, J_LO)
 	var/list/timer = list(0, 0)
 	var/list/timerstamp = list(0, 0)
