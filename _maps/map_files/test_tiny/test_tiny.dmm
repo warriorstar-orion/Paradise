@@ -102,6 +102,10 @@
 /obj/machinery/smartfridge/food/chef,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
+"C" = (
+/obj/item/kitchen/utensil/fork,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
 "E" = (
 /obj/machinery/cooking/grill,
 /obj/structure/table,
@@ -131,6 +135,11 @@
 /obj/item/food/bacon,
 /obj/item/food/bacon,
 /obj/item/food/bacon,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "L" = (
@@ -32961,7 +32970,7 @@ x
 m
 q
 x
-x
+C
 x
 u
 a
