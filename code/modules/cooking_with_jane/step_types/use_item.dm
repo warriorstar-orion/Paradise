@@ -1,6 +1,7 @@
-//A cooking step that involves using an item on the food.
+/// A cooking step that involves using an item on the food.
 /datum/cooking_with_jane/recipe_step/use_item
-	class=CWJ_USE_ITEM
+	class = CWJ_USE_ITEM
+
 	var/required_item_type
 	var/exact_path = FALSE //Tests if the item has to be the EXACT ITEM PATH, or just a child of the item path.
 
@@ -26,7 +27,6 @@
 		log_debug("/datum/cooking_with_jane/recipe_step/add_item/New(): item [item_type] couldn't be created.")
 	#endif
 	..(our_recipe)
-
 
 /datum/cooking_with_jane/recipe_step/use_item/check_conditions_met(var/obj/added_item, var/datum/cooking_with_jane/recipe_tracker/tracker)
 	if(src.exact_path)
