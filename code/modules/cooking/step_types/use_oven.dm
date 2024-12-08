@@ -1,5 +1,5 @@
 //A cooking step that involves adding a reagent to the food.
-/datum/cooking_with_jane/recipe_step/use_oven
+/datum/cooking/recipe_step/use_oven
 	class = CWJ_USE_OVEN
 	auto_complete_enabled = TRUE
 	var/time
@@ -8,7 +8,7 @@
 //set_heat: The temperature the oven must bake at.
 //set_time: How long something must be baked in the overn
 //our_recipe: The parent recipe object
-/datum/cooking_with_jane/recipe_step/use_oven/New(set_heat, set_time, datum/cooking_with_jane/recipe/our_recipe)
+/datum/cooking/recipe_step/use_oven/New(set_heat, set_time, datum/cooking/recipe/our_recipe)
 	time = set_time
 	heat = set_heat
 
@@ -17,16 +17,16 @@
 
 	..(our_recipe)
 
-/datum/cooking_with_jane/recipe_step/use_oven/check_conditions_met(obj/used_item, datum/cooking_with_jane/recipe_tracker/tracker)
-	if(!istype(used_item, /obj/machinery/cooking_with_jane/oven))
+/datum/cooking/recipe_step/use_oven/check_conditions_met(obj/used_item, datum/cooking/recipe_tracker/tracker)
+	if(!istype(used_item, /obj/machinery/cooking/oven))
 		return CWJ_CHECK_INVALID
 
 	return CWJ_CHECK_VALID
 
 //Reagents are calculated prior to object creation
-/datum/cooking_with_jane/recipe_step/use_oven/calculate_quality(obj/used_item, datum/cooking_with_jane/recipe_tracker/tracker)
-	var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = locate(tracker.holder_ref)
-	var/obj/machinery/cooking_with_jane/oven/our_oven = used_item
+/datum/cooking/recipe_step/use_oven/calculate_quality(obj/used_item, datum/cooking/recipe_tracker/tracker)
+	var/obj/item/reagent_containers/cooking/container = locate(tracker.holder_ref)
+	var/obj/machinery/cooking/oven/our_oven = used_item
 	var/bad_cooking = 0
 	for (var/key in container.oven_data)
 		if (heat != key)
@@ -37,11 +37,11 @@
 
 	return clamp_quality(good_cooking)
 
-/datum/cooking_with_jane/recipe_step/use_oven/follow_step(obj/used_item, datum/cooking_with_jane/recipe_tracker/tracker)
+/datum/cooking/recipe_step/use_oven/follow_step(obj/used_item, datum/cooking/recipe_tracker/tracker)
 	return CWJ_SUCCESS
 
-/datum/cooking_with_jane/recipe_step/use_oven/is_complete(obj/used_item, datum/cooking_with_jane/recipe_tracker/tracker)
-	var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = locateUID(tracker.holder_ref)
+/datum/cooking/recipe_step/use_oven/is_complete(obj/used_item, datum/cooking/recipe_tracker/tracker)
+	var/obj/item/reagent_containers/cooking/container = locateUID(tracker.holder_ref)
 
 	if(container.oven_data[heat] >= time)
 		#ifdef CWJ_DEBUG

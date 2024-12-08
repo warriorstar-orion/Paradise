@@ -22,12 +22,12 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 	VAR_PRIVATE/list/linked_machines = list()
 	VAR_PRIVATE/list/linked_storages = list()
 
-	VAR_PRIVATE/obj/item/reagent_containers/cooking_with_jane/cooking_container/current_container
+	VAR_PRIVATE/obj/item/reagent_containers/cooking/current_container
 	VAR_PRIVATE/current_state = AUTOCHEF_RECIPE_NONE
 	VAR_PRIVATE/current_step = 0
 	VAR_PRIVATE/found_ingredients = 0
 	VAR_PRIVATE/list/ingredients_searching = list()
-	VAR_PRIVATE/datum/cooking_with_jane/recipe/current_recipe
+	VAR_PRIVATE/datum/cooking/recipe/current_recipe
 
 	VAR_PRIVATE/static/list/ingredient_locating_steps = list(
 		CWJ_ADD_ITEM,
@@ -52,10 +52,10 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 		var/obj = locateUID(uid)
 		var/success = FALSE
 		if(obj)
-			if(istype(obj, /obj/item/reagent_containers/cooking_with_jane/cooking_container))
+			if(istype(obj, /obj/item/reagent_containers/cooking))
 				linked_cooking_containers += obj
 				success = TRUE
-			else if(istype(obj, /obj/machinery/cooking_with_jane))
+			else if(istype(obj, /obj/machinery/cooking))
 				linked_machines += obj
 				success = TRUE
 			else if(istype(obj, /obj/machinery/smartfridge))
@@ -78,7 +78,7 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 	return
 
 /obj/machinery/autochef/proc/find_valid_container(container_type)
-	for(var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container in linked_cooking_containers)
+	for(var/obj/item/reagent_containers/cooking/container in linked_cooking_containers)
 		if(container_type == container.appliancetype)
 			return container
 
@@ -95,8 +95,8 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 		atom_say("No linked storage units.")
 		return
 
-	var/recipe_type = /datum/cooking_with_jane/recipe/burger
-	for(var/datum/cooking_with_jane/recipe/recipe in GLOB.cwj_recipe_list)
+	var/recipe_type = /datum/cooking/recipe/burger
+	for(var/datum/cooking/recipe/recipe in GLOB.cwj_recipe_list)
 		if(recipe_type == recipe.type) // exact
 			current_recipe = recipe
 
@@ -124,7 +124,7 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 			atom_say("Locating [current_recipe.cooking_container].")
 			current_state = AUTOCHEF_CONTAINER_LOCATING
 		if(AUTOCHEF_CONTAINER_LOCATING)
-			for(var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container in linked_cooking_containers)
+			for(var/obj/item/reagent_containers/cooking/container in linked_cooking_containers)
 				if(container.appliancetype == current_recipe.cooking_container)
 					atom_say("[container] located.")
 					current_state = AUTOCHEF_CONTAINER_LOCATED
