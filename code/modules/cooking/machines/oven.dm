@@ -63,6 +63,7 @@
 		var/old_timestamp = cooking_timestamp
 		switch(temperature)
 			if("Low")
+				#warn kill spawns
 				spawn(CWJ_BURN_TIME_LOW)
 					if(cooking_timestamp == old_timestamp)
 						handle_burning()
