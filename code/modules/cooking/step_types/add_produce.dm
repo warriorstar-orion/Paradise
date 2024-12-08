@@ -7,25 +7,25 @@
 	var/inherited_quality_modifier = 1
 	var/list/exclude_reagents = list()
 
-/datum/cooking/recipe_step/add_produce/New(obj/item/food/grown/produce, datum/cooking/recipe/our_recipe)
-	if(!plant_controller)
-		CRASH("/datum/cooking/recipe_step/add_produce/New: Plant controller not initialized! Exiting.")
-	if(produce && plant_controller && plant_controller.seeds[produce])
-		desc = "Add \a [produce] into the recipe."
-		required_produce_type = produce
-		group_identifier = produce
+/datum/cooking/recipe_step/add_produce/New(produce_type, datum/cooking/recipe/our_recipe)
+	var/obj/item/grown/produce = produce_type
+	if(produce)
+		desc = "Add \a [produce::name] into the recipe."
+		required_produce_type = produce_type
+		group_identifier = produce_type
 
 		//Get tooltip image for plants
-		var/datum/seed/seed = plant_controller.seeds[produce]
-		var/icon_key = "fruit-[seed.get_trait(TRAIT_PRODUCT_ICON)]-[seed.get_trait(TRAIT_PRODUCT_COLOUR)]-[seed.get_trait(TRAIT_PLANT_COLOUR)]"
-		if(plant_controller.plant_icon_cache[icon_key])
-			tooltip_image = plant_controller.plant_icon_cache[icon_key]
-		else
-			log_debug("[seed] is missing it's icon to add to tooltip_image")
-		base_potency = seed.get_trait(TRAIT_POTENCY)
-	else
-		CRASH("/datum/cooking/recipe_step/add_produce/New: Seed [produce] not found. Exiting.")
-	..(base_quality_award, our_recipe)
+		var/obj/item/seeds/seeds = produce::seed
+		if(seeds)
+			#warn fix icon cache or something
+			// var/icon_key = "fruit-[seed.get_trait(TRAIT_PRODUCT_ICON)]-[seed.get_trait(TRAIT_PRODUCT_COLOUR)]-[seed.get_trait(TRAIT_PLANT_COLOUR)]"
+			// if(plant_controller.plant_icon_cache[icon_key])
+			// 	tooltip_image = plant_controller.plant_icon_cache[icon_key]
+			// else
+			// 	log_debug("[seed] is missing it's icon to add to tooltip_image")
+			base_potency = seeds::potency
+
+	return ..(base_quality_award, our_recipe)
 
 /datum/cooking/recipe_step/add_produce/check_conditions_met(obj/added_item, datum/cooking/recipe_tracker/tracker)
 	#ifdef CWJ_DEBUG
@@ -37,21 +37,21 @@
 
 	var/obj/item/food/grown/added_produce = added_item
 
-	if(added_produce.seed.kitchen_tag == required_produce_type)
+	if(added_produce.type == required_produce_type)
 		return CWJ_CHECK_VALID
 
 	return CWJ_CHECK_INVALID
 
 /datum/cooking/recipe_step/add_produce/calculate_quality(obj/added_item, datum/cooking/recipe_tracker/tracker)
 	var/obj/item/food/grown/added_produce = added_item
-	var/potency_raw = round(base_quality_award + (added_produce.potency - base_potency) * inherited_quality_modifier)
+	var/potency_raw = round(base_quality_award + (added_produce.seed.potency - base_potency) * inherited_quality_modifier)
 	return clamp_quality(potency_raw)
 
 /datum/cooking/recipe_step/add_produce/follow_step(obj/added_item, datum/cooking/recipe_tracker/tracker)
 	#ifdef CWJ_DEBUG
 	log_debug("Called: /datum/cooking/recipe_step/add_produce/follow_step")
 	#endif
-	var/obj/item/container = tracker.holder_ref.resolve()
+	var/obj/item/container = locateUID(tracker.holder_ref)
 	if(container && usr.drop_item())
 		added_item.forceMove(container)
 	return CWJ_SUCCESS
