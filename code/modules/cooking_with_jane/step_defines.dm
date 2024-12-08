@@ -1,35 +1,30 @@
 //A step in a recipe, whether optional or required
 /datum/cooking_with_jane/recipe_step
-	var/class = CWJ_USE_OTHER //The classificaiton of the step involved.
-
-	var/group_identifier = "None" //Different for every type of recipe.
+	/// The classification of the step involved.
+	var/class = CWJ_USE_OTHER
+	/// Different for every type of recipe.
+	var/group_identifier = "None"
 
 	var/image/tooltip_image = null
 
-	var/parent_recipe //The parent recipe of this particular step. Created on initialization with New()
-
-	var/desc		//A description of the step
-
-	var/custom_result_desc //A custom description of the resulting quality on a successful completion.
-
-	var/list/optional_step_list = list() //List of optional steps that can be followed from this point forward.
-
-	var/max_quality_award = 0 //The maximum quality awarded by following a given step to the letter.
-
+	/// The parent recipe of this particular step. Created on initialization with New()
+	var/parent_recipe
+	/// A description of the step
+	var/desc
+	/// A custom description of the resulting quality on a successful completion.
+	var/custom_result_desc
+	/// List of optional steps that can be followed from this point forward.
+	var/list/optional_step_list = list()
+	/// The maximum quality awarded by following a given step to the letter.
+	var/max_quality_award = 0
 	var/base_quality_award = 0
-
 	var/flags = 0
-
-
-	//The next required step for the parent recipe
+	/// The next required step for the parent recipe.
 	var/datum/cooking_with_jane/recipe_step/next_step
-
-	//The previous required step for the current recipe
+	/// The previous required step for the current recipe
 	var/datum/cooking_with_jane/recipe_step/previous_step
-
-	var/auto_complete_enabled = FALSE //If the step can be completed without any further input.
-
-
+	/// If the step can be completed without any further input.
+	var/auto_complete_enabled = FALSE
 
 /datum/cooking_with_jane/recipe_step/New(var/datum/cooking_with_jane/recipe/our_recipe)
 	parent_recipe = our_recipe

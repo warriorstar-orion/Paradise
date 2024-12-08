@@ -1,18 +1,21 @@
-//Datum held by objects that is the core component in a recipe.
-//You use other items on an items with this datum to advance its recipe.
-//Kept intentionally bare-bones because MANY of these objects are going to be made.
+/// Datum held by objects that is the core component in a recipe.
+/// You use other items on an items with this datum to advance its recipe.
+/// Kept intentionally bare-bones because MANY of these objects are going to be made.
 /datum/cooking_with_jane/recipe_tracker
-	var/holder_ref //The parent object holding the recipe tracker.
-	var/step_flags //A collection of the classes of steps the recipe can take next.
-	//This variable is a little complicated.
-	//It specifically references recipe_pointer objects each pointing to a different point in a different recipe.
+	/// The parent object holding the recipe tracker.
+	var/holder_ref
+	/// A collection of the classes of steps the recipe can take next.
+	var/step_flags
+	/// This variable is a little complicated.
+	/// It specifically references recipe_pointer objects each pointing to a different point in a different recipe.
 	var/list/active_recipe_pointers = list()
 	var/completion_lockout = FALSE //Freakin' cheaters...
-	var/list/completed_list = list()//List of recipes marked as complete.
-	var/recipe_started = FALSE 	//Tells if steps have been taken for this recipe
+	/// List of recipes marked as complete.
+	var/list/completed_list = list()
+	/// Tells if steps have been taken for this recipe.
+	var/recipe_started = FALSE
 
-/datum/cooking_with_jane/recipe_tracker/New(var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container)
-
+/datum/cooking_with_jane/recipe_tracker/New(obj/item/reagent_containers/cooking_with_jane/cooking_container/container)
 	#ifdef CWJ_DEBUG
 	log_debug("Called /datum/cooking_with_jane/recipe_tracker/New")
 	#endif
@@ -21,7 +24,7 @@
 	src.populate_step_flags()
 
 //Call when a method is done incorrectly that provides a flat debuff to the whole meal.
-/datum/cooking_with_jane/recipe_tracker/proc/apply_flat_penalty(var/penalty)
+/datum/cooking_with_jane/recipe_tracker/proc/apply_flat_penalty(penalty)
 	if(active_recipe_pointers.len == 0)
 		return
 
@@ -49,7 +52,6 @@
 
 //Generate next steps
 /datum/cooking_with_jane/recipe_tracker/proc/get_step_options()
-
 	#ifdef CWJ_DEBUG
 	log_debug("Called /datum/cooking_with_jane/recipe_tracker/proc/get_step_options")
 	#endif
@@ -61,7 +63,6 @@
 	log_debug("/datum/cooking_with_jane/recipe_tracker/proc/get_step_options returned [options.len] options")
 	#endif
 	return options
-
 
 /datum/cooking_with_jane/recipe_tracker/proc/populate_step_flags()
 	#ifdef CWJ_DEBUG
@@ -75,29 +76,27 @@
 		#endif
 		step_flags |= flag_group
 
-//Check if a recipe tracker has recipes loaded.
+/// Check if a recipe tracker has recipes loaded.
 /datum/cooking_with_jane/recipe_tracker/proc/has_recipes()
 	#ifdef CWJ_DEBUG
 	log_debug("Called /datum/cooking_with_jane/recipe_tracker/proc/has_recipes")
 	#endif
 	return active_recipe_pointers.len
 
-//Wrapper function for analyzing process_item internally.
-/datum/cooking_with_jane/recipe_tracker/proc/process_item_wrap(var/obj/used_object, var/mob/user)
-
+/// Wrapper function for analyzing process_item internally.
+/datum/cooking_with_jane/recipe_tracker/proc/process_item_wrap(obj/used_object, mob/user)
 	#ifdef CWJ_DEBUG
 	log_debug("/datum/cooking_with_jane/recipe_tracker/proc/process_item_wrap called!")
 	#endif
 
 	var/response = process_item(used_object, user)
-
 	if(response == CWJ_SUCCESS || response == CWJ_COMPLETE || response == CWJ_PARTIAL_SUCCESS)
 		if(!recipe_started)
 			recipe_started = TRUE
 	return response
 
-//Core function that checks if a object meets all the requirements for certain recipe actions.
-/datum/cooking_with_jane/recipe_tracker/proc/process_item(var/obj/used_object, var/mob/user)
+/// Core function that checks if a object meets all the requirements for certain recipe actions.
+/datum/cooking_with_jane/recipe_tracker/proc/process_item(obj/used_object, mob/user)
 	#ifdef CWJ_DEBUG
 	log_debug("Called /datum/cooking_with_jane/recipe_tracker/proc/process_item")
 	#endif
@@ -233,67 +232,15 @@
 	#endif
 	return CWJ_PARTIAL_SUCCESS
 
-//Sleep... My precious, monsterous child....
-/*
-/datum/cooking_with_jane/recipe_tracker/proc/attempt_complete_recursive(
-		var/obj/used_object,
-		var/use_class,
-		var/depth = 1,
-		var/list/considered_steps = null)
-	var/list/ourlist = null
-	if(depth == 1)
-		ourlist = active_recipe_pointers.Copy()
-	else
-		ourlist = considered_steps.Copy()
-		log_debug("/recipe_tracker/proc/attempt_complete_recursive entered second recursion!")
-
-	for (var/datum/cooking_with_jane/recipe_pointer/pointer in ourlist)
-		var/option_list = list()
-		option_list += pointer.get_possible_steps()
-		var/has_valid_step = FALSE
-		var/had_traversal = FALSE
-		for (var/datum/cooking_with_jane/recipe_step/step in option_list)
-			if(step.class != use_class)
-				continue
-
-			if(depth !=1 && !step.auto_complete_enabled)
-				continue
-
-			if(step.check_conditions_met(used_object, src) == CWJ_CHECK_VALID)
-				has_valid_step = TRUE
-			else
-				continue
-
-			if(step.is_complete(src))
-				pointer.traverse(step.UID(), used_object)
-				had_traversal = TRUE
-				break ///The first valid step is the only one we traverse, in the instance of multiple valid cases.
-
-		if(depth == 1 && !has_valid_step)
-			active_recipe_pointers.Remove(pointer)
-			ourlist.Remove(pointer)
-		else if(!had_traversal)
-			ourlist.Remove(pointer)
-
-	if(ourlist.len != 0 && depth !=5)
-		attempt_complete_recursive(used_object, use_class, depth=++depth, considered_steps = ourlist)
-*/
-//===================================================================================
-
-
 //Points to a specific step in a recipe while considering the optional paths that recipe can take.
 /datum/cooking_with_jane/recipe_pointer
 	var/datum/cooking_with_jane/recipe/current_recipe //The recipe being followed here.
 	var/datum/cooking_with_jane/recipe_step/current_step //The current step in the recipe we are following.
-
 	var/parent_ref
-
 	var/tracked_quality = 0 //The current level of quality within that recipe.
-
 	var/list/steps_taken = list() //built over the course of following a recipe, tracks what has been done to the object. Format is unique_id:result
 
-/datum/cooking_with_jane/recipe_pointer/New(start_type, recipe_id, var/datum/cooking_with_jane/recipe_tracker/parent)
-
+/datum/cooking_with_jane/recipe_pointer/New(start_type, recipe_id, datum/cooking_with_jane/recipe_tracker/parent)
 	#ifdef CWJ_DEBUG
 	log_debug("Called /datum/cooking_with_jane/recipe_pointer/pointer/New([start_type], [recipe_id], parent)")
 	#endif
@@ -409,7 +356,7 @@
 			return_flags |= step.class
 	return return_flags
 
-/datum/cooking_with_jane/recipe_pointer/proc/has_option_by_id(var/id)
+/datum/cooking_with_jane/recipe_pointer/proc/has_option_by_id(id)
 	if(!GLOB.cwj_step_dictionary["[id]"])
 		return FALSE
 	var/datum/cooking_with_jane/recipe_step/active_step = GLOB.cwj_step_dictionary["[id]"]
@@ -418,7 +365,7 @@
 		return TRUE
 	return FALSE
 
-/datum/cooking_with_jane/recipe_pointer/proc/traverse(var/id, var/obj/used_obj)
+/datum/cooking_with_jane/recipe_pointer/proc/traverse(id, obj/used_obj)
 	#ifdef CWJ_DEBUG
 	log_debug("/recipe_pointer/traverse: Traversing pointer from [current_step.UID()] to [id].")
 	#endif

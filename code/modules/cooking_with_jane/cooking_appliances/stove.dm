@@ -168,7 +168,7 @@
 		items[input] = null
 		update_icon()
 
-/obj/machinery/cooking_with_jane/stove/CtrlClick(var/mob/user, params)
+/obj/machinery/cooking_with_jane/stove/CtrlClick(mob/user, params)
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return
 
@@ -184,7 +184,7 @@
 			handle_timer(user, input)
 
 //Switch the cooking device on or off
-/obj/machinery/cooking_with_jane/stove/CtrlShiftClick(var/mob/user, params)
+/obj/machinery/cooking_with_jane/stove/CtrlShiftClick(mob/user, params)
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return
 	var/input = getInput(params2list(params))
@@ -195,7 +195,7 @@
 	handle_switch(user, input)
 
 //Empty a container without a tool
-/obj/machinery/cooking_with_jane/stove/AltClick(var/mob/user, params)
+/obj/machinery/cooking_with_jane/stove/AltClick(mob/user, params)
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return
 
@@ -231,9 +231,9 @@
 	update_icon()
 
 //input: 1 thru 4, depends on which burner was selected
-/obj/machinery/cooking_with_jane/stove/proc/timer_act(var/mob/user, var/input)
+/obj/machinery/cooking_with_jane/stove/proc/timer_act(mob/user, input)
 
-	timerstamp[input]=round(world.time)
+	timerstamp[input] = round(world.time)
 	#ifdef CWJ_DEBUG
 	log_debug("Timerstamp no. [input] set! New timerstamp: [timerstamp[input]]")
 	#endif

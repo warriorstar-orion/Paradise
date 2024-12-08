@@ -1,21 +1,19 @@
 //#define CWJ_DEBUG 1
 
 
-//Step classifications, for easy reference later.
-//If something falls outside these classifications, why would it?
-#define CWJ_START 					1		//Default step to construct the list.
-#define CWJ_ADD_ITEM 				2		//Adding an item to a recipe (Ex- adding a slice of bread)
-#define CWJ_ADD_REAGENT 			3		//Adding a reagent to a recipe (Ex- Adding salt)
-#define CWJ_USE_ITEM 				4 		//Using an item in a recipe (Ex- cutting bread with a knife)
-#define CWJ_USE_TOOL				5
-#define CWJ_ADD_PRODUCE				6		//Adding Produce to a recipe
-#define CWJ_USE_STOVE	 			7 		//Using a stove in a recipe
-#define CWJ_USE_GRILL	 			8 		//Using a grill in a recipe
-#define CWJ_USE_OVEN	 			9 		//Using a oven in a recipe
-#define CWJ_USE_OTHER 				10 		//Custom Command flag, will take in argument lists.
+/// Cooking step classifications.
+#define CWJ_START			1	//! Default step to construct the list.
+#define CWJ_ADD_ITEM		2	//! Adding an item to a recipe (Ex- adding a slice of bread)
+#define CWJ_ADD_REAGENT		3	//! Adding a reagent to a recipe (Ex- Adding salt)
+#define CWJ_USE_ITEM		4	//! Using an item in a recipe (Ex- cutting bread with a knife)
+#define CWJ_USE_TOOL		5
+#define CWJ_ADD_PRODUCE		6	//! Adding Produce to a recipe
+#define CWJ_USE_STOVE		7	//! Using a stove in a recipe
+#define CWJ_USE_GRILL		8	//! Using a grill in a recipe
+#define CWJ_USE_OVEN		9	//! Using a oven in a recipe
+#define CWJ_USE_OTHER		10	//! Custom Command flag, will take in argument lists.
 
-
-//Optional flags
+/// Flags for optional cooking steps.
 #define CWJ_ADD_ITEM_OPTIONAL		200
 #define CWJ_ADD_REAGENT_OPTIONAL	300
 #define CWJ_USE_ITEM_OPTIONAL		400

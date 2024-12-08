@@ -1,18 +1,12 @@
-//A cooking step that involves adding an item to the food. Is based on Item Type.
-//This basically deletes the food used on it.
-
-//ENSURE THE INCOMING ITEM HAS var/quality DEFINED!
+/// A cooking step that involves adding an item to the food. Is based on item
+/// type. This basically deletes the food used on it.
 /datum/cooking_with_jane/recipe_step/add_item
 	class = CWJ_ADD_ITEM
 
-	var/required_item_type //Item required for the recipe step
-
-	var/inherited_quality_modifier = 1 //The modifier we apply multiplicatively to balance quality scaling across recipes.
-
-	var/exact_path = FALSE //Tests if the item has to be the EXACT ITEM PATH, or just a child of the item path.
-
+	var/required_item_type 				//! Item required for the recipe step.
+	var/inherited_quality_modifier = 1	//! The modifier we apply multiplicatively to balance quality scaling across recipes.
+	var/exact_path = FALSE				//! Tests if the item has to be the EXACT ITEM PATH, or just a child of the item path.
 	var/reagent_skip = FALSE
-
 	var/list/exclude_reagents = list()
 
 //item_type: The type path of the object we are looking for.
