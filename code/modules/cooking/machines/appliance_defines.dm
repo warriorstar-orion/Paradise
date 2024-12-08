@@ -1,4 +1,4 @@
-/obj/machinery/cooking_with_jane
+/obj/machinery/cooking
 	name = "Default Cooking Appliance"
 	desc = "Lookit me, I'm a cool machinery-doo. Hex didn't take his focus pills today."
 	icon = 'icons/obj/kitchen.dmi'

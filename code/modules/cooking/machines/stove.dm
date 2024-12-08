@@ -1,7 +1,7 @@
 #define ICON_SPLIT_X 16
 #define ICON_SPLIT_Y 21
 
-/obj/machinery/cooking_with_jane/stove
+/obj/machinery/cooking/stove
 	name = "Stovetop"
 	desc = "A set of four burners for cooking food."
 	#warn fix desc info
@@ -26,10 +26,10 @@
 	var/on_fire = FALSE //if the stove has caught fire or not.
 
 	#warn fix circuit
-	// circuit = /obj/item/circuitboard/cooking_with_jane/stove
+	// circuit = /obj/item/circuitboard/cooking/stove
 
 //Did not want to use this...
-/obj/machinery/cooking_with_jane/stove/process()
+/obj/machinery/cooking/stove/process()
 
 	//if(on_fire)
 		//Do bad things if it is on fire.
@@ -55,7 +55,7 @@
 		used_power += power_cost
 	use_power(used_power)
 
-/obj/machinery/cooking_with_jane/stove/RefreshParts()
+/obj/machinery/cooking/stove/RefreshParts()
 	..()
 	var/man_rating = 0
 	for(var/obj/item/stock_parts/manipulator/M in component_parts)
@@ -63,9 +63,9 @@
 	quality_mod = round(man_rating/2)
 
 //Process how a specific stove is interacting with material
-/obj/machinery/cooking_with_jane/stove/proc/cook_checkin(var/input)
+/obj/machinery/cooking/stove/proc/cook_checkin(var/input)
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/stove/proc/cook_checkin called on burner [input]")
+	log_debug("/cooking/stove/proc/cook_checkin called on burner [input]")
 	#endif
 	if(items[input])
 		var/old_timestamp = cooking_timestamp[input]
@@ -94,23 +94,23 @@
 					if(cooking_timestamp[input] == old_timestamp)
 						handle_ignition(input)
 
-/obj/machinery/cooking_with_jane/stove/proc/handle_burning(input)
-	if(!(items[input] && istype(items[input], /obj/item/reagent_containers/cooking_with_jane/cooking_container)))
+/obj/machinery/cooking/stove/proc/handle_burning(input)
+	if(!(items[input] && istype(items[input], /obj/item/reagent_containers/cooking)))
 		return
 
-	var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = items[input]
+	var/obj/item/reagent_containers/cooking/container = items[input]
 	container.handle_burning()
 
-/obj/machinery/cooking_with_jane/stove/proc/handle_ignition(input)
-	if(!(items[input] && istype(items[input], /obj/item/reagent_containers/cooking_with_jane/cooking_container)))
+/obj/machinery/cooking/stove/proc/handle_ignition(input)
+	if(!(items[input] && istype(items[input], /obj/item/reagent_containers/cooking)))
 		return
 
-	var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = items[input]
+	var/obj/item/reagent_containers/cooking/container = items[input]
 	if(container.handle_ignition())
 		on_fire = TRUE
 
 //Retrieve which quadrant of the baking pan is being used.
-/obj/machinery/cooking_with_jane/stove/proc/getInput(params)
+/obj/machinery/cooking/stove/proc/getInput(params)
 	var/list/click_params = params2list(params)
 	var/input
 	var/icon_x = text2num(click_params["icon-x"])
@@ -129,7 +129,7 @@
 	#endif
 	return input
 
-/obj/machinery/cooking_with_jane/stove/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+/obj/machinery/cooking/stove/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	#warn fix default deconstruct
 	// if(default_deconstruction(used_item, user))
 	// 	return
@@ -137,10 +137,10 @@
 	var/input = getInput(modifiers)
 
 	if(items[input] != null)
-		var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = items[input]
+		var/obj/item/reagent_containers/cooking/container = items[input]
 		container.process_item(used, user)
 
-	else if(istype(used, /obj/item/reagent_containers/cooking_with_jane/cooking_container))
+	else if(istype(used, /obj/item/reagent_containers/cooking))
 		to_chat(usr, "<span class='notice'>You put [used] on the stove.</span>")
 		if(usr.drop_item())
 			used.forceMove(src)
@@ -149,7 +149,7 @@
 			cooking_timestamp[input] = world.time
 	update_icon()
 
-/obj/machinery/cooking_with_jane/stove/attack_hand(mob/user as mob, params)
+/obj/machinery/cooking/stove/attack_hand(mob/user as mob, params)
 	var/input = getInput(params2list(params))
 	if(items[input] != null)
 		if(switches[input] == 1)
@@ -168,13 +168,13 @@
 		items[input] = null
 		update_icon()
 
-/obj/machinery/cooking_with_jane/stove/CtrlClick(mob/user, params)
+/obj/machinery/cooking/stove/CtrlClick(mob/user, params)
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return
 
 	var/input = getInput(params2list(params))
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/stove/CtrlClick called on burner [input]")
+	log_debug("/cooking/stove/CtrlClick called on burner [input]")
 	#endif
 	var/choice = alert(user,"Select an action for burner #[input]","Select One:","Set temperature","Set timer","Cancel")
 	switch(choice)
@@ -184,32 +184,32 @@
 			handle_timer(user, input)
 
 //Switch the cooking device on or off
-/obj/machinery/cooking_with_jane/stove/CtrlShiftClick(mob/user, params)
+/obj/machinery/cooking/stove/CtrlShiftClick(mob/user, params)
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return
 	var/input = getInput(params2list(params))
 
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/stove/CtrlShiftClick called on burner [input]")
+	log_debug("/cooking/stove/CtrlShiftClick called on burner [input]")
 	#endif
 	handle_switch(user, input)
 
 //Empty a container without a tool
-/obj/machinery/cooking_with_jane/stove/AltClick(mob/user, params)
+/obj/machinery/cooking/stove/AltClick(mob/user, params)
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return
 
 	var/input = getInput(params2list(params))
-	if(!(items[input] && istype(items[input], /obj/item/reagent_containers/cooking_with_jane/cooking_container)))
+	if(!(items[input] && istype(items[input], /obj/item/reagent_containers/cooking)))
 		return
-	var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = items[input]
+	var/obj/item/reagent_containers/cooking/container = items[input]
 
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/stove/AltClick called on burner [input] [container]")
+	log_debug("/cooking/stove/AltClick called on burner [input] [container]")
 	#endif
 	container.do_empty(user)
 
-/obj/machinery/cooking_with_jane/stove/proc/handle_temperature(user, input)
+/obj/machinery/cooking/stove/proc/handle_temperature(user, input)
 	var/old_temp = temperature[input]
 	var/choice = input(user,"Select a heat setting for burner #[input].\nCurrent temp :[old_temp]","Select Temperature",old_temp) in list("High","Medium","Low","Cancel")
 	if(choice && choice != "Cancel" && choice != old_temp)
@@ -223,7 +223,7 @@
 			#endif
 
 
-/obj/machinery/cooking_with_jane/stove/proc/handle_timer(user, input)
+/obj/machinery/cooking/stove/proc/handle_timer(user, input)
 	var/old_time = timer[input]? round((timer[input]/(1 SECONDS)), 1 SECONDS): 1
 	timer[input] = (input(user, "Enter a timer for burner #[input] (In Seconds, 0 Stays On)","Set Timer", old_time) as num) SECONDS
 	if(timer[input] != 0 && switches[input] == 1)
@@ -231,7 +231,7 @@
 	update_icon()
 
 //input: 1 thru 4, depends on which burner was selected
-/obj/machinery/cooking_with_jane/stove/proc/timer_act(mob/user, input)
+/obj/machinery/cooking/stove/proc/timer_act(mob/user, input)
 
 	timerstamp[input] = round(world.time)
 	#ifdef CWJ_DEBUG
@@ -252,7 +252,7 @@
 			update_icon()
 	update_icon()
 
-/obj/machinery/cooking_with_jane/stove/proc/handle_switch(user, input)
+/obj/machinery/cooking/stove/proc/handle_switch(user, input)
 	playsound(src, 'sound/items/lighter.ogg', 100, 1, 0)
 	if(switches[input] == 1)
 		handle_cooking(user, input)
@@ -272,12 +272,12 @@
 
 
 
-/obj/machinery/cooking_with_jane/stove/proc/handle_cooking(var/mob/user, var/input, set_timer=FALSE)
+/obj/machinery/cooking/stove/proc/handle_cooking(var/mob/user, var/input, set_timer=FALSE)
 
-	if(!(items[input] && istype(items[input], /obj/item/reagent_containers/cooking_with_jane/cooking_container)))
+	if(!(items[input] && istype(items[input], /obj/item/reagent_containers/cooking)))
 		return
 
-	var/obj/item/reagent_containers/cooking_with_jane/cooking_container/container = items[input]
+	var/obj/item/reagent_containers/cooking/container = items[input]
 	if(set_timer)
 		reference_time = timer[input]
 	else
@@ -306,7 +306,7 @@
 		container.process_item(src, user)
 
 
-/obj/machinery/cooking_with_jane/stove/update_icon()
+/obj/machinery/cooking/stove/update_icon()
 	..()
 	cut_overlays()
 
@@ -350,7 +350,7 @@
 		if(switches[i] == 1)
 			add_overlay(image(src.icon, icon_state="steam_[i]", layer=ABOVE_OBJ_LAYER))
 
-/obj/machinery/cooking_with_jane/stove/proc/add_to_visible(var/obj/item/our_item, input)
+/obj/machinery/cooking/stove/proc/add_to_visible(var/obj/item/our_item, input)
 	our_item.vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID
 	src.vis_contents += our_item
 	if(input == 2 || input == 4)
@@ -359,151 +359,151 @@
 		our_item.transform = M
 	our_item.transform *= 0.8
 
-/obj/machinery/cooking_with_jane/stove/proc/remove_from_visible(var/obj/item/our_item, input)
+/obj/machinery/cooking/stove/proc/remove_from_visible(var/obj/item/our_item, input)
 	our_item.vis_flags = 0
 	our_item.blend_mode = 0
 	our_item.transform =  null
 	src.vis_contents.Remove(our_item)
 
-/obj/machinery/cooking_with_jane/stove/verb/toggle_burner_1()
+/obj/machinery/cooking/stove/verb/toggle_burner_1()
 	set src in view(1)
 	set name = "Stove burner 1 - Toggle"
 	set category = "Object"
 	set desc = "Turn on a burner on the stove"
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/stove/verb/toggle_burner_1() called to toggle burner 1")
+	log_debug("/cooking/stove/verb/toggle_burner_1() called to toggle burner 1")
 	#endif
 	if(!ishuman(usr) && !isrobot(usr))
 		return
 	handle_switch(usr, 1)
 
-/obj/machinery/cooking_with_jane/stove/verb/toggle_burner_2()
+/obj/machinery/cooking/stove/verb/toggle_burner_2()
 	set src in view(1)
 	set name = "Stove burner 2 - Toggle"
 	set category = "Object"
 	set desc = "Turn on a burner on the stove"
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/stove/verb/toggle_burner_2() called to toggle burner 2")
+	log_debug("/cooking/stove/verb/toggle_burner_2() called to toggle burner 2")
 	#endif
 	if(!ishuman(usr) && !isrobot(usr))
 		return
 	handle_switch(usr, 2)
 
-/obj/machinery/cooking_with_jane/stove/verb/toggle_burner_3()
+/obj/machinery/cooking/stove/verb/toggle_burner_3()
 	set src in view(1)
 	set name = "Stove burner 3 - Toggle"
 	set category = "Object"
 	set desc = "Turn on a burner on the stove"
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/stove/verb/toggle_burner_3() called to toggle burner 3")
+	log_debug("/cooking/stove/verb/toggle_burner_3() called to toggle burner 3")
 	#endif
 	if(!ishuman(usr) && !isrobot(usr))
 		return
 	handle_switch(usr, 3)
 
-/obj/machinery/cooking_with_jane/stove/verb/toggle_burner_4()
+/obj/machinery/cooking/stove/verb/toggle_burner_4()
 	set src in view(1)
 	set name = "Stove burner 4 - Toggle"
 	set category = "Object"
 	set desc = "Turn on a burner on the stove"
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/stove/verb/toggle_burner_4() called to toggle burner 4")
+	log_debug("/cooking/stove/verb/toggle_burner_4() called to toggle burner 4")
 	#endif
 	if(!ishuman(usr) && !isrobot(usr))
 		return
 	handle_switch(usr, 4)
 
-/obj/machinery/cooking_with_jane/stove/verb/change_temperature_1()
+/obj/machinery/cooking/stove/verb/change_temperature_1()
 	set src in view(1)
 	set name = "Stove burner 1 - Set Temp"
 	set category = "Object"
 	set desc = "Set a temperature for a burner."
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/stove/verb/change_temperature_1() called to change temperature on 1")
+	log_debug("/cooking/stove/verb/change_temperature_1() called to change temperature on 1")
 	#endif
 	if(!ishuman(usr) && !isrobot(usr))
 		return
 	handle_temperature(usr, 1)
 
-/obj/machinery/cooking_with_jane/stove/verb/change_temperature_2()
+/obj/machinery/cooking/stove/verb/change_temperature_2()
 	set src in view(1)
 	set name = "Stove burner 2 - Set Temp"
 	set category = "Object"
 	set desc = "Set a temperature for a burner."
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/stove/verb/change_temperature_2() called to change temperature on 2")
+	log_debug("/cooking/stove/verb/change_temperature_2() called to change temperature on 2")
 	#endif
 	if(!ishuman(usr) && !isrobot(usr))
 		return
 	handle_temperature(usr, 2)
 
-/obj/machinery/cooking_with_jane/stove/verb/change_temperature_3()
+/obj/machinery/cooking/stove/verb/change_temperature_3()
 	set src in view(1)
 	set name = "Stove burner 3 - Set Temp"
 	set category = "Object"
 	set desc = "Set a temperature for a burner."
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/stove/verb/change_temperature_3() called to change temperature on 3")
+	log_debug("/cooking/stove/verb/change_temperature_3() called to change temperature on 3")
 	#endif
 	if(!ishuman(usr) && !isrobot(usr))
 		return
 	handle_temperature(usr, 3)
 
-/obj/machinery/cooking_with_jane/stove/verb/change_temperature_4()
+/obj/machinery/cooking/stove/verb/change_temperature_4()
 	set src in view(1)
 	set name = "Stove burner 4 - Set Temp"
 	set category = "Object"
 	set desc = "Set a temperature for a burner."
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/stove/verb/change_temperature_4() called to change temperature on 4")
+	log_debug("/cooking/stove/verb/change_temperature_4() called to change temperature on 4")
 	#endif
 	if(!ishuman(usr) && !isrobot(usr))
 		return
 	handle_temperature(usr, 4)
 
-/obj/machinery/cooking_with_jane/stove/verb/change_timer_1()
+/obj/machinery/cooking/stove/verb/change_timer_1()
 	set src in view(1)
 	set name = "Stove burner 1 - Set Timer"
 	set category = "Object"
 	set desc = "Set a timer for a burner."
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/stove/verb/change_timer_1() called to change timer on 1")
+	log_debug("/cooking/stove/verb/change_timer_1() called to change timer on 1")
 	#endif
 	if(!ishuman(usr) && !isrobot(usr))
 		return
 	handle_timer(usr, 1)
 
-/obj/machinery/cooking_with_jane/stove/verb/change_timer_2()
+/obj/machinery/cooking/stove/verb/change_timer_2()
 	set src in view(1)
 	set name = "Stove burner 2 - Set Timer"
 	set category = "Object"
 	set desc = "Set a timer for a burner."
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/stove/verb/change_timer_2() called to change timer on 2")
+	log_debug("/cooking/stove/verb/change_timer_2() called to change timer on 2")
 	#endif
 	if(!ishuman(usr) && !isrobot(usr))
 		return
 	handle_timer(usr, 2)
 
-/obj/machinery/cooking_with_jane/stove/verb/change_timer_3()
+/obj/machinery/cooking/stove/verb/change_timer_3()
 	set src in view(1)
 	set name = "Stove burner 3 - Set Timer"
 	set category = "Object"
 	set desc = "Set a timer for a burner."
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/stove/verb/change_timer_3() called to change timer on 3")
+	log_debug("/cooking/stove/verb/change_timer_3() called to change timer on 3")
 	#endif
 	if(!ishuman(usr) && !isrobot(usr))
 		return
 	handle_timer(usr, 3)
 
-/obj/machinery/cooking_with_jane/stove/verb/change_timer_4()
+/obj/machinery/cooking/stove/verb/change_timer_4()
 	set src in view(1)
 	set name = "Stove burner 4 - Set Timer"
 	set category = "Object"
 	set desc = "Set a timer for a burner."
 	#ifdef CWJ_DEBUG
-	log_debug("/cooking_with_jane/stove/verb/change_timer_4() called to change timer on 4")
+	log_debug("/cooking/stove/verb/change_timer_4() called to change timer on 4")
 	#endif
 	if(!ishuman(usr) && !isrobot(usr))
 		return

@@ -9,8 +9,8 @@ RESTRICT_TYPE(/obj/item/autochef_remote)
 
 	var/list/linkable_machine_uids = list()
 	VAR_PRIVATE/static/list/valid_machines = list(
-		/obj/item/reagent_containers/cooking_with_jane/cooking_container,
-		/obj/machinery/cooking_with_jane,
+		/obj/item/reagent_containers/cooking,
+		/obj/machinery/cooking,
 		/obj/machinery/smartfridge,
 	)
 

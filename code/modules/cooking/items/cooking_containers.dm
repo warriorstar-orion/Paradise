@@ -7,7 +7,7 @@
  * things factory-style, eliminating the need for 20 plates to get things done
  * fast.
  **/
-/obj/item/reagent_containers/cooking_with_jane/cooking_container
+/obj/item/reagent_containers/cooking
 	icon = 'icons/obj/cwj_cooking/kitchen.dmi'
 	#warn fix descp info
 	// description_info = "Can be emptied of physical food with alt-click."
@@ -16,7 +16,7 @@
 	var/appliancetype //string
 	w_class = WEIGHT_CLASS_SMALL
 	volume = 240 //Don't make recipes using reagents in larger quantities than this amount; they won't work.
-	var/datum/cooking_with_jane/recipe_tracker/tracker = null //To be populated the first time the plate is interacted with.
+	var/datum/cooking/recipe_tracker/tracker = null //To be populated the first time the plate is interacted with.
 	var/lip //Icon state of the lip layer of the object
 	var/removal_penalty = 0 //A flat quality reduction for removing an unfinished recipe from the container.
 
@@ -32,11 +32,11 @@
 
 	new_attack_chain = TRUE
 
-// /obj/item/reagent_containers/cooking_with_jane/cooking_container/Initialize()
+// /obj/item/reagent_containers/cooking/Initialize()
 // 	.=..()
 // 	appearance_flags |= KEEP_TOGETHER
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/examine(var/mob/user)
+/obj/item/reagent_containers/cooking/examine(var/mob/user)
 	. = ..()
 
 	if(contents)
@@ -44,15 +44,15 @@
 	if(reagents.total_volume)
 		. += get_reagent_info()
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/proc/get_content_info()
+/obj/item/reagent_containers/cooking/proc/get_content_info()
 	var/string = "It contains:</br><ul><li>"
 	string += jointext(contents, "</li><li>") + "</li></ul>"
 	return string
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/proc/get_reagent_info()
+/obj/item/reagent_containers/cooking/proc/get_reagent_info()
 	return "It contains [reagents.total_volume] units of reagents."
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+/obj/item/reagent_containers/cooking/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	#ifdef CWJ_DEBUG
 	log_debug("cooking_container/attackby() called!")
 	#endif
@@ -67,7 +67,7 @@
 		process_item(used, user, send_message = istype(user))
 		return ITEM_INTERACT_SUCCESS
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/standard_pour_into(mob/user, atom/target)
+/obj/item/reagent_containers/cooking/standard_pour_into(mob/user, atom/target)
 	#ifdef CWJ_DEBUG
 	log_debug("cooking_container/standard_pour_into() called!")
 	#endif
@@ -87,7 +87,7 @@
 
 	. = ..(user, target)
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/after_attack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/reagent_containers/cooking/after_attack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
 
 	if(!istype(target, /obj/item/reagent_containers))
@@ -99,7 +99,7 @@
 	if(standard_pour_into(user, target))
 		return 1
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/proc/process_item(var/obj/I, var/mob/user, var/lower_quality_on_fail = 0, var/send_message = TRUE)
+/obj/item/reagent_containers/cooking/proc/process_item(var/obj/I, var/mob/user, var/lower_quality_on_fail = 0, var/send_message = TRUE)
 	#ifdef CWJ_DEBUG
 	log_debug("cooking_container/process_item() called!")
 	#endif
@@ -111,7 +111,7 @@
 			// for (var/obj/item/contained in contents)
 			// 	contained?:food_quality -= lower_quality_on_fail
 		else
-			tracker = new /datum/cooking_with_jane/recipe_tracker(src)
+			tracker = new /datum/cooking/recipe_tracker(src)
 
 	var/return_value = 0
 	switch(tracker.process_item_wrap(I, user))
@@ -119,7 +119,7 @@
 			if(send_message)
 				to_chat(user, "It doesn't seem like you can create a meal from that. Yet.")
 			if(lower_quality_on_fail)
-				for (var/datum/cooking_with_jane/recipe_pointer/pointer in tracker.active_recipe_pointers)
+				for (var/datum/cooking/recipe_pointer/pointer in tracker.active_recipe_pointers)
 					pointer?:tracked_quality -= lower_quality_on_fail
 		if(CWJ_CHOICE_CANCEL)
 			if(send_message)
@@ -151,21 +151,21 @@
 	return return_value
 
 //TODO: Handle the contents of the container being ruined via burning.
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/proc/handle_burning()
+/obj/item/reagent_containers/cooking/proc/handle_burning()
 	return
 
 //TODO: Handle the contents of the container lighting on actual fire.
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/proc/handle_ignition()
+/obj/item/reagent_containers/cooking/proc/handle_ignition()
 	return FALSE
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/verb/empty()
+/obj/item/reagent_containers/cooking/verb/empty()
 	set src in view(1)
 	set name = "Empty Container"
 	set category = "Object"
 	set desc = "Removes items from the container, excluding reagents."
 	do_empty(usr)
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/proc/do_empty(mob/user, var/atom/target = null, var/reagent_clear = TRUE)
+/obj/item/reagent_containers/cooking/proc/do_empty(mob/user, var/atom/target = null, var/reagent_clear = TRUE)
 	#ifdef CWJ_DEBUG
 	log_debug("cooking_container/do_empty() called!")
 	#endif
@@ -207,12 +207,12 @@
 	if(contents.len != 0)
 		to_chat(user, "<span class='notice'>You remove all the solid items from [src].</span>")
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/AltClick(mob/user)
+/obj/item/reagent_containers/cooking/AltClick(mob/user)
 	do_empty(user)
 
 //Deletes contents of container.
 //Used when food is burned, before replacing it with a burned mess
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/proc/clear()
+/obj/item/reagent_containers/cooking/proc/clear()
 	QDEL_LIST_CONTENTS(contents)
 	contents=list()
 	reagents.clear_reagents()
@@ -222,11 +222,11 @@
 	clear_cooking_data()
 
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/proc/clear_cooking_data()
+/obj/item/reagent_containers/cooking/proc/clear_cooking_data()
 	stove_data = list("High"=0 , "Medium" = 0, "Low"=0)
 	grill_data = list("High"=0 , "Medium" = 0, "Low"=0)
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/proc/label(number, CT)
+/obj/item/reagent_containers/cooking/proc/label(number, CT)
 	#warn what is the CT param for
 	//This returns something like "Fryer basket 1 - empty"
 	//The latter part is a brief reminder of contents
@@ -240,7 +240,7 @@
 		return . + O.name //Just append the name of the first object
 	return . + "empty"
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/update_icon()
+/obj/item/reagent_containers/cooking/update_icon()
 	..()
 
 	cut_overlays()
@@ -253,7 +253,7 @@
 	if(lip)
 		add_overlay(image(src.icon, icon_state=lip, layer=ABOVE_OBJ_LAYER))
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/proc/add_to_visible(var/obj/item/our_item)
+/obj/item/reagent_containers/cooking/proc/add_to_visible(var/obj/item/our_item)
 	our_item.pixel_x = initial(our_item.pixel_x)
 	our_item.pixel_y = initial(our_item.pixel_y)
 	our_item.vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID
@@ -261,13 +261,13 @@
 	our_item.transform *= 0.6
 	src.vis_contents += our_item
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/proc/remove_from_visible(var/obj/item/our_item)
+/obj/item/reagent_containers/cooking/proc/remove_from_visible(var/obj/item/our_item)
 	our_item.vis_flags = 0
 	our_item.blend_mode = 0
 	our_item.transform = null
 	src.vis_contents.Remove(our_item)
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/plate
+/obj/item/reagent_containers/cooking/plate
 	icon = 'icons/obj/cwj_cooking/eris_kitchen.dmi'
 	name = "serving plate"
 	shortname = "plate"
@@ -276,7 +276,7 @@
 	materials = list(MAT_METAL = 5)
 	appliancetype = PLATE
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/board
+/obj/item/reagent_containers/cooking/board
 	name = "cutting board"
 	shortname = "cutting_board"
 	desc = "Good for making sandwiches on, too."
@@ -285,7 +285,7 @@
 	materials = list(MAT_WOOD = 5)
 	appliancetype = CUTTING_BOARD
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/oven
+/obj/item/reagent_containers/cooking/oven
 	name = "oven dish"
 	shortname = "shelf"
 	desc = "Put ingredients in this; designed for use with an oven. Warranty void if used."
@@ -295,7 +295,7 @@
 	materials = list(MAT_METAL = 10)
 	appliancetype = OVEN
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/pan
+/obj/item/reagent_containers/cooking/pan
 	name = "pan"
 	desc = "An normal pan."
 
@@ -308,7 +308,7 @@
 	hitsound = 'sound/weapons/smash.ogg'
 	appliancetype = PAN
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/pot
+/obj/item/reagent_containers/cooking/pot
 	name = "cooking pot"
 	shortname = "pot"
 	desc = "Boil things with this. Maybe even stick 'em in a stew."
@@ -323,7 +323,7 @@
 	appliancetype = POT
 	w_class = WEIGHT_CLASS_BULKY
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/deep_basket
+/obj/item/reagent_containers/cooking/deep_basket
 	name = "deep fryer basket"
 	shortname = "basket"
 	desc = "Cwispy! Warranty void if used."
@@ -334,7 +334,7 @@
 	removal_penalty = 5
 	appliancetype = DF_BASKET
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/air_basket
+/obj/item/reagent_containers/cooking/air_basket
 	name = "air fryer basket"
 	shortname = "basket"
 	desc = "Permanently laminated with dried oil and late-stage capitalism."
@@ -345,7 +345,7 @@
 	removal_penalty = 5
 	appliancetype = AF_BASKET
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/grill_grate
+/obj/item/reagent_containers/cooking/grill_grate
 	name = "grill grate"
 	shortname = "grate"
 	place_verb = "onto"
@@ -356,7 +356,7 @@
 
 	appliancetype = GRILL
 
-/obj/item/reagent_containers/cooking_with_jane/cooking_container/bowl
+/obj/item/reagent_containers/cooking/bowl
 	name = "prep bowl"
 	shortname = "bowl"
 	desc = "A bowl for mixing, or tossing a salad. Not to be eaten out of"
