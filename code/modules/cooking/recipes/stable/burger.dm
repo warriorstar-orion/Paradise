@@ -16,8 +16,8 @@
 
 	step_builder = list(
 		list(CWJ_ADD_ITEM, /obj/item/food/bun, qmod=0.5),
-		// list(CWJ_ADD_PRODUCE_OPTIONAL, "cabbage"),
-		// list(CWJ_ADD_PRODUCE_OPTIONAL, "tomato"),
+		list(CWJ_ADD_PRODUCE_OPTIONAL, /obj/item/food/grown/cabbage),
+		list(CWJ_ADD_PRODUCE_OPTIONAL, /obj/item/food/grown/tomato),
 		list(CWJ_ADD_REAGENT_OPTIONAL, "ketchup", 1),
 		list(CWJ_ADD_REAGENT_OPTIONAL, "sodiumchloride", 1),
 		list(CWJ_ADD_REAGENT_OPTIONAL, "blackpepper", 1),
