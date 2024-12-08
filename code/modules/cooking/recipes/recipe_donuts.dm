@@ -1,9 +1,9 @@
 /datum/cooking/recipe/medialuna //This is 100% a donut but with extra layers
 	cooking_container = OVEN
-	product_type = /obj/item/reagent_containers/food/snacks/medialuna
+	product_type = /obj/item/food/medialuna
 	step_builder = list(
-		list(CWJ_ADD_ITEM, /obj/item/reagent_containers/food/snacks/butterslice, qmod=0.5),
-		list(CWJ_ADD_ITEM, /obj/item/reagent_containers/food/snacks/doughslice, qmod=0.5),
+		list(CWJ_ADD_ITEM, /obj/item/food/butterslice, qmod=0.5),
+		list(CWJ_ADD_ITEM, /obj/item/food/doughslice, qmod=0.5),
 		list(CWJ_USE_OVEN, J_LO, 20 SECONDS),
 		list(CWJ_ADD_REAGENT, "sugar", 5),
 		list(CWJ_ADD_REAGENT_OPTIONAL, "sodiumchloride", 1, base=1),
@@ -13,9 +13,9 @@
 
 /datum/cooking/recipe/donut
 	cooking_container = OVEN
-	product_type = /obj/item/reagent_containers/food/snacks/donut
+	product_type = /obj/item/food/donut
 	step_builder = list(
-		list(CWJ_ADD_ITEM, /obj/item/reagent_containers/food/snacks/doughslice, qmod=0.5),
+		list(CWJ_ADD_ITEM, /obj/item/food/doughslice, qmod=0.5),
 		list(CWJ_ADD_REAGENT, "cornoil", 1),
 		list(CWJ_ADD_REAGENT, "sugar", 5),
 		list(CWJ_ADD_REAGENT_OPTIONAL, "honey", 1, base=1),
@@ -24,9 +24,9 @@
 
 /datum/cooking/recipe/jellydonut
 	cooking_container = OVEN
-	product_type = /obj/item/reagent_containers/food/snacks/donut/jelly
+	product_type = /obj/item/food/donut/jelly
 	step_builder = list(
-		list(CWJ_ADD_ITEM, /obj/item/reagent_containers/food/snacks/doughslice, qmod=0.5),
+		list(CWJ_ADD_ITEM, /obj/item/food/doughslice, qmod=0.5),
 		list(CWJ_ADD_REAGENT, "cornoil", 1),
 		list(CWJ_ADD_REAGENT, "berryjuice", 5),
 		list(CWJ_ADD_REAGENT, "sugar", 5),
@@ -36,9 +36,9 @@
 
 /datum/cooking/recipe/slime_jellydonut
 	cooking_container = OVEN
-	product_type = /obj/item/reagent_containers/food/snacks/donut/slimejelly
+	product_type = /obj/item/food/donut/slimejelly
 	step_builder = list(
-		list(CWJ_ADD_ITEM, /obj/item/reagent_containers/food/snacks/doughslice, qmod=0.5),
+		list(CWJ_ADD_ITEM, /obj/item/food/doughslice, qmod=0.5),
 		list(CWJ_ADD_REAGENT, "cornoil", 1),
 		list(CWJ_ADD_REAGENT, "slimejelly", 5),
 		list(CWJ_ADD_REAGENT, "sugar", 5),
@@ -48,10 +48,10 @@
 
 /datum/cooking/recipe/cinnamonroll
 	cooking_container = OVEN
-	product_type = /obj/item/reagent_containers/food/snacks/cinnamonroll
+	product_type = /obj/item/food/cinnamonroll
 	step_builder = list(
-		list(CWJ_ADD_ITEM, /obj/item/reagent_containers/food/snacks/butterslice, qmod=0.5),
-		list(CWJ_ADD_ITEM, /obj/item/reagent_containers/food/snacks/doughslice, qmod=0.5),
+		list(CWJ_ADD_ITEM, /obj/item/food/butterslice, qmod=0.5),
+		list(CWJ_ADD_ITEM, /obj/item/food/doughslice, qmod=0.5),
 		list(CWJ_ADD_REAGENT, "cinnamonpowder", 5),
 		list(CWJ_ADD_REAGENT, "sugar", 10),
 		list(CWJ_ADD_REAGENT, "milk", 5),

@@ -1,4 +1,4 @@
-/obj/item/reagent_containers/food/snacks/examine(mob/user, extra_description = "")
+/obj/item/food/examine(mob/user, extra_description = "")
 	#ifdef CWJ_DEBUG
 	extra_description += "<span class='notice'>\nThe food's level of quality is [food_quality]</span>" //Visual number should only be visible when debugging
 	#endif
@@ -16,7 +16,7 @@
 		extra_description += "<span class='notice'>\nThe [src] was bitten multiple times!</span>"
 	..(user, extra_description)
 
-/obj/item/reagent_containers/food/snacks/proc/get_food_tier()
+/obj/item/food/proc/get_food_tier()
 	if(food_quality < -9)
 		food_tier = CWJ_QUALITY_GARBAGE
 		food_descriptor = "It looks gross. Someone cooked this poorly."
