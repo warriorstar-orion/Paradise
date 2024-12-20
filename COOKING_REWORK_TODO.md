@@ -9,3 +9,5 @@ Wiki generation
 Candy machine, mixing bowl, new sprites
 Autochef: determine if a cooking container/machine is already being used
 Autochef: queue up in-progress recipes for in-use containers/machines
+Figure out how to integrate expert chef knowledge
+Tear out old chef cooking manuals/guides

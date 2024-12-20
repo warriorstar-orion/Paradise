@@ -34,13 +34,10 @@
 
 	#warn verify circuit usage
 	// circuit = /obj/item/circuitboard/cooking/grill
-
-	#warn figure out wtf this is
-	// var/obj/effect/flick_light_overlay/hopper_insert //flick_light_overlay found in machinery/autolathe/autolathe.dm
+	var/obj/effect/overlay/grill_hopper_load/hopper_load_effect
 
 /obj/machinery/cooking/grill/Initialize()
 	. = ..()
-	// hopper_insert = new(src)
 	component_parts += new /obj/item/circuitboard/cooking/grill(null)
 
 //Did not want to use this...
@@ -173,7 +170,10 @@
 		update_appearance(UPDATE_ICON)
 
 		#warn fix
-		// flick("wood_load", hopper_insert)
+		var/obj/effect/overlay/hopper_load = new(get_turf(src))
+		hopper_load.icon = 'icons/obj/cwj_cooking/grill.dmi'
+		flick("wood_load", hopper_load)
+		QDEL_IN(hopper_load, 1 SECONDS)
 
 		return ITEM_INTERACT_COMPLETE
 
