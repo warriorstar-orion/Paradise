@@ -113,7 +113,7 @@
 		if(items != null)
 			var/obj/item/reagent_containers/cooking/container = items
 			container.process_item(used, user)
-			return ITEM_INTERACT_SUCCESS
+			return ITEM_INTERACT_COMPLETE
 
 		else if(istype(used, /obj/item/reagent_containers/cooking))
 			to_chat(usr, "<span class='notice'>You put [used] on the oven.</span>")
@@ -122,10 +122,10 @@
 			items = used
 			if(switches == 1)
 				cooking_timestamp = world.time
-			return ITEM_INTERACT_SUCCESS
+			return ITEM_INTERACT_COMPLETE
 	else
 		handle_open(user)
-		return ITEM_INTERACT_SUCCESS
+		return ITEM_INTERACT_COMPLETE
 
 	update_icon()
 

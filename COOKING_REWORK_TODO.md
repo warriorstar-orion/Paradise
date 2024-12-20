@@ -7,3 +7,5 @@ Ensure that deep frying ice continues to work
 Spilling food on self
 Wiki generation
 Candy machine, mixing bowl, new sprites
+Autochef: determine if a cooking container/machine is already being used
+Autochef: queue up in-progress recipes for in-use containers/machines

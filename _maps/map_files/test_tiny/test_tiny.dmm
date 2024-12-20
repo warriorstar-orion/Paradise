@@ -172,6 +172,12 @@
 /area/shuttle/arrival/station)
 "U" = (
 /obj/structure/table,
+/obj/item/food/grown/berries,
+/obj/item/food/grown/berries,
+/obj/item/food/grown/berries,
+/obj/item/food/cookiedough,
+/obj/item/food/cookiedough,
+/obj/item/food/cookiedough,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "Y" = (

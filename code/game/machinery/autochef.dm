@@ -46,7 +46,7 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 /obj/machinery/autochef/item_interaction(mob/living/user, obj/item/autochef_remote/remote, list/modifiers)
 	if(!istype(remote))
 		#warn Some kind of error
-		return ITEM_INTERACT_BLOCKING
+		return ITEM_INTERACT_COMPLETE
 
 	for(var/uid in remote.linkable_machine_uids)
 		var/obj = locateUID(uid)
@@ -69,9 +69,9 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 
 		else
 			#warn some kind of error
-			return ITEM_INTERACT_BLOCKING
+			return ITEM_INTERACT_COMPLETE
 
-	return ITEM_INTERACT_SUCCESS
+	return ITEM_INTERACT_COMPLETE
 
 /obj/machinery/autochef/proc/unlink(datum/source)
 	SIGNAL_HANDLER // COMSIG_PARENT_QDELETING

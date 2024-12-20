@@ -175,7 +175,7 @@
 		#warn fix
 		// flick("wood_load", hopper_insert)
 
-		return ITEM_INTERACT_SUCCESS
+		return ITEM_INTERACT_COMPLETE
 
 
 	var/input = getInput(modifiers)
@@ -183,7 +183,7 @@
 	if(items[input] != null)
 		var/obj/item/reagent_containers/cooking/container = items[input]
 		container.process_item(used, user)
-		return ITEM_INTERACT_SUCCESS
+		return ITEM_INTERACT_COMPLETE
 	else if(istype(used, /obj/item/reagent_containers/cooking/grill_grate))
 		to_chat(usr, "<span class='notice'>You put a [used] on the grill.</span>")
 		if(usr.drop_item(used))
@@ -193,7 +193,7 @@
 			cooking_timestamp[input] = world.time
 
 		update_appearance(UPDATE_ICON)
-		return ITEM_INTERACT_SUCCESS
+		return ITEM_INTERACT_COMPLETE
 
 /obj/machinery/cooking/grill/attack_hand(mob/user as mob, params)
 	var/input = getInput(params2list(params))

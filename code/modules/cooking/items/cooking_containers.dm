@@ -62,10 +62,10 @@
 
 	if(!tracker && (contents.len || reagents.total_volume != 0))
 		to_chat(user, "The [src] is full. Empty its contents first.")
-		return ITEM_INTERACT_BLOCKING
+		return ITEM_INTERACT_COMPLETE
 	else
 		process_item(used, user, send_message = istype(user))
-		return ITEM_INTERACT_SUCCESS
+		return ITEM_INTERACT_COMPLETE
 
 /obj/item/reagent_containers/cooking/standard_pour_into(mob/user, atom/target)
 	#ifdef CWJ_DEBUG
