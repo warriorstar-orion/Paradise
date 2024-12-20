@@ -1,0 +1,15 @@
+autochef_begin_recipe
+autochef_complete_recipe
+autochef_locate_container
+autochef_locate_ingredients
+
+cooking_container_modified
+
+cooking_recipe_begin
+cooking_recipe_step
+cooking_recipe_complete
+
+cooking_machine_step_begin
+cooking_machine_step_error
+cooking_machine_step_failed
+cooking_machine_step_success
