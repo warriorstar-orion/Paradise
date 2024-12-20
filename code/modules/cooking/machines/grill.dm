@@ -34,11 +34,18 @@
 
 	#warn verify circuit usage
 	// circuit = /obj/item/circuitboard/cooking/grill
-	var/obj/effect/overlay/grill_hopper_load/hopper_load_effect
+	var/obj/effect/hopper_overlay
 
 /obj/machinery/cooking/grill/Initialize()
 	. = ..()
 	component_parts += new /obj/item/circuitboard/cooking/grill(null)
+	hopper_overlay = new
+	hopper_overlay.icon = 'icons/obj/cwj_cooking/grill.dmi'
+	hopper_overlay.icon_state = null
+	hopper_overlay.vis_flags = VIS_INHERIT_ID
+	hopper_overlay.mouse_opacity = 0
+	hopper_overlay.invisibility = 0
+	vis_contents += hopper_overlay
 
 //Did not want to use this...
 /obj/machinery/cooking/grill/process()
@@ -167,16 +174,9 @@
 		if(prob(5))
 			src.visible_message("<span class='danger'>The Grill exclaims: \"OM NOM NOM~! YUMMIE~~!\"</span>")
 
-		update_appearance(UPDATE_ICON)
-
-		#warn fix
-		var/obj/effect/overlay/hopper_load = new(get_turf(src))
-		hopper_load.icon = 'icons/obj/cwj_cooking/grill.dmi'
-		flick("wood_load", hopper_load)
-		QDEL_IN(hopper_load, 1 SECONDS)
+		flick("wood_load", hopper_overlay)
 
 		return ITEM_INTERACT_COMPLETE
-
 
 	var/input = getInput(modifiers)
 
