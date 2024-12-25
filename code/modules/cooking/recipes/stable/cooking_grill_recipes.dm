@@ -13,6 +13,7 @@
 	step_builder = list(
 		list(CWJ_ADD_ITEM, /obj/item/food/meat),
 		list(CWJ_ADD_ITEM, /obj/item/food/meat),
+		list(CWJ_ADD_REAGENT, "bbqsauce", 5),
 		list(CWJ_USE_GRILL, J_MED, 10 SECONDS)
 	)
 
@@ -30,6 +31,8 @@
 	product_type = /obj/item/food/meatsteak/chicken
 	step_builder = list(
 		list(CWJ_ADD_ITEM, /obj/item/food/meat/chicken),
+		list(CWJ_ADD_REAGENT, "sodiumchloride", 1),
+		list(CWJ_ADD_REAGENT, "blackpepper", 1),
 		list(CWJ_USE_GRILL, J_MED, 10 SECONDS)
 	)
 
@@ -57,6 +60,7 @@
 		list(CWJ_ADD_ITEM, /obj/item/food/salmonmeat),
 		list(CWJ_ADD_ITEM, /obj/item/food/salmonmeat),
 		list(CWJ_ADD_ITEM, /obj/item/stack/rods),
+		list(CWJ_ADD_REAGENT, "flour", 10),
 		list(CWJ_USE_GRILL, J_MED, 10 SECONDS)
 	)
 
@@ -66,6 +70,7 @@
 	step_builder = list(
 		list(CWJ_ADD_ITEM, /obj/item/food/egg),
 		list(CWJ_ADD_ITEM, /obj/item/food/carpmeat),
+		list(CWJ_ADD_REAGENT, "flour", 10),
 		list(CWJ_USE_GRILL, J_MED, 10 SECONDS)
 	)
 
@@ -74,6 +79,8 @@
 	product_type = /obj/item/food/friedegg
 	step_builder = list(
 		list(CWJ_ADD_ITEM, /obj/item/food/egg),
+		list(CWJ_ADD_REAGENT, "sodiumchloride", 1),
+		list(CWJ_ADD_REAGENT, "blackpepper", 1),
 		list(CWJ_USE_GRILL, J_MED, 10 SECONDS)
 	)
 
@@ -120,6 +127,8 @@
 	product_type = /obj/item/food/meatsteak
 	step_builder = list(
 		list(CWJ_ADD_ITEM, /obj/item/food/meat),
+		list(CWJ_ADD_REAGENT, "sodiumchloride", 1),
+		list(CWJ_ADD_REAGENT, "blackpepper", 1),
 		list(CWJ_USE_GRILL, J_MED, 10 SECONDS)
 	)
 
@@ -151,6 +160,7 @@
 		list(CWJ_ADD_ITEM, /obj/item/stack/rods),
 		list(CWJ_ADD_PRODUCE, /obj/item/food/grown/onion),
 		list(CWJ_ADD_PRODUCE, /obj/item/food/grown/chili),
+		list(CWJ_ADD_REAGENT, "vinegar", 5),
 		list(CWJ_USE_GRILL, J_MED, 20 SECONDS)
 	)
 
@@ -160,6 +170,8 @@
 	step_builder = list(
 		list(CWJ_ADD_ITEM, /obj/item/food/dough),
 		list(CWJ_ADD_ITEM, /obj/item/food/dough),
+		list(CWJ_ADD_REAGENT, "psilocybin", 5),
+		list(CWJ_ADD_REAGENT, "sugar", 10),
 		list(CWJ_USE_GRILL, J_MED, 10 SECONDS)
 	)
 
@@ -168,6 +180,8 @@
 	product_type = /obj/item/food/salmonsteak
 	step_builder = list(
 		list(CWJ_ADD_ITEM, /obj/item/food/salmonmeat),
+		list(CWJ_ADD_REAGENT, "sodiumchloride", 1),
+		list(CWJ_ADD_REAGENT, "blackpepper", 1),
 		list(CWJ_USE_GRILL, J_MED, 10 SECONDS)
 	)
 
@@ -269,6 +283,7 @@
 		list(CWJ_ADD_ITEM, /obj/item/food/egg),
 		list(CWJ_ADD_ITEM, /obj/item/food/boiledrice),
 		list(CWJ_ADD_ITEM, /obj/item/stack/seaweed),
+		list(CWJ_ADD_REAGENT, "sake", 5),
 		list(CWJ_USE_GRILL, J_MED, 10 SECONDS)
 	)
 
@@ -299,6 +314,7 @@
 		list(CWJ_ADD_ITEM, /obj/item/fish/electric_eel),
 		list(CWJ_ADD_ITEM, /obj/item/food/boiledrice),
 		list(CWJ_ADD_ITEM, /obj/item/stack/seaweed),
+		list(CWJ_ADD_REAGENT, "sake", 5),
 		list(CWJ_USE_GRILL, J_MED, 10 SECONDS)
 	)
 
@@ -317,6 +333,8 @@
 	product_type = /obj/item/food/meatsteak
 	step_builder = list(
 		list(CWJ_ADD_ITEM, /obj/item/food/meat/syntiflesh),
+		list(CWJ_ADD_REAGENT, "sodiumchloride", 1),
+		list(CWJ_ADD_REAGENT, "blackpepper", 1),
 		list(CWJ_USE_GRILL, J_MED, 10 SECONDS)
 	)
 
@@ -354,6 +372,7 @@
 	step_builder = list(
 		list(CWJ_ADD_ITEM, /obj/item/food/dough),
 		list(CWJ_ADD_ITEM, /obj/item/food/dough),
+		list(CWJ_ADD_REAGENT, "sugar", 10),
 		list(CWJ_USE_GRILL, J_MED, 10 SECONDS)
 	)
 
@@ -362,5 +381,6 @@
 	product_type = /obj/item/food/wingfangchu
 	step_builder = list(
 		list(CWJ_ADD_ITEM, /obj/item/food/monstermeat/xenomeat),
+		list(CWJ_ADD_REAGENT, "soysauce", 5),
 		list(CWJ_USE_GRILL, J_MED, 10 SECONDS)
 	)

@@ -1,14 +1,13 @@
 from dataclasses import dataclass
+from pathlib import Path
 
 from avulto import DMM, DME, DMI, Path as p
 
-dme = DME.from_file(
-    "D:/ExternalRepos/third_party/Paradise/paradise.dme", parse_procs=True
-)
+PARADISE_ROOT = Path("D:/ExternalRepos/third_party/Paradise/")
 
 
 @dataclass
-class GrillRecipeDetails:
+class RecipeDetails:
     original_path: p
     product_type: p
     reagents: dict
@@ -16,47 +15,90 @@ class GrillRecipeDetails:
     produce_items: list
 
 
-grill_recipes = list()
-
-for pth in dme.subtypesof("/datum/recipe/grill"):
-    td = dme.types[pth]
-    items = td.var_decl("items").const_val
-    food_items = list()
-    produce_items = list()
-    for item in items:
-        if item.child_of("/obj/item/food/grown"):
-            produce_items.append(item)
-        else:
-            food_items.append(item)
-    grill_recipe = GrillRecipeDetails(
-        original_path=pth,
-        product_type=td.var_decl("result").const_val,
-        reagents=dict(),
-        food_items=food_items,
-        produce_items=produce_items,
-    )
-    grill_recipes.append(grill_recipe)
-
-
-def to_dm(grill_recipe: GrillRecipeDetails) -> str:
+def codegen_grill_recipe(recipe: RecipeDetails) -> str:
     result_lines = []
-    result_lines.append(f"/datum/cooking/recipe/{grill_recipe.original_path.stem}")
+    result_lines.append(f"/datum/cooking/recipe/{recipe.original_path.stem}")
     result_lines.append(f"\tcooking_container = GRILL")
-    result_lines.append(f"\tproduct_type = {grill_recipe.product_type}")
+    result_lines.append(f"\tproduct_type = {recipe.product_type}")
     result_lines.append(f"\tstep_builder = list(")
-    for food_item in grill_recipe.food_items:
+    for food_item in recipe.food_items:
         result_lines.append(f"\t\tlist(CWJ_ADD_ITEM, {food_item}),")
-    for produce_item in grill_recipe.produce_items:
+    for produce_item in recipe.produce_items:
         result_lines.append(f"\t\tlist(CWJ_ADD_PRODUCE, {produce_item}),")
+    for name, amount in recipe.reagents.items():
+        result_lines.append(f'\t\tlist(CWJ_ADD_REAGENT, "{name}", {amount}),')
     result_lines.append(
-        f"\t\tlist(CWJ_USE_GRILL, J_MED, {max(10, 10 * (int(0.5 * (len(grill_recipe.food_items) + len(grill_recipe.produce_items)))))} SECONDS)"
+        f"\t\tlist(CWJ_USE_GRILL, J_MED, {max(10, 10 * (int(0.5 * (len(recipe.food_items) + len(recipe.produce_items)))))} SECONDS)"
     )
     result_lines.append(f"\t)")
     return "\n".join(result_lines)
 
 
-with open("cooking_grill_recipes.dm", "w") as f:
-    for grill_recipe in grill_recipes:
+def codegen_oven_recipe(recipe: RecipeDetails) -> str:
+    result_lines = []
+    result_lines.append(f"/datum/cooking/recipe/{recipe.original_path.stem}")
+    result_lines.append(f"\tcooking_container = OVEN")
+    result_lines.append(f"\tproduct_type = {recipe.product_type}")
+    result_lines.append(f"\tstep_builder = list(")
+    for food_item in recipe.food_items:
+        result_lines.append(f"\t\tlist(CWJ_ADD_ITEM, {food_item}),")
+    for produce_item in recipe.produce_items:
+        result_lines.append(f"\t\tlist(CWJ_ADD_PRODUCE, {produce_item}),")
+    for name, amount in recipe.reagents.items():
+        result_lines.append(f'\t\tlist(CWJ_ADD_REAGENT, "{name}", {amount}),')
+    result_lines.append(
+        f"\t\tlist(CWJ_USE_OVEN, J_MED, {max(10, 10 * (int(0.5 * (len(recipe.food_items) + len(recipe.produce_items)))))} SECONDS)"
+    )
+    result_lines.append(f"\t)")
+    return "\n".join(result_lines)
+
+
+def process_recipes(dme: DME, base_type: str) -> list[RecipeDetails]:
+    recipes = list()
+
+    for pth in dme.subtypesof(base_type):
+        td = dme.types[pth]
+        items = td.var_decl("items").const_val
+        food_items = list()
+        produce_items = list()
+        reagent_items = dict()
+        if items:
+            for item in items:
+                if item.child_of("/obj/item/food/grown"):
+                    produce_items.append(item)
+                else:
+                    food_items.append(item)
+        reagents = td.var_decl("reagents").const_val
+        if reagents:
+            for name in reagents.keys():
+                reagent_items[name] = reagents[name]
+        product_type = td.var_decl("result").const_val
+        if not product_type:
+            raise RuntimeError(f"no product type for {pth}")
+        recipe = RecipeDetails(
+            original_path=pth,
+            product_type=product_type,
+            reagents=reagent_items,
+            food_items=food_items,
+            produce_items=produce_items,
+        )
+        recipes.append(recipe)
+
+    return recipes
+
+
+dme = DME.from_file(PARADISE_ROOT / "paradise.dme", parse_procs=True)
+grill_recipes = process_recipes(dme, "/datum/recipe/grill")
+oven_recipes = process_recipes(dme, "/datum/recipe/oven")
+
+with open("code/modules/cooking/recipes/stable/cooking_grill_recipes.dm", "w") as f:
+    for recipe in grill_recipes:
         f.write("\n")
-        f.write(to_dm(grill_recipe))
+        f.write(codegen_grill_recipe(recipe))
+        f.write("\n")
+
+with open("code/modules/cooking/recipes/stable/cooking_oven_recipes.dm", "w") as f:
+    for recipe in oven_recipes:
+        f.write("\n")
+        f.write(codegen_oven_recipe(recipe))
         f.write("\n")

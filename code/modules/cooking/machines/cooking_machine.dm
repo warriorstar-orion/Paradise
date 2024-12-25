@@ -1,6 +1,6 @@
 /obj/machinery/cooking
 	name = "Default Cooking Appliance"
-	desc = "Lookit me, I'm a cool machinery-doo. Hex didn't take his focus pills today."
+	desc = "You shouldn't be seeing this. Please report this as an issue on GitHub."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "processor"
 	density = TRUE
