@@ -89,14 +89,14 @@
 		bin_rating += M.rating
 	wood_maximum = 15 * bin_rating
 
-/obj/machinery/cooking/grill/examine(var/mob/user)
+/obj/machinery/cooking/grill/examine(mob/user)
 	. = ..()
 
 	if(contents)
 		. += "<span class='notice'>\nCharcoal: [stored_wood]/[wood_maximum]</span>"
 
 //Process how a specific grill is interacting with material
-/obj/machinery/cooking/grill/proc/cook_checkin(var/input)
+/obj/machinery/cooking/grill/proc/cook_checkin(input)
 
 	if(items[input])
 		#ifdef CWJ_DEBUG
@@ -230,7 +230,7 @@
 			handle_timer(user, input)
 
 //Switch the cooking device on or off
-/obj/machinery/cooking/grill/CtrlShiftClick(var/mob/user, params)
+/obj/machinery/cooking/grill/CtrlShiftClick(mob/user, params)
 
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return
@@ -242,7 +242,7 @@
 	handle_switch(user, input)
 
 //Empty a container without a tool
-/obj/machinery/cooking/grill/AltClick(var/mob/user, params)
+/obj/machinery/cooking/grill/AltClick(mob/user, params)
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return
 
@@ -278,7 +278,7 @@
 	update_icon()
 
 //input: 1 thru 4, depends on which burner was selected
-/obj/machinery/cooking/grill/proc/timer_act(var/mob/user, var/input)
+/obj/machinery/cooking/grill/proc/timer_act(mob/user, input)
 
 	timerstamp[input]=round(world.time)
 	#ifdef CWJ_DEBUG
@@ -319,7 +319,7 @@
 
 
 
-/obj/machinery/cooking/grill/proc/handle_cooking(var/mob/user, var/input, set_timer=FALSE)
+/obj/machinery/cooking/grill/proc/handle_cooking(mob/user, input, set_timer = FALSE)
 
 	if(!(items[input] && istype(items[input], /obj/item/reagent_containers/cooking)))
 		return
@@ -339,19 +339,15 @@
 	log_debug("     grill_data: [container.grill_data]")
 	#endif
 
-
 	if(container.grill_data[temperature[input]])
 		container.grill_data[temperature[input]] += reference_time
 	else
 		container.grill_data[temperature[input]] = reference_time
 
-
 	if(user && user.Adjacent(src))
 		container.process_item(src, user, send_message=TRUE)
 	else
 		container.process_item(src, user)
-
-
 
 /obj/machinery/cooking/grill/update_icon()
 	..()
@@ -361,16 +357,16 @@
 	for(var/obj/item/our_item in vis_contents)
 		src.remove_from_visible(our_item)
 
-	icon_state="grill"
+	icon_state = "grill"
 
 	var/grill_on = FALSE
-	for(var/i=1, i<=2, i++)
+	for(var/i = 1, i <= 2, i++)
 		if(switches[i] == TRUE)
 			if(!grill_on)
 				grill_on = TRUE
-			add_overlay(image(src.icon, icon_state="fire_[i]"))
+			add_overlay(image(src.icon, icon_state = "fire_[i]"))
 
-	for(var/i=1, i<=2, i++)
+	for(var/i = 1, i <= 2, i++)
 		if(!(items[i]))
 			continue
 		var/obj/item/our_item = items[i]
@@ -383,7 +379,7 @@
 				our_item.pixel_y = 4
 		src.add_to_visible(our_item, i)
 
-/obj/machinery/cooking/grill/proc/add_to_visible(var/obj/item/our_item, input)
+/obj/machinery/cooking/grill/proc/add_to_visible(obj/item/our_item, input)
 	our_item.vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID
 	src.vis_contents += our_item
 	if(input == 2 || input == 4)
@@ -392,7 +388,7 @@
 		our_item.transform = M
 	our_item.transform *= 0.8
 
-/obj/machinery/cooking/grill/proc/remove_from_visible(var/obj/item/our_item, input)
+/obj/machinery/cooking/grill/proc/remove_from_visible(obj/item/our_item, input)
 	our_item.vis_flags = 0
 	our_item.blend_mode = 0
 	our_item.transform =  null

@@ -155,7 +155,7 @@
 	if(food_quality < -9)
 		food_tier = CWJ_QUALITY_GARBAGE
 		food_descriptor = "It looks gross. Someone cooked this poorly."
-		bite_descriptor = "Eating this makes you regret every decision that lead you to this moment."
+		bite_descriptor = "Eating this makes you regret every decision that led you to this moment."
 	else if (food_quality >= 100)
 		food_tier = CWJ_QUALITY_ELDRITCH
 		food_descriptor = "What cruel twist of fate it must be, for this unparalleled artistic masterpiece can only be truly appreciated through its destruction. Does this dish's transient form belie the true nature of all things? You see the totality of existence reflected through \the [src]."
@@ -169,7 +169,7 @@
 			if(1 to 10)
 				food_tier = CWJ_QUALITY_MEH
 				food_descriptor = "It looks edible, at least."
-				bite_descriptor = "It tastes okay. Could be worse, but it certainly isn't good."
+				bite_descriptor = "It tastes okay. Could be worse, but it certainly isn't great."
 			if(11 to 20)
 				food_tier = CWJ_QUALITY_NORMAL
 				food_descriptor = "It looks adequately made."

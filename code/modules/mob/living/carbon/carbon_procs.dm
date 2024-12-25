@@ -1185,7 +1185,7 @@ GLOBAL_LIST_INIT(ventcrawl_machinery, list(/obj/machinery/atmospherics/unary/ven
 	if(istype(to_eat) && to_eat.bite_descriptor)
 		reaction_msg += to_eat.bite_descriptor
 
-	to_chat(src, "<span class='warning'>[jointext(reaction_msg, " ")]</span>")
+	to_chat(src, "<span class='notice'>[jointext(reaction_msg, " ")]</span>")
 
 	return TRUE
 

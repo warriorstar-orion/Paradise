@@ -615,17 +615,16 @@
 			active_exclusive_option_list[ex_step] += step
 	return step
 
-//-----------------------------------------------------------------------------------
-//default function for creating a product
-/datum/cooking/recipe/proc/create_product(var/datum/cooking/recipe_pointer/pointer)
+/// Default function for creating a product.
+/datum/cooking/recipe/proc/create_product(datum/cooking/recipe_pointer/pointer)
 	var/datum/cooking/recipe_tracker/parent = locateUID(pointer.parent_ref)
 	var/obj/item/container = locateUID(parent.holder_uid)
 	if(container)
-		//Build up a list of reagents that went into this.
+		// Build up a list of reagents that went into this.
 		var/datum/reagents/slurry = new(maximum = 1000000)
 		slurry.my_atom = container
 
-		//Filter out reagents based on settings
+		// Filter out reagents based on settings
 		if(GLOB.cwj_step_dictionary_ordered["[CWJ_ADD_REAGENT]"])
 			for(var/id in pointer.steps_taken)
 				if(!GLOB.cwj_step_dictionary_ordered["[CWJ_ADD_REAGENT]"][id])
@@ -639,7 +638,7 @@
 				#endif
 				container.reagents.remove_reagent(active_step.required_reagent_id, amount_to_remove, safety = 1)
 
-		if(product_type) //Make a regular item
+		if(product_type) // Make a regular item
 			if(container.reagents.total_volume)
 				#ifdef CWJ_DEBUG
 				log_debug("/recipe/proc/create_product: Transferring container reagents of [container.reagents.total_volume] to slurry of current volume [slurry.total_volume] max volume [slurry.maximum_volume]")
@@ -724,23 +723,20 @@
 				#endif
 				slurry.copy_to(new_item, amount=slurry.total_volume)
 
-				new_item?:food_quality = pointer.tracked_quality + reagent_quality
-				new_item?:cooking_description_modifier = cooking_description_modifier
-				new_item?:get_food_tier()
-				//TODO: Consider making an item's base components show up in the reagents of the product.
+				var/obj/item/food/food_item = new_item
+				if(istype(food_item))
+					food_item.food_quality = pointer.tracked_quality + reagent_quality
+					food_item.cooking_description_modifier = cooking_description_modifier
+					food_item.get_food_tier()
 		else
-			//Purge the contents of the container we no longer need it
 			QDEL_LIST_CONTENTS(container.contents)
 			container.contents = list()
 
 		container.reagents.clear_reagents()
 
-		if(reagent_id) //Make a reagent
-			//quality handling
+		if(reagent_id)
 			var/total_quality = pointer.tracked_quality + calculate_reagent_quality(pointer)
-
-			//Create our Reagent
-			container.reagents.add_reagent(reagent_id, reagent_amount, data=list("FOOD_QUALITY" = total_quality))
+			container.reagents.add_reagent(reagent_id, reagent_amount, data = list("FOOD_QUALITY" = total_quality))
 
 		qdel(slurry)
 

@@ -26,8 +26,8 @@
 	#warn fix "no react" flag
 	// reagent_flags = OPENCONTAINER | NO_REACT
 	container_type = OPENCONTAINER
-	var/list/stove_data = list("High"=0 , "Medium" = 0, "Low"=0) //Record of what stove-cooking has been done on this food.
-	var/list/grill_data = list("High"=0 , "Medium" = 0, "Low"=0) //Record of what grill-cooking has been done on this food.
+	var/list/stove_data = list("High" = 0, "Medium" = 0, "Low" = 0) //Record of what stove-cooking has been done on this food.
+	var/list/grill_data = list("High" = 0, "Medium" = 0, "Low" = 0) //Record of what grill-cooking has been done on this food.
 	var/list/oven_data = list("High"=0 , "Medium" = 0, "Low"=0) //Record of what oven-cooking has been done on this food.
 
 	new_attack_chain = TRUE
@@ -36,7 +36,7 @@
 // 	.=..()
 // 	appearance_flags |= KEEP_TOGETHER
 
-/obj/item/reagent_containers/cooking/examine(var/mob/user)
+/obj/item/reagent_containers/cooking/examine(mob/user)
 	. = ..()
 
 	if(contents)
@@ -100,7 +100,7 @@
 	if(standard_pour_into(user, target))
 		return 1
 
-/obj/item/reagent_containers/cooking/proc/process_item(var/obj/I, var/mob/user, var/lower_quality_on_fail = 0, var/send_message = TRUE)
+/obj/item/reagent_containers/cooking/proc/process_item(obj/I, mob/user, lower_quality_on_fail = 0, send_message = TRUE)
 	#ifdef CWJ_DEBUG
 	log_debug("cooking_container/process_item() called!")
 	#endif
@@ -167,7 +167,7 @@
 	set desc = "Removes items from the container, excluding reagents."
 	do_empty(usr)
 
-/obj/item/reagent_containers/cooking/proc/do_empty(mob/user, var/atom/target = null, var/reagent_clear = TRUE)
+/obj/item/reagent_containers/cooking/proc/do_empty(mob/user, atom/target, reagent_clear = TRUE)
 	#ifdef CWJ_DEBUG
 	log_debug("cooking_container/do_empty() called!")
 	#endif
@@ -255,7 +255,7 @@
 	if(lip)
 		add_overlay(image(src.icon, icon_state=lip, layer=ABOVE_OBJ_LAYER))
 
-/obj/item/reagent_containers/cooking/proc/add_to_visible(var/obj/item/our_item)
+/obj/item/reagent_containers/cooking/proc/add_to_visible(obj/item/our_item)
 	our_item.pixel_x = initial(our_item.pixel_x)
 	our_item.pixel_y = initial(our_item.pixel_y)
 	our_item.vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID
@@ -263,7 +263,7 @@
 	our_item.transform *= 0.6
 	src.vis_contents += our_item
 
-/obj/item/reagent_containers/cooking/proc/remove_from_visible(var/obj/item/our_item)
+/obj/item/reagent_containers/cooking/proc/remove_from_visible(obj/item/our_item)
 	our_item.vis_flags = 0
 	our_item.blend_mode = 0
 	our_item.transform = null

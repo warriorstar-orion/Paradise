@@ -74,18 +74,6 @@
 /obj/item/reagent_containers/cooking/board,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
-"t" = (
-/obj/structure/table,
-/obj/item/food/patty_raw,
-/obj/item/food/patty_raw,
-/obj/item/food/patty_raw,
-/obj/item/food/patty_raw,
-/obj/item/food/patty_raw,
-/obj/item/food/patty_raw,
-/obj/item/food/patty_raw,
-/obj/item/food/patty_raw,
-/turf/simulated/floor/plasteel/freezer,
-/area/shuttle/arrival/station)
 "u" = (
 /turf/simulated/wall/mineral/titanium,
 /area/shuttle/arrival/station)
@@ -155,6 +143,11 @@
 /obj/item/autochef_remote,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
+"H" = (
+/obj/structure/table,
+/obj/item/reagent_containers/condiment/peppermill,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
 "I" = (
 /obj/structure/table,
 /obj/item/food/grown/tomato,
@@ -162,6 +155,15 @@
 /obj/item/food/grown/tomato,
 /obj/item/food/grown/tomato,
 /obj/item/food/grown/tomato,
+/obj/item/food/patty_raw,
+/obj/item/food/patty_raw,
+/obj/item/food/patty_raw,
+/obj/item/food/patty_raw,
+/obj/item/food/patty_raw,
+/obj/item/food/patty_raw,
+/obj/item/food/patty_raw,
+/obj/item/food/patty_raw,
+/obj/item/food/patty_raw,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "L" = (
@@ -216,6 +218,7 @@
 /area/shuttle/arrival/station)
 "X" = (
 /obj/structure/table,
+/obj/item/reagent_containers/condiment/saltshaker,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "Z" = (
@@ -33770,14 +33773,14 @@ a
 a
 a
 u
-x
+O
 x
 Q
 x
 Z
 x
 y
-B
+x
 x
 u
 a
@@ -34027,7 +34030,7 @@ a
 a
 a
 u
-t
+y
 x
 X
 x
@@ -34284,9 +34287,9 @@ a
 a
 a
 u
+B
 x
-x
-X
+H
 x
 N
 x

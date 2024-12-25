@@ -17,21 +17,21 @@
 
 /datum/cooking/recipe_tracker/New(obj/item/reagent_containers/cooking/container)
 	#ifdef CWJ_DEBUG
-	log_debug("Called /datum/cooking/recipe_tracker/New")
+	log_debug("[__PROC__]")
 	#endif
 	holder_uid = container.UID()
-	src.generate_pointers()
-	src.populate_step_flags()
+	generate_pointers()
+	populate_step_flags()
 
-//Call when a method is done incorrectly that provides a flat debuff to the whole meal.
+/// Call when a method is done incorrectly that provides a flat debuff to the whole meal.
 /datum/cooking/recipe_tracker/proc/apply_flat_penalty(penalty)
-	if(active_recipe_pointers.len == 0)
+	if(!length(active_recipe_pointers.len))
 		return
 
 	for (var/datum/cooking/recipe_pointer/pointer in active_recipe_pointers)
 		pointer.tracked_quality -= penalty
 
-//Generate recipe_pointer objects based on the global list
+/// Generate recipe_pointer objects based on the global list.
 /datum/cooking/recipe_tracker/proc/generate_pointers()
 
 	#ifdef CWJ_DEBUG
@@ -81,7 +81,7 @@
 	#ifdef CWJ_DEBUG
 	log_debug("Called /datum/cooking/recipe_tracker/proc/has_recipes")
 	#endif
-	return active_recipe_pointers.len
+	return length(active_recipe_pointers)
 
 /// Wrapper function for analyzing process_item internally.
 /datum/cooking/recipe_tracker/proc/process_item_wrap(obj/used_object, mob/user)
@@ -111,7 +111,7 @@
 
 	//Decide what action is being taken with the item, if any.
 	for (var/datum/cooking/recipe_pointer/pointer in active_recipe_pointers)
-		var/option_list = list()
+		var/list/option_list = list()
 		option_list += pointer.get_possible_steps()
 		for (var/datum/cooking/recipe_step/step in option_list)
 			var/class_string = get_class_string(step.class)
@@ -174,12 +174,8 @@
 			active_recipe_pointers.Remove(pointer)
 			qdel(pointer)
 
-
-	//attempt_complete_recursive(used_object, use_class) No, never again...
-
 	//Choose to keep baking or finish now.
 	if(completed_list.len && (completed_list.len != active_recipe_pointers.len))
-
 		var/recipe_string = null
 		for(var/datum/cooking/recipe_pointer/pointer in completed_list)
 			if(!recipe_string)
@@ -201,13 +197,12 @@
 		log_debug("/recipe_tracker/proc/process_item YO WE ACTUALLY HAVE A COMPLETED A RECIPE!")
 		#endif
 		chosen_pointer = completed_list[1]
-		if(user)
-			if(completed_list.len > 1)
-				completion_lockout = TRUE
-				var/choice = input(user, "There's two things you complete at this juncture!", "Choose One:") in completed_list
-				completion_lockout = FALSE
-				if(choice)
-					chosen_pointer = completed_list[choice]
+		if(user && length(completed_list.len) > 1)
+			completion_lockout = TRUE
+			var/choice = input(user, "There's two things you complete at this juncture!", "Choose One:") in completed_list
+			completion_lockout = FALSE
+			if(choice)
+				chosen_pointer = completed_list[choice]
 
 	//Call a proc that follows one of the steps in question, so we have all the nice to_chat calls.
 	var/datum/cooking/recipe_step/sample_step = valid_steps[1]
