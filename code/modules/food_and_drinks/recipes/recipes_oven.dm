@@ -818,7 +818,7 @@
 	)
 	result = /obj/item/food/cracker
 
-/datum/recipe/oven/sugarcookie/make_food(obj/container)
+/datum/recipe/oven/sugarcookies/make_food(obj/container)
 	var/obj/item/food/sugarcookie/being_cooked = ..()
 	being_cooked.reagents.del_reagent("egg")
 	return being_cooked
