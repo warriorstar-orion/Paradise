@@ -470,7 +470,7 @@
 		list(CWJ_ADD_PRODUCE, /obj/item/food/grown/grapes),
 		list(CWJ_ADD_PRODUCE, /obj/item/food/grown/grapes),
 		list(CWJ_ADD_PRODUCE, /obj/item/food/grown/grapes),
-		list(CWJ_ADD_REAGENT, "milk = 5", None),
+		list(CWJ_ADD_REAGENT, "milk", 5),
 		list(CWJ_ADD_REAGENT, "sugar", 5),
 		list(CWJ_USE_OVEN, J_MED, 20 SECONDS)
 	)
@@ -651,7 +651,7 @@
 	step_builder = list(
 		list(CWJ_ADD_ITEM, /obj/item/food/sliceable/flatdough),
 		list(CWJ_ADD_REAGENT, "nothing", 5),
-		list(CWJ_ADD_REAGENT, "milk = 5", None),
+		list(CWJ_ADD_REAGENT, "milk", 5),
 		list(CWJ_ADD_REAGENT, "sugar", 5),
 		list(CWJ_USE_OVEN, J_MED, 10 SECONDS)
 	)
@@ -661,7 +661,7 @@
 	product_type = /obj/item/food/moffin
 	step_builder = list(
 		list(CWJ_ADD_ITEM, /obj/item/food/dough),
-		list(CWJ_ADD_ITEM, /obj/item/grown/cotton),
+		list(CWJ_ADD_PRODUCE, /obj/item/grown/cotton),
 		list(CWJ_ADD_REAGENT, "milk", 5),
 		list(CWJ_ADD_REAGENT, "sugar", 5),
 		list(CWJ_USE_OVEN, J_MED, 10 SECONDS)
@@ -904,13 +904,6 @@
 		list(CWJ_ADD_REAGENT, "cream", 5),
 		list(CWJ_ADD_REAGENT, "berryjuice", 5),
 		list(CWJ_USE_OVEN, J_MED, 20 SECONDS)
-	)
-
-/datum/cooking/recipe/sugarcookie
-	cooking_container = OVEN
-	product_type = None
-	step_builder = list(
-		list(CWJ_USE_OVEN, J_MED, 10 SECONDS)
 	)
 
 /datum/cooking/recipe/sugarcookies

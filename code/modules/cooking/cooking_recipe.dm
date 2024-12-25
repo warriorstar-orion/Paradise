@@ -1,38 +1,36 @@
-
-
-/*
-COOKING WITH JANE - A comprehensive cooking rework.
-
-The recipe datum outlines a list of steps from getting a piece of food from point A to point B.
-Recipes have steps that are held in a modular linked list, holding required steps, and optional ones to increase the total quality of the food.
-Following a recipe incorrectly (IE, adding too much of an item, having the burner too hot, etc.) Will decrease the quality of the food.area
-
-Recipes have clear start and end points. They start with a particular item and end with a particular item.
-
-That said, a start item can follow multiple recipes until they eventually diverge as different steps are followed.
-
-In the case two recipes have identical steps, the user should be prompted on what their intended result should be. (Donuts vs Bagels)
-
-Recipes are loaded at startup. Food items reference it by the recipe_tracker datum
-
-By following the steps correctly, good food can be made.
-
-Food quality is calculated based on the steps taken.
-
+/**
+ * # Cooking With Jane - A comprehensive cooking rework, ported from Sojourn.
+ *
+ * The recipe datum outlines a list of steps from getting a piece of food from
+ * point A to point B. Recipes have steps that are held in a modular linked
+ * list, holding required steps, and optional ones to increase the total quality
+ * of the food. Following a recipe incorrectly (IE, adding too much of an item,
+ * having the burner too hot, etc.) Will decrease the quality of the food.area
+ *
+ * Recipes have clear start and end points. They start with a particular item
+ * and end with a particular item. That said, a start item can follow multiple
+ * recipes until they eventually diverge as different steps are followed. In the
+ * case two recipes have identical steps, the user should be prompted on what
+ * their intended result should be. (Donuts vs Bagels)
+ *
+ * Recipes are loaded at startup. Food items reference it by the recipe_tracker
+ * datum. By following the steps correctly, good food can be made. Food quality
+ * is calculated based on the steps taken.
 */
-
 /datum/cooking/recipe
-	var/unique_id
-	var/name				//Name for the cooking guide. Auto-populates if not set.
-	var/description			//Description for the cooking guide. Auto-populates if not set.
-	var/recipe_guide		//Step by step recipe guide. I hate it.
-	var/recipe_icon			//Icon for the cooking guide. Auto-populates if not set.
-	var/recipe_icon_state	//Icon state for the cooking guide. Auto-populates if not set.
+	/// Name for the cooking guide. Auto-populates from result food if not set.
+	var/name
+	/// Description for the cooking guide. Auto-populates from result food if not set.
+	var/description
+	var/recipe_guide		// Step by step recipe guide. I hate it.
+	var/recipe_icon			// Icon for the cooking guide. Auto-populates if not set.
+	var/recipe_icon_state	// Icon state for the cooking guide. Auto-populates if not set.
 
-	//The Cooking container the recipe is performed in.
-	var/cooking_container = null
+	/// The name of the cooking container the recipe is performed in.
+	var/cooking_container
 
-	var/product_type //Type path for the product created by the recipe. An item of this type should ALSO have a recipe_tracker Datum.
+	/// Type path for the product created by the recipe. An item of this type should ALSO have a recipe_tracker Datum.
+	var/product_type
 	var/product_name
 	var/product_count = 1 //how much of a thing is made per case of the recipe being followed.
 
@@ -45,18 +43,20 @@ Food quality is calculated based on the steps taken.
 	var/icon_image_file
 
 	var/quality_description //A decorator description tacked onto items when the recipe is completed. Used in future recipes. "The Bread looks Handmade."
+	/// Triggers whether two steps in a process are exclusive- IE: you can do one or the other, but not both.
+	var/exclusive_option_mode = FALSE
+	/// Only needed during the creation process for tracking a given exclusive option dictionary.
+	var/list/active_exclusive_option_list
+	/// Triggers whether two steps in a process are exclusive- IE: you can do one or the other, but not both.
+	var/option_chain_mode = 0
+	/// Only needed during the creation process for tracking items in an option chain.
+	var/active_exclusive_option_chain
 
-	var/exclusive_option_mode = FALSE //triggers whether two steps in a process are exclusive- IE: you can do one or the other, but not both.
+	/// Determines if we entirely replace the contents of the food product with the slurry that goes into it.
+	var/replace_reagents = FALSE
 
-	var/list/active_exclusive_option_list = list() //Only needed during the creation process for tracking a given exclusive option dictionary.
-
-	var/option_chain_mode = 0 //triggers whether two steps in a process are exclusive- IE: you can do one or the other, but not both.
-
-	var/active_exclusive_option_chain //Only needed during the creation process for tracking items in an option chain.
-
-	var/replace_reagents = FALSE //Determines if we entirely replace the contents of the food product with the slurry that goes into it.
-
-	var/appear_in_default_catalog = TRUE //Everything appears in the catalog by default
+	/// Everything appears in the catalog by default.
+	var/appear_in_default_catalog = TRUE
 	/*
 		The Step Builder is iterated through to create new steps in the recipe dynamically.
 		_OPTIONAL steps are linked to the previously made REQUIRED step
@@ -64,13 +64,15 @@ Food quality is calculated based on the steps taken.
 	*/
 	var/list/step_builder = null
 
-	var/datum/cooking/recipe_step/first_step //The first step in the linked list that will result in the final recipe
-
-	var/datum/cooking/recipe_step/last_required_step //Reference to the last required step in the cooking process.
-
-	var/datum/cooking/recipe_step/last_created_step //Reference to the last step made, regardless of if it was required or not.
+	/// The first step in the linked list that will result in the final recipe.
+	var/datum/cooking/recipe_step/first_step
+	/// Reference to the last required step in the cooking process.
+	var/datum/cooking/recipe_step/last_required_step
+	/// Reference to the last step made, regardless of if it was required or not.
+	var/datum/cooking/recipe_step/last_created_step
 
 /datum/cooking/recipe/New()
+	active_exclusive_option_list = list()
 
 	if(reagent_id && !reagent_amount)
 		CRASH("/datum/cooking/recipe/New: Reagent creating recipe must have reagent_amount defined! Recipe path=[src.type].")
@@ -108,11 +110,9 @@ Food quality is calculated based on the steps taken.
 /datum/cooking/recipe/proc/build_steps()
 	if(!step_builder)
 		CRASH("/datum/cooking/recipe/build_steps: Recipe has no step builder defined! Recipe path=[src.type].")
-
 	if(!cooking_container)
 		CRASH("/datum/cooking/recipe/build_steps: Recipe has no cooking container defined! Recipe path=[src.type].")
 
-	//Create a base step
 	create_step_base()
 
 	for (var/step in step_builder)
@@ -383,54 +383,51 @@ Food quality is calculated based on the steps taken.
 //-----------------------------------------------------------------------------------
 //Commands for interacting with the recipe tracker
 //-----------------------------------------------------------------------------------
-//Add base step command. All other steps stem from this. Don't call twice!
+
+/// Add base step command. All other steps stem from this. Don't call twice!
 /datum/cooking/recipe/proc/create_step_base()
 	var/datum/cooking/recipe_step/start/step = new /datum/cooking/recipe_step/start(cooking_container)
 	last_required_step = step
 	last_created_step = step
 	first_step = step
 
-//-----------------------------------------------------------------------------------
-//Add reagent step shortcut commands
+/// Add reagent step shortcut commands
 /datum/cooking/recipe/proc/create_step_add_reagent(var/reagent_id, var/amount, var/optional)
 	var/datum/cooking/recipe_step/add_reagent/step = new (reagent_id, amount, src)
 	return src.add_step(step, optional)
 
-//-----------------------------------------------------------------------------------
-//Add item step shortcut commands
+/// Add item step shortcut commands
 /datum/cooking/recipe/proc/create_step_add_item(var/item_type, var/optional)
 	var/datum/cooking/recipe_step/add_item/step = new (item_type, src)
 	return src.add_step(step, optional)
-//-----------------------------------------------------------------------------------
-//Use item step shortcut commands
+
+/// Use item step shortcut commands
 /datum/cooking/recipe/proc/create_step_use_item(var/item_type, var/optional)
 	var/datum/cooking/recipe_step/use_item/step = new (item_type, src)
 	return src.add_step(step, optional)
 
-//-----------------------------------------------------------------------------------
-//Add produce step shortcut commands
+/// Add produce step shortcut commands
 /datum/cooking/recipe/proc/create_step_add_produce(var/produce, var/optional)
 	var/datum/cooking/recipe_step/add_produce/step = new /datum/cooking/recipe_step/add_produce(produce, src)
 	return src.add_step(step, optional)
-//-----------------------------------------------------------------------------------
-//Use Tool step shortcut commands
+
+/// Use Tool step shortcut commands
 #warn add use_tool back
 // /datum/cooking/recipe/proc/create_step_use_tool(var/type, var/quality, var/optional)
 // 	var/datum/cooking/recipe_step/use_tool/step = new (type, quality, src)
 // 	return src.add_step(step, optional)
 
-//-----------------------------------------------------------------------------------
-//Use Stove step shortcut commands
+/// Use Stove step shortcut commands
 /datum/cooking/recipe/proc/create_step_use_stove(var/heat, var/time, var/optional)
 	var/datum/cooking/recipe_step/use_stove/step = new (heat, time, src)
 	return src.add_step(step, optional)
-//-----------------------------------------------------------------------------------
-//Use Grill step shortcut commands
+
+/// Use Grill step shortcut commands
 /datum/cooking/recipe/proc/create_step_use_grill(var/heat, var/time, var/optional)
 	var/datum/cooking/recipe_step/use_grill/step = new (heat, time, src)
 	return src.add_step(step, optional)
-//-----------------------------------------------------------------------------------
-//Use Oven step shortcut commands
+
+/// Use Oven step shortcut commands
 /datum/cooking/recipe/proc/create_step_use_oven(var/heat, var/time, var/optional)
 	var/datum/cooking/recipe_step/use_oven/step = new (heat, time, src)
 	return src.add_step(step, optional)
@@ -622,7 +619,7 @@ Food quality is calculated based on the steps taken.
 //default function for creating a product
 /datum/cooking/recipe/proc/create_product(var/datum/cooking/recipe_pointer/pointer)
 	var/datum/cooking/recipe_tracker/parent = locateUID(pointer.parent_ref)
-	var/obj/item/container = locateUID(parent.holder_ref)
+	var/obj/item/container = locateUID(parent.holder_uid)
 	if(container)
 		//Build up a list of reagents that went into this.
 		var/datum/reagents/slurry = new(maximum = 1000000)
@@ -727,10 +724,9 @@ Food quality is calculated based on the steps taken.
 				#endif
 				slurry.copy_to(new_item, amount=slurry.total_volume)
 
-				#warn fix
-				// new_item?:food_quality = pointer.tracked_quality + reagent_quality
-				// new_item?:cooking_description_modifier = cooking_description_modifier
-				// new_item?:get_food_tier()
+				new_item?:food_quality = pointer.tracked_quality + reagent_quality
+				new_item?:cooking_description_modifier = cooking_description_modifier
+				new_item?:get_food_tier()
 				//TODO: Consider making an item's base components show up in the reagents of the product.
 		else
 			//Purge the contents of the container we no longer need it
@@ -754,7 +750,7 @@ Food quality is calculated based on the steps taken.
 	if(!GLOB.cwj_step_dictionary_ordered["[CWJ_ADD_REAGENT]"])
 		return 0
 	var/datum/cooking/recipe_tracker/parent = locateUID(pointer.parent_ref)
-	var/obj/item/container = locateUID(parent.holder_ref)
+	var/obj/item/container = locateUID(parent.holder_uid)
 	var/total_volume = container.reagents.total_volume
 
 	var/calculated_volume = 0

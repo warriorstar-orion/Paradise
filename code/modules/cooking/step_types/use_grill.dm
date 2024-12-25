@@ -31,7 +31,7 @@
 
 //Reagents are calculated prior to object creation
 /datum/cooking/recipe_step/use_grill/calculate_quality(var/obj/used_item, var/datum/cooking/recipe_tracker/tracker)
-	var/obj/item/reagent_containers/cooking/container = locateUID(tracker.holder_ref)
+	var/obj/item/reagent_containers/cooking/container = locateUID(tracker.holder_uid)
 
 	var/obj/machinery/cooking/grill/our_grill = used_item
 
@@ -53,7 +53,7 @@
 
 /datum/cooking/recipe_step/use_grill/is_complete(var/obj/used_item, var/datum/cooking/recipe_tracker/tracker)
 
-	var/obj/item/reagent_containers/cooking/container = locateUID(tracker.holder_ref)
+	var/obj/item/reagent_containers/cooking/container = locateUID(tracker.holder_uid)
 
 	if(container.grill_data[heat] >= time)
 		#ifdef CWJ_DEBUG

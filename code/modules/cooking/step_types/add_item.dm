@@ -61,7 +61,7 @@
 	#ifdef CWJ_DEBUG
 	log_debug("Called: /datum/cooking/recipe_step/add_item/follow_step")
 	#endif
-	var/obj/item/container = locateUID(tracker.holder_ref)
+	var/obj/item/container = locateUID(tracker.holder_uid)
 	if(container)
 		if(istype(user))
 			if(user.drop_item(added_item))

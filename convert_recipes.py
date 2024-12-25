@@ -64,7 +64,9 @@ def process_recipes(dme: DME, base_type: str) -> list[RecipeDetails]:
         reagent_items = dict()
         if items:
             for item in items:
-                if item.child_of("/obj/item/food/grown"):
+                if item.child_of("/obj/item/food/grown") or item.child_of(
+                    "/obj/item/grown"
+                ):
                     produce_items.append(item)
                 else:
                     food_items.append(item)

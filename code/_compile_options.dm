@@ -1,8 +1,8 @@
 #define DEBUG
-// #define CWJ_DEBUG
+#define CWJ_DEBUG
 //#define TESTING
 
-#define WIKIGEN
+// #define WIKIGEN
 
 // Uncomment the following line to compile unit tests on a local server. The output will be in a test_run-[DATE].log file in the ./data folder.
 // #define LOCAL_GAME_TESTS

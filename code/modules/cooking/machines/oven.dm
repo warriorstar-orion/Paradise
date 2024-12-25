@@ -27,6 +27,10 @@
 	#warn verify circuit
 	// circuit = /obj/item/circuitboard/cooking/oven
 
+/obj/machinery/cooking/oven/Initialize(mapload)
+	. = ..()
+	update_appearance(UPDATE_ICON|UPDATE_OVERLAYS)
+
 //Did not want to use this...
 /obj/machinery/cooking/oven/process()
 
@@ -113,29 +117,29 @@
 		if(items != null)
 			var/obj/item/reagent_containers/cooking/container = items
 			container.process_item(used, user)
+			update_appearance(UPDATE_OVERLAYS)
 			return ITEM_INTERACT_COMPLETE
 
 		else if(istype(used, /obj/item/reagent_containers/cooking))
-			to_chat(usr, "<span class='notice'>You put [used] on the oven.</span>")
-			if(usr.drop_item())
+			to_chat(user, "<span class='notice'>You put [used] in \the [src].</span>")
+			if(user.drop_item())
 				used.forceMove(src)
 			items = used
 			if(switches == 1)
 				cooking_timestamp = world.time
+
+			update_appearance(UPDATE_OVERLAYS)
 			return ITEM_INTERACT_COMPLETE
 	else
 		handle_open(user)
 		return ITEM_INTERACT_COMPLETE
-
-	update_icon()
 
 //Retrieve whether or not the oven door has been clicked.
 #define ICON_SPLIT_X_1 5
 #define ICON_SPLIT_X_2 28
 #define ICON_SPLIT_Y_1 5
 #define ICON_SPLIT_Y_2 20
-/obj/machinery/cooking/oven/proc/getInput(params)
-	var/list/click_params = params2list(params)
+/obj/machinery/cooking/oven/proc/getInput(click_params)
 	var/input
 	var/icon_x = text2num(click_params["icon-x"])
 	var/icon_y = text2num(click_params["icon-y"])
@@ -233,6 +237,8 @@
 		if(switches == 1)
 			handle_switch(user)
 
+	update_appearance(UPDATE_OVERLAYS)
+
 /obj/machinery/cooking/oven/proc/handle_temperature(mob/user)
 	var/old_temp = temperature
 	var/choice = input(user,"Select a heat setting for burner #.\nCurrent temp :[old_temp]","Select Temperature",old_temp) in list("High","Medium","Low","Cancel")
@@ -251,7 +257,8 @@
 	timer = (input(user, "Enter a timer for burner # (In Seconds, 0 Stays On)","Set Timer", old_time) as num) SECONDS
 	if(timer != 0 && switches == 1)
 		timer_act(user)
-	update_icon()
+
+	update_appearance(UPDATE_ICON|UPDATE_OVERLAYS)
 
 /obj/machinery/cooking/oven/proc/timer_act(mob/user)
 
@@ -271,8 +278,9 @@
 			switches = 0
 			timerstamp=world.time
 			cooking_timestamp = world.time
-			update_icon()
-	update_icon()
+			update_appearance(UPDATE_ICON|UPDATE_OVERLAYS)
+
+	update_appearance(UPDATE_ICON|UPDATE_OVERLAYS)
 
 /obj/machinery/cooking/oven/proc/handle_switch(user)
 	if(switches == 1)
@@ -294,7 +302,8 @@
 		cook_checkin(user)
 		if(timer != 0)
 			timer_act(user)
-	update_icon()
+
+	update_appearance(UPDATE_ICON|UPDATE_OVERLAYS)
 
 /obj/machinery/cooking/oven/proc/handle_cooking(var/mob/user, set_timer=FALSE)
 
@@ -329,33 +338,37 @@
 	else
 		container.process_item(src, user)
 
-
-/obj/machinery/cooking/oven/update_icon()
-	..()
-
+/obj/machinery/cooking/oven/update_overlays()
+	. = ..()
 	cut_overlays()
-	icon_state = "oven_base"
+
 	for(var/obj/item/our_item in vis_contents)
-		src.remove_from_visible(our_item)
+		remove_from_visible(our_item)
 
 	if(items)
 		var/obj/item/our_item = items
 		our_item.pixel_x = 0
 		our_item.pixel_y = -5
-		src.add_to_visible(our_item)
-	if(!opened)
-		add_overlay(image(src.icon, icon_state="oven_hatch[switches?"_on":""]", layer=ABOVE_OBJ_LAYER))
+		our_item.transform *= 0.8
+		add_to_visible(our_item)
 
-/obj/machinery/cooking/oven/proc/add_to_visible(var/obj/item/our_item)
+	if(!opened)
+		. += image(icon, icon_state = "oven_hatch[switches ? "_on" : ""]", layer=ABOVE_OBJ_LAYER)
+
+/obj/machinery/cooking/oven/update_icon()
+	. = ..()
+	icon_state = "oven_base"
+
+/obj/machinery/cooking/oven/proc/add_to_visible(obj/item/our_item)
 	our_item.vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID
-	src.vis_contents += our_item
+	vis_contents += our_item
 	our_item.transform *= 0.8
 
-/obj/machinery/cooking/oven/proc/remove_from_visible(var/obj/item/our_item)
+/obj/machinery/cooking/oven/proc/remove_from_visible(obj/item/our_item)
 	our_item.vis_flags = 0
 	our_item.blend_mode = 0
 	our_item.transform =  null
-	src.vis_contents.Remove(our_item)
+	vis_contents.Remove(our_item)
 
 /obj/machinery/cooking/oven/verb/toggle_burner()
 	set src in view(1)

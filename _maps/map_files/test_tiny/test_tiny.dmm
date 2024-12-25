@@ -11,11 +11,38 @@
 /obj/effect/landmark/spawner/late/crew,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
+"h" = (
+/obj/structure/table,
+/obj/item/food/carpmeat,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
 "i" = (
 /obj/item/reagent_containers/cooking/deep_basket,
 /obj/item/reagent_containers/cooking/deep_basket,
 /obj/item/reagent_containers/cooking/deep_basket,
 /obj/structure/table,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"k" = (
+/obj/structure/table,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "m" = (
@@ -62,6 +89,15 @@
 "u" = (
 /turf/simulated/wall/mineral/titanium,
 /area/shuttle/arrival/station)
+"v" = (
+/obj/item/reagent_containers/cooking/air_basket,
+/obj/item/reagent_containers/cooking/air_basket,
+/obj/item/reagent_containers/cooking/air_basket,
+/obj/item/reagent_containers/cooking/air_basket,
+/obj/structure/table,
+/obj/item/kitchen/utensil/fork,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
 "w" = (
 /obj/item/reagent_containers/cooking/pan,
 /obj/item/reagent_containers/cooking/pan,
@@ -102,10 +138,6 @@
 /obj/machinery/smartfridge/food/chef,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
-"C" = (
-/obj/item/kitchen/utensil/fork,
-/turf/simulated/floor/plasteel/freezer,
-/area/shuttle/arrival/station)
 "E" = (
 /obj/machinery/cooking/grill,
 /obj/structure/table,
@@ -125,21 +157,11 @@
 /area/shuttle/arrival/station)
 "I" = (
 /obj/structure/table,
-/obj/item/food/bacon,
-/obj/item/food/bacon,
-/obj/item/food/bacon,
-/obj/item/food/bacon,
-/obj/item/food/bacon,
-/obj/item/food/bacon,
-/obj/item/food/bacon,
-/obj/item/food/bacon,
-/obj/item/food/bacon,
-/obj/item/food/bacon,
-/obj/item/food/meat,
-/obj/item/food/meat,
-/obj/item/food/meat,
-/obj/item/food/meat,
-/obj/item/food/meat,
+/obj/item/food/grown/tomato,
+/obj/item/food/grown/tomato,
+/obj/item/food/grown/tomato,
+/obj/item/food/grown/tomato,
+/obj/item/food/grown/tomato,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "L" = (
@@ -163,6 +185,18 @@
 /obj/structure/table,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
+"Q" = (
+/obj/structure/table,
+/obj/item/food/sliceable/flatdough,
+/obj/item/food/sliceable/flatdough,
+/obj/item/food/sliceable/flatdough,
+/obj/item/food/sliceable/flatdough,
+/obj/item/food/sliceable/flatdough,
+/obj/item/food/sliceable/flatdough,
+/obj/item/food/sliceable/flatdough,
+/obj/item/food/sliceable/flatdough,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
 "T" = (
 /obj/item/reagent_containers/cooking/oven,
 /obj/item/reagent_containers/cooking/oven,
@@ -180,11 +214,7 @@
 /obj/item/food/cookiedough,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
-"Y" = (
-/obj/item/reagent_containers/cooking/air_basket,
-/obj/item/reagent_containers/cooking/air_basket,
-/obj/item/reagent_containers/cooking/air_basket,
-/obj/item/reagent_containers/cooking/air_basket,
+"X" = (
 /obj/structure/table,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
@@ -32716,9 +32746,9 @@ p
 x
 b
 x
+x
+x
 F
-x
-x
 x
 x
 u
@@ -32973,10 +33003,10 @@ x
 x
 x
 x
+x
+x
 m
 q
-x
-C
 x
 u
 a
@@ -33228,12 +33258,12 @@ a
 u
 A
 x
+h
+x
 s
 x
 w
-Y
-x
-x
+v
 x
 u
 a
@@ -33487,10 +33517,10 @@ E
 x
 I
 x
+k
+x
 T
 O
-x
-x
 x
 u
 a
@@ -33742,12 +33772,12 @@ a
 u
 x
 x
+Q
+x
 Z
 x
 y
 B
-x
-x
 x
 u
 a
@@ -33999,11 +34029,11 @@ a
 u
 t
 x
+X
+x
 z
 x
 i
-x
-x
 x
 x
 u
@@ -34256,11 +34286,11 @@ a
 u
 x
 x
+X
+x
 N
 x
 L
-x
-x
 x
 x
 u

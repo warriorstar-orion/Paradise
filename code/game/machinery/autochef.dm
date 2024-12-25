@@ -10,6 +10,7 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 #define AUTOCHEF_INGREDIENTS_LOCATING	7
 #define AUTOCHEF_INGREDIENTS_MISSING	8
 #define AUTOCHEF_INGREDIENTS_LOCATED	9
+#define AUTOCHEF_WAITING_ON_MACHINE		10
 
 /obj/machinery/autochef
 	name = "autochef"

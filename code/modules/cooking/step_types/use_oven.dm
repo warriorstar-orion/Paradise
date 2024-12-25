@@ -25,7 +25,7 @@
 
 //Reagents are calculated prior to object creation
 /datum/cooking/recipe_step/use_oven/calculate_quality(obj/used_item, datum/cooking/recipe_tracker/tracker)
-	var/obj/item/reagent_containers/cooking/container = locate(tracker.holder_ref)
+	var/obj/item/reagent_containers/cooking/container = locate(tracker.holder_uid)
 	var/obj/machinery/cooking/oven/our_oven = used_item
 	var/bad_cooking = 0
 	for (var/key in container.oven_data)
@@ -41,7 +41,7 @@
 	return CWJ_SUCCESS
 
 /datum/cooking/recipe_step/use_oven/is_complete(obj/used_item, datum/cooking/recipe_tracker/tracker)
-	var/obj/item/reagent_containers/cooking/container = locateUID(tracker.holder_ref)
+	var/obj/item/reagent_containers/cooking/container = locateUID(tracker.holder_uid)
 
 	if(container.oven_data[heat] >= time)
 		#ifdef CWJ_DEBUG

@@ -3,7 +3,7 @@
 /// Kept intentionally bare-bones because MANY of these objects are going to be made.
 /datum/cooking/recipe_tracker
 	/// The parent object holding the recipe tracker.
-	var/holder_ref
+	var/holder_uid
 	/// A collection of the classes of steps the recipe can take next.
 	var/step_flags
 	/// This variable is a little complicated.
@@ -19,7 +19,7 @@
 	#ifdef CWJ_DEBUG
 	log_debug("Called /datum/cooking/recipe_tracker/New")
 	#endif
-	holder_ref = container.UID()
+	holder_uid = container.UID()
 	src.generate_pointers()
 	src.populate_step_flags()
 
@@ -37,7 +37,7 @@
 	#ifdef CWJ_DEBUG
 	log_debug("Called /datum/cooking/recipe_tracker/proc/generate_pointers")
 	#endif
-	var/obj/item/reagent_containers/cooking/container = locateUID(holder_ref)
+	var/obj/item/reagent_containers/cooking/container = locateUID(holder_uid)
 
 	#ifdef CWJ_DEBUG
 	log_debug("Loading all references to [container] of type [container.type] using [container.appliancetype]")
@@ -356,14 +356,14 @@
 			return_flags |= step.class
 	return return_flags
 
-/datum/cooking/recipe_pointer/proc/has_option_by_id(id)
-	if(!GLOB.cwj_step_dictionary["[id]"])
-		return FALSE
-	var/datum/cooking/recipe_step/active_step = GLOB.cwj_step_dictionary["[id]"]
-	var/list/possible_steps = get_possible_steps()
-	if(active_step in possible_steps)
-		return TRUE
-	return FALSE
+// /datum/cooking/recipe_pointer/proc/has_option_by_id(id)
+// 	if(!GLOB.cwj_step_dictionary["[id]"])
+// 		return FALSE
+// 	var/datum/cooking/recipe_step/active_step = GLOB.cwj_step_dictionary["[id]"]
+// 	var/list/possible_steps = get_possible_steps()
+// 	if(active_step in possible_steps)
+// 		return TRUE
+// 	return FALSE
 
 /datum/cooking/recipe_pointer/proc/traverse(id, obj/used_obj)
 	#ifdef CWJ_DEBUG
