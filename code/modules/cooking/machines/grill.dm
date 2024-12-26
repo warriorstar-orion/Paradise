@@ -1,5 +1,12 @@
 #define ICON_SPLIT_X 16
 
+/obj/effect/grill_hopper
+	icon = 'icons/obj/cwj_cooking/grill.dmi'
+	icon_state = null
+	vis_flags = VIS_INHERIT_ID
+	mouse_opacity = 0
+	invisibility = 0
+
 /obj/machinery/cooking/grill
 	name = "Grill"
 	desc = "A deep pit of charcoal for cooking food. A slot on the side of the machine takes wood and converts it into charcoal."
@@ -34,17 +41,12 @@
 
 	#warn verify circuit usage
 	// circuit = /obj/item/circuitboard/cooking/grill
-	var/obj/effect/hopper_overlay
+	VAR_PRIVATE/obj/effect/grill_hopper/hopper_overlay
 
 /obj/machinery/cooking/grill/Initialize()
 	. = ..()
 	component_parts += new /obj/item/circuitboard/cooking/grill(null)
 	hopper_overlay = new
-	hopper_overlay.icon = 'icons/obj/cwj_cooking/grill.dmi'
-	hopper_overlay.icon_state = null
-	hopper_overlay.vis_flags = VIS_INHERIT_ID
-	hopper_overlay.mouse_opacity = 0
-	hopper_overlay.invisibility = 0
 	vis_contents += hopper_overlay
 
 //Did not want to use this...

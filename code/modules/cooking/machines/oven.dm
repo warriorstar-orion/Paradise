@@ -31,9 +31,8 @@
 	. = ..()
 	update_appearance(UPDATE_ICON|UPDATE_OVERLAYS)
 
-//Did not want to use this...
 /obj/machinery/cooking/oven/process()
-
+	#warn dealing with fire
 	//if(on_fire)
 		//Do bad things if it is on fire.
 
@@ -159,32 +158,26 @@
 
 /obj/machinery/cooking/oven/attack_hand(mob/user as mob, params)
 	var/center_selected = getInput(params2list(params))
+	if(!center_selected || !opened || !items)
+		handle_open(user)
+		update_appearance(UPDATE_OVERLAYS)
+		return
 
-	switch(center_selected)
-		if(TRUE)
-			if(!opened)
-				handle_open(user)
-			else
-				if(items != null)
-					if(switches == 1)
-						handle_cooking(user)
-						cooking_timestamp = world.time
-						if(ishuman(user) && (temperature == "High" || temperature == "Medium" ))
-							var/mob/living/carbon/human/burn_victim = user
-							if(!burn_victim.gloves)
-								switch(temperature)
-									if("High")
-										burn_victim.adjustFireLoss(5)
-									if("Medium")
-										burn_victim.adjustFireLoss(2)
-								to_chat(burn_victim, "<span class='danger'>You burn your hand a little taking the [items] off of the oven.</span>")
-					user.put_in_hands(items)
-					items = null
-				else
-					handle_open(user)
-		if(FALSE)
-			handle_open(user)
-	update_icon()
+	if(items && switches == 1)
+		handle_cooking(user)
+		cooking_timestamp = world.time
+		if(ishuman(user) && (temperature == "High" || temperature == "Medium" ))
+			var/mob/living/carbon/human/burn_victim = user
+			if(!burn_victim.gloves)
+				switch(temperature)
+					if("High")
+						burn_victim.adjustFireLoss(5)
+					if("Medium")
+						burn_victim.adjustFireLoss(2)
+				to_chat(burn_victim, "<span class='danger'>You burn your hand a little taking the [items] off of the oven.</span>")
+
+	user.put_in_hands(items)
+	items = null
 
 /obj/machinery/cooking/oven/CtrlClick(mob/user, params)
 	if(user.stat || user.restrained() || (!in_range(src, user)))
@@ -261,16 +254,16 @@
 	update_appearance(UPDATE_ICON|UPDATE_OVERLAYS)
 
 /obj/machinery/cooking/oven/proc/timer_act(mob/user)
-
-	timerstamp=round(world.time)
-	#ifdef CWJ_DEBUG
+	timerstamp = round(world.time)
+#ifdef CWJ_DEBUG
 	log_debug("Timerstamp set! New timerstamp: [timerstamp]")
-	#endif
+#endif
 	var/old_timerstamp = timerstamp
+	#warn spawn thing
 	spawn(timer)
-		#ifdef CWJ_DEBUG
+#ifdef CWJ_DEBUG
 		log_debug("Comparimg timerstamp() of [timerstamp] to old_timerstamp [old_timerstamp]")
-		#endif
+#endif
 		if(old_timerstamp == timerstamp)
 			playsound(src, 'sound/items/lighter.ogg', 100, 1, 0)
 
@@ -288,9 +281,9 @@
 		handle_cooking(user)
 		switches = 0
 		timerstamp=world.time
-		#ifdef CWJ_DEBUG
+#ifdef CWJ_DEBUG
 		log_debug("Timerstamp no.  set! New timerstamp: [timerstamp]")
-		#endif
+#endif
 		cooking_timestamp = world.time
 	else
 		if(opened)
@@ -305,8 +298,7 @@
 
 	update_appearance(UPDATE_ICON|UPDATE_OVERLAYS)
 
-/obj/machinery/cooking/oven/proc/handle_cooking(var/mob/user, set_timer=FALSE)
-
+/obj/machinery/cooking/oven/proc/handle_cooking(mob/user, set_timer = FALSE)
 	if(!(items && istype(items, /obj/item/reagent_containers/cooking)))
 		return
 
@@ -316,22 +308,19 @@
 	else
 		reference_time = world.time - cooking_timestamp
 
-
-	#ifdef CWJ_DEBUG
+#ifdef CWJ_DEBUG
 	log_debug("oven/proc/handle_cooking data:")
 	log_debug("     temperature: [temperature]")
 	log_debug("     reference_time: [reference_time]")
 	log_debug("     world.time: [world.time]")
 	log_debug("     cooking_timestamp: [cooking_timestamp]")
 	log_debug("     oven_data: [container.oven_data]")
-	#endif
-
+#endif
 
 	if(container.oven_data[temperature])
 		container.oven_data[temperature] += reference_time
 	else
 		container.oven_data[temperature] = reference_time
-
 
 	if(user && user.Adjacent(src))
 		container.process_item(src, user, send_message=TRUE)
@@ -381,7 +370,6 @@
 	if(!ishuman(usr) && !isrobot(usr))
 		return
 	handle_switch(usr)
-
 
 /obj/machinery/cooking/oven/verb/change_temperature()
 	set src in view(1)

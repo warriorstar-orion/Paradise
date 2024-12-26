@@ -36,6 +36,10 @@
 // 	.=..()
 // 	appearance_flags |= KEEP_TOGETHER
 
+/obj/item/reagent_containers/cooking/Initialize()
+	. = ..()
+	SScooking.RegisterSignal(src, COMSIG_COOKING_RECIPE_BEGIN, TYPE_PROC_REF(/datum/controller/subsystem/processing/cooking, on_recipe_begin))
+
 /obj/item/reagent_containers/cooking/examine(mob/user)
 	. = ..()
 
@@ -54,7 +58,7 @@
 
 /obj/item/reagent_containers/cooking/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	#ifdef CWJ_DEBUG
-	log_debug("cooking_container/attackby() called!")
+	log_debug("[__PROC__]")
 	#endif
 
 	if(istype(used, /obj/item/autochef_remote))
@@ -63,9 +67,17 @@
 	if(!tracker && (contents.len || reagents.total_volume != 0))
 		to_chat(user, "The [src] is full. Empty its contents first.")
 		return ITEM_INTERACT_COMPLETE
-	else
-		process_item(used, user, send_message = istype(user))
-		return ITEM_INTERACT_COMPLETE
+
+	process_item(used, user, send_message = istype(user))
+	return ITEM_INTERACT_COMPLETE
+
+/obj/item/reagent_containers/cooking/proc/process_item_signal(mob/user, obj/item/used)
+	if(!tracker)
+		if(SEND_SIGNAL(src, COMSIG_COOKING_RECIPE_BEGIN, used) & COMPONENT_COOKING_NO_RECIPE)
+			to_chat(user, "You don't know what you'd begin to make with this.")
+			return
+
+		tracker = new(src)
 
 /obj/item/reagent_containers/cooking/standard_pour_into(mob/user, atom/target)
 	#ifdef CWJ_DEBUG
