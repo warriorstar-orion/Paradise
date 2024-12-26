@@ -26,6 +26,8 @@ PROCESSING_SUBSYSTEM_DEF(cooking)
 
 	var/signals_registered = FALSE
 	for(var/datum/cooking/recipe/recipe in recipe_dictionary[source.appliancetype])
+
 		return
 
-
+	if(!signals_registered)
+		return COMPONENT_COOKING_NO_RECIPE

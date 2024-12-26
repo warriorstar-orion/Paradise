@@ -1,5 +1,5 @@
 #define DEBUG
-#define CWJ_DEBUG
+// #define CWJ_DEBUG
 //#define TESTING
 
 // #define WIKIGEN

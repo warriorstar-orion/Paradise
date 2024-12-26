@@ -15,6 +15,24 @@ class RecipeDetails:
     produce_items: list
 
 
+def codegen_python_prototype(recipe: RecipeDetails, cooking_container: str) -> str:
+    result_lines = []
+    recipe_name = recipe.original_path.stem.upper()
+
+    steps = []
+    for food_item in recipe.food_items:
+        steps.append(
+            f"RecipeStep(kind=RecipeStepKind.CWJ_ADD_ITEM, target='{food_item}')"
+        )
+    step_string = "[" + "\n,".join(steps) + "]"
+
+    result_lines.append(
+        f"Recipe(name='{recipe_name}', container={cooking_container}, steps={step_string})"
+    )
+
+    return "".join(result_lines)
+
+
 def codegen_grill_recipe(recipe: RecipeDetails) -> str:
     result_lines = []
     result_lines.append(f"/datum/cooking/recipe/{recipe.original_path.stem}")
@@ -104,3 +122,17 @@ with open("code/modules/cooking/recipes/stable/cooking_oven_recipes.dm", "w") as
         f.write("\n")
         f.write(codegen_oven_recipe(recipe))
         f.write("\n")
+
+# with open("prototype_recipes.py", "w") as f:
+#     f.write("from prototype_tracker import *\n")
+#     f.write("ALL_RECIPES = [")
+#     for recipe in grill_recipes:
+#         f.write(
+#             "\n\t" + codegen_python_prototype(recipe, "CookingContainer.GRILL") + ","
+#         )
+#     for recipe in grill_recipes:
+#         f.write(
+#             "\n\t" + codegen_python_prototype(recipe, "CookingContainer.OVEN") + ","
+#         )
+
+#     f.write("]")

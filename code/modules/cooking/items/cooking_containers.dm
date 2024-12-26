@@ -69,6 +69,7 @@
 		return ITEM_INTERACT_COMPLETE
 
 	process_item(used, user, send_message = istype(user))
+	// process_item_signal(used, user)
 	return ITEM_INTERACT_COMPLETE
 
 /obj/item/reagent_containers/cooking/proc/process_item_signal(mob/user, obj/item/used)

@@ -9,39 +9,50 @@
 	)
 
 /datum/cooking/recipe/applecake
-	cooking_container = OVEN
+	cooking_container = CUTTING_BOARD
 	product_type = /obj/item/food/sliceable/applecake
 	step_builder = list(
-		list(CWJ_ADD_ITEM, /obj/item/food/dough),
-		list(CWJ_ADD_ITEM, /obj/item/food/dough),
-		list(CWJ_ADD_ITEM, /obj/item/food/dough),
-		list(CWJ_ADD_PRODUCE, /obj/item/food/grown/apple),
-		list(CWJ_ADD_PRODUCE, /obj/item/food/grown/apple),
-		list(CWJ_ADD_REAGENT, "milk", 5),
-		list(CWJ_ADD_REAGENT, "sugar", 5),
-		list(CWJ_USE_OVEN, J_MED, 20 SECONDS)
+		list(CWJ_ADD_ITEM, /obj/item/food/sliceable/flatdough),
+		list(CWJ_ADD_ITEM, /obj/item/food/grown/apple),
+		list(CWJ_ADD_ITEM, /obj/item/food/grown/apple),
 	)
 
 /datum/cooking/recipe/applepie
-	cooking_container = OVEN
+	cooking_container = CUTTING_BOARD
 	product_type = /obj/item/food/applepie
 	step_builder = list(
 		list(CWJ_ADD_ITEM, /obj/item/food/sliceable/flatdough),
-		list(CWJ_ADD_PRODUCE, /obj/item/food/grown/apple),
-		list(CWJ_USE_OVEN, J_MED, 10 SECONDS)
+		list(CWJ_ADD_ITEM, /obj/item/food/grown/apple),
 	)
 
 /datum/cooking/recipe/appletart
-	cooking_container = OVEN
+	cooking_container = CUTTING_BOARD
 	product_type = /obj/item/food/appletart
 	step_builder = list(
-		list(CWJ_ADD_ITEM, /obj/item/food/egg),
-		list(CWJ_ADD_PRODUCE, /obj/item/food/grown/apple/gold),
-		list(CWJ_ADD_REAGENT, "sugar", 5),
-		list(CWJ_ADD_REAGENT, "milk", 5),
-		list(CWJ_ADD_REAGENT, "flour", 10),
-		list(CWJ_USE_OVEN, J_MED, 10 SECONDS)
+		list(CWJ_ADD_ITEM, /obj/item/food/sliceable/flatdough),
+		list(CWJ_USE_ITEM, /obj/item/food/grown/apple),
 	)
+
+// /datum/cooking/recipe/applepie
+// 	cooking_container = OVEN
+// 	product_type = /obj/item/food/applepie
+// 	step_builder = list(
+// 		list(CWJ_ADD_ITEM, /obj/item/food/sliceable/flatdough),
+// 		list(CWJ_ADD_PRODUCE, /obj/item/food/grown/apple),
+// 		list(CWJ_USE_OVEN, J_MED, 10 SECONDS)
+// 	)
+
+// /datum/cooking/recipe/appletart
+// 	cooking_container = OVEN
+// 	product_type = /obj/item/food/appletart
+// 	step_builder = list(
+// 		list(CWJ_ADD_ITEM, /obj/item/food/egg),
+// 		list(CWJ_ADD_PRODUCE, /obj/item/food/grown/apple/gold),
+// 		list(CWJ_ADD_REAGENT, "sugar", 5),
+// 		list(CWJ_ADD_REAGENT, "milk", 5),
+// 		list(CWJ_ADD_REAGENT, "flour", 10),
+// 		list(CWJ_USE_OVEN, J_MED, 10 SECONDS)
+// 	)
 
 /datum/cooking/recipe/baguette
 	cooking_container = OVEN

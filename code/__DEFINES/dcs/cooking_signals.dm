@@ -11,7 +11,8 @@
 #define COMSIG_COOKING_RECIPE_STEP				"cooking_recipe_step"
 #define COMSIG_COOKING_RECIPE_COMPLETE			"cooking_recipe_complete"
 
-#define COMSIG_COOKING_MACHINE_STEP_BEGIN		"cooking_machine_step_begin"
+#define COMSIG_COOKING_MACHINE_STEP_START		"cooking_machine_step_start"
+#define COMSIG_COOKING_MACHINE_STEP_STOP		"cooking_machine_step_stop"
 #define COMSIG_COOKING_MACHINE_STEP_ERROR		"cooking_machine_step_error"
 #define COMSIG_COOKING_MACHINE_STEP_FAILED		"cooking_machine_step_failed"
 #define COMSIG_COOKING_MACHINE_STEP_SUCCESS		"cooking_machine_step_success"

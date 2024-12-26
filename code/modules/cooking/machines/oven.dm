@@ -178,6 +178,7 @@
 
 	user.put_in_hands(items)
 	items = null
+	update_appearance(UPDATE_OVERLAYS)
 
 /obj/machinery/cooking/oven/CtrlClick(mob/user, params)
 	if(user.stat || user.restrained() || (!in_range(src, user)))

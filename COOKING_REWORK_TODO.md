@@ -13,3 +13,4 @@ Figure out how to integrate expert chef knowledge
 Tear out old chef cooking manuals/guides
 Figure out what actually triggers food to get burnt
 Convert candy mixer, microwave, and sushi mat
+Pass sliceable food quality onto slices

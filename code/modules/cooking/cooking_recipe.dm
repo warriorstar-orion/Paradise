@@ -71,8 +71,11 @@
 	/// Reference to the last step made, regardless of if it was required or not.
 	var/datum/cooking/recipe_step/last_created_step
 
+	var/list/steps
+
 /datum/cooking/recipe/New()
 	active_exclusive_option_list = list()
+	steps = list()
 
 	if(reagent_id && !reagent_amount)
 		CRASH("/datum/cooking/recipe/New: Reagent creating recipe must have reagent_amount defined! Recipe path=[src.type].")
@@ -106,6 +109,9 @@
 
 	UID()
 
+// /datum/cooking/recipe/proc/starts_with(obj/item/used)
+// 	var/datum/cooking/recipe_step/step = steps[]
+
 //Build out the recipe steps for a recipe, based on the step_builder list
 /datum/cooking/recipe/proc/build_steps()
 	if(!step_builder)
@@ -116,6 +122,8 @@
 	create_step_base()
 
 	for (var/step in step_builder)
+		if(last_created_step)
+			steps.Add(last_created_step)
 		if(islist(step))
 			var/list/step_list = step
 			var/reason = ""
