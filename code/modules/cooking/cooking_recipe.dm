@@ -631,6 +631,7 @@
 
 /datum/cooking/recipe/proc/create_product(datum/cooking/recipe_tracker/tracker)
 	var/obj/item/reagent_containers/cooking/container = locateUID(tracker.container_uid)
+	var/tracked_quality = 0
 
 	if(!container)
 		#warn make it clear to player that recipe failed or just runtime
@@ -640,12 +641,12 @@
 	var/datum/reagents/slurry = new(maximum = 1000000)
 	slurry.my_atom = container
 
-	var/list/applied_steps = tracker.matching_recipe_steps[src]
+	var/list/applied_steps = tracker.applied_recipe_steps[src]
 	// Remember this is not necessarily a consecutive list of step indexes
 	// Optional steps may have been skipped
 	for(var/i in 1 to length(applied_steps))
 		var/current_index = applied_steps[i]
-		var/datum/cooking/recipe_step = steps[current_index]
+		var/datum/cooking/recipe_step/recipe_step = steps[current_index]
 
 		// Filter out reagents based on settings
 		// TODO: Horrible snowflaking
@@ -655,6 +656,11 @@
 			if(!amount_to_remove)
 				continue
 			container.reagents.remove_reagent(add_reagent_step.reagent_id, amount_to_remove, safety = TRUE)
+
+		var/target_uid = tracker.applied_step_data[i]["target"]
+		var/obj/added_item = locateUID(target_uid)
+		if(added_item)
+			tracked_quality += recipe_step.calculate_quality(added_item, container)
 
 	// if(GLOB.cwj_step_dictionary_ordered["[CWJ_ADD_REAGENT]"])
 	// 	for(var/id in pointer.steps_taken)
@@ -755,11 +761,10 @@
 
 				added_item.reagents.trans_to(slurry, amount = added_item.reagents.total_volume)
 
-	// 	//Purge the contents of the container we no longer need it
-	// 	QDEL_LIST_CONTENTS(container.contents)
-	// 	container.contents = list()
+		//Purge the contents of the container we no longer need it
+		QDEL_LIST_CONTENTS(container.contents)
 
-	// 	var/reagent_quality = calculate_reagent_quality(pointer)
+		var/reagent_quality = calculate_reagent_quality(tracker)
 
 
 	// 	//Produce Item descriptions based on the steps taken
@@ -768,62 +773,60 @@
 	// 		if(pointer.steps_taken[id] != "skip")
 	// 			cooking_description_modifier += "[pointer.steps_taken[id]]\n"
 
-	// 	for(var/i = 0; i < product_count; i++)
-	// 		var/obj/item/new_item = new product_type(container)
-	// 		#ifdef CWJ_DEBUG
-	// 		log_debug("/recipe/proc/create_product: Item created with reagents of [new_item.reagents.total_volume]")
-	// 		#endif
-	// 		if(replace_reagents)
-	// 			//Clearing out reagents in data. If initialize hasn't been called, we also null that out here.
-	// 			#ifdef CWJ_DEBUG
-	// 			log_debug("/recipe/proc/create_product: Clearing out reagents from the [new_item]")
-	// 			#endif
-	// 			new_item.reagents.clear_reagents()
-	// 		#ifdef CWJ_DEBUG
-	// 		log_debug("/recipe/proc/create_product: Transferring slurry of [slurry.total_volume] to [new_item] of total volume [new_item.reagents.total_volume]")
-	// 		#endif
-	// 		slurry.copy_to(new_item, amount=slurry.total_volume)
+		for(var/i = 0; i < product_count; i++)
+			var/obj/item/new_item = new product_type(container)
+			#ifdef CWJ_DEBUG
+			log_debug("/recipe/proc/create_product: Item created with reagents of [new_item.reagents.total_volume]")
+			#endif
+			if(replace_reagents)
+				//Clearing out reagents in data. If initialize hasn't been called, we also null that out here.
+				#ifdef CWJ_DEBUG
+				log_debug("/recipe/proc/create_product: Clearing out reagents from the [new_item]")
+				#endif
+				new_item.reagents.clear_reagents()
+			#ifdef CWJ_DEBUG
+			log_debug("/recipe/proc/create_product: Transferring slurry of [slurry.total_volume] to [new_item] of total volume [new_item.reagents.total_volume]")
+			#endif
+			slurry.copy_to(new_item, amount=slurry.total_volume)
 
-	// 		var/obj/item/food/food_item = new_item
-	// 		if(istype(food_item))
-	// 			food_item.food_quality = pointer.tracked_quality + reagent_quality
-	// 			food_item.cooking_description_modifier = cooking_description_modifier
-	// 			food_item.get_food_tier()
-	// else
-	// 	QDEL_LIST_CONTENTS(container.contents)
-	// 	container.contents = list()
+			var/obj/item/food/food_item = new_item
+			if(istype(food_item))
+				food_item.food_quality = tracked_quality + reagent_quality
+				#warn add this back at some point if it looks good
+				// food_item.cooking_description_modifier = cooking_description_modifier
+				food_item.get_food_tier()
 
-	// container.reagents.clear_reagents()
+	else
+		QDEL_LIST_CONTENTS(container.contents)
+		container.contents = list()
 
-	// if(reagent_id)
-	// 	var/total_quality = pointer.tracked_quality + calculate_reagent_quality(pointer)
-	// 	container.reagents.add_reagent(reagent_id, reagent_amount, data = list("FOOD_QUALITY" = total_quality))
+	container.reagents.clear_reagents()
 
-	// qdel(slurry)
+	if(reagent_id)
+		var/total_quality = tracked_quality + calculate_reagent_quality(tracker)
+		container.reagents.add_reagent(reagent_id, reagent_amount, data = list("FOOD_QUALITY" = total_quality))
+
+	qdel(slurry)
 
 // //Extra Reagents in a recipe take away recipe quality for every extra unit added to the concoction.
 // //Reagents are calculated in two areas. Here and /datum/cooking/recipe_step/add_reagent/calculate_quality
-// /datum/cooking/recipe/proc/calculate_reagent_quality(var/datum/cooking/recipe_pointer/pointer)
-// 	if(!GLOB.cwj_step_dictionary_ordered["[CWJ_ADD_REAGENT]"])
-// 		return 0
-// 	var/datum/cooking/recipe_tracker/parent = locateUID(pointer.parent_ref)
-// 	var/obj/item/container = locateUID(parent.holder_uid)
-// 	var/total_volume = container.reagents.total_volume
+/datum/cooking/recipe/proc/calculate_reagent_quality(datum/cooking/recipe_tracker/tracker)
+	var/obj/item/container = locateUID(tracker.container_uid)
+	var/total_volume = container.reagents.total_volume
+	var/calculated_volume = 0
+	var/calculated_quality = 0
 
-// 	var/calculated_volume = 0
+	var/list/applied_steps = tracker.matching_recipe_steps[src]
+	for(var/i in 1 to length(applied_steps))
+		var/current_index = applied_steps[i]
+		var/datum/cooking/recipe_step/add_reagent/add_reagent_step = steps[current_index]
+		if(!istype(add_reagent_step))
+			continue
 
-// 	var/calculated_quality = 0
-// 	for(var/id in pointer.steps_taken)
-// 		if(!GLOB.cwj_step_dictionary_ordered["[CWJ_ADD_REAGENT]"][id])
-// 			continue
-// 		var/datum/cooking/recipe_step/add_reagent/active_step = GLOB.cwj_step_dictionary_ordered["[CWJ_ADD_REAGENT]"][id]
-// 		calculated_volume += active_step.required_reagent_amount
+		calculated_volume += add_reagent_step.amount
+		calculated_quality += add_reagent_step.base_quality_award
 
-// 		calculated_quality += active_step.base_quality_award
-
-// 	return calculated_quality - (total_volume - calculated_volume)
-
-
+	return calculated_quality - (total_volume - calculated_volume)
 
 // //-----------------------------------------------------------------------------------
 // /datum/cooking/proc/get_class_string(var/code)

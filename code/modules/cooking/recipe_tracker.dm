@@ -4,25 +4,15 @@
 /datum/cooking/recipe_tracker
 	/// The parent object holding the recipe tracker.
 	var/container_uid
-	/// A collection of the classes of steps the recipe can take next.
-	// var/step_flags
-	/// This variable is a little complicated.
-	/// It specifically references recipe_pointer objects each pointing to a different point in a different recipe.
-	var/list/active_recipe_pointers = list()
 	var/completion_lockout = FALSE //Freakin' cheaters...
-	// /// List of recipes marked as complete.
-	// var/list/completed_list = list()
 	/// Tells if steps have been taken for this recipe.
 	var/recipe_started = FALSE
-
 	/// A list of recipe types to the index of the latest step we know we've gotten to.
 	var/list/matching_recipe_steps = list()
 	/// A list of recipe types to list of step indices we know we've performed.
 	/// Ensures we don't perform e.g. optional steps we skipped on completion.
 	var/list/applied_recipe_steps = list()
-
 	var/list/applied_step_data = list()
-
 	var/step_reaction_message
 
 /datum/cooking/recipe_tracker/New(obj/item/reagent_containers/cooking/container)
@@ -33,6 +23,13 @@
 
 	// generate_pointers()
 	// populate_step_flags()
+
+/datum/cooking/recipe_tracker/Destroy(force, ...)
+	QDEL_LIST_CONTENTS(matching_recipe_steps)
+	QDEL_LIST_CONTENTS(applied_recipe_steps)
+	QDEL_LIST_CONTENTS(applied_step_data)
+
+	. = ..()
 
 /// Generate recipe_pointer objects based on the global list.
 // /datum/cooking/recipe_tracker/proc/generate_pointers()
@@ -79,13 +76,6 @@
 // 		#endif
 // 		step_flags |= flag_group
 
-/// Check if a recipe tracker has recipes loaded.
-/datum/cooking/recipe_tracker/proc/has_recipes()
-	#ifdef CWJ_DEBUG
-	log_debug("Called /datum/cooking/recipe_tracker/proc/has_recipes")
-	#endif
-	return length(active_recipe_pointers)
-
 /// Wrapper function for analyzing process_item internally.
 /datum/cooking/recipe_tracker/proc/process_item_wrap(mob/user, obj/used)
 	#ifdef CWJ_DEBUG
@@ -114,7 +104,6 @@
 	var/list/valid_steps = list()
 	var/list/valid_recipes = list()
 	var/list/completed_recipes = list()
-	var/list/valid_unique_id_list = list()
 	var/list/silent_recipes = list()
 	var/use_step
 
@@ -222,6 +211,7 @@
 		var/result = recipe_to_complete.create_product(src)
 		if(user && user.Adjacent(container))
 			to_chat(user, "<span class='notice'>You have completed \a [result]!</span>")
+		return CWJ_COMPLETE
 
 	return CWJ_SUCCESS
 

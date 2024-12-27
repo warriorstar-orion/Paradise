@@ -64,17 +64,7 @@
 		to_chat(user, "The [src] is full. Empty its contents first.")
 		return ITEM_INTERACT_COMPLETE
 
-	var/result = new_process_item(user, used)
-	switch(result)
-		if(CWJ_NO_RECIPES)
-			to_chat(user, "You don't know what you'd begin to make with this.")
-		if(CWJ_NO_STEPS)
-			to_chat(user, "You get a feeling this wouldn't improve the recipe.")
-		if(CWJ_SUCCESS)
-			if(tracker.step_reaction_message)
-				to_chat(user, tracker.step_reaction_message)
-
-			update_appearance(UPDATE_ICON)
+	new_process_item(user, used)
 
 	return ITEM_INTERACT_COMPLETE
 
@@ -86,16 +76,33 @@
 		if(!(type in SScooking.recipe_dictionary))
 			return CWJ_NO_STEPS
 
-		tracker = new(src)
-
-		for(var/datum/cooking/recipe/recipe in SScooking.recipe_dictionary[type])
-			tracker.matching_recipe_steps[recipe] = 0
-
-		if(!length(tracker.matching_recipe_steps))
-			qdel(tracker)
+		var/list/container_recipes = SScooking.recipe_dictionary[type]
+		if(!length(container_recipes))
 			return CWJ_NO_STEPS
 
-	return tracker.process_item_wrap(user, used)
+		tracker = new(src)
+
+		for(var/datum/cooking/recipe/recipe in container_recipes)
+			tracker.matching_recipe_steps[recipe] = 0
+
+	var/result = tracker.process_item_wrap(user, used)
+	switch(result)
+		if(CWJ_NO_RECIPES)
+			to_chat(user, "You don't know what you'd begin to make with this.")
+		if(CWJ_NO_STEPS)
+			to_chat(user, "You get a feeling this wouldn't improve the recipe.")
+		if(CWJ_SUCCESS)
+			if(tracker.step_reaction_message)
+				to_chat(user, tracker.step_reaction_message)
+
+			update_appearance(UPDATE_ICON)
+		if(CWJ_COMPLETE)
+			to_chat(user, "You finish cooking with \the [src].")
+			QDEL_NULL(tracker)
+			clear_cooking_data()
+			update_appearance(UPDATE_ICON)
+
+	return result
 
 /obj/item/reagent_containers/cooking/standard_pour_into(mob/user, atom/target)
 	#ifdef CWJ_DEBUG

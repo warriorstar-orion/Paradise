@@ -46,18 +46,16 @@
 		cooked_quality = data["FOOD_QUALITY"]
 	return cooked_quality
 
-/datum/cooking/recipe_step/add_reagent/follow_step(var/obj/used_item, var/datum/cooking/recipe_tracker/tracker)
+/datum/cooking/recipe_step/add_reagent/follow_step(obj/used_item, datum/cooking/recipe_tracker/tracker)
 	var/obj/item/reagent_containers/our_item = used_item
 	var/obj/item/container = locateUID(tracker.container_uid)
 
 	var/trans = our_item.reagents.trans_to(container, our_item.amount_per_transfer_from_this)
-
 	playsound(usr,'sound/effects/Liquid_transfer_mono.ogg',50,1)
-	to_chat(usr, "<span class='notice'>You transfer [trans] units to \the [container].</span>")
 
-	return CWJ_SUCCESS
+	return list(message = "You transfer [trans] units to \the [container].")
 
-/datum/cooking/recipe_step/add_reagent/is_complete(var/obj/used_item, var/datum/cooking/recipe_tracker/tracker)
+/datum/cooking/recipe_step/add_reagent/is_complete(obj/used_item, datum/cooking/recipe_tracker/tracker)
 	var/obj/item/reagent_containers/our_item = used_item
 	var/obj/item/container = locateUID(tracker.container_uid)
 	var/part = our_item.reagents.get_reagent_amount(reagent_id) / our_item.reagents.total_volume
