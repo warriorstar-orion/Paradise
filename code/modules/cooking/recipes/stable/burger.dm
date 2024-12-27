@@ -20,6 +20,7 @@
 
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/bun, qmod = 0.5),
+		CWJ_ADD_ITEM(/obj/item/food/tomatoslice, optional = TRUE),
 		CWJ_ADD_ITEM(/obj/item/food/patty),
 	)
 
@@ -32,6 +33,7 @@
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/bun, qmod = 0.5),
 		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/tomatoslice, optional = TRUE),
 		CWJ_ADD_ITEM(/obj/item/food/patty),
 	)
 

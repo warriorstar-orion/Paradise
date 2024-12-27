@@ -625,6 +625,12 @@
 // 			active_exclusive_option_list[ex_step] += step
 // 	return step
 
+/datum/cooking/recipe/proc/create_product(datum/cooking/recipe_tracker/tracker)
+	var/obj/item/reagent_containers/cooking/container = locateUID(tracker.container_uid)
+	for(var/i in 1 to length(steps))
+		var/step_data = tracker.applied_step_data[i]
+		log_debug("recipe=[type] step=[i] step=[steps[i]]")
+
 /// Default function for creating a product.
 // /datum/cooking/recipe/proc/create_product(datum/cooking/recipe_pointer/pointer)
 // 	var/datum/cooking/recipe_tracker/parent = locateUID(pointer.parent_ref)

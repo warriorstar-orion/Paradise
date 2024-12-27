@@ -47,6 +47,7 @@
 #define CWJ_LOCKOUT			6 //Someone tried starting the function while a prompt was running. Jerk.
 #define CWJ_BURNT			7 //The meal was ruined by burning the food somehow.
 #define CWJ_FOLLOW_STEP_SENTINEL 8 // The step was completed but doesn't need to pass any information about it back to the tracker.
+#define CWJ_NO_RECIPES 9
 
 #define CWJ_CHECK_INVALID	0
 #define CWJ_CHECK_VALID		1

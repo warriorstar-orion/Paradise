@@ -3,20 +3,20 @@
 /// Kept intentionally bare-bones because MANY of these objects are going to be made.
 /datum/cooking/recipe_tracker
 	/// The parent object holding the recipe tracker.
-	var/holder_uid
+	var/container_uid
 	/// A collection of the classes of steps the recipe can take next.
 	// var/step_flags
 	/// This variable is a little complicated.
 	/// It specifically references recipe_pointer objects each pointing to a different point in a different recipe.
 	var/list/active_recipe_pointers = list()
 	var/completion_lockout = FALSE //Freakin' cheaters...
-	/// List of recipes marked as complete.
-	var/list/completed_list = list()
+	// /// List of recipes marked as complete.
+	// var/list/completed_list = list()
 	/// Tells if steps have been taken for this recipe.
 	var/recipe_started = FALSE
 
-	var/list/matching_recipes
-	var/list/applied_step_data
+	var/list/matching_recipes = list()
+	var/list/applied_step_data = list()
 
 	var/step_reaction_message
 
@@ -24,22 +24,10 @@
 	#ifdef CWJ_DEBUG
 	log_debug("[__PROC__]")
 	#endif
-	holder_uid = container.UID()
-
-	matching_recipes = list()
-	applied_step_data = list()
+	container_uid = container.UID()
 
 	// generate_pointers()
 	// populate_step_flags()
-
-/// Call when a method is done incorrectly that provides a flat debuff to the whole meal.
-/datum/cooking/recipe_tracker/proc/apply_flat_penalty(penalty)
-	return
-	// if(!length(active_recipe_pointers.len))
-	// 	return
-
-	// for (var/datum/cooking/recipe_pointer/pointer in active_recipe_pointers)
-	// 	pointer.tracked_quality -= penalty
 
 /// Generate recipe_pointer objects based on the global list.
 // /datum/cooking/recipe_tracker/proc/generate_pointers()
@@ -47,7 +35,7 @@
 // 	#ifdef CWJ_DEBUG
 // 	log_debug("Called /datum/cooking/recipe_tracker/proc/generate_pointers")
 // 	#endif
-// 	var/obj/item/reagent_containers/cooking/container = locateUID(holder_uid)
+// 	var/obj/item/reagent_containers/cooking/container = locateUID(container_uid)
 
 // 	#ifdef CWJ_DEBUG
 // 	log_debug("Loading all references to [container] of type [container.type] using [container.appliancetype]")
@@ -94,19 +82,22 @@
 	return length(active_recipe_pointers)
 
 /// Wrapper function for analyzing process_item internally.
-/datum/cooking/recipe_tracker/proc/process_item_wrap(obj/used_object)
+/datum/cooking/recipe_tracker/proc/process_item_wrap(mob/user, obj/used)
 	#ifdef CWJ_DEBUG
 	log_debug("/datum/cooking/recipe_tracker/proc/process_item_wrap called!")
 	#endif
 
-	var/response = process_item(used_object)
+	var/response = process_item(user, used)
 	if(response == CWJ_SUCCESS || response == CWJ_COMPLETE || response == CWJ_PARTIAL_SUCCESS)
 		if(!recipe_started)
 			recipe_started = TRUE
 	return response
 
 /// Core function that checks if a object meets all the requirements for certain recipe actions.
-/datum/cooking/recipe_tracker/proc/process_item(obj/used)
+/datum/cooking/recipe_tracker/proc/process_item(mob/user, obj/used)
+	// TODO: I *hate* passing in a user here and want to move all the necessary
+	// UI interactions (selecting which recipe to complete, selecting which step
+	// to perform) to be moved somewhere else entirely.
 	#ifdef CWJ_DEBUG
 	log_debug("Called /datum/cooking/recipe_tracker/proc/process_item")
 	#endif
@@ -116,31 +107,10 @@
 		#endif
 		return CWJ_LOCKOUT
 	var/list/valid_steps = list()
+	var/list/valid_recipes = list()
+	var/list/completed_recipes = list()
 	var/list/valid_unique_id_list = list()
 	var/use_step
-
-	for(var/datum/cooking/recipe/recipe in matching_recipes)
-		var/step_idx = matching_recipes[recipe]
-		var/datum/cooking/recipe_step/step = recipe.steps[step_idx]
-		var/conditions = step.check_conditions_met(used, src)
-		if(conditions == CWJ_CHECK_VALID)
-			LAZYADD(valid_steps[step.type], step)
-			if(!use_step)
-				use_step = step.type
-
-	if(!length(valid_steps))
-		return CWJ_NO_STEPS
-
-	if(length(valid_steps) > 1)
-		log_debug("BLAH BLAH")
-		return CWJ_NO_STEPS
-
-	valid_steps = valid_steps[use_step]
-	var/datum/cooking/recipe_step/sample_step = valid_steps[1]
-	var/step_data = sample_step.follow_step(used, src)
-	applied_step_data += step_data
-	step_reaction_message = step_data["message"]
-	return CWJ_SUCCESS
 
 	//Decide what action is being taken with the item, if any.
 	// for (var/datum/cooking/recipe_pointer/pointer in active_recipe_pointers)
@@ -169,6 +139,30 @@
 	// 	#endif
 	// 	return CWJ_NO_STEPS
 
+	for(var/datum/cooking/recipe/recipe in matching_recipes)
+		var/current_idx = matching_recipes[recipe]
+		var/datum/cooking/recipe_step/next_step
+		var/match = FALSE
+		do
+			next_step = recipe.steps[++current_idx]
+			var/conditions = next_step.check_conditions_met(used, src)
+			if(conditions == CWJ_CHECK_VALID)
+				LAZYADD(valid_steps[next_step.type], next_step)
+				LAZYADD(valid_recipes[next_step.type], recipe)
+				matching_recipes[recipe] = current_idx
+				if(!use_step)
+					use_step = next_step.type
+				match = TRUE
+				break
+		while(next_step && next_step.optional && current_idx <= length(recipe.steps))
+
+		if(match)
+			if(length(recipe.steps) == current_idx)
+				completed_recipes |= recipe
+
+	if(!length(valid_steps))
+		return CWJ_NO_STEPS
+
 	// if(valid_steps.len > 1)
 	// 	completion_lockout = TRUE
 	// 	if(user)
@@ -185,6 +179,37 @@
 	// #ifdef CWJ_DEBUG
 	// log_debug("Use class determined: [use_class]")
 	// #endif
+
+	if(length(valid_steps) > 1)
+		log_debug("BLAH BLAH")
+		return CWJ_NO_STEPS
+
+	valid_steps = valid_steps[use_step]
+	var/datum/cooking/recipe_step/sample_step = valid_steps[1]
+	var/step_data = sample_step.follow_step(used, src)
+	applied_step_data += list(step_data)
+	step_reaction_message = step_data["message"]
+
+	for(var/datum/cooking/recipe in matching_recipes)
+		if(!(recipe in valid_recipes[sample_step.type]))
+			matching_recipes -= recipe
+
+
+	var/datum/cooking/recipe/recipe_to_complete
+	if(length(completed_recipes))
+		if(length(completed_recipes) == 1)
+			recipe_to_complete = completed_recipes[1]
+		else if(user && length(completed_recipes) > 1)
+			completion_lockout = TRUE
+			var/choice = input(user, "There's two things you complete at this juncture!", "Choose One:") in completed_recipes
+			completion_lockout = FALSE
+			if(choice)
+				recipe_to_complete = completed_recipes[choice]
+
+	if(recipe_to_complete)
+		recipe_to_complete.create_product(src)
+
+	return CWJ_SUCCESS
 
 	// valid_steps = valid_steps[use_class]
 	// valid_unique_id_list = valid_unique_id_list[use_class]

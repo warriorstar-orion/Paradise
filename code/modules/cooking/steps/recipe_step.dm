@@ -2,6 +2,7 @@
 	var/max_quality_award
 	var/base_quality_award
 	var/inherited_quality_modifier
+	var/optional = FALSE
 
 	var/step_verb_desc = "UNKNOWN"
 
@@ -12,6 +13,8 @@
 		base_quality_award = options["base"]
 	if("max" in options)
 		max_quality_award = options["max"]
+	if("optional" in options)
+		optional = options["optional"]
 
 /datum/cooking/recipe_step/proc/calculate_quality(obj/added_item, obj/item/reagent_containers/cooking/container, mob/living/user)
 	return 0
