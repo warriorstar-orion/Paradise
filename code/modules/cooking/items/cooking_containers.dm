@@ -28,13 +28,9 @@
 	container_type = OPENCONTAINER
 	var/list/stove_data = list("High" = 0, "Medium" = 0, "Low" = 0) //Record of what stove-cooking has been done on this food.
 	var/list/grill_data = list("High" = 0, "Medium" = 0, "Low" = 0) //Record of what grill-cooking has been done on this food.
-	var/list/oven_data = list("High"=0 , "Medium" = 0, "Low"=0) //Record of what oven-cooking has been done on this food.
+	var/list/oven_data =  list("High" = 0, "Medium" = 0, "Low" = 0) //Record of what oven-cooking has been done on this food.
 
 	new_attack_chain = TRUE
-
-// /obj/item/reagent_containers/cooking/Initialize()
-// 	.=..()
-// 	appearance_flags |= KEEP_TOGETHER
 
 /obj/item/reagent_containers/cooking/Initialize()
 	. = ..()
@@ -86,16 +82,16 @@
 	if(!istype(used))
 		return CWJ_NO_STEPS
 
-	if(!(type in SScooking.recipe_dictionary))
-		return CWJ_NO_STEPS
-
 	if(!tracker)
+		if(!(type in SScooking.recipe_dictionary))
+			return CWJ_NO_STEPS
+
 		tracker = new(src)
 
 		for(var/datum/cooking/recipe/recipe in SScooking.recipe_dictionary[type])
-			tracker.matching_recipes[recipe] = 0
+			tracker.matching_recipe_steps[recipe] = 0
 
-		if(!length(tracker.matching_recipes))
+		if(!length(tracker.matching_recipe_steps))
 			qdel(tracker)
 			return CWJ_NO_STEPS
 

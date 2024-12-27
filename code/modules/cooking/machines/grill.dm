@@ -107,6 +107,7 @@
 		var/old_timestamp = cooking_timestamp[input]
 		switch(temperature[input])
 			if("Low")
+				#warn kill spawns
 				spawn(CWJ_BURN_TIME_LOW)
 					if(cooking_timestamp[input] == old_timestamp)
 						handle_burning(input)
@@ -346,10 +347,7 @@
 	else
 		container.grill_data[temperature[input]] = reference_time
 
-	if(user && user.Adjacent(src))
-		container.process_item(src, user, send_message=TRUE)
-	else
-		container.process_item(src, user)
+	container.new_process_item(user, src)
 
 /obj/machinery/cooking/grill/update_icon()
 	..()

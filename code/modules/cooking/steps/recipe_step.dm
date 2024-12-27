@@ -33,7 +33,7 @@
 		return min(raw_quality, max_quality_award)
 	return raw_quality
 
-/datum/cooking/recipe_step/proc/follow_step(obj/added_item, obj/item/reagent_containers/cooking/container)
+/datum/cooking/recipe_step/proc/follow_step(obj/added_item, datum/cooking/recipe_tracker/tracker, mob/user)
 	return CWJ_FOLLOW_STEP_SENTINEL
 
 //Special function to check if the step has been satisfied. Sometimed just following the step is enough, but not always.

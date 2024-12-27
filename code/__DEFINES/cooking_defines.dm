@@ -52,6 +52,7 @@
 #define CWJ_CHECK_INVALID	0
 #define CWJ_CHECK_VALID		1
 #define CWJ_CHECK_FULL		2 //For reagents, nothing can be added to
+#define CWJ_CHECK_SILENT	3
 
 //Cooking container types
 #define PLATE 			"plate"
@@ -98,5 +99,6 @@
 #define CWJ_QUALITY_LEGENDARY		1.8
 #define CWJ_QUALITY_ELDRITCH		2.0
 
-#define CWJ_ADD_ITEM(item_type, options...)				new/datum/cooking/recipe_step/add_item(item_type, list(##options))
-#define CWJ_USE_GRILL(temperature, time, options...)	new/datum/cooking/recipe_step/use_grill(temperature, time, list(##options))
+#define CWJ_ADD_ITEM(item_type, options...)					new/datum/cooking/recipe_step/add_item(item_type, list(##options))
+#define CWJ_ADD_REAGENT(reagent_name, amount, options...)	new/datum/cooking/recipe_step/add_reagent(reagent_name, amount, list(##options))
+#define CWJ_USE_GRILL(temperature, time, options...)		new/datum/cooking/recipe_step/use_grill(temperature, time, list(##options))

@@ -15,7 +15,12 @@
 	/// Tells if steps have been taken for this recipe.
 	var/recipe_started = FALSE
 
-	var/list/matching_recipes = list()
+	/// A list of recipe types to the index of the latest step we know we've gotten to.
+	var/list/matching_recipe_steps = list()
+	/// A list of recipe types to list of step indices we know we've performed.
+	/// Ensures we don't perform e.g. optional steps we skipped on completion.
+	var/list/applied_recipe_steps = list()
+
 	var/list/applied_step_data = list()
 
 	var/step_reaction_message
@@ -110,6 +115,7 @@
 	var/list/valid_recipes = list()
 	var/list/completed_recipes = list()
 	var/list/valid_unique_id_list = list()
+	var/list/silent_recipes = list()
 	var/use_step
 
 	//Decide what action is being taken with the item, if any.
@@ -139,9 +145,10 @@
 	// 	#endif
 	// 	return CWJ_NO_STEPS
 
-	for(var/datum/cooking/recipe/recipe in matching_recipes)
-		var/current_idx = matching_recipes[recipe]
+	for(var/datum/cooking/recipe/recipe in matching_recipe_steps)
+		var/current_idx = matching_recipe_steps[recipe]
 		var/datum/cooking/recipe_step/next_step
+
 		var/match = FALSE
 		do
 			next_step = recipe.steps[++current_idx]
@@ -149,18 +156,23 @@
 			if(conditions == CWJ_CHECK_VALID)
 				LAZYADD(valid_steps[next_step.type], next_step)
 				LAZYADD(valid_recipes[next_step.type], recipe)
-				matching_recipes[recipe] = current_idx
+				matching_recipe_steps[recipe] = current_idx
 				if(!use_step)
 					use_step = next_step.type
 				match = TRUE
 				break
+			else if(conditions == CWJ_CHECK_SILENT)
+				LAZYADD(silent_recipes, recipe)
 		while(next_step && next_step.optional && current_idx <= length(recipe.steps))
 
 		if(match)
+			LAZYADD(applied_recipe_steps[recipe], current_idx)
 			if(length(recipe.steps) == current_idx)
 				completed_recipes |= recipe
 
 	if(!length(valid_steps))
+		if(length(silent_recipes))
+			return CWJ_PARTIAL_SUCCESS
 		return CWJ_NO_STEPS
 
 	// if(valid_steps.len > 1)
@@ -190,10 +202,9 @@
 	applied_step_data += list(step_data)
 	step_reaction_message = step_data["message"]
 
-	for(var/datum/cooking/recipe in matching_recipes)
+	for(var/datum/cooking/recipe in matching_recipe_steps)
 		if(!(recipe in valid_recipes[sample_step.type]))
-			matching_recipes -= recipe
-
+			matching_recipe_steps -= recipe
 
 	var/datum/cooking/recipe/recipe_to_complete
 	if(length(completed_recipes))
@@ -207,7 +218,10 @@
 				recipe_to_complete = completed_recipes[choice]
 
 	if(recipe_to_complete)
-		recipe_to_complete.create_product(src)
+		var/obj/container = locateUID(container_uid)
+		var/result = recipe_to_complete.create_product(src)
+		if(user && user.Adjacent(container))
+			to_chat(user, "<span class='notice'>You have completed \a [result]!</span>")
 
 	return CWJ_SUCCESS
 

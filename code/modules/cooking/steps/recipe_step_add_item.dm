@@ -1,13 +1,21 @@
+RESTRICT_TYPE(/datum/cooking/recipe_step/add_item)
+
 /datum/cooking/recipe_step/add_item
 	step_verb_desc = "Add item"
 	var/item_type
 	var/exact_path
+	var/skip_reagents = FALSE
+	var/list/exclude_reagents
 
 /datum/cooking/recipe_step/add_item/New(item_type_, options)
 	item_type = item_type_
 
 	if("exact" in options)
 		exact_path = options["exact"]
+	if("skip_reagents" in options)
+		skip_reagents = options["skip_reagents"]
+	if("exclude_reagents" in options)
+		exclude_reagents = options["exclude_reagents"]
 
 	..(options)
 
@@ -47,6 +55,6 @@
 		else
 			added_item.forceMove(container)
 
-		return list(message = "You add \the [added_item] to \the [container].")
+		return list(message = "You add \the [added_item] to \the [container].", target = added_item.UID())
 
 	return list(message = "Something went real fucking wrong here!")
