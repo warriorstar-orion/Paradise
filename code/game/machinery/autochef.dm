@@ -31,9 +31,9 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 	VAR_PRIVATE/datum/cooking/recipe/current_recipe
 
 	VAR_PRIVATE/static/list/ingredient_locating_steps = list(
-		CWJ_ADD_ITEM,
-		CWJ_ADD_REAGENT,
-		CWJ_ADD_PRODUCE,
+		// CWJ_ADD_ITEM,
+		// CWJ_ADD_REAGENT,
+		// CWJ_ADD_PRODUCE,
 	)
 
 	COOLDOWN_DECLARE(next_step_cd)
@@ -133,9 +133,9 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 		if(AUTOCHEF_CONTAINER_LOCATED)
 			atom_say("Locating ingredients.")
 
-			for(var/list/step in current_recipe.step_builder)
-				if(step[1] in ingredient_locating_steps)
-					ingredients_searching += step[2]
+			// for(var/list/step in current_recipe.step_builder)
+			// 	if(step[1] in ingredient_locating_steps)
+			// 		ingredients_searching += step[2]
 
 			current_state = AUTOCHEF_INGREDIENTS_LOCATING
 		if(AUTOCHEF_INGREDIENTS_LOCATING)

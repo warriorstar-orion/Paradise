@@ -1,7 +1,9 @@
+#define CWJ_ADD_ITEM(item, args...) new/datum/cooking/recipe_step/add_item(item, list(##args))
+
 /// A cooking step that involves adding an item to the food. Is based on item
 /// type. This basically deletes the food used on it.
 /datum/cooking/recipe_step/add_item
-	class = CWJ_ADD_ITEM
+	// class = CWJ_ADD_ITEM
 
 	/// Item required for the recipe step.
 	var/required_item_type
@@ -14,20 +16,18 @@
 
 //item_type: The type path of the object we are looking for.
 //our_recipe: The parent recipe object,
-/datum/cooking/recipe_step/add_item/New(item_type, datum/cooking/recipe/our_recipe)
+/datum/cooking/recipe_step/add_item/New(obj/item/item_type, datum/cooking/recipe/our_recipe)
 	#ifdef CWJ_DEBUG
 	if(!ispath(item_type, /obj/item))
 		log_debug("/datum/cooking/recipe_step/add_item/New(): item [item_type] is not a valid path")
 	#endif
 
-	var/obj/item/example_item = new item_type()
-	if(example_item)
-		desc = "Add \a [example_item] into the recipe."
+	desc = "Add \a [item_type::name] into the recipe."
 
-		required_item_type = item_type
-		group_identifier = item_type
-		tooltip_image = image(example_item.icon, icon_state=example_item.icon_state)
-		QDEL_NULL(example_item)
+	required_item_type = item_type
+	group_identifier = item_type
+	tooltip_image = image(item_type::icon, icon_state=item_type::icon_state)
+
 	#ifdef CWJ_DEBUG
 	else
 		log_debug("/datum/cooking/recipe_step/add_item/New(): item [item_type] couldn't be created.")

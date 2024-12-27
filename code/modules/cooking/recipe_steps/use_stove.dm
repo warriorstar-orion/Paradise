@@ -1,5 +1,5 @@
 /datum/cooking/recipe_step/use_stove
-	class = CWJ_USE_STOVE
+	// class = CWJ_USE_STOVE
 	auto_complete_enabled = TRUE
 	var/time
 	var/heat

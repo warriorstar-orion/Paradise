@@ -1,6 +1,6 @@
 /// A cooking step that involves using grown foods.
 /datum/cooking/recipe_step/add_produce
-	class = CWJ_ADD_PRODUCE
+	// class = CWJ_ADD_PRODUCE
 	var/required_produce_type
 	var/base_potency
 	var/reagent_skip = FALSE

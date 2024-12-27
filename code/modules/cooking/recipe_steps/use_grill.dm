@@ -1,6 +1,6 @@
 //A cooking step that involves adding a reagent to the food.
 /datum/cooking/recipe_step/use_grill
-	class=CWJ_USE_GRILL
+	// class=CWJ_USE_GRILL
 	auto_complete_enabled = TRUE
 	var/time
 	var/heat
@@ -9,10 +9,7 @@
 //amount: The amount of the required reagent that needs to be added.
 //base_quality_award: The quality awarded by following this step.
 //our_recipe: The parent recipe object,
-/datum/cooking/recipe_step/use_grill/New(var/set_heat, var/set_time, var/datum/cooking/recipe/our_recipe)
-
-
-
+/datum/cooking/recipe_step/use_grill/New(set_heat, set_time, datum/cooking/recipe/our_recipe)
 	time = set_time
 	heat = set_heat
 
@@ -21,38 +18,30 @@
 
 	..(our_recipe)
 
-
-/datum/cooking/recipe_step/use_grill/check_conditions_met(var/obj/used_item, var/datum/cooking/recipe_tracker/tracker)
-
+/datum/cooking/recipe_step/use_grill/check_conditions_met(obj/used_item, datum/cooking/recipe_tracker/tracker)
 	if(!istype(used_item, /obj/machinery/cooking/grill))
 		return CWJ_CHECK_INVALID
 
 	return CWJ_CHECK_VALID
 
 //Reagents are calculated prior to object creation
-/datum/cooking/recipe_step/use_grill/calculate_quality(var/obj/used_item, var/datum/cooking/recipe_tracker/tracker)
+/datum/cooking/recipe_step/use_grill/calculate_quality(obj/used_item, datum/cooking/recipe_tracker/tracker)
 	var/obj/item/reagent_containers/cooking/container = locateUID(tracker.holder_uid)
-
 	var/obj/machinery/cooking/grill/our_grill = used_item
-
-
 	var/bad_cooking = 0
 	for (var/key in container.grill_data)
 		if (heat != key)
 			bad_cooking += container.grill_data[key]
 
 	bad_cooking = round(bad_cooking/(5 SECONDS))
-
 	var/good_cooking = round(time/(3 SECONDS)) - bad_cooking + our_grill.quality_mod
 
 	return clamp_quality(good_cooking)
 
-
-/datum/cooking/recipe_step/use_grill/follow_step(var/obj/used_item, var/datum/cooking/recipe_tracker/tracker)
+/datum/cooking/recipe_step/use_grill/follow_step(obj/used_item, datum/cooking/recipe_tracker/tracker)
 	return CWJ_SUCCESS
 
-/datum/cooking/recipe_step/use_grill/is_complete(var/obj/used_item, var/datum/cooking/recipe_tracker/tracker)
-
+/datum/cooking/recipe_step/use_grill/is_complete(obj/used_item, datum/cooking/recipe_tracker/tracker)
 	var/obj/item/reagent_containers/cooking/container = locateUID(tracker.holder_uid)
 
 	if(container.grill_data[heat] >= time)

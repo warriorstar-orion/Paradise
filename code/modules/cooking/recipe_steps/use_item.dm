@@ -1,6 +1,6 @@
 /// A cooking step that involves using an item on the food.
 /datum/cooking/recipe_step/use_item
-	class = CWJ_USE_ITEM
+	// class = CWJ_USE_ITEM
 
 	var/required_item_type
 	var/exact_path = FALSE //Tests if the item has to be the EXACT ITEM PATH, or just a child of the item path.
@@ -8,20 +8,17 @@
 //item_type: The type path of the object we are looking for.
 //base_quality_award: The quality awarded by following this step.
 //our_recipe: The parent recipe object
-/datum/cooking/recipe_step/use_item/New(var/item_type, var/datum/cooking/recipe/our_recipe)
+/datum/cooking/recipe_step/use_item/New(obj/item/item_type, datum/cooking/recipe/our_recipe)
 	#ifdef CWJ_DEBUG
 	if(!ispath(item_type))
 		log_debug("/datum/cooking/recipe_step/add_item/New(): item [item_type] is not a valid path")
 	#endif
 
-	var/example_item = new item_type()
-	if(example_item)
-		desc = "Apply \a [example_item]."
+	desc = "Apply \a [item_type::name]."
 
-		required_item_type = item_type
-		group_identifier = item_type
+	required_item_type = item_type
+	group_identifier = item_type
 
-		QDEL_NULL(example_item)
 	#ifdef CWJ_DEBUG
 	else
 		log_debug("/datum/cooking/recipe_step/add_item/New(): item [item_type] couldn't be created.")

@@ -68,17 +68,34 @@
 		to_chat(user, "The [src] is full. Empty its contents first.")
 		return ITEM_INTERACT_COMPLETE
 
-	process_item(used, user, send_message = istype(user))
-	// process_item_signal(used, user)
+	var/result = new_process_item(used)
+	if(result == CWJ_NO_STEPS)
+		to_chat(user, "You don't know what you'd begin to make with this.")
+	else if(result == CWJ_SUCCESS)
+
+
 	return ITEM_INTERACT_COMPLETE
 
-/obj/item/reagent_containers/cooking/proc/process_item_signal(mob/user, obj/item/used)
-	if(!tracker)
-		if(SEND_SIGNAL(src, COMSIG_COOKING_RECIPE_BEGIN, used) & COMPONENT_COOKING_NO_RECIPE)
-			to_chat(user, "You don't know what you'd begin to make with this.")
-			return
+/obj/item/reagent_containers/cooking/proc/new_process_item(obj/used)
+	if(!istype(used))
+		return CWJ_NO_STEPS
 
+	if(!(type in SScooking.recipe_dictionary))
+		return CWJ_NO_STEPS
+
+	if(!tracker)
 		tracker = new(src)
+		var/list/matching_recipes = list()
+		for(var/datum/cooking/recipe/recipe in SScooking.recipe_dictionary[type])
+			var/datum/cooking/recipe_step/first_step = recipe.steps[1]
+			if(first_step.check_conditions_met(used, tracker) == CWJ_CHECK_VALID)
+				matching_recipes[recipe] = 1
+
+		if(length(matching_recipes))
+			return CWJ_SUCCESS
+		else
+			qdel(tracker)
+			return CWJ_NO_STEPS
 
 /obj/item/reagent_containers/cooking/standard_pour_into(mob/user, atom/target)
 	#ifdef CWJ_DEBUG
@@ -132,10 +149,10 @@
 		if(CWJ_NO_STEPS)
 			if(send_message)
 				to_chat(user, "It doesn't seem like you can create a meal from that. Yet.")
-			if(lower_quality_on_fail)
-				for (var/datum/cooking/recipe_pointer/pointer in tracker.active_recipe_pointers)
-					#warn oh god
-					pointer?:tracked_quality -= lower_quality_on_fail
+			// if(lower_quality_on_fail)
+			// 	for (var/datum/cooking/recipe_pointer/pointer in tracker.active_recipe_pointers)
+			// 		#warn oh god
+			// 		pointer?:tracked_quality -= lower_quality_on_fail
 		if(CWJ_CHOICE_CANCEL)
 			if(send_message)
 				to_chat(user, "You decide against cooking with the [src].")

@@ -87,7 +87,9 @@
 		list(CWJ_ADD_ITEM, /obj/item/food/dough),
 		list(CWJ_ADD_PRODUCE, /obj/item/food/grown/banana),
 		list(CWJ_ADD_PRODUCE, /obj/item/food/grown/banana),
+		list(CWJ_ADD_PRODUCE_OPTIONAL, /obj/item/food/grown/banana),
 		list(CWJ_ADD_REAGENT, "milk", 5),
+		list(CWJ_ADD_REAGENT_OPTIONAL, "sugar", 5),
 		list(CWJ_USE_OVEN, J_MED, 20 SECONDS)
 	)
 

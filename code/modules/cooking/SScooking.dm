@@ -21,13 +21,15 @@ PROCESSING_SUBSYSTEM_DEF(cooking)
 	if(!istype(source) || !istype(used))
 		return COMPONENT_COOKING_NO_RECIPE
 
-	if(!(source.appliancetype in recipe_dictionary))
+	if(!(source.type in recipe_dictionary))
 		return COMPONENT_COOKING_NO_RECIPE
 
-	var/signals_registered = FALSE
-	for(var/datum/cooking/recipe/recipe in recipe_dictionary[source.appliancetype])
+	var/list/matching_recipes = list()
+	source.tracker = new(source)
+	for(var/datum/cooking/recipe/recipe in recipe_dictionary[source.type])
+		var/datum/cooking/recipe_step/first_step = recipe.steps[1]
+		if(first_step.check_conditions_met(used, source.tracker) == CWJ_CHECK_VALID)
+			matching_recipes[recipe] = 1
 
-		return
-
-	if(!signals_registered)
+	if(!length(matching_recipes))
 		return COMPONENT_COOKING_NO_RECIPE

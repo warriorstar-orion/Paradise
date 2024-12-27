@@ -1,14 +1,14 @@
 //A step in a recipe, whether optional or required
 /datum/cooking/recipe_step
 	/// The classification of the step involved.
-	var/class = CWJ_USE_OTHER
+	// var/class = CWJ_USE_OTHER
 	/// Different for every type of recipe.
 	var/group_identifier = "None"
 
 	var/image/tooltip_image = null
 
 	/// The parent recipe of this particular step. Created on initialization with New()
-	var/parent_recipe
+	// var/parent_recipe
 	/// A description of the step
 	var/desc
 	/// A custom description of the resulting quality on a successful completion.
@@ -26,7 +26,7 @@
 	/// If the step can be completed without any further input.
 	var/auto_complete_enabled = FALSE
 
-/datum/cooking/recipe_step/New(var/datum/cooking/recipe/our_recipe)
+/datum/cooking/recipe_step/New()
 	parent_recipe = our_recipe
 
 	if(!tooltip_image)

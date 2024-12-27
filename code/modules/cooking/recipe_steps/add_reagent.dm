@@ -1,6 +1,6 @@
 //A cooking step that involves adding a reagent to the food.
 /datum/cooking/recipe_step/add_reagent
-	class=CWJ_ADD_REAGENT
+	// class=CWJ_ADD_REAGENT
 	auto_complete_enabled = TRUE
 	var/expected_total
 	var/required_reagent_id
