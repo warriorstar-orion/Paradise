@@ -15,13 +15,19 @@
 	/// Tells if steps have been taken for this recipe.
 	var/recipe_started = FALSE
 
+	var/list/matching_recipes
+	var/list/applied_step_data
+
+	var/step_reaction_message
+
 /datum/cooking/recipe_tracker/New(obj/item/reagent_containers/cooking/container)
 	#ifdef CWJ_DEBUG
 	log_debug("[__PROC__]")
 	#endif
 	holder_uid = container.UID()
 
-
+	matching_recipes = list()
+	applied_step_data = list()
 
 	// generate_pointers()
 	// populate_step_flags()
@@ -88,19 +94,19 @@
 	return length(active_recipe_pointers)
 
 /// Wrapper function for analyzing process_item internally.
-/datum/cooking/recipe_tracker/proc/process_item_wrap(obj/used_object, mob/user)
+/datum/cooking/recipe_tracker/proc/process_item_wrap(obj/used_object)
 	#ifdef CWJ_DEBUG
 	log_debug("/datum/cooking/recipe_tracker/proc/process_item_wrap called!")
 	#endif
 
-	var/response = process_item(used_object, user)
+	var/response = process_item(used_object)
 	if(response == CWJ_SUCCESS || response == CWJ_COMPLETE || response == CWJ_PARTIAL_SUCCESS)
 		if(!recipe_started)
 			recipe_started = TRUE
 	return response
 
 /// Core function that checks if a object meets all the requirements for certain recipe actions.
-/datum/cooking/recipe_tracker/proc/process_item(obj/used_object, mob/user)
+/datum/cooking/recipe_tracker/proc/process_item(obj/used)
 	#ifdef CWJ_DEBUG
 	log_debug("Called /datum/cooking/recipe_tracker/proc/process_item")
 	#endif
@@ -111,7 +117,30 @@
 		return CWJ_LOCKOUT
 	var/list/valid_steps = list()
 	var/list/valid_unique_id_list = list()
-	var/use_class
+	var/use_step
+
+	for(var/datum/cooking/recipe/recipe in matching_recipes)
+		var/step_idx = matching_recipes[recipe]
+		var/datum/cooking/recipe_step/step = recipe.steps[step_idx]
+		var/conditions = step.check_conditions_met(used, src)
+		if(conditions == CWJ_CHECK_VALID)
+			LAZYADD(valid_steps[step.type], step)
+			if(!use_step)
+				use_step = step.type
+
+	if(!length(valid_steps))
+		return CWJ_NO_STEPS
+
+	if(length(valid_steps) > 1)
+		log_debug("BLAH BLAH")
+		return CWJ_NO_STEPS
+
+	valid_steps = valid_steps[use_step]
+	var/datum/cooking/recipe_step/sample_step = valid_steps[1]
+	var/step_data = sample_step.follow_step(used, src)
+	applied_step_data += step_data
+	step_reaction_message = step_data["message"]
+	return CWJ_SUCCESS
 
 	//Decide what action is being taken with the item, if any.
 	// for (var/datum/cooking/recipe_pointer/pointer in active_recipe_pointers)

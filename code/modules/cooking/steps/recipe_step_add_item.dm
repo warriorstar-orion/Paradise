@@ -1,9 +1,13 @@
 /datum/cooking/recipe_step/add_item
+	step_verb_desc = "Add item"
 	var/item_type
 	var/exact_path
 
 /datum/cooking/recipe_step/add_item/New(item_type_, options)
 	item_type = item_type_
+
+	if("exact" in options)
+		exact_path = options["exact"]
 
 	..(options)
 
@@ -33,12 +37,16 @@
 	log_debug("Called: /datum/cooking/recipe_step/add_item/follow_step")
 	#endif
 	var/obj/item/container = locateUID(tracker.holder_uid)
+	if(!user && ismob(added_item.loc))
+		user = added_item.loc
 	if(container)
-		if(istype(user))
+		if(istype(user) && user.Adjacent(container))
 			if(user.drop_item(added_item))
 				added_item.forceMove(container)
 			#warn what if you can't drop it
 		else
 			added_item.forceMove(container)
 
-	return CWJ_SUCCESS
+		return list(message = "You add \the [added_item] to \the [container].")
+
+	return list(message = "Something went real fucking wrong here!")

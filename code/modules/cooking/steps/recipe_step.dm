@@ -3,6 +3,8 @@
 	var/base_quality_award
 	var/inherited_quality_modifier
 
+	var/step_verb_desc = "UNKNOWN"
+
 /datum/cooking/recipe_step/New(options)
 	if("qmod" in options)
 		inherited_quality_modifier = options["qmod"]
@@ -29,7 +31,7 @@
 	return raw_quality
 
 /datum/cooking/recipe_step/proc/follow_step(obj/added_item, obj/item/reagent_containers/cooking/container)
-	return CWJ_SUCCESS
+	return CWJ_FOLLOW_STEP_SENTINEL
 
 //Special function to check if the step has been satisfied. Sometimed just following the step is enough, but not always.
 /datum/cooking/recipe_step/proc/is_complete(obj/added_item, datum/cooking/recipe_tracker/tracker)

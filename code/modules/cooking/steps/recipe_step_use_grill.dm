@@ -1,4 +1,5 @@
 /datum/cooking/recipe_step/use_grill
+	step_verb_desc = "Use grill"
 	var/time
 	var/temperature
 

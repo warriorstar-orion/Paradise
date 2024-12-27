@@ -71,8 +71,11 @@
 	var/result = new_process_item(used)
 	if(result == CWJ_NO_STEPS)
 		to_chat(user, "You don't know what you'd begin to make with this.")
-	else if(result == CWJ_SUCCESS)
+	if(result == CWJ_SUCCESS)
+		if(tracker.step_reaction_message)
+			to_chat(user, tracker.step_reaction_message)
 
+		update_appearance(UPDATE_ICON)
 
 	return ITEM_INTERACT_COMPLETE
 
@@ -85,17 +88,17 @@
 
 	if(!tracker)
 		tracker = new(src)
-		var/list/matching_recipes = list()
+
 		for(var/datum/cooking/recipe/recipe in SScooking.recipe_dictionary[type])
 			var/datum/cooking/recipe_step/first_step = recipe.steps[1]
 			if(first_step.check_conditions_met(used, tracker) == CWJ_CHECK_VALID)
-				matching_recipes[recipe] = 1
+				tracker.matching_recipes[recipe] = 1
 
-		if(length(matching_recipes))
-			return CWJ_SUCCESS
-		else
+		if(!length(tracker.matching_recipes))
 			qdel(tracker)
 			return CWJ_NO_STEPS
+
+	return tracker.process_item_wrap(used)
 
 /obj/item/reagent_containers/cooking/standard_pour_into(mob/user, atom/target)
 	#ifdef CWJ_DEBUG
