@@ -43,3 +43,6 @@
 /datum/cooking/recipe_step/proc/get_human_readable_instruction()
 	SHOULD_CALL_PARENT(FALSE)
 	return ""
+
+/datum/cooking/recipe_step/proc/equals(datum/cooking/recipe_step/other)
+	return FALSE

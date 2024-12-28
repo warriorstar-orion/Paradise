@@ -1,5 +1,9 @@
 RESTRICT_TYPE(/datum/cooking/recipe_step/add_item)
 
+// TODO for v2: See if a "count" option can be added to reduce
+// the need for both longer recipe step lists, and whatever
+// fuckery I eventually come up with for combining equivalent
+// steps for generating instructions for the wiki.
 /datum/cooking/recipe_step/add_item
 	step_verb_desc = "Add item"
 	var/obj/item_type
@@ -66,3 +70,10 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/add_item)
 
 /datum/cooking/recipe_step/add_item/get_human_readable_instruction()
 	return "Add \a [item_type::name]."
+
+/datum/cooking/recipe_step/add_item/equals(datum/cooking/recipe_step/other)
+	var/datum/cooking/recipe_step/add_item/other_add_item = other
+	if(!istype(other_add_item))
+		return FALSE
+
+	return item_type == other_add_item.item_type && exact_path == other_add_item.exact_path && optional == other_add_item.optional
