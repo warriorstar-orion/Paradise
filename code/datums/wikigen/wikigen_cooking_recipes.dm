@@ -9,6 +9,7 @@
 		for(var/datum/cooking/recipe/recipe in GLOB.cwj_recipe_dictionary[recipe_container_type])
 			var/obj/output_type = recipe.product_type
 			output += "[output_type::name]:\n"
+
 			for(var/i in 1 to length(recipe.steps))
 				var/datum/cooking/recipe_step/step = recipe.steps[i]
 				output += "[i].[step.optional ? " (Optional)" : ""] [step.get_human_readable_instruction()]\n"
