@@ -127,6 +127,10 @@
 		// showing up as if the player is trying to step through a recipe.
 		return
 
+	if(reaction_status == CWJ_NO_STEPS && !tracker.recipe_started)
+		to_chat(user, "You don't know what you'd begin to make with this.")
+		return
+
 	switch(reaction_status)
 		if(CWJ_NO_RECIPES)
 			to_chat(user, "You don't know what you'd begin to make with this.")

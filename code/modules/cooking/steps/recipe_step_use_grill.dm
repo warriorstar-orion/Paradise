@@ -7,6 +7,8 @@
 	time = time_
 	temperature = temperature_
 
+	..(options)
+
 /datum/cooking/recipe_step/use_grill/check_conditions_met(obj/used_item, datum/cooking/recipe_tracker/tracker)
 	var/obj/item/reagent_containers/cooking/container = locateUID(tracker.container_uid)
 

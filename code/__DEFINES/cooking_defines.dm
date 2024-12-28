@@ -100,5 +100,7 @@
 #define CWJ_QUALITY_ELDRITCH		2.0
 
 #define CWJ_ADD_ITEM(item_type, options...)					new/datum/cooking/recipe_step/add_item(item_type, list(##options))
+#define CWJ_ADD_PRODUCE(item_type, options...)				new/datum/cooking/recipe_step/add_produce(item_type, list(##options))
 #define CWJ_ADD_REAGENT(reagent_name, amount, options...)	new/datum/cooking/recipe_step/add_reagent(reagent_name, amount, list(##options))
 #define CWJ_USE_GRILL(temperature, time, options...)		new/datum/cooking/recipe_step/use_grill(temperature, time, list(##options))
+#define CWJ_USE_OVEN(temperature, time, options...)		new/datum/cooking/recipe_step/use_grill(temperature, time, list(##options))
