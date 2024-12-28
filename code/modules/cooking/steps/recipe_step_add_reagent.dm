@@ -1,3 +1,5 @@
+RESTRICT_TYPE(/datum/cooking/recipe_step/add_reagent)
+
 //A cooking step that involves adding a reagent to the food.
 /datum/cooking/recipe_step/add_reagent
 	var/expected_total

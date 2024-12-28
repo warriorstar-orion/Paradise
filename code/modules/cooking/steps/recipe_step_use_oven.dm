@@ -1,3 +1,5 @@
+RESTRICT_TYPE(/datum/cooking/recipe_step/use_oven)
+
 /datum/cooking/recipe_step/use_oven
 	step_verb_desc = "Use oven"
 	var/time

@@ -1,3 +1,5 @@
+RESTRICT_TYPE(/datum/cooking/recipe_step/use_grill)
+
 /datum/cooking/recipe_step/use_grill
 	step_verb_desc = "Use grill"
 	var/time

@@ -1886,6 +1886,7 @@
 #include "code\modules\cooking\steps\recipe_step_use_grill.dm"
 #include "code\modules\cooking\steps\recipe_step_use_oven.dm"
 #include "code\modules\cooking\recipes\stable\burger.dm"
+#include "code\modules\cooking\steps\recipe_step_use_stove.dm"
 #include "code\modules\countdown\countdown.dm"
 #include "code\modules\crafting\craft.dm"
 #include "code\modules\crafting\guncrafting.dm"
