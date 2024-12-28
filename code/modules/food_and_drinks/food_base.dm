@@ -52,7 +52,6 @@
 	var/list/tastes  // for example list("crisps" = 2, "salt" = 1)
 
 	/// Variables affected by cooking
-	var/cooking_description_modifier
 	var/food_descriptor
 	var/food_quality = 1
 	var/food_tier
@@ -138,8 +137,6 @@
 	#ifdef CWJ_DEBUG
 	. += "<span class='notice'>\nThe food's level of quality is [food_quality]</span>" //Visual number should only be visible when debugging
 	#endif
-	if(cooking_description_modifier)
-		. += cooking_description_modifier
 
 	. += food_descriptor
 

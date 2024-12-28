@@ -68,3 +68,7 @@
 	if(resulting_total >= amount)
 		return TRUE
 	return FALSE
+
+/datum/cooking/recipe_step/add_reagent/get_human_readable_instruction()
+	var/datum/reagent/reagent = GLOB.chemical_reagents_list[reagent_id]
+	return "Add [amount] unit[amount > 1 ? "s" : ""] of [reagent.name]."

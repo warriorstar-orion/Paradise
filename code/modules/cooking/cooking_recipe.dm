@@ -48,8 +48,6 @@ GLOBAL_LIST_EMPTY(cwj_recipe_dictionary)
 
 	var/icon_image_file
 
-	var/quality_description //A decorator description tacked onto items when the recipe is completed. Used in future recipes. "The Bread looks Handmade."
-
 	/// Determines if we entirely replace the contents of the food product with the slurry that goes into it.
 	var/replace_reagents = FALSE
 
@@ -57,17 +55,6 @@ GLOBAL_LIST_EMPTY(cwj_recipe_dictionary)
 	var/appear_in_default_catalog = TRUE
 
 	var/list/steps
-
-// //Adds to the recipe description for every step of the recipe
-// /datum/cooking/recipe/proc/propagate_step_description()
-// 	var/qualifier = "> "
-// 	if(last_created_step.flags & CWJ_IS_OPTIONAL)
-// 		qualifier = ">> (Optional) "
-// 	if(last_created_step.flags & CWJ_IS_OPTION_CHAIN)
-// 		qualifier = ">> (Option Chain) "
-// 	if(last_created_step.flags & CWJ_IS_EXCLUSIVE)
-// 		qualifier = ">> (Exclusive Option) "
-// 	recipe_guide +="<br>[qualifier][last_created_step.desc]"
 
 /datum/cooking/recipe/proc/create_product(datum/cooking/recipe_tracker/tracker)
 	var/obj/item/reagent_containers/cooking/container = locateUID(tracker.container_uid)
@@ -89,7 +76,6 @@ GLOBAL_LIST_EMPTY(cwj_recipe_dictionary)
 		var/datum/cooking/recipe_step/recipe_step = steps[current_index]
 
 		// Filter out reagents based on settings
-		// TODO: Horrible snowflaking
 		var/datum/cooking/recipe_step/add_reagent/add_reagent_step = recipe_step
 		if(istype(add_reagent_step))
 			var/amount_to_remove = add_reagent_step.amount * (1 - add_reagent_step.remain_percent)
@@ -101,19 +87,6 @@ GLOBAL_LIST_EMPTY(cwj_recipe_dictionary)
 		var/obj/added_item = locateUID(target_uid)
 		if(added_item)
 			tracked_quality += recipe_step.calculate_quality(added_item, container)
-
-	// if(GLOB.cwj_step_dictionary_ordered["[CWJ_ADD_REAGENT]"])
-	// 	for(var/id in pointer.steps_taken)
-	// 		if(!GLOB.cwj_step_dictionary_ordered["[CWJ_ADD_REAGENT]"][id])
-	// 			continue
-	// 		var/datum/cooking/recipe_step/add_reagent/active_step = GLOB.cwj_step_dictionary_ordered["[CWJ_ADD_REAGENT]"][id]
-	// 		var/amount_to_remove = active_step.required_reagent_amount * (1 - active_step.remain_percent)
-	// 		if(!amount_to_remove)
-	// 			continue
-	// 		#ifdef CWJ_DEBUG
-	// 		log_debug("/recipe/proc/create_product: Removing [amount_to_remove] units of id [active_step.required_reagent_id] from [container]")
-	// 		#endif
-	// 		container.reagents.remove_reagent(active_step.required_reagent_id, amount_to_remove, safety = 1)
 
 	if(product_type) // Make a regular item
 		if(container.reagents.total_volume)
@@ -206,13 +179,6 @@ GLOBAL_LIST_EMPTY(cwj_recipe_dictionary)
 
 		var/reagent_quality = calculate_reagent_quality(tracker)
 
-
-	// 	//Produce Item descriptions based on the steps taken
-	// 	var/cooking_description_modifier = ""
-	// 	for(var/id in pointer.steps_taken)
-	// 		if(pointer.steps_taken[id] != "skip")
-	// 			cooking_description_modifier += "[pointer.steps_taken[id]]\n"
-
 		for(var/i = 0; i < product_count; i++)
 			var/obj/item/new_item = new product_type(container)
 			#ifdef CWJ_DEBUG
@@ -232,8 +198,6 @@ GLOBAL_LIST_EMPTY(cwj_recipe_dictionary)
 			var/obj/item/food/food_item = new_item
 			if(istype(food_item))
 				food_item.food_quality = tracked_quality + reagent_quality
-				#warn add this back at some point if it looks good
-				// food_item.cooking_description_modifier = cooking_description_modifier
 				food_item.get_food_tier()
 
 	else
@@ -248,8 +212,8 @@ GLOBAL_LIST_EMPTY(cwj_recipe_dictionary)
 
 	qdel(slurry)
 
-// //Extra Reagents in a recipe take away recipe quality for every extra unit added to the concoction.
-// //Reagents are calculated in two areas. Here and /datum/cooking/recipe_step/add_reagent/calculate_quality
+// Extra Reagents in a recipe take away recipe quality for every extra unit added to the concoction.
+// Reagents are calculated in two areas: here and [/datum/cooking/recipe_step/add_reagent/proc/calculate_quality].
 /datum/cooking/recipe/proc/calculate_reagent_quality(datum/cooking/recipe_tracker/tracker)
 	var/obj/item/container = locateUID(tracker.container_uid)
 	var/total_volume = container.reagents.total_volume

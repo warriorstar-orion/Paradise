@@ -3,7 +3,7 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/add_produce)
 /// A cooking step that involves using grown foods.
 /datum/cooking/recipe_step/add_produce
 	// class = CWJ_ADD_PRODUCE
-	var/produce_type
+	var/obj/produce_type
 	var/base_potency
 	var/exact_path
 	var/skip_reagents = FALSE
@@ -60,3 +60,6 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/add_produce)
 		return list(message = "You add \the [added_item] to \the [container].", target = added_item.UID())
 
 	return list(message = "Something went real fucking wrong here!")
+
+/datum/cooking/recipe_step/add_produce/get_human_readable_instruction()
+	return "Add \a [produce_type::name]."

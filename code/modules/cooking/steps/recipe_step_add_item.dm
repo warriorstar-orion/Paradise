@@ -2,7 +2,7 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/add_item)
 
 /datum/cooking/recipe_step/add_item
 	step_verb_desc = "Add item"
-	var/item_type
+	var/obj/item_type
 	var/exact_path
 	var/skip_reagents = FALSE
 	var/list/exclude_reagents
@@ -63,3 +63,6 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/add_item)
 		return list(message = "You add \the [added_item] to \the [container].", target = added_item.UID())
 
 	return list(message = "Something went real fucking wrong here!")
+
+/datum/cooking/recipe_step/add_item/get_human_readable_instruction()
+	return "Add \a [item_type::name]."
