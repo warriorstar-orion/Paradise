@@ -97,7 +97,7 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 		return
 
 	var/recipe_type = /datum/cooking/recipe/burger
-	for(var/datum/cooking/recipe/recipe in GLOB.cwj_recipe_list)
+	for(var/datum/cooking/recipe/recipe in GLOB.cwj_recipe_dictionary)
 		if(recipe_type == recipe.type) // exact
 			current_recipe = recipe
 

@@ -37,8 +37,13 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/add_item)
 //passes it along.
 //May need "Balancing" with var/inherited_quality_modifier
 /datum/cooking/recipe_step/add_item/calculate_quality(obj/added_item, datum/cooking/recipe_tracker/tracker, mob/user)
-	var/raw_quality = added_item?:food_quality * inherited_quality_modifier
-	return clamp_quality(raw_quality)
+	var/obj/item/food/food_item = added_item
+	if(istype(food_item))
+		var/raw_quality = food_item.food_quality * inherited_quality_modifier
+
+		return clamp_quality(raw_quality)
+
+	return ..()
 
 /datum/cooking/recipe_step/add_item/follow_step(obj/added_item, datum/cooking/recipe_tracker/tracker, mob/user)
 	#ifdef CWJ_DEBUG

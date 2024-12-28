@@ -1,7 +1,7 @@
 /datum/cooking/recipe_step
 	var/max_quality_award
 	var/base_quality_award
-	var/inherited_quality_modifier
+	var/inherited_quality_modifier = 1
 	var/optional = FALSE
 
 	var/step_verb_desc = "UNKNOWN"

@@ -3,6 +3,7 @@
 	product_type = /obj/item/food/patty
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/patty_raw, qmod = 0.5),
+		CWJ_ADD_REAGENT("sodiumchloride", 1, optional = TRUE, base = 1),
 		CWJ_USE_GRILL(J_LO, 10 SECONDS),
 	)
 // 	step_builder = list(

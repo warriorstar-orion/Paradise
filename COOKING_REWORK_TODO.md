@@ -14,4 +14,5 @@ Tear out old chef cooking manuals/guides
 Figure out what actually triggers food to get burnt
 Convert candy mixer, microwave, and sushi mat
 Pass sliceable food quality onto slices
+Pass sliceable grown food potency onto slices in some proportion
 Find when applying a flat debuff across meal should apply

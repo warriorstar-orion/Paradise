@@ -32,10 +32,6 @@
 
 	new_attack_chain = TRUE
 
-/obj/item/reagent_containers/cooking/Initialize()
-	. = ..()
-	SScooking.RegisterSignal(src, COMSIG_COOKING_RECIPE_BEGIN, TYPE_PROC_REF(/datum/controller/subsystem/processing/cooking, on_recipe_begin))
-
 /obj/item/reagent_containers/cooking/examine(mob/user)
 	. = ..()
 
@@ -73,10 +69,10 @@
 		return CWJ_NO_STEPS
 
 	if(!tracker)
-		if(!(type in SScooking.recipe_dictionary))
+		if(!(type in GLOB.cwj_recipe_dictionary))
 			return CWJ_NO_STEPS
 
-		var/list/container_recipes = SScooking.recipe_dictionary[type]
+		var/list/container_recipes = GLOB.cwj_recipe_dictionary[type]
 		if(!length(container_recipes))
 			return CWJ_NO_STEPS
 
@@ -85,24 +81,7 @@
 		for(var/datum/cooking/recipe/recipe in container_recipes)
 			tracker.matching_recipe_steps[recipe] = 0
 
-	var/result = tracker.process_item_wrap(user, used)
-	switch(result)
-		if(CWJ_NO_RECIPES)
-			to_chat(user, "You don't know what you'd begin to make with this.")
-		if(CWJ_NO_STEPS)
-			to_chat(user, "You get a feeling this wouldn't improve the recipe.")
-		if(CWJ_SUCCESS)
-			if(tracker.step_reaction_message)
-				to_chat(user, tracker.step_reaction_message)
-
-			update_appearance(UPDATE_ICON)
-		if(CWJ_COMPLETE)
-			to_chat(user, "You finish cooking with \the [src].")
-			QDEL_NULL(tracker)
-			clear_cooking_data()
-			update_appearance(UPDATE_ICON)
-
-	return result
+	react_to_process(tracker.process_item_wrap(user, used), user, used)
 
 /obj/item/reagent_containers/cooking/standard_pour_into(mob/user, atom/target)
 	#ifdef CWJ_DEBUG
@@ -136,6 +115,33 @@
 		return
 	if(standard_pour_into(user, target))
 		return 1
+
+/obj/item/reagent_containers/cooking/proc/react_to_process(reaction_status, mob/user, obj/used)
+	if(istype(used, /obj/machinery/cooking) && reaction_status == CWJ_NO_STEPS)
+		// When a finished recipe is still sitting on a cooking machine,
+		// and the cooking machine is sending periodic process pings as it
+		// is activated, the container will still be processed and a tracker
+		// created, because the result from the finished recipe counts as the
+		// potential input to a new recipe. Which is valid; it may be the input
+		// to a new recipe. But if it's not, we don't want a message to keep
+		// showing up as if the player is trying to step through a recipe.
+		return
+
+	switch(reaction_status)
+		if(CWJ_NO_RECIPES)
+			to_chat(user, "You don't know what you'd begin to make with this.")
+		if(CWJ_NO_STEPS)
+			to_chat(user, "You get a feeling this wouldn't improve the recipe.")
+		if(CWJ_SUCCESS)
+			if(tracker.step_reaction_message)
+				to_chat(user, tracker.step_reaction_message)
+
+			update_appearance(UPDATE_ICON)
+		if(CWJ_COMPLETE)
+			to_chat(user, "You finish cooking with \the [src].")
+			QDEL_NULL(tracker)
+			clear_cooking_data()
+			update_appearance(UPDATE_ICON)
 
 /obj/item/reagent_containers/cooking/proc/process_item(obj/I, mob/user, lower_quality_on_fail = 0, send_message = TRUE)
 	#ifdef CWJ_DEBUG

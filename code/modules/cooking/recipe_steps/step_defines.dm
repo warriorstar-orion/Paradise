@@ -1,7 +1,5 @@
 //A step in a recipe, whether optional or required
 /datum/cooking/recipe_step
-	/// The classification of the step involved.
-	// var/class = CWJ_USE_OTHER
 	/// Different for every type of recipe.
 	var/group_identifier = "None"
 

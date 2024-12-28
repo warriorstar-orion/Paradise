@@ -78,6 +78,7 @@
 	START_PROCESSING(SSobj, src)
 	ant_location = get_turf(src)
 	last_ant_time = world.time
+	get_food_tier()
 
 /obj/item/food/Destroy()
 	ant_location = null
@@ -166,7 +167,7 @@
 				food_tier = CWJ_QUALITY_GROSS
 				food_descriptor = "It looks pretty unappetizing."
 				bite_descriptor = "Your stomach turns as you chew. This tastes pretty bad."
-			if(1 to 10)
+			if(0 to 10)
 				food_tier = CWJ_QUALITY_MEH
 				food_descriptor = "It looks edible, at least."
 				bite_descriptor = "It tastes okay. Could be worse, but it certainly isn't great."
@@ -182,11 +183,11 @@
 				food_tier = CWJ_QUALITY_VERY_GOOD
 				food_descriptor = "This food looks very tasty."
 				bite_descriptor = "So tasty!"
-			if(61 to 70)
+			if(51 to 70)
 				food_tier = CWJ_QUALITY_CUISINE
 				food_descriptor = "There's a special spark in this cooking; a measure of love and care unseen by the casual chef."
 				bite_descriptor = "You can taste the attention to detail like a fine spice on top of the excellently prepared dish."
-			if(81 to 99)
+			if(71 to 99)
 				food_tier = CWJ_QUALITY_LEGENDARY
 				food_descriptor = "The quality of this food is legendary. Words fail to describe it further. It must be eaten!"
 				bite_descriptor = "The taste is unreal. The texture, the flavor... could food get any better than this?"
