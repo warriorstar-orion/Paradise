@@ -5,24 +5,13 @@
 /datum/wikigen/cooking_recipes/generate()
 	var/output = ""
 
-	for(var/food_type in subtypesof(/obj/item/food))
-		if(food_type == /obj/item/food/egg/gland)
-			continue
-		var/obj/item/food/food = new food_type
-		var/total_reagents = list()
-		// for(var/top_level_reagent in food.list_reagents)
-		// 	if(!(top_level_reagent in total_reagents))
-		// 		total_reagents[top_level_reagent] = 0
-		// 	total_reagents[top_level_reagent] += food.list_reagents[top_level_reagent]
-		for(var/datum/reagent/reagent in food.reagents.reagent_list)
-			if(!(reagent.id in total_reagents))
-				total_reagents[reagent.id] = 0
-			total_reagents[reagent.id] += reagent.volume
-		output += "[food_type],[food.name],"
-		var/list/reagent_list = list()
-		for(var/reagent_name in total_reagents)
-			reagent_list += "[reagent_name]=[total_reagents[reagent_name]]"
-		output += reagent_list.Join(";")
-		output += "\n"
+	for(var/recipe_container_type in GLOB.cwj_recipe_dictionary)
+		for(var/datum/cooking/recipe/recipe in GLOB.cwj_recipe_dictionary[recipe_container_type])
+			var/obj/output_type = recipe.product_type
+			output += "[output_type::name]:\n"
+			for(var/i in 1 to length(recipe.steps))
+				var/datum/cooking/recipe_step/step = recipe.steps[i]
+				output += "[i].[step.optional ? " (Optional)" : ""] [step.get_human_readable_instruction()]\n"
+			output += "\n\n"
 
 	return output
