@@ -138,10 +138,13 @@
 			to_chat(user, "You get a feeling this wouldn't improve the recipe.")
 		if(CWJ_SUCCESS)
 			if(tracker.step_reaction_message)
-				to_chat(user, tracker.step_reaction_message)
+				to_chat(user, "<span class='notice'>[tracker.step_reaction_message]</span>")
 
 			update_appearance(UPDATE_ICON)
 		if(CWJ_COMPLETE)
+			if(tracker.step_reaction_message)
+				to_chat(user, "<span class='notice'>[tracker.step_reaction_message]</span>")
+
 			to_chat(user, "You finish cooking with \the [src].")
 			QDEL_NULL(tracker)
 			clear_cooking_data()

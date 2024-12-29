@@ -164,23 +164,23 @@
 				food_tier = CWJ_QUALITY_GROSS
 				food_descriptor = "It looks pretty unappetizing."
 				bite_descriptor = "Your stomach turns as you chew. This tastes pretty bad."
-			if(0 to 10)
+			if(0 to 2)
 				food_tier = CWJ_QUALITY_MEH
 				food_descriptor = "It looks edible, at least."
 				bite_descriptor = "It tastes okay. Could be worse, but it certainly isn't great."
-			if(11 to 20)
+			if(2 to 4)
 				food_tier = CWJ_QUALITY_NORMAL
 				food_descriptor = "It looks adequately made."
 				bite_descriptor = "It's food, alright."
-			if(21 to 30)
+			if(4 to 6)
 				food_tier = CWJ_QUALITY_GOOD
 				food_descriptor = "It looks pretty good."
 				bite_descriptor = "This ain't half bad!"
-			if(31 to 50)
+			if(6 to 8)
 				food_tier = CWJ_QUALITY_VERY_GOOD
 				food_descriptor = "This food looks very tasty."
 				bite_descriptor = "So tasty!"
-			if(51 to 70)
+			if(8 to 10)
 				food_tier = CWJ_QUALITY_CUISINE
 				food_descriptor = "There's a special spark in this cooking; a measure of love and care unseen by the casual chef."
 				bite_descriptor = "You can taste the attention to detail like a fine spice on top of the excellently prepared dish."

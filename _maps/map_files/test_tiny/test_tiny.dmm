@@ -11,6 +11,19 @@
 /obj/effect/landmark/spawner/late/crew,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
+"g" = (
+/obj/item/reagent_containers/cooking/pan{
+	pixel_x = -6
+	},
+/obj/structure/table,
+/obj/item/reagent_containers/cooking/pot{
+	pixel_y = 15
+	},
+/obj/item/reagent_containers/cooking/pan{
+	pixel_x = 12
+	},
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
 "h" = (
 /obj/structure/table,
 /obj/item/food/carpmeat,
@@ -25,24 +38,24 @@
 /area/shuttle/arrival/station)
 "k" = (
 /obj/structure/table,
-/obj/item/food/bacon,
-/obj/item/food/bacon,
-/obj/item/food/bacon,
-/obj/item/food/bacon,
-/obj/item/food/bacon,
-/obj/item/food/bacon,
-/obj/item/food/bacon,
-/obj/item/food/bacon,
-/obj/item/food/bacon,
-/obj/item/food/bacon,
-/obj/item/food/meat,
-/obj/item/food/meat,
-/obj/item/food/meat,
-/obj/item/food/meat,
-/obj/item/food/meat,
-/obj/item/food/meat,
-/obj/item/food/meat,
-/obj/item/food/meat,
+/obj/item/food/grown/tomato,
+/obj/item/food/grown/tomato,
+/obj/item/food/grown/tomato,
+/obj/item/food/grown/tomato,
+/obj/item/food/grown/tomato,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"l" = (
+/obj/structure/table,
+/obj/item/food/egg,
+/obj/item/food/egg,
+/obj/item/food/egg,
+/obj/item/food/egg,
+/obj/item/food/egg,
+/obj/item/food/egg,
+/obj/item/food/egg,
+/obj/item/food/egg,
+/obj/item/food/egg,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "m" = (
@@ -122,10 +135,6 @@
 /obj/structure/table,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
-"B" = (
-/obj/machinery/smartfridge/food/everything,
-/turf/simulated/floor/plasteel/freezer,
-/area/shuttle/arrival/station)
 "E" = (
 /obj/machinery/cooking/grill,
 /obj/structure/table,
@@ -145,16 +154,10 @@
 /area/shuttle/arrival/station)
 "H" = (
 /obj/structure/table,
-/obj/item/reagent_containers/condiment/peppermill,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "I" = (
 /obj/structure/table,
-/obj/item/food/grown/tomato,
-/obj/item/food/grown/tomato,
-/obj/item/food/grown/tomato,
-/obj/item/food/grown/tomato,
-/obj/item/food/grown/tomato,
 /obj/item/food/patty_raw,
 /obj/item/food/patty_raw,
 /obj/item/food/patty_raw,
@@ -164,6 +167,27 @@
 /obj/item/food/patty_raw,
 /obj/item/food/patty_raw,
 /obj/item/food/patty_raw,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"J" = (
+/obj/structure/table,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/bacon,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "L" = (
@@ -219,6 +243,12 @@
 "X" = (
 /obj/structure/table,
 /obj/item/reagent_containers/condiment/saltshaker,
+/obj/item/kitchen/knife{
+	pixel_x = -7
+	},
+/obj/item/reagent_containers/condiment/peppermill{
+	pixel_x = 8
+	},
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "Z" = (
@@ -32745,7 +32775,7 @@ a
 a
 a
 u
-p
+x
 x
 b
 x
@@ -33002,11 +33032,11 @@ a
 a
 a
 u
+p
 x
+Q
 x
-x
-x
-x
+N
 x
 m
 q
@@ -33773,9 +33803,9 @@ a
 a
 a
 u
-O
+g
 x
-Q
+l
 x
 Z
 x
@@ -34287,11 +34317,11 @@ a
 a
 a
 u
-B
+O
 x
 H
 x
-N
+J
 x
 L
 x

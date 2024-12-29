@@ -140,8 +140,8 @@
 	if(recipe_to_complete)
 		var/obj/container = locateUID(container_uid)
 		var/result = recipe_to_complete.create_product(src)
-		if(user && user.Adjacent(container))
-			to_chat(user, "<span class='notice'>You have completed \a [result]!</span>")
+		// if(user && user.Adjacent(container))
+		// 	to_chat(user, "<span class='notice'>You have completed \a [result]!</span>")
 		return CWJ_COMPLETE
 
 	return CWJ_SUCCESS
