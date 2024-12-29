@@ -16,7 +16,7 @@
 	if("optional" in options)
 		optional = options["optional"]
 
-/datum/cooking/recipe_step/proc/calculate_quality(obj/added_item, obj/item/reagent_containers/cooking/container, mob/living/user)
+/datum/cooking/recipe_step/proc/calculate_quality(obj/added_item, datum/cooking/recipe_tracker/tracker)
 	return 0
 
 /datum/cooking/recipe_step/proc/check_conditions_met(obj/used_item, datum/cooking/recipe_tracker/tracker)

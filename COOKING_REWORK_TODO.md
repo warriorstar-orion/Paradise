@@ -6,7 +6,7 @@ Ensure that emagged deep fryer can continue to work
 Ensure that deep frying ice continues to work
 Spilling food on self
 Wiki generation
-Candy machine, mixing bowl, new sprites
+Candy machine, mixing bowl, new sprites?
 Autochef: determine if a cooking container/machine is already being used
 Autochef: queue up in-progress recipes for in-use containers/machines
 Figure out how to integrate expert chef knowledge
@@ -16,3 +16,4 @@ Convert candy mixer, microwave, and sushi mat
 Pass sliceable food quality onto slices
 Pass sliceable grown food potency onto slices in some proportion
 Find when applying a flat debuff across meal should apply
+Fix burning hands on stove to be localized to hand

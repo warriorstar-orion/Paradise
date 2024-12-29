@@ -45,9 +45,18 @@
 
 /obj/machinery/cooking/grill/Initialize()
 	. = ..()
-	component_parts += new /obj/item/circuitboard/cooking/grill(null)
+
 	hopper_overlay = new
 	vis_contents += hopper_overlay
+
+	component_parts = list()
+	component_parts += new /obj/item/circuitboard/cooking/grill(null)
+	component_parts += new /obj/item/stock_parts/micro_laser(null)
+	component_parts += new /obj/item/stock_parts/micro_laser(null)
+	component_parts += new /obj/item/stock_parts/matter_bin(null)
+	component_parts += new /obj/item/stock_parts/matter_bin(null)
+
+	RefreshParts()
 
 //Did not want to use this...
 /obj/machinery/cooking/grill/process()

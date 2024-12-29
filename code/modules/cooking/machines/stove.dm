@@ -110,11 +110,10 @@
 		on_fire = TRUE
 
 //Retrieve which quadrant of the baking pan is being used.
-/obj/machinery/cooking/stove/proc/getInput(params)
-	var/list/click_params = params2list(params)
+/obj/machinery/cooking/stove/proc/getInput(modifiers)
 	var/input
-	var/icon_x = text2num(click_params["icon-x"])
-	var/icon_y = text2num(click_params["icon-y"])
+	var/icon_x = text2num(modifiers["icon-x"])
+	var/icon_y = text2num(modifiers["icon-y"])
 	if(icon_x <= ICON_SPLIT_X && icon_y <= ICON_SPLIT_Y)
 		input = 1
 	else if(icon_x > ICON_SPLIT_X && icon_y <= ICON_SPLIT_Y)
@@ -139,17 +138,18 @@
 	if(items[input] != null)
 		var/obj/item/reagent_containers/cooking/container = items[input]
 		container.process_item(used, user)
-
-	else if(istype(used, /obj/item/reagent_containers/cooking))
-		to_chat(usr, "<span class='notice'>You put [used] on the stove.</span>")
+	else if(istype(used, /obj/item/reagent_containers/cooking/pot) || istype(used, /obj/item/reagent_containers/cooking/pan))
+		to_chat(usr, "<span class='notice'>You put [used] on \the [src].</span>")
 		if(usr.drop_item())
 			used.forceMove(src)
 		items[input] = used
 		if(switches[input] == 1)
 			cooking_timestamp[input] = world.time
-	update_icon()
 
-/obj/machinery/cooking/stove/attack_hand(mob/user as mob, params)
+	update_appearance(UPDATE_ICON)
+	return ITEM_INTERACT_COMPLETE
+
+/obj/machinery/cooking/stove/attack_hand(mob/user, params)
 	var/input = getInput(params2list(params))
 	if(items[input] != null)
 		if(switches[input] == 1)
@@ -168,11 +168,11 @@
 		items[input] = null
 		update_icon()
 
-/obj/machinery/cooking/stove/CtrlClick(mob/user, params)
+/obj/machinery/cooking/stove/CtrlClick(mob/user, modifiers)
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return
 
-	var/input = getInput(params2list(params))
+	var/input = getInput(modifiers)
 	#ifdef CWJ_DEBUG
 	log_debug("/cooking/stove/CtrlClick called on burner [input]")
 	#endif
@@ -184,10 +184,10 @@
 			handle_timer(user, input)
 
 //Switch the cooking device on or off
-/obj/machinery/cooking/stove/CtrlShiftClick(mob/user, params)
+/obj/machinery/cooking/stove/CtrlShiftClick(mob/user, modifiers)
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return
-	var/input = getInput(params2list(params))
+	var/input = getInput(modifiers)
 
 	#ifdef CWJ_DEBUG
 	log_debug("/cooking/stove/CtrlShiftClick called on burner [input]")
@@ -195,11 +195,11 @@
 	handle_switch(user, input)
 
 //Empty a container without a tool
-/obj/machinery/cooking/stove/AltClick(mob/user, params)
+/obj/machinery/cooking/stove/AltClick(mob/user, modifiers)
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return
 
-	var/input = getInput(params2list(params))
+	var/input = getInput(modifiers)
 	if(!(items[input] && istype(items[input], /obj/item/reagent_containers/cooking)))
 		return
 	var/obj/item/reagent_containers/cooking/container = items[input]
@@ -299,12 +299,7 @@
 	else
 		container.stove_data[temperature[input]] = reference_time
 
-
-	if(user && user.Adjacent(src))
-		container.process_item(src, user, send_message=TRUE)
-	else
-		container.process_item(src, user)
-
+	container.new_process_item(user, src)
 
 /obj/machinery/cooking/stove/update_icon()
 	..()

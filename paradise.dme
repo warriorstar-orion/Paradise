@@ -1878,6 +1878,7 @@
 #include "code\modules\cooking\items\spatula.dm"
 #include "code\modules\cooking\recipes\stable\cooking_grill_recipes.dm"
 #include "code\modules\cooking\recipes\stable\cooking_oven_recipes.dm"
+#include "code\modules\cooking\recipes\stable\cooking_stove_recipes.dm"
 #include "code\modules\cooking\recipes\stable\cutting_board_recipes.dm"
 #include "code\modules\cooking\steps\recipe_step.dm"
 #include "code\modules\cooking\steps\recipe_step_add_item.dm"

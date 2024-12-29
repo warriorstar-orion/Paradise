@@ -58,6 +58,7 @@
 	var/list/valid_recipes = list()
 	var/list/completed_recipes = list()
 	var/list/silent_recipes = list()
+	var/list/attempted_step_per_recipe = list()
 	var/use_step
 
 	for(var/datum/cooking/recipe/recipe in matching_recipe_steps)
@@ -71,7 +72,7 @@
 			if(conditions == CWJ_CHECK_VALID)
 				LAZYADD(valid_steps[next_step.type], next_step)
 				LAZYADD(valid_recipes[next_step.type], recipe)
-				matching_recipe_steps[recipe] = current_idx
+				attempted_step_per_recipe[recipe] = current_idx
 				if(!use_step)
 					use_step = next_step.type
 				match = TRUE
@@ -81,7 +82,7 @@
 		while(next_step && next_step.optional && current_idx <= length(recipe.steps))
 
 		if(match)
-			LAZYADD(applied_recipe_steps[recipe], current_idx)
+			LAZYOR(applied_recipe_steps[recipe], current_idx)
 			if(length(recipe.steps) == current_idx)
 				completed_recipes |= recipe
 
@@ -114,8 +115,12 @@
 	valid_steps = valid_steps[use_step]
 	var/datum/cooking/recipe_step/sample_step = valid_steps[1]
 	var/step_data = sample_step.follow_step(used, src)
-	applied_step_data += list(step_data)
+
 	step_reaction_message = step_data["message"]
+	if(sample_step.is_complete(used, src))
+		applied_step_data += list(step_data)
+		for(var/datum/cooking/recipe in valid_recipes[sample_step.type])
+			matching_recipe_steps[recipe] = attempted_step_per_recipe[recipe]
 
 	for(var/datum/cooking/recipe in matching_recipe_steps)
 		if(!(recipe in valid_recipes[sample_step.type]))

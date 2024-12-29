@@ -40,7 +40,7 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/add_item)
 //The quality of add_item is special, in that it inherits the quality level of its parent and
 //passes it along.
 //May need "Balancing" with var/inherited_quality_modifier
-/datum/cooking/recipe_step/add_item/calculate_quality(obj/added_item, datum/cooking/recipe_tracker/tracker, mob/user)
+/datum/cooking/recipe_step/add_item/calculate_quality(obj/added_item, datum/cooking/recipe_tracker/tracker)
 	var/obj/item/food/food_item = added_item
 	if(istype(food_item))
 		var/raw_quality = food_item.food_quality * inherited_quality_modifier

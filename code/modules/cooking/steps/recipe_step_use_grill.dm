@@ -24,7 +24,10 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/use_grill)
 	log_debug("use_grill/is_complete() Returned False; comparing [temperature]: [container.grill_data[temperature]] to [time]")
 	#endif
 
-	return CWJ_CHECK_SILENT
+	if(istype(used_item, /obj/machinery/cooking/grill))
+		return CWJ_CHECK_SILENT
+	else
+		return CWJ_CHECK_INVALID
 
 /datum/cooking/recipe_step/use_grill/calculate_quality(obj/used_item, datum/cooking/recipe_tracker/tracker)
 	var/obj/item/reagent_containers/cooking/container = locateUID(tracker.container_uid)

@@ -86,7 +86,7 @@ GLOBAL_LIST_EMPTY(cwj_recipe_dictionary)
 		var/target_uid = tracker.applied_step_data[i]["target"]
 		var/obj/added_item = locateUID(target_uid)
 		if(added_item)
-			tracked_quality += recipe_step.calculate_quality(added_item, container)
+			tracked_quality += recipe_step.calculate_quality(added_item, tracker)
 
 	if(product_type) // Make a regular item
 		if(container.reagents.total_volume)

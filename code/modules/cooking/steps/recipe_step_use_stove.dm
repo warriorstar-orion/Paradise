@@ -4,7 +4,7 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/use_stove)
 	var/time
 	var/temperature
 
-/datum/cooking/recipe_step/use_stove/New(time_, temperature_, options)
+/datum/cooking/recipe_step/use_stove/New(temperature_, time_, options)
 	time = time_
 	temperature = temperature_
 
@@ -23,7 +23,10 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/use_stove)
 	log_debug("use_stove/is_complete() Returned False; comparing [temperature]: [container.stove_data[temperature]] to [time]")
 	#endif
 
-	return CWJ_CHECK_SILENT
+	if(istype(used_item, /obj/machinery/cooking/stove))
+		return CWJ_CHECK_SILENT
+	else
+		return CWJ_CHECK_INVALID
 
 /datum/cooking/recipe_step/use_stove/calculate_quality(obj/used_item, datum/cooking/recipe_tracker/tracker)
 	var/obj/item/reagent_containers/cooking/container = locateUID(tracker.container_uid)
