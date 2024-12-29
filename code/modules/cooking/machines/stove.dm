@@ -1,6 +1,96 @@
 #define ICON_SPLIT_X 16
 #define ICON_SPLIT_Y 21
 
+/datum/stovetop_burner
+	var/obj/machinery/cooking/stove/parent
+	var/temperature = "Low"
+	var/timer = 0
+	var/timerstamp = 0
+	var/switches = 0
+	var/cooking_timestamp = 0
+	var/obj/placed_item
+	var/burn_callback
+	var/fire_callback
+
+/datum/stovetop_burner/New(obj/machinery/cooking/stove/parent_)
+	. = ..()
+	parent = parent_
+
+/datum/stovetop_burner/proc/handle_cooking(mob/user, set_timer = FALSE)
+	var/obj/item/reagent_containers/cooking/container = placed_item
+	if(!istype(placed_item))
+		return
+
+	var/reference_time = set_timer ? timer : world.time - cooking_timestamp
+
+	if(container.stove_data[temperature])
+		container.stove_data[temperature] += reference_time
+	else
+		container.stove_data[temperature] = reference_time
+
+	container.new_process_item(user, parent)
+
+/datum/stovetop_burner/proc/handle_switch(mob/user)
+	playsound(parent, 'sound/items/lighter.ogg', 100, 1, 0)
+	if(switches == 1)
+		handle_cooking(user)
+		switches = 0
+		timerstamp = world.time
+		cooking_timestamp = world.time
+	else
+		switches = 1
+		cooking_timestamp = world.time
+		cook_checkin()
+		if(timer)
+			timer_act(user)
+
+	parent.update_appearance(UPDATE_ICON)
+
+/datum/stovetop_burner/proc/cook_checkin()
+	if(placed_item)
+		var/old_timestamp = cooking_timestamp
+		var/burn_time = CWJ_BURN_TIME_LOW
+		var/fire_time = CWJ_IGNITE_TIME_LOW
+		switch(temperature)
+			if(J_MED)
+				burn_time = CWJ_BURN_TIME_MEDIUM
+				fire_time = CWJ_IGNITE_TIME_MEDIUM
+			if(J_HI)
+				burn_time = CWJ_BURN_TIME_HIGH
+				fire_time = CWJ_IGNITE_TIME_HIGH
+
+		burn_callback = addtimer(CALLBACK(src, PROC_REF(handle_burn), burn_time, TIMER_STOPPABLE))
+		fire_callback = addtimer(CALLBACK(src, PROC_REF(handle_fire), fire_time, TIMER_STOPPABLE))
+
+/datum/stovetop_burner/proc/timer_act(mob/user)
+	timerstamp = round(world.time)
+	var/old_timerstamp = timerstamp
+	addtimer(CALLBACK(src, PROC_REF(turn_off), user), timer)
+	parent.update_appearance(UPDATE_ICON)
+
+/datum/stovetop_burner/proc/turn_off(mob/user)
+	playsound(parent, 'sound/items/lighter.ogg', 100, 1, 0)
+	handle_cooking(user, set_timer = TRUE)
+	switches = 0
+	timerstamp = world.time
+	cooking_timestamp = world.time
+	parent.update_appearance(UPDATE_ICON)
+	kill_timers()
+
+/datum/stovetop_burner/proc/handle_burn()
+	var/obj/item/reagent_containers/cooking/container = placed_item
+	if(istype(container))
+		container.handle_burning()
+
+/datum/stovetop_burner/proc/handle_fire()
+	var/obj/item/reagent_containers/cooking/container = placed_item
+	if(istype(container) && container.handle_ignition())
+		parent.on_fire = TRUE
+
+/datum/stovetop_burner/proc/kill_timers()
+	deltimer(burn_callback)
+	deltimer(fire_callback)
+
 /obj/machinery/cooking/stove
 	name = "Stovetop"
 	desc = "A set of four burners for cooking food."
@@ -12,12 +102,8 @@
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
 	cooking = FALSE
-	var/list/temperature= list("Low", "Low", "Low", "Low")
-	var/list/timer = list(0, 0, 0, 0)
-	var/list/timerstamp = list(0, 0, 0, 0)
-	var/list/switches = list(0, 0, 0, 0)
-	var/list/cooking_timestamp = list(0, 0, 0, 0) //Timestamp of when cooking initialized so we know if the prep was disturbed at any point.
-	var/list/items[4]
+
+	var/list/burners[4]
 
 	var/reference_time = 0 //The exact moment when we call the process routine, just to account for lag.
 	var/power_cost = 2500 //Power cost per process step for a particular burner
@@ -28,14 +114,26 @@
 	#warn fix circuit
 	// circuit = /obj/item/circuitboard/cooking/stove
 
-//Did not want to use this...
-/obj/machinery/cooking/stove/process()
+/obj/machinery/cooking/stove/Initialize(mapload)
+	. = ..()
 
+	component_parts = list()
+	component_parts += new /obj/item/circuitboard/cooking/stove(null)
+	component_parts += new /obj/item/stock_parts/micro_laser(null)
+	component_parts += new /obj/item/stock_parts/micro_laser(null)
+	component_parts += new /obj/item/stock_parts/capacitor(null)
+
+	for(var/i in 1 to 4)
+		burners[i] = new/datum/stovetop_burner(src)
+
+	RefreshParts()
+
+/obj/machinery/cooking/stove/process()
 	//if(on_fire)
 		//Do bad things if it is on fire.
-	for(var/i=1, i<=4, i++)
-		if(switches[i])
-			handle_cooking(null, i, FALSE)
+	for(var/datum/stovetop_burner/burner in burners)
+		if(burner.switches)
+			burner.handle_cooking(null, set_timer = FALSE)
 
 	//Under normal circumstances, Only process the rest of this 10 process calls; it doesn't need to be hyper-accurate.
 	if(check_on_10 != 10)
@@ -45,14 +143,10 @@
 		check_on_10 = 0
 
 	var/used_power = 0
-	if(switches[1] == 1)
-		used_power += power_cost
-	if(switches[2] == 1)
-		used_power += power_cost
-	if(switches[3] == 1)
-		used_power += power_cost
-	if(switches[4] == 1)
-		used_power += power_cost
+	for(var/datum/stovetop_burner/burner in burners)
+		if(burner.switches)
+			used_power += power_cost
+
 	use_power(used_power)
 
 /obj/machinery/cooking/stove/RefreshParts()
@@ -62,46 +156,14 @@
 		man_rating += M.rating
 	quality_mod = round(man_rating/2)
 
-//Process how a specific stove is interacting with material
-/obj/machinery/cooking/stove/proc/cook_checkin(var/input)
-	#ifdef CWJ_DEBUG
-	log_debug("/cooking/stove/proc/cook_checkin called on burner [input]")
-	#endif
-	if(items[input])
-		var/old_timestamp = cooking_timestamp[input]
-		switch(temperature[input])
-			if("Low")
-				spawn(CWJ_BURN_TIME_LOW)
-					if(cooking_timestamp[input] == old_timestamp)
-						handle_burning(input)
-				spawn(CWJ_IGNITE_TIME_LOW)
-					if(cooking_timestamp[input] == old_timestamp)
-						handle_ignition(input)
-
-			if("Medium")
-				spawn(CWJ_BURN_TIME_MEDIUM)
-					if(cooking_timestamp[input] == old_timestamp)
-						handle_burning(input)
-				spawn(CWJ_IGNITE_TIME_MEDIUM)
-					if(cooking_timestamp[input] == old_timestamp)
-						handle_ignition(input)
-
-			if("High")
-				spawn(CWJ_BURN_TIME_HIGH)
-					if(cooking_timestamp[input] == old_timestamp)
-						handle_burning(input)
-				spawn(CWJ_IGNITE_TIME_HIGH)
-					if(cooking_timestamp[input] == old_timestamp)
-						handle_ignition(input)
-
-/obj/machinery/cooking/stove/proc/handle_burning(input)
+/obj/machinery/cooking/stove/proc/handle_burn(input)
 	if(!(items[input] && istype(items[input], /obj/item/reagent_containers/cooking)))
 		return
 
 	var/obj/item/reagent_containers/cooking/container = items[input]
 	container.handle_burning()
 
-/obj/machinery/cooking/stove/proc/handle_ignition(input)
+/obj/machinery/cooking/stove/proc/handle_fire(input)
 	if(!(items[input] && istype(items[input], /obj/item/reagent_containers/cooking)))
 		return
 
@@ -109,7 +171,7 @@
 	if(container.handle_ignition())
 		on_fire = TRUE
 
-//Retrieve which quadrant of the baking pan is being used.
+// Retrieve which quadrant of the stovetop is being used.
 /obj/machinery/cooking/stove/proc/getInput(modifiers)
 	var/input
 	var/icon_x = text2num(modifiers["icon-x"])
@@ -134,39 +196,45 @@
 	// 	return
 
 	var/input = getInput(modifiers)
-
-	if(items[input] != null)
-		var/obj/item/reagent_containers/cooking/container = items[input]
+	var/datum/stovetop_burner/burner = burners[input]
+	if(burner.placed_item)
+		var/obj/item/reagent_containers/cooking/container = burner.placed_item
 		container.process_item(used, user)
 	else if(istype(used, /obj/item/reagent_containers/cooking/pot) || istype(used, /obj/item/reagent_containers/cooking/pan))
 		to_chat(usr, "<span class='notice'>You put [used] on \the [src].</span>")
 		if(usr.drop_item())
 			used.forceMove(src)
-		items[input] = used
-		if(switches[input] == 1)
-			cooking_timestamp[input] = world.time
+		burner.placed_item = used
+		if(burner.switches == 1)
+			burner.cooking_timestamp = world.time
 
 	update_appearance(UPDATE_ICON)
 	return ITEM_INTERACT_COMPLETE
 
 /obj/machinery/cooking/stove/attack_hand(mob/user, params)
 	var/input = getInput(params2list(params))
-	if(items[input] != null)
-		if(switches[input] == 1)
-			handle_cooking(user, input)
-			cooking_timestamp[input] = world.time
-			if(ishuman(user) && (temperature[input] == "High" || temperature[input] == "Medium" ))
-				var/mob/living/carbon/human/burn_victim = user
-				if(!burn_victim.gloves)
-					switch(temperature[input])
-						if("High")
-							burn_victim.adjustFireLoss(5)
-						if("Medium")
-							burn_victim.adjustFireLoss(2)
-					to_chat(burn_victim, "<span class='danger'>You burn your hand a little taking the [items[input]] off of the stove.</span>")
-		user.put_in_hands(items[input])
-		items[input] = null
-		update_icon()
+	var/datum/stovetop_burner/burner = burners[input]
+	if(burner.placed_item)
+		if(burner.switches == 1)
+			burner.handle_cooking(user)
+			burner.cooking_timestamp = world.time
+			var/mob/living/carbon/human/burn_victim = user
+			if(istype(burn_victim) && !burn_victim.gloves)
+				var/which_hand = "l_hand"
+				if(!burn_victim.hand)
+					which_hand = "r_hand"
+				switch(burner.temperature)
+					if(J_HI)
+						burn_victim.adjustFireLossByPart(5, which_hand)
+					if(J_MED)
+						burn_victim.adjustFireLossByPart(2, which_hand)
+					if(J_LO)
+						burn_victim.adjustFireLossByPart(1, which_hand)
+
+				to_chat(burn_victim, "<span class='danger'>You burn your hand a little taking the [burner.placed_item] off of the stove.</span>")
+		user.put_in_hands(burner.placed_item)
+		burner.placed_item = null
+		update_appearance(UPDATE_ICON)
 
 /obj/machinery/cooking/stove/CtrlClick(mob/user, modifiers)
 	if(user.stat || user.restrained() || (!in_range(src, user)))
@@ -188,11 +256,8 @@
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return
 	var/input = getInput(modifiers)
-
-	#ifdef CWJ_DEBUG
-	log_debug("/cooking/stove/CtrlShiftClick called on burner [input]")
-	#endif
-	handle_switch(user, input)
+	var/datum/stovetop_burner/burner = burners[input]
+	burner.handle_switch(user)
 
 //Empty a container without a tool
 /obj/machinery/cooking/stove/AltClick(mob/user, modifiers)
@@ -200,113 +265,40 @@
 		return
 
 	var/input = getInput(modifiers)
-	if(!(items[input] && istype(items[input], /obj/item/reagent_containers/cooking)))
+	var/datum/stovetop_burner/burner = burners[input]
+	var/obj/item/reagent_containers/cooking/container = burner.placed_item
+	if(!(istype(container)))
 		return
-	var/obj/item/reagent_containers/cooking/container = items[input]
 
-	#ifdef CWJ_DEBUG
-	log_debug("/cooking/stove/AltClick called on burner [input] [container]")
-	#endif
 	container.do_empty(user)
+	burner.kill_timers()
 
-/obj/machinery/cooking/stove/proc/handle_temperature(user, input)
-	var/old_temp = temperature[input]
+/obj/machinery/cooking/stove/proc/handle_temperature(mob/user, input)
+	var/datum/stovetop_burner/burner = burners[input]
+	var/old_temp = burner.temperature
 	var/choice = input(user,"Select a heat setting for burner #[input].\nCurrent temp :[old_temp]","Select Temperature",old_temp) in list("High","Medium","Low","Cancel")
 	if(choice && choice != "Cancel" && choice != old_temp)
-		temperature[input] = choice
-		if(switches[input] == 1)
-			handle_cooking(user, input)
-			cooking_timestamp[input] = world.time
-			timerstamp[input]=world.time
-			#ifdef CWJ_DEBUG
-			log_debug("Timerstamp no. [input] set! New timerstamp: [timerstamp[input]]")
-			#endif
+		burner.temperature = choice
+		if(burner.switches == 1)
+			burner.handle_cooking(user)
+			burner.cooking_timestamp = world.time
+			burner.timerstamp = world.time
 
+/obj/machinery/cooking/stove/proc/handle_timer(mob/user, input)
+	var/datum/stovetop_burner/burner = burners[input]
+	var/old_time = burner.timer ? round((burner.timer / (1 SECONDS)), 1 SECONDS): 1
+	burner.timer = (input(user, "Enter a timer for burner #[input] (In Seconds, 0 Stays On)","Set Timer", old_time) as num) SECONDS
+	if(burner.timer != 0 && burner.switches == 1)
+		burner.timer_act(user)
 
-/obj/machinery/cooking/stove/proc/handle_timer(user, input)
-	var/old_time = timer[input]? round((timer[input]/(1 SECONDS)), 1 SECONDS): 1
-	timer[input] = (input(user, "Enter a timer for burner #[input] (In Seconds, 0 Stays On)","Set Timer", old_time) as num) SECONDS
-	if(timer[input] != 0 && switches[input] == 1)
-		timer_act(user, input)
-	update_icon()
-
-//input: 1 thru 4, depends on which burner was selected
-/obj/machinery/cooking/stove/proc/timer_act(mob/user, input)
-
-	timerstamp[input] = round(world.time)
-	#ifdef CWJ_DEBUG
-	log_debug("Timerstamp no. [input] set! New timerstamp: [timerstamp[input]]")
-	#endif
-	var/old_timerstamp = timerstamp[input]
-	spawn(timer[input])
-		#ifdef CWJ_DEBUG
-		log_debug("Comparimg timerstamp([input]) of [timerstamp[input]] to old_timerstamp [old_timerstamp]")
-		#endif
-		if(old_timerstamp == timerstamp[input])
-			playsound(src, 'sound/items/lighter.ogg', 100, 1, 0)
-
-			handle_cooking(user, input, TRUE) //Do a check in the cooking interface
-			switches[input] = 0
-			timerstamp[input]=world.time
-			cooking_timestamp[input] = world.time
-			update_icon()
-	update_icon()
-
-/obj/machinery/cooking/stove/proc/handle_switch(user, input)
-	playsound(src, 'sound/items/lighter.ogg', 100, 1, 0)
-	if(switches[input] == 1)
-		handle_cooking(user, input)
-		switches[input] = 0
-		timerstamp[input]=world.time
-		#ifdef CWJ_DEBUG
-		log_debug("Timerstamp no. [input] set! New timerstamp: [timerstamp[input]]")
-		#endif
-		cooking_timestamp[input] = world.time
-	else
-		switches[input] = 1
-		cooking_timestamp[input] = world.time
-		cook_checkin(input)
-		if(timer[input] != 0)
-			timer_act(user, input)
-	update_icon()
-
-
-
-/obj/machinery/cooking/stove/proc/handle_cooking(var/mob/user, var/input, set_timer=FALSE)
-
-	if(!(items[input] && istype(items[input], /obj/item/reagent_containers/cooking)))
-		return
-
-	var/obj/item/reagent_containers/cooking/container = items[input]
-	if(set_timer)
-		reference_time = timer[input]
-	else
-		reference_time = world.time - cooking_timestamp[input]
-
-
-	#ifdef CWJ_DEBUG
-	log_debug("stove/proc/handle_cooking data:")
-	log_debug("     temperature: [temperature[input]]")
-	log_debug("     reference_time: [reference_time]")
-	log_debug("     world.time: [world.time]")
-	log_debug("     cooking_timestamp: [cooking_timestamp[input]]")
-	log_debug("     stove_data: [container.stove_data]")
-	#endif
-
-
-	if(container.stove_data[temperature[input]])
-		container.stove_data[temperature[input]] += reference_time
-	else
-		container.stove_data[temperature[input]] = reference_time
-
-	container.new_process_item(user, src)
+	update_appearance(UPDATE_ICON)
 
 /obj/machinery/cooking/stove/update_icon()
 	..()
 	cut_overlays()
 
 	for(var/obj/item/our_item in vis_contents)
-		src.remove_from_visible(our_item)
+		remove_from_visible(our_item)
 
 	if(panel_open)
 		icon_state="stove_open"
@@ -314,20 +306,21 @@
 		icon_state="stove"
 
 	var/stove_on = FALSE
-	for(var/i=1, i<=4, i++)
-		if(switches[i] == TRUE)
+	for(var/i in 1 to length(burners))
+		var/datum/stovetop_burner/burner = burners[i]
+		if(burner.switches == TRUE)
 			if(!stove_on)
 				stove_on = TRUE
-			add_overlay(image(src.icon, icon_state="[panel_open?"open_":""]burner_[i]"))
+			add_overlay(image(icon, icon_state = "[panel_open?"open_":""]burner_[i]"))
 
 	if(stove_on)
-		add_overlay(image(src.icon, icon_state="indicator"))
+		add_overlay(image(icon, icon_state = "indicator"))
 
-
-	for(var/i=1, i<=4, i++)
-		if(!(items[i]))
+	for(var/i in 1 to length(burners))
+		var/datum/stovetop_burner/burner = burners[i]
+		if(!burner.placed_item)
 			continue
-		var/obj/item/our_item = items[i]
+		var/obj/item/our_item = burner.placed_item
 		switch(i)
 			if(1)
 				our_item.pixel_x = -7
@@ -342,7 +335,7 @@
 				our_item.pixel_x = 7
 				our_item.pixel_y = 9
 		src.add_to_visible(our_item, i)
-		if(switches[i] == 1)
+		if(burner.switches == 1)
 			add_overlay(image(src.icon, icon_state="steam_[i]", layer=ABOVE_OBJ_LAYER))
 
 /obj/machinery/cooking/stove/proc/add_to_visible(var/obj/item/our_item, input)
