@@ -27,25 +27,22 @@
 #define OVEN			"oven"
 #define GRILL			"grill grate"
 
-//Stove temp settings.
-#define J_LO "Low"
-#define J_MED "Medium"
-#define J_HI "High"
+// Cooking machine temperature settings.
+#define J_LO	"Low"
+#define J_MED	"Medium"
+#define J_HI	"High"
 
-//Just a catalog for the cooking catalog
-#define CATALOG_COOKING "cooking"
-
-//Burn times for cooking things on a stove.
-//Anything put on a stove for this long becomes a burned mess.
+// Burn times for cooking things on a stove.
+// Anything put on a stove for this long becomes a burned mess.
 #define CWJ_BURN_TIME_LOW		15 MINUTES
 #define CWJ_BURN_TIME_MEDIUM	10 MINUTES
 #define CWJ_BURN_TIME_HIGH		5 MINUTES
 
-//Ignite times for reagents interacting with a stove.
-//The stove will catch fire if left on too long with flammable reagents in any of its holders.
-#define CWJ_IGNITE_TIME_LOW		1 HOURS
+// Ignite times for reagents interacting with a stove.
+// The stove will catch fire if left on too long with flammable reagents in any of its holders.
+#define CWJ_IGNITE_TIME_LOW		40 MINUTES
 #define CWJ_IGNITE_TIME_MEDIUM	30 MINUTES
-#define CWJ_IGNITE_TIME_HIGH	15 MINUTES
+#define CWJ_IGNITE_TIME_HIGH	20 MINUTES
 
 //Food Quality Tiers
 #define CWJ_QUALITY_GARBAGE			-2

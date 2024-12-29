@@ -74,6 +74,15 @@
 		CWJ_USE_GRILL(J_MED, 10 SECONDS),
 	)
 
+/datum/cooking/recipe/friedegg
+	cooking_container = /obj/item/reagent_containers/cooking/grill_grate
+	product_type = /obj/item/food/friedegg
+	steps = list(
+		CWJ_ADD_ITEM(/obj/item/food/egg),
+		CWJ_ADD_REAGENT("sodiumchloride", 1),
+		CWJ_ADD_REAGENT("blackpepper", 1),
+		CWJ_USE_GRILL(J_MED, 10 SECONDS),
+	)
 
 /datum/cooking/recipe/goliath
 	cooking_container = /obj/item/reagent_containers/cooking/grill_grate

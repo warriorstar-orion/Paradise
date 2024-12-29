@@ -1,4 +1,6 @@
-Move burner/timer toggles from right-click menu to radial menu
+X Radial menu: stove
+Radial menu: oven
+Radial menu: grill
 Spilling food on self without proper utensils
 Menu Ordering Console
 Repurpose existing deep fryer for new system
@@ -12,8 +14,10 @@ Autochef: queue up in-progress recipes for in-use containers/machines
 Figure out how to integrate expert chef knowledge
 Tear out old chef cooking manuals/guides
 Figure out what actually triggers food to get burnt
-Convert candy mixer, microwave, and sushi mat
+X Convert sushi mat
+Convert candy mixer
+Convert microwave
 Pass sliceable food quality onto slices
 Pass sliceable grown food potency onto slices in some proportion
 Find when applying a flat debuff across meal should apply
-Fix burning hands on stove to be localized to hand
+X Fix burning hands on stove to be localized to hand

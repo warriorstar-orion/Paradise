@@ -11,3 +11,7 @@
 	var/quality_mod = 1
 
 	new_attack_chain = TRUE
+
+/obj/machinery/cooking/proc/ignite()
+	resistance_flags |= ON_FIRE
+	new /obj/effect/fire(loc, T0C + 300, (roll("2d10+15") SECONDS), 1)

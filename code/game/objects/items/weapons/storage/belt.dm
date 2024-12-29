@@ -1047,7 +1047,7 @@
 		/obj/item/kitchen/knife,
 		/obj/item/kitchen/rollingpin,
 		/obj/item/kitchen/mould,
-		/obj/item/kitchen/sushimat,
+		/obj/item/reagent_containers/cooking/sushimat,
 		/obj/item/kitchen/cutter,
 		/obj/item/assembly/mousetrap,
 		/obj/item/reagent_containers/spray/pestspray,

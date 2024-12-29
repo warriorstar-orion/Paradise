@@ -1,9 +1,18 @@
 #define ICON_SPLIT_X 16
 #define ICON_SPLIT_Y 21
 
+#define STOVE_RADIAL_ACTION_BACK_LEFT "Back left"
+#define STOVE_RADIAL_ACTION_BACK_RIGHT "Back right"
+#define STOVE_RADIAL_ACTION_FRONT_LEFT "Front left"
+#define STOVE_RADIAL_ACTION_FRONT_RIGHT "Front right"
+
+#define STOVE_RADIAL_ACTION_SET_TIMER "Set timer"
+#define STOVE_RADIAL_ACTION_SET_TEMPERATURE "Set temperature"
+#define STOVE_RADIAL_ACTION_ON_OFF "Turn on/off"
+
 /datum/stovetop_burner
 	var/obj/machinery/cooking/stove/parent
-	var/temperature = "Low"
+	var/temperature = J_LO
 	var/timer = 0
 	var/timerstamp = 0
 	var/switches = 0
@@ -85,7 +94,7 @@
 /datum/stovetop_burner/proc/handle_fire()
 	var/obj/item/reagent_containers/cooking/container = placed_item
 	if(istype(container) && container.handle_ignition())
-		parent.on_fire = TRUE
+		parent.ignite()
 
 /datum/stovetop_burner/proc/kill_timers()
 	deltimer(burn_callback)
@@ -226,40 +235,40 @@
 		return
 
 	var/list/options = list(
-		"Back left" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_backleft"),
-		"Back right" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_backright"),
-		"Front right" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_frontright"),
-		"Front left" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_frontleft")
+		STOVE_RADIAL_ACTION_BACK_LEFT = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_backleft"),
+		STOVE_RADIAL_ACTION_BACK_RIGHT = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_backright"),
+		STOVE_RADIAL_ACTION_FRONT_RIGHT = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_frontright"),
+		STOVE_RADIAL_ACTION_FRONT_RIGHT = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_frontleft")
 	)
 	var/choice = show_radial_menu(user, src, options, require_near = TRUE, starting_angle = -45, ending_angle = 315)
 	var/burner_idx = -1
 	switch(choice)
-		if("Back left")
+		if(STOVE_RADIAL_ACTION_BACK_LEFT)
 			burner_idx = 3
-		if("Back right")
+		if(STOVE_RADIAL_ACTION_BACK_RIGHT)
 			burner_idx = 4
-		if("Front right")
+		if(STOVE_RADIAL_ACTION_FRONT_RIGHT)
 			burner_idx = 2
-		if("Front left")
+		if(STOVE_RADIAL_ACTION_FRONT_RIGHT)
 			burner_idx = 1
 
 	if(burner_idx == -1)
 		return
 
 	var/list/burner_options = list(
-		"Set time" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_settime"),
-		"Set temperature" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_settemp"),
-		"Turn on/off" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_onoff"),
+		STOVE_RADIAL_ACTION_SET_TIMER = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_settime"),
+		STOVE_RADIAL_ACTION_SET_TEMPERATURE = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_settemp"),
+		STOVE_RADIAL_ACTION_ON_OFF = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_onoff"),
 	)
 	var/burner_choice = show_radial_menu(user, src, burner_options, require_near = TRUE)
 	var/datum/stovetop_burner/burner = burners[burner_idx]
 
 	switch(burner_choice)
-		if("Set time")
+		if(STOVE_RADIAL_ACTION_SET_TIMER)
 			handle_timer(user, burner_idx)
-		if("Set temperature")
+		if(STOVE_RADIAL_ACTION_SET_TEMPERATURE)
 			handle_temperature(user, burner_idx)
-		if("Turn on/off")
+		if(STOVE_RADIAL_ACTION_ON_OFF)
 			burner.handle_switch(user)
 
 //Switch the cooking device on or off
@@ -363,6 +372,15 @@
 	our_item.blend_mode = 0
 	our_item.transform =  null
 	src.vis_contents.Remove(our_item)
+
+#undef STOVE_RADIAL_ACTION_BACK_LEFT
+#undef STOVE_RADIAL_ACTION_BACK_RIGHT
+#undef STOVE_RADIAL_ACTION_FRONT_LEFT
+#undef STOVE_RADIAL_ACTION_FRONT_RIGHT
+
+#undef STOVE_RADIAL_ACTION_SET_TIMER
+#undef STOVE_RADIAL_ACTION_SET_TEMPERATURE
+#undef STOVE_RADIAL_ACTION_ON_OFF
 
 #undef ICON_SPLIT_X
 #undef ICON_SPLIT_Y

@@ -79,9 +79,10 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 	return
 
 /obj/machinery/autochef/proc/find_valid_container(container_type)
-	for(var/obj/item/reagent_containers/cooking/container in linked_cooking_containers)
-		if(container_type == container.appliancetype)
-			return container
+	return
+	// for(var/obj/item/reagent_containers/cooking/container in linked_cooking_containers)
+	// 	if(container_type == container.appliancetype)
+	// 		return container
 
 /obj/machinery/autochef/proc/attempt_recipe()
 	if(current_recipe)
@@ -124,12 +125,12 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 		if(AUTOCHEF_RECIPE_SELECTED)
 			atom_say("Locating [current_recipe.cooking_container].")
 			current_state = AUTOCHEF_CONTAINER_LOCATING
-		if(AUTOCHEF_CONTAINER_LOCATING)
-			for(var/obj/item/reagent_containers/cooking/container in linked_cooking_containers)
-				if(container.appliancetype == current_recipe.cooking_container)
-					atom_say("[container] located.")
-					current_state = AUTOCHEF_CONTAINER_LOCATED
-					current_container = container
+		// if(AUTOCHEF_CONTAINER_LOCATING)
+		// 	for(var/obj/item/reagent_containers/cooking/container in linked_cooking_containers)
+		// 		if(container.appliancetype == current_recipe.cooking_container)
+		// 			atom_say("[container] located.")
+		// 			current_state = AUTOCHEF_CONTAINER_LOCATED
+		// 			current_container = container
 		if(AUTOCHEF_CONTAINER_LOCATED)
 			atom_say("Locating ingredients.")
 

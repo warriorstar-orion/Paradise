@@ -13,7 +13,6 @@
 	// description_info = "Can be emptied of physical food with alt-click."
 	var/shortname
 	var/place_verb = "into"
-	var/appliancetype //string
 	w_class = WEIGHT_CLASS_SMALL
 	volume = 240 //Don't make recipes using reagents in larger quantities than this amount; they won't work.
 	var/datum/cooking/recipe_tracker/tracker = null //To be populated the first time the plate is interacted with.
@@ -204,11 +203,15 @@
 
 //TODO: Handle the contents of the container being ruined via burning.
 /obj/item/reagent_containers/cooking/proc/handle_burning()
-	return
+	clear()
+	new/obj/item/food/badrecipe(src)
+	update_appearance(UPDATE_ICON)
 
 //TODO: Handle the contents of the container lighting on actual fire.
 /obj/item/reagent_containers/cooking/proc/handle_ignition()
-	return FALSE
+	clear()
+	update_appearance(UPDATE_ICON)
+	return TRUE
 
 /obj/item/reagent_containers/cooking/verb/empty()
 	set src in view(1)
@@ -266,13 +269,12 @@
 //Used when food is burned, before replacing it with a burned mess
 /obj/item/reagent_containers/cooking/proc/clear()
 	QDEL_LIST_CONTENTS(contents)
-	contents=list()
+	contents = list()
 	reagents.clear_reagents()
 	if(tracker)
 		qdel(tracker)
 		tracker = null
 	clear_cooking_data()
-
 
 /obj/item/reagent_containers/cooking/proc/clear_cooking_data()
 	stove_data = list("High"=0 , "Medium" = 0, "Low"=0)
@@ -326,7 +328,6 @@
 	desc = "A shitty serving plate. You probably shouldn't be seeing this."
 	icon_state = "plate"
 	materials = list(MAT_METAL = 5)
-	appliancetype = PLATE
 
 /obj/item/reagent_containers/cooking/board
 	name = "cutting board"
@@ -335,7 +336,18 @@
 	icon_state = "cutting_board"
 	item_state = "cutting_board"
 	materials = list(MAT_WOOD = 5)
-	appliancetype = CUTTING_BOARD
+
+/obj/item/reagent_containers/cooking/sushimat
+	name = "Sushi Mat"
+	desc = "A wooden mat used for efficient sushi crafting."
+	icon = 'icons/obj/kitchen.dmi'
+	icon_state = "sushi_mat"
+	force = 5
+	throwforce = 5
+	throw_speed = 3
+	throw_range = 3
+	w_class = WEIGHT_CLASS_SMALL
+	attack_verb = list("rolled", "cracked", "battered", "thrashed")
 
 /obj/item/reagent_containers/cooking/oven
 	name = "oven dish"
@@ -345,7 +357,6 @@
 	lip = "oven_dish_lip"
 	item_state = "oven_dish"
 	materials = list(MAT_METAL = 10)
-	appliancetype = OVEN
 
 /obj/item/reagent_containers/cooking/pan
 	name = "pan"
@@ -358,7 +369,6 @@
 	#warn do we genuinely not have plasteel as a mat
 	materials = list(MAT_METAL = 5)
 	hitsound = 'sound/weapons/smash.ogg'
-	appliancetype = PAN
 
 /obj/item/reagent_containers/cooking/pot
 	name = "cooking pot"
@@ -372,7 +382,6 @@
 
 	hitsound = 'sound/weapons/smash.ogg'
 	removal_penalty = 5
-	appliancetype = POT
 	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/reagent_containers/cooking/deep_basket
@@ -384,7 +393,6 @@
 	lip = "deepfryer_basket_lip"
 	item_state = "deepfryer_basket"
 	removal_penalty = 5
-	appliancetype = DF_BASKET
 
 /obj/item/reagent_containers/cooking/air_basket
 	name = "air fryer basket"
@@ -395,7 +403,6 @@
 	lip = "airfryer_basket_lip"
 	item_state = "airfryer_basket"
 	removal_penalty = 5
-	appliancetype = AF_BASKET
 
 /obj/item/reagent_containers/cooking/grill_grate
 	name = "grill grate"
@@ -405,8 +412,6 @@
 
 	icon_state = "grill_grate"
 	materials = list(MAT_METAL = 5)
-
-	appliancetype = GRILL
 
 /obj/item/reagent_containers/cooking/bowl
 	name = "prep bowl"
@@ -419,4 +424,3 @@
 	materials = list(MAT_PLASTIC = 5)
 
 	removal_penalty = 2
-	appliancetype = BOWL

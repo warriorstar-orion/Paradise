@@ -14,6 +14,7 @@ class RecipeDetails:
     food_items: list
     produce_items: list
     added_items: list = field(default_factory=list)
+    subcategory: str = ""
 
 
 REAGENTS = {}
@@ -82,9 +83,14 @@ def codegen_oven_recipe(recipe: RecipeDetails) -> str:
 def codegen_crafting_recipe(recipe: RecipeDetails) -> str:
     result_lines = []
     result_lines.append(f"/datum/cooking/recipe/{recipe.original_path.stem}")
-    result_lines.append(
-        f"\tcooking_container = /obj/item/reagent_containers/cooking/board"
-    )
+    if recipe.subcategory == "Sushi":
+        result_lines.append(
+            f"\tcooking_container = /obj/item/reagent_containers/cooking/sushimat"
+        )
+    else:
+        result_lines.append(
+            f"\tcooking_container = /obj/item/reagent_containers/cooking/board"
+        )
     result_lines.append(f"\tproduct_type = {recipe.product_type}")
     result_lines.append(f"\tsteps = list(")
     for food_item in recipe.food_items:
@@ -107,6 +113,8 @@ def process_crafting_recipes(dme: DME) -> list[RecipeDetails]:
         recipe_category = td.var_decl("category").const_val
         if recipe_category != "Foods":
             continue
+
+        subcategory = td.var_decl("subcategory").const_val
 
         items = td.var_decl("reqs").const_val
         result_list = td.var_decl("result").const_val
@@ -146,6 +154,7 @@ def process_crafting_recipes(dme: DME) -> list[RecipeDetails]:
                 food_items=added_foods,
                 produce_items=added_produce,
                 added_items=added_items,
+                subcategory=subcategory,
             )
         )
 
@@ -212,11 +221,19 @@ with open("code/modules/cooking/recipes/stable/cooking_oven_recipes.dm", "w") as
         f.write(codegen_oven_recipe(recipe))
         f.write("\n")
 
-with open("code/modules/cooking/recipes/stable/cutting_board_recipes.dm", "w") as f:
-    for recipe in crafting_recipes:
-        f.write("\n")
-        f.write(codegen_crafting_recipe(recipe))
-        f.write("\n")
+cutting_board = open(
+    "code/modules/cooking/recipes/stable/cutting_board_recipes.dm", "w"
+)
+sushi_mat = open("code/modules/cooking/recipes/stable/sushi_mat_recipes.dm", "w")
+for recipe in crafting_recipes:
+    if recipe.subcategory == "Sushi":
+        sushi_mat.write("\n")
+        sushi_mat.write(codegen_crafting_recipe(recipe))
+        sushi_mat.write("\n")
+    else:
+        cutting_board.write("\n")
+        cutting_board.write(codegen_crafting_recipe(recipe))
+        cutting_board.write("\n")
 
 # with open("prototype_recipes.py", "w") as f:
 #     f.write("from prototype_tracker import *\n")

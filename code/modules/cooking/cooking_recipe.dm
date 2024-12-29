@@ -172,7 +172,8 @@ GLOBAL_LIST_EMPTY(cwj_recipe_dictionary)
 					for(var/id in exclude_specific_reagents)
 						added_item.reagents.remove_reagent(id, added_item.reagents.get_reagent_amount(id), safety = TRUE)
 
-				added_item.reagents.trans_to(slurry, amount = added_item.reagents.total_volume)
+				if(added_item.reagents)
+					added_item.reagents.trans_to(slurry, amount = added_item.reagents.total_volume)
 
 		//Purge the contents of the container we no longer need it
 		QDEL_LIST_CONTENTS(container.contents)

@@ -791,6 +791,9 @@
 					return FALSE
 	return FALSE
 
+/datum/reagents/proc/is_empty()
+	return length(reagent_list) == 0
+
 /**
  * Returns the amount of the matching reagent inside the holder.
  *
