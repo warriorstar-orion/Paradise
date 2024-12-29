@@ -156,21 +156,6 @@
 		man_rating += M.rating
 	quality_mod = round(man_rating/2)
 
-/obj/machinery/cooking/stove/proc/handle_burn(input)
-	if(!(items[input] && istype(items[input], /obj/item/reagent_containers/cooking)))
-		return
-
-	var/obj/item/reagent_containers/cooking/container = items[input]
-	container.handle_burning()
-
-/obj/machinery/cooking/stove/proc/handle_fire(input)
-	if(!(items[input] && istype(items[input], /obj/item/reagent_containers/cooking)))
-		return
-
-	var/obj/item/reagent_containers/cooking/container = items[input]
-	if(container.handle_ignition())
-		on_fire = TRUE
-
 // Retrieve which quadrant of the stovetop is being used.
 /obj/machinery/cooking/stove/proc/getInput(modifiers)
 	var/input
@@ -240,16 +225,42 @@
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return
 
-	var/input = getInput(modifiers)
-	#ifdef CWJ_DEBUG
-	log_debug("/cooking/stove/CtrlClick called on burner [input]")
-	#endif
-	var/choice = alert(user,"Select an action for burner #[input]","Select One:","Set temperature","Set timer","Cancel")
+	var/list/options = list(
+		"Back left" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_backleft"),
+		"Back right" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_backright"),
+		"Front right" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_frontright"),
+		"Front left" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_frontleft")
+	)
+	var/choice = show_radial_menu(user, src, options, require_near = TRUE, starting_angle = -45, ending_angle = 315)
+	var/burner_idx = -1
 	switch(choice)
+		if("Back left")
+			burner_idx = 3
+		if("Back right")
+			burner_idx = 4
+		if("Front right")
+			burner_idx = 2
+		if("Front left")
+			burner_idx = 1
+
+	if(burner_idx == -1)
+		return
+
+	var/list/burner_options = list(
+		"Set time" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_settime"),
+		"Set temperature" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_settemp"),
+		"Turn on/off" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_onoff"),
+	)
+	var/burner_choice = show_radial_menu(user, src, burner_options, require_near = TRUE)
+	var/datum/stovetop_burner/burner = burners[burner_idx]
+
+	switch(burner_choice)
+		if("Set time")
+			handle_timer(user, burner_idx)
 		if("Set temperature")
-			handle_temperature(user, input)
-		if("Set timer")
-			handle_timer(user, input)
+			handle_temperature(user, burner_idx)
+		if("Turn on/off")
+			burner.handle_switch(user)
 
 //Switch the cooking device on or off
 /obj/machinery/cooking/stove/CtrlShiftClick(mob/user, modifiers)
@@ -353,148 +364,5 @@
 	our_item.transform =  null
 	src.vis_contents.Remove(our_item)
 
-/obj/machinery/cooking/stove/verb/toggle_burner_1()
-	set src in view(1)
-	set name = "Stove burner 1 - Toggle"
-	set category = "Object"
-	set desc = "Turn on a burner on the stove"
-	#ifdef CWJ_DEBUG
-	log_debug("/cooking/stove/verb/toggle_burner_1() called to toggle burner 1")
-	#endif
-	if(!ishuman(usr) && !isrobot(usr))
-		return
-	handle_switch(usr, 1)
-
-/obj/machinery/cooking/stove/verb/toggle_burner_2()
-	set src in view(1)
-	set name = "Stove burner 2 - Toggle"
-	set category = "Object"
-	set desc = "Turn on a burner on the stove"
-	#ifdef CWJ_DEBUG
-	log_debug("/cooking/stove/verb/toggle_burner_2() called to toggle burner 2")
-	#endif
-	if(!ishuman(usr) && !isrobot(usr))
-		return
-	handle_switch(usr, 2)
-
-/obj/machinery/cooking/stove/verb/toggle_burner_3()
-	set src in view(1)
-	set name = "Stove burner 3 - Toggle"
-	set category = "Object"
-	set desc = "Turn on a burner on the stove"
-	#ifdef CWJ_DEBUG
-	log_debug("/cooking/stove/verb/toggle_burner_3() called to toggle burner 3")
-	#endif
-	if(!ishuman(usr) && !isrobot(usr))
-		return
-	handle_switch(usr, 3)
-
-/obj/machinery/cooking/stove/verb/toggle_burner_4()
-	set src in view(1)
-	set name = "Stove burner 4 - Toggle"
-	set category = "Object"
-	set desc = "Turn on a burner on the stove"
-	#ifdef CWJ_DEBUG
-	log_debug("/cooking/stove/verb/toggle_burner_4() called to toggle burner 4")
-	#endif
-	if(!ishuman(usr) && !isrobot(usr))
-		return
-	handle_switch(usr, 4)
-
-/obj/machinery/cooking/stove/verb/change_temperature_1()
-	set src in view(1)
-	set name = "Stove burner 1 - Set Temp"
-	set category = "Object"
-	set desc = "Set a temperature for a burner."
-	#ifdef CWJ_DEBUG
-	log_debug("/cooking/stove/verb/change_temperature_1() called to change temperature on 1")
-	#endif
-	if(!ishuman(usr) && !isrobot(usr))
-		return
-	handle_temperature(usr, 1)
-
-/obj/machinery/cooking/stove/verb/change_temperature_2()
-	set src in view(1)
-	set name = "Stove burner 2 - Set Temp"
-	set category = "Object"
-	set desc = "Set a temperature for a burner."
-	#ifdef CWJ_DEBUG
-	log_debug("/cooking/stove/verb/change_temperature_2() called to change temperature on 2")
-	#endif
-	if(!ishuman(usr) && !isrobot(usr))
-		return
-	handle_temperature(usr, 2)
-
-/obj/machinery/cooking/stove/verb/change_temperature_3()
-	set src in view(1)
-	set name = "Stove burner 3 - Set Temp"
-	set category = "Object"
-	set desc = "Set a temperature for a burner."
-	#ifdef CWJ_DEBUG
-	log_debug("/cooking/stove/verb/change_temperature_3() called to change temperature on 3")
-	#endif
-	if(!ishuman(usr) && !isrobot(usr))
-		return
-	handle_temperature(usr, 3)
-
-/obj/machinery/cooking/stove/verb/change_temperature_4()
-	set src in view(1)
-	set name = "Stove burner 4 - Set Temp"
-	set category = "Object"
-	set desc = "Set a temperature for a burner."
-	#ifdef CWJ_DEBUG
-	log_debug("/cooking/stove/verb/change_temperature_4() called to change temperature on 4")
-	#endif
-	if(!ishuman(usr) && !isrobot(usr))
-		return
-	handle_temperature(usr, 4)
-
-/obj/machinery/cooking/stove/verb/change_timer_1()
-	set src in view(1)
-	set name = "Stove burner 1 - Set Timer"
-	set category = "Object"
-	set desc = "Set a timer for a burner."
-	#ifdef CWJ_DEBUG
-	log_debug("/cooking/stove/verb/change_timer_1() called to change timer on 1")
-	#endif
-	if(!ishuman(usr) && !isrobot(usr))
-		return
-	handle_timer(usr, 1)
-
-/obj/machinery/cooking/stove/verb/change_timer_2()
-	set src in view(1)
-	set name = "Stove burner 2 - Set Timer"
-	set category = "Object"
-	set desc = "Set a timer for a burner."
-	#ifdef CWJ_DEBUG
-	log_debug("/cooking/stove/verb/change_timer_2() called to change timer on 2")
-	#endif
-	if(!ishuman(usr) && !isrobot(usr))
-		return
-	handle_timer(usr, 2)
-
-/obj/machinery/cooking/stove/verb/change_timer_3()
-	set src in view(1)
-	set name = "Stove burner 3 - Set Timer"
-	set category = "Object"
-	set desc = "Set a timer for a burner."
-	#ifdef CWJ_DEBUG
-	log_debug("/cooking/stove/verb/change_timer_3() called to change timer on 3")
-	#endif
-	if(!ishuman(usr) && !isrobot(usr))
-		return
-	handle_timer(usr, 3)
-
-/obj/machinery/cooking/stove/verb/change_timer_4()
-	set src in view(1)
-	set name = "Stove burner 4 - Set Timer"
-	set category = "Object"
-	set desc = "Set a timer for a burner."
-	#ifdef CWJ_DEBUG
-	log_debug("/cooking/stove/verb/change_timer_4() called to change timer on 4")
-	#endif
-	if(!ishuman(usr) && !isrobot(usr))
-		return
-	handle_timer(usr, 4)
 #undef ICON_SPLIT_X
 #undef ICON_SPLIT_Y
