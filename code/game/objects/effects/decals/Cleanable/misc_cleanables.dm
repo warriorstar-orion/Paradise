@@ -68,6 +68,48 @@
 	no_scoop = TRUE
 	scoop_reagents = list("blackpowder" = 40) // size 2 explosion when activated
 
+/obj/effect/decal/cleanable/food_spill
+	gender = PLURAL
+	density = FALSE
+	layer = TURF_LAYER
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "flour"
+
+/obj/effect/decal/cleanable/food_spill/Initialize(mapload, obj/item/food/food)
+	. = ..()
+
+	// uninteresting colors/results
+	var/static/list/ignore_reagents = list("nutriment", "vitamin", "water")
+	var/list/possible_spill_reagents = list()
+	for(var/datum/reagent/reagent in food.reagents.reagent_list)
+		if(reagent.id in ignore_reagents || !reagent.color)
+			continue
+		// no spilling oculine or whatever
+		if(!istype(reagent, /datum/reagent/consumable))
+			continue
+
+		possible_spill_reagents |= reagent
+
+	if(length(possible_spill_reagents))
+		var/datum/reagent/reagent = pick(possible_spill_reagents)
+		var/matrix/rotate = matrix()
+		rotate.Turn(pick(0, 90, 180, 270))
+		transform = rotate
+		name = "spilled [reagent.name]"
+		color = reagent.color
+		return
+
+	// no reagents? fine we'll see if there's an interesting food color
+	if(food.filling_color)
+		var/matrix/rotate = matrix()
+		rotate.Turn(pick(0, 90, 180, 270))
+		transform = rotate
+		name = "spilled [food.name]"
+		color = food.filling_color
+		return
+
+	return INITIALIZE_HINT_QDEL
+
 /obj/effect/decal/cleanable/flour
 	name = "flour"
 	desc = "It's still good. Four second rule!"

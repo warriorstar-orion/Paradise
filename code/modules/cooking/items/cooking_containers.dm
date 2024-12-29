@@ -375,6 +375,7 @@
 	shortname = "pot"
 	desc = "Boil things with this. Maybe even stick 'em in a stew."
 
+	icon = 'icons/obj/cwj_cooking/eris_kitchen.dmi'
 	icon_state = "pot"
 	lip = "pot_lip"
 	item_state = "pot"

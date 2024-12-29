@@ -57,6 +57,8 @@
 	var/food_tier
 	var/bite_descriptor
 
+	var/recommends_implement
+
 /obj/item/food/Initialize(mapload)
 	. = ..()
 
@@ -326,6 +328,15 @@
 			var/mob/living/simple_animal/nian_caterpillar/W = M
 			W.taste(reagents)
 			W.consume(src)
+
+/obj/item/food/proc/spill(leave_decal = TRUE)
+	// toss 20% of reagents, idk how remove_any works, this seems fine
+	reagents.remove_any(reagents.total_volume / 5)
+	if(!leave_decal)
+		return
+
+	if(get_turf(src))
+		new/obj/effect/decal/cleanable/food_spill(get_turf(src), src)
 
 //MARK: SLICE
 /obj/item/food/sliced

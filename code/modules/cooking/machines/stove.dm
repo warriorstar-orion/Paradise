@@ -238,7 +238,7 @@
 		STOVE_RADIAL_ACTION_BACK_LEFT = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_backleft"),
 		STOVE_RADIAL_ACTION_BACK_RIGHT = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_backright"),
 		STOVE_RADIAL_ACTION_FRONT_RIGHT = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_frontright"),
-		STOVE_RADIAL_ACTION_FRONT_RIGHT = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_frontleft")
+		STOVE_RADIAL_ACTION_FRONT_LEFT = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_frontleft")
 	)
 	var/choice = show_radial_menu(user, src, options, require_near = TRUE, starting_angle = -45, ending_angle = 315)
 	var/burner_idx = -1
@@ -249,7 +249,7 @@
 			burner_idx = 4
 		if(STOVE_RADIAL_ACTION_FRONT_RIGHT)
 			burner_idx = 2
-		if(STOVE_RADIAL_ACTION_FRONT_RIGHT)
+		if(STOVE_RADIAL_ACTION_FRONT_LEFT)
 			burner_idx = 1
 
 	if(burner_idx == -1)
@@ -364,6 +364,7 @@
 	if(input == 2 || input == 4)
 		var/matrix/M = matrix()
 		M.Scale(-1,1)
+		our_item.appearance_flags |= PIXEL_SCALE
 		our_item.transform = M
 	our_item.transform *= 0.8
 
@@ -371,6 +372,7 @@
 	our_item.vis_flags = 0
 	our_item.blend_mode = 0
 	our_item.transform =  null
+	our_item.appearance_flags &= PIXEL_SCALE
 	src.vis_contents.Remove(our_item)
 
 #undef STOVE_RADIAL_ACTION_BACK_LEFT
