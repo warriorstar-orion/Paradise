@@ -106,6 +106,31 @@ def codegen_crafting_recipe(recipe: RecipeDetails) -> str:
     return "\n".join(result_lines)
 
 
+def codegen_ice_cream_mixer_recipe(recipe: RecipeDetails) -> str:
+    result_lines = []
+    result_lines.append(f"/datum/cooking/recipe/{recipe.original_path.stem}")
+    result_lines.append(
+        f"\tcooking_container = /obj/item/reagent_containers/cooking/icecream_bowl"
+    )
+    result_lines.append(f"\tproduct_type = {recipe.product_type}")
+    result_lines.append(f"\tsteps = list(")
+    for food_item in recipe.food_items:
+        result_lines.append(f"\t\tCWJ_ADD_ITEM({food_item}),")
+    for food_item in recipe.added_items:
+        result_lines.append(f"\t\tCWJ_ADD_ITEM({food_item}),")
+    for produce_item in recipe.produce_items:
+        result_lines.append(f"\t\tCWJ_ADD_PRODUCE({produce_item}),")
+    for name, amount in recipe.reagents.items():
+        result_lines.append(f'\t\tCWJ_ADD_REAGENT("{name}", {amount}),')
+    result_lines.append(
+        f"\t\tCWJ_USE_ICE_CREAM_MIXER({max(10, 10 * (int(0.5 * (len(recipe.food_items) + len(recipe.produce_items)))))} SECONDS),"
+    )
+
+    result_lines.append(f"\t)")
+
+    return "\n".join(result_lines)
+
+
 def process_crafting_recipes(dme: DME) -> list[RecipeDetails]:
     recipes = list()
     for pth in dme.subtypesof("/datum/crafting_recipe"):
@@ -184,7 +209,8 @@ def process_recipes(dme: DME, base_type: str) -> list[RecipeDetails]:
                 reagent_items[name] = reagents[name]
         product_type = td.var_decl("result").const_val
         if not product_type:
-            raise RuntimeError(f"no product type for {pth}")
+            print(f"no product type for {pth}")
+            continue
         recipe = RecipeDetails(
             original_path=pth,
             product_type=product_type,
@@ -206,6 +232,7 @@ for reagent in dme.subtypesof("/datum/reagent"):
 
 grill_recipes = process_recipes(dme, "/datum/recipe/grill")
 oven_recipes = process_recipes(dme, "/datum/recipe/oven")
+microwave_recipes = process_recipes(dme, "/datum/recipe/microwave")
 crafting_recipes = process_crafting_recipes(dme)
 
 
@@ -220,6 +247,15 @@ with open("code/modules/cooking/recipes/stable/cooking_oven_recipes.dm", "w") as
         f.write("\n")
         f.write(codegen_oven_recipe(recipe))
         f.write("\n")
+
+frozen_recipes = open(
+    "code/modules/cooking/recipes/stable/ice_cream_mixer_recipes.dm", "w"
+)
+for recipe in microwave_recipes:
+    if recipe.product_type.child_of("/obj/item/food/frozen"):
+        frozen_recipes.write("\n")
+        frozen_recipes.write(codegen_ice_cream_mixer_recipe(recipe))
+        frozen_recipes.write("\n")
 
 cutting_board = open(
     "code/modules/cooking/recipes/stable/cutting_board_recipes.dm", "w"
