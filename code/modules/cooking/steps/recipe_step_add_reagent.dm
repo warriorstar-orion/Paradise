@@ -81,13 +81,15 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/add_reagent)
 			return TRUE
 		return FALSE
 
-	var/part = our_item.reagents.get_reagent_amount(reagent_id) / our_item.reagents.total_volume
-	var/incoming_amount = max(0, min(our_item.amount_per_transfer_from_this, our_item.reagents.total_volume, container.reagents.get_free_space()))
-	var/incoming_valid_amount = incoming_amount * part
+	if(our_item.reagents.total_volume)
+		var/part = our_item.reagents.get_reagent_amount(reagent_id) / our_item.reagents.total_volume
+		var/incoming_amount = max(0, min(our_item.amount_per_transfer_from_this, our_item.reagents.total_volume, container.reagents.get_free_space()))
+		var/incoming_valid_amount = incoming_amount * part
 
-	var/resulting_total = container.reagents.get_reagent_amount(reagent_id) + incoming_valid_amount
-	if(resulting_total >= amount)
-		return TRUE
+		var/resulting_total = container.reagents.get_reagent_amount(reagent_id) + incoming_valid_amount
+		if(resulting_total >= amount)
+			return TRUE
+
 	return FALSE
 
 /datum/cooking/recipe_step/add_reagent/get_wiki_formatted_instruction()

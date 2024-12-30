@@ -62,4 +62,3 @@
 #define CWJ_USE_OVEN(temperature, time, options...)			new/datum/cooking/recipe_step/use_oven(temperature, time, list(##options))
 #define CWJ_USE_STOVE(temperature, time, options...)		new/datum/cooking/recipe_step/use_stove(temperature, time, list(##options))
 #define CWJ_USE_ICE_CREAM_MIXER(time, options...)			new/datum/cooking/recipe_step/use_ice_cream_mixer(time, list(##options))
-#define CWJ_MACHINE_INPUT(item_type, options...)			new/datum/cooking/recipe_step/machine_input(item_type, list(##options))
