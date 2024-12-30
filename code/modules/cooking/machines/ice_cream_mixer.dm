@@ -8,7 +8,7 @@
 	var/on = FALSE
 	active_power_consumption = 200
 	var/check_on_10 = 0
-	var/timer = 12 SECONDS
+	var/timer = 6 SECONDS
 	var/reference_time = 0
 	var/freezing_timestamp = 0
 	var/obj/item

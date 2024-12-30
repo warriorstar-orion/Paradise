@@ -8,7 +8,7 @@
 		CWJ_ADD_REAGENT("ice", 2),
 		CWJ_ADD_REAGENT("vanilla", 2),
 		CWJ_ADD_REAGENT("cream", 2),
-		CWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+		CWJ_USE_ICE_CREAM_MIXER(3 SECONDS),
 	)
 
 /datum/cooking/recipe/orange_snowcone
@@ -18,6 +18,6 @@
 		CWJ_ADD_ITEM(/obj/item/reagent_containers/drinks/sillycup),
 		CWJ_ADD_REAGENT("orangejuice", 4),
 		CWJ_ADD_REAGENT("ice", 2),
-		CWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+		CWJ_USE_ICE_CREAM_MIXER(3 SECONDS),
 	)
 

@@ -93,6 +93,11 @@
 /obj/machinery/autochef,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
+"o" = (
+/obj/structure/table,
+/obj/item/reagent_containers/cooking/icecream_bowl,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
 "p" = (
 /obj/machinery/cooking/oven,
 /turf/simulated/floor/plasteel/freezer,
@@ -251,10 +256,8 @@
 /obj/machinery/smartfridge/foodcart,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
-"N" = (
+"M" = (
 /obj/structure/table,
-/obj/item/food/patty,
-/obj/item/food/patty,
 /obj/item/food/patty,
 /obj/item/food/patty,
 /obj/item/food/patty,
@@ -291,22 +294,6 @@
 /obj/structure/table,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
-"U" = (
-/obj/structure/table,
-/obj/item/food/grown/berries,
-/obj/item/food/grown/berries,
-/obj/item/food/grown/berries,
-/obj/item/food/cookiedough,
-/obj/item/food/cookiedough,
-/obj/item/food/cookiedough,
-/turf/simulated/floor/plasteel/freezer,
-/area/shuttle/arrival/station)
-"W" = (
-/obj/structure/table,
-/obj/item/reagent_containers/cooking/icecream_bowl,
-/obj/item/reagent_containers/cooking/icecream_bowl,
-/turf/simulated/floor/plasteel/freezer,
-/area/shuttle/arrival/station)
 "X" = (
 /obj/structure/table,
 /obj/item/reagent_containers/condiment/saltshaker,
@@ -320,36 +307,8 @@
 /area/shuttle/arrival/station)
 "Y" = (
 /obj/structure/table,
-/obj/item/popsicle_stick,
-/obj/item/popsicle_stick,
-/obj/item/popsicle_stick,
-/obj/item/popsicle_stick,
-/obj/item/popsicle_stick,
-/obj/item/popsicle_stick,
-/obj/item/popsicle_stick,
-/obj/item/popsicle_stick,
-/obj/item/food/wafflecone{
-	pixel_x = -10;
-	pixel_y = 6
-	},
-/obj/item/food/wafflecone{
-	pixel_x = -10;
-	pixel_y = 6
-	},
-/obj/item/food/wafflecone{
-	pixel_x = -10;
-	pixel_y = 6
-	},
-/obj/item/food/wafflecone{
-	pixel_x = -10;
-	pixel_y = 6
-	},
-/obj/item/food/wafflecone{
-	pixel_x = -10;
-	pixel_y = 6
-	},
-/obj/item/food/wafflecone{
-	pixel_x = -10;
+/obj/item/popsicle_stick{
+	pixel_x = -6;
 	pixel_y = 6
 	},
 /obj/item/reagent_containers/drinks/sillycup{
@@ -383,6 +342,22 @@
 /obj/item/reagent_containers/drinks/sillycup{
 	pixel_y = 3;
 	pixel_x = 8
+	},
+/obj/item/popsicle_stick{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/popsicle_stick{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/popsicle_stick{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/popsicle_stick{
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
@@ -32914,7 +32889,7 @@ f
 x
 b
 x
-U
+D
 x
 K
 x
@@ -33171,9 +33146,9 @@ p
 x
 Q
 x
-N
-x
 D
+x
+o
 x
 t
 u
@@ -33944,7 +33919,7 @@ l
 x
 Z
 x
-W
+D
 x
 x
 u
@@ -34454,7 +34429,7 @@ a
 u
 O
 x
-x
+M
 x
 J
 x
