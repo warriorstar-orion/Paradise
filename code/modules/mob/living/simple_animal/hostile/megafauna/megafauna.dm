@@ -157,12 +157,6 @@
 /mob/living/simple_animal/hostile/megafauna/proc/unrage()
 	enraged = FALSE
 
-/mob/living/simple_animal/hostile/megafauna/DestroySurroundings()
-	. = ..()
-	for(var/turf/simulated/floor/chasm/C in circlerangeturfs(src, 1))
-		C.density = FALSE //I hate it.
-		addtimer(VARSET_CALLBACK(C, density, TRUE), 2 SECONDS) // Needed to make them path. I hate it.
-
 /mob/living/simple_animal/hostile/megafauna/proc/hoverboard_deactivation(source, target)
 	SIGNAL_HANDLER // COMSIG_HOSTILE_FOUND_TARGET
 	if(!isliving(target))
