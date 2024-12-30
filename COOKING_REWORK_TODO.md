@@ -21,3 +21,4 @@ Pass sliceable food quality onto slices
 Pass sliceable grown food potency onto slices in some proportion
 Find when applying a flat debuff across meal should apply
 X Fix burning hands on stove to be localized to hand
+Get cooking containers out from under reagent_containers type tree to prevent all kinds of bullshit

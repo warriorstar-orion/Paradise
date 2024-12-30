@@ -11,6 +11,18 @@
 /obj/effect/landmark/spawner/late/crew,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
+"c" = (
+/obj/structure/table,
+/obj/item/reagent_containers/glass/beaker/large,
+/obj/item/reagent_containers/glass/beaker/large,
+/obj/item/reagent_containers/glass/beaker/large,
+/obj/item/reagent_containers/glass/beaker/large,
+/obj/item/reagent_containers/glass/beaker/large,
+/obj/item/reagent_containers/glass/beaker/large,
+/obj/item/reagent_containers/glass/beaker/large,
+/obj/item/reagent_containers/glass/beaker/large,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
 "e" = (
 /obj/structure/table,
 /obj/machinery/chem_dispenser/beer{
@@ -153,6 +165,15 @@
 	},
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
+"D" = (
+/obj/structure/table,
+/obj/item/food/wafflecone,
+/obj/item/food/wafflecone,
+/obj/item/food/wafflecone,
+/obj/item/food/wafflecone,
+/obj/item/food/wafflecone,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
 "E" = (
 /obj/machinery/cooking/grill,
 /obj/structure/table,
@@ -208,6 +229,10 @@
 /obj/item/food/meat,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
+"K" = (
+/obj/machinery/cooking/ice_cream_mixer,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
 "L" = (
 /obj/machinery/smartfridge/foodcart,
 /turf/simulated/floor/plasteel/freezer,
@@ -241,6 +266,10 @@
 /obj/item/food/sliceable/flatdough,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
+"S" = (
+/obj/machinery/smartfridge/food/chef,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
 "T" = (
 /obj/item/reagent_containers/cooking/oven,
 /obj/item/reagent_containers/cooking/oven,
@@ -258,6 +287,12 @@
 /obj/item/food/cookiedough,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
+"W" = (
+/obj/structure/table,
+/obj/item/reagent_containers/cooking/icecream_bowl,
+/obj/item/reagent_containers/cooking/icecream_bowl,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
 "X" = (
 /obj/structure/table,
 /obj/item/reagent_containers/condiment/saltshaker,
@@ -267,6 +302,18 @@
 /obj/item/reagent_containers/condiment/peppermill{
 	pixel_x = 8
 	},
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"Y" = (
+/obj/structure/table,
+/obj/item/popsicle_stick,
+/obj/item/popsicle_stick,
+/obj/item/popsicle_stick,
+/obj/item/popsicle_stick,
+/obj/item/popsicle_stick,
+/obj/item/popsicle_stick,
+/obj/item/popsicle_stick,
+/obj/item/popsicle_stick,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "Z" = (
@@ -32279,11 +32326,11 @@ a
 a
 a
 u
-e
-x
 n
-G
-U
+x
+x
+x
+x
 x
 x
 x
@@ -32536,7 +32583,7 @@ a
 a
 a
 u
-B
+G
 x
 x
 x
@@ -32797,9 +32844,9 @@ f
 x
 b
 x
+U
 x
-x
-F
+K
 x
 x
 u
@@ -33056,8 +33103,8 @@ Q
 x
 N
 x
-m
-q
+D
+x
 x
 u
 a
@@ -33313,8 +33360,8 @@ h
 x
 s
 x
-w
-v
+Y
+x
 x
 u
 a
@@ -33570,8 +33617,8 @@ I
 x
 k
 x
-T
-O
+c
+x
 x
 u
 a
@@ -33827,7 +33874,7 @@ l
 x
 Z
 x
-y
+W
 x
 x
 u
@@ -34084,7 +34131,7 @@ X
 x
 z
 x
-i
+e
 x
 x
 u
@@ -34341,7 +34388,7 @@ H
 x
 J
 x
-L
+B
 x
 x
 u
@@ -34592,7 +34639,7 @@ a
 a
 a
 u
-x
+L
 x
 x
 x
@@ -34849,15 +34896,15 @@ a
 a
 a
 u
-u
-u
-u
-u
-u
-u
-u
-u
-u
+S
+x
+x
+x
+x
+x
+x
+x
+x
 u
 a
 a
@@ -35105,17 +35152,17 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+F
+m
+w
+T
+y
+i
+q
+v
+O
+u
 a
 a
 a
@@ -35362,17 +35409,17 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
