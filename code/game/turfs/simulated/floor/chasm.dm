@@ -8,9 +8,9 @@
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
 	smoothing_groups = list(SMOOTH_GROUP_TURF, SMOOTH_GROUP_TURF_CHASM)
 	canSmoothWith = list(SMOOTH_GROUP_TURF_CHASM)
-	density = TRUE //This will prevent hostile mobs from pathing into chasms, while the canpass override will still let it function like an open turf
 	layer = 1.7
 	intact = 0
+	pathing_pass_method = TURF_PATHING_PASS_PROC
 	var/static/list/falling_atoms = list() //Atoms currently falling into the chasm
 	var/static/list/forbidden_types = typecacheof(list(
 		/obj/singularity,

@@ -311,7 +311,8 @@
 		approaching_target = TRUE
 	else
 		approaching_target = FALSE
-	GLOB.move_manager.move_to(src, target, minimum_distance, delay, flags = MOVEMENT_LOOP_IGNORE_GLIDE)
+	// GLOB.move_manager.move_to(src, target, minimum_distance, delay, flags = MOVEMENT_LOOP_IGNORE_GLIDE)
+	GLOB.move_manager.jps_move(src, target, delay, minimum_distance = minimum_distance, flags = MOVEMENT_LOOP_IGNORE_GLIDE)
 
 /mob/living/simple_animal/hostile/adjustHealth(damage, updating_health = TRUE)
 	. = ..()
