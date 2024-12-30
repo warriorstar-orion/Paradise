@@ -40,7 +40,7 @@
 /datum/cooking/recipe_step/proc/is_complete(obj/added_item, datum/cooking/recipe_tracker/tracker)
 	return TRUE
 
-/datum/cooking/recipe_step/proc/get_human_readable_instruction()
+/datum/cooking/recipe_step/proc/get_wiki_formatted_instruction()
 	SHOULD_CALL_PARENT(FALSE)
 	return ""
 

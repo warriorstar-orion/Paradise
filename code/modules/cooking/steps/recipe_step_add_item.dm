@@ -68,8 +68,12 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/add_item)
 
 	return list(message = "Something went real fucking wrong here!")
 
-/datum/cooking/recipe_step/add_item/get_human_readable_instruction()
-	return "Add \a [item_type::name]."
+/datum/cooking/recipe_step/add_item/get_wiki_formatted_instruction()
+	var/slug = "[item_type::name]"
+	if(ispath(item_type, /obj/item/food))
+		var/obj/item/food/food_type = item_type
+		slug = "{{RecursiveFood/[item_type::name]}}"
+	return "Add \a [slug]."
 
 /datum/cooking/recipe_step/add_item/equals(datum/cooking/recipe_step/other)
 	var/datum/cooking/recipe_step/add_item/other_add_item = other

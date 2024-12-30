@@ -1871,6 +1871,7 @@
 #include "code\modules\cooking\machines\cooking_circuits.dm"
 #include "code\modules\cooking\machines\cooking_machine.dm"
 #include "code\modules\cooking\machines\grill.dm"
+#include "code\modules\cooking\machines\ice_cream_mixer.dm"
 #include "code\modules\cooking\machines\oven.dm"
 #include "code\modules\cooking\machines\stove.dm"
 #include "code\modules\cooking\items\cooking_containers.dm"

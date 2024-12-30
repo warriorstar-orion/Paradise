@@ -1145,7 +1145,7 @@ GLOBAL_LIST_INIT(ventcrawl_machinery, list(/obj/machinery/atmospherics/unary/ven
 		if(isspaceturf(get_turf(src)))
 			destination = "floats off into space"
 			leave_decal = FALSE
-		to_eat.spill(leave_decal = leave_decal)
+		to_eat.spill(leave_decal)
 		to_chat(user, "<span class='notice'>In your rush to shovel \the [to_eat] into your mouth, some of it [destination]!</span>")
 
 	consume(to_eat, bitesize_override)

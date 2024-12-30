@@ -11,6 +11,17 @@
 /obj/effect/landmark/spawner/late/crew,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
+"e" = (
+/obj/structure/table,
+/obj/machinery/chem_dispenser/beer{
+	pixel_y = 12
+	},
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"f" = (
+/obj/machinery/icemachine,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
 "g" = (
 /obj/item/reagent_containers/cooking/pan{
 	pixel_x = -6
@@ -133,6 +144,13 @@
 "A" = (
 /obj/machinery/cooking/stove,
 /obj/structure/table,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"B" = (
+/obj/structure/table,
+/obj/machinery/chem_dispenser/soda{
+	pixel_y = 12
+	},
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "E" = (
@@ -32261,7 +32279,7 @@ a
 a
 a
 u
-x
+e
 x
 n
 G
@@ -32518,7 +32536,7 @@ a
 a
 a
 u
-x
+B
 x
 x
 x
@@ -32775,7 +32793,7 @@ a
 a
 a
 u
-x
+f
 x
 b
 x

@@ -354,13 +354,13 @@
 			if(4)
 				our_item.pixel_x = 7
 				our_item.pixel_y = 9
-		src.add_to_visible(our_item, i)
+		add_to_visible(our_item, i)
 		if(burner.switches == 1)
-			add_overlay(image(src.icon, icon_state="steam_[i]", layer=ABOVE_OBJ_LAYER))
+			add_overlay(image(icon, icon_state="steam_[i]", layer = ABOVE_OBJ_LAYER))
 
-/obj/machinery/cooking/stove/proc/add_to_visible(var/obj/item/our_item, input)
+/obj/machinery/cooking/stove/proc/add_to_visible(obj/item/our_item, input)
 	our_item.vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID
-	src.vis_contents += our_item
+	vis_contents += our_item
 	if(input == 2 || input == 4)
 		var/matrix/M = matrix()
 		M.Scale(-1,1)
@@ -368,12 +368,12 @@
 		our_item.transform = M
 	our_item.transform *= 0.8
 
-/obj/machinery/cooking/stove/proc/remove_from_visible(var/obj/item/our_item, input)
+/obj/machinery/cooking/stove/proc/remove_from_visible(obj/item/our_item, input)
 	our_item.vis_flags = 0
 	our_item.blend_mode = 0
 	our_item.transform =  null
 	our_item.appearance_flags &= PIXEL_SCALE
-	src.vis_contents.Remove(our_item)
+	vis_contents.Remove(our_item)
 
 #undef STOVE_RADIAL_ACTION_BACK_LEFT
 #undef STOVE_RADIAL_ACTION_BACK_RIGHT

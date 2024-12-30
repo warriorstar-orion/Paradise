@@ -61,5 +61,5 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/add_produce)
 
 	return list(message = "Something went real fucking wrong here!")
 
-/datum/cooking/recipe_step/add_produce/get_human_readable_instruction()
+/datum/cooking/recipe_step/add_produce/get_wiki_formatted_instruction()
 	return "Add \a [produce_type::name]."

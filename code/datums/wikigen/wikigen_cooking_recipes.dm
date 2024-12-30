@@ -1,14 +1,16 @@
 /datum/wikigen/cooking_recipes
 	name = "Cooking Recipes Wiki Generator"
-	output_filename = "cooking_recipes.mediawiki"
+	output_filename = "cooking_recipes.json"
 
 /datum/wikigen/cooking_recipes/generate()
-	var/output = ""
+	var/output = list()
 
 	for(var/recipe_container_type in GLOB.cwj_recipe_dictionary)
 		for(var/datum/cooking/recipe/recipe in GLOB.cwj_recipe_dictionary[recipe_container_type])
 			var/obj/output_type = recipe.product_type
-			output += "[output_type::name]:\n"
+			var/list/recipe_data = list()
+			recipe_data["internal_name"] = output_type::name
+			recipe_data["steps"] = list()
 
 			var/datum/cooking/recipe_step/last_step
 			var/running_count = 0
@@ -22,7 +24,7 @@
 				else if(last_step)
 					if(running_count > 1)
 						suffix = "[running_count]x"
-					output += "\t[step_list_item].[last_step.optional ? " (Optional)" : ""] [last_step.get_human_readable_instruction()] [suffix]\n"
+					recipe_data["steps"] += "[last_step.optional ? "(Optional)" : ""] [last_step.get_wiki_formatted_instruction()] [suffix]"
 					last_step = step
 					running_count = 1
 					step_list_item++
@@ -33,7 +35,8 @@
 					step_list_item = 1
 					suffix = ""
 
-			output += "\t[step_list_item].[last_step.optional ? " (Optional)" : ""] [last_step.get_human_readable_instruction()] [suffix]\n"
-			output += "\n"
+			recipe_data["steps"] += "[last_step.optional ? "(Optional)" : ""] [last_step.get_wiki_formatted_instruction()] [suffix]\n"
 
-	return output
+			output[recipe.type] += recipe_data
+
+	return json_encode(output)

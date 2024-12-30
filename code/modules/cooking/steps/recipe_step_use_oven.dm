@@ -42,5 +42,5 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/use_oven)
 /datum/cooking/recipe_step/use_oven/follow_step(obj/added_item, datum/cooking/recipe_tracker/tracker, mob/user)
 	return list(target = added_item.UID())
 
-/datum/cooking/recipe_step/use_oven/get_human_readable_instruction()
+/datum/cooking/recipe_step/use_oven/get_wiki_formatted_instruction()
 	return "Bake in an oven for [DisplayTimeText(time)] at [temperature] temperature."

@@ -425,3 +425,38 @@
 	materials = list(MAT_PLASTIC = 5)
 
 	removal_penalty = 2
+
+/obj/item/reagent_containers/cooking/icecream_bowl
+	name = "ice cream mixer bowl"
+	shortname = "mixerbowl"
+	desc = "A stainless steel bowl that fits into the ice cream mixer."
+	icon = 'icons/obj/cwj_cooking/eris_kitchen.dmi'
+	icon_state = "ice_cream_bowl"
+
+	var/freezing_time = 0
+	var/output_product_type
+	var/total_reagents_amount
+	var/reagents_amount_per_serving
+
+/obj/item/reagent_containers/cooking/icecream_bowl/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(!istype(used, output_product_type))
+		return
+
+	if(!output_product_type)
+		to_chat(user, "<span class='notice'>Nothing's been made in \the [src] yet!</span>")
+		return ITEM_INTERACT_COMPLETE
+	if(!total_reagents_amount)
+		to_chat(user, "<span class='notice'>There's nothing else in \the [src]!</span>")
+		return ITEM_INTERACT_COMPLETE
+
+	user.unEquip(user.get_active_hand())
+	qdel(used)
+	var/obj/output_product = new output_product_type
+	user.put_in_active_hand(output_product)
+	total_reagents_amount -= reagents_amount_per_serving
+	if(total_reagents_amount <= 0)
+		to_chat(user, "<span class='notice'>You use up the last of the contents of \the [src].</span>")
+		output_product_type = null
+		reagents_amount_per_serving = 0
+
+	return ITEM_INTERACT_COMPLETE

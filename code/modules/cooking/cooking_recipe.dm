@@ -89,11 +89,25 @@ GLOBAL_LIST_EMPTY(cwj_recipe_dictionary)
 			tracked_quality += recipe_step.calculate_quality(added_item, tracker)
 
 	if(product_type) // Make a regular item
-		if(container.reagents.total_volume)
-			#ifdef CWJ_DEBUG
-			log_debug("/recipe/proc/create_product: Transferring container reagents of [container.reagents.total_volume] to slurry of current volume [slurry.total_volume] max volume [slurry.maximum_volume]")
-			#endif
-			container.reagents.trans_to(slurry, amount=container.reagents.total_volume)
+		make_product_item(container, slurry, applied_steps, tracked_quality)
+	else
+		QDEL_LIST_CONTENTS(container.contents)
+		container.contents = list()
+
+	container.reagents.clear_reagents()
+
+	if(reagent_id)
+		var/total_quality = tracked_quality + calculate_reagent_quality(tracker)
+		container.reagents.add_reagent(reagent_id, reagent_amount, data = list("FOOD_QUALITY" = total_quality))
+
+	qdel(slurry)
+
+/datum/cooking/recipe/proc/make_product_item(obj/item/reagent_containers/cooking/container, datum/reagents/slurry, list/applied_steps, tracked_quality)
+	if(container.reagents.total_volume)
+		#ifdef CWJ_DEBUG
+		log_debug("/recipe/proc/create_product: Transferring container reagents of [container.reagents.total_volume] to slurry of current volume [slurry.total_volume] max volume [slurry.maximum_volume]")
+		#endif
+		container.reagents.trans_to(slurry, amount=container.reagents.total_volume)
 
 // 		for(var/id in pointer.steps_taken)
 // 			#ifdef CWJ_DEBUG
@@ -136,82 +150,70 @@ GLOBAL_LIST_EMPTY(cwj_recipe_dictionary)
 // 			#endif
 // 			added_item.reagents.trans_to(slurry, amount=added_item.reagents.total_volume)
 
-		//Do reagent filtering on added items and produce
-		var/list/exclude_list = list()
-		for(var/obj/item/added_item in container.contents)
-			var/can_add = TRUE
-			var/list/exclude_specific_reagents = list()
+	//Do reagent filtering on added items and produce
+	var/list/exclude_list = list()
+	for(var/obj/item/added_item in container.contents)
+		var/can_add = TRUE
+		var/list/exclude_specific_reagents = list()
+		#ifdef CWJ_DEBUG
+		log_debug("/recipe/proc/create_product: Analyzing reagents of [added_item].")
+		#endif
+		for(var/i in 1 to length(applied_steps))
+			var/current_index = applied_steps[i]
+			var/datum/cooking/recipe_step = steps[current_index]
+
+			if(recipe_step in exclude_list)
+				continue
+
+			var/datum/cooking/recipe_step/add_item/add_item_step = recipe_step
+			if(istype(add_item_step))
+				exclude_specific_reagents = add_item_step.exclude_reagents
+				if(add_item_step.skip_reagents)
+					can_add = FALSE
+					exclude_list |= recipe_step
+					break
+
+			var/datum/cooking/recipe_step/add_produce/add_produce_step = recipe_step
+			if(istype(add_produce_step))
+				exclude_specific_reagents = add_produce_step.exclude_reagents
+				if(add_produce_step.skip_reagents)
+					can_add = FALSE
+					exclude_list |= recipe_step
+					break
+
+		if(can_add)
+			if(length(exclude_specific_reagents))
+				for(var/id in exclude_specific_reagents)
+					added_item.reagents.remove_reagent(id, added_item.reagents.get_reagent_amount(id), safety = TRUE)
+
+			if(added_item.reagents)
+				added_item.reagents.trans_to(slurry, amount = added_item.reagents.total_volume)
+
+	//Purge the contents of the container we no longer need it
+	QDEL_LIST_CONTENTS(container.contents)
+
+	var/reagent_quality = calculate_reagent_quality(container.tracker)
+
+	for(var/i = 0; i < product_count; i++)
+		var/obj/item/new_item = new product_type(container)
+		#ifdef CWJ_DEBUG
+		log_debug("/recipe/proc/create_product: Item created with reagents of [new_item.reagents.total_volume]")
+		#endif
+		if(replace_reagents)
+			//Clearing out reagents in data. If initialize hasn't been called, we also null that out here.
 			#ifdef CWJ_DEBUG
-			log_debug("/recipe/proc/create_product: Analyzing reagents of [added_item].")
+			log_debug("/recipe/proc/create_product: Clearing out reagents from the [new_item]")
 			#endif
-			for(var/i in 1 to length(applied_steps))
-				var/current_index = applied_steps[i]
-				var/datum/cooking/recipe_step = steps[current_index]
+			new_item.reagents.clear_reagents()
+		#ifdef CWJ_DEBUG
+		log_debug("/recipe/proc/create_product: Transferring slurry of [slurry.total_volume] to [new_item] of total volume [new_item.reagents.total_volume]")
+		#endif
+		slurry.copy_to(new_item, amount=slurry.total_volume)
 
-				if(recipe_step in exclude_list)
-					continue
-
-				var/datum/cooking/recipe_step/add_item/add_item_step = recipe_step
-				if(istype(add_item_step))
-					exclude_specific_reagents = add_item_step.exclude_reagents
-					if(add_item_step.skip_reagents)
-						can_add = FALSE
-						exclude_list |= recipe_step
-						break
-
-				var/datum/cooking/recipe_step/add_produce/add_produce_step = recipe_step
-				if(istype(add_produce_step))
-					exclude_specific_reagents = add_produce_step.exclude_reagents
-					if(add_produce_step.skip_reagents)
-						can_add = FALSE
-						exclude_list |= recipe_step
-						break
-
-			if(can_add)
-				if(length(exclude_specific_reagents))
-					for(var/id in exclude_specific_reagents)
-						added_item.reagents.remove_reagent(id, added_item.reagents.get_reagent_amount(id), safety = TRUE)
-
-				if(added_item.reagents)
-					added_item.reagents.trans_to(slurry, amount = added_item.reagents.total_volume)
-
-		//Purge the contents of the container we no longer need it
-		QDEL_LIST_CONTENTS(container.contents)
-
-		var/reagent_quality = calculate_reagent_quality(tracker)
-
-		for(var/i = 0; i < product_count; i++)
-			var/obj/item/new_item = new product_type(container)
-			#ifdef CWJ_DEBUG
-			log_debug("/recipe/proc/create_product: Item created with reagents of [new_item.reagents.total_volume]")
-			#endif
-			if(replace_reagents)
-				//Clearing out reagents in data. If initialize hasn't been called, we also null that out here.
-				#ifdef CWJ_DEBUG
-				log_debug("/recipe/proc/create_product: Clearing out reagents from the [new_item]")
-				#endif
-				new_item.reagents.clear_reagents()
-			#ifdef CWJ_DEBUG
-			log_debug("/recipe/proc/create_product: Transferring slurry of [slurry.total_volume] to [new_item] of total volume [new_item.reagents.total_volume]")
-			#endif
-			slurry.copy_to(new_item, amount=slurry.total_volume)
-
-			var/obj/item/food/food_item = new_item
-			if(istype(food_item))
-				food_item.food_quality = tracked_quality + reagent_quality
-				food_item.get_food_tier()
-
-	else
-		QDEL_LIST_CONTENTS(container.contents)
-		container.contents = list()
-
-	container.reagents.clear_reagents()
-
-	if(reagent_id)
-		var/total_quality = tracked_quality + calculate_reagent_quality(tracker)
-		container.reagents.add_reagent(reagent_id, reagent_amount, data = list("FOOD_QUALITY" = total_quality))
-
-	qdel(slurry)
+		var/obj/item/food/food_item = new_item
+		if(istype(food_item))
+			food_item.food_quality = tracked_quality + reagent_quality
+			food_item.get_food_tier()
 
 // Extra Reagents in a recipe take away recipe quality for every extra unit added to the concoction.
 // Reagents are calculated in two areas: here and [/datum/cooking/recipe_step/add_reagent/proc/calculate_quality].

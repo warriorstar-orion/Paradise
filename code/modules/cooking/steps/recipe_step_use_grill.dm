@@ -45,5 +45,5 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/use_grill)
 /datum/cooking/recipe_step/use_grill/follow_step(obj/added_item, datum/cooking/recipe_tracker/tracker, mob/user)
 	return list(target = added_item.UID())
 
-/datum/cooking/recipe_step/use_grill/get_human_readable_instruction()
+/datum/cooking/recipe_step/use_grill/get_wiki_formatted_instruction()
 	return "Cook on a grill for [DisplayTimeText(time)] at [temperature] temperature."
