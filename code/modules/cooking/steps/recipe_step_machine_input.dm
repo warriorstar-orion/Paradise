@@ -16,7 +16,7 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/machine_input)
 	#endif
 	var/obj/machinery/cooking/machine = added_item
 	if(istype(added_item))
-		for(var/atom/content in added_item.contents)
+		for(var/atom/movable/content in added_item.contents)
 			if(istype(content, item_type))
 				return CWJ_CHECK_VALID
 
@@ -29,8 +29,17 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/machine_input)
 	return ..()
 
 /datum/cooking/recipe_step/machine_input/follow_step(obj/added_item, datum/cooking/recipe_tracker/tracker, mob/user)
-	return list()
+	var/obj/machinery/cooking/machine = added_item
+	if(istype(added_item))
+		var/obj/item/reagent_containers/cooking/container = locateUID(tracker.container_uid)
+		if(istype(container))
+			for(var/atom/movable/content in machine.contents)
+				if(istype(content, item_type))
+					content.forceMove(container)
 
+		machine.machine_input_type = null
+
+	return list()
 
 // /datum/cooking/recipe_step/add_item/get_wiki_formatted_instruction()
 // 	var/slug = "[item_type::name]"

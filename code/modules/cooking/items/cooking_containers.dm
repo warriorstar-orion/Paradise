@@ -432,6 +432,7 @@
 	desc = "A stainless steel bowl that fits into the ice cream mixer."
 	icon = 'icons/obj/cwj_cooking/eris_kitchen.dmi'
 	icon_state = "ice_cream_bowl"
+	lip = "ice_cream_bowl_lip"
 
 	var/freezing_time = 0
 	var/output_product_type

@@ -69,8 +69,18 @@
 
 /obj/machinery/cooking/ice_cream_mixer/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(used.type in allowed_inputs)
-		if(user.drop_item(used))
-			used.forceMove(src)
+		if(machine_input_type && !istype(used, machine_input_type))
+			to_chat(user, "<span class='notice'>You'll have to empty the machine before insterting \the [used].</span>")
+			return ITEM_INTERACT_COMPLETE
+		if(!machine_input_count)
+			machine_input_type = used.type
+		if(max_machine_inputs > machine_input_count)
+			if(user.drop_item(used))
+				used.forceMove(src)
+				machine_input_count++
+				to_chat(user, "<span class='notice'>You insert a [used] into \the [src].</span>")
+		else
+			to_chat(user, "<span class='notice'>\The [src] is full.</span>")
 
 		return ITEM_INTERACT_COMPLETE
 
