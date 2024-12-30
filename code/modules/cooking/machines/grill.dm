@@ -188,11 +188,12 @@
 
 		flick("wood_load", hopper_overlay)
 
-		return ITEM_INTERACT_COMPLETE
+	return ITEM_INTERACT_COMPLETE
 
 	var/input = getInput(modifiers)
 
 	if(items[input] != null)
+		#warn this should work but isn't
 		var/obj/item/reagent_containers/cooking/container = items[input]
 		container.process_item(used, user)
 		return ITEM_INTERACT_COMPLETE

@@ -240,4 +240,7 @@ GLOBAL_LIST_EMPTY(cwj_recipe_dictionary)
 	var/list/recipe_paths = subtypesof(/datum/cooking/recipe)
 	for(var/path in recipe_paths)
 		var/datum/cooking/recipe/example_recipe = new path()
+		if(!example_recipe.cooking_container)
+			continue
+
 		LAZYORASSOCLIST(GLOB.cwj_recipe_dictionary, example_recipe.cooking_container, example_recipe)

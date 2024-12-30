@@ -19,7 +19,7 @@
 
 	var/reference_time = 0 //The exact moment when we call the process routine, just to account for lag.
 
-	var/power_cost = 3000 //Power cost per process step for a particular burner
+	var/power_cost = 300 //Power cost per process step for a particular burner
 	var/check_on_10 = 0
 
 	var/on_fire = FALSE //if the oven has caught fire or not.
@@ -276,7 +276,7 @@
 
 	update_appearance(UPDATE_ICON|UPDATE_OVERLAYS)
 
-/obj/machinery/cooking/oven/proc/handle_switch(user)
+/obj/machinery/cooking/oven/proc/handle_switch(mob/user)
 	if(switches == 1)
 		playsound(src, 'sound/items/lighter.ogg', 100, 1, 0)
 		handle_cooking(user)

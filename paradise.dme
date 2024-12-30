@@ -1887,6 +1887,7 @@
 #include "code\modules\cooking\steps\recipe_step_add_item.dm"
 #include "code\modules\cooking\steps\recipe_step_add_produce.dm"
 #include "code\modules\cooking\steps\recipe_step_add_reagent.dm"
+#include "code\modules\cooking\steps\recipe_step_machine_input.dm"
 #include "code\modules\cooking\steps\recipe_step_use_grill.dm"
 #include "code\modules\cooking\steps\recipe_step_use_ice_cream_mixer.dm"
 #include "code\modules\cooking\steps\recipe_step_use_oven.dm"

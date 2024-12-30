@@ -8,6 +8,7 @@
 	layer = BELOW_OBJ_LAYER
 	var/cooking = FALSE
 	var/list/scan_types = list()
+	var/list/allowed_inputs = list()
 	var/quality_mod = 1
 
 	new_attack_chain = TRUE

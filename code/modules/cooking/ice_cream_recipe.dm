@@ -8,8 +8,10 @@
 	if(!istype(container))
 		return
 
+	bowl.total_reagents_amount = bowl.reagents.total_volume
 	bowl.output_product_type = product_type
 	bowl.reagents_amount_per_serving = reagents_amount_per_serving
+	bowl.destination_object_type = destination_object
 
 	bowl.reagents.clear_reagents()
 	QDEL_LIST_CONTENTS(bowl.contents)

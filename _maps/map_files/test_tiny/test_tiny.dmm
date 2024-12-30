@@ -105,9 +105,26 @@
 /obj/structure/table,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
+"r" = (
+/obj/structure/table,
+/obj/machinery/reagentgrinder,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
 "s" = (
 /obj/structure/table,
 /obj/item/reagent_containers/cooking/board,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"t" = (
+/obj/structure/table,
+/obj/item/food/grown/vanillapod,
+/obj/item/food/grown/vanillapod,
+/obj/item/food/grown/vanillapod,
+/obj/item/food/grown/vanillapod,
+/obj/item/food/grown/vanillapod,
+/obj/item/food/grown/vanillapod,
+/obj/item/food/grown/vanillapod,
+/obj/item/food/grown/vanillapod,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "u" = (
@@ -165,13 +182,35 @@
 	},
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
+"C" = (
+/obj/structure/table,
+/obj/item/storage/bag/tray,
+/obj/item/storage/bag/tray,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
 "D" = (
 /obj/structure/table,
-/obj/item/food/wafflecone,
-/obj/item/food/wafflecone,
-/obj/item/food/wafflecone,
-/obj/item/food/wafflecone,
-/obj/item/food/wafflecone,
+/obj/item/reagent_containers/drinks/sillycup{
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/drinks/sillycup{
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/drinks/sillycup{
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/drinks/sillycup{
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/drinks/sillycup{
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/drinks/sillycup{
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/drinks/sillycup{
+	pixel_y = 3
+	},
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "E" = (
@@ -189,10 +228,6 @@
 "G" = (
 /obj/structure/table,
 /obj/item/autochef_remote,
-/turf/simulated/floor/plasteel/freezer,
-/area/shuttle/arrival/station)
-"H" = (
-/obj/structure/table,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "I" = (
@@ -314,6 +349,30 @@
 /obj/item/popsicle_stick,
 /obj/item/popsicle_stick,
 /obj/item/popsicle_stick,
+/obj/item/food/wafflecone{
+	pixel_x = -10;
+	pixel_y = 6
+	},
+/obj/item/food/wafflecone{
+	pixel_x = -10;
+	pixel_y = 6
+	},
+/obj/item/food/wafflecone{
+	pixel_x = -10;
+	pixel_y = 6
+	},
+/obj/item/food/wafflecone{
+	pixel_x = -10;
+	pixel_y = 6
+	},
+/obj/item/food/wafflecone{
+	pixel_x = -10;
+	pixel_y = 6
+	},
+/obj/item/food/wafflecone{
+	pixel_x = -10;
+	pixel_y = 6
+	},
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "Z" = (
@@ -32848,7 +32907,7 @@ U
 x
 K
 x
-x
+r
 u
 a
 a
@@ -33105,7 +33164,7 @@ N
 x
 D
 x
-x
+t
 u
 a
 a
@@ -33362,7 +33421,7 @@ s
 x
 Y
 x
-x
+C
 u
 a
 a
@@ -34384,7 +34443,7 @@ a
 u
 O
 x
-H
+x
 x
 J
 x

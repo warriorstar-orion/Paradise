@@ -437,9 +437,16 @@
 	var/output_product_type
 	var/total_reagents_amount
 	var/reagents_amount_per_serving
+	var/destination_object_type
+	var/list/machine_inputs
+
+/obj/item/reagent_containers/cooking/icecream_bowl/Initialize(mapload)
+	. = ..()
+	machine_inputs = list()
 
 /obj/item/reagent_containers/cooking/icecream_bowl/item_interaction(mob/living/user, obj/item/used, list/modifiers)
-	if(!istype(used, output_product_type))
+	#warn make sure destination object is empty/has no reagents
+	if(!ispath(used.type, destination_object_type))
 		return
 
 	if(!output_product_type)
