@@ -261,6 +261,9 @@
 /obj/item/food/patty,
 /obj/item/food/patty,
 /obj/item/food/patty,
+/obj/item/food/patty,
+/obj/item/food/patty,
+/obj/item/food/patty,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "O" = (

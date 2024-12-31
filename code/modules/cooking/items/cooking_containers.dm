@@ -47,6 +47,14 @@
 /obj/item/reagent_containers/cooking/proc/get_reagent_info()
 	return "It contains [reagents.total_volume] units of reagents."
 
+/obj/item/reagent_containers/cooking/proc/get_usable_status()
+	if(tracker)
+		return CWJ_CONTAINER_BUSY
+	if(length(contents) || reagents.total_volume > 0)
+		return CWJ_CONTAINER_BUSY
+
+	return CWJ_CONTAINER_AVAILABLE
+
 /obj/item/reagent_containers/cooking/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	#ifdef CWJ_DEBUG
 	log_debug("[__PROC__]")
@@ -136,15 +144,14 @@
 		if(CWJ_NO_STEPS)
 			to_chat(user, "You get a feeling this wouldn't improve the recipe.")
 		if(CWJ_SUCCESS)
-			if(tracker.step_reaction_message)
+			if(tracker.step_reaction_message && ismob(user))
 				to_chat(user, "<span class='notice'>[tracker.step_reaction_message]</span>")
 
 			update_appearance(UPDATE_ICON)
 		if(CWJ_COMPLETE)
-			if(tracker.step_reaction_message)
+			if(tracker.step_reaction_message && ismob(user))
 				to_chat(user, "<span class='notice'>[tracker.step_reaction_message]</span>")
-
-			to_chat(user, "You finish cooking with \the [src].")
+				to_chat(user, "You finish cooking with \the [src].")
 			QDEL_NULL(tracker)
 			clear_cooking_data()
 			update_appearance(UPDATE_ICON)
@@ -230,7 +237,8 @@
 			for (var/obj/item/contained in contents)
 				#warn fix food quality
 				// contained?:food_quality -= removal_penalty
-			to_chat(user, "<span class='warning'>The quality of ingredients in the [src] was reduced by the extra jostling.</span>")
+			if(ismob(user))
+				to_chat(user, "<span class='warning'>The quality of ingredients in the [src] was reduced by the extra jostling.</span>")
 
 		//Handle quality reduction for reagents
 		if(reagents.total_volume != 0)
@@ -239,8 +247,8 @@
 				for (var/obj/item/contained in contents)
 					#warn fix food quality
 					// contained?:food_quality -= reagent_qual_reduction
-				to_chat(user, "<span class='warning'>The quality of ingredients in the [src] was reduced by the presence of reagents in the container.</span>")
-
+				if(ismob(user))
+					to_chat(user, "<span class='warning'>The quality of ingredients in the [src] was reduced by the presence of reagents in the container.</span>")
 
 		for (var/contained in contents)
 			var/atom/movable/AM = contained
@@ -259,7 +267,7 @@
 	tracker = null
 	clear_cooking_data()
 
-	if(contents.len != 0)
+	if(contents.len != 0 && ismob(user))
 		to_chat(user, "<span class='notice'>You remove all the solid items from [src].</span>")
 
 /obj/item/reagent_containers/cooking/AltClick(mob/user)
@@ -427,7 +435,7 @@
 	removal_penalty = 2
 
 /obj/item/reagent_containers/cooking/icecream_bowl
-	name = "ice cream mixer bowl"
+	name = "freezing bowl"
 	shortname = "mixerbowl"
 	desc = "A stainless steel bowl that fits into the ice cream mixer."
 	icon = 'icons/obj/cwj_cooking/eris_kitchen.dmi'

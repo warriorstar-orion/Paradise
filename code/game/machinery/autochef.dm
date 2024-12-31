@@ -11,6 +11,7 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 #define AUTOCHEF_INGREDIENTS_MISSING	8
 #define AUTOCHEF_INGREDIENTS_LOCATED	9
 #define AUTOCHEF_WAITING_ON_MACHINE		10
+#define AUTOCHEF_RECIPE_WAITING			11
 
 /obj/machinery/autochef
 	name = "autochef"
@@ -24,17 +25,11 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 	VAR_PRIVATE/list/linked_storages = list()
 
 	VAR_PRIVATE/obj/item/reagent_containers/cooking/current_container
-	VAR_PRIVATE/current_state = AUTOCHEF_RECIPE_NONE
+	VAR_PRIVATE/current_state = AUTOCHEF_RECIPE_WAITING
 	VAR_PRIVATE/current_step = 0
 	VAR_PRIVATE/found_ingredients = 0
 	VAR_PRIVATE/list/ingredients_searching = list()
 	VAR_PRIVATE/datum/cooking/recipe/current_recipe
-
-	VAR_PRIVATE/static/list/ingredient_locating_steps = list(
-		// CWJ_ADD_ITEM,
-		// CWJ_ADD_REAGENT,
-		// CWJ_ADD_PRODUCE,
-	)
 
 	COOLDOWN_DECLARE(next_step_cd)
 
@@ -44,9 +39,27 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 
 	attempt_recipe()
 
-/obj/machinery/autochef/item_interaction(mob/living/user, obj/item/autochef_remote/remote, list/modifiers)
+/obj/machinery/autochef/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	var/obj/item/food/food_item = used
+	if(istype(food_item))
+		if(current_recipe)
+			atom_say("Recipe currently in progress.")
+			return ITEM_INTERACT_COMPLETE
+		var/food_type = food_item.type
+
+		for(var/container_type in GLOB.cwj_recipe_dictionary)
+			for(var/datum/cooking/recipe/recipe in GLOB.cwj_recipe_dictionary[container_type])
+				if(recipe.product_type == food_item.type)
+					current_recipe = recipe
+					atom_say("Recipe selected: [food_item].")
+					return ITEM_INTERACT_COMPLETE
+
+		log_debug("Couldn't find recipe")
+		return ITEM_INTERACT_COMPLETE
+
+	var/obj/item/autochef_remote/remote = used
+
 	if(!istype(remote))
-		#warn Some kind of error
 		return ITEM_INTERACT_COMPLETE
 
 	for(var/uid in remote.linkable_machine_uids)
@@ -78,14 +91,13 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 	SIGNAL_HANDLER // COMSIG_PARENT_QDELETING
 	return
 
-/obj/machinery/autochef/proc/find_valid_container(container_type)
-	return
-	// for(var/obj/item/reagent_containers/cooking/container in linked_cooking_containers)
-	// 	if(container_type == container.appliancetype)
-	// 		return container
+/obj/machinery/autochef/proc/find_free_container(container_type)
+	for(var/obj/item/reagent_containers/cooking/container in linked_cooking_containers)
+		if(container.type == container_type && container.get_usable_status() == CWJ_CONTAINER_AVAILABLE)
+			return container
 
 /obj/machinery/autochef/proc/attempt_recipe()
-	if(current_recipe)
+	if(!current_state == AUTOCHEF_RECIPE_WAITING)
 		atom_say("Recipe currently in progress.")
 		return
 
@@ -97,17 +109,7 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 		atom_say("No linked storage units.")
 		return
 
-	var/recipe_type = /datum/cooking/recipe/burger
-	for(var/datum/cooking/recipe/recipe in GLOB.cwj_recipe_dictionary)
-		if(recipe_type == recipe.type) // exact
-			current_recipe = recipe
-
-	if(!current_recipe)
-		#warn better error
-		log_debug("Couldn't find recipe")
-		return
-
-	atom_say("Building recipe: [current_recipe].")
+	atom_say("Building recipe: [current_recipe::product_name].")
 	found_ingredients = 0
 	ingredients_searching.Cut()
 	current_state = AUTOCHEF_RECIPE_SELECTED
@@ -123,20 +125,28 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 		if(AUTOCHEF_RECIPE_NONE)
 			return
 		if(AUTOCHEF_RECIPE_SELECTED)
-			atom_say("Locating [current_recipe.cooking_container].")
+			var/obj/item/reagent_containers/cooking/container_type = current_recipe.cooking_container
+			atom_say("Locating [container_type::name].")
 			current_state = AUTOCHEF_CONTAINER_LOCATING
-		// if(AUTOCHEF_CONTAINER_LOCATING)
-		// 	for(var/obj/item/reagent_containers/cooking/container in linked_cooking_containers)
-		// 		if(container.appliancetype == current_recipe.cooking_container)
-		// 			atom_say("[container] located.")
-		// 			current_state = AUTOCHEF_CONTAINER_LOCATED
-		// 			current_container = container
+		if(AUTOCHEF_CONTAINER_LOCATING)
+			var/obj/item/reagent_containers/cooking/container = find_free_container(current_recipe.cooking_container)
+			if(container)
+				atom_say("[container] located.")
+				current_state = AUTOCHEF_CONTAINER_LOCATED
+				current_container = container
 		if(AUTOCHEF_CONTAINER_LOCATED)
 			atom_say("Locating ingredients.")
-
-			// for(var/list/step in current_recipe.step_builder)
-			// 	if(step[1] in ingredient_locating_steps)
-			// 		ingredients_searching += step[2]
+			for(var/datum/cooking/recipe_step/step in current_recipe.steps)
+				if(step.optional)
+					continue
+				var/datum/cooking/recipe_step/add_item/add_item_step = step
+				if(istype(add_item_step))
+					ingredients_searching += add_item_step.item_type
+					continue
+				var/datum/cooking/recipe_step/add_produce/add_produce_step = step
+				if(istype(add_produce_step))
+					ingredients_searching += add_produce_step.produce_type
+					continue
 
 			current_state = AUTOCHEF_INGREDIENTS_LOCATING
 		if(AUTOCHEF_INGREDIENTS_LOCATING)
