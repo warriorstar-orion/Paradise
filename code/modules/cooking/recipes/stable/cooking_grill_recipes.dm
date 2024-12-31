@@ -132,16 +132,16 @@
 		CWJ_USE_GRILL(J_MED, 10 SECONDS),
 	)
 
-/datum/cooking/recipe/omelette
-	cooking_container = /obj/item/reagent_containers/cooking/grill_grate
-	product_type = /obj/item/food/omelette
-	steps = list(
-		CWJ_ADD_ITEM(/obj/item/food/egg),
-		CWJ_ADD_ITEM(/obj/item/food/egg),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
-		CWJ_USE_GRILL(J_MED, 20 SECONDS),
-	)
+// /datum/cooking/recipe/omelette
+// 	cooking_container = /obj/item/reagent_containers/cooking/grill_grate
+// 	product_type = /obj/item/food/omelette
+// 	steps = list(
+// 		CWJ_ADD_ITEM(/obj/item/food/egg),
+// 		CWJ_ADD_ITEM(/obj/item/food/egg),
+// 		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
+// 		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
+// 		CWJ_USE_GRILL(J_MED, 20 SECONDS),
+// 	)
 
 /datum/cooking/recipe/pancake
 	cooking_container = /obj/item/reagent_containers/cooking/grill_grate

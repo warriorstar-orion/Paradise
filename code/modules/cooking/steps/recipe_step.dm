@@ -46,3 +46,6 @@
 
 /datum/cooking/recipe_step/proc/equals(datum/cooking/recipe_step/other)
 	return FALSE
+
+/datum/cooking/recipe_step/proc/attempt_autochef_perform(obj/machinery/autochef/autochef)
+	return

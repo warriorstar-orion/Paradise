@@ -117,7 +117,7 @@
 /area/shuttle/arrival/station)
 "s" = (
 /obj/structure/table,
-/obj/item/reagent_containers/cooking/board,
+/obj/item/storage/bag/tray,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "t" = (
@@ -252,10 +252,6 @@
 /obj/machinery/cooking/ice_cream_mixer,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
-"L" = (
-/obj/machinery/smartfridge/foodcart,
-/turf/simulated/floor/plasteel/freezer,
-/area/shuttle/arrival/station)
 "M" = (
 /obj/structure/table,
 /obj/item/food/patty,
@@ -286,6 +282,12 @@
 /obj/item/food/sliceable/flatdough,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
+"R" = (
+/obj/structure/table,
+/obj/item/food/omelette,
+/obj/item/food/omelette,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
 "S" = (
 /obj/machinery/smartfridge/food/chef,
 /turf/simulated/floor/plasteel/freezer,
@@ -295,6 +297,12 @@
 /obj/item/reagent_containers/cooking/oven,
 /obj/item/reagent_containers/cooking/oven,
 /obj/structure/table,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"W" = (
+/obj/machinery/smartfridge/foodcart{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "X" = (
@@ -32374,12 +32382,12 @@ a
 a
 a
 u
+D
+x
 n
-x
-x
-x
-x
-x
+n
+n
+f
 x
 x
 x
@@ -32888,11 +32896,11 @@ a
 a
 a
 u
-f
+A
 x
 b
 x
-D
+x
 x
 K
 x
@@ -33145,11 +33153,11 @@ a
 a
 a
 u
-p
+g
 x
-Q
+W
 x
-D
+R
 x
 o
 x
@@ -33402,9 +33410,9 @@ a
 a
 a
 u
-A
+p
 x
-h
+l
 x
 s
 x
@@ -33661,7 +33669,7 @@ a
 u
 E
 x
-I
+z
 x
 k
 x
@@ -33916,9 +33924,9 @@ a
 a
 a
 u
-g
+r
 x
-l
+f
 x
 Z
 x
@@ -34177,7 +34185,7 @@ y
 x
 X
 x
-z
+I
 x
 e
 x
@@ -34687,11 +34695,11 @@ a
 a
 a
 u
-L
+C
 x
+h
 x
-x
-x
+Q
 x
 x
 x

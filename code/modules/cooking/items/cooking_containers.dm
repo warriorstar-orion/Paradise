@@ -28,6 +28,7 @@
 	var/list/stove_data = list("High" = 0, "Medium" = 0, "Low" = 0) //Record of what stove-cooking has been done on this food.
 	var/list/grill_data = list("High" = 0, "Medium" = 0, "Low" = 0) //Record of what grill-cooking has been done on this food.
 	var/list/oven_data =  list("High" = 0, "Medium" = 0, "Low" = 0) //Record of what oven-cooking has been done on this food.
+	var/claimed = FALSE
 
 	new_attack_chain = TRUE
 
@@ -48,6 +49,8 @@
 	return "It contains [reagents.total_volume] units of reagents."
 
 /obj/item/reagent_containers/cooking/proc/get_usable_status()
+	if(claimed)
+		return CWJ_CONTAINER_BUSY
 	if(tracker)
 		return CWJ_CONTAINER_BUSY
 	if(length(contents) || reagents.total_volume > 0)
@@ -88,6 +91,8 @@
 		for(var/datum/cooking/recipe/recipe in container_recipes)
 			tracker.matching_recipe_steps[recipe] = 0
 
+	if(ismob(user))
+		SEND_SIGNAL(src, COMSIG_COOKING_CONTAINER_MODIFIED)
 	react_to_process(tracker.process_item_wrap(user, used), user, used)
 
 /obj/item/reagent_containers/cooking/standard_pour_into(mob/user, atom/target)

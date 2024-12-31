@@ -81,3 +81,11 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/add_item)
 		return FALSE
 
 	return item_type == other_add_item.item_type && exact_path == other_add_item.exact_path && optional == other_add_item.optional
+
+/datum/cooking/recipe_step/add_item/attempt_autochef_perform(obj/machinery/autochef/autochef)
+	for(var/atom/movable/content in autochef.contents)
+		if(istype(content, item_type))
+			autochef.current_container.item_interaction(src, content)
+			autochef.Beam(autochef.current_container, icon_state = "rped_upgrade", icon = 'icons/effects/effects.dmi', time = 5)
+			// autochef.atom_say("Added [content].")
+			return AUTOCHEF_RECIPE_PROCESSING

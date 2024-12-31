@@ -68,8 +68,8 @@
 				burn_time = CWJ_BURN_TIME_HIGH
 				fire_time = CWJ_IGNITE_TIME_HIGH
 
-		burn_callback = addtimer(CALLBACK(src, PROC_REF(handle_burn), burn_time, TIMER_STOPPABLE))
-		fire_callback = addtimer(CALLBACK(src, PROC_REF(handle_fire), fire_time, TIMER_STOPPABLE))
+		burn_callback = addtimer(CALLBACK(src, PROC_REF(handle_burn)), burn_time, TIMER_STOPPABLE)
+		fire_callback = addtimer(CALLBACK(src, PROC_REF(handle_fire)), fire_time, TIMER_STOPPABLE)
 
 /datum/stovetop_burner/proc/timer_act(mob/user)
 	timerstamp = round(world.time)
@@ -184,26 +184,36 @@
 	#endif
 	return input
 
-/obj/machinery/cooking/stove/item_interaction(mob/living/user, obj/item/used, list/modifiers)
-	#warn fix default deconstruct
-	// if(default_deconstruction(used_item, user))
-	// 	return
-
-	var/input = getInput(modifiers)
-	var/datum/stovetop_burner/burner = burners[input]
+/obj/machinery/cooking/stove/proc/burner_item_interaction(mob/living/user, obj/item/used, datum/stovetop_burner/burner)
 	if(burner.placed_item)
 		var/obj/item/reagent_containers/cooking/container = burner.placed_item
 		container.process_item(used, user)
 	else if(istype(used, /obj/item/reagent_containers/cooking/pot) || istype(used, /obj/item/reagent_containers/cooking/pan))
-		to_chat(usr, "<span class='notice'>You put [used] on \the [src].</span>")
-		if(usr.drop_item())
+		if(ismob(user))
+			to_chat(user, "<span class='notice'>You put [used] on \the [src].</span>")
+			if(user.drop_item())
+				used.forceMove(src)
+		else
 			used.forceMove(src)
+
 		burner.placed_item = used
 		if(burner.switches == 1)
 			burner.cooking_timestamp = world.time
 
 	update_appearance(UPDATE_ICON)
 	return ITEM_INTERACT_COMPLETE
+
+/obj/machinery/cooking/stove/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	#warn fix default deconstruct
+	// if(default_deconstruction(used_item, user))
+	// 	return
+
+	if(istype(used, /obj/item/autochef_remote))
+		return
+
+	var/input = getInput(modifiers)
+	var/datum/stovetop_burner/burner = burners[input]
+	return burner_item_interaction(user, used, burner)
 
 /obj/machinery/cooking/stove/attack_hand(mob/user, params)
 	var/input = getInput(params2list(params))
@@ -226,6 +236,8 @@
 						burn_victim.adjustFireLossByPart(1, which_hand)
 
 				to_chat(burn_victim, "<span class='danger'>You burn your hand a little taking the [burner.placed_item] off of the stove.</span>")
+		if(ismob(user))
+			SEND_SIGNAL(src, COMSIG_COOKING_CONTAINER_MODIFIED)
 		user.put_in_hands(burner.placed_item)
 		burner.placed_item = null
 		update_appearance(UPDATE_ICON)

@@ -44,3 +44,30 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/use_stove)
 
 /datum/cooking/recipe_step/use_stove/follow_step(obj/added_item, datum/cooking/recipe_tracker/tracker, mob/user)
 	return list(target = added_item.UID())
+
+/datum/cooking/recipe_step/use_stove/attempt_autochef_perform(obj/machinery/autochef/autochef)
+	var/obj/item/reagent_containers/cooking/container = autochef.current_container
+	if(!container)
+		autochef.atom_say("Lost container!")
+		return FALSE
+	for(var/obj/machinery/machine in autochef.linked_machines)
+		var/obj/machinery/cooking/stove/stove = machine
+		if(istype(stove))
+			for(var/datum/stovetop_burner/burner in stove.burners)
+				if(!burner.placed_item || burner.placed_item == container)
+					// Grab that shit
+					container.Beam(stove, icon_state = "rped_upgrade", icon = 'icons/effects/effects.dmi', time = 5)
+					stove.burner_item_interaction(null, container, burner)
+					autochef.atom_say("Preparing on stove.")
+					burner.timer = time
+					burner.temperature = temperature
+					if(burner.switches)
+						burner.handle_cooking(null)
+						burner.cooking_timestamp = world.time
+						burner.timerstamp = world.time
+						burner.timer_act(null)
+					else
+						burner.handle_switch(null)
+					return AUTOCHEF_WAITING_ON_MACHINE
+
+	return FALSE

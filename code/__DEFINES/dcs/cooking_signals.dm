@@ -5,7 +5,7 @@
 // #define COMSIG_AUTOCHEF_LOCATE_MACHINE			"autochef_locate_machine"
 // 	#define COMPONENT_COOKING_NO_MACHINE_SLOTS	"cooking_no_machine_slots"
 
-// #define COMSIG_COOKING_CONTAINER_MODIFIED		"cooking_container_modified"
+#define COMSIG_COOKING_CONTAINER_MODIFIED		"cooking_container_modified"
 
 // #define COMSIG_COOKING_RECIPE_BEGIN				"cooking_recipe_begin"
 // 	#define COMPONENT_COOKING_NO_RECIPE			(1 << 0)
