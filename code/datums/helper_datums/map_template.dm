@@ -119,20 +119,16 @@
 	else
 		return TRUE
 
-
-/proc/preloadTemplates(path = "_maps/map_files/templates/") //see master controller setup
+/proc/preload_template_directory(path)
 	for(var/map in flist(path))
 		if(cmptext(copytext(map, length(map) - 3), ".dmm"))
-			var/datum/map_template/T = new(path = "[path][map]", rename = "[map]")
-			GLOB.map_templates[T.name] = T
+			if("[map]" in GLOB.map_templates)
+				log_debug("skipping pre-existing template [map]")
+			else
+				var/datum/map_template/T = new(path = "[path][map]", rename = "[map]")
+				GLOB.map_templates["[map]"] = T
 
-	if(GLOB.configuration.ruins.enable_space_ruins) // so we don't unnecessarily clutter start-up
-		preloadRuinTemplates()
-	preloadShelterTemplates()
-	preloadShuttleTemplates()
-	preloadEventTemplates()
-
-/proc/preloadRuinTemplates()
+/proc/preload_ruin_templates()
 	// Merge the active lists together
 	var/list/space_ruins = GLOB.configuration.ruins.active_space_ruins.Copy()
 	var/list/lava_ruins = GLOB.configuration.ruins.active_lava_ruins.Copy()
@@ -156,7 +152,7 @@
 		if(istype(R, /datum/map_template/ruin/space))
 			GLOB.space_ruins_templates[R.name] = R
 
-/proc/preloadShelterTemplates()
+/proc/preload_shelter_templates()
 	for(var/item in subtypesof(/datum/map_template/shelter))
 		var/datum/map_template/shelter/shelter_type = item
 		if(!(initial(shelter_type.mappath)))
@@ -166,7 +162,7 @@
 		GLOB.shelter_templates[S.shelter_id] = S
 		GLOB.map_templates[S.shelter_id] = S
 
-/proc/preloadShuttleTemplates()
+/proc/preload_shuttle_templates()
 	for(var/item in subtypesof(/datum/map_template/shuttle))
 		var/datum/map_template/shuttle/shuttle_type = item
 		if(!initial(shuttle_type.suffix))
@@ -177,7 +173,7 @@
 		GLOB.shuttle_templates[S.shuttle_id] = S
 		GLOB.map_templates[S.shuttle_id] = S
 
-/proc/preloadEventTemplates()
+/proc/preload_event_templates()
 	for(var/item in subtypesof(/datum/map_template/event))
 		var/datum/map_template/event/event_type = item
 		if(!initial(event_type.mappath))
