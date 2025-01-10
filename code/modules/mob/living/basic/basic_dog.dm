@@ -168,7 +168,7 @@
 // 			armorval += inventory_back.get_armor_rating(type)
 // 	return armorval * 0.5
 
-/mob/living/basic/pet/dog/corgi/attackby(obj/item/O, mob/user, params)
+/mob/living/basic/pet/dog/corgi/attackby__legacy__attackchain(obj/item/O, mob/user, params)
 	if(istype(O, /obj/item/razor))
 		if(shaved)
 			to_chat(user, "<span class='warning'>You can't shave this corgi, it's already been shaved!</span>")

@@ -178,7 +178,11 @@ RESTRICT_TYPE(/mob/living/basic)
 	icon = initial(icon)
 	icon_state = icon_living
 	density = initial(density)
-	flying = initial(flying)
+
+	REMOVE_TRAITS_NOT_IN(src, initial_traits)
+
+	for(var/initial_trait in initial_traits)
+		ADD_TRAIT(src, initial_trait, INNATE_TRAIT)
 
 /mob/living/basic/movement_delay()
 	. = speed

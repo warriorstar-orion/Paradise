@@ -37,7 +37,7 @@ RESTRICT_TYPE(/mob/living/basic/pet)
 		pcollar.forceMove(drop_location())
 		pcollar = null
 
-/mob/living/basic/pet/attackby(obj/item/O, mob/user, params)
+/mob/living/basic/pet/attackby__legacy__attackchain(obj/item/O, mob/user, params)
 	if(can_collar && istype(O, /obj/item/petcollar) && !pcollar)
 		add_collar(O, user)
 		return
@@ -71,7 +71,7 @@ RESTRICT_TYPE(/mob/living/basic/pet)
 /mob/living/basic/pet/proc/add_collar(obj/item/petcollar/P, mob/user)
 	if(!istype(P) || QDELETED(P) || pcollar)
 		return
-	if(user && !user.unEquip(P))
+	if(user && !user.unequip(P))
 		return
 	P.forceMove(src)
 	P.equipped(src)
@@ -89,7 +89,7 @@ RESTRICT_TYPE(/mob/living/basic/pet)
 
 	var/obj/old_collar = pcollar
 
-	unEquip(pcollar)
+	unequip(pcollar)
 
 	if(user)
 		user.put_in_hands(old_collar)
