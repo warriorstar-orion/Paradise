@@ -68,6 +68,9 @@
 #define ADMIN_COORDJMP(src) "[src ? "[COORD(src)] [ADMIN_JMP(src)]" : "nonexistent location"]"
 #define ADMIN_VERBOSEJMP(src) "[src ? "[AREACOORD(src)] [ADMIN_JMP(src)]" : "nonexistent location"]"
 #define ADMIN_SHOWDETAILS(mask, content) "<a href='byond://?_src_=holder;showdetails=[html_encode(content)]'>[mask]</a>"
+#define DEBUG_OBJID(A) "[A.type]$[A.UID()]"
+#define DEBUG_OBJLOC(A) (isnull(A.loc) ? "nullspace" : (isturf(A.loc) ? "([A.x],[A.y],[A.z])" : DEBUG_OBJID(A.loc)))
+#define DEBUG_OBJ(A) (isloc(A) ? "[DEBUG_OBJID(A)]@[DEBUG_OBJLOC(A)]" : "`[A]`")
 
 /// Note text for suppressed CID warning
 #define CIDWARNING_SUPPRESSED_NOTETEXT "CID COUNT WARNING DISABLED - Delete this note to re-enable"

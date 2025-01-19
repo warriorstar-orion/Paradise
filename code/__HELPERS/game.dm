@@ -496,3 +496,21 @@
 		min(list_y),
 		max(list_x),
 		max(list_y))
+
+/proc/test_debug_logs()
+	var/obj/item/kitchen/knife/knife = new(locate(100, 100, 2))
+	var/obj/item/storage/backpack/backpack = new(locate(101, 101, 2))
+	var/obj/item/wrench/wrench = new
+	backpack.handle_item_insertion(wrench)
+	var/obj/item/screwdriver/screwdriver = new
+	var/string = "foo"
+	var/number = -140
+	var/nullval
+	log_chat_debug("knife:[DEBUG_OBJ(knife)]")
+	log_chat_debug("wrench:[DEBUG_OBJ(wrench)]")
+	log_chat_debug("screwdriver:[DEBUG_OBJ(screwdriver)]")
+	var/obj/item/nullobj
+	log_chat_debug("nullobj:[DEBUG_OBJ(nullobj)]")
+	// log_chat_debug("string:[DEBUG_OBJ(string)]")
+	// log_chat_debug("number:[DEBUG_OBJ(number)]")
+	// log_chat_debug("nullval:[DEBUG_OBJ(nullval)]")
