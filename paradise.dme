@@ -443,7 +443,6 @@
 #include "code\datums\ai\ai_planning_subtree.dm"
 #include "code\datums\ai\targeting_strategy.dm"
 #include "code\datums\ai\idle_behaviors\idle_behavior.dm"
-#include "code\datums\ai\movement\ai_movement.dm"
 #include "code\datums\ai\basic_mobs\base_basic_controller.dm"
 #include "code\datums\ai\basic_mobs\flee_target.dm"
 #include "code\datums\ai\basic_mobs\generic_controllers.dm"

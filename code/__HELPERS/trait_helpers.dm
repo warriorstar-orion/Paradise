@@ -254,7 +254,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_UNKNOWN "unknown" // The person with this trait always appears as 'unknown'.
 #define TRAIT_CRYO_DESPAWNING "cryo_despawning" // dont adminbus this please
 #define TRAIT_EXAMINE_HALLUCINATING "examine_hallucinating"
-#define TRAIT_AI_PAUSED "trait_ai_paused" /// trait that prevents AI controllers from planning detached from ai_status to prevent weird state stuff.
 #define TRAIT_MOB_BREEDER "mob_breeder"
 
 /// Trait given by simple/basic mob death
