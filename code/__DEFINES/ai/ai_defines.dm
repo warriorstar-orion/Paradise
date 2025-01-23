@@ -11,6 +11,10 @@
 /// The AI is currently in idle mode.
 #define AI_STATUS_IDLE "ai_idle"
 
+///For JPS pathing, the maximum length of a path we'll try to generate. Should be modularized depending on what we're doing later on
+#define AI_MAX_PATH_LENGTH 30 // 30 is possibly overkill since by default we lose interest after 14 tiles of distance, but this gives wiggle room for weaving around obstacles
+#define AI_BOT_PATH_LENGTH 75
+
 // How far should we, by default, be looking for interesting things to de-idle?
 #define AI_DEFAULT_INTERESTING_DIST 10
 
@@ -58,3 +62,12 @@
 
 /// This subtree should cancel any further planning, (Including from other subtrees)
 #define SUBTREE_RETURN_FINISH_PLANNING 1
+
+//Generic subtree defines
+
+/// probability that the pawn should try resisting out of restraints
+#define RESIST_SUBTREE_PROB 50
+///macro for whether it's appropriate to resist right now, used by resist subtree
+#define SHOULD_RESIST(source) (source.on_fire || source.buckled || HAS_TRAIT(source, TRAIT_RESTRAINED) || (source.pulledby && source.pulledby.grab_state > GRAB_PASSIVE))
+///macro for whether the pawn can act, used generally to prevent some horrifying ai disasters
+#define IS_DEAD_OR_INCAP(source) (source.incapacitated() || source.stat)

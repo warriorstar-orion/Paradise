@@ -1,7 +1,7 @@
 /datum/ai_controller/carbon_controller
 	movement_delay = 0.4 SECONDS
 
-/datum/ai_controller/carbon_controller/TryPossessPawn(atom/new_pawn)
+/datum/ai_controller/carbon_controller/try_possess_pawn(atom/new_pawn)
 	if(!iscarbon(new_pawn))
 		return AI_CONTROLLER_INCOMPATIBLE
 

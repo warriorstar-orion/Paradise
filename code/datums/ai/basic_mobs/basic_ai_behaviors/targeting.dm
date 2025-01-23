@@ -59,7 +59,7 @@ GLOBAL_LIST_EMPTY_TYPED(hostile_machines, /atom)
 /datum/ai_behavior/find_potential_targets/finish_action(datum/ai_controller/controller, succeeded, ...)
 	. = ..()
 	if (succeeded)
-		controller.CancelActions() // On retarget cancel any further queued actions so that they will setup again with new target
+		controller.cancel_actions() // On retarget cancel any further queued actions so that they will setup again with new target
 
 /// Returns the desired final target from the filtered list of targets
 /datum/ai_behavior/find_potential_targets/proc/pick_final_target(datum/ai_controller/controller, list/filtered_targets)

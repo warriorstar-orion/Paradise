@@ -137,7 +137,7 @@
 	if (!can_see(parent, pointed_atom, sense_radius))
 		return FALSE
 
-	parent.ai_controller.CancelActions()
+	parent.ai_controller.cancel_actions()
 	set_command_target(parent, pointed_atom)
 	return TRUE
 
@@ -145,7 +145,7 @@
 /datum/pet_command/proc/set_command_active(mob/living/parent, mob/living/commander)
 	set_command_target(parent, null)
 
-	parent.ai_controller.CancelActions() // Stop whatever you're doing and do this instead
+	parent.ai_controller.cancel_actions() // Stop whatever you're doing and do this instead
 	parent.ai_controller.set_blackboard_key(BB_ACTIVE_PET_COMMAND, src)
 	// if (command_feedback)
 	// 	parent.balloon_alert_to_viewers("[command_feedback]") // If we get a nicer runechat way to do this, refactor this
@@ -204,7 +204,7 @@
 	if (!parent)
 		return FALSE
 
-	parent.ai_controller.CancelActions()
+	parent.ai_controller.cancel_actions()
 	if (look_for_target(friend, pointed_atom) && set_command_target(parent, pointed_atom))
 		parent.visible_message("<span class='warning'>[parent] follows [friend]'s gesture towards [pointed_atom] [pointed_reaction]!</span>")
 		return TRUE

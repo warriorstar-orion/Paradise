@@ -21,7 +21,7 @@
 	if(emote_see)
 		emote_see = string_assoc_list(emote_see)
 
-/datum/ai_planning_subtree/random_speech/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
+/datum/ai_planning_subtree/random_speech/select_behaviors(datum/ai_controller/controller, seconds_per_tick)
 	if(!SPT_PROB(speech_chance, seconds_per_tick))
 		return
 	speak(controller)
@@ -47,7 +47,7 @@
 /datum/ai_planning_subtree/random_speech/dog
 	speech_chance = 1
 
-/datum/ai_planning_subtree/random_speech/dog/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
+/datum/ai_planning_subtree/random_speech/dog/select_behaviors(datum/ai_controller/controller, seconds_per_tick)
 	if(!istype(controller.pawn, /mob/living/basic/pet/dog))
 		return
 
@@ -60,7 +60,7 @@
 /datum/ai_planning_subtree/random_speech/blackboard //literal tower of babel, subtree form
 	speech_chance = 1
 
-/datum/ai_planning_subtree/random_speech/blackboard/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
+/datum/ai_planning_subtree/random_speech/blackboard/select_behaviors(datum/ai_controller/controller, seconds_per_tick)
 	var/list/speech_lines = controller.blackboard[BB_BASIC_MOB_SPEAK_LINES]
 	if(isnull(speech_lines))
 		return ..()

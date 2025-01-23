@@ -7,7 +7,7 @@
 	/// Blackboard key in which to store selected target's hiding place
 	var/hiding_place_key = BB_BASIC_MOB_CURRENT_TARGET_HIDING_LOCATION
 
-/datum/ai_planning_subtree/flee_target/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
+/datum/ai_planning_subtree/flee_target/select_behaviors(datum/ai_controller/controller, seconds_per_tick)
 	. = ..()
 	var/atom/flee_from = controller.blackboard[target_key]
 	if(!should_flee(controller, flee_from))

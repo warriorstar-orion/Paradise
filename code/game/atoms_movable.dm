@@ -82,9 +82,6 @@
 	/// How far (in pixels) should this atom scatter when created/dropped/etc. Does not apply to mapped-in items.
 	var/scatter_distance = 0
 
-	/// Holds information about any movement loops currently running/waiting to run on the movable. Lazy, will be null if nothing's going on
-	var/datum/movement_packet/move_packet
-
 	/**
 	  * In case you have multiple types, you automatically use the most useful one.
 	  * IE: Skating on ice, flippers on water, flying over chasm/space, etc.
@@ -1182,3 +1179,15 @@
 
 /atom/movable/proc/get_default_say_verb()
 	return atom_say_verb
+
+/atom/movable/proc/faction_check_atom(atom/movable/target, exact_match)
+	if(!exact_match)
+		return faction_check(faction, target.faction, FALSE)
+
+	var/list/faction_src = LAZYCOPY(faction)
+	var/list/faction_target = LAZYCOPY(target.faction)
+	if(!("[UID()]" in faction_target)) //if they don't have our ref faction, remove it from our factions list.
+		faction_src -= "[UID()]" //if we don't do this, we'll never have an exact match.
+	if(!("[target.UID()]" in faction_src))
+		faction_target -= "[target.UID()]" //same thing here.
+	return faction_check(faction_src, faction_target, TRUE)

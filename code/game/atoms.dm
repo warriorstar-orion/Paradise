@@ -1455,3 +1455,13 @@ GLOBAL_LIST_EMPTY(blood_splatter_icons)
 	while(i < length(.))
 		var/atom/checked_atom = .[++i]
 		. += checked_atom.contents
+
+/atom/proc/attack_basic_mob(mob/user, list/modifiers)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_BASIC_MOB, user)
+	return handle_basic_attack(user, modifiers) //return value of attack animal, this is how much damage was dealt to the attacked thing
+
+///This exists so stuff can override the default call of attack_animal for attack_basic_mob
+///Remove this when simple animals are removed and everything can be handled on attack basic mob.
+/atom/proc/handle_basic_attack(user, modifiers)
+       return attack_animal(user, modifiers)
