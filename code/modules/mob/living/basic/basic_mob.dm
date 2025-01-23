@@ -1,6 +1,9 @@
 RESTRICT_TYPE(/mob/living/basic)
 
-///Simple animals 2.0, This time, let's really try to keep it simple. This basetype should purely be used as a base-level for implementing simplified behaviours for things such as damage and attacks. Everything else should be in components or AI behaviours.
+/// Simple animals 2.0, This time, let's really try to keep it simple.
+/// This basetype should purely be used as a base-level for implementing
+/// simplified behaviours for things such as damage and attacks.
+/// Everything else should be in components or AI behaviours.
 /mob/living/basic
 	name = "basic mob"
 	icon = 'icons/mob/animal.dmi'
@@ -56,8 +59,8 @@ RESTRICT_TYPE(/mob/living/basic)
 	var/sentience_type = SENTIENCE_ORGANIC
 
 	/// The minimum and maximum concentrations of each gas before damage is caused to the mob.
-	var/list/atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0) //Leaving something at 0 means it's off - has no maximum
-	/// This damage is taken when atmos doesn't fit all the requirements above
+	/// Leaving something at 0 means it's off - has no maximum
+	var/list/atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)	/// This damage is taken when atmos doesn't fit all the requirements above
 	var/unsuitable_atmos_damage = 2
 
 	///Minimal body temperature without receiving damage
