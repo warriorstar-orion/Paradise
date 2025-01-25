@@ -28,6 +28,7 @@
 		for(var/z_level in z_levels)
 			var/placement_tries = PLACEMENT_TRIES
 			while(placement_tries > 0)
+				CHECK_TICK
 				placement_tries--
 
 				var/turf/central_turf = locate(
