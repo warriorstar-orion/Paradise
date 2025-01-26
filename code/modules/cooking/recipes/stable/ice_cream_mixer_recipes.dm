@@ -74,7 +74,7 @@
 	product_type = /obj/item/food/frozen/popsicle/frozenpineapple
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/popsicle_stick),
-		CWJ_ADD_ITEM(/obj/item/food/pineappleslice),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/pineapple),
 		CWJ_ADD_ITEM(/obj/item/food/chocolatebar),
 		CWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)

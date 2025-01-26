@@ -11,8 +11,8 @@
 	cooking_container = /obj/item/reagent_containers/cooking/board
 	product_type = /obj/item/food/jellysandwich/cherry
 	steps = list(
-		CWJ_ADD_ITEM(/obj/item/food/breadslice),
-		CWJ_ADD_ITEM(/obj/item/food/breadslice),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/bread),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/bread),
 		CWJ_ADD_REAGENT("cherryjelly", 5),
 	)
 
@@ -43,8 +43,8 @@
 	cooking_container = /obj/item/reagent_containers/cooking/board
 	product_type = /obj/item/food/notasandwich
 	steps = list(
-		CWJ_ADD_ITEM(/obj/item/food/breadslice),
-		CWJ_ADD_ITEM(/obj/item/food/breadslice),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/bread),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/bread),
 		CWJ_ADD_ITEM(/obj/item/clothing/mask/fakemoustache),
 	)
 
@@ -53,9 +53,9 @@
 	product_type = /obj/item/food/sandwich
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/meatsteak),
-		CWJ_ADD_ITEM(/obj/item/food/breadslice),
-		CWJ_ADD_ITEM(/obj/item/food/breadslice),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/bread),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/bread),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
 	)
 
 /datum/cooking/recipe/slimeburger
@@ -70,7 +70,7 @@
 	cooking_container = /obj/item/reagent_containers/cooking/board
 	product_type = /obj/item/food/jellysandwich/slime
 	steps = list(
-		CWJ_ADD_ITEM(/obj/item/food/breadslice),
-		CWJ_ADD_ITEM(/obj/item/food/breadslice),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/bread),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/bread),
 		CWJ_ADD_REAGENT("slimejelly", 5),
 	)

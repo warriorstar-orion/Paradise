@@ -224,8 +224,8 @@
 		CWJ_ADD_ITEM(/obj/item/food/dough),
 		CWJ_ADD_ITEM(/obj/item/food/dough),
 		CWJ_ADD_ITEM(/obj/item/food/dough),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
 		CWJ_ADD_REAGENT("milk", 5),
 		CWJ_ADD_REAGENT("sugar", 15),
 		CWJ_USE_OVEN(J_MED, 20 SECONDS),
@@ -236,10 +236,10 @@
 	product_type = /obj/item/food/sliceable/pizza/cheesepizza
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/sliceable/flatdough),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
 		CWJ_ADD_PRODUCE(/obj/item/food/grown/tomato),
 		CWJ_USE_OVEN(J_MED, 30 SECONDS),
 	)
@@ -346,7 +346,7 @@
 	cooking_container = /obj/item/reagent_containers/cooking/oven
 	product_type = /obj/item/food/cracker
 	steps = list(
-		CWJ_ADD_ITEM(/obj/item/food/doughslice),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/dough),
 		CWJ_ADD_REAGENT("sodiumchloride", 1),
 		CWJ_USE_OVEN(J_MED, 10 SECONDS),
 	)
@@ -357,8 +357,8 @@
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/dough),
 		CWJ_ADD_ITEM(/obj/item/food/dough),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
 		CWJ_USE_OVEN(J_MED, 20 SECONDS),
 	)
 
@@ -379,7 +379,7 @@
 	product_type = /obj/item/food/sliceable/pizza/dankpizza
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/sliceable/flatdough),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
 		CWJ_ADD_PRODUCE(/obj/item/food/grown/tomato),
 		CWJ_ADD_PRODUCE(/obj/item/food/grown/cannabis),
 		CWJ_ADD_PRODUCE(/obj/item/food/grown/cannabis),
@@ -393,7 +393,7 @@
 	product_type = /obj/item/food/sliceable/pizza/donkpocketpizza
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/sliceable/flatdough),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
 		CWJ_ADD_ITEM(/obj/item/food/donkpocket),
 		CWJ_ADD_ITEM(/obj/item/food/donkpocket),
 		CWJ_ADD_PRODUCE(/obj/item/food/grown/tomato),
@@ -405,7 +405,7 @@
 	product_type = /obj/item/food/sliceable/pizza/firecrackerpizza
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/sliceable/flatdough),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
 		CWJ_ADD_PRODUCE(/obj/item/food/grown/chili),
 		CWJ_ADD_PRODUCE(/obj/item/food/grown/chili),
 		CWJ_ADD_REAGENT("capsaicin", 5),
@@ -424,7 +424,7 @@
 	cooking_container = /obj/item/reagent_containers/cooking/oven
 	product_type = /obj/item/food/fortunecookie
 	steps = list(
-		CWJ_ADD_ITEM(/obj/item/food/doughslice),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/dough),
 		CWJ_ADD_ITEM(/obj/item/paper),
 		CWJ_ADD_REAGENT("sugar", 5),
 		CWJ_USE_OVEN(J_MED, 10 SECONDS),
@@ -455,7 +455,7 @@
 	product_type = /obj/item/food/sliceable/pizza/garlicpizza
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/sliceable/flatdough),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
 		CWJ_ADD_PRODUCE(/obj/item/food/grown/garlic),
 		CWJ_ADD_PRODUCE(/obj/item/food/grown/garlic),
 		CWJ_ADD_REAGENT("garlic", 5),
@@ -495,9 +495,9 @@
 	product_type = /obj/item/food/sliceable/pizza/hawaiianpizza
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/sliceable/flatdough),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
-		CWJ_ADD_ITEM(/obj/item/food/pineappleslice),
-		CWJ_ADD_ITEM(/obj/item/food/pineappleslice),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/pineapple),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/pineapple),
 		CWJ_ADD_ITEM(/obj/item/food/meat),
 		CWJ_ADD_PRODUCE(/obj/item/food/grown/tomato),
 		CWJ_USE_OVEN(J_MED, 30 SECONDS),
@@ -533,9 +533,9 @@
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/meat),
 		CWJ_ADD_ITEM(/obj/item/food/meat),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
 		CWJ_ADD_ITEM(/obj/item/food/dough),
 		CWJ_ADD_PRODUCE(/obj/item/food/grown/tomato),
 		CWJ_ADD_PRODUCE(/obj/item/food/grown/tomato),
@@ -591,7 +591,7 @@
 	cooking_container = /obj/item/reagent_containers/cooking/oven
 	product_type = /obj/item/food/loadedbakedpotato
 	steps = list(
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
 		CWJ_ADD_PRODUCE(/obj/item/food/grown/potato),
 		CWJ_USE_OVEN(J_MED, 10 SECONDS),
 	)
@@ -601,8 +601,8 @@
 	product_type = /obj/item/food/sliceable/pizza/macpizza
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/sliceable/flatdough),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
 		CWJ_ADD_ITEM(/obj/item/food/macncheese),
 		CWJ_USE_OVEN(J_MED, 20 SECONDS),
 	)
@@ -617,9 +617,9 @@
 		CWJ_ADD_ITEM(/obj/item/food/meat),
 		CWJ_ADD_ITEM(/obj/item/food/meat),
 		CWJ_ADD_ITEM(/obj/item/food/meat),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
 		CWJ_USE_OVEN(J_MED, 40 SECONDS),
 	)
 
@@ -640,7 +640,7 @@
 		CWJ_ADD_ITEM(/obj/item/food/meat),
 		CWJ_ADD_ITEM(/obj/item/food/meat),
 		CWJ_ADD_ITEM(/obj/item/food/meat),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
 		CWJ_ADD_PRODUCE(/obj/item/food/grown/tomato),
 		CWJ_USE_OVEN(J_MED, 30 SECONDS),
 	)
@@ -693,7 +693,7 @@
 	product_type = /obj/item/food/sliceable/pizza/mushroompizza
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/sliceable/flatdough),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
 		CWJ_ADD_PRODUCE(/obj/item/food/grown/mushroom),
 		CWJ_ADD_PRODUCE(/obj/item/food/grown/mushroom),
 		CWJ_ADD_PRODUCE(/obj/item/food/grown/mushroom),
@@ -743,7 +743,7 @@
 	product_type = /obj/item/food/sliceable/pizza/pepperonipizza
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/sliceable/flatdough),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
 		CWJ_ADD_ITEM(/obj/item/food/sausage),
 		CWJ_ADD_PRODUCE(/obj/item/food/grown/tomato),
 		CWJ_USE_OVEN(J_MED, 20 SECONDS),
@@ -754,7 +754,7 @@
 	product_type = /obj/item/food/sliceable/pizza/pestopizza
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/sliceable/flatdough),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
 		CWJ_ADD_PRODUCE(/obj/item/food/grown/tomato),
 		CWJ_ADD_PRODUCE(/obj/item/food/grown/tomato),
 		CWJ_ADD_REAGENT("wasabi", 5),
@@ -776,8 +776,8 @@
 	product_type = /obj/item/food/sliceable/pizza/margheritapizza
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/sliceable/flatdough),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
 		CWJ_ADD_PRODUCE(/obj/item/food/grown/tomato),
 		CWJ_ADD_PRODUCE(/obj/item/food/grown/tomato),
 		CWJ_USE_OVEN(J_MED, 20 SECONDS),
@@ -924,9 +924,9 @@
 		CWJ_ADD_ITEM(/obj/item/food/meat/syntiflesh),
 		CWJ_ADD_ITEM(/obj/item/food/meat/syntiflesh),
 		CWJ_ADD_ITEM(/obj/item/food/meat/syntiflesh),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
 		CWJ_USE_OVEN(J_MED, 40 SECONDS),
 	)
 
@@ -948,9 +948,9 @@
 		CWJ_ADD_ITEM(/obj/item/food/tofu),
 		CWJ_ADD_ITEM(/obj/item/food/tofu),
 		CWJ_ADD_ITEM(/obj/item/food/tofu),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
 		CWJ_USE_OVEN(J_MED, 40 SECONDS),
 	)
 
@@ -1022,7 +1022,7 @@
 	product_type = /obj/item/food/sliceable/pizza/vegetablepizza
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/sliceable/flatdough),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
 		CWJ_ADD_PRODUCE(/obj/item/food/grown/eggplant),
 		CWJ_ADD_PRODUCE(/obj/item/food/grown/carrot),
 		CWJ_ADD_PRODUCE(/obj/item/food/grown/corn),
@@ -1049,9 +1049,9 @@
 		CWJ_ADD_ITEM(/obj/item/food/monstermeat/xenomeat),
 		CWJ_ADD_ITEM(/obj/item/food/monstermeat/xenomeat),
 		CWJ_ADD_ITEM(/obj/item/food/monstermeat/xenomeat),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
 		CWJ_USE_OVEN(J_MED, 40 SECONDS),
 	)
 

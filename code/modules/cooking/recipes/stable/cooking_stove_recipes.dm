@@ -14,7 +14,7 @@
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/egg),
 		CWJ_ADD_ITEM(/obj/item/food/egg),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
 		CWJ_USE_STOVE(J_MED, 4 SECONDS),
 	)

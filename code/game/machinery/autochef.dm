@@ -19,8 +19,6 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "autochef"
 
-	new_attack_chain = TRUE
-
 	var/list/linked_cooking_containers = list()
 	var/list/linked_machines = list()
 	var/list/linked_storages = list()

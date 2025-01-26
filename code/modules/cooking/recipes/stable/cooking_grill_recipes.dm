@@ -96,9 +96,9 @@
 	cooking_container = /obj/item/reagent_containers/cooking/grill_grate
 	product_type = /obj/item/food/grilledcheese
 	steps = list(
-		CWJ_ADD_ITEM(/obj/item/food/breadslice),
-		CWJ_ADD_ITEM(/obj/item/food/breadslice),
-		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/bread),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/bread),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
 		CWJ_USE_GRILL(J_MED, 10 SECONDS),
 	)
 
@@ -132,16 +132,16 @@
 		CWJ_USE_GRILL(J_MED, 10 SECONDS),
 	)
 
-// /datum/cooking/recipe/omelette
-// 	cooking_container = /obj/item/reagent_containers/cooking/grill_grate
-// 	product_type = /obj/item/food/omelette
-// 	steps = list(
-// 		CWJ_ADD_ITEM(/obj/item/food/egg),
-// 		CWJ_ADD_ITEM(/obj/item/food/egg),
-// 		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
-// 		CWJ_ADD_ITEM(/obj/item/food/cheesewedge),
-// 		CWJ_USE_GRILL(J_MED, 20 SECONDS),
-// 	)
+/datum/cooking/recipe/omelette
+	cooking_container = /obj/item/reagent_containers/cooking/grill_grate
+	product_type = /obj/item/food/omelette
+	steps = list(
+		CWJ_ADD_ITEM(/obj/item/food/egg),
+		CWJ_ADD_ITEM(/obj/item/food/egg),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
+		CWJ_USE_GRILL(J_MED, 20 SECONDS),
+	)
 
 /datum/cooking/recipe/pancake
 	cooking_container = /obj/item/reagent_containers/cooking/grill_grate
@@ -228,7 +228,7 @@
 
 /datum/cooking/recipe/sushi_inari
 	cooking_container = /obj/item/reagent_containers/cooking/grill_grate
-	product_type = /obj/item/food/sushi_inari
+	product_type = /obj/item/food/sliced/sushi_inari
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/boiledrice),
 		CWJ_ADD_ITEM(/obj/item/food/fried_tofu),
@@ -238,7 +238,7 @@
 
 /datum/cooking/recipe/sushi_masago
 	cooking_container = /obj/item/reagent_containers/cooking/grill_grate
-	product_type = /obj/item/food/sushi_masago
+	product_type = /obj/item/food/sliced/sushi_masago
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/boiledrice),
 		CWJ_ADD_ITEM(/obj/item/fish_eggs/goldfish),
@@ -248,7 +248,7 @@
 
 /datum/cooking/recipe/sushi_sake
 	cooking_container = /obj/item/reagent_containers/cooking/grill_grate
-	product_type = /obj/item/food/sushi_sake
+	product_type = /obj/item/food/sliced/sushi_sake
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/boiledrice),
 		CWJ_ADD_ITEM(/obj/item/food/salmonmeat),
@@ -258,7 +258,7 @@
 
 /datum/cooking/recipe/sushi_smoked_salmon
 	cooking_container = /obj/item/reagent_containers/cooking/grill_grate
-	product_type = /obj/item/food/sushi_smoked_salmon
+	product_type = /obj/item/food/sliced/sushi_smoked_salmon
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/boiledrice),
 		CWJ_ADD_ITEM(/obj/item/food/salmonsteak),
@@ -268,7 +268,7 @@
 
 /datum/cooking/recipe/sushi_tai
 	cooking_container = /obj/item/reagent_containers/cooking/grill_grate
-	product_type = /obj/item/food/sushi_tai
+	product_type = /obj/item/food/sliced/sushi_tai
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/boiledrice),
 		CWJ_ADD_ITEM(/obj/item/food/catfishmeat),
@@ -278,7 +278,7 @@
 
 /datum/cooking/recipe/sushi_tamago
 	cooking_container = /obj/item/reagent_containers/cooking/grill_grate
-	product_type = /obj/item/food/sushi_tamago
+	product_type = /obj/item/food/sliced/sushi_tamago
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/egg),
 		CWJ_ADD_ITEM(/obj/item/food/boiledrice),
@@ -289,7 +289,7 @@
 
 /datum/cooking/recipe/sushi_tobiko
 	cooking_container = /obj/item/reagent_containers/cooking/grill_grate
-	product_type = /obj/item/food/sushi_tobiko
+	product_type = /obj/item/food/sliced/sushi_tobiko
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/boiledrice),
 		CWJ_ADD_ITEM(/obj/item/fish_eggs/shark),
@@ -299,9 +299,9 @@
 
 /datum/cooking/recipe/sushi_tobiko_egg
 	cooking_container = /obj/item/reagent_containers/cooking/grill_grate
-	product_type = /obj/item/food/sushi_tobiko_egg
+	product_type = /obj/item/food/sliced/sushi_tobiko_egg
 	steps = list(
-		CWJ_ADD_ITEM(/obj/item/food/sushi_tobiko),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/sushi_tobiko),
 		CWJ_ADD_ITEM(/obj/item/food/egg),
 		CWJ_ADD_ITEM(/obj/item/stack/seaweed),
 		CWJ_USE_GRILL(J_MED, 10 SECONDS),

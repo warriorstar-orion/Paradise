@@ -91,7 +91,7 @@
 
 /datum/cooking/recipe/sushi_inari
 	cooking_container = /obj/item/reagent_containers/cooking/sushimat
-	product_type = /obj/item/food/sushi_inari
+	product_type = /obj/item/food/sliced/sushi_inari
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/boiledrice),
 		CWJ_ADD_ITEM(/obj/item/food/fried_tofu),
@@ -100,7 +100,7 @@
 
 /datum/cooking/recipe/sushi_masago
 	cooking_container = /obj/item/reagent_containers/cooking/sushimat
-	product_type = /obj/item/food/sushi_masago
+	product_type = /obj/item/food/sliced/sushi_masago
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/boiledrice),
 		CWJ_ADD_ITEM(/obj/item/fish_eggs/goldfish),
@@ -109,7 +109,7 @@
 
 /datum/cooking/recipe/sushi_sake
 	cooking_container = /obj/item/reagent_containers/cooking/sushimat
-	product_type = /obj/item/food/sushi_sake
+	product_type = /obj/item/food/sliced/sushi_sake
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/boiledrice),
 		CWJ_ADD_ITEM(/obj/item/food/salmonmeat),
@@ -118,7 +118,7 @@
 
 /datum/cooking/recipe/sushi_smoked_salmon
 	cooking_container = /obj/item/reagent_containers/cooking/sushimat
-	product_type = /obj/item/food/sushi_smoked_salmon
+	product_type = /obj/item/food/sliced/sushi_smoked_salmon
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/boiledrice),
 		CWJ_ADD_ITEM(/obj/item/food/salmonsteak),
@@ -127,7 +127,7 @@
 
 /datum/cooking/recipe/sushi_tai
 	cooking_container = /obj/item/reagent_containers/cooking/sushimat
-	product_type = /obj/item/food/sushi_tai
+	product_type = /obj/item/food/sliced/sushi_tai
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/boiledrice),
 		CWJ_ADD_ITEM(/obj/item/food/catfishmeat),
@@ -136,7 +136,7 @@
 
 /datum/cooking/recipe/sushi_tobiko
 	cooking_container = /obj/item/reagent_containers/cooking/sushimat
-	product_type = /obj/item/food/sushi_tobiko
+	product_type = /obj/item/food/sliced/sushi_tobiko
 	steps = list(
 		CWJ_ADD_ITEM(/obj/item/food/boiledrice),
 		CWJ_ADD_ITEM(/obj/item/fish_eggs/shark),
@@ -145,9 +145,9 @@
 
 /datum/cooking/recipe/sushi_tobiko_egg
 	cooking_container = /obj/item/reagent_containers/cooking/sushimat
-	product_type = /obj/item/food/sushi_tobiko_egg
+	product_type = /obj/item/food/sliced/sushi_tobiko_egg
 	steps = list(
-		CWJ_ADD_ITEM(/obj/item/food/sushi_tobiko),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/sushi_tobiko),
 		CWJ_ADD_ITEM(/obj/item/food/egg),
 		CWJ_ADD_ITEM(/obj/item/stack/seaweed),
 	)
@@ -168,10 +168,10 @@
 	cooking_container = /obj/item/reagent_containers/cooking/sushimat
 	product_type = /obj/item/food/sliceable/tobiko_egg_maki
 	steps = list(
-		CWJ_ADD_ITEM(/obj/item/food/sushi_tobiko),
-		CWJ_ADD_ITEM(/obj/item/food/sushi_tobiko),
-		CWJ_ADD_ITEM(/obj/item/food/sushi_tobiko),
-		CWJ_ADD_ITEM(/obj/item/food/sushi_tobiko),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/sushi_tobiko),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/sushi_tobiko),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/sushi_tobiko),
+		CWJ_ADD_ITEM(/obj/item/food/sliced/sushi_tobiko),
 		CWJ_ADD_ITEM(/obj/item/food/egg),
 		CWJ_ADD_ITEM(/obj/item/food/egg),
 		CWJ_ADD_ITEM(/obj/item/food/egg),
