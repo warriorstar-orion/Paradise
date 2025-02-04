@@ -40443,7 +40443,8 @@
 /turf/simulated/floor/plating,
 /area/station/science/toxins/launch)
 "dnI" = (
-/obj/machinery/kitchen_machine/grill,
+/obj/structure/table,
+/obj/machinery/cooking/grill,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
@@ -80631,7 +80632,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/starboard2)
 "vpw" = (
-/obj/machinery/kitchen_machine/oven,
+/obj/machinery/cooking/oven,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},

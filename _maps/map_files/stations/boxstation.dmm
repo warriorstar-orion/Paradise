@@ -873,7 +873,7 @@
 	},
 /area/station/security/armory/secure)
 "aeT" = (
-/obj/machinery/kitchen_machine/oven,
+/obj/machinery/cooking/oven,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
 	icon_state = "bar"
@@ -10482,7 +10482,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint2)
 "aLk" = (
-/obj/machinery/kitchen_machine/oven,
+/obj/machinery/cooking/oven,
 /obj/effect/spawner/random/cobweb/left/frequent,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint2)
@@ -46115,7 +46115,8 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "dmp" = (
-/obj/machinery/kitchen_machine/grill,
+/obj/structure/table,
+/obj/machinery/cooking/grill,
 /turf/simulated/floor/wood,
 /area/station/maintenance/aft)
 "dmq" = (
@@ -59902,7 +59903,8 @@
 /turf/simulated/floor/carpet/royalblue,
 /area/station/command/office/captain)
 "jHG" = (
-/obj/machinery/kitchen_machine/grill,
+/obj/structure/table,
+/obj/machinery/cooking/grill,
 /turf/simulated/floor/plasteel{
 	icon_state = "bar"
 	},

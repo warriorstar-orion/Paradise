@@ -10,6 +10,8 @@
 
 	return ..()
 
+// TODO: add back special attack for oven for v2
+// Yes, that's a v2 thing, I'm not doing it right now
 /obj/machinery/cooking/oven
 	name = "Convection Oven"
 	desc = "A cozy oven for baking food."
@@ -31,9 +33,13 @@
 
 	component_parts = list()
 	component_parts += new /obj/item/circuitboard/cooking/stove(null)
-	component_parts += new /obj/item/stock_parts/micro_laser(null)
-	component_parts += new /obj/item/stock_parts/micro_laser(null)
+	component_parts += new /obj/item/stack/cable_coil(null, 5)
+	component_parts += new /obj/item/stack/sheet/glass(null)
 	component_parts += new /obj/item/stock_parts/capacitor(null)
+	component_parts += new /obj/item/stock_parts/micro_laser(null)
+	component_parts += new /obj/item/stock_parts/micro_laser(null)
+
+	RefreshParts()
 
 	surfaces += new /datum/cooking_surface/oven(src)
 
@@ -156,6 +162,8 @@
 	board_type = "machine"
 	origin_tech = list(TECH_BIO = 1)
 	req_components = list(
-		/obj/item/stock_parts/micro_laser = 2,
+		/obj/item/stack/cable_coil = 5,
+		/obj/item/stack/sheet/glass = 1,
 		/obj/item/stock_parts/capacitor = 1,
+		/obj/item/stock_parts/micro_laser = 2,
 	)

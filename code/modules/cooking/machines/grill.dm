@@ -8,6 +8,7 @@
 	mouse_opacity = 0
 	invisibility = 0
 
+// TODO: add back special attack for grill for v2
 /obj/machinery/cooking/grill
 	name = "Grill"
 	desc = "A deep pit of charcoal for cooking food. A slot on the side of the machine takes wood and converts it into charcoal."
@@ -25,23 +26,25 @@
 	var/wood_maximum = 30
 	var/obj/effect/grill_hopper/hopper_overlay
 
-/obj/machinery/cooking/grill/Initialize()
-	. = ..()
-
-	hopper_overlay = new
-	vis_contents += hopper_overlay
-
+/obj/machinery/cooking/grill/proc/InitializeParts()
 	component_parts = list()
 	component_parts += new /obj/item/circuitboard/cooking/grill(null)
 	component_parts += new /obj/item/stock_parts/micro_laser(null)
 	component_parts += new /obj/item/stock_parts/micro_laser(null)
 	component_parts += new /obj/item/stock_parts/matter_bin(null)
 	component_parts += new /obj/item/stock_parts/matter_bin(null)
+	RefreshParts()
+
+/obj/machinery/cooking/grill/Initialize()
+	. = ..()
+
+	hopper_overlay = new
+	vis_contents += hopper_overlay
+
+	InitializeParts()
 
 	for(var/i in 1 to 2)
 		surfaces += new /datum/cooking_surface/grill_surface(src)
-
-	RefreshParts()
 
 /obj/machinery/cooking/grill/examine(mob/user)
 	. = ..()
@@ -174,6 +177,15 @@
 	our_item.blend_mode = 0
 	our_item.transform =  null
 	vis_contents.Remove(our_item)
+
+/obj/machinery/cooking/grill/upgraded/InitializeParts()
+	component_parts = list()
+	component_parts += new /obj/item/circuitboard/cooking/grill(null)
+	component_parts += new /obj/item/stock_parts/micro_laser/ultra(null)
+	component_parts += new /obj/item/stock_parts/micro_laser/ultra(null)
+	component_parts += new /obj/item/stock_parts/matter_bin/super(null)
+	component_parts += new /obj/item/stock_parts/matter_bin/super(null)
+	RefreshParts()
 
 /obj/item/circuitboard/cooking/grill
 	board_name = "Charcoal Grill"

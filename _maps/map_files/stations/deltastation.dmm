@@ -16052,7 +16052,7 @@
 	},
 /area/station/service/kitchen)
 "bfm" = (
-/obj/machinery/kitchen_machine/oven,
+/obj/machinery/cooking/oven,
 /turf/simulated/floor/plasteel{
 	icon_state = "redfull"
 	},
@@ -17972,7 +17972,8 @@
 /turf/simulated/floor/plasteel,
 /area/station/service/kitchen)
 "blm" = (
-/obj/machinery/kitchen_machine/grill,
+/obj/structure/table,
+/obj/machinery/cooking/grill,
 /turf/simulated/floor/plasteel,
 /area/station/service/kitchen)
 "bln" = (
@@ -48924,7 +48925,8 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/port)
 "dlP" = (
-/obj/machinery/kitchen_machine/grill,
+/obj/structure/table,
+/obj/machinery/cooking/grill,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -88224,7 +88226,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/supply/sorting)
 "vCA" = (
-/obj/machinery/kitchen_machine/oven,
+/obj/machinery/cooking/oven,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},

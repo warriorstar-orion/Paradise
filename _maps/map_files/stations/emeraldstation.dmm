@@ -17832,7 +17832,8 @@
 /turf/simulated/floor/plasteel,
 /area/station/command/bridge)
 "dCa" = (
-/obj/machinery/kitchen_machine/grill,
+/obj/structure/table,
+/obj/machinery/cooking/grill,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -42819,7 +42820,8 @@
 	name = "north bump";
 	pixel_y = 28
 	},
-/obj/machinery/kitchen_machine/grill,
+/obj/structure/table,
+/obj/machinery/cooking/grill,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -53401,7 +53403,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/central/nw)
 "kCM" = (
-/obj/machinery/kitchen_machine/oven,
+/obj/machinery/cooking/oven,
 /turf/simulated/floor/plating,
 /area/station/maintenance/dorms/port)
 "kCQ" = (
@@ -56064,7 +56066,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/exit)
 "lgL" = (
-/obj/machinery/kitchen_machine/oven,
+/obj/machinery/cooking/oven,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -59061,7 +59063,8 @@
 	},
 /area/station/supply/storage)
 "lLN" = (
-/obj/machinery/kitchen_machine/grill,
+/obj/structure/table,
+/obj/machinery/cooking/grill,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -74566,7 +74569,7 @@
 	},
 /area/station/medical/reception)
 "oOr" = (
-/obj/machinery/kitchen_machine/oven,
+/obj/machinery/cooking/oven,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "oOy" = (
@@ -115461,7 +115464,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/supply/sorting)
 "wSH" = (
-/obj/machinery/kitchen_machine/oven,
+/obj/machinery/cooking/oven,
 /obj/item/clothing/head/chefhat,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"

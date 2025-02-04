@@ -4737,7 +4737,7 @@
 /area/ruin/unpowered/syndicate_space_base/dormitories)
 "BJ" = (
 /obj/machinery/light,
-/obj/machinery/kitchen_machine/oven,
+/obj/machinery/cooking/oven,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -4756,7 +4756,8 @@
 	},
 /area/ruin/unpowered/syndicate_space_base/medbay)
 "BL" = (
-/obj/machinery/kitchen_machine/grill,
+/obj/structure/table,
+/obj/machinery/cooking/grill,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
