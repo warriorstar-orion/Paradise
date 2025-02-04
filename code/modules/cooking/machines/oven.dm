@@ -68,8 +68,6 @@
 
 	var/datum/cooking_surface/surface = surfaces[input]
 	if(opened && surface.placed_item)
-		if(ismob(user))
-			SEND_SIGNAL(src, COMSIG_COOKING_CONTAINER_MODIFIED)
 		user.put_in_hands(surface.placed_item)
 		surface.placed_item = null
 		update_appearance()

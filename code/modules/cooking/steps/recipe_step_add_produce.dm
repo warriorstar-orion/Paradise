@@ -61,16 +61,5 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/add_produce)
 
 	return list(message = "Something went real fucking wrong here!")
 
-/datum/cooking/recipe_step/add_produce/get_wiki_formatted_instruction()
-	return "Add \a [produce_type::name]."
-
 /datum/cooking/recipe_step/add_produce/get_pda_formatted_desc()
 	return "Add \a [produce_type::name]."
-
-/datum/cooking/recipe_step/add_produce/attempt_autochef_perform(obj/machinery/autochef/autochef)
-	for(var/atom/movable/content in autochef.contents)
-		if(istype(content, produce_type))
-			autochef.current_container.item_interaction(src, content)
-			autochef.Beam(autochef.current_container, icon_state = "rped_upgrade", icon = 'icons/effects/effects.dmi', time = 5)
-			autochef.atom_say("Added [content].")
-			return TRUE

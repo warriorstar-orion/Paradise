@@ -55,9 +55,6 @@ RESTRICT_TYPE(/obj/machinery/cooking)
 	// if(default_deconstruction(used_item, user))
 	// 	return
 
-	if(istype(used, /obj/item/autochef_remote))
-		return
-
 	var/input = clickpos_to_surface(modifiers)
 	if(input)
 		var/datum/cooking_surface/surface = surfaces[input]

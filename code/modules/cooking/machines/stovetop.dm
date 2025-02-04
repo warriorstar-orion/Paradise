@@ -73,8 +73,6 @@
 						burn_victim.adjustFireLossByPart(1, which_hand)
 
 				to_chat(burn_victim, "<span class='danger'>You burn your hand a little taking the [burner.placed_item] off of the stove.</span>")
-		if(ismob(user))
-			SEND_SIGNAL(src, COMSIG_COOKING_CONTAINER_MODIFIED)
 		user.put_in_hands(burner.placed_item)
 		burner.placed_item = null
 		update_appearance(UPDATE_ICON)

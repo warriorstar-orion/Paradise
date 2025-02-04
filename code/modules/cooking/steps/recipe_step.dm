@@ -40,16 +40,9 @@ RESTRICT_TYPE(/datum/cooking/recipe_step)
 /datum/cooking/recipe_step/proc/is_complete(obj/added_item, datum/cooking/recipe_tracker/tracker)
 	return TRUE
 
-/datum/cooking/recipe_step/proc/get_wiki_formatted_instruction()
-	SHOULD_CALL_PARENT(FALSE)
-	return ""
-
 /datum/cooking/recipe_step/proc/get_pda_formatted_desc()
 	SHOULD_CALL_PARENT(FALSE)
 	return ""
 
 /datum/cooking/recipe_step/proc/equals(datum/cooking/recipe_step/other)
 	return FALSE
-
-/datum/cooking/recipe_step/proc/attempt_autochef_perform(obj/machinery/autochef/autochef)
-	return

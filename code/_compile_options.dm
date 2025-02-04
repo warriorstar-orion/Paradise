@@ -2,8 +2,6 @@
 // #define PCWJ_DEBUG
 //#define TESTING
 
-// #define WIKIGEN
-
 // Uncomment the following line to compile unit tests on a local server. The output will be in a test_run-[DATE].log file in the ./data folder.
 // #define LOCAL_GAME_TESTS
 
@@ -25,10 +23,6 @@
 
 #if defined(CIBUILDING) && defined(LOCAL_GAME_TESTS)
 #error CIBUILDING and LOCAL_GAME_TESTS should not be enabled at the same time!
-#endif
-
-#if defined(CIBUILDING) && defined(WIKIGEN)
-#error CIBUILDING and WIKIGEN should not be enabled at the same time.
 #endif
 
 /***** All toggles for the GC ref finder *****/

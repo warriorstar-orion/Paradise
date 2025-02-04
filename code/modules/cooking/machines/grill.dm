@@ -125,8 +125,6 @@
 
 				to_chat(burn_victim, "<span class='danger'>You burn your hand a little taking the [surface.placed_item] off of \the [src].</span>")
 
-		if(ismob(user))
-			SEND_SIGNAL(src, COMSIG_COOKING_CONTAINER_MODIFIED)
 		user.put_in_hands(surface.placed_item)
 		surface.placed_item = null
 		update_appearance(UPDATE_ICON)

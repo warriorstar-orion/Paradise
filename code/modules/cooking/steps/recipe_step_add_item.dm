@@ -67,13 +67,6 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/add_item)
 
 	return list(message = "Something went real fucking wrong here!")
 
-/datum/cooking/recipe_step/add_item/get_wiki_formatted_instruction()
-	var/slug = "[item_type::name]"
-	if(ispath(item_type, /obj/item/food))
-		var/obj/item/food/food_type = item_type
-		slug = "{{RecursiveFood/[item_type::name]}}"
-	return "Add \a [slug]."
-
 /datum/cooking/recipe_step/add_item/get_pda_formatted_desc()
 	var/slug = "[item_type::name]"
 	return "Add \a [slug]."
@@ -84,11 +77,3 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/add_item)
 		return FALSE
 
 	return item_type == other_add_item.item_type && exact_path == other_add_item.exact_path && optional == other_add_item.optional
-
-/datum/cooking/recipe_step/add_item/attempt_autochef_perform(obj/machinery/autochef/autochef)
-	for(var/atom/movable/content in autochef.contents)
-		if(istype(content, item_type))
-			autochef.current_container.item_interaction(src, content)
-			autochef.Beam(autochef.current_container, icon_state = "rped_upgrade", icon = 'icons/effects/effects.dmi', time = 5)
-			// autochef.atom_say("Added [content].")
-			return AUTOCHEF_RECIPE_PROCESSING

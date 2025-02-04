@@ -56,9 +56,6 @@
 	return PCWJ_CONTAINER_AVAILABLE
 
 /obj/item/reagent_containers/cooking/item_interaction(mob/living/user, obj/item/used, list/modifiers)
-	if(istype(used, /obj/item/autochef_remote))
-		return
-
 	if(!tracker && (contents.len || reagents.total_volume != 0))
 		to_chat(user, "The [src] is full. Empty its contents first.")
 		return ITEM_INTERACT_COMPLETE
@@ -84,8 +81,6 @@
 		for(var/datum/cooking/recipe/recipe in container_recipes)
 			tracker.recipes_last_completed_step[recipe] = 0
 
-	if(ismob(user))
-		SEND_SIGNAL(src, COMSIG_COOKING_CONTAINER_MODIFIED)
 	react_to_process(tracker.process_item_wrap(user, used), user, used)
 
 /obj/item/reagent_containers/cooking/standard_pour_into(mob/user, atom/target)

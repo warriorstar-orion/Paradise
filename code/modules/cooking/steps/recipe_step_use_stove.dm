@@ -33,30 +33,5 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/use_stove)
 
 	return step_data
 
-/datum/cooking/recipe_step/use_stove/attempt_autochef_perform(obj/machinery/autochef/autochef)
-	var/obj/item/reagent_containers/cooking/container = autochef.current_container
-	if(!container)
-		autochef.atom_say("Lost container!")
-		return FALSE
-	for(var/obj/machinery/machine in autochef.linked_machines)
-		var/obj/machinery/cooking/stovetop/stove = machine
-		if(istype(stove))
-			for(var/datum/cooking_surface/burner in stove.surfaces)
-				if(!burner.placed_item || burner.placed_item == container)
-					// Grab that shit
-					container.Beam(stove, icon_state = "rped_upgrade", icon = 'icons/effects/effects.dmi', time = 5)
-					stove.surface_item_interaction(null, container, burner)
-					autochef.atom_say("Preparing on stove.")
-					burner.timer = time
-					burner.temperature = temperature
-					if(burner.on)
-						burner.handle_cooking(null)
-						burner.timer_act(null)
-					else
-						burner.handle_switch(null)
-					return AUTOCHEF_WAITING_ON_MACHINE
-
-	return FALSE
-
 /datum/cooking/recipe_step/use_stove/get_pda_formatted_desc()
 	return "Heat on a stove for [DisplayTimeText(time)] at [lowertext(temperature)] temperature."

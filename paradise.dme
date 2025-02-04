@@ -153,7 +153,6 @@
 #include "code\__DEFINES\dcs\attack_chain_signals.dm"
 #include "code\__DEFINES\dcs\basetype_signals.dm"
 #include "code\__DEFINES\dcs\carbon_signals.dm"
-#include "code\__DEFINES\dcs\cooking_signals.dm"
 #include "code\__DEFINES\dcs\datum_signals.dm"
 #include "code\__DEFINES\dcs\dcs_flags.dm"
 #include "code\__DEFINES\dcs\dcs_helpers.dm"
