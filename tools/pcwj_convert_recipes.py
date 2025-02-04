@@ -4,7 +4,6 @@ import io
 
 from avulto import DME, Path as p
 
-PARADISE_ROOT = Path("D:/ExternalRepos/third_party/Paradise/")
 REAGENTS = {}
 
 HIDDEN_FROM_CATALOG = {
@@ -271,7 +270,7 @@ def convert_recipe_type(recipe: RecipeDetails) -> ConvertedRecipe | None:
         )
 
 
-dme = DME.from_file(PARADISE_ROOT / "paradise.dme", parse_procs=True)
+dme = DME.from_file("paradise.dme", parse_procs=True)
 all_foods = dme.subtypesof("/obj/item/food")
 seen_foods = set()
 
