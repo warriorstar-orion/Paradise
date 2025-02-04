@@ -1,3 +1,5 @@
 /obj/machinery/kitchen_machine/oven : /obj/machinery/cooking/oven
 /obj/machinery/kitchen_machine/grill : /obj/structure/table, /obj/machinery/cooking/grill
 /obj/machinery/kitchen_machine/grill/upgraded : /obj/structure/table, /obj/machinery/cooking/grill/upgraded
+/obj/item/kitchen/sushimat : /obj/item/reagent_containers/cooking/sushimat{@OLD}
+/obj/item/mixing_bowl : /obj/item/reagent_containers/cooking/bowl{@OLD}

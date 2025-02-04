@@ -8,7 +8,7 @@
  * fast.
  **/
 /obj/item/reagent_containers/cooking
-	icon = 'icons/obj/cwj_cooking/kitchen.dmi'
+	icon = 'icons/obj/cooking/containers.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 	volume = 240
 	var/datum/cooking/recipe_tracker/tracker = null
@@ -264,13 +264,6 @@
 	our_item.transform = null
 	vis_contents.Remove(our_item)
 
-/obj/item/reagent_containers/cooking/plate
-	icon = 'icons/obj/cwj_cooking/eris_kitchen.dmi'
-	name = "serving plate"
-	desc = "A shitty serving plate. You probably shouldn't be seeing this."
-	icon_state = "plate"
-	materials = list(MAT_METAL = 5)
-
 /obj/item/reagent_containers/cooking/board
 	name = "cutting board"
 	desc = "Good for making sandwiches on, too."
@@ -295,29 +288,22 @@
 	desc = "Put ingredients in this; designed for use with an oven. Warranty void if used."
 	icon_state = "oven_dish"
 	lip = "oven_dish_lip"
-	item_state = "oven_dish"
 	materials = list(MAT_METAL = 10)
 
 /obj/item/reagent_containers/cooking/pan
 	name = "pan"
 	desc = "An normal pan."
-
 	icon_state = "pan"
 	lip = "pan_lip"
-	item_state = "pan"
 	materials = list(MAT_METAL = 5)
 	hitsound = 'sound/weapons/smash.ogg'
 
 /obj/item/reagent_containers/cooking/pot
 	name = "cooking pot"
 	desc = "Boil things with this. Maybe even stick 'em in a stew."
-
-	icon = 'icons/obj/cwj_cooking/eris_kitchen.dmi'
 	icon_state = "pot"
 	lip = "pot_lip"
-	item_state = "pot"
 	materials = list(MAT_METAL = 5)
-
 	hitsound = 'sound/weapons/smash.ogg'
 	removal_penalty = 5
 	w_class = WEIGHT_CLASS_BULKY
@@ -327,7 +313,6 @@
 	desc = "Cwispy! Warranty void if used."
 	icon_state = "deepfryer_basket"
 	lip = "deepfryer_basket_lip"
-	item_state = "deepfryer_basket"
 	removal_penalty = 5
 
 /obj/item/reagent_containers/cooking/grill_grate
@@ -341,14 +326,12 @@
 	desc = "A bowl for mixing, or tossing a salad. Not to be eaten out of"
 	icon_state = "bowl"
 	lip = "bowl_lip"
-	item_state = "pot"
 	materials = list(MAT_PLASTIC = 5)
 	removal_penalty = 2
 
 /obj/item/reagent_containers/cooking/icecream_bowl
 	name = "freezing bowl"
 	desc = "A stainless steel bowl that fits into the ice cream mixer."
-	icon = 'icons/obj/cwj_cooking/eris_kitchen.dmi'
 	icon_state = "ice_cream_bowl"
 	lip = "ice_cream_bowl_lip"
 	var/freezing_time = 0

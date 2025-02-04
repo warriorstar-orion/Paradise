@@ -2,17 +2,17 @@
 	cooker_id = COOKER_SURFACE_GRILL
 
 /obj/effect/grill_hopper
-	icon = 'icons/obj/cwj_cooking/grill.dmi'
+	icon = 'icons/obj/cooking/machines.dmi'
 	icon_state = null
 	vis_flags = VIS_INHERIT_ID
 	mouse_opacity = 0
 	invisibility = 0
 
 // TODO: add back special attack for grill for v2
+// Yes, that's a v2 thing, I'm not doing it right now
 /obj/machinery/cooking/grill
 	name = "Grill"
 	desc = "A deep pit of charcoal for cooking food. A slot on the side of the machine takes wood and converts it into charcoal."
-	icon = 'icons/obj/cwj_cooking/grill.dmi'
 	icon_state = "grill"
 	density = FALSE
 	anchored = TRUE

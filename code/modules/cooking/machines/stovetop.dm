@@ -4,7 +4,6 @@
 /obj/machinery/cooking/stovetop
 	name = "Stovetop"
 	desc = "A set of four surfaces for cooking food."
-	icon = 'icons/obj/cwj_cooking/stove.dmi'
 	icon_state = "stove"
 	density = FALSE
 	anchored = TRUE

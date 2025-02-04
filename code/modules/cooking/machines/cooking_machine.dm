@@ -3,8 +3,7 @@ RESTRICT_TYPE(/obj/machinery/cooking)
 /obj/machinery/cooking
 	name = "Default Cooking Appliance"
 	desc = "You shouldn't be seeing this. Please report this as an issue on GitHub."
-	icon = 'icons/obj/kitchen.dmi'
-	icon_state = "processor"
+	icon = 'icons/obj/cooking/machines.dmi'
 	density = TRUE
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER

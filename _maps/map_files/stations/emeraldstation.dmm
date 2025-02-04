@@ -80676,7 +80676,7 @@
 /turf/simulated/floor/carpet/royalblack,
 /area/station/maintenance/fsmaint)
 "pXZ" = (
-/obj/item/kitchen/sushimat{
+/obj/item/reagent_containers/cooking/sushimat{
 	name = "Prayer Mat"
 	},
 /turf/simulated/floor/plating,
@@ -109123,7 +109123,7 @@
 /obj/item/decorations/sticky_decorations/flammable/tinsel/red{
 	pixel_y = 12
 	},
-/obj/item/mixing_bowl{
+/obj/item/reagent_containers/cooking/bowl{
 	name = "Ians Water Bowl"
 	},
 /obj/machinery/light/small{
@@ -121191,7 +121191,7 @@
 /obj/structure/sign/poster/official/love_ian{
 	pixel_y = -32
 	},
-/obj/item/kitchen/sushimat{
+/obj/item/reagent_containers/cooking/sushimat{
 	name = "Prayer Mat"
 	},
 /obj/item/clothing/suit/ianshirt{

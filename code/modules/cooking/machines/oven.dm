@@ -15,8 +15,7 @@
 /obj/machinery/cooking/oven
 	name = "Convection Oven"
 	desc = "A cozy oven for baking food."
-	icon = 'icons/obj/cwj_cooking/oven.dmi'
-	icon_state = "oven"
+	icon_state = "oven_base"
 	density = TRUE
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
@@ -66,9 +65,6 @@
 		return ITEM_INTERACT_COMPLETE
 
 	return ..()
-
-/obj/machinery/cooking/oven/clickpos_to_surface(modifiers)
-	return 1
 
 /obj/machinery/cooking/oven/attack_hand(mob/user as mob, params)
 	var/input = clickpos_to_surface(params2list(params))
@@ -140,10 +136,6 @@
 
 	if(!opened)
 		. += image(icon, icon_state = "oven_hatch[surface.on ? "_on" : ""]", layer = ABOVE_OBJ_LAYER)
-
-/obj/machinery/cooking/oven/update_icon()
-	. = ..()
-	icon_state = "oven_base"
 
 /obj/machinery/cooking/oven/proc/add_to_visible(obj/item/our_item)
 	our_item.vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID

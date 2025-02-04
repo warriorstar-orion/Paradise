@@ -310,7 +310,8 @@ def main():
     for writer in output_files.values():
         writer.close()
 
-    unseen_foods = set(all_foods) - seen_foods
+    grown_foods = set(dme.typesof("/obj/item/food/grown"))
+    unseen_foods = set(all_foods) - seen_foods - grown_foods
     print("unseen foods:")
     for food in sorted(unseen_foods):
         print(f"- {food}")
