@@ -186,11 +186,16 @@ stove_writer = open(
 )
 
 
-def convert_recipe_type(recipe: RecipeDetails) -> ConvertedRecipe | None:
-    default_time = max(
+def default_cooktime(recipe: RecipeDetails) -> int:
+    return max(
         10, 10 * (int(0.5 * (len(recipe.food_items) + len(recipe.produce_items))))
     )
+
+
+def convert_recipe_type(recipe: RecipeDetails) -> ConvertedRecipe | None:
+    default_time = default_cooktime(recipe)
     default_temp = "J_MED"
+
     if recipe.original_path.child_of("/datum/recipe/grill"):
         return ConvertedRecipe(
             recipe,
@@ -286,9 +291,28 @@ for subpath in (
 
 CONVERTED_RECIPES += process_crafting_recipes(dme)
 
+
+def make_stovetop_pan(converted: ConvertedRecipe):
+    converted.writer = stove_writer
+    converted.container = p("/obj/item/reagent_containers/cooking/pan")
+    converted.cooker_step_name = "PCWJ_USE_STOVE"
+    converted.cooker_time = default_cooktime(converted.recipe)
+
+
+RECIPE_COOKER_TRANSFORMS = {p("/datum/recipe/grill/friedegg"): make_stovetop_pan}
+
 for recipe in CONVERTED_RECIPES:
     converted = convert_recipe_type(recipe)
-    if converted and converted.writer:
+    if not converted:
+        continue
+
+    if recipe.original_path in RECIPE_COOKER_TRANSFORMS:
+        RECIPE_COOKER_TRANSFORMS[recipe.original_path](converted)
+
+    if recipe.original_path in HIDDEN_FROM_CATALOG:
+        converted.hide_from_catalog = True
+
+    if converted.writer:
         converted.writer.write(converted.codegen_text())
         converted.writer.write("\n")
         converted.writer.write("\n")

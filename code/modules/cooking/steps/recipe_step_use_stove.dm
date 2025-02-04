@@ -17,7 +17,7 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/use_stove)
 /datum/cooking/recipe_step/use_stove/check_conditions_met(obj/used_item, datum/cooking/recipe_tracker/tracker)
 	var/obj/item/reagent_containers/cooking/container = locateUID(tracker.container_uid)
 
-	if(LAZYACCESSASSOC(container.cooker_data, COOKER_SURFACE_STOVE, temperature) >= time)
+	if(container.get_cooker_time(COOKER_SURFACE_STOVE, temperature) >= time)
 		return PCWJ_CHECK_VALID
 
 	if(istype(used_item, /obj/machinery/cooking/stovetop))
@@ -57,3 +57,6 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/use_stove)
 					return AUTOCHEF_WAITING_ON_MACHINE
 
 	return FALSE
+
+/datum/cooking/recipe_step/use_stove/get_pda_formatted_desc()
+	return "Heat on a stove for [DisplayTimeText(time)] at [lowertext(temperature)] temperature."

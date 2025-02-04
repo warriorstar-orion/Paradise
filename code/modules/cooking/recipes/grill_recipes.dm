@@ -73,16 +73,6 @@
 		PCWJ_USE_GRILL(J_MED, 10 SECONDS),
 	)
 
-/datum/cooking/recipe/friedegg
-	cooking_container = /obj/item/reagent_containers/cooking/grill_grate
-	product_type = /obj/item/food/friedegg
-	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/food/egg),
-		PCWJ_ADD_REAGENT("sodiumchloride", 1),
-		PCWJ_ADD_REAGENT("blackpepper", 1),
-		PCWJ_USE_GRILL(J_MED, 10 SECONDS),
-	)
-
 /datum/cooking/recipe/goliath
 	cooking_container = /obj/item/reagent_containers/cooking/grill_grate
 	product_type = /obj/item/food/goliath_steak
@@ -110,6 +100,7 @@
 		PCWJ_ADD_ITEM(/obj/item/food/meat/human),
 		PCWJ_USE_GRILL(J_MED, 10 SECONDS),
 	)
+	appear_in_default_catalog = FALSE
 
 /datum/cooking/recipe/meatkeb
 	cooking_container = /obj/item/reagent_containers/cooking/grill_grate

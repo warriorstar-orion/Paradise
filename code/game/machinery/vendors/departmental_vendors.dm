@@ -101,8 +101,6 @@
 					/obj/item/kitchen/rollingpin = 2,
 					/obj/item/reagent_containers/cooking/sushimat = 3,
 					/obj/item/reagent_containers/drinks/drinkingglass = 8,
-					/obj/item/clothing/suit/chef/classic = 2,
-					/obj/item/storage/belt/chef = 2,
 					/obj/item/reagent_containers/condiment/pack/ketchup = 5,
 					/obj/item/reagent_containers/condiment/pack/hotsauce = 5,
 					/obj/item/reagent_containers/condiment/saltshaker =5,

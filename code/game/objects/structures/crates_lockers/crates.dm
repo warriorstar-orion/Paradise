@@ -596,16 +596,6 @@
 	icon_closed = "cookware"
 
 /obj/structure/closet/crate/cookware/populate_contents()
-	// Sushi mat
-	new /obj/item/reagent_containers/cooking/sushimat(src)
-	// Deepfryer containers
-	new /obj/item/reagent_containers/cooking/deep_basket(src)
-	new /obj/item/reagent_containers/cooking/deep_basket(src)
-	// Cutting board
-	new /obj/item/reagent_containers/cooking/board(src)
-	// Grill containers
-	new /obj/item/reagent_containers/cooking/grill_grate(src)
-	new /obj/item/reagent_containers/cooking/grill_grate(src)
 	// Ice cream mixer containers
 	new /obj/item/reagent_containers/cooking/icecream_bowl(src)
 	// Oven containers
@@ -615,6 +605,16 @@
 	new /obj/item/reagent_containers/cooking/pan(src)
 	new /obj/item/reagent_containers/cooking/pot(src)
 	new /obj/item/reagent_containers/cooking/pot(src)
+	// Grill fuel
+	new /obj/item/stack/sheet/wood(src, 20)
+	// Deepfryer containers
+	new /obj/item/reagent_containers/cooking/deep_basket(src)
+	new /obj/item/reagent_containers/cooking/deep_basket(src)
+	// Cutting board
+	new /obj/item/reagent_containers/cooking/board(src)
+	// Grill containers
+	new /obj/item/reagent_containers/cooking/grill_grate(src)
+	new /obj/item/reagent_containers/cooking/grill_grate(src)
 
 //crates of gear in the free golem ship
 /obj/structure/closet/crate/golemgear/populate_contents()

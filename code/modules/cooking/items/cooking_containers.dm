@@ -155,29 +155,19 @@
 			clear_cooking_data()
 			update_appearance(UPDATE_ICON)
 
-/obj/item/reagent_containers/cooking/proc/process_item(obj/I, mob/user, lower_quality_on_fail = 0, send_message = TRUE)
+/obj/item/reagent_containers/cooking/proc/process_item(obj/I, mob/user, send_message = TRUE)
 	#ifdef PCWJ_DEBUG
 	log_debug("cooking_container/process_item() called!")
 	#endif
 
-	//OK, time to load the tracker
 	if(!tracker)
-		if(lower_quality_on_fail)
-			#warn fix this
-			// for (var/obj/item/contained in contents)
-			// 	contained?:food_quality -= lower_quality_on_fail
-		else
-			tracker = new /datum/cooking/recipe_tracker(src)
+		tracker = new /datum/cooking/recipe_tracker(src)
 
 	var/return_value = 0
 	switch(tracker.process_item_wrap(I, user))
 		if(PCWJ_NO_STEPS)
 			if(send_message)
 				to_chat(user, "<span class='notice'>It doesn't seem like you can create a meal from that. Yet.</span>")
-			// if(lower_quality_on_fail)
-			// 	for (var/datum/cooking/recipe_pointer/pointer in tracker.active_recipe_pointers)
-			// 		#warn oh god
-			// 		pointer?:tracked_quality -= lower_quality_on_fail
 		if(PCWJ_CHOICE_CANCEL)
 			if(send_message)
 				to_chat(user, "<span class='notice'>You decide against cooking with the [src].</span>")
@@ -278,6 +268,10 @@
 		cooker_data[surface.cooker_id] = list()
 
 	cooker_data[surface.cooker_id][surface.temperature] = val
+
+/obj/item/reagent_containers/cooking/proc/get_cooker_time(surface_name, temp)
+	var/result = LAZYACCESSASSOC(cooker_data, surface_name, temp)
+	return result
 
 /obj/item/reagent_containers/cooking/proc/clear_cooking_data()
 	cooker_data.Cut()

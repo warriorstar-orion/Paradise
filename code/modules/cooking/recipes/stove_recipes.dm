@@ -1,3 +1,13 @@
+/datum/cooking/recipe/friedegg
+	cooking_container = /obj/item/reagent_containers/cooking/pan
+	product_type = /obj/item/food/friedegg
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/egg),
+		PCWJ_ADD_REAGENT("sodiumchloride", 1),
+		PCWJ_ADD_REAGENT("blackpepper", 1),
+		PCWJ_USE_STOVE(J_MED, 10 SECONDS),
+	)
+
 /datum/cooking/recipe/beanstew
 	cooking_container = /obj/item/reagent_containers/cooking/pot
 	product_type = /obj/item/food/soup/beanstew

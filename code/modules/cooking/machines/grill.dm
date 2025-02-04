@@ -11,24 +11,19 @@
 /obj/machinery/cooking/grill
 	name = "Grill"
 	desc = "A deep pit of charcoal for cooking food. A slot on the side of the machine takes wood and converts it into charcoal."
-	#warn fix description
-	// description_info = "Ctrl+Click: Set Temperatures / Timers. \nShift+Ctrl+Click: Turn on a burner.\nAlt+Click: Empty container of physical food."
 	icon = 'icons/obj/cwj_cooking/grill.dmi'
 	icon_state = "grill"
 	density = FALSE
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
-	cooking = FALSE
-
 	interact_offline = TRUE
-
-	var/stored_wood = 0
-	var/wood_maximum = 30
 	allowed_containers = list(
 		/obj/item/reagent_containers/cooking/grill_grate,
 	)
 
-	VAR_PRIVATE/obj/effect/grill_hopper/hopper_overlay
+	var/stored_wood = 0
+	var/wood_maximum = 30
+	var/obj/effect/grill_hopper/hopper_overlay
 
 /obj/machinery/cooking/grill/Initialize()
 	. = ..()
@@ -50,6 +45,7 @@
 
 /obj/machinery/cooking/grill/examine(mob/user)
 	. = ..()
+	. += "<span class='notice'>It contains [stored_wood]/[wood_maximum] units of charcoal.</span>"
 	. += "<span class='notice'><b>Alt-Shift-Click</b> on a grate to set its temperature.</span>"
 	. += "<span class='notice'><b>Ctrl-Click</b> on a grate to set its timer.</span>"
 	. += "<span class='notice'><b>Ctrl-Shift-Click</b> on a grate to toggle it on or off.</span>"
@@ -78,26 +74,15 @@
 		bin_rating += M.rating
 	wood_maximum = 15 * bin_rating
 
-/obj/machinery/cooking/grill/examine(mob/user)
-	. = ..()
-
-	if(contents)
-		. += "<span class='notice'>\nCharcoal: [stored_wood]/[wood_maximum]</span>"
-
 #define ICON_SPLIT_X 16
 
 //Retrieve which half of the baking pan is being used.
-/obj/machinery/cooking/grill/proc/getInput(modifiers)
-	var/input
+/obj/machinery/cooking/grill/clickpos_to_surface(modifiers)
 	var/icon_x = text2num(modifiers["icon-x"])
 	if(icon_x <= ICON_SPLIT_X)
-		input = 1
+		return 1
 	else if(icon_x > ICON_SPLIT_X)
-		input = 2
-	#ifdef PCWJ_DEBUG
-	log_debug("cooking_with_jane/grill/proc/getInput returned burner [input]. icon-x: [modifiers["icon-x"]], icon-y: [modifiers["icon-y"]]")
-	#endif
-	return input
+		return 2
 
 #undef ICON_SPLIT_X
 
@@ -152,7 +137,7 @@
 	cut_overlays()
 
 	for(var/obj/item/our_item in vis_contents)
-		src.remove_from_visible(our_item)
+		remove_from_visible(our_item)
 
 	icon_state = "grill"
 
@@ -162,7 +147,7 @@
 		if(surface.on)
 			if(!grill_on)
 				grill_on = TRUE
-			add_overlay(image(src.icon, icon_state = "fire_[i]"))
+			add_overlay(image(icon, icon_state = "fire_[i]"))
 
 		if(!(surface.placed_item))
 			continue
@@ -179,7 +164,7 @@
 
 /obj/machinery/cooking/grill/proc/add_to_visible(obj/item/our_item, input)
 	our_item.vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID
-	src.vis_contents += our_item
+	vis_contents += our_item
 	if(input == 2 || input == 4)
 		var/matrix/M = matrix()
 		M.Scale(-1,1)
@@ -190,7 +175,7 @@
 	our_item.vis_flags = 0
 	our_item.blend_mode = 0
 	our_item.transform =  null
-	src.vis_contents.Remove(our_item)
+	vis_contents.Remove(our_item)
 
 /obj/item/circuitboard/cooking/grill
 	board_name = "Charcoal Grill"

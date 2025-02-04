@@ -19820,7 +19820,10 @@
 	layer = 4;
 	pixel_y = 32
 	},
-/obj/structure/closet/crate/cookware,
+/obj/structure/table,
+/obj/machinery/kitchen_machine/microwave{
+	pixel_y = 6
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -20871,6 +20874,7 @@
 "brm" = (
 /obj/structure/table,
 /obj/item/kitchen/rollingpin,
+/obj/item/kitchen/knife,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -21884,7 +21888,7 @@
 /area/station/service/kitchen)
 "but" = (
 /obj/structure/table,
-/obj/item/kitchen/knife,
+/obj/machinery/reagentgrinder,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -21981,8 +21985,11 @@
 /area/station/service/kitchen)
 "buK" = (
 /obj/structure/table,
-/obj/machinery/reagentgrinder,
 /obj/machinery/requests_console/directional/east,
+/obj/item/eftpos/register{
+	dir = 8
+	},
+/obj/item/wrench,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -66669,11 +66676,7 @@
 	},
 /area/station/security/permabrig)
 "nlp" = (
-/obj/structure/table,
-/obj/item/eftpos/register{
-	dir = 4
-	},
-/obj/item/wrench,
+/obj/structure/closet/crate/cookware,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
