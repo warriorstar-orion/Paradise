@@ -513,7 +513,7 @@
 /turf/simulated/floor/plating,
 /area/station/science/server/coldroom)
 "ahp" = (
-/obj/machinery/cooker/deepfryer,
+/obj/machinery/cooking/deepfryer,
 /obj/item/organ/internal/lungs/vox,
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/spawner/random/cobweb/right/rare,
@@ -119413,7 +119413,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
 "xIl" = (
-/obj/machinery/cooker/deepfryer,
+/obj/machinery/cooking/deepfryer,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},

@@ -1033,7 +1033,7 @@
 	},
 /area/ruin/unpowered/syndicate_space_base/arrivals)
 "fY" = (
-/obj/machinery/cooker/deepfryer,
+/obj/machinery/cooking/deepfryer,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},

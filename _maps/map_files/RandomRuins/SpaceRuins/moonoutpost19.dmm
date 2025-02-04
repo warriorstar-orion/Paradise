@@ -6901,7 +6901,7 @@
 	},
 /area/ruin/space/moonbase19)
 "zM" = (
-/obj/machinery/cooker/deepfryer,
+/obj/machinery/cooking/deepfryer,
 /turf/simulated/floor/plasteel{
 	icon_state = "showroomfloor";
 	temperature = 273.15

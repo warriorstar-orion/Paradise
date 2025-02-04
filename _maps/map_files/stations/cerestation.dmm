@@ -42243,7 +42243,7 @@
 	},
 /area/station/hallway/spacebridge/scidock)
 "hRT" = (
-/obj/machinery/cooker/deepfryer,
+/obj/machinery/cooking/deepfryer,
 /obj/structure/window/basic{
 	dir = 1
 	},
@@ -81317,7 +81317,7 @@
 	},
 /area/station/security/prison/cell_block/a)
 "rNo" = (
-/obj/machinery/cooker/deepfryer,
+/obj/machinery/cooking/deepfryer,
 /obj/structure/window/reinforced{
 	dir = 1;
 	layer = 2.9
