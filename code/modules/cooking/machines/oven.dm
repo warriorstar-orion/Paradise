@@ -30,6 +30,11 @@
 /obj/machinery/cooking/oven/Initialize(mapload)
 	. = ..()
 
+	InitializeParts()
+	surfaces += new /datum/cooking_surface/oven(src)
+	update_appearance()
+
+/obj/machinery/cooking/oven/proc/InitializeParts()
 	component_parts = list()
 	component_parts += new /obj/item/circuitboard/cooking/stove(null)
 	component_parts += new /obj/item/stack/cable_coil(null, 5)
@@ -39,10 +44,6 @@
 	component_parts += new /obj/item/stock_parts/micro_laser(null)
 
 	RefreshParts()
-
-	surfaces += new /datum/cooking_surface/oven(src)
-
-	update_appearance(UPDATE_ICON|UPDATE_OVERLAYS)
 
 /obj/machinery/cooking/oven/examine(mob/user)
 	. = ..()
@@ -148,7 +149,18 @@
 	our_item.transform =  null
 	vis_contents.Remove(our_item)
 
-/obj/item/circuitboard/cooking/oven
+/obj/machinery/cooking/oven/upgraded/InitializeParts()
+	component_parts = list()
+	component_parts += new /obj/item/circuitboard/cooking/stove(null)
+	component_parts += new /obj/item/stack/cable_coil(null, 5)
+	component_parts += new /obj/item/stack/sheet/glass(null)
+	component_parts += new /obj/item/stock_parts/capacitor/super(null)
+	component_parts += new /obj/item/stock_parts/micro_laser/ultra(null)
+	component_parts += new /obj/item/stock_parts/micro_laser/ultra(null)
+
+	RefreshParts()
+
+/obj/item/circuitboard/oven
 	board_name = "Convection Oven"
 	build_path = /obj/machinery/cooking/oven
 	board_type = "machine"

@@ -245,6 +245,15 @@ def convert_recipe_type(recipe: RecipeDetails) -> ConvertedRecipe | None:
             cooker_step_name="PCWJ_USE_STOVE",
         )
 
+    if recipe.product_type.child_of("/obj/item/food/donut"):
+        return ConvertedRecipe(
+            recipe,
+            container=p("/obj/item/reagent_containers/cooking/deep_basket"),
+            output_file="deep_fryer",
+            cooker_time=20,
+            cooker_step_name="PCWJ_USE_DEEP_FRYER",
+        )
+
 
 def main():
     dme = DME.from_file("paradise.dme", parse_procs=True)

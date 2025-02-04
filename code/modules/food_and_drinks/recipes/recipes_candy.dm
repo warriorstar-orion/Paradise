@@ -136,43 +136,43 @@
 /datum/recipe/candy/gummybear
 	reagents = list("sugar" = 5, "water" = 5, "cornoil" = 5)
 	items = list(
-		/obj/item/kitchen/mould/bear,
+		/obj/item/reagent_containers/cooking/mould/bear,
 		)
 	result = /obj/item/food/candy/gummybear
-	byproduct = /obj/item/kitchen/mould/bear
+	byproduct = /obj/item/reagent_containers/cooking/mould/bear
 
 /datum/recipe/candy/gummyworm
 	reagents = list("sugar" = 5, "water" = 5, "cornoil" = 5)
 	items = list(
-		/obj/item/kitchen/mould/worm,
+		/obj/item/reagent_containers/cooking/mould/worm,
 		)
 	result = /obj/item/food/candy/gummyworm
-	byproduct = /obj/item/kitchen/mould/worm
+	byproduct = /obj/item/reagent_containers/cooking/mould/worm
 
 /datum/recipe/candy/jellybean
 	reagents = list("sugar" = 5, "water" = 5, "cornoil" = 5)
 	items = list(
-		/obj/item/kitchen/mould/bean,
+		/obj/item/reagent_containers/cooking/mould/bean,
 		)
 	result = /obj/item/food/candy/jellybean
-	byproduct = /obj/item/kitchen/mould/bean
+	byproduct = /obj/item/reagent_containers/cooking/mould/bean
 
 /datum/recipe/candy/jawbreaker
 	reagents = list("sugar" = 10, "cornoil" = 5)
 	items = list(
-		/obj/item/kitchen/mould/ball,
+		/obj/item/reagent_containers/cooking/mould/ball,
 		)
 	result = /obj/item/food/candy/jawbreaker
-	byproduct = /obj/item/kitchen/mould/ball
+	byproduct = /obj/item/reagent_containers/cooking/mould/ball
 
 /datum/recipe/candy/candycane
 	reagents = list("sugar" = 5)
 	items = list(
-		/obj/item/kitchen/mould/cane,
+		/obj/item/reagent_containers/cooking/mould/cane,
 		/obj/item/food/mint,
 		)
 	result = /obj/item/food/candy/candycane
-	byproduct = /obj/item/kitchen/mould/cane
+	byproduct = /obj/item/reagent_containers/cooking/mould/cane
 
 /datum/recipe/candy/gum
 	reagents = list("sugar" = 5, "water" = 5, "cornoil" = 5)
@@ -188,27 +188,27 @@
 
 /datum/recipe/candy/cash
 	items = list(
-		/obj/item/kitchen/mould/cash,
+		/obj/item/reagent_containers/cooking/mould/cash,
 		/obj/item/food/chocolatebar,
 		)
 	result = /obj/item/food/candy/cash
-	byproduct = /obj/item/kitchen/mould/cash
+	byproduct = /obj/item/reagent_containers/cooking/mould/cash
 
 /datum/recipe/candy/coin
 	items = list(
-		/obj/item/kitchen/mould/coin,
+		/obj/item/reagent_containers/cooking/mould/coin,
 		/obj/item/food/chocolatebar,
 		)
 	result = /obj/item/food/candy/coin
-	byproduct = /obj/item/kitchen/mould/coin
+	byproduct = /obj/item/reagent_containers/cooking/mould/coin
 
 /datum/recipe/candy/sucker
 	reagents = list("sugar" = 10, "cornoil" = 5)
 	items = list(
-		/obj/item/kitchen/mould/loli,
+		/obj/item/reagent_containers/cooking/mould/loli,
 		)
 	result = /obj/item/food/candy/sucker
-	byproduct = /obj/item/kitchen/mould/loli
+	byproduct = /obj/item/reagent_containers/cooking/mould/loli
 
 // ***********************************************************
 // Cotton Candy Recipes (flavored)
