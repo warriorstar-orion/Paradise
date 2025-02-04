@@ -90,10 +90,6 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/add_reagent)
 
 	return FALSE
 
-/datum/cooking/recipe_step/add_reagent/get_wiki_formatted_instruction()
-	var/datum/reagent/reagent = GLOB.chemical_reagents_list[reagent_id]
-	return "Add [amount] unit[amount > 1 ? "s" : ""] of [reagent.name]."
-
 /datum/cooking/recipe_step/add_reagent/get_pda_formatted_desc()
 	var/datum/reagent/reagent = GLOB.chemical_reagents_list[reagent_id]
 	return "Add [amount] unit[amount > 1 ? "s" : ""] of [reagent.name]."

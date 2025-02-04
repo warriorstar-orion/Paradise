@@ -121,35 +121,3 @@
 	// Items that have no valid possible_transfer_amounts shouldn't say their transfer rate is variable
 	if(possible_transfer_amounts)
 		. += "<span class='notice'><b>Alt-Click</b> to change the transfer amount.</span>"
-
-/obj/item/reagent_containers/proc/is_closed_message(mob/user)
-	return
-
-/obj/item/reagent_containers/proc/standard_pour_into(mob/user, atom/target) // This goes into afterattack and yes, it's atom-level
-	// Ensure we don't splash beakers and similar containers.
-	if(!target.is_refillable())
-		if(istype(target, /obj/item/reagent_containers))
-			var/obj/item/reagent_containers/container = target
-			container.is_closed_message(user)
-			return FALSE
-		// Otherwise don't care about splashing.
-		else
-			return FALSE
-
-	if(!is_drainable())
-		is_closed_message(user)
-		return FALSE
-
-	if(!reagents.total_volume)
-		to_chat(user, "<span class='notice'>[src] is empty.</span>")
-		return TRUE // if it returns false, it drains from its target when empty
-
-	if(!target.reagents.get_free_space())
-		to_chat(user, "<span class='notice'>[target] is full.</span>")
-		return TRUE // if it returns false, it drains from a full target
-
-	var/trans = reagents.trans_to(target, amount_per_transfer_from_this)
-	playsound(src,'sound/effects/Liquid_transfer_mono.ogg',50,1)
-	to_chat(user, "<span class='notice'>You transfer [trans] units of the solution to [target].</span>")
-	user.investigate_log("transfered [trans] units from [src]([reagents.log_list()]) to [target]([target.reagents.log_list()])", "chemistry")
-	return TRUE

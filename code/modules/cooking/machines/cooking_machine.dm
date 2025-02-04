@@ -42,9 +42,9 @@ RESTRICT_TYPE(/obj/machinery/cooking)
 /obj/machinery/cooking/RefreshParts()
 	..()
 	var/man_rating = 0
-	for(var/obj/item/stock_parts/manipulator/M in component_parts)
-		man_rating += M.rating
-	quality_mod = round(man_rating/2)
+	for(var/obj/item/stock_parts/stock_part in component_parts)
+		man_rating += stock_part.rating
+	quality_mod = round(man_rating / 2)
 
 /// Retrieve which burning surface on the machine is being accessed.
 /obj/machinery/cooking/proc/clickpos_to_surface(modifiers)

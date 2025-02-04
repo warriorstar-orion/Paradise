@@ -1,9 +1,16 @@
-
-#warn document
+/// A recipe tracker is an abstract representation of the progress that a
+/// cooking container has made towards any of its possible recipe outcomes.
+///
+/// When items are added/steps are performed on a cooking container, the tracker
+/// is responsible for determining what known recipes are possible after the
+/// step occurs, and tracking whether or not the step was successful. Once a
+/// step has been performed that ends a recipe and is successful, the tracker
+/// coordinates with the winning recipe to create the result, using what it
+/// knows about the steps performed to choose the quality and other attributes
+/// of the output.
 /datum/cooking/recipe_tracker
 	/// The parent object holding the recipe tracker.
 	var/container_uid
-	var/completion_lockout = FALSE //Freakin' cheaters...
 	/// Tells if steps have been taken for this recipe.
 	var/recipe_started = FALSE
 	/// A list of recipe types to the index of the latest step we know we've gotten to.
@@ -45,21 +52,13 @@
 	// TODO: I *hate* passing in a user here and want to move all the necessary
 	// UI interactions (selecting which recipe to complete, selecting which step
 	// to perform) to be moved somewhere else entirely.
-	#ifdef PCWJ_DEBUG
-	log_debug("Called /datum/cooking/recipe_tracker/proc/process_item")
-	#endif
-	if(completion_lockout)
-		#ifdef PCWJ_DEBUG
-		log_debug("/datum/cooking/recipe_tracker/proc/process_item held in lockout!")
-		#endif
-		return PCWJ_LOCKOUT
-
 	var/list/valid_steps = list()
 	var/list/valid_recipes = list()
 	var/list/completed_recipes = list()
 	var/list/silent_recipes = list()
 	var/list/attempted_step_per_recipe = list()
 	var/use_step
+
 
 	for(var/datum/cooking/recipe/recipe in recipes_last_completed_step)
 		var/current_idx = recipes_last_completed_step[recipe]

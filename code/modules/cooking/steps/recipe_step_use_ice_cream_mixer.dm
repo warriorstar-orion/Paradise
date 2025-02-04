@@ -24,11 +24,8 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/use_ice_cream_mixer)
 /datum/cooking/recipe_step/use_ice_cream_mixer/calculate_quality(obj/used_item, datum/cooking/recipe_tracker/tracker)
 	return 5
 
-/datum/cooking/recipe_step/use_ice_cream_mixer/follow_step(obj/added_item, datum/cooking/recipe_tracker/tracker, mob/user)
-	return list(target = added_item.UID())
-
-/datum/cooking/recipe_step/use_ice_cream_mixer/get_wiki_formatted_instruction()
-	return "Mix in an ice cream mixer for [DisplayTimeText(time)]."
+/datum/cooking/recipe_step/use_ice_cream_mixer/follow_step(obj/used_item, datum/cooking/recipe_tracker/tracker, mob/user)
+	return list(target = used_item.UID())
 
 /datum/cooking/recipe_step/use_ice_cream_mixer/get_pda_formatted_desc()
 	return "Mix in an ice cream mixer for [DisplayTimeText(time)]."

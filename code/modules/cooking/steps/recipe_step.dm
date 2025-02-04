@@ -16,7 +16,7 @@ RESTRICT_TYPE(/datum/cooking/recipe_step)
 	if("optional" in options)
 		optional = options["optional"]
 
-/datum/cooking/recipe_step/proc/calculate_quality(obj/added_item, datum/cooking/recipe_tracker/tracker)
+/datum/cooking/recipe_step/proc/calculate_quality(obj/used_item, datum/cooking/recipe_tracker/tracker)
 	return 0
 
 /datum/cooking/recipe_step/proc/check_conditions_met(obj/used_item, datum/cooking/recipe_tracker/tracker)
@@ -33,7 +33,7 @@ RESTRICT_TYPE(/datum/cooking/recipe_step)
 		return min(raw_quality, max_quality_award)
 	return raw_quality
 
-/datum/cooking/recipe_step/proc/follow_step(obj/added_item, datum/cooking/recipe_tracker/tracker, mob/user)
+/datum/cooking/recipe_step/proc/follow_step(obj/used_item, datum/cooking/recipe_tracker/tracker, mob/user)
 	return list()
 
 //Special function to check if the step has been satisfied. Sometimed just following the step is enough, but not always.
@@ -43,6 +43,3 @@ RESTRICT_TYPE(/datum/cooking/recipe_step)
 /datum/cooking/recipe_step/proc/get_pda_formatted_desc()
 	SHOULD_CALL_PARENT(FALSE)
 	return ""
-
-/datum/cooking/recipe_step/proc/equals(datum/cooking/recipe_step/other)
-	return FALSE

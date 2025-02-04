@@ -10,8 +10,11 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/use_stove)
 
 	..(options)
 
-/datum/cooking/recipe_step/use_stove/calculate_quality(obj/added_item, datum/cooking/recipe_tracker/tracker)
-	#warn increase quality based on component rating
+/datum/cooking/recipe_step/use_stove/calculate_quality(obj/used_item, datum/cooking/recipe_tracker/tracker)
+	var/obj/machinery/cooking/stovetop/stovetop = used_item
+	if(istype(stovetop))
+		return clamp_quality(stovetop.quality_mod)
+
 	return 1
 
 /datum/cooking/recipe_step/use_stove/check_conditions_met(obj/used_item, datum/cooking/recipe_tracker/tracker)
@@ -25,8 +28,8 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/use_stove)
 	else
 		return PCWJ_CHECK_INVALID
 
-/datum/cooking/recipe_step/use_stove/follow_step(obj/added_item, datum/cooking/recipe_tracker/tracker, mob/user)
-	var/list/step_data = list(target = added_item.UID())
+/datum/cooking/recipe_step/use_stove/follow_step(obj/used_item, datum/cooking/recipe_tracker/tracker, mob/user)
+	var/list/step_data = list(target = used_item.UID())
 	var/obj/item/reagent_containers/cooking/container = locateUID(tracker.container_uid)
 	if(istype(container))
 		step_data["cooker_data"] = container.cooker_data.Copy()

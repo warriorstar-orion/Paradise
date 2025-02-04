@@ -83,40 +83,6 @@
 
 	react_to_process(tracker.process_item_wrap(user, used), user, used)
 
-/obj/item/reagent_containers/cooking/standard_pour_into(mob/user, atom/target)
-	#ifdef PCWJ_DEBUG
-	log_debug("cooking_container/standard_pour_into() called!")
-	#endif
-
-	if(tracker)
-		#warn turn alert to tgui_alert
-		if(alert(user, "There is an ongoing recipe in the [src]. Dump it out?",,"Yes","No") == "No")
-			return FALSE
-		for(var/datum/reagent/our_reagent in reagents.reagent_list)
-			if(our_reagent.data && istype(our_reagent.data, /list) && our_reagent.data["FOOD_QUALITY"])
-				our_reagent.data["FOOD_QUALITY"] = 0
-
-	do_empty(user, target, reagent_clear = FALSE)
-
-	#ifdef PCWJ_DEBUG
-	log_debug("cooking_container/do_empty() completed!")
-	#endif
-
-	. = ..(user, target)
-
-#warn what
-/obj/item/reagent_containers/cooking/after_attack(atom/target, mob/user, proximity_flag, click_parameters)
-	. = ..()
-
-	if(!istype(target, /obj/item/reagent_containers))
-		return
-	if(!proximity_flag)
-		return
-	if(tracker)
-		return
-	if(standard_pour_into(user, target))
-		return 1
-
 /obj/item/reagent_containers/cooking/proc/react_to_process(reaction_status, mob/user, obj/used)
 	if(istype(used, /obj/machinery/cooking) && reaction_status == PCWJ_NO_STEPS)
 		// When a finished recipe is still sitting on a cooking machine, and the

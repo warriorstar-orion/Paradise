@@ -36,11 +36,8 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/add_item)
 			return PCWJ_CHECK_VALID
 	return PCWJ_CHECK_INVALID
 
-//The quality of add_item is special, in that it inherits the quality level of its parent and
-//passes it along.
-//May need "Balancing" with var/inherited_quality_modifier
-/datum/cooking/recipe_step/add_item/calculate_quality(obj/added_item, datum/cooking/recipe_tracker/tracker)
-	var/obj/item/food/food_item = added_item
+/datum/cooking/recipe_step/add_item/calculate_quality(obj/used_item, datum/cooking/recipe_tracker/tracker)
+	var/obj/item/food/food_item = used_item
 	if(istype(food_item))
 		var/raw_quality = food_item.food_quality * inherited_quality_modifier
 
@@ -48,32 +45,31 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/add_item)
 
 	return ..()
 
-/datum/cooking/recipe_step/add_item/follow_step(obj/added_item, datum/cooking/recipe_tracker/tracker, mob/user)
+/datum/cooking/recipe_step/add_item/is_complete(obj/added_item, datum/cooking/recipe_tracker/tracker)
+	var/obj/item/container = locateUID(tracker.container_uid)
+	if(!istype(container))
+		return FALSE
+
+	return (added_item in container.contents)
+
+/datum/cooking/recipe_step/add_item/follow_step(obj/used_item, datum/cooking/recipe_tracker/tracker, mob/user)
 	#ifdef PCWJ_DEBUG
 	log_debug("Called: /datum/cooking/recipe_step/add_item/follow_step")
 	#endif
 	var/obj/item/container = locateUID(tracker.container_uid)
-	if(!user && ismob(added_item.loc))
-		user = added_item.loc
+	if(!user && ismob(used_item.loc))
+		user = used_item.loc
 	if(container)
 		if(istype(user) && user.Adjacent(container))
-			if(user.drop_item(added_item))
-				added_item.forceMove(container)
+			if(user.drop_item(used_item))
+				used_item.forceMove(container)
 			#warn what if you can't drop it
 		else
-			added_item.forceMove(container)
+			used_item.forceMove(container)
 
-		return list(message = "You add \the [added_item] to \the [container].", target = added_item.UID())
+		return list(message = "You add \the [used_item] to \the [container].", target = used_item.UID())
 
 	return list(message = "Something went real fucking wrong here!")
 
 /datum/cooking/recipe_step/add_item/get_pda_formatted_desc()
-	var/slug = "[item_type::name]"
-	return "Add \a [slug]."
-
-/datum/cooking/recipe_step/add_item/equals(datum/cooking/recipe_step/other)
-	var/datum/cooking/recipe_step/add_item/other_add_item = other
-	if(!istype(other_add_item))
-		return FALSE
-
-	return item_type == other_add_item.item_type && exact_path == other_add_item.exact_path && optional == other_add_item.optional
+	return "Add \a [item_type::name]."
