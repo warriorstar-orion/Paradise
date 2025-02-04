@@ -29,6 +29,12 @@
 /obj/machinery/cooking/oven/Initialize(mapload)
 	. = ..()
 
+	component_parts = list()
+	component_parts += new /obj/item/circuitboard/cooking/stove(null)
+	component_parts += new /obj/item/stock_parts/micro_laser(null)
+	component_parts += new /obj/item/stock_parts/micro_laser(null)
+	component_parts += new /obj/item/stock_parts/capacitor(null)
+
 	surfaces += new /datum/cooking_surface/oven(src)
 
 	update_appearance(UPDATE_ICON|UPDATE_OVERLAYS)
@@ -74,7 +80,6 @@
 	else
 		handle_open(user)
 
-//Empty a container without a tool
 /obj/machinery/cooking/oven/AltClick(mob/user, params)
 	if(user.stat || user.restrained() || (!in_range(src, user)))
 		return

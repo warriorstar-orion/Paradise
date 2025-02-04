@@ -50,11 +50,17 @@ RESTRICT_TYPE(/obj/machinery/cooking)
 /obj/machinery/cooking/proc/clickpos_to_surface(modifiers)
 	return
 
-/obj/machinery/cooking/item_interaction(mob/living/user, obj/item/used, list/modifiers)
-	#warn fix default deconstruct
-	// if(default_deconstruction(used_item, user))
-	// 	return
+/obj/machinery/cooking/screwdriver_act(mob/living/user, obj/item/I)
+	. = TRUE
+	if(user.a_intent == INTENT_HELP)
+		return FALSE
+	if(!I.use_tool(src, user, 2.5 SECONDS, volume = I.tool_volume))
+		return
 
+	to_chat(user, "<span class='notice'>You disassemble [src].</span>")
+	deconstruct()
+
+/obj/machinery/cooking/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	var/input = clickpos_to_surface(modifiers)
 	if(input)
 		var/datum/cooking_surface/surface = surfaces[input]

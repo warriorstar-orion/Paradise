@@ -13,6 +13,17 @@
 	var/obj/item
 	var/timerstamp = 0
 
+/obj/machinery/cooking/ice_cream_mixer/Initialize(mapload)
+	. = ..()
+
+	component_parts = list()
+	component_parts += new /obj/item/circuitboard/cooking/ice_cream_mixer(null)
+	component_parts += new /obj/item/stock_parts/micro_laser(null)
+	component_parts += new /obj/item/stock_parts/micro_laser(null)
+	component_parts += new /obj/item/stock_parts/capacitor(null)
+
+	RefreshParts()
+
 /obj/machinery/cooking/ice_cream_mixer/process()
 	if(on)
 		handle_cooking()
@@ -84,3 +95,13 @@
 		bowl.freezing_time = reference_time
 
 	bowl.new_process_item(user, src)
+
+/obj/item/circuitboard/cooking/ice_cream_mixer
+	board_name = "Ice Cream Mixer"
+	build_path = /obj/machinery/cooking/ice_cream_mixer
+	board_type = "machine"
+	origin_tech = list(TECH_BIO = 1)
+	req_components = list(
+		/obj/item/stock_parts/micro_laser = 2,
+		/obj/item/stock_parts/capacitor = 1,
+	)

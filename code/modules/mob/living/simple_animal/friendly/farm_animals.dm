@@ -350,16 +350,15 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 				START_PROCESSING(SSobj, E)
 
 /obj/item/food/egg/process()
-	return
-	// if(isturf(loc))
-	// 	amount_grown += rand(1,2)
-	// 	if(amount_grown >= 100)
-	// 		visible_message("[src] hatches with a quiet cracking sound.")
-	// 		new /mob/living/simple_animal/chick(get_turf(src))
-	// 		STOP_PROCESSING(SSobj, src)
-	// 		qdel(src)
-	// else
-	// 	STOP_PROCESSING(SSobj, src)
+	if(isturf(loc))
+		amount_grown += rand(1,2)
+		if(amount_grown >= 100)
+			visible_message("[src] hatches with a quiet cracking sound.")
+			new /mob/living/simple_animal/chick(get_turf(src))
+			STOP_PROCESSING(SSobj, src)
+			qdel(src)
+	else
+		STOP_PROCESSING(SSobj, src)
 
 /mob/living/simple_animal/chicken/npc_safe(mob/user)
 	return TRUE

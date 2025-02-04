@@ -61,9 +61,11 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/add_item)
 		user = used_item.loc
 	if(container)
 		if(istype(user) && user.Adjacent(container))
-			if(user.drop_item(used_item))
+			if(user.unequip(used_item))
 				used_item.forceMove(container)
-			#warn what if you can't drop it
+			else
+				to_chat(user, "<span class='notice'>You can't remove [used_item] from your hands!</span>")
+				return list()
 		else
 			used_item.forceMove(container)
 
