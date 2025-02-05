@@ -357,3 +357,76 @@
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
+/datum/cooking/recipe/candycane
+	cooking_container = /obj/item/reagent_containers/cooking/mould/cane
+	product_type = /obj/item/food/candy/candycane
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/mint),
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/cash
+	cooking_container = /obj/item/reagent_containers/cooking/mould/cash
+	product_type = /obj/item/food/candy/cash
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/chocolatebar),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/coin
+	cooking_container = /obj/item/reagent_containers/cooking/mould/coin
+	product_type = /obj/item/food/candy/coin
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/chocolatebar),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/gummybear
+	cooking_container = /obj/item/reagent_containers/cooking/mould/bear
+	product_type = /obj/item/food/candy/gummybear
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/gummyworm
+	cooking_container = /obj/item/reagent_containers/cooking/mould/worm
+	product_type = /obj/item/food/candy/gummyworm
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/jawbreaker
+	cooking_container = /obj/item/reagent_containers/cooking/mould/ball
+	product_type = /obj/item/food/candy/jawbreaker
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 10),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/jellybean
+	cooking_container = /obj/item/reagent_containers/cooking/mould/bean
+	product_type = /obj/item/food/candy/jellybean
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/sucker
+	cooking_container = /obj/item/reagent_containers/cooking/mould/loli
+	product_type = /obj/item/food/candy/sucker
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 10),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+

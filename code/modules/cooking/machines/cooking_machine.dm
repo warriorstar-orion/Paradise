@@ -70,18 +70,20 @@ RESTRICT_TYPE(/obj/machinery/cooking)
 /obj/machinery/cooking/proc/surface_item_interaction(mob/living/user, obj/item/used, datum/cooking_surface/surface)
 	if(surface.placed_item)
 		surface.placed_item.item_interaction(user, used)
-	else if(used.type in allowed_containers)
-		if(ismob(user))
-			to_chat(user, "<span class='notice'>You put [used] on \the [src].</span>")
-			if(user.drop_item())
-				used.forceMove(src)
-		else
-			used.forceMove(src)
 
-		surface.placed_item = used
-		surface.prob_quality_decrease = 0
-		if(surface.on)
-			surface.reset_cooktime()
+	for(var/allowed_container_type in allowed_containers)
+		if(istype(used.type, allowed_container_type))
+			if(ismob(user))
+				to_chat(user, "<span class='notice'>You put [used] on \the [src].</span>")
+				if(user.drop_item())
+					used.forceMove(src)
+			else
+				used.forceMove(src)
+
+			surface.placed_item = used
+			surface.prob_quality_decrease = 0
+			if(surface.on)
+				surface.reset_cooktime()
 
 	update_appearance(UPDATE_ICON)
 	return ITEM_INTERACT_COMPLETE

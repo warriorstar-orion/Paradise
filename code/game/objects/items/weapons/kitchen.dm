@@ -249,6 +249,7 @@
 /obj/item/reagent_containers/cooking/mould
 	name = "generic candy mould"
 	desc = "You aren't sure what it's supposed to be."
+	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "mould"
 	force = 5
 	throwforce = 5

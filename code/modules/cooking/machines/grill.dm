@@ -3,7 +3,7 @@
 
 /obj/effect/grill_hopper
 	icon = 'icons/obj/cooking/machines.dmi'
-	icon_state = null
+	icon_state = "blank"
 	vis_flags = VIS_INHERIT_ID
 	mouse_opacity = 0
 	invisibility = 0
@@ -106,7 +106,7 @@
 
 	return ..()
 
-/obj/machinery/cooking/grill/attack_hand(mob/user as mob, params)
+/obj/machinery/cooking/grill/attack_hand(mob/user, params)
 	var/input = clickpos_to_surface(params2list(params))
 	var/datum/cooking_surface/surface = surfaces[input]
 	if(surface.placed_item)

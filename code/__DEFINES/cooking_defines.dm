@@ -69,3 +69,4 @@
 #define COOKER_SURFACE_GRILL "grill"
 #define COOKER_SURFACE_OVEN "oven"
 #define COOKER_SURFACE_DEEPFRYER "deepfryer"
+#define COOKER_SURFACE_ICE_CREAM_MIXER "ice_cream_mixer"

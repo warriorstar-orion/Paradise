@@ -5,7 +5,7 @@
 	name = "deep fryer"
 	desc = "A deep fryer that can hold two baskets."
 	icon_state = "deep_fryer"
-	density = FALSE
+	density = TRUE
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
 	cooking = FALSE
@@ -27,6 +27,11 @@
 
 	RefreshParts()
 
+/obj/machinery/cooking/deepfryer/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'><b>Ctrl-Click</b> on a basket to set its timer.</span>"
+	. += "<span class='notice'><b>Ctrl-Shift-Click</b> on a basket to toggle it on or off.</span>"
+
 #define ICON_SPLIT_X 16
 #define ICON_SPLIT_Y 16
 
@@ -44,6 +49,25 @@
 #undef ICON_SPLIT_X
 #undef ICON_SPLIT_Y
 
+/obj/machinery/cooking/deepfryer/attack_hand(mob/user, params)
+	var/input = clickpos_to_surface(params2list(params))
+	var/datum/cooking_surface/surface = surfaces[input]
+	if(surface.placed_item)
+		if(surface.on)
+			surface.handle_cooking(user)
+			var/mob/living/carbon/human/burn_victim = user
+			if(istype(burn_victim) && !burn_victim.gloves)
+				var/which_hand = "l_hand"
+				if(!burn_victim.hand)
+					which_hand = "r_hand"
+
+				burn_victim.adjustFireLossByPart(20, which_hand)
+				to_chat(burn_victim, "<span class='danger'>You burn your hand a little taking the [surface.placed_item] off of \the [src].</span>")
+
+		user.put_in_hands(surface.placed_item)
+		surface.placed_item = null
+		update_appearance(UPDATE_ICON)
+
 /obj/machinery/cooking/deepfryer/update_icon()
 	..()
 
@@ -58,3 +82,7 @@
 			add_overlay(image(icon, icon_state = "fryer_basket_on_[i]"))
 		else
 			add_overlay(image(icon, icon_state = "fryer_basket_[i]"))
+
+/obj/machinery/cooking/deepfryer/AltShiftClick(mob/user, modifiers)
+	// No temperature changing on the deep fryer.
+	return

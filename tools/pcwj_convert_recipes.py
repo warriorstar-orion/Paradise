@@ -83,10 +83,10 @@ def process_crafting_recipes(dme: DME) -> list[RecipeDetails]:
         result_td = dme.types[result]
         result_name = result_td.var_decl("name").const_val
 
-        added_items = list()
-        added_foods = list()
-        added_produce = list()
-        reagents = dict()
+        added_items = []
+        added_foods = []
+        added_produce = []
+        reagents = {}
 
         for item in items.keys():
             amount = items[item]
@@ -252,6 +252,20 @@ def convert_recipe_type(recipe: RecipeDetails) -> ConvertedRecipe | None:
             output_file="deep_fryer",
             cooker_time=20,
             cooker_step_name="PCWJ_USE_DEEP_FRYER",
+        )
+
+    if recipe.byproduct and recipe.byproduct.child_of(
+        "/obj/item/reagent_containers/cooking/mould"
+    ):
+        for item in reversed(recipe.food_items):
+            if p("/obj/item/reagent_containers/cooking/mould").parent_of(item):
+                recipe.food_items.remove(item)
+        return ConvertedRecipe(
+            recipe,
+            container=recipe.byproduct,
+            output_file="ice_cream_mixer",
+            cooker_time=10,
+            cooker_step_name="PCWJ_USE_ICE_CREAM_MIXER",
         )
 
 
