@@ -7,6 +7,7 @@
 		PCWJ_ADD_ITEM(/obj/item/food/boiled_shrimp),
 		PCWJ_ADD_ITEM(/obj/item/food/boiled_shrimp),
 		PCWJ_ADD_ITEM(/obj/item/food/boiled_shrimp),
+		PCWJ_ADD_ITEM(/obj/item/stack/seaweed),
 	)
 
 /datum/cooking/recipe/ikura_maki
@@ -14,6 +15,11 @@
 	product_type = /obj/item/food/sliceable/ikura_maki
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/boiledrice),
+		PCWJ_ADD_ITEM(/obj/item/fish_eggs/salmon),
+		PCWJ_ADD_ITEM(/obj/item/fish_eggs/salmon),
+		PCWJ_ADD_ITEM(/obj/item/fish_eggs/salmon),
+		PCWJ_ADD_ITEM(/obj/item/fish_eggs/salmon),
+		PCWJ_ADD_ITEM(/obj/item/stack/seaweed),
 	)
 
 /datum/cooking/recipe/inari_maki
@@ -25,6 +31,7 @@
 		PCWJ_ADD_ITEM(/obj/item/food/fried_tofu),
 		PCWJ_ADD_ITEM(/obj/item/food/fried_tofu),
 		PCWJ_ADD_ITEM(/obj/item/food/fried_tofu),
+		PCWJ_ADD_ITEM(/obj/item/stack/seaweed),
 	)
 
 /datum/cooking/recipe/masago_maki
@@ -32,6 +39,11 @@
 	product_type = /obj/item/food/sliceable/masago_maki
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/boiledrice),
+		PCWJ_ADD_ITEM(/obj/item/fish_eggs/goldfish),
+		PCWJ_ADD_ITEM(/obj/item/fish_eggs/goldfish),
+		PCWJ_ADD_ITEM(/obj/item/fish_eggs/goldfish),
+		PCWJ_ADD_ITEM(/obj/item/fish_eggs/goldfish),
+		PCWJ_ADD_ITEM(/obj/item/stack/seaweed),
 	)
 
 /datum/cooking/recipe/sake_maki
@@ -43,6 +55,7 @@
 		PCWJ_ADD_ITEM(/obj/item/food/salmonmeat),
 		PCWJ_ADD_ITEM(/obj/item/food/salmonmeat),
 		PCWJ_ADD_ITEM(/obj/item/food/salmonmeat),
+		PCWJ_ADD_ITEM(/obj/item/stack/seaweed),
 	)
 
 /datum/cooking/recipe/smoked_salmon_maki
@@ -54,6 +67,7 @@
 		PCWJ_ADD_ITEM(/obj/item/food/salmonsteak),
 		PCWJ_ADD_ITEM(/obj/item/food/salmonsteak),
 		PCWJ_ADD_ITEM(/obj/item/food/salmonsteak),
+		PCWJ_ADD_ITEM(/obj/item/stack/seaweed),
 	)
 
 /datum/cooking/recipe/sushi_ebi
@@ -62,6 +76,7 @@
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/boiledrice),
 		PCWJ_ADD_ITEM(/obj/item/food/boiled_shrimp),
+		PCWJ_ADD_ITEM(/obj/item/stack/seaweed),
 	)
 
 /datum/cooking/recipe/sushi_ikura
@@ -69,6 +84,8 @@
 	product_type = /obj/item/food/sliced/sushi_ikura
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/boiledrice),
+		PCWJ_ADD_ITEM(/obj/item/fish_eggs/salmon),
+		PCWJ_ADD_ITEM(/obj/item/stack/seaweed),
 	)
 
 /datum/cooking/recipe/sushi_inari
@@ -77,6 +94,7 @@
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/boiledrice),
 		PCWJ_ADD_ITEM(/obj/item/food/fried_tofu),
+		PCWJ_ADD_ITEM(/obj/item/stack/seaweed),
 	)
 
 /datum/cooking/recipe/sushi_masago
@@ -84,6 +102,8 @@
 	product_type = /obj/item/food/sliced/sushi_masago
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/boiledrice),
+		PCWJ_ADD_ITEM(/obj/item/fish_eggs/goldfish),
+		PCWJ_ADD_ITEM(/obj/item/stack/seaweed),
 	)
 
 /datum/cooking/recipe/sushi_sake
@@ -92,6 +112,7 @@
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/boiledrice),
 		PCWJ_ADD_ITEM(/obj/item/food/salmonmeat),
+		PCWJ_ADD_ITEM(/obj/item/stack/seaweed),
 	)
 
 /datum/cooking/recipe/sushi_smoked_salmon
@@ -100,6 +121,7 @@
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/boiledrice),
 		PCWJ_ADD_ITEM(/obj/item/food/salmonsteak),
+		PCWJ_ADD_ITEM(/obj/item/stack/seaweed),
 	)
 
 /datum/cooking/recipe/sushi_tai
@@ -108,6 +130,7 @@
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/boiledrice),
 		PCWJ_ADD_ITEM(/obj/item/food/catfishmeat),
+		PCWJ_ADD_ITEM(/obj/item/stack/seaweed),
 	)
 
 /datum/cooking/recipe/sushi_tobiko
@@ -115,6 +138,8 @@
 	product_type = /obj/item/food/sliced/sushi_tobiko
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/boiledrice),
+		PCWJ_ADD_ITEM(/obj/item/fish_eggs/shark),
+		PCWJ_ADD_ITEM(/obj/item/stack/seaweed),
 	)
 
 /datum/cooking/recipe/sushi_tobiko_egg
@@ -123,6 +148,7 @@
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/sliced/sushi_tobiko),
 		PCWJ_ADD_ITEM(/obj/item/food/egg),
+		PCWJ_ADD_ITEM(/obj/item/stack/seaweed),
 	)
 
 /datum/cooking/recipe/tai_maki
@@ -134,6 +160,7 @@
 		PCWJ_ADD_ITEM(/obj/item/food/catfishmeat),
 		PCWJ_ADD_ITEM(/obj/item/food/catfishmeat),
 		PCWJ_ADD_ITEM(/obj/item/food/catfishmeat),
+		PCWJ_ADD_ITEM(/obj/item/stack/seaweed),
 	)
 
 /datum/cooking/recipe/tobiko_egg_maki
@@ -148,6 +175,7 @@
 		PCWJ_ADD_ITEM(/obj/item/food/egg),
 		PCWJ_ADD_ITEM(/obj/item/food/egg),
 		PCWJ_ADD_ITEM(/obj/item/food/egg),
+		PCWJ_ADD_ITEM(/obj/item/stack/seaweed),
 	)
 
 /datum/cooking/recipe/tobiko_maki
@@ -155,5 +183,10 @@
 	product_type = /obj/item/food/sliceable/tobiko_maki
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/boiledrice),
+		PCWJ_ADD_ITEM(/obj/item/fish_eggs/shark),
+		PCWJ_ADD_ITEM(/obj/item/fish_eggs/shark),
+		PCWJ_ADD_ITEM(/obj/item/fish_eggs/shark),
+		PCWJ_ADD_ITEM(/obj/item/fish_eggs/shark),
+		PCWJ_ADD_ITEM(/obj/item/stack/seaweed),
 	)
 

@@ -111,6 +111,14 @@
 		PCWJ_ADD_ITEM(/obj/item/stack/sheet/mineral/plasma),
 	)
 
+/datum/cooking/recipe/fishburger
+	cooking_container = /obj/item/reagent_containers/cooking/board
+	product_type = /obj/item/food/fishburger
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/bun),
+		PCWJ_ADD_ITEM(/obj/item/food/carpmeat),
+	)
+
 /datum/cooking/recipe/fivealarmburger
 	cooking_container = /obj/item/reagent_containers/cooking/board
 	product_type = /obj/item/food/burger/fivealarm
@@ -135,6 +143,14 @@
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/bun),
 		PCWJ_ADD_ITEM(/obj/item/robot_parts/head),
+	)
+
+/datum/cooking/recipe/hotdog
+	cooking_container = /obj/item/reagent_containers/cooking/board
+	product_type = /obj/item/food/hotdog
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/bun),
+		PCWJ_ADD_ITEM(/obj/item/food/sausage),
 	)
 
 /datum/cooking/recipe/jellyburger
@@ -325,6 +341,7 @@
 	product_type = /obj/item/food/burger/baseball
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/bun),
+		PCWJ_ADD_ITEM(/obj/item/melee/baseball_bat),
 	)
 
 /datum/cooking/recipe/cherrysandwich
@@ -350,6 +367,7 @@
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/sliced/bread),
 		PCWJ_ADD_ITEM(/obj/item/food/sliced/bread),
+		PCWJ_ADD_ITEM(/obj/item/clothing/mask/fakemoustache),
 	)
 
 /datum/cooking/recipe/sandwich

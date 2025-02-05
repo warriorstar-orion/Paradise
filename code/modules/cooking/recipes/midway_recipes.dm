@@ -116,3 +116,289 @@
 		PCWJ_ADD_REAGENT("orangejuice", 5),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
+
+/datum/cooking/recipe/gummybear_blue
+	cooking_container = /obj/item/reagent_containers/cooking/mould/bear
+	product_type = /obj/item/food/candy/gummybear/blue
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("berryjuice", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/gummybear_green
+	cooking_container = /obj/item/reagent_containers/cooking/mould/bear
+	product_type = /obj/item/food/candy/gummybear/green
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("limejuice", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/gummybear_orange
+	cooking_container = /obj/item/reagent_containers/cooking/mould/bear
+	product_type = /obj/item/food/candy/gummybear/orange
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("orangejuice", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/gummybear_poison
+	cooking_container = /obj/item/reagent_containers/cooking/mould/bear
+	product_type = /obj/item/food/candy/gummybear/poison
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("poisonberryjuice", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/gummybear_purple
+	cooking_container = /obj/item/reagent_containers/cooking/mould/bear
+	product_type = /obj/item/food/candy/gummybear/purple
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("grapejuice", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/gummybear_red
+	cooking_container = /obj/item/reagent_containers/cooking/mould/bear
+	product_type = /obj/item/food/candy/gummybear/red
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("cherryjelly", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/gummybear_wtf
+	cooking_container = /obj/item/reagent_containers/cooking/mould/bear
+	product_type = /obj/item/food/candy/gummybear/wtf
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("space_drugs", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/gummybear_wtf2
+	cooking_container = /obj/item/reagent_containers/cooking/mould/bear
+	product_type = /obj/item/food/candy/gummybear/wtf
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_PRODUCE(/obj/item/food/grown/ambrosia/vulgaris),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/gummybear_yellow
+	cooking_container = /obj/item/reagent_containers/cooking/mould/bear
+	product_type = /obj/item/food/candy/gummybear/yellow
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("lemonjuice", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/gummyworm_blue
+	cooking_container = /obj/item/reagent_containers/cooking/mould/worm
+	product_type = /obj/item/food/candy/gummyworm/blue
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("berryjuice", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/gummyworm_green
+	cooking_container = /obj/item/reagent_containers/cooking/mould/worm
+	product_type = /obj/item/food/candy/gummyworm/green
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("limejuice", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/gummyworm_orange
+	cooking_container = /obj/item/reagent_containers/cooking/mould/worm
+	product_type = /obj/item/food/candy/gummyworm/orange
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("orangejuice", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/gummyworm_poison
+	cooking_container = /obj/item/reagent_containers/cooking/mould/worm
+	product_type = /obj/item/food/candy/gummyworm/poison
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("poisonberryjuice", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/gummyworm_purple
+	cooking_container = /obj/item/reagent_containers/cooking/mould/worm
+	product_type = /obj/item/food/candy/gummyworm/purple
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("grapejuice", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/gummyworm_red
+	cooking_container = /obj/item/reagent_containers/cooking/mould/worm
+	product_type = /obj/item/food/candy/gummyworm/red
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("cherryjelly", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/gummyworm_wtf
+	cooking_container = /obj/item/reagent_containers/cooking/mould/worm
+	product_type = /obj/item/food/candy/gummyworm/wtf
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("space_drugs", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/gummyworm_wtf2
+	cooking_container = /obj/item/reagent_containers/cooking/mould/worm
+	product_type = /obj/item/food/candy/gummyworm/wtf
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_PRODUCE(/obj/item/food/grown/ambrosia/vulgaris),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/gummyworm_yellow
+	cooking_container = /obj/item/reagent_containers/cooking/mould/worm
+	product_type = /obj/item/food/candy/gummyworm/yellow
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("lemonjuice", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/jellybean_chocolate
+	cooking_container = /obj/item/reagent_containers/cooking/mould/bean
+	product_type = /obj/item/food/candy/jellybean/chocolate
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_ITEM(/obj/item/food/chocolatebar),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/jellybean_coffee
+	cooking_container = /obj/item/reagent_containers/cooking/mould/bean
+	product_type = /obj/item/food/candy/jellybean/cola
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("coffee", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/jellybean_cola
+	cooking_container = /obj/item/reagent_containers/cooking/mould/bean
+	product_type = /obj/item/food/candy/jellybean/cola
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("cola", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/jellybean_drgibb
+	cooking_container = /obj/item/reagent_containers/cooking/mould/bean
+	product_type = /obj/item/food/candy/jellybean/cola
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("dr_gibb", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/jellybean_popcorn
+	cooking_container = /obj/item/reagent_containers/cooking/mould/bean
+	product_type = /obj/item/food/candy/jellybean/popcorn
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_ITEM(/obj/item/food/popcorn),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/jellybean_purple
+	cooking_container = /obj/item/reagent_containers/cooking/mould/bean
+	product_type = /obj/item/food/candy/jellybean/purple
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("grapejuice", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/jellybean_wtf
+	cooking_container = /obj/item/reagent_containers/cooking/mould/bean
+	product_type = /obj/item/food/candy/jellybean/wtf
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("space_drugs", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/jellybean_wtf2
+	cooking_container = /obj/item/reagent_containers/cooking/mould/bean
+	product_type = /obj/item/food/candy/jellybean/wtf
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_PRODUCE(/obj/item/food/grown/ambrosia/vulgaris),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)

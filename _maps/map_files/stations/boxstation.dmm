@@ -19821,9 +19821,8 @@
 	pixel_y = 32
 	},
 /obj/structure/table,
-/obj/machinery/kitchen_machine/microwave{
-	pixel_y = 6;
-	pixel_x = -1
+/obj/machinery/reagentgrinder{
+	pixel_y = 5
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
@@ -20321,6 +20320,7 @@
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/reagent_containers/glass/bucket,
 /obj/structure/shelf/service,
+/obj/item/storage/box/cups,
 /turf/simulated/floor/plasteel{
 	icon_state = "hydrofloor"
 	},
@@ -20876,7 +20876,6 @@
 "brm" = (
 /obj/structure/table,
 /obj/item/kitchen/rollingpin,
-/obj/item/kitchen/knife,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -21884,7 +21883,7 @@
 /area/station/service/kitchen)
 "but" = (
 /obj/structure/table,
-/obj/machinery/reagentgrinder,
+/obj/item/kitchen/knife,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -68373,6 +68372,11 @@
 "ogf" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/directional/south,
+/obj/structure/table,
+/obj/machinery/kitchen_machine/microwave{
+	pixel_y = 6;
+	pixel_x = -1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},

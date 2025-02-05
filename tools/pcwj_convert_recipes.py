@@ -42,6 +42,8 @@ class ConvertedRecipe:
 
         for food_item in self.recipe.food_items:
             result_lines.append(f"\t\tPCWJ_ADD_ITEM({food_item}),")
+        for added_item in self.recipe.added_items:
+            result_lines.append(f"\t\tPCWJ_ADD_ITEM({added_item}),")
         for produce_item in self.recipe.produce_items:
             result_lines.append(f"\t\tPCWJ_ADD_PRODUCE({produce_item}),")
         for name, amount in self.recipe.reagents.items():
@@ -123,14 +125,14 @@ def process_crafting_recipes(dme: DME) -> list[RecipeDetails]:
 
 
 def process_recipes(dme: DME, base_type: str) -> list[RecipeDetails]:
-    recipes = list()
+    recipes = []
 
     for pth in dme.subtypesof(base_type):
         td = dme.types[pth]
         items = td.var_decl("items").const_val
-        food_items = list()
-        produce_items = list()
-        reagent_items = dict()
+        food_items = []
+        produce_items = []
+        reagent_items = {}
         if items:
             for item in items:
                 if item.child_of("/obj/item/food/grown") or item.child_of(
@@ -287,6 +289,27 @@ def convert_recipe_type(recipe: RecipeDetails) -> ConvertedRecipe | None:
             cooker_step_name="PCWJ_USE_ICE_CREAM_MIXER",
             output_file="ice_cream_mixer",
             cooker_time=default_time,
+        )
+
+    # catch-alls
+    if recipe.original_path.child_of("/datum/recipe/candy"):
+        return ConvertedRecipe(
+            recipe,
+            container=recipe.byproduct,
+            output_file="ice_cream_mixer_catchall",
+            cooker_time=10,
+            cooker_step_name="PCWJ_USE_ICE_CREAM_MIXER",
+        )
+
+    # catch-alls
+    if recipe.original_path.child_of("/datum/recipe/microwave"):
+        return ConvertedRecipe(
+            recipe,
+            container=p("/obj/item/reagent_containers/cooking/pot"),
+            output_file="stove_catchall",
+            cooker_time=20,
+            cooker_temp="J_MED",
+            cooker_step_name="PCWJ_USE_STOVE",
         )
 
 
