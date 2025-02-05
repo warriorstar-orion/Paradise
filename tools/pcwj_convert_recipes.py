@@ -280,6 +280,15 @@ def convert_recipe_type(recipe: RecipeDetails) -> ConvertedRecipe | None:
             cooker_step_name="PCWJ_USE_DEEP_FRYER",
         )
 
+    if recipe.product_type.child_of("/obj/item/food/candy/confectionery"):
+        return ConvertedRecipe(
+            recipe,
+            container=p("/obj/item/reagent_containers/cooking/icecream_bowl"),
+            cooker_step_name="PCWJ_USE_ICE_CREAM_MIXER",
+            output_file="ice_cream_mixer",
+            cooker_time=default_time,
+        )
+
 
 def main():
     known_recipes = set()
@@ -311,7 +320,16 @@ def main():
         converted.cooker_step_name = "PCWJ_USE_STOVE"
         converted.cooker_time = default_cooktime(converted.recipe)
 
-    recipe_cooker_transforms = {p("/datum/recipe/grill/friedegg"): make_stovetop_pan}
+    def make_cutting_board(converted: ConvertedRecipe):
+        converted.output_file = "cutting_board"
+        converted.container = p("/obj/item/reagent_containers/cooking/board")
+        converted.cooker_step_name = None
+
+    recipe_cooker_transforms = {
+        p("/datum/recipe/grill/friedegg"): make_stovetop_pan,
+        p("/datum/recipe/microwave/hotdog"): make_cutting_board,
+        p("/datum/recipe/microwave/fishburger"): make_cutting_board,
+    }
 
     for pth in dme.subtypesof("/datum/deepfryer_special"):
         deepfryer_special = dme.types[pth]

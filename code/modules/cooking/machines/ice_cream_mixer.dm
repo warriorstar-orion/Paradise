@@ -12,7 +12,7 @@
 	parent.update_appearance()
 
 /obj/machinery/cooking/ice_cream_mixer
-	name = "Ice cream mixer"
+	name = "ice cream mixer"
 	desc = "An industrial mixing device for desserts of all kinds."
 	icon_state = "cereal_off"
 	active_power_consumption = 200

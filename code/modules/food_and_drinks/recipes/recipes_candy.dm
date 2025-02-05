@@ -429,47 +429,6 @@
 // Jelly Bean Recipes (flavored)
 // ***********************************************************
 
-/datum/recipe/candy/jellybean_red
-	reagents = list("cherryjelly" = 5)
-	items = list(
-		/obj/item/food/candy/jellybean,
-		)
-	result = /obj/item/food/candy/jellybean/red
-
-/datum/recipe/candy/jellybean_blue
-	reagents = list("berryjuice" = 5)
-	items = list(
-		/obj/item/food/candy/jellybean,
-		)
-	result = /obj/item/food/candy/jellybean/blue
-
-/datum/recipe/candy/jellybean_poison
-	reagents = list("poisonberryjuice" = 5)
-	items = list(
-		/obj/item/food/candy/jellybean,
-		)
-	result = /obj/item/food/candy/jellybean/poison
-
-/datum/recipe/candy/jellybean_green
-	reagents = list("limejuice" = 5)
-	items = list(
-		/obj/item/food/candy/jellybean,
-		)
-	result = /obj/item/food/candy/jellybean/green
-
-/datum/recipe/candy/jellybean_yellow
-	reagents = list("lemonjuice" = 5)
-	items = list(
-		/obj/item/food/candy/jellybean,
-		)
-	result = /obj/item/food/candy/jellybean/yellow
-
-/datum/recipe/candy/jellybean_orange
-	reagents = list("orangejuice" = 5)
-	items = list(
-		/obj/item/food/candy/jellybean,
-		)
-	result = /obj/item/food/candy/jellybean/orange
 
 /datum/recipe/candy/jellybean_purple
 	reagents = list("grapejuice" = 5)

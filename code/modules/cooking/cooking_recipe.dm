@@ -168,7 +168,8 @@ GLOBAL_LIST_EMPTY(pcwj_cookbook_lookup)
 
 			var/datum/cooking/recipe_step/add_item/add_item_step = recipe_step
 			if(istype(add_item_step))
-				exclude_specific_reagents = add_item_step.exclude_reagents
+				if(add_item_step.exclude_reagents)
+					exclude_specific_reagents |= add_item_step.exclude_reagents
 				if(add_item_step.skip_reagents)
 					can_add = FALSE
 					exclude_list |= recipe_step
@@ -176,7 +177,8 @@ GLOBAL_LIST_EMPTY(pcwj_cookbook_lookup)
 
 			var/datum/cooking/recipe_step/add_produce/add_produce_step = recipe_step
 			if(istype(add_produce_step))
-				exclude_specific_reagents = add_produce_step.exclude_reagents
+				if(add_produce_step.exclude_reagents)
+					exclude_specific_reagents |= add_produce_step.exclude_reagents
 				if(add_produce_step.skip_reagents)
 					can_add = FALSE
 					exclude_list |= recipe_step

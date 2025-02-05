@@ -50,3 +50,69 @@
 		PCWJ_USE_DEEP_FRYER(10 SECONDS),
 	)
 	appear_in_default_catalog = FALSE
+
+/datum/cooking/recipe/jellybean_red
+	cooking_container = /obj/item/reagent_containers/cooking/mould/bean
+	product_type = /obj/item/food/candy/jellybean/red
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("cherryjelly", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/jellybean_blue
+	cooking_container = /obj/item/reagent_containers/cooking/mould/bean
+	product_type = /obj/item/food/candy/jellybean/blue
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("berryjuice", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/jellybean_poison
+	cooking_container = /obj/item/reagent_containers/cooking/mould/bean
+	product_type = /obj/item/food/candy/jellybean/poison
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("poisonberryjuice", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/jellybean_green
+	cooking_container = /obj/item/reagent_containers/cooking/mould/bean
+	product_type = /obj/item/food/candy/jellybean/green
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("limejuice", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/jellybean_yellow
+	cooking_container = /obj/item/reagent_containers/cooking/mould/bean
+	product_type = /obj/item/food/candy/jellybean/yellow
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("lemonjuice", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/jellybean_orange
+	cooking_container = /obj/item/reagent_containers/cooking/mould/bean
+	product_type = /obj/item/food/candy/jellybean/orange
+	steps = list(
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("water", 5),
+		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_ADD_REAGENT("orangejuice", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)

@@ -131,9 +131,9 @@
 	product_type = /obj/item/food/salad/valid
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/meatball),
-		PCWJ_ADD_PRODUCE(/obj/item/food/grown/ambrosia/vulgaris),
-		PCWJ_ADD_PRODUCE(/obj/item/food/grown/ambrosia/vulgaris),
-		PCWJ_ADD_PRODUCE(/obj/item/food/grown/ambrosia/vulgaris),
+		PCWJ_ADD_PRODUCE(/obj/item/food/grown/ambrosia/vulgaris, exclude_reagents = list("toxin")),
+		PCWJ_ADD_PRODUCE(/obj/item/food/grown/ambrosia/vulgaris, exclude_reagents = list("toxin")),
+		PCWJ_ADD_PRODUCE(/obj/item/food/grown/ambrosia/vulgaris, exclude_reagents = list("toxin")),
 		PCWJ_ADD_PRODUCE(/obj/item/food/grown/potato),
 	)
 

@@ -2,7 +2,7 @@
 	cooker_id = COOKER_SURFACE_STOVE
 
 /obj/machinery/cooking/stovetop
-	name = "Stovetop"
+	name = "stovetop"
 	desc = "A set of four surfaces for cooking food."
 	icon_state = "stove"
 	density = FALSE

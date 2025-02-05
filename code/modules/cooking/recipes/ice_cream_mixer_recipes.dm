@@ -382,6 +382,15 @@
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
+/datum/cooking/recipe/crunch
+	cooking_container = /obj/item/reagent_containers/cooking/icecream_bowl
+	product_type = /obj/item/food/candy/confectionery/rice
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/candy/candybar),
+		PCWJ_ADD_REAGENT("rice", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
 /datum/cooking/recipe/gummybear
 	cooking_container = /obj/item/reagent_containers/cooking/mould/bear
 	product_type = /obj/item/food/candy/gummybear
@@ -421,12 +430,49 @@
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 
+/datum/cooking/recipe/malper
+	cooking_container = /obj/item/reagent_containers/cooking/icecream_bowl
+	product_type = /obj/item/food/candy/confectionery/caramel
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/candy/candybar),
+		PCWJ_ADD_ITEM(/obj/item/food/candy/caramel),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
 /datum/cooking/recipe/sucker
 	cooking_container = /obj/item/reagent_containers/cooking/mould/loli
 	product_type = /obj/item/food/candy/sucker
 	steps = list(
 		PCWJ_ADD_REAGENT("sugar", 10),
 		PCWJ_ADD_REAGENT("cornoil", 5),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/toolerone
+	cooking_container = /obj/item/reagent_containers/cooking/icecream_bowl
+	product_type = /obj/item/food/candy/confectionery/nougat
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/candy/candybar),
+		PCWJ_ADD_ITEM(/obj/item/food/candy/nougat),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/toxinstest
+	cooking_container = /obj/item/reagent_containers/cooking/icecream_bowl
+	product_type = /obj/item/food/candy/confectionery/caramel_nougat
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/candy/candybar),
+		PCWJ_ADD_ITEM(/obj/item/food/candy/caramel),
+		PCWJ_ADD_ITEM(/obj/item/food/candy/nougat),
+		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/yumbaton
+	cooking_container = /obj/item/reagent_containers/cooking/icecream_bowl
+	product_type = /obj/item/food/candy/confectionery/toffee
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/candy/candybar),
+		PCWJ_ADD_ITEM(/obj/item/food/candy/toffee),
 		PCWJ_USE_ICE_CREAM_MIXER(10 SECONDS),
 	)
 

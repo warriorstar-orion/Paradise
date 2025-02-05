@@ -13,7 +13,7 @@
 // TODO: add back special attack for oven for v2
 // Yes, that's a v2 thing, I'm not doing it right now
 /obj/machinery/cooking/oven
-	name = "Convection Oven"
+	name = "oven"
 	desc = "A cozy oven for baking food."
 	icon_state = "oven_base"
 	density = TRUE

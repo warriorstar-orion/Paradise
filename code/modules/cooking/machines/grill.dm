@@ -23,7 +23,7 @@
 // TODO: add back special attack for grill for v2
 // Yes, that's a v2 thing, I'm not doing it right now
 /obj/machinery/cooking/grill
-	name = "Grill"
+	name = "grill"
 	desc = "A deep pit of charcoal for cooking food. A slot on the side of the machine takes wood and converts it into charcoal."
 	icon_state = "grill"
 	density = FALSE
