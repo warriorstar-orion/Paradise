@@ -20,6 +20,7 @@
 	/// Record of what cooking has been done on this food.
 	var/list/cooker_data = list()
 	var/claimed = FALSE
+	var/preposition = "In"
 
 	new_attack_chain = TRUE
 
@@ -274,6 +275,7 @@
 	desc = "Good for making sandwiches on, too."
 	icon_state = "cutting_board"
 	item_state = "cutting_board"
+	preposition = "On"
 	materials = list(MAT_WOOD = 5)
 
 /obj/item/reagent_containers/cooking/sushimat
@@ -281,6 +283,7 @@
 	desc = "A wooden mat used for efficient sushi crafting."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "sushi_mat"
+	preposition = "On"
 	force = 5
 	throwforce = 5
 	throw_speed = 3

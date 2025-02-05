@@ -1062,3 +1062,30 @@
 		PCWJ_USE_OVEN(J_MED, 10 SECONDS),
 	)
 
+/datum/cooking/recipe/poppypretzel
+	cooking_container = /obj/item/reagent_containers/cooking/oven
+	product_type = /obj/item/food/poppypretzel
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/seeds/poppy),
+		PCWJ_ADD_ITEM(/obj/item/food/dough),
+		PCWJ_USE_OVEN(J_MED, 20 SECONDS),
+	)
+
+/datum/cooking/recipe/dionaroast
+	cooking_container = /obj/item/reagent_containers/cooking/oven
+	product_type = /obj/item/food/dionaroast
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/holder/diona),
+		PCWJ_ADD_PRODUCE(/obj/item/food/grown/apple),
+		PCWJ_ADD_REAGENT("facid", 5),
+		PCWJ_USE_OVEN(J_MED, 20 SECONDS),
+	)
+
+/datum/cooking/recipe/donkpocket
+	cooking_container = /obj/item/reagent_containers/cooking/oven
+	product_type = /obj/item/food/donkpocket
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/dough),
+		PCWJ_ADD_ITEM(/obj/item/food/meatball),
+		PCWJ_USE_OVEN(J_MED, 20 SECONDS),
+	)

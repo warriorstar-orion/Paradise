@@ -247,7 +247,7 @@ GLOBAL_LIST_EMPTY(pcwj_cookbook_lookup)
 		if(!example_recipe.cooking_container)
 			continue
 
-		var/atom/cooking_container = example_recipe.cooking_container
+		var/obj/item/reagent_containers/cooking/cooking_container = example_recipe.cooking_container
 
 		LAZYORASSOCLIST(GLOB.pcwj_recipe_dictionary, example_recipe.cooking_container, example_recipe)
 
@@ -259,7 +259,7 @@ GLOBAL_LIST_EMPTY(pcwj_cookbook_lookup)
 
 			var/list/entry = list()
 			entry["name"] = product::name
-			entry["container"] = "In \a [cooking_container::name]"
+			entry["container"] = "[cooking_container::preposition] \a [cooking_container::name]"
 			entry["instructions"] = list()
 			for(var/datum/cooking/recipe_step/step in example_recipe.steps)
 				entry["instructions"] += step.get_pda_formatted_desc()

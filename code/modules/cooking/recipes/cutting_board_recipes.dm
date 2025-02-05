@@ -397,3 +397,111 @@
 		PCWJ_ADD_REAGENT("slimejelly", 5),
 	)
 
+/datum/cooking/recipe/twobread
+	cooking_container = /obj/item/reagent_containers/cooking/board
+	product_type = /obj/item/food/twobread
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/sliced/bread),
+		PCWJ_ADD_ITEM(/obj/item/food/sliced/bread),
+		PCWJ_ADD_REAGENT("wine", 5),
+	)
+
+/datum/cooking/recipe/wrap
+	cooking_container = /obj/item/reagent_containers/cooking/board
+	product_type = /obj/item/food/wrap
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/friedegg),
+		PCWJ_ADD_PRODUCE(/obj/item/food/grown/cabbage),
+		PCWJ_ADD_REAGENT("soysauce", 10),
+	)
+
+/datum/cooking/recipe/sandwich
+	cooking_container = /obj/item/reagent_containers/cooking/board
+	product_type = /obj/item/food/sandwich
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/sliced/bread),
+		PCWJ_ADD_ITEM(/obj/item/food/meatsteak),
+		PCWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
+		PCWJ_ADD_ITEM(/obj/item/food/sliced/bread),
+	)
+
+/datum/cooking/recipe/philly_cheesesteak
+	cooking_container = /obj/item/reagent_containers/cooking/board
+	product_type = /obj/item/food/philly_cheesesteak
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/sliced/bread),
+		PCWJ_ADD_ITEM(/obj/item/food/cutlet),
+		PCWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
+		PCWJ_ADD_PRODUCE(/obj/item/food/grown/onion),
+		PCWJ_ADD_ITEM(/obj/item/food/sliced/bread),
+	)
+
+/datum/cooking/recipe/pbj_cherry
+	cooking_container = /obj/item/reagent_containers/cooking/board
+	product_type = /obj/item/food/peanut_butter_jelly/cherry
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/sliced/bread),
+		PCWJ_ADD_REAGENT("cherryjelly", 5),
+		PCWJ_ADD_REAGENT("peanutbutter", 5),
+		PCWJ_ADD_ITEM(/obj/item/food/sliced/bread),
+	)
+
+/datum/cooking/recipe/peanut_butter_banana
+	cooking_container = /obj/item/reagent_containers/cooking/board
+	product_type = /obj/item/food/peanut_butter_banana
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/sliced/bread),
+		PCWJ_ADD_REAGENT("peanutbutter", 5),
+		PCWJ_ADD_PRODUCE(/obj/item/food/grown/banana),
+		PCWJ_ADD_ITEM(/obj/item/food/sliced/bread),
+	)
+
+/datum/cooking/recipe/notasandwich
+	cooking_container = /obj/item/reagent_containers/cooking/board
+	product_type = /obj/item/food/notasandwich
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/sliced/bread),
+		PCWJ_ADD_ITEM(/obj/item/clothing/mask/fakemoustache),
+		PCWJ_ADD_ITEM(/obj/item/food/sliced/bread),
+	)
+
+/datum/cooking/recipe/jelliedtoast
+	cooking_container = /obj/item/reagent_containers/cooking/board
+	product_type = /obj/item/food/jelliedtoast/cherry
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/sliced/bread),
+		PCWJ_ADD_REAGENT("cherryjelly", 5),
+	)
+
+/datum/cooking/recipe/human_burger
+	cooking_container = /obj/item/reagent_containers/cooking/board
+	product_type = /obj/item/food/human/burger
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/bun),
+		PCWJ_ADD_PRODUCE(/obj/item/food/grown/lettuce),
+		PCWJ_ADD_ITEM(/obj/item/food/meat/human),
+	)
+	appear_in_default_catalog = FALSE
+
+/datum/cooking/recipe/burrito
+	cooking_container = /obj/item/reagent_containers/cooking/board
+	product_type = /obj/item/food/burrito
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/tortilla),
+		PCWJ_ADD_ITEM(/obj/item/food/cutlet),
+		PCWJ_ADD_ITEM(/obj/item/food/beans),
+		PCWJ_ADD_ITEM(/obj/item/food/sliced/cheesewedge),
+		PCWJ_ADD_REAGENT("capsaicin", 5),
+		PCWJ_ADD_REAGENT("rice", 5),
+	)
+
+/datum/cooking/recipe/blt
+	cooking_container = /obj/item/reagent_containers/cooking/board
+	product_type = /obj/item/food/blt
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/sliced/bread),
+		PCWJ_ADD_ITEM(/obj/item/food/bacon),
+		PCWJ_ADD_PRODUCE(/obj/item/food/grown/lettuce),
+		PCWJ_ADD_ITEM(/obj/item/food/sliced/tomato),
+		PCWJ_ADD_ITEM(/obj/item/food/sliced/bread),
+	)
