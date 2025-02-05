@@ -72,7 +72,7 @@ RESTRICT_TYPE(/obj/machinery/cooking)
 		surface.placed_item.item_interaction(user, used)
 
 	for(var/allowed_container_type in allowed_containers)
-		if(istype(used.type, allowed_container_type))
+		if(istype(used, allowed_container_type))
 			if(ismob(user))
 				to_chat(user, "<span class='notice'>You put [used] on \the [src].</span>")
 				if(user.drop_item())

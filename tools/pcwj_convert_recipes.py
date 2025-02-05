@@ -270,9 +270,10 @@ def convert_recipe_type(recipe: RecipeDetails) -> ConvertedRecipe | None:
 
 
 def main():
+    known_recipes = set()
     dme = DME.from_file("paradise.dme", parse_procs=True)
     all_foods = dme.subtypesof("/obj/item/food")
-    seen_foods = set()
+    handled_recipes = set()
 
     output_files: dict[str, io.TextIOWrapper] = {}
 
@@ -289,6 +290,7 @@ def main():
         "/datum/recipe/candy",
     ):
         recipe_details += process_recipes(dme, subpath)
+        known_recipes.update(dme.subtypesof(subpath))
 
     recipe_details += process_crafting_recipes(dme)
 
@@ -327,16 +329,14 @@ def main():
         writer.write(converted.codegen_text())
         writer.write("\n")
         writer.write("\n")
-        if converted.recipe.product_type:
-            seen_foods.add(converted.recipe.product_type)
+        handled_recipes.add(converted.recipe.original_path)
 
     for writer in output_files.values():
         writer.close()
 
-    grown_foods = set(dme.typesof("/obj/item/food/grown"))
-    unseen_foods = set(all_foods) - seen_foods - grown_foods
-    print("unseen foods:")
-    for food in sorted(unseen_foods):
+    unhandled_recipes = known_recipes - handled_recipes
+    print("unhandled reciptes:")
+    for food in sorted(unhandled_recipes):
         print(f"- {food}")
 
 
