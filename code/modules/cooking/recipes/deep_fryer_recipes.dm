@@ -384,3 +384,75 @@
 		PCWJ_USE_DEEP_FRYER(20 SECONDS),
 	)
 
+/datum/cooking/recipe/banana
+	cooking_container = /obj/item/reagent_containers/cooking/deep_basket
+	product_type = /obj/item/food/friedbanana
+	steps = list(
+		PCWJ_ADD_PRODUCE(/obj/item/food/grown/banana),
+		PCWJ_USE_DEEP_FRYER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/carrotfries
+	cooking_container = /obj/item/reagent_containers/cooking/deep_basket
+	product_type = /obj/item/food/carrotfries
+	steps = list(
+		PCWJ_ADD_PRODUCE(/obj/item/food/grown/carrot/wedges),
+		PCWJ_USE_DEEP_FRYER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/chimichanga
+	cooking_container = /obj/item/reagent_containers/cooking/deep_basket
+	product_type = /obj/item/food/chimichanga
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/burrito),
+		PCWJ_USE_DEEP_FRYER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/corn_chips
+	cooking_container = /obj/item/reagent_containers/cooking/deep_basket
+	product_type = /obj/item/food/cornchips
+	steps = list(
+		PCWJ_ADD_PRODUCE(/obj/item/food/grown/corn),
+		PCWJ_USE_DEEP_FRYER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/fried_tofu
+	cooking_container = /obj/item/reagent_containers/cooking/deep_basket
+	product_type = /obj/item/food/fried_tofu
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/tofu),
+		PCWJ_USE_DEEP_FRYER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/fries
+	cooking_container = /obj/item/reagent_containers/cooking/deep_basket
+	product_type = /obj/item/food/fries
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/rawsticks),
+		PCWJ_USE_DEEP_FRYER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/onionrings
+	cooking_container = /obj/item/reagent_containers/cooking/deep_basket
+	product_type = /obj/item/food/onionrings
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/sliced/onion_slice),
+		PCWJ_USE_DEEP_FRYER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/potato_chips
+	cooking_container = /obj/item/reagent_containers/cooking/deep_basket
+	product_type = /obj/item/food/chips
+	steps = list(
+		PCWJ_ADD_PRODUCE(/obj/item/food/grown/potato/wedges),
+		PCWJ_USE_DEEP_FRYER(10 SECONDS),
+	)
+
+/datum/cooking/recipe/shrimp
+	cooking_container = /obj/item/reagent_containers/cooking/deep_basket
+	product_type = /obj/item/food/fried_shrimp
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/food/shrimp),
+		PCWJ_USE_DEEP_FRYER(10 SECONDS),
+	)
+

@@ -268,11 +268,22 @@ def convert_recipe_type(recipe: RecipeDetails) -> ConvertedRecipe | None:
             cooker_step_name="PCWJ_USE_ICE_CREAM_MIXER",
         )
 
+    if recipe.original_path.child_of("/datum/deepfryer_special/fried_vox"):
+        return
+
+    if recipe.original_path.child_of("/datum/deepfryer_special"):
+        return ConvertedRecipe(
+            recipe,
+            output_file="deep_fryer",
+            container=p("/obj/item/reagent_containers/cooking/deep_basket"),
+            cooker_time=10,
+            cooker_step_name="PCWJ_USE_DEEP_FRYER",
+        )
+
 
 def main():
     known_recipes = set()
     dme = DME.from_file("paradise.dme", parse_procs=True)
-    all_foods = dme.subtypesof("/obj/item/food")
     handled_recipes = set()
 
     output_files: dict[str, io.TextIOWrapper] = {}
@@ -301,6 +312,23 @@ def main():
         converted.cooker_time = default_cooktime(converted.recipe)
 
     recipe_cooker_transforms = {p("/datum/recipe/grill/friedegg"): make_stovetop_pan}
+
+    for pth in dme.subtypesof("/datum/deepfryer_special"):
+        deepfryer_special = dme.types[pth]
+        details = RecipeDetails(
+            reagents={},
+            food_items=[],
+            produce_items=[],
+            original_path=pth,
+            product_type=deepfryer_special.var_decl("output").const_val,
+        )
+        item = deepfryer_special.var_decl("input").const_val
+        if item.child_of("/obj/item/food/grown") or item.child_of("/obj/item/grown"):
+            details.produce_items.append(item)
+        else:
+            details.food_items.append(item)
+
+        recipe_details.append(details)
 
     converted_recipes: list[ConvertedRecipe] = []
 

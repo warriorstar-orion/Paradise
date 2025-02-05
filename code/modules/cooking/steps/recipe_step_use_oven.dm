@@ -25,8 +25,8 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/use_oven)
 
 	if(istype(used_item, /obj/machinery/cooking/oven))
 		return PCWJ_CHECK_SILENT
-	else
-		return PCWJ_CHECK_INVALID
+
+	return PCWJ_CHECK_INVALID
 
 /datum/cooking/recipe_step/use_oven/follow_step(obj/used_item, datum/cooking/recipe_tracker/tracker, mob/user)
 	var/list/step_data = list(target = used_item.UID())

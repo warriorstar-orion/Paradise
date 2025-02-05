@@ -20,13 +20,13 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/use_grill)
 /datum/cooking/recipe_step/use_grill/check_conditions_met(obj/used_item, datum/cooking/recipe_tracker/tracker)
 	var/obj/item/reagent_containers/cooking/container = locateUID(tracker.container_uid)
 
-	if(LAZYACCESSASSOC(container.cooker_data, COOKER_SURFACE_GRILL, temperature) >= time)
+	if(container.get_cooker_time(COOKER_SURFACE_GRILL, temperature) >= time)
 		return PCWJ_CHECK_VALID
 
 	if(istype(used_item, /obj/machinery/cooking/stovetop))
 		return PCWJ_CHECK_SILENT
-	else
-		return PCWJ_CHECK_INVALID
+
+	return PCWJ_CHECK_INVALID
 
 /datum/cooking/recipe_step/use_grill/follow_step(obj/used_item, datum/cooking/recipe_tracker/tracker, mob/user)
 	var/list/step_data = list(target = used_item.UID())

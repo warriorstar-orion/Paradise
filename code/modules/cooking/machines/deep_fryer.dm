@@ -1,6 +1,8 @@
 /datum/cooking_surface/deepfryer_basin
 	cooker_id = COOKER_SURFACE_DEEPFRYER
 
+// TODO: add back special attack for deep fryer for v2
+// Yes, that's a v2 thing, I'm not doing it right now
 /obj/machinery/cooking/deepfryer
 	name = "deep fryer"
 	desc = "A deep fryer that can hold two baskets."

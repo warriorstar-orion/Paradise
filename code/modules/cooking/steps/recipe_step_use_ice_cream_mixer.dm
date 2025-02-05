@@ -16,8 +16,8 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/use_ice_cream_mixer)
 
 	if(istype(used_item, /obj/machinery/cooking/ice_cream_mixer))
 		return PCWJ_CHECK_SILENT
-	else
-		return PCWJ_CHECK_INVALID
+
+	return PCWJ_CHECK_INVALID
 
 /datum/cooking/recipe_step/use_ice_cream_mixer/calculate_quality(obj/used_item, datum/cooking/recipe_tracker/tracker)
 	return 5

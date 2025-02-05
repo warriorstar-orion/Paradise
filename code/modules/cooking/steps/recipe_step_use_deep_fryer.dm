@@ -16,8 +16,8 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/use_deep_fryer)
 
 	if(istype(used_item, /obj/machinery/cooking/deepfryer))
 		return PCWJ_CHECK_SILENT
-	else
-		return PCWJ_CHECK_INVALID
+
+	return PCWJ_CHECK_INVALID
 
 /datum/cooking/recipe_step/use_deep_fryer/calculate_quality(obj/used_item, datum/cooking/recipe_tracker/tracker)
 	return 5
@@ -26,4 +26,4 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/use_deep_fryer)
 	return list(target = used_item.UID())
 
 /datum/cooking/recipe_step/use_deep_fryer/get_pda_formatted_desc()
-	return "Mix in an ice cream mixer for [DisplayTimeText(time)]."
+	return "Deep-fry for [DisplayTimeText(time)]."
