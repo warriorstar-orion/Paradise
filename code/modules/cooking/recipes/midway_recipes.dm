@@ -8,7 +8,7 @@
 	product_type = /obj/item/food/tortilla
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/food/sliced/dough),
-		PCWJ_USE_GRILL(J_LO, 10 SECONDS),
+		PCWJ_USE_STOVE(J_LO, 10 SECONDS),
 	)
 
 /datum/cooking/recipe/cooked_patty

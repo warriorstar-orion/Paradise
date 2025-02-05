@@ -231,8 +231,13 @@
 	cooker_data[surface.cooker_id][surface.temperature] = val
 
 /obj/item/reagent_containers/cooking/proc/get_cooker_time(surface_name, temp)
-	var/result = LAZYACCESSASSOC(cooker_data, surface_name, temp)
-	return result
+	// can't fucking trust LAZYACCESSASSOC
+	if(!(surface_name in cooker_data))
+		return null
+	if(!(temp in cooker_data[surface_name]))
+		return null
+
+	return cooker_data[surface_name][temp]
 
 /obj/item/reagent_containers/cooking/proc/clear_cooking_data()
 	cooker_data.Cut()

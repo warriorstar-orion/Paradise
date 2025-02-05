@@ -26,10 +26,13 @@ RESTRICT_TYPE(/datum/cooking_surface)
 	if(!istype(placed_item))
 		return
 
+	if(isnull(container.get_cooker_time(cooker_id, temperature)))
+		reset_cooktime()
+
 	container.set_cooker_data(src, stop_watch(cook_stopwatch) SECONDS)
 	container.new_process_item(user, parent)
 
-	if(COOLDOWN_FINISHED(src, cooktime_cd))
+	if(timer && COOLDOWN_FINISHED(src, cooktime_cd))
 		turn_off(user)
 		return
 

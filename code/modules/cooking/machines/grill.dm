@@ -1,6 +1,18 @@
 /datum/cooking_surface/grill_surface
 	cooker_id = COOKER_SURFACE_GRILL
 
+/datum/cooking_surface/grill_surface/handle_switch(mob/user)
+	var/obj/machinery/cooking/grill/grill = parent
+	if(!istype(grill))
+		return
+
+	if(!on)
+		if(grill.stored_wood <= 0)
+			to_chat(user, "<span class='notice'>There is no wood in the grill. Insert some planks first.</span>")
+			return
+
+	. = ..()
+
 /obj/effect/grill_hopper
 	icon = 'icons/obj/cooking/machines.dmi'
 	icon_state = "blank"
@@ -18,6 +30,7 @@
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
 	interact_offline = TRUE
+	power_cost = 50 // uses more wood than power
 	allowed_containers = list(
 		/obj/item/reagent_containers/cooking/grill_grate,
 	)

@@ -70,15 +70,7 @@
 /area/shuttle/arrival/station)
 "l" = (
 /obj/structure/table,
-/obj/item/food/egg,
-/obj/item/food/egg,
-/obj/item/food/egg,
-/obj/item/food/egg,
-/obj/item/food/egg,
-/obj/item/food/egg,
-/obj/item/food/egg,
-/obj/item/food/egg,
-/obj/item/food/egg,
+/obj/item/storage/fancy/egg_box,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "m" = (
@@ -86,11 +78,6 @@
 /obj/item/reagent_containers/cooking/bowl,
 /obj/item/reagent_containers/cooking/bowl,
 /obj/structure/table,
-/turf/simulated/floor/plasteel/freezer,
-/area/shuttle/arrival/station)
-"n" = (
-/obj/structure/table,
-/obj/machinery/autochef,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "o" = (
@@ -206,8 +193,11 @@
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "G" = (
-/obj/structure/table,
-/obj/item/autochef_remote,
+/obj/machinery/cooking/deepfryer,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"H" = (
+/obj/structure/closet/crate/cookware,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "J" = (
@@ -235,12 +225,27 @@
 /obj/machinery/cooking/ice_cream_mixer,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
+"N" = (
+/obj/structure/table,
+/obj/item/food/dough,
+/obj/item/food/dough,
+/obj/item/food/dough,
+/obj/item/food/dough,
+/obj/item/food/dough,
+/obj/item/food/dough,
+/obj/item/food/dough,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
 "O" = (
 /obj/item/stack/sheet/wood,
 /obj/item/stack/sheet/wood{
 	amount = 20
 	},
 /obj/structure/table,
+/turf/simulated/floor/plasteel/freezer,
+/area/shuttle/arrival/station)
+"P" = (
+/obj/machinery/economy/vending/dinnerware,
 /turf/simulated/floor/plasteel/freezer,
 /area/shuttle/arrival/station)
 "Q" = (
@@ -32356,10 +32361,10 @@ a
 a
 u
 D
-x
-n
-n
-n
+H
+T
+y
+i
 f
 x
 x
@@ -32873,7 +32878,7 @@ A
 x
 b
 x
-x
+P
 x
 K
 x
@@ -34158,7 +34163,7 @@ y
 x
 X
 x
-D
+N
 x
 e
 x
