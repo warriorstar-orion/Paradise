@@ -326,27 +326,27 @@ LINEN BINS
 		default_unfasten_wrench(user, I, time = 20)
 		return TRUE
 
-/obj/structure/bedsheetbin/attackby__legacy__attackchain(obj/item/I, mob/user, params)
+/obj/structure/bedsheetbin/item_interaction(mob/living/user, obj/item/I, list/modifiers)
 	if(istype(I, /obj/item/bedsheet))
 		if(!user.drop_item())
 			to_chat(user, "<span class='notice'>[I] is stuck to your hand!</span>")
-			return
+			return ITEM_INTERACT_COMPLETE
 		I.forceMove(src)
 		sheets.Add(I)
 		amount++
 		update_icon(UPDATE_ICON_STATE)
 		to_chat(user, "<span class='notice'>You put [I] in [src].</span>")
+		return ITEM_INTERACT_COMPLETE
 	else if(amount && !hidden && I.w_class < WEIGHT_CLASS_BULKY)	//make sure there's sheets to hide it among, make sure nothing else is hidden in there.
 		if(I.flags & ABSTRACT)
-			return
+			return ITEM_INTERACT_COMPLETE
 		if(!user.drop_item())
 			to_chat(user, "<span class='notice'>[I] is stuck to your hand!</span>")
-			return
+			return ITEM_INTERACT_COMPLETE
 		I.forceMove(src)
 		hidden = I
 		to_chat(user, "<span class='notice'>You hide [I] among the sheets.</span>")
-
-
+		return ITEM_INTERACT_COMPLETE
 
 /obj/structure/bedsheetbin/attack_hand(mob/user)
 	if(amount >= 1)
