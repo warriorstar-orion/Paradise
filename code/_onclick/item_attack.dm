@@ -170,20 +170,6 @@
 		to_chat(user, "<span class='warning'>You don't want to harm other living beings!</span>")
 		return FALSE
 
-	if(!force)
-		playsound(loc, 'sound/weapons/tap.ogg', get_clamped_volume(), TRUE, -1)
-	else
-		SEND_SIGNAL(target, COMSIG_ATTACK)
-		add_attack_logs(user, target, "Attacked with [name] ([uppertext(user.a_intent)]) ([uppertext(damtype)])", (target.ckey && force > 0 && damtype != STAMINA) ? null : ATKLOG_ALMOSTALL)
-		if(hitsound)
-			playsound(loc, hitsound, get_clamped_volume(), TRUE, extrarange = stealthy_audio ? SILENCED_SOUND_EXTRARANGE : -1, falloff_distance = 0)
-
-	target.lastattacker = user.real_name
-	target.lastattackerckey = user.ckey
-
-	user.do_attack_animation(target)
-	add_fingerprint(user)
-
 	return TRUE
 
 /// The equivalent of the standard version of [/obj/item/proc/attack] but for non mob targets.

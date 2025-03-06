@@ -46,7 +46,7 @@
 	for(var/trait in list(TRAIT_RESISTHEAT, TRAIT_NOBREATH, TRAIT_RESISTCOLD, TRAIT_RESISTHIGHPRESSURE, TRAIT_RESISTLOWPRESSURE))
 		ADD_TRAIT(src, trait, MAGIC_TRAIT)
 
-/mob/living/carbon/human/monkey/magic/proc/ouch(mob/living/victim, mob/living/attacker)
+/mob/living/carbon/human/monkey/magic/proc/ouch(mob/living/victim, mob/living/attacker, obj/item/weapon)
 	SIGNAL_HANDLER
 	if(src == attacker)
 		return // I'm afraid you do not get a free blink
