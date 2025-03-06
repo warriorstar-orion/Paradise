@@ -34,7 +34,7 @@
 	UnregisterSignal(parent, COMSIG_PARENT_EXAMINE)
 	var/obj/item/I = parent
 	if(ismob(I.loc))
-		UnregisterSignal(I.loc, COMSIG_HUMAN_PARRY)
+		unregister_from_wielder(I.loc)
 
 /datum/component/parry/Initialize(_stamina_constant = 0, _stamina_coefficient = 0, _parry_time_out_time = PARRY_DEFAULT_TIMEOUT, _parryable_attack_types = ALL_ATTACK_TYPES, _parry_cooldown = 2 SECONDS, _no_parry_sound = FALSE, _requires_two_hands = FALSE, _requires_activation = FALSE)
 	if(!isitem(parent))
@@ -65,16 +65,26 @@
 
 	examine_text = "<span class='notice'>It's able to <b>parry</b> [english_list(attack_list)].</span>"
 
+/datum/component/parry/proc/register_to_wielder(mob/wielder)
+	RegisterSignal(wielder, COMSIG_HUMAN_PARRY, PROC_REF(start_parry))
+	RegisterSignal(wielder, COMSIG_INTERACT_TARGET, PROC_REF(on_interact_target))
+	RegisterSignal(wielder, COMSIG_HUMAN_ATTACKED, PROC_REF(on_human_attacked))
+
+/datum/component/parry/proc/unregister_from_wielder(mob/wielder)
+	UnregisterSignal(wielder, COMSIG_HUMAN_PARRY)
+	UnregisterSignal(wielder, COMSIG_INTERACT_TARGET)
+	UnregisterSignal(wielder, COMSIG_HUMAN_ATTACKED)
+
 /datum/component/parry/proc/equipped(datum/source, mob/user, slot)
 	SIGNAL_HANDLER
 	if(slot & ITEM_SLOT_BOTH_HANDS)
-		RegisterSignal(user, COMSIG_HUMAN_PARRY, PROC_REF(start_parry))
+		register_to_wielder(user)
 	else
-		UnregisterSignal(user, COMSIG_HUMAN_PARRY)
+		unregister_from_wielder(user)
 
 /datum/component/parry/proc/dropped(datum/source, mob/user)
 	SIGNAL_HANDLER
-	UnregisterSignal(user, COMSIG_HUMAN_PARRY)
+	unregister_from_wielder(user)
 
 /datum/component/parry/proc/start_parry(mob/living/L)
 	SIGNAL_HANDLER
@@ -91,6 +101,16 @@
 	time_parried = world.time
 	L.changeNext_move(CLICK_CD_PARRY)
 	L.do_attack_animation(L, used_item = parent)
+
+/datum/component/parry/proc/on_human_attacked(mob/living/carbon/human/victim, mob/living/carbon/human/attacker, obj/item/weapon)
+	SIGNAL_HANDLER // COMSIG_HUMAN_ATTACKED
+	if(attempt_parry(null, victim, weapon) & (COMPONENT_BLOCK_SUCCESSFUL|COMPONENT_BLOCK_PERFECT))
+		return COMPONENT_CANCEL_ATTACK_CHAIN
+
+/datum/component/parry/proc/on_interact_target(mob/living/user, obj/item/tool, modifiers)
+	SIGNAL_HANDLER // COMSIG_INTERACT_TARGET
+	if(attempt_parry(null, user, tool) & (COMPONENT_BLOCK_SUCCESSFUL|COMPONENT_BLOCK_PERFECT))
+		return ITEM_INTERACT_COMPLETE
 
 /datum/component/parry/proc/attempt_parry(datum/source, mob/living/carbon/human/owner, atom/movable/hitby, damage = 0, attack_type = MELEE_ATTACK)
 	SIGNAL_HANDLER

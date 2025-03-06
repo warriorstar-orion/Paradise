@@ -828,7 +828,7 @@
 	RegisterSignal(owner, COMSIG_HUMAN_ATTACKED, PROC_REF(on_human_attackby))
 	return ..()
 
-/datum/status_effect/rev_protection/proc/on_human_attackby(mob/living/carbon/human/victim, mob/living/carbon/human/attacker)
+/datum/status_effect/rev_protection/proc/on_human_attackby(mob/living/carbon/human/victim, mob/living/carbon/human/attacker, obj/item/weapon)
 	SIGNAL_HANDLER
 	if(!(attacker.a_intent in list(INTENT_DISARM, INTENT_HARM)))
 		return
