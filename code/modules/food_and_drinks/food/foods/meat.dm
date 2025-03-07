@@ -112,6 +112,8 @@
 			H.put_in_hands(bacon)
 		else
 			qdel(src)
+		return
+	return ..()
 
 //////////////////////////
 //		Monster Meat	//
