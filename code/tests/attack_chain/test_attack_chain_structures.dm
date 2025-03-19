@@ -7,7 +7,7 @@
 
 	var/forge = player.spawn_obj_nearby(/obj/structure/cult/functional/forge)
 	player.click_on(forge)
-	TEST_ASSERT_LAST_CHATLOG(player, "You unsecure the daemon forge from the floor")
+	TEST_ASSERT_LAST_CHATLOG(player, "You unsecure [forge] from the floor")
 	qdel(dagger)
 	qdel(forge)
 
@@ -43,7 +43,7 @@
 	var/obj/item/firelock_electronics/electronics = player.spawn_obj_in_hand(/obj/item/firelock_electronics)
 	electronics.toolspeed = 0
 	player.click_on(firelock_frame)
-	TEST_ASSERT_LAST_CHATLOG(player, "You insert and secure the firelock electronics")
+	TEST_ASSERT_LAST_CHATLOG(player, "You insert and secure [electronics]")
 	qdel(firelock_frame)
 
 	var/machine_frame = player.spawn_obj_nearby(/obj/structure/machine_frame)
@@ -52,3 +52,10 @@
 	coil.toolspeed = 0
 	player.click_on(machine_frame)
 	TEST_ASSERT_LAST_CHATLOG(player, "You add cables to the frame.")
+	qdel(machine_frame)
+
+	var/obj/structure/largecrate/large_crate = player.spawn_obj_nearby(/obj/structure/largecrate)
+	large_crate.manifest = new /obj/item/paper/manifest(null)
+	var/obj/paper = player.spawn_obj_in_hand(/obj/item/paper)
+	player.click_on(large_crate)
+	TEST_ASSERT_LAST_CHATLOG(player, "You tear the manifest off of the crate")
