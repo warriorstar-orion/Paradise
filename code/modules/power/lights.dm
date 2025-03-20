@@ -324,6 +324,7 @@
 	deconstruct_type = /obj/machinery/light_construct/floor
 	brightness_range = 6
 	nightshift_light_range = 6
+	proj_ignores_layer = TRUE
 	layer = ABOVE_OPEN_TURF_LAYER
 	plane = FLOOR_PLANE
 
