@@ -32,6 +32,7 @@
 
 	// We were asked to cancel the rest of the attack chain.
 	if(resolved)
+		__attack_side_effects(target, user)
 		return
 
 	// At this point it means the attack was "successful", or at least
@@ -170,6 +171,15 @@
 		to_chat(user, "<span class='warning'>You don't want to harm other living beings!</span>")
 		return FALSE
 
+	__attack_side_effects(target, user)
+
+	return TRUE
+
+/obj/item/proc/__attack_side_effects(mob/living/target, mob/living/user)
+	// We might want to allow to people to override this but it might not
+	// be a good idea so let's not let it spread
+	PRIVATE_PROC(TRUE)
+
 	if(!force)
 		playsound(loc, 'sound/weapons/tap.ogg', get_clamped_volume(), TRUE, -1)
 	else
@@ -183,8 +193,6 @@
 
 	user.do_attack_animation(target)
 	add_fingerprint(user)
-
-	return TRUE
 
 /// The equivalent of the standard version of [/obj/item/proc/attack] but for non mob targets.
 /obj/item/proc/attack_obj(obj/attacked_obj, mob/living/user, params)
