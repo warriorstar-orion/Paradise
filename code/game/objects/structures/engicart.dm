@@ -95,7 +95,7 @@
 			to_chat(user, fail_msg)
 			return
 
-		if(!put_in_cart(used, user))	
+		if(!put_in_cart(used, user))
 			return
 
 		my_flashlight = used
