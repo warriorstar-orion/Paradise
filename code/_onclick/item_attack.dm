@@ -218,6 +218,9 @@
  * Return value is ignored for purposes of the attack chain.
  */
 /atom/proc/attacked_by(obj/item/attacker, mob/living/user)
+	SHOULD_CALL_PARENT(TRUE)
+	var/signal = SEND_SIGNAL(src, COMSIG_ATTACKED_BY, attacker, user)
+
 	return
 
 /obj/attacked_by(obj/item/attacker, mob/living/user)

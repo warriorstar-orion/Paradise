@@ -43,6 +43,7 @@
 #define COMSIG_ATTACK_OBJ			"attack_obj"			//! [/obj/item/proc/attack_obj] -> obj/attacked, mob/user
 #define COMSIG_ATTACK_OBJ_LIVING	"attack_obj_living"		//! [/obj/item/proc/attack_obj] -> obj/attacked
 #define COMSIG_ATTACK_BY			"attack_by"				//! [/atom/proc/attackby] -> obj/item/weapon, mob/living/user, params
+#define COMSIG_ATTACKED_BY			"attacked_by"			//! [/atom/proc/attacked_by] -> obj/item/weapon, mob/living/user
 
 #define COMSIG_AFTER_ATTACK			"item_after_attack"		//! [/obj/item/proc/afterattack] -> atom/target, mob/user, params
 #define COMSIG_AFTER_ATTACKED_BY	"after_attacked_by"		//! [/obj/item/proc/afterattack] -> obj/item/weapon, mob/user, proximity_flag, params
