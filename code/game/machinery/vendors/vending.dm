@@ -458,6 +458,9 @@
 		return ITEM_INTERACT_COMPLETE
 
 /obj/machinery/economy/vending/attacked_by(obj/item/attacker, mob/living/user)
+	if(..())
+		return FINISH_ATTACK
+
 	if(tiltable && !tilted && attacker.force)
 		if(resistance_flags & INDESTRUCTIBLE)
 			// no goodies, but also no tilts

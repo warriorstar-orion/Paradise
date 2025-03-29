@@ -67,11 +67,12 @@
 
 /datum/component/parry/proc/register_to_wielder(mob/wielder)
 	RegisterSignal(wielder, COMSIG_HUMAN_PARRY, PROC_REF(start_parry))
-	RegisterSignal(wielder, COMSIG_HUMAN_ATTACKED, PROC_REF(on_human_attacked))
+	RegisterSignal(wielder, COMSIG_ATTACKED_BY, PROC_REF(on_attacked_by))
+
 
 /datum/component/parry/proc/unregister_from_wielder(mob/wielder)
 	UnregisterSignal(wielder, COMSIG_HUMAN_PARRY)
-	UnregisterSignal(wielder, COMSIG_HUMAN_ATTACKED)
+	UnregisterSignal(wielder, COMSIG_ATTACKED_BY)
 
 /datum/component/parry/proc/equipped(datum/source, mob/user, slot)
 	SIGNAL_HANDLER
@@ -100,10 +101,10 @@
 	L.changeNext_move(CLICK_CD_PARRY)
 	L.do_attack_animation(L, used_item = parent)
 
-/datum/component/parry/proc/on_human_attacked(mob/living/carbon/human/victim, mob/living/carbon/human/attacker, obj/item/weapon)
-	SIGNAL_HANDLER // COMSIG_HUMAN_ATTACKED
-	if(attempt_parry(null, victim, weapon) & (COMPONENT_BLOCK_SUCCESSFUL|COMPONENT_BLOCK_PERFECT))
-		return COMPONENT_CANCEL_ATTACK_CHAIN
+/datum/component/parry/proc/on_attacked_by(datum/source, obj/item/attacker, mob/living/user)
+	SIGNAL_HANDLER // COMSIG_ATTACKED_BY
+	if(attempt_parry(null, source, attacker) & (COMPONENT_BLOCK_SUCCESSFUL|COMPONENT_BLOCK_PERFECT))
+		return COMPONENT_SKIP_ATTACK
 
 /datum/component/parry/proc/attempt_parry(datum/source, mob/living/carbon/human/owner, atom/movable/hitby, damage = 0, attack_type = MELEE_ATTACK)
 	SIGNAL_HANDLER

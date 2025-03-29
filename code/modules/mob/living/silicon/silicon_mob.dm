@@ -294,6 +294,9 @@
 	return ..()
 
 /mob/living/silicon/attacked_by(obj/item/I, mob/living/user, def_zone)
+	if(..())
+		return FINISH_ATTACK
+
 	send_item_attack_message(I, user)
 	if(I.force)
 		var/bonus_damage = 0

@@ -195,6 +195,8 @@
 	if(..())
 		return FINISH_ATTACK
 
+	user.changeNext_move(CLICK_CD_MELEE)
+
 	if(turned_on && HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50))
 		// For those super edge cases where you clumsy baton yourself in quick succession.
 		if(baton_stun(user, user, skip_cooldown = TRUE))
@@ -208,14 +210,8 @@
 		to_chat(user, user.mind.martial_art.no_baton_reason)
 		return FINISH_ATTACK
 
-	if(!ismob(A))
-		return
-
-	user.changeNext_move(CLICK_CD_MELEE)
 	var/mob/living/target = A
-
-	if(user.a_intent == INTENT_HARM)
-		// Harmbaton!
+	if(!istype(target))
 		return
 
 	if(!turned_on)
@@ -237,9 +233,13 @@
 		playsound(loc, 'sound/weapons/tap.ogg', 50, TRUE, -1)
 		return FINISH_ATTACK
 
-	if(baton_stun(target, user))
-		user.do_attack_animation(target)
-	return FINISH_ATTACK
+/obj/item/melee/baton/attack(mob/living/target, mob/living/user, params)
+	if(..())
+		return FINISH_ATTACK
+
+	if(user.a_intent == INTENT_HARM)
+		// Harmbaton!
+		return
 
 /obj/item/melee/baton/after_attack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()

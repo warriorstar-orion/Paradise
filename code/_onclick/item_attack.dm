@@ -143,7 +143,7 @@
 	// New attack chain flips that around. Horrible.
 	. = !__attack_core(target, user)
 	if(!.)
-		target.attacked_by(src, user)
+		return target.attacked_by(src, user)
 
 /obj/item/proc/__after_attack_core(mob/user, atom/target, params, proximity_flag = 1)
 	PRIVATE_PROC(TRUE)
@@ -215,15 +215,25 @@
 /**
  * Called *after* we have been attacked with the item `attacker` by `user`.
  *
- * Return value is ignored for purposes of the attack chain.
+ * Arguments:
+ *
+ * * obj/item/attacker - the item hitting this atom
+ * * mob/living/user - the user performing the attack
+ *
+ * Handles [COMSIG_ATTACKED_BY] returning [COMPONENT_SKIP_ATTACK].
+ * Returns [FINISH_ATTACK] if the attack chain should stop here.
  */
 /atom/proc/attacked_by(obj/item/attacker, mob/living/user)
 	SHOULD_CALL_PARENT(TRUE)
 	var/signal = SEND_SIGNAL(src, COMSIG_ATTACKED_BY, attacker, user)
 
-	return
+	if(signal & COMPONENT_SKIP_ATTACK)
+		return FINISH_ATTACK
 
 /obj/attacked_by(obj/item/attacker, mob/living/user)
+	if(..())
+		return FINISH_ATTACK
+
 	var/damage = attacker.force
 	if(attacker.force)
 		user.visible_message(
@@ -238,6 +248,9 @@
 	take_damage(damage, attacker.damtype, MELEE, 1)
 
 /mob/living/attacked_by(obj/item/attacker, mob/living/user, def_zone)
+	if(..())
+		return FINISH_ATTACK
+
 	send_item_attack_message(attacker, user)
 	if(attacker.force)
 		var/bonus_damage = 0
@@ -254,6 +267,9 @@
 					user.add_mob_blood(src)
 
 /mob/living/simple_animal/attacked_by(obj/item/attacker, mob/living/user)
+	if(..())
+		return FINISH_ATTACK
+
 	if(!attacker.force)
 		user.visible_message(
 			"<span class='notice'>[user] gently taps [src] with [attacker].</span>",
@@ -267,9 +283,6 @@
 			"<span class='warning'>[attacker] bounces harmlessly off of [src]!</span>",
 			"<span class='warning'>You hear something being struck by a weapon!</span>"
 		)
-
-	else
-		return ..()
 
 /**
  * Last proc in the [/obj/item/proc/melee_attack_chain].

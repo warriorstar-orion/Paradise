@@ -462,6 +462,9 @@ emp_act
 	return ..()
 
 /mob/living/carbon/human/attacked_by(obj/item/I, mob/living/user, def_zone)
+	if(..())
+		return FINISH_ATTACK
+
 	if(!I || !user || QDELETED(src))
 		return
 
