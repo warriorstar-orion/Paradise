@@ -292,3 +292,11 @@
 	name = "Horizontal Bridge One"
 	suffix = "lavaland_zlvl_bridge_horizontal_1.dmm"
 	ci_exclude = /datum/map_template/ruin/lavaland/zlvl_bridge/horizontal/one
+
+/datum/map_template/ruin/lavaland/hellgate_center
+	name = "Hellgate Center"
+	id = "hellgate_center"
+	description = "A destroyed science facility is a sobering reminder of the dangers of interdimensional experiments."
+	suffix = "lavaland_surface_hellgate_center.dmm"
+	allow_duplicates = FALSE
+

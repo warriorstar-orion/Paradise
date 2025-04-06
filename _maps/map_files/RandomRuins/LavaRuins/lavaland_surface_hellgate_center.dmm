@@ -1,0 +1,2639 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aL" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/plasteel,
+/area/ruin/hellgate_center)
+"ba" = (
+/obj/structure/table/reinforced,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/hellgate_center)
+"bw" = (
+/obj/structure/doomed_portal{
+	dir = 6
+	},
+/turf/simulated/floor/vault,
+/area/ruin/hellgate_center)
+"bN" = (
+/obj/machinery/economy/vending/coffee/free,
+/turf/simulated/floor/plasteel,
+/area/ruin/hellgate_center)
+"bP" = (
+/obj/effect/spawner/random/pool/hellgate_monster,
+/turf/simulated/floor/plasteel,
+/area/ruin/hellgate_center)
+"bY" = (
+/obj/effect/spawner/random/pool/hellgate_monster,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/hellgate_center)
+"cb" = (
+/obj/effect/spawner/window/reinforced/plasma/grilled,
+/turf/open/floor/plating,
+/area/ruin/hellgate_center)
+"dB" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel,
+/area/ruin/hellgate_center)
+"dH" = (
+/obj/structure/doomed_portal,
+/turf/simulated/floor/vault,
+/area/ruin/hellgate_center)
+"en" = (
+/turf/open/floor/plating,
+/area/ruin/hellgate_center)
+"eZ" = (
+/obj/machinery/economy/vending/chinese,
+/turf/simulated/floor/plasteel,
+/area/ruin/hellgate_center)
+"gf" = (
+/obj/structure/lattice/catwalk/mining,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/lava/mapping_lava,
+/area/ruin/hellgate_center)
+"gU" = (
+/obj/structure/lattice/catwalk/mining,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/item/stack/cable_coil,
+/turf/simulated/floor/lava/mapping_lava,
+/area/ruin/hellgate_center)
+"ic" = (
+/obj/structure/closet/crate/trashcart,
+/obj/effect/spawner/random/trash,
+/turf/open/floor/plating,
+/area/ruin/hellgate_center)
+"iy" = (
+/obj/structure/lattice/catwalk/mining,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing,
+/turf/simulated/floor/lava/mapping_lava,
+/area/ruin/hellgate_center)
+"iM" = (
+/obj/structure/table,
+/turf/simulated/floor/plasteel,
+/area/ruin/hellgate_center)
+"kS" = (
+/turf/simulated/floor/lava/mapping_lava,
+/area/template_noop)
+"lx" = (
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/hellgate_center)
+"lD" = (
+/obj/structure/doomed_portal{
+	dir = 8
+	},
+/turf/simulated/floor/vault,
+/area/ruin/hellgate_center)
+"lG" = (
+/obj/machinery/door/airlock/maintenance,
+/turf/simulated/floor/plasteel,
+/area/ruin/hellgate_center)
+"mc" = (
+/obj/machinery/light{
+	dir = 1;
+	brightness_color = "#FF0000"
+	},
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/template_noop)
+"me" = (
+/obj/structure/lattice/catwalk/mining,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/obj/structure/railing/corner,
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/lava/mapping_lava,
+/area/ruin/hellgate_center)
+"mr" = (
+/obj/effect/mob_spawn/human/corpse/scientist,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkpurple"
+	},
+/area/ruin/hellgate_center)
+"mw" = (
+/obj/effect/turf_decal/siding{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/hellgate_center)
+"nr" = (
+/obj/structure/doomed_portal{
+	dir = 1
+	},
+/turf/simulated/floor/vault,
+/area/ruin/hellgate_center)
+"oD" = (
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/ruin/hellgate_center)
+"pH" = (
+/turf/simulated/floor/plasteel/stairs,
+/area/ruin/hellgate_center)
+"qc" = (
+/turf/simulated/floor/plasteel{
+	icon_state = "darkpurplefull"
+	},
+/area/ruin/hellgate_center)
+"qt" = (
+/obj/structure/chair/office/dark{
+	dir = 1
+	},
+/obj/effect/mob_spawn/human/corpse/scientist,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/hellgate_center)
+"rp" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/plasteel{
+	icon_state = "freezerfloor"
+	},
+/area/ruin/hellgate_center)
+"rH" = (
+/obj/machinery/disposal,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/hellgate_center)
+"rR" = (
+/obj/machinery/disposal,
+/turf/simulated/floor/plasteel,
+/area/ruin/hellgate_center)
+"sQ" = (
+/obj/structure/fence/door{
+	dir = 4
+	},
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/ruin/hellgate_center)
+"tl" = (
+/obj/structure/window/reinforced,
+/obj/effect/spawner/random/pool/hellgate_monster,
+/turf/simulated/floor/plasteel,
+/area/ruin/hellgate_center)
+"tL" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/simulated/floor/plasteel,
+/area/ruin/hellgate_center)
+"uu" = (
+/obj/structure/doomed_portal{
+	dir = 10
+	},
+/turf/simulated/floor/vault,
+/area/ruin/hellgate_center)
+"uM" = (
+/obj/machinery/door/airlock/external/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/catwalk,
+/area/ruin/hellgate_center)
+"va" = (
+/obj/effect/turf_decal/siding,
+/obj/effect/turf_decal/siding{
+	dir = 10
+	},
+/obj/structure/railing{
+	dir = 10
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/hellgate_center)
+"vG" = (
+/obj/structure/table,
+/obj/item/storage/box/cups,
+/turf/simulated/floor/plasteel,
+/area/ruin/hellgate_center)
+"vU" = (
+/obj/machinery/computer/nonfunctional,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkpurple"
+	},
+/area/ruin/hellgate_center)
+"wd" = (
+/obj/machinery/light{
+	dir = 8;
+	brightness_color = "#FF0000"
+	},
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/template_noop)
+"wg" = (
+/obj/machinery/light{
+	dir = 8;
+	brightness_color = "#FF0000"
+	},
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/ruin/hellgate_center)
+"wR" = (
+/obj/structure/fence/door/opened{
+	dir = 4
+	},
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/ruin/hellgate_center)
+"xJ" = (
+/turf/simulated/floor/vault,
+/area/ruin/hellgate_center)
+"xX" = (
+/obj/structure/table,
+/obj/effect/spawner/random/food_trash,
+/turf/simulated/floor/plasteel,
+/area/ruin/hellgate_center)
+"yB" = (
+/obj/structure/lattice/catwalk/mining,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing,
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/ruin/hellgate_center)
+"yO" = (
+/turf/simulated/wall/r_wall,
+/area/ruin/hellgate_center)
+"zm" = (
+/obj/structure/chair/office/dark{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/hellgate_center)
+"DD" = (
+/turf/simulated/floor/plasteel,
+/area/ruin/hellgate_center)
+"DT" = (
+/obj/structure/lattice/catwalk/mining,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/ruin/hellgate_center)
+"Gq" = (
+/obj/machinery/door/airlock/external/glass,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/catwalk,
+/area/ruin/hellgate_center)
+"GN" = (
+/obj/structure/lattice/catwalk/mining,
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/structure/railing/corner,
+/turf/simulated/floor/lava/mapping_lava,
+/area/ruin/hellgate_center)
+"GS" = (
+/obj/machinery/door/airlock/maintenance/external,
+/turf/simulated/floor/plasteel,
+/area/ruin/hellgate_center)
+"Ha" = (
+/obj/structure/doomed_portal{
+	dir = 4
+	},
+/turf/simulated/floor/vault,
+/area/ruin/hellgate_center)
+"Hx" = (
+/obj/effect/spawner/random/storage,
+/obj/effect/spawner/random/stock_parts,
+/turf/simulated/floor/plasteel,
+/area/ruin/hellgate_center)
+"HC" = (
+/obj/effect/mob_spawn/human/corpse/scientist,
+/turf/simulated/floor/plasteel,
+/area/ruin/hellgate_center)
+"HZ" = (
+/obj/effect/turf_decal/siding{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/hellgate_center)
+"IK" = (
+/obj/structure/chair/office{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel,
+/area/ruin/hellgate_center)
+"IL" = (
+/obj/structure/doomed_portal{
+	dir = 9
+	},
+/turf/simulated/floor/vault,
+/area/ruin/hellgate_center)
+"KE" = (
+/turf/template_noop,
+/area/template_noop)
+"KK" = (
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/template_noop)
+"LI" = (
+/obj/structure/doomed_portal{
+	dir = 5
+	},
+/turf/simulated/floor/vault,
+/area/ruin/hellgate_center)
+"Mi" = (
+/obj/structure/lattice/catwalk/mining,
+/obj/item/stack/rods,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/lava/mapping_lava,
+/area/ruin/hellgate_center)
+"Mr" = (
+/obj/machinery/light{
+	brightness_color = "#FF0000"
+	},
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/template_noop)
+"NJ" = (
+/obj/structure/chair/office/dark{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/hellgate_center)
+"OA" = (
+/obj/structure/fence/corner,
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/ruin/hellgate_center)
+"OX" = (
+/obj/effect/turf_decal/siding{
+	dir = 6
+	},
+/obj/structure/railing{
+	dir = 6
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/hellgate_center)
+"OY" = (
+/obj/structure/lattice/catwalk/mining,
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/structure/railing{
+	dir = 6
+	},
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/turf/simulated/floor/lava/mapping_lava,
+/area/ruin/hellgate_center)
+"PC" = (
+/obj/structure/closet,
+/turf/simulated/floor/plasteel,
+/area/ruin/hellgate_center)
+"QT" = (
+/obj/structure/lattice/catwalk/mining,
+/obj/item/stack/rods,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/lava/mapping_lava,
+/area/ruin/hellgate_center)
+"Rk" = (
+/obj/item/chair,
+/obj/effect/spawner/random/pool/hellgate_monster,
+/turf/simulated/floor/plasteel,
+/area/ruin/hellgate_center)
+"RW" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/catwalk,
+/area/ruin/hellgate_center)
+"Si" = (
+/turf/simulated/mineral/random/volcanic,
+/area/template_noop)
+"Tq" = (
+/obj/machinery/door/airlock/external/glass,
+/turf/simulated/floor/catwalk,
+/area/ruin/hellgate_center)
+"Ui" = (
+/obj/structure/fence{
+	dir = 8
+	},
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/ruin/hellgate_center)
+"Un" = (
+/obj/effect/spawner/random/pool/hellgate_monster,
+/turf/simulated/floor/plasteel/stairs,
+/area/ruin/hellgate_center)
+"UR" = (
+/obj/machinery/door/window/reinforced,
+/turf/simulated/floor/plasteel,
+/area/ruin/hellgate_center)
+"VI" = (
+/turf/simulated/floor/catwalk,
+/area/ruin/hellgate_center)
+"Wr" = (
+/obj/structure/window/reinforced,
+/turf/simulated/floor/plasteel,
+/area/ruin/hellgate_center)
+"Wu" = (
+/obj/structure/fence/cut/large,
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/ruin/hellgate_center)
+"Wx" = (
+/obj/structure/fence,
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/ruin/hellgate_center)
+"XF" = (
+/obj/effect/turf_decal/siding,
+/obj/structure/railing,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/hellgate_center)
+"Ye" = (
+/obj/structure/fence/corner{
+	dir = 4
+	},
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/ruin/hellgate_center)
+"Yq" = (
+/obj/machinery/light{
+	dir = 4;
+	brightness_color = "#FF0000"
+	},
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/template_noop)
+"YJ" = (
+/obj/structure/lattice/catwalk/mining,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/stack/cable_coil,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing,
+/turf/simulated/floor/lava/mapping_lava,
+/area/ruin/hellgate_center)
+"Zt" = (
+/turf/simulated/floor/plasteel{
+	icon_state = "freezerfloor"
+	},
+/area/ruin/hellgate_center)
+"Zz" = (
+/obj/structure/toilet{
+	pixel_y = 8
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "freezerfloor"
+	},
+/area/ruin/hellgate_center)
+"ZJ" = (
+/turf/simulated/wall,
+/area/ruin/hellgate_center)
+"ZY" = (
+/obj/structure/lattice/catwalk/mining,
+/obj/item/stack/rods,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing,
+/turf/simulated/floor/lava/mapping_lava,
+/area/ruin/hellgate_center)
+
+(1,1,1) = {"
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+kS
+kS
+kS
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+"}
+(2,1,1) = {"
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+kS
+kS
+kS
+KE
+KE
+KE
+KE
+KE
+kS
+kS
+kS
+kS
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+"}
+(3,1,1) = {"
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+KE
+KE
+KE
+KE
+KE
+"}
+(4,1,1) = {"
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+KE
+KE
+"}
+(5,1,1) = {"
+KE
+KE
+KE
+KE
+KE
+KE
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+KK
+KK
+KK
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+KE
+"}
+(6,1,1) = {"
+KE
+KE
+KE
+KE
+KE
+KE
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+kS
+kS
+kS
+kS
+KE
+"}
+(7,1,1) = {"
+KE
+KE
+KE
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+KK
+KK
+KK
+KK
+KK
+KK
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+KK
+Yq
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+kS
+kS
+KE
+"}
+(8,1,1) = {"
+KE
+KE
+KE
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+KK
+Yq
+KK
+Si
+Si
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+kS
+yO
+yO
+yO
+yO
+yO
+yO
+yO
+mc
+KK
+KK
+Si
+KK
+KK
+kS
+KE
+"}
+(9,1,1) = {"
+KE
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+yO
+yO
+yO
+yO
+yO
+Si
+Si
+Si
+Si
+Si
+KK
+Yq
+KK
+KK
+kS
+yO
+Zz
+ZJ
+DD
+tL
+vG
+yO
+KK
+KK
+Si
+Si
+Si
+KK
+kS
+KE
+"}
+(10,1,1) = {"
+KE
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+yO
+XF
+DD
+DD
+yO
+Si
+Si
+Si
+Si
+yO
+yO
+yO
+yO
+KK
+KK
+yO
+rp
+ZJ
+DD
+bP
+DD
+yO
+Si
+KK
+KK
+Si
+Si
+KK
+kS
+kS
+"}
+(11,1,1) = {"
+KE
+kS
+kS
+kS
+kS
+kS
+kS
+yO
+yO
+yO
+XF
+DD
+DD
+yO
+yO
+yO
+yO
+yO
+yO
+Hx
+Hx
+yO
+KK
+KK
+yO
+Zt
+ZJ
+DD
+DD
+DD
+yO
+Si
+Si
+KK
+KK
+KK
+KK
+kS
+kS
+"}
+(12,1,1) = {"
+KE
+kS
+kS
+kS
+kS
+kS
+kS
+yO
+lx
+lx
+XF
+bP
+Wr
+vU
+NJ
+ba
+NJ
+rH
+ZJ
+DD
+DD
+yO
+KK
+KK
+yO
+Zt
+rp
+DD
+DD
+DD
+yO
+yO
+yO
+yO
+KK
+KK
+KK
+KK
+kS
+"}
+(13,1,1) = {"
+KE
+kS
+kS
+kS
+kS
+kS
+Mr
+yO
+HZ
+HZ
+OX
+DD
+tl
+vU
+qt
+ba
+zm
+lx
+ZJ
+ZJ
+aL
+yO
+mc
+KK
+yO
+yO
+yO
+ZJ
+DD
+ZJ
+ZJ
+bN
+eZ
+yO
+yO
+KK
+KK
+KK
+kS
+"}
+(14,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+KK
+KK
+yO
+IL
+lD
+uu
+pH
+Wr
+vU
+NJ
+ba
+NJ
+bY
+DD
+DD
+DD
+yO
+KK
+KK
+wd
+KK
+yO
+DD
+DD
+DD
+DD
+DD
+DD
+DD
+yO
+KK
+KK
+KK
+kS
+"}
+(15,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+KK
+KK
+yO
+nr
+xJ
+dH
+Un
+UR
+mr
+qc
+qc
+qc
+qc
+bP
+DD
+bP
+yO
+KK
+KK
+KK
+KK
+cb
+DD
+bP
+IK
+IK
+IK
+DD
+bP
+yO
+KK
+KK
+KK
+kS
+"}
+(16,1,1) = {"
+kS
+kS
+kS
+kS
+KK
+KK
+KK
+yO
+LI
+Ha
+bw
+pH
+tl
+vU
+NJ
+ba
+NJ
+lx
+DD
+HC
+DD
+yO
+KK
+KK
+KK
+KK
+cb
+DD
+DD
+xX
+iM
+xX
+DD
+DD
+yO
+KK
+KK
+KK
+kS
+"}
+(17,1,1) = {"
+kS
+kS
+kS
+kS
+KK
+KK
+Mr
+yO
+mw
+mw
+va
+bP
+tl
+vU
+NJ
+ba
+qt
+lx
+ZJ
+DD
+DD
+yO
+KK
+KK
+KK
+kS
+cb
+DD
+DD
+dB
+Rk
+dB
+DD
+DD
+yO
+KK
+KK
+KK
+kS
+"}
+(18,1,1) = {"
+kS
+kS
+kS
+kS
+KK
+KK
+KK
+yO
+lx
+lx
+XF
+DD
+Wr
+vU
+NJ
+ba
+qt
+lx
+ZJ
+DD
+DD
+yO
+KK
+KK
+KK
+kS
+yO
+yO
+DD
+DD
+DD
+DD
+DD
+rR
+yO
+mc
+KK
+kS
+kS
+"}
+(19,1,1) = {"
+KE
+kS
+kS
+kS
+KK
+KK
+KK
+yO
+yO
+yO
+XF
+bP
+DD
+yO
+yO
+yO
+yO
+yO
+yO
+bP
+DD
+yO
+KK
+KK
+KK
+kS
+kS
+yO
+Gq
+yO
+yO
+yO
+yO
+yO
+yO
+KK
+KK
+kS
+kS
+"}
+(20,1,1) = {"
+KE
+kS
+kS
+kS
+kS
+KK
+KK
+KK
+KK
+yO
+XF
+DD
+DD
+yO
+en
+en
+VI
+VI
+Tq
+DD
+HC
+yO
+mc
+KK
+kS
+kS
+kS
+yO
+VI
+en
+yO
+wd
+KK
+KK
+KK
+KK
+KK
+kS
+kS
+"}
+(21,1,1) = {"
+KE
+kS
+kS
+kS
+kS
+kS
+KK
+KK
+KK
+yO
+yO
+yO
+yO
+yO
+yO
+en
+VI
+en
+yO
+DD
+DD
+yO
+KK
+KK
+kS
+kS
+kS
+yO
+VI
+en
+yO
+KK
+KK
+KK
+KK
+KK
+kS
+kS
+kS
+"}
+(22,1,1) = {"
+KE
+KE
+kS
+kS
+kS
+kS
+KK
+KK
+KK
+KK
+wd
+KK
+KK
+kS
+yO
+yO
+Gq
+yO
+yO
+yO
+yO
+yO
+KK
+kS
+kS
+kS
+kS
+yO
+Gq
+yO
+yO
+KK
+KK
+KK
+KK
+kS
+kS
+kS
+kS
+"}
+(23,1,1) = {"
+KE
+KE
+kS
+kS
+kS
+kS
+kS
+kS
+KK
+KK
+KK
+KK
+kS
+kS
+kS
+kS
+iy
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+iy
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(24,1,1) = {"
+KE
+KE
+KE
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+iy
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+iy
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(25,1,1) = {"
+KE
+KE
+KE
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+KK
+kS
+Mi
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+iy
+kS
+kS
+KK
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(26,1,1) = {"
+KE
+KE
+KE
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+KK
+kS
+kS
+kS
+kS
+kS
+GN
+gf
+gf
+gf
+gf
+gU
+gf
+gf
+QT
+gf
+gf
+me
+OY
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(27,1,1) = {"
+KE
+KE
+KE
+KE
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+YJ
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+iy
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(28,1,1) = {"
+kS
+KE
+KE
+KE
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+KK
+kS
+kS
+kS
+kS
+iy
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+iy
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(29,1,1) = {"
+kS
+kS
+KE
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+KK
+KK
+KK
+KK
+KK
+kS
+iy
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+ZY
+kS
+KK
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(30,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+KK
+KK
+KK
+KK
+KK
+Yq
+KK
+KK
+KK
+DT
+KK
+KK
+KK
+KK
+KK
+kS
+kS
+kS
+kS
+kS
+iy
+kS
+KK
+KK
+kS
+kS
+kS
+kS
+kS
+KK
+kS
+kS
+"}
+(31,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+KK
+yO
+yO
+yO
+yO
+yO
+yO
+yO
+yO
+Gq
+yO
+KK
+KK
+Yq
+KK
+KK
+KK
+Yq
+KK
+KK
+yB
+KK
+KK
+KK
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(32,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+KK
+KK
+yO
+DD
+DD
+DD
+DD
+DD
+ZJ
+en
+RW
+yO
+yO
+yO
+yO
+yO
+yO
+yO
+yO
+yO
+yO
+Gq
+yO
+yO
+KK
+KK
+KK
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(33,1,1) = {"
+kS
+kS
+kS
+kS
+kS
+kS
+KK
+Mr
+yO
+DD
+bP
+DD
+DD
+DD
+ZJ
+en
+RW
+ZJ
+DD
+bP
+DD
+DD
+DD
+ZJ
+DD
+DD
+ZJ
+VI
+en
+yO
+mc
+KK
+KK
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(34,1,1) = {"
+kS
+kS
+kS
+KE
+kS
+KK
+KK
+KK
+yO
+DD
+DD
+PC
+ZJ
+ZJ
+ZJ
+ZJ
+uM
+ZJ
+DD
+DD
+DD
+DD
+DD
+DD
+DD
+DD
+ZJ
+VI
+en
+yO
+KK
+KK
+KK
+kS
+kS
+KK
+kS
+kS
+kS
+"}
+(35,1,1) = {"
+kS
+kS
+kS
+KE
+KK
+KK
+KK
+KK
+yO
+DD
+DD
+PC
+ZJ
+DD
+bP
+DD
+DD
+DD
+DD
+DD
+DD
+bP
+DD
+ZJ
+DD
+DD
+ZJ
+Gq
+ZJ
+yO
+KK
+KK
+KK
+kS
+kS
+kS
+kS
+kS
+KE
+"}
+(36,1,1) = {"
+kS
+kS
+KE
+KE
+KK
+KK
+KK
+KK
+yO
+DD
+DD
+PC
+ZJ
+DD
+DD
+DD
+DD
+DD
+DD
+DD
+ZJ
+lG
+ZJ
+ZJ
+bP
+DD
+DD
+DD
+DD
+yO
+KK
+KK
+KK
+kS
+kS
+kS
+kS
+kS
+KE
+"}
+(37,1,1) = {"
+KE
+KE
+KE
+KE
+KK
+KK
+KK
+KK
+yO
+DD
+ZJ
+ZJ
+ZJ
+ZJ
+DD
+ZJ
+ZJ
+bP
+DD
+DD
+ZJ
+en
+ic
+ZJ
+DD
+DD
+DD
+DD
+DD
+yO
+KK
+KK
+KK
+KK
+kS
+kS
+kS
+kS
+KE
+"}
+(38,1,1) = {"
+KE
+KE
+KE
+KE
+KE
+KK
+KK
+KK
+yO
+DD
+DD
+DD
+DD
+DD
+DD
+DD
+yO
+yO
+yO
+yO
+yO
+yO
+yO
+yO
+DD
+DD
+DD
+bP
+DD
+yO
+KK
+KK
+KK
+KK
+kS
+kS
+kS
+kS
+kS
+"}
+(39,1,1) = {"
+KE
+KE
+KE
+KE
+KK
+KK
+KK
+Mr
+yO
+DD
+DD
+bP
+DD
+DD
+DD
+DD
+yO
+KK
+KK
+wd
+KK
+KK
+KK
+yO
+DD
+DD
+DD
+DD
+DD
+yO
+mc
+KK
+KK
+KK
+KK
+kS
+kS
+kS
+kS
+"}
+(40,1,1) = {"
+KE
+KE
+KE
+KK
+KK
+KK
+KK
+KK
+yO
+DD
+DD
+DD
+DD
+DD
+bP
+DD
+yO
+KK
+KK
+KK
+KK
+KK
+kS
+yO
+yO
+yO
+yO
+GS
+yO
+yO
+KK
+KK
+KK
+KK
+KK
+KK
+kS
+KK
+kS
+"}
+(41,1,1) = {"
+KE
+KE
+KE
+KK
+KK
+KK
+KK
+KK
+yO
+yO
+yO
+yO
+GS
+yO
+yO
+yO
+yO
+KK
+KK
+KK
+KK
+KK
+kS
+kS
+kS
+KK
+KK
+KK
+KK
+wd
+KK
+KK
+KK
+KK
+KK
+KK
+kS
+kS
+kS
+"}
+(42,1,1) = {"
+KE
+KE
+KE
+KE
+KK
+KK
+KK
+KK
+Wu
+wg
+oD
+oD
+oD
+oD
+oD
+wg
+Wx
+KK
+KK
+KK
+KK
+kS
+kS
+kS
+kS
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+kS
+kS
+kS
+"}
+(43,1,1) = {"
+KE
+KE
+KE
+KE
+KE
+KK
+KK
+KK
+Wx
+oD
+oD
+oD
+oD
+oD
+oD
+oD
+Wx
+KK
+KK
+kS
+kS
+kS
+kS
+kS
+kS
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+kS
+kS
+kS
+kS
+"}
+(44,1,1) = {"
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+Ye
+Ui
+Ui
+wR
+sQ
+wR
+Ui
+Ui
+OA
+KK
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+KE
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+kS
+kS
+kS
+kS
+kS
+"}
+(45,1,1) = {"
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+kS
+kS
+kS
+kS
+kS
+"}
+(46,1,1) = {"
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+kS
+kS
+KK
+kS
+KE
+"}
+(47,1,1) = {"
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+kS
+kS
+kS
+kS
+KE
+"}
+(48,1,1) = {"
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+kS
+kS
+kS
+kS
+kS
+kS
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+kS
+kS
+kS
+kS
+KE
+"}
+(49,1,1) = {"
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+kS
+kS
+kS
+kS
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+kS
+kS
+kS
+kS
+KE
+"}
+(50,1,1) = {"
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+kS
+kS
+kS
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+KE
+kS
+kS
+kS
+kS
+KE
+"}
