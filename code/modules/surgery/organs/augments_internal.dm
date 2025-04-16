@@ -7,7 +7,7 @@
 	var/crit_fail = FALSE //Used by certain implants to disable them.
 	tough = TRUE // Immune to damage
 
-/obj/item/organ/internal/cyberimp/New(mob/M = null)
+/obj/item/organ/internal/cyberimp/Initialize(mapload, mob/living/carbon/holder)
 	. = ..()
 	if(implant_overlay)
 		var/mutable_appearance/overlay = mutable_appearance(icon, implant_overlay)

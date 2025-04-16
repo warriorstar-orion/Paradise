@@ -10,8 +10,8 @@
 	/// An associated list of organ datums that this organ has.
 	var/list/datum/organ/organ_datums
 
-/obj/item/organ/internal/New(mob/living/carbon/holder)
-	..()
+/obj/item/organ/internal/Initialize(mapload, mob/living/carbon/holder)
+	. = ..()
 	if(istype(holder))
 		insert(holder)
 

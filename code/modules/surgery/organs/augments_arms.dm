@@ -14,8 +14,8 @@
 	var/obj/item/holder = null
 	// You can use this var for item path, it would be converted into an item on New()
 
-/obj/item/organ/internal/cyberimp/arm/New()
-	..()
+/obj/item/organ/internal/cyberimp/arm/Initialize(mapload)
+	. = ..()
 	if(ispath(holder))
 		holder = new holder(src)
 
@@ -297,8 +297,8 @@
 	action_icon = list(/datum/action/item_action/organ_action/toggle = 'icons/obj/device.dmi')
 	action_icon_state = list(/datum/action/item_action/organ_action/toggle = "flash")
 
-/obj/item/organ/internal/cyberimp/arm/flash/New()
-	..()
+/obj/item/organ/internal/cyberimp/arm/flash/Initialize(mapload)
+	. = ..()
 	if(locate(/obj/item/flash/armimplant) in items_list)
 		var/obj/item/flash/armimplant/F = locate(/obj/item/flash/armimplant) in items_list
 		F.implant = src
@@ -316,8 +316,8 @@
 	origin_tech = "materials=5;combat=7;biotech=5;powerstorage=5;syndicate=6;programming=5"
 	stealth_level = 4 //Only surgery or a body scanner with the highest tier of stock parts can detect this.
 
-/obj/item/organ/internal/cyberimp/arm/combat/New()
-	..()
+/obj/item/organ/internal/cyberimp/arm/combat/Initialize(mapload)
+	. = ..()
 	if(locate(/obj/item/flash/armimplant) in items_list)
 		var/obj/item/flash/armimplant/F = locate(/obj/item/flash/armimplant) in items_list
 		F.implant = src
