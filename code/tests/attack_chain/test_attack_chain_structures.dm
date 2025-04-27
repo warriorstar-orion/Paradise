@@ -41,9 +41,9 @@
 	player.rejuvenate()
 
 	var/obj/structure/computerframe/frame = teleport_to_first(player, /obj/structure/computerframe)
-	player.spawn_obj_in_hand(/obj/item/circuitboard/computer/sat_control)
+	var/obj/circuitboard = player.spawn_obj_in_hand(/obj/item/circuitboard/computer/sat_control)
 	player.click_on(frame)
-	TEST_ASSERT_LAST_CHATLOG(player, "You place the circuit board (Satellite Network Control) inside the computer frame")
+	TEST_ASSERT_LAST_CHATLOG(player, "You place [circuitboard] inside [frame]")
 
 	var/barricade = teleport_to_first(player, /obj/structure/barricade/wooden)
 	var/wood = player.spawn_obj_in_hand(/obj/item/stack/sheet/wood)
@@ -58,9 +58,8 @@
 	TEST_ASSERT_LAST_CHATLOG(player, "You insert and secure [electronics]")
 
 	var/machine_frame = teleport_to_first(player, /obj/structure/machine_frame)
-	var/obj/item/stack/cable_coil/coil = player.spawn_obj_in_hand(/obj/item/stack/cable_coil)
+	var/obj/item/stack/cable_coil/coil = player.spawn_fast_tool(/obj/item/stack/cable_coil)
 	coil.amount = 5
-	coil.toolspeed = 0
 	player.click_on(machine_frame)
 	TEST_ASSERT_LAST_CHATLOG(player, "You add cables to the frame.")
 
@@ -90,7 +89,10 @@
 	qdel(baton)
 
 	var/obj/structure/door_assembly/assembly = teleport_to_first(player, /obj/structure/door_assembly)
-	var/obj/item/stack/cable_coil/cable = player.spawn_obj_in_hand(/obj/item/stack/cable_coil)
-	cable.toolspeed = 0
+	var/obj/item/wrench/wrench = player.spawn_fast_tool(/obj/item/wrench)
+	player.click_on(assembly)
+	TEST_ASSERT_LAST_CHATLOG(player, "You unsecure [assembly].")
+	player.put_away(wrench)
+	var/obj/item/stack/cable_coil/cable = player.spawn_fast_tool(/obj/item/stack/cable_coil)
 	player.click_on(assembly)
 	TEST_ASSERT_LAST_CHATLOG(player, "You wire [assembly].")
