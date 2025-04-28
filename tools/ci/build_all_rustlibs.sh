@@ -2,36 +2,47 @@
 
 # Make is fail early if theres a problem
 set -euo pipefail
+set -x
 
 # Get to our folder first
 cd rust
 
-WINDOWS_TARGET="i686-pc-windows-gnu"
-LINUX_TARGET="i686-unknown-linux-gnu"
+build_library() {
+	TARGET_DIR="target/byond-${BYOND_BUILD_VERSION}"
 
-# Handle building on windows
-if [[ "$OSTYPE" == "msys" ]]; then
-	WINDOWS_TARGET="i686-pc-windows-msvc"
-fi
+	BUILD_FEATURE_FLAGS=""
+	if (( ${#BUILD_FEATURES[@]} != 0 )); then
+		BUILD_FEATURE_FLAGS=$(IFS=, ; echo "--no-default-features --features ${BUILD_FEATURES[*]}")
+	fi
 
-# Build it for CI
-cargo build --release --target $LINUX_TARGET
-cp target/$LINUX_TARGET/release/librustlibs.so ../tools/ci/librustlibs_ci_515.so
-cargo clean
-cargo build --release --target $LINUX_TARGET --no-default-features --features byond-516
-cp target/$LINUX_TARGET/release/librustlibs.so ../tools/ci/librustlibs_ci_516.so
+	cargo build --profile $TARGET_PROFILE --target $TARGET_TRIPLE --target-dir $TARGET_DIR $BUILD_FEATURE_FLAGS
+	cp $TARGET_DIR/$TARGET_TRIPLE/$TARGET_PROFILE/$TARGET_ARTIFACT "../lib/${TARGET_ARTIFACT%.*}_${TARGET_PROFILE}_${BUILD_ARCH}_${BYOND_BUILD_VERSION}.${TARGET_ARTIFACT##*.}"
+}
 
-# Build it for Windows
-cargo build --release --target $WINDOWS_TARGET
-cp target/$WINDOWS_TARGET/release/rustlibs.dll ../rustlibs_515.dll
-cargo clean
-cargo build --release --target $WINDOWS_TARGET --no-default-features --features byond-516
-cp target/$WINDOWS_TARGET/release/rustlibs.dll ../rustlibs_516.dll
+for BUILD_ARCH in i686 x86_64; do
+	for BYOND_BUILD_VERSION in 515 516; do
+		BUILD_FEATURES=("byond-${BYOND_BUILD_VERSION}")
+		TARGET_PROFILE="release"
 
-# Build the para-specific version
-export RUSTFLAGS='-C target-cpu=znver5'
-cargo build --release --target=$WINDOWS_TARGET
-cp target/$WINDOWS_TARGET/release/rustlibs.dll ../rustlibs_515_prod.dll
-cargo clean
-cargo build --release --target=$WINDOWS_TARGET --no-default-features --features byond-516
-cp target/$WINDOWS_TARGET/release/rustlibs.dll ../rustlibs_516_prod.dll
+		if [[ "$BUILD_ARCH" == "x86_64" ]]; then
+			BUILD_FEATURES+=("opendream")
+		fi
+
+		BUILD_PLATFORM="unknown-linux"
+		TARGET_ARTIFACT="librustlibs.so"
+		BUILD_COMPILER="gnu"
+		TARGET_TRIPLE="${BUILD_ARCH}-${BUILD_PLATFORM}-${BUILD_COMPILER}"
+		build_library
+
+		BUILD_PLATFORM="pc-windows"
+		TARGET_ARTIFACT="rustlibs.dll"
+		if [[ "$OSTYPE" == "msys" ]]; then
+			BUILD_COMPILER="msvc"
+		fi
+		TARGET_TRIPLE="${BUILD_ARCH}-${BUILD_PLATFORM}-${BUILD_COMPILER}"
+		build_library
+
+		TARGET_PROFILE="production"
+		build_library
+	done
+done

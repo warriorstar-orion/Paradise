@@ -1,2 +1,7 @@
 [build]
 target = "i686-pc-windows-msvc"
+
+[profile.production]
+inherits = "release"
+target-cpu = "znver5"
+

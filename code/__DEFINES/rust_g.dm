@@ -18,22 +18,28 @@
 
 /* This comment bypasses grep checks */ /var/__rust_g
 
+#ifdef OPENDREAM
+#define RUSTG_ARCH "64"
+#else
+#define RUSTG_ARCH ""
+#endif
+
 /proc/__detect_rust_g()
 	if(world.system_type == UNIX)
-		if(fexists("./librust_g.so"))
+		if(fexists("./librust_g[RUSTG_ARCH].so"))
 			// No need for LD_LIBRARY_PATH badness.
-			return __rust_g = "./librust_g.so"
-		else if(fexists("./rust_g"))
+			return __rust_g = "./librust_g[RUSTG_ARCH].so"
+		else if(fexists("./rust_g[RUSTG_ARCH]"))
 			// Old dumb filename.
-			return __rust_g = "./rust_g"
-		else if(fexists("[world.GetConfig("env", "HOME")]/.byond/bin/rust_g"))
+			return __rust_g = "./rust_g[RUSTG_ARCH]"
+		else if(fexists("[world.GetConfig("env", "HOME")]/.byond/bin/rust_g[RUSTG_ARCH]"))
 			// Old dumb filename in `~/.byond/bin`.
-			return __rust_g = "rust_g"
+			return __rust_g = "rust_g[RUSTG_ARCH]"
 		else
 			// It's not in the current directory, so try others
-			return __rust_g = "librust_g.so"
+			return __rust_g = "librust_g[RUSTG_ARCH].so"
 	else
-		return __rust_g = "rust_g.dll"
+		return __rust_g = "rust_g[RUSTG_ARCH].dll"
 
 #define RUST_G (__rust_g || __detect_rust_g())
 #endif

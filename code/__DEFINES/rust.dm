@@ -12,41 +12,49 @@
 // This works by allowing rust to compile with modern x86 instructionns, instead of compiling for a pentium 4
 // This has the potential for significant speed upgrades with SIMD and similar
 #ifdef PARADISE_PRODUCTION_HARDWARE
-#define RUSTLIBS_SUFFIX "_prod"
+#define RUSTLIBS_ENV "production"
 #else
-#define RUSTLIBS_SUFFIX ""
+#define RUSTLIBS_ENV "release"
+#endif
+
+#ifdef OPENDREAM
+#define RUSTLIBS_ARCH "x86_64"
+#else
+#define RUSTLIBS_ARCH "i686"
 #endif
 
 /proc/__detect_rustlib()
+	var/filename
 	var/version_suffix = "515"
 	if(world.byond_build >= 1651)
 		version_suffix = "516"
 
 	if(world.system_type == UNIX)
-#ifdef CIBUILDING
-		// CI override, use librustlibs_ci.so if possible.
-		if(fexists("./tools/ci/librustlibs_ci_[version_suffix].so"))
-			return __rustlib = "tools/ci/librustlibs_ci_[version_suffix].so"
-#endif
-		// First check if it's built in the usual place.
-		// Linx doesnt get the version suffix because if youre using linux you can figure out what server version youre running for
-		if(fexists("./rust/target/i686-unknown-linux-gnu/release/librustlibs[RUSTLIBS_SUFFIX].so"))
-			return __rustlib = "./rust/target/i686-unknown-linux-gnu/release/librustlibs[RUSTLIBS_SUFFIX].so"
-		// Then check in the current directory.
-		if(fexists("./librustlibs[RUSTLIBS_SUFFIX].so"))
-			return __rustlib = "./librustlibs[RUSTLIBS_SUFFIX].so"
-		// And elsewhere.
-		return __rustlib = "librustlibs[RUSTLIBS_SUFFIX].so"
+		// Check for solib built from dev environment
+		filename = "./rust/target/[RUSTLIBS_ARCH]-unknown-linux-gnu/release/librustlibs.so"
+		if(fexists(filename))
+			return __rustlib = filename
+
+		// Check for solib built from build_all_rustlibs.sh
+		filename = "./lib/librustlibs_[RUSTLIBS_ENV]_[RUSTLIBS_ARCH]_[version_suffix].so"
+		if(fexists(filename))
+			return __rustlib = filename
+
+		// This probably doesn't exist but is a fallback in case it does need to be filled in.
+		return __rustlib = "librustlibs_[RUSTLIBS_ENV]_[RUSTLIBS_ARCH]_[version_suffix].so"
 	else
-		// First check if it's built in the usual place.
-		if(fexists("./rust/target/i686-pc-windows-msvc/release/rustlibs.dll"))
-			return __rustlib = "./rust/target/i686-pc-windows-msvc/release/rustlibs.dll"
-		// Then check in the current directory.
-		if(fexists("./rustlibs_[version_suffix][RUSTLIBS_SUFFIX].dll"))
-			return __rustlib = "./rustlibs_[version_suffix][RUSTLIBS_SUFFIX].dll"
+		// Check for DLL built from dev environment
+		filename = "./rust/target/[RUSTLIBS_ARCH]-pc-windows-msvc/release/rustlibs.dll"
+		if(fexists(filename))
+			return __rustlib = filename
+
+		filename = "./lib/rustlibs_[RUSTLIBS_ENV]_[RUSTLIBS_ARCH]_[version_suffix].dll"
+		// Check for DLL built from build_all_rustlibs.sh
+		if(fexists(filename))
+			return __rustlib = filename
 
 		// And elsewhere.
-		var/assignment_confirmed = (__rustlib = "rustlibs_[version_suffix][RUSTLIBS_SUFFIX].dll")
+		var/assignment_confirmed = (__rustlib = "rustlibs_[RUSTLIBS_ENV]_[RUSTLIBS_ARCH]_[version_suffix].dll")
 		// This being spanned over multiple lines is kinda scuffed, but its needed because of https://www.byond.com/forum/post/2072419
 		return assignment_confirmed
 
@@ -56,7 +64,7 @@
 #define RUSTLIB_CALL(func, args...) call_ext(RUSTLIB, "byond:[#func]_ffi")(args)
 
 // This needs to go BELOW the above define, otherwise the BYOND compiler can make the above immediate call disappear
-#undef RUSTLIBS_SUFFIX
+#undef RUSTLIBS_ENV
 
 /// Exists by default in 516, but needs to be defined for 515 or byondapi-rs doesn't like it.
 /proc/byondapi_stack_trace(err)
