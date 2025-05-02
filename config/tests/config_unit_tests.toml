@@ -1,3 +1,6 @@
+[general_configuration]
+enable_default_weather_events = false
+
 [ruin_configuration]
 enable_lavaland = false
 enable_space = false
