@@ -4,9 +4,10 @@
 
 /datum/game_test/attack_chain_structures/proc/teleport_to_first(datum/test_puppeteer/player, obj_type, dir=EAST)
 	if(length(structure_instances_by_type[obj_type]))
-		var/structure = structure_instances_by_type[obj_type][1]
-		player.puppet.forceMove(get_step(structure, dir))
-		return structure
+		for(var/atom/object in structure_instances_by_type[obj_type])
+			if(!QDELETED(object))
+				player.puppet.forceMove(get_step(object, dir))
+				return object
 	TEST_FAIL("could not find [obj_type] to teleport puppet to")
 
 /datum/game_test/attack_chain_structures/New()
@@ -102,4 +103,12 @@
 	var/obj/item/melee/cultblade/dagger/dagger = player.spawn_obj_in_hand(/obj/item/melee/cultblade/dagger)
 	player.click_on(girder)
 	TEST_ASSERT_LAST_CHATLOG(player, "You demolish [girder].")
+	qdel(dagger)
 
+	var/obj/structure/girder/girder = teleport_to_first(player, /obj/structure/girder)
+	var/obj/item/gun/energy/plasmacutter/cutter = player.spawn_fast_tool(/obj/item/gun/energy/plasmacutter)
+	player.click_on(girder)
+	TEST_ASSERT_LAST_CHATLOG(player, "You slice apart the girder.")
+
+	girder = teleport_to_first(player, /obj/structure/girder)
+	var/obj/metal = player.spawn_obj_in_hand(/obj/item/stack/sheet/metal/fifty/)
