@@ -6,6 +6,10 @@
 /obj/structure/cult/functional/forge,
 /turf/simulated/floor/plasteel,
 /area/game_test)
+"k" = (
+/obj/structure/girder/cult,
+/turf/simulated/floor/plasteel,
+/area/game_test)
 "o" = (
 /obj/structure/barricade/wooden,
 /turf/simulated/floor/plasteel,
@@ -313,7 +317,7 @@ x
 a
 E
 a
-a
+k
 a
 a
 a

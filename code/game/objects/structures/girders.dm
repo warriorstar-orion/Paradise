@@ -464,12 +464,13 @@
 	. = ..()
 	icon_state = GET_CULT_DATA(cult_girder_icon_state, initial(icon_state))
 
-/obj/structure/girder/cult/attackby__legacy__attackchain(obj/item/W, mob/user, params)
+/obj/structure/girder/cult/item_interaction(mob/living/user, obj/item/W, list/modifiers)
 	add_fingerprint(user)
 	if(istype(W, /obj/item/melee/cultblade/dagger) && IS_CULTIST(user)) //Cultists can demolish cult girders instantly with their dagger
 		user.visible_message("<span class='warning'>[user] strikes [src] with [W]!</span>", "<span class='notice'>You demolish [src].</span>")
 		refundMetal(metalUsed)
 		qdel(src)
+		return ITEM_INTERACT_COMPLETE
 	else if(istype(W, /obj/item/gun/energy/plasmacutter))
 		to_chat(user, "<span class='notice'>You start slicing apart the girder...</span>")
 		if(do_after(user, 40* W.toolspeed, target = src))
@@ -479,6 +480,7 @@
 			R.amount = 1
 			transfer_fingerprints_to(R)
 			qdel(src)
+		return ITEM_INTERACT_COMPLETE
 	else if(istype(W, /obj/item/pickaxe/drill/jackhammer))
 		var/obj/item/pickaxe/drill/jackhammer/D = W
 		to_chat(user, "<span class='notice'>Your jackhammer smashes through the girder!</span>")
@@ -487,23 +489,22 @@
 		transfer_fingerprints_to(R)
 		D.playDigSound()
 		qdel(src)
-
+		return ITEM_INTERACT_COMPLETE
 	else if(istype(W, /obj/item/stack/sheet/runed_metal))
 		var/obj/item/stack/sheet/runed_metal/R = W
 		if(R.get_amount() < 1)
 			to_chat(user, "<span class='warning'>You need at least one sheet of runed metal to construct a runed wall!</span>")
-			return 0
+			return ITEM_INTERACT_COMPLETE
 		user.visible_message("<span class='notice'>[user] begins laying runed metal on [src]...</span>", "<span class='notice'>You begin constructing a runed wall...</span>")
 		if(do_after(user, 10, target = src))
 			if(R.get_amount() < 1 || !R)
-				return
+				return ITEM_INTERACT_COMPLETE
 			user.visible_message("<span class='notice'>[user] plates [src] with runed metal.</span>", "<span class='notice'>You construct a runed wall.</span>")
 			R.use(1)
 			var/turf/T = get_turf(src)
 			T.ChangeTurf(/turf/simulated/wall/cult)
 			qdel(src)
-	else
-		return ..()
+		return ITEM_INTERACT_COMPLETE
 
 /obj/structure/girder/cult/narsie_act()
 	return
