@@ -128,11 +128,8 @@
 		return ITEM_INTERACT_COMPLETE
 //window placing end
 
-	else if(shock(user, 70))
+	else if((!istype(I, /obj/item/shard)) && shock(user, 70))
 		return ITEM_INTERACT_COMPLETE
-
-	else if(istype(I, /obj/item/shard) || !shock(user, 70))
-		return ..()
 
 /obj/structure/grille/proc/repair(mob/user, obj/item/stack/rods/R)
 	if(R.get_amount() >= 1)
