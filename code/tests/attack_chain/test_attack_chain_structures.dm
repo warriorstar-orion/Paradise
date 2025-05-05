@@ -96,3 +96,10 @@
 	var/obj/item/stack/cable_coil/cable = player.spawn_fast_tool(/obj/item/stack/cable_coil)
 	player.click_on(assembly)
 	TEST_ASSERT_LAST_CHATLOG(player, "You wire [assembly].")
+
+	var/obj/structure/girder/cult/girder = teleport_to_first(player, /obj/structure/girder/cult)
+	player.puppet.mind.add_antag_datum(/datum/antagonist/cultist)
+	var/obj/item/melee/cultblade/dagger/dagger = player.spawn_obj_in_hand(/obj/item/melee/cultblade/dagger)
+	player.click_on(girder)
+	TEST_ASSERT_LAST_CHATLOG(player, "You demolish [girder].")
+
