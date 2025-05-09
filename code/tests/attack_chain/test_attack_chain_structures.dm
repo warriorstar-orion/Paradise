@@ -21,12 +21,12 @@
 	player.puppet.name = "Player"
 
 	player.puppet.mind.add_antag_datum(/datum/antagonist/cultist)
-	var/dagger = player.spawn_obj_in_hand(/obj/item/melee/cultblade/dagger)
+	player.spawn_obj_in_hand(/obj/item/melee/cultblade/dagger)
 
 	var/forge = teleport_to_first(player, /obj/structure/cult/functional/forge)
 	player.click_on(forge)
 	TEST_ASSERT_LAST_CHATLOG(player, "You unsecure [forge] from the floor")
-	qdel(dagger)
+	player.drop_held_item()
 
 	var/obj/structure/ai_core/core = teleport_to_first(player, /obj/structure/ai_core)
 	player.spawn_obj_in_hand(/obj/item/circuitboard/aicore)
@@ -38,7 +38,7 @@
 	soulstone.purified = TRUE
 	player.click_on(shell)
 	TEST_ASSERT_LAST_CHATLOG(player, "An overwhelming feeling of dread comes over you")
-	qdel(soulstone)
+	player.drop_held_item()
 	player.rejuvenate()
 
 	var/obj/structure/computerframe/frame = teleport_to_first(player, /obj/structure/computerframe)
@@ -47,29 +47,27 @@
 	TEST_ASSERT_LAST_CHATLOG(player, "You place [circuitboard] inside the computer frame")
 
 	var/barricade = teleport_to_first(player, /obj/structure/barricade/wooden)
-	var/wood = player.spawn_obj_in_hand(/obj/item/stack/sheet/wood)
+	player.spawn_obj_in_hand(/obj/item/stack/sheet/wood)
 	player.click_on(barricade)
 	TEST_ASSERT_LAST_CHATLOG(player, "You need at least five wooden planks to make a wall")
-	qdel(wood)
+	player.drop_held_item()
 
 	var/firelock_frame = teleport_to_first(player, /obj/structure/firelock_frame)
-	var/obj/item/firelock_electronics/electronics = player.spawn_obj_in_hand(/obj/item/firelock_electronics)
-	electronics.toolspeed = 0
+	var/obj/item/firelock_electronics/electronics = player.spawn_fast_tool(/obj/item/firelock_electronics)
 	player.click_on(firelock_frame)
 	TEST_ASSERT_LAST_CHATLOG(player, "You insert and secure [electronics]")
 
 	var/machine_frame = teleport_to_first(player, /obj/structure/machine_frame)
-	var/obj/item/stack/cable_coil/coil = player.spawn_fast_tool(/obj/item/stack/cable_coil)
-	coil.amount = 5
+	player.spawn_fast_tool(/obj/item/stack/cable_coil{amount = 5})
 	player.click_on(machine_frame)
 	TEST_ASSERT_LAST_CHATLOG(player, "You add cables to the frame.")
 
 	var/obj/structure/largecrate/large_crate = teleport_to_first(player, /obj/structure/largecrate)
 	large_crate.manifest = new /obj/item/paper/manifest(null)
-	var/obj/item/paper/in_hand_paper = player.spawn_obj_in_hand(/obj/item/paper)
+	player.spawn_obj_in_hand(/obj/item/paper)
 	player.click_on(large_crate)
 	TEST_ASSERT_LAST_CHATLOG(player, "You tear the manifest off of the crate")
-	qdel(in_hand_paper)
+	player.drop_held_item()
 
 	var/obj/structure/displaycase/displaycase = teleport_to_first(player, /obj/structure/displaycase)
 	var/obj/id_card = player.spawn_obj_in_hand(/obj/item/card/id/assistant)
@@ -92,18 +90,19 @@
 	var/obj/structure/door_assembly/assembly = teleport_to_first(player, /obj/structure/door_assembly)
 	var/obj/item/wrench/wrench = player.spawn_fast_tool(/obj/item/wrench)
 	player.click_on(assembly)
-	TEST_ASSERT_LAST_CHATLOG(player, "You unsecure [assembly].")
+	TEST_ASSERT_LAST_CHATLOG(player, "You secure [assembly].")
 	player.put_away(wrench)
 	var/obj/item/stack/cable_coil/cable = player.spawn_fast_tool(/obj/item/stack/cable_coil)
 	player.click_on(assembly)
-	TEST_ASSERT_LAST_CHATLOG(player, "You wire [assembly].")
+	TEST_ASSERT_LAST_CHATLOG(player, "You wire the airlock assembly.")
+	player.put_away(cable)
 
 	var/obj/structure/girder/girder = teleport_to_first(player, /obj/structure/girder/cult)
 	player.puppet.mind.add_antag_datum(/datum/antagonist/cultist)
-	dagger = player.spawn_obj_in_hand(/obj/item/melee/cultblade/dagger)
+	player.spawn_obj_in_hand(/obj/item/melee/cultblade/dagger)
 	player.click_on(girder)
 	TEST_ASSERT_LAST_CHATLOG(player, "You demolish [girder].")
-	qdel(dagger)
+	player.drop_held_item()
 
 	girder = teleport_to_first(player, /obj/structure/girder)
 	player.spawn_fast_tool(/obj/item/stack/sheet/metal{amount = 2})
@@ -111,7 +110,32 @@
 	TEST_ASSERT_LAST_CHATLOG(player, "You add the plating.")
 
 	girder = teleport_to_first(player, /obj/structure/girder)
-	var/obj/item/gun/energy/plasmacutter/cutter = player.spawn_fast_tool(/obj/item/gun/energy/plasmacutter)
+	player.spawn_fast_tool(/obj/item/gun/energy/plasmacutter)
 	player.click_on(girder)
 	TEST_ASSERT_LAST_CHATLOG(player, "You slice apart the girder.")
-	qdel(cutter)
+	player.drop_held_item()
+
+	var/obj/structure/guillotine/guillotine = teleport_to_first(player, /obj/structure/guillotine)
+	guillotine.blade_sharpness -= 1
+	player.spawn_fast_tool(/obj/item/whetstone)
+	player.click_on(guillotine)
+	TEST_ASSERT_LAST_CHATLOG(player, "You sharpen the large blade of [guillotine]")
+	player.drop_held_item()
+
+	var/obj/item/weldingtool/weldingtool = player.spawn_fast_tool(/obj/item/weldingtool)
+	player.use_item_in_hand()
+	player.set_intent(INTENT_HARM)
+	player.click_on(guillotine)
+	TEST_ASSERT_LAST_CHATLOG(player, "You slice clean through the guillotine!")
+	player.put_away(weldingtool)
+	player.set_intent(INTENT_HELP)
+
+	var/obj/structure/table_frame/table_frame = teleport_to_first(player, /obj/structure/table_frame)
+	table_frame.construction_time = 0
+	player.spawn_obj_in_hand(/obj/item/stack/sheet/metal)
+	player.click_on(table_frame)
+	TEST_ASSERT_LAST_CHATLOG(player, "You start adding the metal to [table_frame]")
+	player.spawn_fast_tool(/obj/item/wrench)
+	var/table = player.find_nearby(/obj/structure/table)
+	player.click_on(table)
+	TEST_ASSERT_LAST_CHATLOG(player, "You dismantle [table]")
