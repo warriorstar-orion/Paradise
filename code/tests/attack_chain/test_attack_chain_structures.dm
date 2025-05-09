@@ -44,7 +44,7 @@
 	var/obj/structure/computerframe/frame = teleport_to_first(player, /obj/structure/computerframe)
 	var/obj/circuitboard = player.spawn_obj_in_hand(/obj/item/circuitboard/computer/sat_control)
 	player.click_on(frame)
-	TEST_ASSERT_LAST_CHATLOG(player, "You place [circuitboard] inside [frame]")
+	TEST_ASSERT_LAST_CHATLOG(player, "You place [circuitboard] inside the computer frame")
 
 	var/barricade = teleport_to_first(player, /obj/structure/barricade/wooden)
 	var/wood = player.spawn_obj_in_hand(/obj/item/stack/sheet/wood)
@@ -98,17 +98,20 @@
 	player.click_on(assembly)
 	TEST_ASSERT_LAST_CHATLOG(player, "You wire [assembly].")
 
-	var/obj/structure/girder/cult/girder = teleport_to_first(player, /obj/structure/girder/cult)
+	var/obj/structure/girder/girder = teleport_to_first(player, /obj/structure/girder/cult)
 	player.puppet.mind.add_antag_datum(/datum/antagonist/cultist)
-	var/obj/item/melee/cultblade/dagger/dagger = player.spawn_obj_in_hand(/obj/item/melee/cultblade/dagger)
+	dagger = player.spawn_obj_in_hand(/obj/item/melee/cultblade/dagger)
 	player.click_on(girder)
 	TEST_ASSERT_LAST_CHATLOG(player, "You demolish [girder].")
 	qdel(dagger)
 
-	var/obj/structure/girder/girder = teleport_to_first(player, /obj/structure/girder)
+	girder = teleport_to_first(player, /obj/structure/girder)
+	player.spawn_fast_tool(/obj/item/stack/sheet/metal{amount = 2})
+	player.click_on(girder)
+	TEST_ASSERT_LAST_CHATLOG(player, "You add the plating.")
+
+	girder = teleport_to_first(player, /obj/structure/girder)
 	var/obj/item/gun/energy/plasmacutter/cutter = player.spawn_fast_tool(/obj/item/gun/energy/plasmacutter)
 	player.click_on(girder)
 	TEST_ASSERT_LAST_CHATLOG(player, "You slice apart the girder.")
-
-	girder = teleport_to_first(player, /obj/structure/girder)
-	var/obj/metal = player.spawn_obj_in_hand(/obj/item/stack/sheet/metal/fifty/)
+	qdel(cutter)
