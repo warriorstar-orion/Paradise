@@ -176,3 +176,6 @@
 	puppet.ClickOn(puppet)
 	puppet.next_click = world.time
 	puppet.next_move = world.time
+
+/datum/test_puppeteer/proc/drop_held_item()
+	puppet.drop_item_to_ground(puppet.get_active_hand())
