@@ -225,7 +225,7 @@
 	honk()
 	..()
 
-/obj/structure/statue/bananium/attackby__legacy__attackchain(obj/item/W, mob/user, params)
+/obj/structure/statue/bananium/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	honk()
 	return ..()
 
