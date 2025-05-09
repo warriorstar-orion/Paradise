@@ -71,6 +71,10 @@
 /obj/structure/largecrate,
 /turf/simulated/floor/plasteel,
 /area/game_test)
+"Y" = (
+/obj/structure/girder,
+/turf/simulated/floor/plasteel,
+/area/game_test)
 "Z" = (
 /turf/space,
 /turf/simulated/floor/plasteel,
@@ -163,7 +167,7 @@ H
 a
 X
 a
-a
+Y
 a
 a
 a
@@ -203,7 +207,7 @@ K
 a
 L
 a
-a
+Y
 a
 a
 a
@@ -243,7 +247,7 @@ D
 a
 M
 a
-a
+Y
 a
 a
 a
