@@ -6,8 +6,16 @@
 /obj/structure/cult/functional/forge,
 /turf/simulated/floor/plasteel,
 /area/game_test)
+"j" = (
+/obj/structure/table_frame,
+/turf/simulated/floor/plasteel,
+/area/game_test)
 "k" = (
 /obj/structure/girder/cult,
+/turf/simulated/floor/plasteel,
+/area/game_test)
+"l" = (
+/obj/structure/guillotine,
 /turf/simulated/floor/plasteel,
 /area/game_test)
 "m" = (
@@ -16,6 +24,10 @@
 /area/game_test)
 "o" = (
 /obj/structure/barricade/wooden,
+/turf/simulated/floor/plasteel,
+/area/game_test)
+"s" = (
+/obj/structure/girder,
 /turf/simulated/floor/plasteel,
 /area/game_test)
 "u" = (
@@ -72,7 +84,7 @@
 /turf/simulated/floor/plasteel,
 /area/game_test)
 "Y" = (
-/obj/structure/girder,
+/obj/structure/table,
 /turf/simulated/floor/plasteel,
 /area/game_test)
 "Z" = (
@@ -129,7 +141,7 @@ u
 a
 m
 a
-a
+j
 a
 a
 a
@@ -167,9 +179,9 @@ H
 a
 X
 a
+s
+a
 Y
-a
-a
 a
 a
 a
@@ -207,7 +219,7 @@ K
 a
 L
 a
-Y
+s
 a
 a
 a
@@ -247,7 +259,7 @@ D
 a
 M
 a
-Y
+s
 a
 a
 a
@@ -287,7 +299,7 @@ o
 a
 w
 a
-a
+l
 a
 a
 a

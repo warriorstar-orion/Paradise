@@ -5,6 +5,7 @@
 	desc = "A block of stone used to sharpen things."
 	w_class = WEIGHT_CLASS_SMALL
 	usesound = 'sound/items/screwdriver.ogg'
+	toolspeed = 0.7 SECONDS
 	var/used = FALSE
 	var/increment = 4
 	var/max = 30
