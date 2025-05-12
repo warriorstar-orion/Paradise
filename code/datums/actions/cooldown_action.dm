@@ -63,7 +63,7 @@
 	if(original)
 		create_sequence_actions()
 
-/datum/action/cooldown/create_button()
+/datum/action/cooldown/CreateButton()
 	var/atom/movable/screen/movable/action_button/button = ..()
 	button.maptext = ""
 	button.maptext_x = 4
@@ -72,7 +72,10 @@
 	button.maptext_height = 16
 	return button
 
-/datum/action/cooldown/update_button_status(atom/movable/screen/movable/action_button/button, force = FALSE)
+/datum/action/cooldown/UpdateButton(atom/movable/screen/movable/action_button/button, status_only, force)
+// 	. = ..()
+
+// /datum/action/cooldown/update_button_status(atom/movable/screen/movable/action_button/button, force = FALSE)
 	. = ..()
 	var/time_left = max(next_use_time - world.time, 0)
 	if(!text_cooldown || !owner || time_left == 0 || time_left >= COOLDOWN_NO_DISPLAY_TIME)
@@ -110,14 +113,14 @@
 	return click_to_activate && current_button.our_hud?.mymob?.click_intercept == src
 
 /datum/action/cooldown/Destroy()
-	QDEL_LIST(initialized_actions)
+	QDEL_LIST_CONTENTS(initialized_actions)
 	return ..()
 
 /datum/action/cooldown/Grant(mob/granted_to)
 	. = ..()
 	if(!owner)
 		return
-	build_all_button_icons()
+	UpdateButtons()
 	if(next_use_time > world.time)
 		START_PROCESSING(SSfastprocess, src)
 	RegisterSignal(granted_to, COMSIG_HOSTILE_PRE_ATTACKINGTARGET, PROC_REF(handle_melee_attack))
@@ -140,7 +143,7 @@
 	if(!LAZYLEN(sequence_actions))
 		return
 	// remove existing actions if any
-	QDEL_LIST(initialized_actions)
+	QDEL_LIST_CONTENTS(initialized_actions)
 	initialized_actions = list()
 	for(var/type_path in sequence_actions)
 		var/datum/action/cooldown/ability = new type_path(target, original = FALSE)
@@ -174,7 +177,7 @@
 	// Don't start a cooldown if we have a cooldown time of 0 seconds
 	if(next_use_time == world.time)
 		return
-	build_all_button_icons(UPDATE_BUTTON_STATUS)
+	UpdateButtons(status_only = TRUE)
 	START_PROCESSING(SSfastprocess, src)
 
 /// Starts a cooldown time for other abilities that share a cooldown with this. Has some niche usage with more complicated attack ai!
@@ -193,17 +196,17 @@
 /// Resets the cooldown of this ability
 /datum/action/cooldown/proc/ResetCooldown()
 	next_use_time = world.time
-	build_all_button_icons(UPDATE_BUTTON_STATUS)
+	UpdateButtons(status_only = TRUE)
 
 /// Re-enables this cooldown action
 /datum/action/cooldown/proc/enable()
 	action_disabled = FALSE
-	build_all_button_icons(UPDATE_BUTTON_STATUS)
+	UpdateButtons(status_only = TRUE)
 
 /// Disables this cooldown action
 /datum/action/cooldown/proc/disable()
 	action_disabled = TRUE
-	build_all_button_icons(UPDATE_BUTTON_STATUS)
+	UpdateButtons(status_only = TRUE)
 
 /// Re-enables all cooldown actions
 /datum/action/cooldown/proc/enable_cooldown_actions()
@@ -295,11 +298,11 @@
 
 /datum/action/cooldown/process()
 	if(!owner || (next_use_time - world.time) <= 0)
-		build_all_button_icons(UPDATE_BUTTON_STATUS)
+		UpdateButtons(status_only = TRUE)
 		STOP_PROCESSING(SSfastprocess, src)
 		return
 
-	build_all_button_icons(UPDATE_BUTTON_STATUS)
+	UpdateButtons(status_only = TRUE)
 
 /**
  * Set our action as the click override on the passed mob.
@@ -310,8 +313,9 @@
 	on_who.click_intercept = src
 	if(ranged_mousepointer)
 		on_who.client?.mouse_override_icon = ranged_mousepointer
-		on_who.update_mouse_pointer()
-	build_all_button_icons(UPDATE_BUTTON_STATUS)
+		#warn mouse pointer shits
+		// on_who.update_mouse_pointer()
+	UpdateButtons(status_only = TRUE)
 	return TRUE
 
 /**
@@ -326,8 +330,9 @@
 	on_who.click_intercept = null
 	if(ranged_mousepointer)
 		on_who.client?.mouse_override_icon = initial(on_who.client?.mouse_override_icon)
-		on_who.update_mouse_pointer()
-	build_all_button_icons(UPDATE_BUTTON_STATUS)
+		#warn mouse pointer shits
+		// on_who.update_mouse_pointer()
+	UpdateButtons(status_only = TRUE)
 	return TRUE
 
 /// Formats the action to be returned to the stat panel.
