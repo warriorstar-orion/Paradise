@@ -56,3 +56,21 @@
 		if(length(speak_verbs))
 			speak_verb = pick(speak_verbs)
 		controller.queue_behavior(/datum/ai_behavior/perform_speech, pick(speak), sound_to_play, speak_verb)
+
+/datum/ai_planning_subtree/random_speech/blackboard //literal tower of babel, subtree form
+	speech_chance = 1
+
+/datum/ai_planning_subtree/random_speech/blackboard/select_behaviors(datum/ai_controller/controller, seconds_per_tick)
+	var/list/speech_lines = controller.blackboard[BB_BASIC_MOB_SPEAK_LINES]
+	if(isnull(speech_lines))
+		return ..()
+
+	// Note to future developers: this behaviour a singleton so this probably doesn't work as you would expect
+	// The whole speech tree really needs to be refactored because this isn't how we use AI data these days
+	speak = speech_lines[BB_EMOTE_SAY] || list()
+	emote_see = speech_lines[BB_EMOTE_SEE] || list()
+	emote_hear = speech_lines[BB_EMOTE_HEAR] || list()
+	sound = speech_lines[BB_EMOTE_SOUND] || list()
+	speech_chance = speech_lines[BB_SPEAK_CHANCE] ? speech_lines[BB_SPEAK_CHANCE] : initial(speech_chance)
+
+	return ..()

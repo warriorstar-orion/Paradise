@@ -455,6 +455,10 @@
 	var/middle = length(L) / 2 + 1 // Copy is first,second-1
 	return mergeLists(sortList(L.Copy(0,middle)), sortList(L.Copy(middle))) //second parameter null = to end of list
 
+///sort any value in a list
+/proc/sort_list(list/list_to_sort, cmp = GLOBAL_PROC_REF(cmp_text_asc))
+	return sortTim(list_to_sort.Copy(), cmp)
+
 /proc/mergeLists(list/L, list/R)
 	var/Li=1
 	var/Ri=1
