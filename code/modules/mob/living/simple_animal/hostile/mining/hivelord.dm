@@ -197,7 +197,10 @@
 	dwarf_mob = TRUE
 
 /mob/living/simple_animal/hostile/asteroid/hivelord/legion/tendril
-	fromtendril = TRUE
+
+/mob/living/simple_animal/hostile/asteroid/hivelord/legion/tendril/Initialize(mapload)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_FROM_TENDRIL, "[UID()]")
 
 /mob/living/simple_animal/hostile/asteroid/hivelord/legion/death(gibbed)
 	visible_message("<span class='warning'>The skulls on [src] wail in anger as they flee from their dying host!</span>")
@@ -206,7 +209,7 @@
 		if(stored_mob)
 			stored_mob.forceMove(get_turf(src))
 			stored_mob = null
-		else if(fromtendril)
+		else if(HAS_TRAIT(src, TRAIT_FROM_TENDRIL))
 			new /obj/effect/mob_spawn/human/corpse/charredskeleton(T)
 		else if(dwarf_mob)
 			new /obj/effect/mob_spawn/human/corpse/damaged/legioninfested/dwarf(T)
@@ -271,7 +274,10 @@
 	can_infest_dead = TRUE
 
 /mob/living/simple_animal/hostile/asteroid/hivelord/legion/advanced/tendril
-	fromtendril = TRUE
+
+/mob/living/simple_animal/hostile/asteroid/hivelord/legion/advanced/tendril/Initialize(mapload)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_FROM_TENDRIL, "[UID()]")
 
 //Legion that spawns Legions
 /mob/living/simple_animal/hostile/asteroid/big_legion
