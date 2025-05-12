@@ -5,8 +5,8 @@
  */
 /datum/action/guardian
 	name = "Generic guardian host action"
-	button_overlay_icon = 'icons/mob/guardian.dmi'
-	button_overlay_icon_state = "base"
+	button_icon = 'icons/mob/guardian.dmi'
+	button_icon_state = "base"
 	var/mob/living/simple_animal/hostile/guardian/guardian
 
 /datum/action/guardian/Grant(mob/M, mob/living/simple_animal/hostile/guardian/G)
@@ -24,7 +24,7 @@
 /datum/action/guardian/communicate
 	name = "Communicate"
 	desc = "Communicate telepathically with your guardian."
-	button_overlay_icon_state = "communicate"
+	button_icon_state = "communicate"
 
 /datum/action/guardian/communicate/Trigger(left_click)
 	var/input = tgui_input_text(owner, "Enter a message to tell your guardian:", "Message")
@@ -50,7 +50,7 @@
 /datum/action/guardian/recall
 	name = "Recall Guardian"
 	desc = "Forcibly recall your guardian."
-	button_overlay_icon_state = "recall"
+	button_icon_state = "recall"
 
 /datum/action/guardian/recall/Trigger(left_click)
 	guardian.Recall()
@@ -63,7 +63,7 @@
 /datum/action/guardian/reset_guardian
 	name = "Replace Guardian Player"
 	desc = "Replace your guardian's player with a ghost. This can only be done once."
-	button_overlay_icon_state = "reset"
+	button_icon_state = "reset"
 	var/cooldown_timer
 
 /datum/action/guardian/reset_guardian/IsAvailable()
