@@ -1,3 +1,10 @@
+/// The most basic AI tree which just finds a guy and then runs at them to click them
+/datum/ai_controller/basic_controller/simple/simple_hostile
+	planning_subtrees = list(
+		/datum/ai_planning_subtree/simple_find_target,
+		/datum/ai_planning_subtree/basic_melee_attack_subtree,
+	)
+
 /// Find a target, walk at target, attack intervening obstacles
 /datum/ai_controller/basic_controller/simple/simple_hostile_obstacles
 	planning_subtrees = list(
@@ -131,4 +138,22 @@
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/find_nearest_thing_which_attacked_me_to_flee,
 		/datum/ai_planning_subtree/flee_target,
+	)
+
+/// Does what it is told and protects da boss
+/datum/ai_controller/basic_controller/simple/simple_goon
+	blackboard = list(
+		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic/not_friends,
+		BB_PET_TARGETING_STRATEGY = /datum/targeting_strategy/basic/not_friends,
+	)
+
+	planning_subtrees = list(
+		/datum/ai_planning_subtree/pet_planning,
+	)
+
+/// Literally does nothing except random speedh
+/datum/ai_controller/basic_controller/talk
+	idle_behavior = null
+	planning_subtrees = list(
+		/datum/ai_planning_subtree/random_speech/blackboard,
 	)

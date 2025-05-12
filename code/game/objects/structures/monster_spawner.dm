@@ -53,7 +53,12 @@
 	max_mobs = 3
 	icon = 'icons/mob/nest.dmi'
 	spawn_text = "crawls out of"
-	mob_types = list(/mob/living/basic/mining/goldgrub, /mob/living/simple_animal/hostile/asteroid/goliath, /mob/living/basic/mining/hivelord, /mob/living/basic/mining/basilisk)
+	mob_types = list(
+		/mob/living/basic/mining/goldgrub,
+		/mob/living/basic/mining/goliath,
+		/mob/living/basic/mining/hivelord,
+		/mob/living/basic/mining/basilisk,
+	)
 	faction = list("mining")
 
 /obj/structure/spawner/mining/goldgrub
@@ -64,7 +69,7 @@
 /obj/structure/spawner/mining/goliath
 	name = "goliath den"
 	desc = "A den housing a nest of goliaths, oh god why?"
-	mob_types = list(/mob/living/simple_animal/hostile/asteroid/goliath)
+	mob_types = list(/mob/living/basic/mining/goliath)
 
 /obj/structure/spawner/mining/goliath/space
 	mob_types = list(/mob/living/simple_animal/hostile/asteroid/goliath/space)

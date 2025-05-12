@@ -15,9 +15,9 @@
 /// Key defining the targeting strategy for things to flee from
 #define BB_FLEE_TARGETING_STRATEGY "BB_FLEE_TARGETING_STRATEGY"
 /// are we ready to breed?
-#define BB_BREED_READY "BB_breed_ready"
+#define BB_BREED_READY "BB_BREED_READY"
 /// maximum kids we can have
-#define BB_MAX_CHILDREN "BB_max_children"
+#define BB_MAX_CHILDREN "BB_MAX_CHILDREN"
 /// Key defining how far we attempt to get away from something we're fleeing from
 #define BB_BASIC_MOB_FLEE_DISTANCE "BB_BASIC_FLEE_DISTANCE"
 #define DEFAULT_BASIC_FLEE_DISTANCE 9
@@ -50,9 +50,9 @@
 ///List of mobs who have damaged us
 #define BB_BASIC_MOB_RETALIATE_LIST "BB_BASIC_MOB_SHITLIST"
 ///Blackboard key for a whitelist typecache of "things we can target while trying to move"
-#define BB_OBSTACLE_TARGETING_WHITELIST "BB_targeting_whitelist"
+#define BB_OBSTACLE_TARGETING_WHITELIST "BB_TARGETING_WHITELIST"
 /// some behaviors that check current_target also set this on deep crit mobs
-#define BB_BASIC_MOB_EXECUTION_TARGET "BB_basic_execution_target"
+#define BB_BASIC_MOB_EXECUTION_TARGET "BB_BASIC_EXECUTION_TARGET"
 
 //Hunting BB keys
 
@@ -66,26 +66,26 @@
 
 // Finding adult mob
 /// key holds the adult we found
-#define BB_FOUND_MOM "BB_found_mom"
+#define BB_FOUND_MOM "BB_FOUND_MOM"
 /// list of types of mobs we will look for
-#define BB_FIND_MOM_TYPES "BB_find_mom_types"
+#define BB_FIND_MOM_TYPES "BB_FIND_MOM_TYPES"
 /// list of types of mobs we must ignore
-#define BB_IGNORE_MOM_TYPES "BB_ignore_mom_types"
+#define BB_IGNORE_MOM_TYPES "BB_IGNORE_MOM_TYPES"
 
 // Baby-making blackboard
 /// Types of animal we can make babies with.
-#define BB_BABIES_PARTNER_TYPES "BB_babies_partner"
+#define BB_BABIES_PARTNER_TYPES "BB_BABIES_PARTNER"
 /// Types of animal that we make as a baby.
-#define BB_BABIES_CHILD_TYPES "BB_babies_child"
+#define BB_BABIES_CHILD_TYPES "BB_BABIES_CHILD"
 /// Current partner target
-#define BB_BABIES_TARGET "BB_babies_target"
+#define BB_BABIES_TARGET "BB_BABIES_TARGET"
 /// Timeout for finding partners when theres too many of us in 1 location
-#define BB_PARTNER_SEARCH_TIMEOUT "BB_partner_search_timeout"
+#define BB_PARTNER_SEARCH_TIMEOUT "BB_PARTNER_SEARCH_TIMEOUT"
 
 /// Chance to randomly acquire a new target
-#define BB_RANDOM_AGGRO_CHANCE "BB_random_aggro_chance"
+#define BB_RANDOM_AGGRO_CHANCE "BB_RANDOM_AGGRO_CHANCE"
 /// Chance to randomly drop all of our targets
-#define BB_RANDOM_DEAGGRO_CHANCE "BB_random_deaggro_chance"
+#define BB_RANDOM_DEAGGRO_CHANCE "BB_RANDOM_DEAGGRO_CHANCE"
 
 
 // Food and eating
@@ -118,9 +118,9 @@
 
 // Ranged
 /// Minimum range to keep target within
-#define BB_RANGED_SKIRMISH_MIN_DISTANCE "BB_ranged_skirmish_min_distance"
+#define BB_RANGED_SKIRMISH_MIN_DISTANCE "BB_RANGED_SKIRMISH_MIN_DISTANCE"
 /// Maximum range to keep target within
-#define BB_RANGED_SKIRMISH_MAX_DISTANCE "BB_ranged_skirmish_max_distance"
+#define BB_RANGED_SKIRMISH_MAX_DISTANCE "BB_RANGED_SKIRMISH_MAX_DISTANCE"
 
 // Tipped blackboards
 
@@ -168,11 +168,11 @@
 
 // Legion
 /// Corpse we have consumed
-#define BB_LEGION_CORPSE "legion_corpse"
+#define BB_LEGION_CORPSE "LEGION_CORPSE"
 /// Things our target recently said
-#define BB_LEGION_RECENT_LINES "legion_recent_lines"
+#define BB_LEGION_RECENT_LINES "LEGION_RECENT_LINES"
 /// The creator of our legion skull
-#define BB_LEGION_BROOD_CREATOR "legion_brood_creator"
+#define BB_LEGION_BROOD_CREATOR "LEGION_BROOD_CREATOR"
 
 /// Blackboard field for the most recent command the pet was given
 #define BB_ACTIVE_PET_COMMAND "BB_ACTIVE_PET_COMMAND"
@@ -195,7 +195,7 @@
 // Misc
 
 /// Target define for cleaning
-#define BB_CLEAN_TARGET "BB_clean_target"
+#define BB_CLEAN_TARGET "BB_CLEAN_TARGET"
 
 /// For /datum/ai_behavior/find_potential_targets, what if any field are we using currently
 #define BB_FIND_TARGETS_FIELD(type) "BB_FIND_TARGETS_FIELD_[type]"
@@ -213,18 +213,29 @@
 
 // Giant Spiders
 /// Our webbing target
-#define BB_SPIDER_WEB_TARGET "BB_spider_web_target"
+#define BB_SPIDER_WEB_TARGET "BB_SPIDER_WEB_TARGET"
 /// Key where we store the web-spinning ability
-#define BB_SPIDER_WEB_ACTION "BB_spider_web_action"
+#define BB_SPIDER_WEB_ACTION "BB_SPIDER_WEB_ACTION"
 /// Our wrapping target
-#define BB_SPIDER_WRAP_TARGET "BB_spider_wrap_target"
+#define BB_SPIDER_WRAP_TARGET "BB_SPIDER_WRAP_TARGET"
 /// Key where we define the wrapping ability
-#define BB_SPIDER_WRAP_ACTION "BB_spider_wrap_action"
+#define BB_SPIDER_WRAP_ACTION "BB_SPIDER_WRAP_ACTION"
 /// Key where we define the egg laying ability
-#define BB_SPIDER_EGG_LAYING_ACTION "BB_spider_egg_laying_action"
+#define BB_SPIDER_EGG_LAYING_ACTION "BB_SPIDER_EGG_LAYING_ACTION"
 /// Key used by changelings who control spiders
-#define BB_CHANGELING_SPIDER_ORDER "BB_changeling_spider_order"
+#define BB_CHANGELING_SPIDER_ORDER "BB_CHANGELING_SPIDER_ORDER"
 
 // Malf Drones
 /// Are we active?
 #define BB_MALF_DRONE_PASSIVE "BB_MALF_DRONE_PASSIVE"
+#define BB_ORE_IGNORE_TYPES "BB_ORE_IGNORE_TYPES"
+
+/// Minimum range to keep target within
+#define BB_RANGED_SKIRMISH_MIN_DISTANCE "BB_RANGED_SKIRMISH_MIN_DISTANCE"
+/// Maximum range to keep target within
+#define BB_RANGED_SKIRMISH_MAX_DISTANCE "BB_RANGED_SKIRMISH_MAX_DISTANCE"
+
+/// Chance to randomly acquire a new target
+#define BB_RANDOM_AGGRO_CHANCE "BB_RANDOM_AGGRO_CHANCE"
+/// Chance to randomly drop all of our targets
+#define BB_RANDOM_DEAGGRO_CHANCE "BB_RANDOM_DEAGGRO_CHANCE"

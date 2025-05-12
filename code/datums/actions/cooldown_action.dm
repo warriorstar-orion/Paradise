@@ -2,6 +2,7 @@
 
 /// Preset for an action that has a cooldown.
 /datum/action/cooldown
+	check_flags = NONE
 	transparent_when_unavailable = FALSE
 
 	/// The actual next time this ability can be used
@@ -308,6 +309,9 @@
 
 	on_who.click_interceptor = src
 	// TODO: Support custom mouse cursors for click abilities
+	if(ranged_mousepointer)
+		on_who.client?.mouse_override_icon = ranged_mousepointer
+		on_who.update_mouse_pointer()
 	build_all_button_icons(UPDATE_BUTTON_STATUS)
 	return TRUE
 
@@ -321,7 +325,9 @@
 	SHOULD_CALL_PARENT(TRUE)
 
 	on_who.click_interceptor = null
-	// TODO: Support unsetting custom mouse cursors for click abilities
+	if(ranged_mousepointer)
+		on_who.client?.mouse_override_icon = initial(on_who.client?.mouse_override_icon)
+		on_who.update_mouse_pointer()
 	build_all_button_icons(UPDATE_BUTTON_STATUS)
 	return TRUE
 
