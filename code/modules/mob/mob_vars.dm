@@ -251,4 +251,9 @@
 	/// Controls whether they can say some symbols.
 	var/speaks_ooc = FALSE
 
+	///Allows a datum to intercept all click calls this mob is the source of
+	var/datum/click_intercept
+	#warn FUCKING HORRID GET RID OF THIS
+	var/datum/component/spawner/nest
+
 	new_attack_chain = TRUE

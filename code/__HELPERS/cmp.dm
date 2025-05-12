@@ -34,6 +34,9 @@
 /proc/cmp_filter_data_priority(list/A, list/B)
 	return A["priority"] - B["priority"]
 
+/proc/cmp_typepaths_asc(A, B)
+	return sorttext("[B]", "[A]")
+
 /proc/cmp_timer(datum/timedevent/a, datum/timedevent/b)
 	return a.timeToRun - b.timeToRun
 
