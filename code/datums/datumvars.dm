@@ -816,6 +816,26 @@
 			return
 		offer_control(M)
 
+	else if(href_list["give_ai_controller"])
+		var/mob/my_guy = locateUID(href_list["give_ai_controller"])
+		if(!istype(my_guy))
+			to_chat(usr, "This can only be used on instances of type /mob")
+			return
+
+		var/static/list/controllers = subtypesof(/datum/admin_ai_template)
+		var/static/list/controllers_by_name = list()
+		if (!length(controllers_by_name))
+			for (var/datum/admin_ai_template/template as anything in controllers)
+				controllers_by_name["[initial(template.name)]"] = template
+
+		var/chosen = tgui_input_list(usr, "Which template should we apply?", "Select Template", controllers_by_name)
+		if (isnull(chosen))
+			return
+
+		var/chosen_type = controllers_by_name[chosen]
+		var/datum/admin_ai_template/using_template = new chosen_type
+		using_template.apply(my_guy, usr)
+
 	else if(href_list["delete"])
 		if(!check_rights(R_DEBUG, 0))
 			return
