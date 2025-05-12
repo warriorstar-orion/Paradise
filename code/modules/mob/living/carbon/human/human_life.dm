@@ -184,7 +184,7 @@
 
 		if(null_internals) //something wants internals gone
 			internal = null //so do it
-			update_action_buttons_icon()
+			update_mob_action_buttons()
 
 	if(internal) //check for hud updates every time this is called
 		return internal.remove_air_volume(volume_needed) //returns the valid air

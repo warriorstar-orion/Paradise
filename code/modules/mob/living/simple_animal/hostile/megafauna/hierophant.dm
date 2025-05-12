@@ -92,29 +92,29 @@ Difficulty: Hard
 
 /datum/action/innate/megafauna_attack/blink
 	name = "Blink To Target"
-	button_overlay_icon = 'icons/mob/actions/actions.dmi'
-	button_overlay_icon_state = "sniper_zoom"
+	button_icon = 'icons/mob/actions/actions.dmi'
+	button_icon_state = "sniper_zoom"
 	chosen_message = "<span class='colossus'>You are now blinking to your target.</span>"
 	chosen_attack_num = 1
 
 /datum/action/innate/megafauna_attack/chaser_swarm
 	name = "Chaser Swarm"
-	button_overlay_icon = 'icons/effects/effects.dmi'
-	button_overlay_icon_state = "hierophant_squares_indefinite"
+	button_icon = 'icons/effects/effects.dmi'
+	button_icon_state = "hierophant_squares_indefinite"
 	chosen_message = "<span class='colossus'>You are firing a chaser swarm at your target.</span>"
 	chosen_attack_num = 2
 
 /datum/action/innate/megafauna_attack/cross_blasts
 	name = "Cross Blasts"
-	button_overlay_icon = 'icons/effects/effects.dmi'
-	button_overlay_icon_state = "hierophant_blast_indefinite"
+	button_icon = 'icons/effects/effects.dmi'
+	button_icon_state = "hierophant_blast_indefinite"
 	chosen_message = "<span class='colossus'>You are now firing cross blasts at your target.</span>"
 	chosen_attack_num = 3
 
 /datum/action/innate/megafauna_attack/blink_spam
 	name = "Blink Chase"
-	button_overlay_icon = 'icons/obj/lavaland/artefacts.dmi'
-	button_overlay_icon_state = "hierophant_club_ready_beacon"
+	button_icon = 'icons/obj/lavaland/artefacts.dmi'
+	button_icon_state = "hierophant_club_ready_beacon"
 	chosen_message = "<span class='colossus'>You are now repeatedly blinking at your target.</span>"
 	chosen_attack_num = 4
 
@@ -823,7 +823,7 @@ Difficulty: Hard
 				new /obj/effect/temp_visual/hierophant/telegraph/teleport(get_turf(src), user)
 				to_chat(user, "<span class='hierophant_warning'>You collect [src], reattaching it to the club!</span>")
 				club.beacon = null
-				user.update_action_buttons_icon()
+				user.update_mob_action_buttons()
 				qdel(src)
 			else
 				club.timer = world.time

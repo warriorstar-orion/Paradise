@@ -1,7 +1,7 @@
 //Preset for spells
 /datum/action/spell_action
 	check_flags = 0
-	button_background_icon_state = "bg_spell"
+	background_icon_state = "bg_spell"
 	var/recharge_text_color = "#FFFFFF"
 
 /datum/action/spell_action/New(Target)
@@ -10,12 +10,11 @@
 	S.action = src
 	name = S.name
 	desc = S.desc
-	button_overlay_icon = S.action_icon
-	button_background_icon = S.action_background_icon
-	button_overlay_icon_state = S.action_icon_state
-	button_background_icon_state = S.action_background_icon_state
-	UpdateButtons()
-
+	button_icon = S.action_icon
+	background_icon = S.action_background_icon
+	button_icon_state = S.action_icon_state
+	background_icon_state = S.action_background_icon_state
+	build_all_button_icons()
 
 /datum/action/spell_action/Destroy()
 	var/datum/spell/S = target
@@ -46,25 +45,18 @@
 	var/datum/spell/spell = target
 
 	if(owner)
-		return spell.can_cast(owner, show_message = TRUE)
+		return spell.can_cast(owner)
 	return FALSE
 
-/datum/action/spell_action/apply_unavailable_effect(atom/movable/screen/movable/action_button/button)
-	var/datum/spell/S = target
-	if(!istype(S))
-		return ..()
+/datum/action/spell_action/update_button_status(atom/movable/screen/movable/action_button/current_button, force)
+	current_button.cut_overlay(current_button.unavailable_effect_overlay)
+	current_button.cut_overlay(current_button.button_text_image)
 
-	var/alpha = S.cooldown_handler.get_cooldown_alpha()
+	if(should_draw_cooldown())
+		var/datum/spell/S = target
+		current_button.unavailable_effect_overlay.alpha = S.cooldown_handler.get_cooldown_alpha()
 
-	var/image/img = image('icons/mob/screen_white.dmi', icon_state = "template")
-	img.alpha = alpha
-	img.appearance_flags = RESET_COLOR | RESET_ALPHA
-	img.color = "#000000"
-	img.plane = FLOAT_PLANE + 1
-	button.add_overlay(img)
-	// Make a holder for the charge text
-	var/image/count_down_holder = image('icons/effects/effects.dmi', icon_state = "nothing")
-	count_down_holder.plane = FLOAT_PLANE + 1.1
-	var/text = S.cooldown_handler.cooldown_info()
-	count_down_holder.maptext = "<div style=\"font-size:6pt;color:[recharge_text_color];font:'Small Fonts';text-align:center;\" valign=\"bottom\">[text]</div>"
-	button.add_overlay(count_down_holder)
+		var/text = S.cooldown_handler.cooldown_info()
+		current_button.button_text_image.maptext = "<div style=\"font-size:6pt;color:[recharge_text_color];font:'Small Fonts';text-align:center;\" valign=\"bottom\">[text]</div>"
+		current_button.add_overlay(current_button.unavailable_effect_overlay)
+		current_button.add_overlay(current_button.button_text_image)

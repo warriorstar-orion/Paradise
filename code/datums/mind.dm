@@ -1042,7 +1042,7 @@
 					return
 				var/datum/antagonist/vampire/vamp = has_antag_datum(/datum/antagonist/vampire)
 				vamp.bloodusable = new_usable
-				current.update_action_buttons_icon()
+				current.update_mob_action_buttons()
 				log_admin("[key_name(usr)] has set [key_name(current)]'s usable blood to [new_usable].")
 				message_admins("[key_name_admin(usr)] has set [key_name_admin(current)]'s usable blood to [new_usable].")
 

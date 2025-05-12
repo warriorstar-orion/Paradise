@@ -215,7 +215,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	else if(!QDELETED(item))
 		carbon_source.internal = item
 
-	carbon_source.update_action_buttons_icon()
+	carbon_source.update_mob_action_buttons()
 
 	carbon_source.visible_message(
 		"<span class='danger'>[user] [isnull(carbon_source.internal) ? "closes": "opens"] the valve on [source]'s [item.name].</span>",

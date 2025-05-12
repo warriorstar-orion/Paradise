@@ -151,7 +151,7 @@
 				playsound(T,'sound/magic/blind.ogg', 200, TRUE, -4)
 				new /obj/effect/temp_visual/hierophant/telegraph/teleport(T, user)
 				beacon = new/obj/effect/hierophant(T)
-				user.update_action_buttons_icon()
+				user.update_mob_action_buttons()
 				user.visible_message("<span class='hierophant_warning'>[user] places a strange machine beneath [user.p_their()] feet!</span>", \
 				"<span class='hierophant'>You detach the hierophant beacon, allowing you to teleport yourself and any of your allies to it at any time! Beware! The Horrors of Lavaland can still be teleported with you.</span>\n\
 				<span class='notice'>You can remove the beacon to place it again by striking it with the club.</span>")
@@ -174,7 +174,7 @@
 		to_chat(user, "<span class='warning'>You don't have enough space to teleport from here!</span>")
 		return
 	teleporting = TRUE //start channel
-	user.update_action_buttons_icon()
+	user.update_mob_action_buttons()
 	user.visible_message("<span class='hierophant_warning'>[user] starts to glow faintly...</span>")
 	timer = world.time + 50
 	INVOKE_ASYNC(src, PROC_REF(prepare_icon_update))
@@ -187,7 +187,7 @@
 		if(is_blocked_turf(T, TRUE))
 			teleporting = FALSE
 			to_chat(user, "<span class='warning'>The beacon is blocked by something, preventing teleportation!</span>")
-			user.update_action_buttons_icon()
+			user.update_mob_action_buttons()
 			timer = world.time
 			INVOKE_ASYNC(src, PROC_REF(prepare_icon_update))
 			beacon.icon_state = "hierophant_tele_off"
@@ -199,7 +199,7 @@
 		if(!do_after(user, 3, target = user) || !user || !beacon || QDELETED(beacon)) //no walking away shitlord
 			teleporting = FALSE
 			if(user)
-				user.update_action_buttons_icon()
+				user.update_mob_action_buttons()
 			timer = world.time
 			INVOKE_ASYNC(src, PROC_REF(prepare_icon_update))
 			if(beacon)
@@ -208,7 +208,7 @@
 		if(is_blocked_turf(T, TRUE))
 			teleporting = FALSE
 			to_chat(user, "<span class='warning'>The beacon is blocked by something, preventing teleportation!</span>")
-			user.update_action_buttons_icon()
+			user.update_mob_action_buttons()
 			timer = world.time
 			INVOKE_ASYNC(src, PROC_REF(prepare_icon_update))
 			beacon.icon_state = "hierophant_tele_off"
@@ -236,7 +236,7 @@
 		beacon.icon_state = "hierophant_tele_off"
 	teleporting = FALSE
 	if(user)
-		user.update_action_buttons_icon()
+		user.update_mob_action_buttons()
 
 /obj/item/hierophant_club/proc/teleport_mob(turf/source, mob/M, turf/target, mob/user)
 	var/turf/turf_to_teleport_to = get_step(target, get_dir(source, M)) //get position relative to caster

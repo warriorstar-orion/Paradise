@@ -182,7 +182,7 @@ GLOBAL_VAR_INIT(deathsquad_sent, FALSE)
 		new_commando.mind.key = ghost_mob.key
 		new_commando.key = ghost_mob.key
 		dust_if_respawnable(ghost_mob)
-		new_commando.update_action_buttons_icon()
+		new_commando.update_mob_action_buttons()
 		if(nuke_code)
 			new_commando.mind.store_memory("<b>Nuke Code:</b> <span class='warning'>[nuke_code].</span>")
 		new_commando.mind.store_memory("<b>Mission:</b> <span class='warning'>[mission].</span>")

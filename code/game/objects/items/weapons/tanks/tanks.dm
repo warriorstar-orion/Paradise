@@ -70,7 +70,7 @@
 			else
 				to_chat(C, "<span class='notice'>You open \the [src] valve.</span>")
 		C.internal = src
-	C.update_action_buttons_icon()
+	C.update_mob_action_buttons()
 
 
 /obj/item/tank/examine(mob/user)

@@ -120,12 +120,12 @@
 /mob/living/proc/on_ui_blocked_trait_gain(datum/source)
 	SIGNAL_HANDLER
 	unset_machine()
-	update_action_buttons_icon()
+	update_mob_action_buttons()
 
 /// Called when [TRAIT_UI_BLOCKED] is removed from the mob.
 /mob/living/proc/on_ui_blocked_trait_loss(datum/source)
 	SIGNAL_HANDLER
-	update_action_buttons_icon()
+	update_mob_action_buttons()
 
 
 /// Called when [TRAIT_CANNOT_PULL] is added to the mob.

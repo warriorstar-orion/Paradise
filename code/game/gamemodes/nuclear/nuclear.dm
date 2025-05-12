@@ -297,7 +297,7 @@
 				synd_mob.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/syndicate(synd_mob), ITEM_SLOT_MASK)
 				synd_mob.equip_to_slot_or_del(new /obj/item/tank/internals/emergency_oxygen/double/vox(synd_mob), ITEM_SLOT_LEFT_HAND)
 				synd_mob.internal = synd_mob.l_hand
-				synd_mob.update_action_buttons_icon()
+				synd_mob.update_mob_action_buttons()
 
 			if("Plasmaman")
 				synd_mob.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/syndicate(synd_mob), ITEM_SLOT_MASK)
@@ -305,7 +305,7 @@
 				synd_mob.equip_or_collect(new /obj/item/extinguisher_refill(synd_mob), ITEM_SLOT_IN_BACKPACK)
 				synd_mob.equip_or_collect(new /obj/item/extinguisher_refill(synd_mob), ITEM_SLOT_IN_BACKPACK)
 				synd_mob.internal = synd_mob.get_item_by_slot(ITEM_SLOT_SUIT_STORE)
-				synd_mob.update_action_buttons_icon()
+				synd_mob.update_mob_action_buttons()
 
 	synd_mob.rejuvenate() //fix any damage taken by naked vox/plasmamen/etc while round setups
 	var/obj/item/bio_chip/explosive/E = new/obj/item/bio_chip/explosive(synd_mob)

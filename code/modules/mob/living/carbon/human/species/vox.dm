@@ -95,7 +95,7 @@
 			to_chat(H, "<span class='boldannounceooc'>Could not find an empty slot for internals! Please report this as a bug</span>")
 	H.internal = internal_tank
 	to_chat(H, "<span class='notice'>You are now running on nitrogen internals from [internal_tank]. Your species finds oxygen toxic, so you must breathe nitrogen only.</span>")
-	H.update_action_buttons_icon()
+	H.update_mob_action_buttons()
 
 /datum/species/vox/on_species_gain(mob/living/carbon/human/H)
 	..()

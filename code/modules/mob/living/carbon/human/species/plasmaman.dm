@@ -161,7 +161,7 @@
 
 	H.equipOutfit(O, visualsOnly)
 	H.internal = H.r_hand
-	H.update_action_buttons_icon()
+	H.update_mob_action_buttons()
 	return FALSE
 
 /datum/species/plasmaman/handle_life(mob/living/carbon/human/H)
@@ -217,4 +217,4 @@
 		stack_trace("Failed to equip plasmaman with a tank, with the job [J.type]")
 	H.internal = internal_tank
 	to_chat(H, "<span class='notice'>You are now running on plasma internals from [internal_tank]. Oxygen is toxic to your species, so you must breathe plasma only.</span>")
-	H.update_action_buttons_icon()
+	H.update_mob_action_buttons()

@@ -103,9 +103,9 @@ While using this makes the system rely on OnFire, it still gives options for tim
 
 /datum/action/innate/elite_attack
 	name = "Elite Attack"
-	button_overlay_icon = 'icons/mob/actions/actions_elites.dmi'
-	button_overlay_icon_state = ""
-	button_background_icon_state = "bg_default"
+	button_icon = 'icons/mob/actions/actions_elites.dmi'
+	button_icon_state = ""
+	background_icon_state = "bg_default"
 	///The displayed message into chat when this attack is selected
 	var/chosen_message
 	///The internal attack ID for the elite's OpenFire() proc to use
@@ -125,19 +125,17 @@ While using this makes the system rely on OnFire, it still gives options for tim
 		STOP_PROCESSING(SSfastprocess, src)
 		qdel(src)
 		return
-	UpdateButtons()
+	build_all_button_icons()
 
-/datum/action/innate/elite_attack/UpdateButton(atom/movable/screen/movable/action_button/button, status_only = FALSE, force = FALSE)
+/datum/action/innate/elite_attack/apply_button_overlay(atom/movable/screen/movable/action_button/current_button, force)
 	. = ..()
-	if(status_only)
-		return
 	var/mob/living/simple_animal/hostile/asteroid/elite/elite_owner = owner
 	var/timeleft = max(elite_owner.ranged_cooldown - world.time, 0)
 
 	if(timeleft == 0)
-		button.maptext = ""
+		current_button.maptext = ""
 	else
-		button.maptext = "<b class='maptext'>[round(timeleft/10, 0.1)]</b>"
+		current_button.maptext = "<b class='maptext'>[round(timeleft/10, 0.1)]</b>"
 
 /datum/action/innate/elite_attack/Grant(mob/living/L)
 	if(istype(L, /mob/living/simple_animal/hostile/asteroid/elite))

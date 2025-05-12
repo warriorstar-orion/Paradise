@@ -183,7 +183,7 @@
 	else if(target == l_hand)
 		l_hand = null
 		update_inv_l_hand()
-	update_action_buttons_icon()
+	update_mob_action_buttons()
 
 //This is an UNSAFE proc. Use mob_can_equip() before calling this one! Or rather use equip_to_slot_if_possible() or advanced_equip_to_slot_if_possible()
 // Initial is used to indicate whether or not this is the initial equipment (job datums etc) or just a player doing it

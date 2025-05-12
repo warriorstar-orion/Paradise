@@ -204,7 +204,7 @@
 		if(internal)
 			return internal.remove_air_volume(volume_needed)
 		else
-			update_action_buttons_icon()
+			update_mob_action_buttons()
 
 /mob/living/carbon/proc/handle_organs()
 	for(var/thing in internal_organs)

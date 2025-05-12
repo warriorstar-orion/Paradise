@@ -74,7 +74,7 @@ GLOBAL_VAR_INIT(sent_syndicate_strike_team, 0)
 
 		new_syndicate_commando.key = ghost_mob.key
 		new_syndicate_commando.internal = new_syndicate_commando.s_store
-		new_syndicate_commando.update_action_buttons_icon()
+		new_syndicate_commando.update_mob_action_buttons()
 
 		//So they don't forget their code or mission.
 		if(nuke_code)

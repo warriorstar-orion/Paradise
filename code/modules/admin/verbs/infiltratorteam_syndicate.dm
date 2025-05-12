@@ -84,7 +84,7 @@ GLOBAL_VAR_INIT(sent_syndicate_infiltration_team, 0)
 			if(theguy.key != key)
 				new_syndicate_infiltrator.key = theguy.key
 				new_syndicate_infiltrator.internal = new_syndicate_infiltrator.s_store
-				new_syndicate_infiltrator.update_action_buttons_icon()
+				new_syndicate_infiltrator.update_mob_action_buttons()
 				dust_if_respawnable(theguy)
 			infiltrators -= theguy
 		to_chat(new_syndicate_infiltrator, "<span class='danger'>You are a [!syndicate_leader_selected?"Infiltrator":"<B>Lead Infiltrator</B>"] in the service of the Syndicate. \nYour current mission is: <B>[input]</B></span>")

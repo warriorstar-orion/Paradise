@@ -2,17 +2,30 @@
 	var/name = "Generic Action"
 	var/desc = null
 	var/obj/target = null
-	var/check_flags = 0
-	/// Icon that our button screen object overlay and background
-	var/button_overlay_icon = 'icons/mob/actions/actions.dmi'
-	/// Icon state of screen object overlay
-	var/button_overlay_icon_state = ACTION_BUTTON_DEFAULT_OVERLAY
-	/// Icon that our button screen object background will have
-	var/button_background_icon = 'icons/mob/actions/actions.dmi'
-	/// Icon state of screen object background
-	var/button_background_icon_state = ACTION_BUTTON_DEFAULT_BACKGROUND
+	/// Flags that will determine of the owner / user of the action can use the action
+	var/check_flags = NONE
+
+	/// This is the file for the BACKGROUND underlay icon of the button
+	var/background_icon = 'icons/mob/actions/actions.dmi'
+	/// This is the icon state state for the BACKGROUND underlay icon of the button
+	/// (If set to ACTION_BUTTON_DEFAULT_BACKGROUND, uses the hud's default background)
+	var/background_icon_state = ACTION_BUTTON_DEFAULT_BACKGROUND
+
+	/// This is the file for the icon that appears on the button
+	var/button_icon = 'icons/mob/actions/actions.dmi'
+	/// This is the icon state for the icon that appears on the button
+	var/button_icon_state = ACTION_BUTTON_DEFAULT_OVERLAY
+
+	/// This is the file for any FOREGROUND overlay icons on the button (such as borders)
+	var/overlay_icon = 'icons/mob/actions/actions.dmi'
+	/// This is the icon state for any FOREGROUND overlay icons on the button (such as borders)
+	var/overlay_icon_state
+	/// The style the button's tooltips appear to be
 	var/buttontooltipstyle = ""
+	/// Whether the button becomes transparent when it can't be used, or just reddened
 	var/transparent_when_unavailable = TRUE
+	/// This is who currently owns the action, and most often, this is who is using the action if it is triggered
+	/// This can be the same as "target" but is not ALWAYS the same - this is set and unset with Grant() and Remove()
 	var/mob/owner
 	/// Where any buttons we create should be by default. Accepts screen_loc and location defines
 	var/default_button_position = SCRN_OBJ_IN_LIST
@@ -79,10 +92,10 @@
 		UnregisterSignal(owner, COMSIG_PARENT_QDELETING)
 		owner = null
 
-/datum/action/proc/UpdateButtons(status_only, force)
-	for(var/datum/hud/hud in viewers)
-		var/atom/movable/screen/movable/button = viewers[hud]
-		UpdateButton(button, status_only, force)
+/// Builds / updates all buttons we have shared or given out
+/datum/action/proc/build_all_button_icons(update_flags = ALL, force)
+	for(var/datum/hud/hud as anything in viewers)
+		build_button_icon(viewers[hud], update_flags, force)
 
 /datum/action/proc/Trigger(left_click = TRUE)
 	if(!IsAvailable())
@@ -123,31 +136,122 @@
 			return FALSE
 	return TRUE
 
-/datum/action/proc/UpdateButton(atom/movable/screen/movable/action_button/button, status_only = FALSE, force = FALSE)
+/**
+ * Builds the icon of the button.
+ *
+ * Concept:
+ * - Underlay (Background icon)
+ * - Icon (button icon)
+ * - Maptext
+ * - Overlay (Background border)
+ *
+ * button - which button we are modifying the icon of
+ * force - whether we're forcing a full update
+ */
+/datum/action/proc/build_button_icon(atom/movable/screen/movable/action_button/button, update_flags = ALL, force = FALSE)
 	if(!button)
 		return
-	if(!status_only)
-		button.name = name
-		if(desc)
-			button.desc = "[desc] [initial(button.desc)]"
-		if(owner?.hud_used && button_background_icon_state == ACTION_BUTTON_DEFAULT_BACKGROUND)
-			var/list/settings = owner.hud_used.get_action_buttons_icons()
-			if(button.icon != settings["bg_icon"])
-				button.icon = settings["bg_icon"]
-			if(button.icon_state != settings["bg_state"])
-				button.icon_state = settings["bg_state"]
-		else
-			if(button.icon != button_background_icon)
-				button.icon = button_background_icon
-			if(button.icon_state != button_background_icon_state)
-				button.icon_state = button_background_icon_state
 
+	if(update_flags & UPDATE_BUTTON_NAME)
+		update_button_name(button, force)
+
+	if(update_flags & UPDATE_BUTTON_BACKGROUND)
+		apply_button_background(button, force)
+
+	if(update_flags & UPDATE_BUTTON_ICON)
+		apply_button_icon(button, force)
+
+	if(update_flags & UPDATE_BUTTON_OVERLAY)
 		apply_button_overlay(button, force)
 
+	if(update_flags & UPDATE_BUTTON_STATUS)
+		update_button_status(button, force)
+
+/**
+ * Updates the name and description of the button to match our action name and discription.
+ *
+ * current_button - what button are we editing?
+ * force - whether an update is forced regardless of existing status
+ */
+/datum/action/proc/update_button_name(atom/movable/screen/movable/action_button/button, force = FALSE)
+	button.name = name
+	if(desc)
+		button.desc = desc
+
+/**
+ * Creates the background underlay for the button
+ *
+ * current_button - what button are we editing?
+ * force - whether an update is forced regardless of existing status
+ */
+/datum/action/proc/apply_button_background(atom/movable/screen/movable/action_button/current_button, force = FALSE)
+	if(!background_icon || !background_icon_state || (current_button.active_underlay_icon_state == background_icon_state && !force))
+		return
+
+	// What icons we use for our background
+	var/list/icon_settings = list(
+		// The icon file
+		"bg_icon" = background_icon,
+		// The icon state, if is_action_active() returns FALSE
+		"bg_state" = background_icon_state,
+		// The icon state, if is_action_active() returns TRUE
+		"bg_state_active" = background_icon_state,
+	)
+
+	// If background_icon_state is ACTION_BUTTON_DEFAULT_BACKGROUND instead use our hud's action button scheme
+	if(background_icon_state == ACTION_BUTTON_DEFAULT_BACKGROUND && owner?.hud_used)
+		icon_settings = owner.hud_used.get_action_buttons_icons()
+
+	// Determine which icon to use
+	var/used_icon_key = is_action_active(current_button) ? "bg_state_active" : "bg_state"
+
+	// Make the underlay
+	current_button.underlays.Cut()
+	current_button.underlays += image(icon = icon_settings["bg_icon"], icon_state = icon_settings[used_icon_key])
+	current_button.active_underlay_icon_state = icon_settings[used_icon_key]
+
+/**
+ * Applies our button icon and icon state to the button
+ *
+ * current_button - what button are we editing?
+ * force - whether an update is forced regardless of existing status
+ */
+/datum/action/proc/apply_button_icon(atom/movable/screen/movable/action_button/current_button, force = FALSE)
+	if(!button_icon || !button_icon_state || (current_button.icon_state == button_icon_state && !force))
+		return
+
+	current_button.icon = button_icon
+	current_button.icon_state = button_icon_state
+
+/**
+ * Applies any overlays to our button
+ *
+ * current_button - what button are we editing?
+ * force - whether an update is forced regardless of existing status
+ */
+/datum/action/proc/apply_button_overlay(atom/movable/screen/movable/action_button/current_button, force = FALSE)
+	SEND_SIGNAL(src, COMSIG_ACTION_OVERLAY_APPLY, current_button, force)
+
+	if(!overlay_icon || !overlay_icon_state || (current_button.active_overlay_icon_state == overlay_icon_state && !force))
+		return
+
+	current_button.cut_overlay(current_button.button_overlay)
+	current_button.button_overlay = mutable_appearance(icon = overlay_icon, icon_state = overlay_icon_state)
+	current_button.add_overlay(current_button.button_overlay)
+	current_button.active_overlay_icon_state = overlay_icon_state
+
+/**
+ * Any other miscellaneous "status" updates within the action button is handled here,
+ * such as redding out when unavailable or modifying maptext.
+ *
+ * current_button - what button are we editing?
+ * force - whether an update is forced regardless of existing status
+ */
+/datum/action/proc/update_button_status(atom/movable/screen/movable/action_button/current_button, force = FALSE)
+	current_button.cut_overlay(current_button.unavailable_effect_overlay)
+
 	if(should_draw_cooldown())
-		apply_unavailable_effect(button)
-	else
-		return TRUE
+		current_button.add_overlay(current_button.unavailable_effect_overlay)
 
 //Give our action button to the player
 /datum/action/proc/GiveAction(mob/viewer)
@@ -215,20 +319,6 @@
 			our_button.id = bitflag
 			return
 
-/datum/action/proc/apply_unavailable_effect(atom/movable/screen/movable/action_button/B)
-	var/image/img = image('icons/mob/screen_white.dmi', icon_state = "template")
-	img.alpha = 200
-	img.appearance_flags = RESET_COLOR | RESET_ALPHA
-	img.color = "#000000"
-	img.plane = FLOAT_PLANE + 1
-	B.add_overlay(img)
-
-
-/datum/action/proc/apply_button_overlay(atom/movable/screen/movable/action_button/current_button)
-	current_button.cut_overlays()
-	if(button_overlay_icon && button_overlay_icon_state)
-		var/image/img = image(button_overlay_icon, current_button, button_overlay_icon_state)
-		img.appearance_flags = RESET_COLOR | RESET_ALPHA
-		img.pixel_x = 0
-		img.pixel_y = 0
-		current_button.add_overlay(img)
+/// Checks if our action is actively selected. Used for selecting icons primarily.
+/datum/action/proc/is_action_active(atom/movable/screen/movable/action_button/current_button)
+	return FALSE

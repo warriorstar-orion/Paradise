@@ -63,7 +63,7 @@
 	if(QDELETED(src) || uses) //Not sure if not having src here would cause a runtime, so it's here to be safe
 		return
 	desc = "[initial(desc)] It has [uses] use\s remaining."
-	UpdateButtons()
+	action.build_all_button_icons()
 
 /datum/spell/ai_spell/proc/check_camera_vision(mob/user, atom/target)
 	var/turf/target_turf = get_turf(target)
@@ -170,7 +170,7 @@
 				temp = "You cannot afford this module."
 				break
 
-			var/datum/spell/ai_spell/action = locate(AM.power_type) in A.mob_spell_list
+			var/datum/spell/ai_spell/ai_spell = locate(AM.power_type) in A.mob_spell_list
 
 			// Give the power and take away the money.
 			if(AM.upgrade) //upgrade and upgrade() are separate, be careful!
@@ -180,7 +180,7 @@
 				A.playsound_local(A, AM.unlock_sound, 50, FALSE, use_reverb = FALSE)
 			else
 				if(AM.power_type)
-					if(!action) //Unlocking for the first time
+					if(!ai_spell) //Unlocking for the first time
 						var/datum/spell/ai_spell/AC = new AM.power_type
 						A.AddSpell(AC)
 						A.current_modules += new AM.type
@@ -192,10 +192,10 @@
 						if(AM.unlock_sound)
 							A.playsound_local(A, AM.unlock_sound, 50, FALSE, use_reverb = FALSE)
 					else //Adding uses to an existing module
-						action.uses += initial(action.uses)
-						action.desc = "[initial(action.desc)] It has [action.uses] use\s remaining."
-						action.UpdateButtons()
-						temp = "Additional use[action.uses > 1 ? "s" : ""] added to [action.name]!"
+						ai_spell.uses += initial(ai_spell.uses)
+						ai_spell.desc = "[initial(ai_spell.desc)] It has [ai_spell.uses] use\s remaining."
+						ai_spell.action.build_all_button_icons()
+						temp = "Additional use[ai_spell.uses > 1 ? "s" : ""] added to [ai_spell.name]!"
 			processing_time -= AM.cost
 
 		if(href_list["showdesc"])

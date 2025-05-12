@@ -9,6 +9,14 @@
 	var/datum/keybinding/mob/trigger_action_button/linked_keybind
 	/// The HUD this action button belongs to
 	var/datum/hud/our_hud
+	/// The icon state of our active overlay, used to prevent re-applying identical overlays
+	var/active_overlay_icon_state
+	/// The icon state of our active underlay, used to prevent re-applying identical underlays
+	var/active_underlay_icon_state
+	/// The overlay we have overtop our button
+	var/mutable_appearance/button_overlay
+	var/mutable_appearance/unavailable_effect_overlay
+	var/image/button_text_image
 
 	/// Where we are currently placed on the hud. SCRN_OBJ_DEFAULT asks the linked action what it thinks
 	var/location = SCRN_OBJ_DEFAULT
@@ -21,6 +29,19 @@
 	/// Whether or not this button is locked, preventing it from being dragged.
 	var/locked = TRUE
 
+/atom/movable/screen/movable/action_button/Initialize(mapload)
+	. = ..()
+	unavailable_effect_overlay = mutable_appearance(
+		'icons/mob/screen_white.dmi',
+		icon_state = "template",
+		plane = FLOAT_PLANE + 1,
+		alpha = 200,
+		appearance_flags = (RESET_COLOR|RESET_ALPHA),
+		color = "#000000"
+	)
+	button_text_image = image('icons/effects/effects.dmi', icon_state = "nothing")
+	button_text_image.plane = FLOAT_PLANE + 1.1
+
 /atom/movable/screen/movable/action_button/Destroy()
 	. = ..()
 	if(our_hud)
@@ -31,6 +52,9 @@
 		viewer.update_action_buttons()
 		our_hud = null
 	linked_action = null
+	QDEL_NULL(unavailable_effect_overlay)
+	QDEL_NULL(button_overlay)
+
 	return ..()
 
 /atom/movable/screen/movable/action_button/proc/can_use(mob/user)
@@ -212,10 +236,16 @@
 	closeToolTip(usr)
 	return ..()
 
-/mob/proc/update_action_buttons_icon(status_only = FALSE)
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.UpdateButtons(status_only)
+/**
+ * Updates all action buttons this mob has.
+ *
+ * Arguments:
+ * * update_flags - Which flags of the action should we update
+ * * force - Force buttons update even if the given button icon state has not changed
+ */
+/mob/proc/update_mob_action_buttons(update_flags = ALL, force = FALSE)
+	for(var/datum/action/current_action as anything in actions)
+		current_action.build_all_button_icons(update_flags, force)
 
 //This is the proc used to update all the action buttons.
 /mob/proc/update_action_buttons(reload_screen)
@@ -227,7 +257,7 @@
 
 	for(var/datum/action/action as anything in actions)
 		var/atom/movable/screen/movable/action_button/button = action.viewers[hud_used]
-		action.UpdateButtons()
+		action.build_all_button_icons()
 		if(reload_screen)
 			client.screen += button
 			client.update_active_keybindings()

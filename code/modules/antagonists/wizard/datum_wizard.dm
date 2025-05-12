@@ -86,7 +86,7 @@
 	if(isplasmaman(new_wiz))
 		new_wiz.equipOutfit(new /datum/outfit/plasmaman/wizard)
 		new_wiz.internal = new_wiz.r_hand
-		new_wiz.update_action_buttons_icon()
+		new_wiz.update_mob_action_buttons()
 	else
 		new_wiz.equip_to_slot_or_del(new /obj/item/clothing/under/color/lightpurple(new_wiz), ITEM_SLOT_JUMPSUIT)
 		new_wiz.equip_to_slot_or_del(new /obj/item/clothing/head/wizard(new_wiz), ITEM_SLOT_HEAD)

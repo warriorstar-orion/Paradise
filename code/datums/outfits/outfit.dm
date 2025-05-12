@@ -150,7 +150,7 @@
 		apply_fingerprints(H)
 		if(internals_slot)
 			H.internal = H.get_item_by_slot(internals_slot)
-			H.update_action_buttons_icon()
+			H.update_mob_action_buttons()
 
 	if(bio_chips)
 		for(var/bio_chip_type in bio_chips)

@@ -57,4 +57,4 @@
 
 	if(saved_internals) // Let's not stealthily suffocate Vox/Plasmamen, this isn't a murder virus
 		H.internal = saved_internals
-		H.update_action_buttons_icon()
+		H.update_mob_action_buttons()

@@ -67,7 +67,7 @@
 	reset_perspective(null)
 	reload_fullscreen()
 	update_sight()
-	update_action_buttons_icon()
+	update_mob_action_buttons()
 	ADD_TRAIT(src, TRAIT_FLOORED, STAT_TRAIT)
 	ADD_TRAIT(src, TRAIT_HANDS_BLOCKED, STAT_TRAIT) // immobilized is superfluous as moving when dead ghosts you.
 	update_damage_hud()

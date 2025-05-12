@@ -49,7 +49,7 @@
 /obj/item/clothing/ears/headphones/update_icon_state()
 	var/mob/living/carbon/human/user = loc
 	if(istype(user))
-		user.update_action_buttons_icon()
+		user.update_mob_action_buttons()
 		user.update_inv_ears()
 	icon_state = item_state = "headphones[on]"
 

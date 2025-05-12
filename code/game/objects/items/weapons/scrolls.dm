@@ -72,4 +72,4 @@
 		to_chat(user, "<span class='warning'>The scroll fizzles out of existence as the last of the magic within fades.</span>")
 		qdel(src)
 
-	user.update_action_buttons_icon()  //Update action buttons as some spells might now be castable
+	user.update_mob_action_buttons()  //Update action buttons as some spells might now be castable
