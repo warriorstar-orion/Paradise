@@ -10,6 +10,13 @@
 	/// The HUD this action button belongs to
 	var/datum/hud/our_hud
 
+	/// The overlay we have overtop our button
+	var/mutable_appearance/button_overlay
+	/// The icon state of our active overlay, used to prevent re-applying identical overlays
+	var/active_overlay_icon_state
+	/// The icon state of our active underlay, used to prevent re-applying identical underlays
+	var/active_underlay_icon_state
+
 	/// Where we are currently placed on the hud. SCRN_OBJ_DEFAULT asks the linked action what it thinks
 	var/location = SCRN_OBJ_DEFAULT
 	/// A unique bitflag, combined with the name of our linked action this lets us persistently remember any user changes to our position

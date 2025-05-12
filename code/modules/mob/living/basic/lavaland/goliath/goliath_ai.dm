@@ -4,7 +4,7 @@
 /datum/ai_controller/basic_controller/goliath
 	blackboard = list(
 		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
-		BB_TARGET_MINIMUM_STAT = HARD_CRIT,
+		BB_TARGET_MINIMUM_STAT = UNCONSCIOUS,
 	)
 
 	ai_movement = /datum/ai_movement/basic_avoidance
@@ -43,7 +43,7 @@
 	ability_key = BB_GOLIATH_TENTACLES
 	operational_datums = list(/datum/component/ai_target_timer)
 
-/datum/ai_planning_subtree/targeted_mob_ability/goliath_tentacles/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
+/datum/ai_planning_subtree/targeted_mob_ability/goliath_tentacles/select_behaviors(datum/ai_controller/controller, seconds_per_tick)
 	var/mob/living/target = controller.blackboard[target_key]
 	if (!(isliving(target) || ismecha(target)) || (isliving(target) && target.has_status_effect(/datum/status_effect/incapacitating/stun/goliath_tentacled)))
 		return // Target can be an item or already grabbed, we don't want to tentacle those
@@ -55,7 +55,7 @@
 /// If we got nothing better to do, find a turf we can search for tasty roots and such
 /datum/ai_planning_subtree/goliath_find_diggable_turf
 
-/datum/ai_planning_subtree/goliath_find_diggable_turf/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
+/datum/ai_planning_subtree/goliath_find_diggable_turf/select_behaviors(datum/ai_controller/controller, seconds_per_tick)
 	controller.queue_behavior(/datum/ai_behavior/goliath_find_diggable_turf)
 
 /datum/ai_behavior/goliath_find_diggable_turf
@@ -81,16 +81,16 @@
 
 /// Return true if this is a turf we can dig
 /datum/ai_behavior/goliath_find_diggable_turf/proc/is_valid_turf(turf/check_turf)
-	if (!isasteroidturf(check_turf))
+	var/turf/simulated/floor/plating/asteroid/asteroid_floor = check_turf
+	if(!istype(asteroid_floor))
 		return FALSE
-	var/turf/open/misc/asteroid/floor = check_turf
-	return !floor.dug
+	return !asteroid_floor.dug
 
 /datum/ai_planning_subtree/goliath_dig
 	/// Where did we store the target data
 	var/target_key = BB_GOLIATH_HOLE_TARGET
 
-/datum/ai_planning_subtree/goliath_dig/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
+/datum/ai_planning_subtree/goliath_dig/select_behaviors(datum/ai_controller/controller, seconds_per_tick)
 	if (!controller.blackboard_key_exists(target_key))
 		return
 	controller.queue_behavior(/datum/ai_behavior/goliath_dig, target_key)
@@ -111,7 +111,7 @@
 /datum/ai_behavior/goliath_dig/perform(seconds_per_tick, datum/ai_controller/controller, target_key)
 	var/turf/target_turf = controller.blackboard[target_key]
 	var/mob/living/basic/basic_mob = controller.pawn
-	if(!basic_mob.CanReach(target_turf))
+	if(!basic_mob.can_reach(target_turf))
 		return AI_BEHAVIOR_DELAY
 	basic_mob.melee_attack(target_turf)
 	return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_SUCCEEDED

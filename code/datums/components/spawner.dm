@@ -32,7 +32,7 @@
 
 /datum/component/spawner/proc/stop_spawning(force)
 	STOP_PROCESSING(SSprocessing, src)
-	for(var/mob/living/simple_animal/L in spawned_mobs)
+	for(var/mob/living/L in spawned_mobs)
 		if(L.nest == src)
 			L.nest = null
 	spawned_mobs = null
@@ -45,7 +45,7 @@
 		return 0
 	spawn_delay = world.time + spawn_time
 	var/chosen_mob_type = pick(mob_types)
-	var/mob/living/simple_animal/L = new chosen_mob_type(P.loc)
+	var/mob/living/L = new chosen_mob_type(P.loc)
 	L.admin_spawned = P.admin_spawned
 	spawned_mobs += L
 	L.nest = src
@@ -62,5 +62,5 @@
 	// start the cooldown first, because a rallied mob might fire on
 	// ourselves while this is happening, causing confusion
 	COOLDOWN_START(src, last_rally, 30 SECONDS)
-	for(var/mob/living/simple_animal/hostile/rallied as anything in spawned_mobs)
+	for(var/mob/living/simple_animal/hostile/rallied in spawned_mobs)
 		INVOKE_ASYNC(rallied, TYPE_PROC_REF(/mob/living/simple_animal/hostile, aggro_fast), target)
