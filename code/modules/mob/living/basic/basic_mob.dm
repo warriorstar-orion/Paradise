@@ -148,9 +148,6 @@ RESTRICT_TYPE(/mob/living/basic)
 	/// Loot this mob drops on death.
 	var/list/loot = list()
 
-	/// Compatibility with mob spawners
-	var/datum/component/spawner/nest
-
 	/// Footsteps
 	var/step_type
 

@@ -1609,7 +1609,7 @@
  */
 /datum/mind/proc/remove_all_antag_datums(handle_target_cryo = FALSE)
 	// This is not `QDEL_LIST_CONTENTS(antag_datums)`because it's possible for the `antag_datums` list to be set to null during deletion of an antag datum.
-	// Then `QDEL_LIST` would runtime because it would be doing `null.Cut()`.
+	// Then `QDEL_LIST_CONTENTS` would runtime because it would be doing `null.Cut()`.
 	for(var/datum/antagonist/A as anything in antag_datums)
 		if(handle_target_cryo)
 			A.on_cryo()

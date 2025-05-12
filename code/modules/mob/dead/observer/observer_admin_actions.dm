@@ -13,7 +13,7 @@
 			given_action.Grant(src)
 
 /datum/action/innate/admin
-	button_overlay_icon = 'icons/mob/actions/actions_admin.dmi'
+	button_icon = 'icons/mob/actions/actions_admin.dmi'
 	var/rights_required = R_ADMIN
 
 /datum/action/innate/admin/Trigger()
@@ -29,11 +29,11 @@
 /datum/action/innate/admin/ticket
 	name = "Adminhelps"
 	desc = "There are 0 open tickets."
-	button_overlay_icon_state = "adminhelp"
+	button_icon_state = "adminhelp"
 	var/ticket_amt = 0
 
 /datum/action/innate/admin/ticket/New(Target)
-	button_overlay_icon_state = "nohelp"
+	button_icon_state = "nohelp"
 	. = ..()
 	register_ticket_signals()
 
@@ -48,9 +48,9 @@
 	ticket_amt = _ticket_amt
 	desc = "There are [ticket_amt] open tickets."
 	if(ticket_amt > 0)
-		button_overlay_icon_state = initial(button_overlay_icon_state)
+		button_icon_state = initial(button_icon_state)
 	else
-		button_overlay_icon_state = "nohelp"
+		button_icon_state = "nohelp"
 	UpdateButtons()
 
 /datum/action/innate/admin/ticket/UpdateButton(atom/movable/screen/movable/action_button/button, status_only, force)
@@ -65,7 +65,7 @@
 
 /datum/action/innate/admin/ticket/mentor
 	name = "Mentorhelps"
-	button_overlay_icon_state = "mentorhelp"
+	button_icon_state = "mentorhelp"
 	rights_required = R_MENTOR|R_ADMIN
 
 /datum/action/innate/admin/ticket/mentor/register_ticket_signals()

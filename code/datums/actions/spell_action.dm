@@ -1,7 +1,7 @@
 //Preset for spells
 /datum/action/spell_action
 	check_flags = 0
-	button_background_icon_state = "bg_spell"
+	background_icon_state = "bg_spell"
 	var/recharge_text_color = "#FFFFFF"
 
 /datum/action/spell_action/New(Target)
@@ -10,10 +10,10 @@
 	S.action = src
 	name = S.name
 	desc = S.desc
-	button_overlay_icon = S.action_icon
-	button_background_icon = S.action_background_icon
-	button_overlay_icon_state = S.action_icon_state
-	button_background_icon_state = S.action_background_icon_state
+	button_icon = S.action_icon
+	background_icon = S.action_background_icon
+	button_icon_state = S.action_icon_state
+	background_icon_state = S.action_background_icon_state
 	UpdateButtons()
 
 

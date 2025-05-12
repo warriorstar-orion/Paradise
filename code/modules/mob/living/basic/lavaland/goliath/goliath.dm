@@ -31,13 +31,31 @@
 	move_resist = MOVE_FORCE_VERY_STRONG
 	pull_force = MOVE_FORCE_VERY_STRONG
 	ai_controller = /datum/ai_controller/basic_controller/goliath
+	faction = list("mining")
 	var/pre_attack = FALSE
 	var/pre_attack_icon = "Goliath_preattack"
 	// loot = list(/obj/item/stack/sheet/animalhide/goliath_hide)
 	// footstep_type = FOOTSTEP_MOB_HEAVY
 	/// Our base tentacles ability
 	var/datum/action/cooldown/mob_cooldown/goliath_tentacles/tentacles
+	/// Things we want to eat off the floor (or a plate, we're not picky)
+	var/static/list/goliath_foods = list(/obj/item/food/grown/ash_flora)
 
+
+/mob/living/basic/mining/goliath/Initialize(mapload)
+	. = ..()
+
+	ADD_TRAIT(src, TRAIT_TENTACLE_IMMUNE, INNATE_TRAIT)
+
+	AddElement(/datum/element/ai_retaliate)
+	AddElement(/datum/element/basic_eating, heal_amt_ = 10, food_types_ = goliath_foods)
+	AddComponent(/datum/component/ai_target_timer)
+	AddComponent(/datum/component/footstep, FOOTSTEP_MOB_HEAVY)
+
+	tentacles = new(src)
+	tentacles.Grant(src)
+	ai_controller.set_blackboard_key(BB_BASIC_FOODS, typecacheof(goliath_foods))
+	ai_controller.set_blackboard_key(BB_GOLIATH_TENTACLES, tentacles)
 
 // /mob/living/basic/mining/goliath/proc/handle_preattack()
 // 	if(ranged_cooldown <= world.time + ranged_cooldown_time * 0.25 && !pre_attack)
@@ -49,6 +67,10 @@
 // /mob/living/basic/mining/goliath/revive()
 // 	..()
 // 	anchored = TRUE
+
+/mob/living/basic/mining/goliath/Destroy()
+	. = ..()
+	QDEL_NULL(tentacles)
 
 /mob/living/basic/mining/goliath/death(gibbed)
 	move_force = MOVE_FORCE_DEFAULT
