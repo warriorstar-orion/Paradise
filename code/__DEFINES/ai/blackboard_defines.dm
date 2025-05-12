@@ -47,6 +47,10 @@
 #define BB_BASIC_MOB_RETALIATE_LIST "BB_BASIC_MOB_SHITLIST"
 ///Blackboard key for a whitelist typecache of "things we can target while trying to move"
 #define BB_OBSTACLE_TARGETING_WHITELIST "BB_targeting_whitelist"
+/// Blackboard key storing how long your targeting strategy has held a particular target
+#define BB_BASIC_MOB_HAS_TARGET_TIME "BB_basic_mob_has_target_time"
+///some behaviors that check current_target also set this on deep crit mobs
+#define BB_BASIC_MOB_EXECUTION_TARGET "BB_basic_execution_target"
 
 //Hunting BB keys
 
@@ -159,7 +163,6 @@
 #define BB_INCURSION_HOME_PORTAL "BB_INCURSION_HOME_PORTAL"
 #define BB_INCURSION_HOME_PORTAL_TARGET "BB_INCURSION_HOME_PORTAL_TARGET"
 #define BB_PROWL_TARGET "BB_PROWL_TARGET"
-#define BB_ORE_IGNORE_TYPES "BB_ore_ignore_types"
 
 /// Minimum range to keep target within
 #define BB_RANGED_SKIRMISH_MIN_DISTANCE "BB_ranged_skirmish_min_distance"
@@ -170,3 +173,17 @@
 #define BB_RANDOM_AGGRO_CHANCE "BB_random_aggro_chance"
 /// Chance to randomly drop all of our targets
 #define BB_RANDOM_DEAGGRO_CHANCE "BB_random_deaggro_chance"
+
+// Goliath AI keys
+/// Key where we store the tentacleing ability
+#define BB_GOLIATH_TENTACLES "BB_goliath_tentacles"
+/// Key where goliath stores a hole it wants to get into
+#define BB_GOLIATH_HOLE_TARGET "BB_goliath_hole"
+
+///currently only used by clowns, a list of what can the mob speak randomly
+#define BB_BASIC_MOB_SPEAK_LINES "BB_speech_lines"
+#define BB_EMOTE_SAY "emote_say"
+#define BB_EMOTE_HEAR "emote_hear"
+#define BB_EMOTE_SEE "emote_see"
+#define BB_EMOTE_SOUND "emote_sound"
+#define BB_SPEAK_CHANCE "emote_chance"

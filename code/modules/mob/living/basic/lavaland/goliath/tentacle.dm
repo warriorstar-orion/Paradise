@@ -69,15 +69,15 @@
 /datum/status_effect/incapacitating/stun/goliath_tentacled/on_apply()
 	. = ..()
 	RegisterSignal(owner, COMSIG_CARBON_PRE_MISC_HELP, PROC_REF(on_helped))
-	RegisterSignals(owner, list(SIGNAL_ADDTRAIT(TRAIT_TENTACLE_IMMUNE), COMSIG_BRIMDUST_EXPLOSION), PROC_REF(release))
-	RegisterSignals(tentacle, list(COMSIG_QDELETING, COMSIG_GOLIATH_TENTACLE_RETRACTING), PROC_REF(on_tentacle_left))
+	RegisterSignals(owner, SIGNAL_ADDTRAIT(TRAIT_TENTACLE_IMMUNE), PROC_REF(release))
+	RegisterSignals(tentacle, list(COMSIG_PARENT_QDELETING, COMSIG_GOLIATH_TENTACLE_RETRACTING), PROC_REF(on_tentacle_left))
 
 /datum/status_effect/incapacitating/stun/goliath_tentacled/on_remove()
 	. = ..()
-	UnregisterSignal(owner, list(COMSIG_CARBON_PRE_MISC_HELP, SIGNAL_ADDTRAIT(TRAIT_TENTACLE_IMMUNE), COMSIG_BRIMDUST_EXPLOSION))
+	UnregisterSignal(owner, list(COMSIG_CARBON_PRE_MISC_HELP, SIGNAL_ADDTRAIT(TRAIT_TENTACLE_IMMUNE)))
 	if (isnull(tentacle))
 		return
-	UnregisterSignal(tentacle, list(COMSIG_QDELETING, COMSIG_GOLIATH_TENTACLE_RETRACTING))
+	UnregisterSignal(tentacle, list(COMSIG_PARENT_QDELETING, COMSIG_GOLIATH_TENTACLE_RETRACTING))
 	tentacle.retract()
 	tentacle = null
 
@@ -85,7 +85,7 @@
 /datum/status_effect/incapacitating/stun/goliath_tentacled/proc/on_helped(mob/source, mob/helping)
 	SIGNAL_HANDLER
 	release()
-	source.visible_message(span_notice("[helping] rips [source] from the tentacle's grasp!"))
+	source.visible_message("<span class='notice'>[helping] rips [source] from the tentacle's grasp!</span>")
 	return COMPONENT_BLOCK_MISC_HELP
 
 /// Something happened to make the tentacle let go
@@ -96,6 +96,6 @@
 /// Something happened to our associated tentacle
 /datum/status_effect/incapacitating/stun/goliath_tentacled/proc/on_tentacle_left()
 	SIGNAL_HANDLER
-	UnregisterSignal(tentacle, list(COMSIG_QDELETING, COMSIG_GOLIATH_TENTACLE_RETRACTING)) // No endless loops for us please
+	UnregisterSignal(tentacle, list(COMSIG_PARENT_QDELETING, COMSIG_GOLIATH_TENTACLE_RETRACTING)) // No endless loops for us please
 	tentacle = null
 	release()

@@ -32,6 +32,8 @@
 	var/action_disabled = FALSE
 	/// The appearance used as an overlay for when the action is unavailable
 	var/mutable_appearance/unavailable_effect
+	/// If False, the owner of this action does not get a hud and cannot activate it on their own
+	var/owner_has_control = TRUE
 
 /datum/action/New(target)
 	link_to(target)

@@ -167,8 +167,9 @@
 		burst_intervals = burst_interval,\
 	)
 
-	if (fire_cooldown <= 1 SECONDS)
-		target.AddComponent(/datum/component/ranged_mob_full_auto)
+	#warn who knows
+	// if (fire_cooldown <= 1 SECONDS)
+	// 	target.AddComponent(/datum/component/ranged_mob_full_auto)
 
 /// Walks at a guy while shooting and attacks
 /datum/admin_ai_template/hostile_ranged/and_melee
