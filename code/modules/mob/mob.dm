@@ -1297,6 +1297,7 @@ GLOBAL_LIST_INIT(slot_equipment_priority, list( \
 
 	.["Assume Direct Control"] = "byond://?_src_=vars;direct_control=[UID()]"
 	.["Offer Control to Ghosts"] = "byond://?_src_=vars;offer_control=[UID()]"
+	.["Give AI Controller"] = "byond://?_src_=vars;give_ai_controller=[UID()]"
 	.["Drop Everything"] = "byond://?_src_=vars;drop_everything=[UID()]"
 
 	.["Regenerate Icons"] = "byond://?_src_=vars;regenerateicons=[UID()]"
