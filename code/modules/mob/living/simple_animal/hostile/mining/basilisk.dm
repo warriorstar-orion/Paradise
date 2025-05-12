@@ -139,4 +139,7 @@
 			L.apply_status_effect(/datum/status_effect/freon/watcher)
 
 /mob/living/simple_animal/hostile/asteroid/basilisk/watcher/tendril
-	fromtendril = TRUE
+
+/mob/living/simple_animal/hostile/asteroid/basilisk/watcher/tendril/Initialize(mapload)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_FROM_TENDRIL, "[UID()]")

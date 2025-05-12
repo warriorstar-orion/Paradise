@@ -9,8 +9,8 @@
 	I.actions += src
 	if(custom_icon && custom_icon_state)
 		use_itemicon = FALSE
-		button_overlay_icon = custom_icon
-		button_overlay_icon_state = custom_icon_state
+		button_icon = custom_icon
+		button_icon_state = custom_icon_state
 	UpdateButtons()
 
 /datum/action/item_action/Destroy()
@@ -63,12 +63,12 @@
 
 /datum/action/item_action/print_forensic_report
 	name = "Print Report"
-	button_overlay_icon_state = "scanner_print"
+	button_icon_state = "scanner_print"
 	use_itemicon = FALSE
 
 /datum/action/item_action/clear_records
 	name = "Clear Scanner Records"
-	button_overlay_icon_state = "scanner_clear"
+	button_icon_state = "scanner_clear"
 	use_itemicon = FALSE
 
 /datum/action/item_action/toggle_gunlight
@@ -124,7 +124,7 @@
 /datum/action/item_action/toggle_unfriendly_fire
 	name = "Toggle Friendly Fire \[ON\]"
 	desc = "Toggles if the club's blasts cause friendly fire."
-	button_overlay_icon_state = "vortex_ff_on"
+	button_icon_state = "vortex_ff_on"
 
 /datum/action/item_action/toggle_unfriendly_fire/Trigger(left_click)
 	if(..())
@@ -134,17 +134,17 @@
 	if(istype(target, /obj/item/hierophant_club))
 		var/obj/item/hierophant_club/H = target
 		if(H.friendly_fire_check)
-			button_overlay_icon_state = "vortex_ff_off"
+			button_icon_state = "vortex_ff_off"
 			name = "Toggle Friendly Fire \[OFF\]"
 		else
-			button_overlay_icon_state = "vortex_ff_on"
+			button_icon_state = "vortex_ff_on"
 			name = "Toggle Friendly Fire \[ON\]"
 	..()
 
 /datum/action/item_action/vortex_recall
 	name = "Vortex Recall"
 	desc = "Recall yourself, and anyone nearby, to an attuned hierophant beacon at any time.<br>If the beacon is still attached, will detach it."
-	button_overlay_icon_state = "vortex_recall"
+	button_icon_state = "vortex_recall"
 
 /datum/action/item_action/vortex_recall/IsAvailable()
 	if(istype(target, /obj/item/hierophant_club))
@@ -281,7 +281,7 @@
 
 /datum/action/item_action/toggle_research_scanner
 	name = "Toggle Research Scanner"
-	button_overlay_icon_state = "scan_mode"
+	button_icon_state = "scan_mode"
 
 /datum/action/item_action/toggle_research_scanner/Trigger(left_click)
 	if(IsAvailable())
@@ -296,8 +296,8 @@
 
 /datum/action/item_action/toggle_research_scanner/apply_button_overlay(atom/movable/screen/movable/action_button/current_button)
 	current_button.cut_overlays()
-	if(button_overlay_icon && button_overlay_icon_state)
-		var/image/img = image(button_overlay_icon, current_button, "scan_mode")
+	if(button_icon && button_icon_state)
+		var/image/img = image(button_icon, current_button, "scan_mode")
 		img.appearance_flags = RESET_COLOR | RESET_ALPHA
 		current_button.overlays += img
 
@@ -323,14 +323,14 @@
 /datum/action/item_action/slipping
 	name = "Tactical Slip"
 	desc = "Activates the clown shoes' ankle-stimulating module, allowing the user to do a short slip forward going under anyone."
-	button_overlay_icon_state = "clown"
+	button_icon_state = "clown"
 
 // Jump boots
 /datum/action/item_action/bhop
 	name = "Activate Jump Boots"
 	desc = "Activates the jump boot's internal propulsion system, allowing the user to dash over 4-wide gaps."
-	button_overlay_icon = 'icons/mob/actions/actions.dmi'
-	button_overlay_icon_state = "jetboot"
+	button_icon = 'icons/mob/actions/actions.dmi'
+	button_icon_state = "jetboot"
 	use_itemicon = FALSE
 
 
@@ -412,3 +412,4 @@
 
 /datum/action/item_action/call_link
 	name = "Call MODlink"
+
