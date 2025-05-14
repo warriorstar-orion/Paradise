@@ -463,6 +463,21 @@ GLOBAL_DATUM_INIT(canister_icon_container, /datum/canister_icons, new())
 
 	update_icon()
 
+/obj/machinery/atmospherics/portable/canister/oxygen/random_filled
+
+/obj/machinery/atmospherics/portable/canister/oxygen/random_filled/Initialize(mapload)
+	filled = rand(0, 3) / 10
+	. = ..()
+
+/obj/machinery/atmospherics/portable/canister/oxygen/broken
+	name = "broken oxygen canister"
+	filled = 0
+
+/obj/machinery/atmospherics/portable/canister/oxygen/broken/Initialize(mapload)
+	. = ..()
+
+	canister_break()
+
 /obj/machinery/atmospherics/portable/canister/sleeping_agent/Initialize(mapload)
 	. = ..()
 

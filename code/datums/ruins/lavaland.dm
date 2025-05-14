@@ -258,3 +258,9 @@
 	suffix = "lavaland_surface_legiongate.dmm"
 	allow_duplicates = FALSE
 	always_place = TRUE
+
+/datum/map_template/ruin/lavaland/oxygen_ferry
+	name = "Atmospherics Ferry"
+	id = "oxygen_ferry"
+	prefix = "_maps/map_files/RandomRuins/SharedRuins/"
+	suffix = "oxygen_ferry.dmm"

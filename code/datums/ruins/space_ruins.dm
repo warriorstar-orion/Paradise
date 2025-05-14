@@ -392,3 +392,9 @@
 	description = "A hidden monastery once used by the followers of Ratvar's clockwork cult. The original inhabitants have departed for City of Cogs, Reebe. \
 		The constructs that were left behind to guard the monastery will ruthlessly cut down anyone that does not swear their fealty to Ratvar."
 	allow_duplicates = FALSE
+
+/datum/map_template/ruin/space/oxygen_ferry
+	name = "Atmospherics Ferry"
+	id = "oxygen_ferry"
+	prefix = "_maps/map_files/RandomRuins/SharedRuins/"
+	suffix = "oxygen_ferry.dmm"

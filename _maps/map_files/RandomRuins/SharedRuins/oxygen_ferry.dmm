@@ -1,0 +1,242 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/machinery/door/poddoor,
+/turf/simulated/floor/plating,
+/area/ruin/powered)
+"b" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/mineral/titanium/blue,
+/area/ruin/powered)
+"c" = (
+/obj/machinery/door/poddoor/preopen,
+/turf/simulated/floor/plating,
+/area/ruin/powered)
+"g" = (
+/obj/structure/table,
+/obj/effect/spawner/random/food_or_drink/dinner,
+/turf/simulated/floor/mineral/titanium/blue,
+/area/ruin/powered)
+"q" = (
+/obj/machinery/door/airlock/public/glass,
+/turf/simulated/floor/mineral/titanium/blue,
+/area/ruin/powered)
+"s" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/turf/simulated/floor/mineral/titanium/blue,
+/area/ruin/powered)
+"z" = (
+/obj/effect/spawner/random/oxygen_ferry_canister,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/pod/light,
+/area/ruin/powered)
+"F" = (
+/obj/effect/spawner/random/oxygen_ferry_canister,
+/turf/simulated/floor/pod/light,
+/area/ruin/powered)
+"H" = (
+/obj/structure/table,
+/turf/simulated/floor/mineral/titanium/blue,
+/area/ruin/powered)
+"K" = (
+/obj/machinery/door/airlock/external,
+/turf/simulated/floor/plating,
+/area/ruin/powered)
+"L" = (
+/obj/effect/spawner/random/oxygen_ferry_canister,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/pod/light,
+/area/ruin/powered)
+"N" = (
+/obj/structure/window/full/shuttle,
+/turf/simulated/floor/plating,
+/area/ruin/powered)
+"O" = (
+/turf/simulated/wall/mineral/titanium,
+/area/ruin/powered)
+"P" = (
+/obj/structure/railing/cap,
+/obj/structure/railing/cap/normal{
+	dir = 1
+	},
+/obj/structure/railing/cap/normal,
+/obj/structure/railing/cap,
+/obj/structure/railing/cap{
+	dir = 1
+	},
+/turf/simulated/floor/catwalk,
+/area/ruin/powered)
+"Q" = (
+/obj/effect/spawner/random/food_trash,
+/turf/simulated/floor/mineral/titanium/blue,
+/area/ruin/powered)
+"V" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/catwalk,
+/area/ruin/powered)
+"W" = (
+/obj/machinery/computer/nonfunctional,
+/turf/simulated/floor/mineral/titanium/blue,
+/area/ruin/powered)
+"Y" = (
+/turf/template_noop,
+/area/template_noop)
+"Z" = (
+/obj/machinery/atmospherics/portable/canister/oxygen/broken,
+/turf/template_noop,
+/area/template_noop)
+
+(1,1,1) = {"
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+"}
+(2,1,1) = {"
+Y
+Y
+Y
+Y
+Y
+O
+O
+O
+O
+O
+Y
+Y
+Y
+Y
+"}
+(3,1,1) = {"
+Y
+O
+O
+O
+O
+O
+F
+L
+F
+O
+O
+Y
+Z
+Y
+"}
+(4,1,1) = {"
+Y
+N
+W
+s
+O
+F
+F
+F
+F
+F
+c
+Y
+Y
+Y
+"}
+(5,1,1) = {"
+Y
+N
+g
+Q
+q
+V
+V
+P
+V
+V
+K
+Y
+Y
+Y
+"}
+(6,1,1) = {"
+Y
+N
+H
+b
+O
+F
+F
+F
+F
+F
+a
+Y
+Y
+Y
+"}
+(7,1,1) = {"
+Y
+O
+O
+O
+O
+O
+F
+z
+F
+O
+O
+Y
+Y
+Y
+"}
+(8,1,1) = {"
+Y
+Y
+Y
+Y
+Y
+O
+O
+O
+O
+O
+Y
+Y
+Y
+Y
+"}
+(9,1,1) = {"
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+"}
