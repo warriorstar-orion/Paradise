@@ -19,20 +19,7 @@
 			/obj/item/reagent_containers/pill/salbutamol,
 			/obj/item/stack/medical/bruise_pack,
 			/obj/item/stack/medical/ointment,
-		) = 2,
-
-		// Kits
-		list(
-			/obj/item/storage/firstaid/regular,
-			/obj/item/storage/firstaid/regular/doctor,
-			/obj/item/storage/firstaid/fire,
-			/obj/item/storage/firstaid/toxin,
-			/obj/item/storage/firstaid/o2,
-			/obj/item/storage/firstaid/brute,
-			/obj/item/storage/firstaid/adv,
-			/obj/item/storage/firstaid/machine,
-			/obj/item/storage/firstaid/surgery,
-		),
+		) = 3,
 
 		// Surgical Tools
 		list(
@@ -46,6 +33,18 @@
 			/obj/item/scalpel,
 			/obj/item/surgical_drapes,
 			/obj/item/surgicaldrill,
-		),
+		) = 2,
 
+		// Kits
+		list(
+			/obj/item/storage/firstaid/regular,
+			/obj/item/storage/firstaid/regular/doctor,
+			/obj/item/storage/firstaid/fire,
+			/obj/item/storage/firstaid/toxin,
+			/obj/item/storage/firstaid/o2,
+			/obj/item/storage/firstaid/brute,
+			/obj/item/storage/firstaid/adv,
+			/obj/item/storage/firstaid/machine,
+			/obj/item/storage/firstaid/surgery,
+		) = 1,
 	)

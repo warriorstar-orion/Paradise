@@ -1,6 +1,6 @@
 /obj/effect/spawner/random/supply_crate
 	name = "supply crate spawner"
-	spawn_loot_chance = 25
+	spawn_loot_chance = 20
 
 /obj/effect/spawner/random/supply_crate/make_item(spawn_loc, type_path_to_make)
 	var/datum/supply_packs/supply_pack = SSeconomy.supply_packs["[type_path_to_make]"]
@@ -20,7 +20,6 @@
 		/datum/supply_packs/emergency/flares,
 		/datum/supply_packs/emergency/glowstick/emergency,
 		/datum/supply_packs/emergency/internals,
-		/datum/supply_packs/emergency/specialops,
 	)
 
 /obj/effect/spawner/random/supply_crate/engi_atmos
