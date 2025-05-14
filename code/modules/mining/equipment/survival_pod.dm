@@ -120,6 +120,11 @@
 	icon_regular_floor = "podfloor_light"
 	floor_tile = /obj/item/stack/tile/pod/light
 
+/turf/simulated/floor/pod/light/airless
+	temperature = TCMB
+	oxygen = 0
+	nitrogen = 0
+
 /turf/simulated/floor/pod/light/lavaland_air
 	oxygen = LAVALAND_OXYGEN
 	nitrogen = LAVALAND_NITROGEN

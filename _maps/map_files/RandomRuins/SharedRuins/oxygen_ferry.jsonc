@@ -1,5 +1,16 @@
 [
 	{
+		// The supply ferry
+		"type": "SubmapExtractInsert",
+		"submap_size_x": 5,
+		"submap_size_y": 8,
+		"submap_size_z": 1,
+		"submaps_dmm": "submaps/oxygen_ferry_submaps.dmm",
+		"marker_extract": "/obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/oxygen_ferry",
+		"marker_insert": "/obj/effect/map_effect/marker/mapmanip/submap/insert/ruin/oxygen_ferry",
+		"submaps_can_repeat": true // doesn't matter, as there's only one insert marker
+	},
+	{
 		"type": "RandomOrientation"
 	}
 ]

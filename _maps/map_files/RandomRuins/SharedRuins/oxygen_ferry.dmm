@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /obj/machinery/door/poddoor,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/airless,
 /area/ruin/powered)
 "b" = (
 /obj/machinery/light/small,
@@ -9,7 +9,7 @@
 /area/ruin/powered)
 "c" = (
 /obj/machinery/door/poddoor/preopen,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/airless,
 /area/ruin/powered)
 "g" = (
 /obj/structure/table,
@@ -27,30 +27,17 @@
 /turf/simulated/floor/mineral/titanium/blue,
 /area/ruin/powered)
 "z" = (
-/obj/effect/spawner/random/oxygen_ferry_canister,
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/simulated/floor/pod/light,
-/area/ruin/powered)
-"F" = (
-/obj/effect/spawner/random/oxygen_ferry_canister,
-/turf/simulated/floor/pod/light,
+/turf/simulated/floor/pod/light/airless,
 /area/ruin/powered)
 "H" = (
-/obj/structure/table,
+/obj/structure/bed,
+/obj/item/bedsheet/black,
+/obj/structure/curtain/black,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/ruin/powered)
 "K" = (
 /obj/machinery/door/airlock/external,
-/turf/simulated/floor/plating,
-/area/ruin/powered)
-"L" = (
-/obj/effect/spawner/random/oxygen_ferry_canister,
-/obj/machinery/light/small{
-	dir = 8
-	},
-/turf/simulated/floor/pod/light,
+/turf/simulated/floor/plating/airless,
 /area/ruin/powered)
 "N" = (
 /obj/structure/window/full/shuttle,
@@ -59,30 +46,12 @@
 "O" = (
 /turf/simulated/wall/mineral/titanium,
 /area/ruin/powered)
-"P" = (
-/obj/structure/railing/cap,
-/obj/structure/railing/cap/normal{
-	dir = 1
-	},
-/obj/structure/railing/cap/normal,
-/obj/structure/railing/cap,
-/obj/structure/railing/cap{
-	dir = 1
-	},
-/turf/simulated/floor/catwalk,
-/area/ruin/powered)
 "Q" = (
 /obj/effect/spawner/random/food_trash,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/ruin/powered)
 "V" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/catwalk,
+/turf/simulated/floor/catwalk/airless,
 /area/ruin/powered)
 "W" = (
 /obj/machinery/computer/nonfunctional,
@@ -92,7 +61,7 @@
 /turf/template_noop,
 /area/template_noop)
 "Z" = (
-/obj/machinery/atmospherics/portable/canister/oxygen/broken,
+/obj/effect/map_effect/marker/mapmanip/submap/insert/ruin/oxygen_ferry,
 /turf/template_noop,
 /area/template_noop)
 
@@ -131,13 +100,13 @@ Y
 (3,1,1) = {"
 Y
 O
+N
 O
 O
 O
-O
-F
-L
-F
+z
+z
+z
 O
 O
 Y
@@ -150,11 +119,11 @@ N
 W
 s
 O
-F
-F
-F
-F
-F
+z
+z
+z
+z
+z
 c
 Y
 Y
@@ -168,7 +137,7 @@ Q
 q
 V
 V
-P
+V
 V
 V
 K
@@ -182,11 +151,11 @@ N
 H
 b
 O
-F
-F
-F
-F
-F
+z
+z
+z
+z
+z
 a
 Y
 Y
@@ -195,13 +164,13 @@ Y
 (7,1,1) = {"
 Y
 O
+N
 O
 O
 O
-O
-F
 z
-F
+z
+z
 O
 O
 Y

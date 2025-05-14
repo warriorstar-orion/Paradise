@@ -63,3 +63,18 @@
 		/obj/item/storage/toolbox/electrical,
 		/obj/item/storage/toolbox/emergency
 	)
+
+/obj/effect/spawner/random/engineering/atmos_machine
+	name = "random atmos machine"
+	icon_state = "atmos_machine"
+	loot = list(
+		/obj/machinery/atmospherics/refill_station/nitrogen,
+		/obj/machinery/atmospherics/refill_station/oxygen,
+		/obj/machinery/atmospherics/refill_station/plasma,
+		/obj/machinery/atmospherics/portable/pump,
+		/obj/machinery/atmospherics/portable/scrubber,
+		/obj/machinery/atmospherics/portable/scrubber/huge,
+		/obj/machinery/atmospherics/unary/thermomachine/freezer,
+		/obj/machinery/atmospherics/unary/thermomachine/heater,
+		/obj/machinery/space_heater,
+	)
