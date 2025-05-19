@@ -73,9 +73,6 @@
 	return button
 
 /datum/action/cooldown/UpdateButton(atom/movable/screen/movable/action_button/button, status_only, force)
-// 	. = ..()
-
-// /datum/action/cooldown/update_button_status(atom/movable/screen/movable/action_button/button, force = FALSE)
 	. = ..()
 	var/time_left = max(next_use_time - world.time, 0)
 	if(!text_cooldown || !owner || time_left == 0 || time_left >= COOLDOWN_NO_DISPLAY_TIME)
