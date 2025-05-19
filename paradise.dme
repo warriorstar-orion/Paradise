@@ -454,7 +454,6 @@
 #include "code\datums\actions\innate_action.dm"
 #include "code\datums\actions\item_action.dm"
 #include "code\datums\actions\spell_action.dm"
-#include "code\datums\actions\cooldown_action.dm"
 #include "code\datums\actions\mobs\mobcooldown.dm"
 #include "code\datums\ai\ai_behavior.dm"
 #include "code\datums\ai\ai_controller.dm"
