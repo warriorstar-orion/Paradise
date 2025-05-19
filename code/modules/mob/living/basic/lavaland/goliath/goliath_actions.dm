@@ -3,7 +3,7 @@
 	name = "Unleash Tentacles"
 	desc = "Unleash burrowed tentacles at a targeted location, grappling targets after a delay."
 	button_icon = 'icons/mob/lavaland/lavaland_monsters.dmi'
-	button_icon_state = "goliath_tentacle_wiggle"
+	button_icon_state = "Goliath_tentacle_wiggle"
 	background_icon_state = "bg_demon"
 	overlay_icon_state = "bg_demon_border"
 	click_to_activate = TRUE
