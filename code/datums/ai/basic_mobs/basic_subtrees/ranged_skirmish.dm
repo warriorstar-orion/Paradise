@@ -43,7 +43,7 @@
 	if (distance > max_range || distance < min_range)
 		return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_FAILED
 
-	controller.ai_interact(target = target, combat_mode = TRUE)
+	controller.ai_interact(target = target, intent = INTENT_HARM)
 	return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_SUCCEEDED
 
 /datum/ai_planning_subtree/ranged_skirmish/no_minimum
