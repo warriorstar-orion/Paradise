@@ -63,11 +63,11 @@
 	on_cooldown = TRUE
 	addtimer(CALLBACK(src, PROC_REF(end_cooldown)), 10 SECONDS)
 	owner.clear_fullscreen("agent_box")
-	UpdateButtons()
+	build_all_button_icons()
 
 /datum/action/item_action/agent_box/proc/end_cooldown()
 	on_cooldown = FALSE
-	UpdateButtons()
+	build_all_button_icons()
 
 /datum/action/item_action/agent_box/IsAvailable()
 	if(..() && !on_cooldown)

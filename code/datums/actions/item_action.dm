@@ -11,7 +11,7 @@
 		use_itemicon = FALSE
 		button_icon = custom_icon
 		button_icon_state = custom_icon_state
-	UpdateButtons()
+	build_all_button_icons()
 
 /datum/action/item_action/Destroy()
 	var/obj/item/I = target
@@ -89,7 +89,8 @@
 /datum/action/item_action/set_internals
 	name = "Set Internals"
 
-/datum/action/item_action/set_internals/UpdateButton(atom/movable/screen/movable/action_button/button, status_only = FALSE, force)
+/datum/action/item_action/set_internals/build_button_icon(atom/movable/screen/movable/action_button/button, update_flags, force)
+	. = ..()
 	if(!..()) // no button available
 		return
 	if(!iscarbon(owner))
@@ -128,9 +129,9 @@
 
 /datum/action/item_action/toggle_unfriendly_fire/Trigger(left_click)
 	if(..())
-		UpdateButtons()
+		build_all_button_icons()
 
-/datum/action/item_action/toggle_unfriendly_fire/UpdateButtons()
+/datum/action/item_action/toggle_unfriendly_fire/build_all_button_icons(update_flags, force)
 	if(istype(target, /obj/item/hierophant_club))
 		var/obj/item/hierophant_club/H = target
 		if(H.friendly_fire_check)

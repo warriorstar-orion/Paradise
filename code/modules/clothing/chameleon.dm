@@ -92,7 +92,7 @@
 			qdel(O)
 	..()
 
-/datum/action/item_action/chameleon_change/UpdateButton(atom/movable/screen/movable/action_button/button, status_only, force)
+/datum/action/item_action/chameleon_change/update_button_name(atom/movable/screen/movable/action_button/button, force)
 	. = ..()
 	if(.)
 		button.name = "Change [chameleon_name] Appearance"
@@ -138,7 +138,7 @@
 			update_look(usr, chameleon_list[chameleon_name][params["new_appearance"]])
 
 /datum/action/item_action/chameleon_change/proc/initialize_disguises()
-	UpdateButtons()
+	build_all_button_icons()
 	chameleon_blacklist |= typecacheof(target.type)
 	if(!isnull(chameleon_list[chameleon_name]))
 		return
@@ -179,7 +179,7 @@
 		var/obj/item/thing = target
 		thing.update_slot_icon()
 		SStgui.update_uis(src)
-	UpdateButtons()
+	build_all_button_icons()
 
 /datum/action/item_action/chameleon_change/proc/update_item(obj/item/picked_item)
 	target.name = initial(picked_item.name)

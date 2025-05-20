@@ -219,10 +219,10 @@
 	closeToolTip(usr)
 	return ..()
 
-/mob/proc/update_action_buttons_icon(status_only = FALSE)
+/mob/proc/update_action_buttons_icon(update_flags = ALL)
 	for(var/X in actions)
 		var/datum/action/A = X
-		A.UpdateButtons(status_only)
+		A.build_button_icon(update_flags)
 
 //This is the proc used to update all the action buttons.
 /mob/proc/update_action_buttons(reload_screen)
@@ -234,7 +234,7 @@
 
 	for(var/datum/action/action as anything in actions)
 		var/atom/movable/screen/movable/action_button/button = action.viewers[hud_used]
-		action.UpdateButtons()
+		action.build_all_button_icons()
 		if(reload_screen)
 			client.screen += button
 			client.update_active_keybindings()
