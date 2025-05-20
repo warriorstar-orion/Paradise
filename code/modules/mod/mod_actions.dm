@@ -49,7 +49,7 @@
 	if(!ready && left_click)
 		ready = TRUE
 		button_icon_state = "activate-ready"
-		UpdateButtons()
+		build_all_button_icons()
 		addtimer(CALLBACK(src, PROC_REF(reset_ready)), 3 SECONDS)
 		return
 	var/obj/item/mod/control/mod = target
@@ -60,7 +60,7 @@
 /datum/action/item_action/mod/activate/proc/reset_ready()
 	ready = FALSE
 	button_icon_state = initial(button_icon_state)
-	UpdateButtons()
+	build_all_button_icons()
 
 /datum/action/item_action/mod/module
 	name = "Toggle Module"
@@ -133,4 +133,4 @@
 /datum/action/item_action/mod/pinned_module/proc/linked_button_update()
 	if(module.module_type != MODULE_PASSIVE)
 		background_icon_state = (module.active ? "bg_mod_active" : "bg_mod")
-		UpdateButtons()
+		build_all_button_icons()

@@ -94,7 +94,7 @@
 	var/available_charges = hand_magic ? "[hand_magic.uses]" : "[charges]"
 	return "[available_charges]/[initial(charges)]"
 
-/datum/action/innate/cult/blood_spell/UpdateButton(atom/movable/screen/movable/action_button/button, status_only, force)
+/datum/action/innate/cult/blood_spell/build_button_icon(atom/movable/screen/movable/action_button/button, update_flags, force)
 	. = ..()
 	var/text = get_panel_text()
 	if(!text || !button)
@@ -297,10 +297,9 @@
 		var/mob/living/carbon/human/H = target
 		H.Hallucinate(120 SECONDS)
 		attached_action.charges--
-		attached_action.UpdateButtons()
 		attached_action.desc = attached_action.base_desc
 		attached_action.desc += "<br><b><u>Has [attached_action.charges] use\s remaining</u></b>."
-		attached_action.UpdateButtons()
+		attached_action.build_all_button_icons()
 		user.ranged_ability.remove_ranged_ability(user, "<span class='cult'><b>[H] has been cursed with living nightmares!</b></span>")
 		if(attached_action.charges <= 0)
 			to_chat(ranged_ability_user, "<span class='cult'>You have exhausted the spell's power!</span>")
@@ -350,7 +349,7 @@
 		qdel(src)
 	desc = "[revealing ? "Reveals" : "Conceals"] nearby cult structures, airlocks, and runes."
 	desc += "<br><b><u>Has [charges] use\s remaining</u></b>."
-	UpdateButtons()
+	build_all_button_icons()
 
 /datum/action/innate/cult/blood_spell/manipulation
 	name = "Blood Rites"
@@ -405,7 +404,7 @@
 			source.charges = uses
 			source.desc = source.base_desc
 			source.desc += "<br><b><u>Has [uses] use\s remaining</u></b>."
-			source.UpdateButtons()
+			source.build_all_button_icons()
 	return ..()
 
 /obj/item/melee/blood_magic/customised_abstract_text(mob/living/carbon/owner)
@@ -438,7 +437,7 @@
 	else if(source)
 		source.desc = source.base_desc
 		source.desc += "<br><b><u>Has [uses] use\s remaining</u></b>."
-		source.UpdateButtons()
+		source.build_all_button_icons()
 
 //The spell effects
 
@@ -578,7 +577,7 @@
 			user.visible_message("<span class='cultitalic'>This victim doesn't have enough arms to complete the restraint!</span>")
 			return
 		CuffAttack(C, user)
-		source.UpdateButtons()
+		source.build_all_button_icons()
 		..()
 
 /obj/item/melee/blood_magic/shackles/proc/CuffAttack(mob/living/carbon/C, mob/living/user)
@@ -874,12 +873,12 @@
 			target.clean_blood()
 		else
 			steal_blood(user, target)
-		source.UpdateButtons()
+		source.build_all_button_icons()
 		return
 
 	if(isconstruct(target))
 		heal_construct(user, target)
-		source.UpdateButtons()
+		source.build_all_button_icons()
 		return
 
 	if(istype(target, /obj/item/blood_orb))
@@ -889,10 +888,10 @@
 			to_chat(user, "<span class='warning'>You obtain [candidate.blood] blood from the orb of blood!</span>")
 			playsound(user, 'sound/misc/enter_blood.ogg', 50, extrarange = SOUND_RANGE_SET(7))
 			qdel(candidate)
-			source.UpdateButtons()
+			source.build_all_button_icons()
 			return
 	blood_draw(target, user)
-	source.UpdateButtons()
+	source.build_all_button_icons()
 
 /obj/item/melee/blood_magic/manipulator/proc/blood_draw(atom/target, mob/living/carbon/human/user)
 	var/temp = 0
@@ -996,4 +995,4 @@
 					to_chat(user, "<span class='warning'>You need a free hand for this rite!</span>")
 					uses += BLOOD_BARRAGE_COST // Refund the charges
 					qdel(rite)
-	source.UpdateButtons()
+	source.build_all_button_icons()

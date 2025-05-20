@@ -55,7 +55,7 @@
 	button_icon_state = "mech_internals_[chassis.use_internal_tank ? "on" : "off"]"
 	chassis.occupant_message("Now taking air from [chassis.use_internal_tank ? "internal airtank" : "environment"].")
 	chassis.log_message("Now taking air from [chassis.use_internal_tank ? "internal airtank" : "environment"].")
-	UpdateButtons()
+	build_all_button_icons()
 
 /datum/action/innate/mecha/mech_toggle_lights
 	name = "Toggle Lights"
@@ -73,7 +73,7 @@
 		button_icon_state = "mech_lights_off"
 	chassis.occupant_message("Toggled lights [chassis.lights ? "on" : "off"].")
 	chassis.log_message("Toggled lights [chassis.lights ? "on" : "off"].")
-	UpdateButtons()
+	build_all_button_icons()
 
 /datum/action/innate/mecha/mech_view_stats
 	name = "View Stats"
@@ -103,7 +103,7 @@
 		chassis.deflect_chance = initial(chassis.deflect_chance)
 		chassis.occupant_message("<span class='danger'>You disable [chassis] defence mode.</span>")
 	chassis.log_message("Toggled defence mode.")
-	UpdateButtons()
+	build_all_button_icons()
 
 /datum/action/innate/mecha/mech_overload_mode
 	name = "Toggle leg actuators overload"
@@ -133,7 +133,7 @@
 		chassis.step_in = initial(chassis.step_in)
 		chassis.step_energy_drain = chassis.normal_step_energy_drain
 		chassis.occupant_message("<span class='notice'>You disable leg actuators overload.</span>")
-	UpdateButtons()
+	build_all_button_icons()
 
 /datum/action/innate/mecha/mech_toggle_thrusters
 	name = "Toggle Thrusters"
@@ -183,7 +183,7 @@
 			SEND_SOUND(owner, sound(chassis.zoomsound, volume = 50))
 		else
 			owner.client.RemoveViewMod("mecha")
-		UpdateButtons()
+		build_all_button_icons()
 
 /datum/action/innate/mecha/mech_toggle_phasing
 	name = "Toggle Phasing"
@@ -195,7 +195,7 @@
 	chassis.phasing = !chassis.phasing
 	button_icon_state = "mech_phasing_[chassis.phasing ? "on" : "off"]"
 	chassis.occupant_message("<font color=\"[chassis.phasing?"#00f\">En":"#f00\">Dis"]abled phasing.</font>")
-	UpdateButtons()
+	build_all_button_icons()
 
 
 /datum/action/innate/mecha/mech_switch_damtype
@@ -219,7 +219,7 @@
 	chassis.damtype = new_damtype
 	button_icon_state = "mech_damtype_[new_damtype]"
 	playsound(src, 'sound/mecha/mechmove01.ogg', 50, TRUE)
-	UpdateButtons()
+	build_all_button_icons()
 
 // Floor Buffer Action
 /datum/action/innate/mecha/mech_toggle_floorbuffer

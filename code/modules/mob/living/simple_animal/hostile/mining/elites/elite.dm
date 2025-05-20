@@ -125,11 +125,11 @@ While using this makes the system rely on OnFire, it still gives options for tim
 		STOP_PROCESSING(SSfastprocess, src)
 		qdel(src)
 		return
-	UpdateButtons()
+	build_all_button_icons()
 
-/datum/action/innate/elite_attack/UpdateButton(atom/movable/screen/movable/action_button/button, status_only = FALSE, force = FALSE)
+/datum/action/innate/elite_attack/build_button_icon(atom/movable/screen/movable/action_button/button, update_flags, force)
 	. = ..()
-	if(status_only)
+	if(update_flags & UPDATE_BUTTON_STATUS)
 		return
 	var/mob/living/simple_animal/hostile/asteroid/elite/elite_owner = owner
 	var/timeleft = max(elite_owner.ranged_cooldown - world.time, 0)

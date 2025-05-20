@@ -3,11 +3,12 @@
 	var/desc = null
 	var/obj/target = null
 	var/check_flags = 0
-	/// Icon that our button screen object overlay and background
+	/// This is the file for the icon that appears on the button
 	var/button_icon = 'icons/mob/actions/actions.dmi'
-	/// Icon state of screen object overlay
+	/// This is the icon state for the icon that appears on the button
 	var/button_icon_state = ACTION_BUTTON_DEFAULT_OVERLAY
-	/// Icon that our button screen object background will have
+	/// This is the icon state state for the BACKGROUND underlay icon of the button
+	/// (If set to ACTION_BUTTON_DEFAULT_BACKGROUND, uses the hud's default background)
 	var/background_icon = 'icons/mob/actions/actions.dmi'
 	/// Icon state of screen object background
 	var/background_icon_state = ACTION_BUTTON_DEFAULT_BACKGROUND
@@ -28,9 +29,19 @@
 	var/action_disabled = FALSE
 	/// If False, the owner of this action does not get a hud and cannot activate it on their own
 	var/owner_has_control = TRUE
+	/// The appearance used as an overlay for when the action is unavailable
+	var/mutable_appearance/unavailable_effect
 
-/datum/action/New(Target)
-	target = Target
+/datum/action/New(target)
+	link_to(target)
+
+/// Links the passed target to our action, registering any relevant signals
+/datum/action/proc/link_to(target_)
+	target = target_
+	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(clear_ref), override = TRUE)
+
+	if(isatom(target))
+		RegisterSignal(target, COMSIG_ATOM_UPDATED_ICON, PROC_REF(on_target_icon_update))
 
 /datum/action/proc/should_draw_cooldown()
 	return !IsAvailable()
@@ -86,10 +97,10 @@
 		UnregisterSignal(owner, COMSIG_PARENT_QDELETING)
 		owner = null
 
-/datum/action/proc/UpdateButtons(status_only, force)
-	for(var/datum/hud/hud in viewers)
-		var/atom/movable/screen/movable/button = viewers[hud]
-		UpdateButton(button, status_only, force)
+/// Builds / updates all buttons we have shared or given out
+/datum/action/proc/build_all_button_icons(update_flags = ALL, force)
+	for(var/datum/hud/hud as anything in viewers)
+		build_button_icon(viewers[hud], update_flags, force)
 
 /datum/action/proc/Trigger(left_click = TRUE)
 	if(!IsAvailable())
@@ -130,31 +141,85 @@
 			return FALSE
 	return TRUE
 
-/datum/action/proc/UpdateButton(atom/movable/screen/movable/action_button/button, status_only = FALSE, force = FALSE)
+/**
+ * Builds the icon of the button.
+ *
+ * Concept:
+ * - Underlay (Background icon)
+ * - Icon (button icon)
+ * - Maptext
+ * - Overlay (Background border)
+ *
+ * button - which button we are modifying the icon of
+ * force - whether we're forcing a full update
+ */
+/datum/action/proc/build_button_icon(atom/movable/screen/movable/action_button/button, update_flags = ALL, force = FALSE)
 	if(!button)
 		return
-	if(!status_only)
-		button.name = name
-		if(desc)
-			button.desc = "[desc] [initial(button.desc)]"
-		if(owner?.hud_used && background_icon_state == ACTION_BUTTON_DEFAULT_BACKGROUND)
-			var/list/settings = owner.hud_used.get_action_buttons_icons()
-			if(button.icon != settings["bg_icon"])
-				button.icon = settings["bg_icon"]
-			if(button.icon_state != settings["bg_state"])
-				button.icon_state = settings["bg_state"]
-		else
-			if(button.icon != background_icon)
-				button.icon = background_icon
-			if(button.icon_state != background_icon_state)
-				button.icon_state = background_icon_state
 
+	if(update_flags & UPDATE_BUTTON_NAME)
+		update_button_name(button, force)
+
+	if(update_flags & UPDATE_BUTTON_BACKGROUND)
+		apply_button_background(button, force)
+
+	if(update_flags & UPDATE_BUTTON_ICON)
+		apply_button_icon(button, force)
+
+	if(update_flags & UPDATE_BUTTON_OVERLAY)
 		apply_button_overlay(button, force)
 
+	if(update_flags & UPDATE_BUTTON_STATUS)
+		update_button_status(button, force)
+
+/**
+ * Updates the name and description of the button to match our action name and discription.
+ *
+ * current_button - what button are we editing?
+ * force - whether an update is forced regardless of existing status
+ */
+/datum/action/proc/update_button_name(atom/movable/screen/movable/action_button/button, force = FALSE)
+	button.name = name
+	if(desc)
+		button.desc = desc
+
+/**
+ * Any other miscellaneous "status" updates within the action button is handled here,
+ * such as redding out when unavailable or modifying maptext.
+ *
+ * current_button - what button are we editing?
+ * force - whether an update is forced regardless of existing status
+ */
+/datum/action/proc/update_button_status(atom/movable/screen/movable/action_button/current_button, force = FALSE)
 	if(should_draw_cooldown())
-		apply_unavailable_effect(button)
-	else
-		return TRUE
+		apply_unavailable_effect(current_button)
+
+
+// /datum/action/proc/UpdateButton(atom/movable/screen/movable/action_button/button, status_only = FALSE, force = FALSE)
+// 	if(!button)
+// 		return
+// 	if(!status_only)
+// 		button.name = name
+// 		if(desc)
+// 			button.desc = "[desc] [initial(button.desc)]"
+// 		if(owner?.hud_used && background_icon_state == ACTION_BUTTON_DEFAULT_BACKGROUND)
+// 			var/list/settings = owner.hud_used.get_action_buttons_icons()
+// 			if(button.icon != settings["bg_icon"])
+// 				button.icon = settings["bg_icon"]
+// 			if(button.icon_state != settings["bg_state"])
+// 				button.icon_state = settings["bg_state"]
+// 		else
+// 			if(button.icon != background_icon)
+// 				button.icon = background_icon
+// 			if(button.icon_state != background_icon_state)
+// 				button.icon_state = background_icon_state
+
+// 		apply_button_overlay(button, force)
+
+// 	if(should_draw_cooldown())
+// 		apply_unavailable_effect(button)
+// 	else
+// 		return TRUE
 
 //Give our action button to the player
 /datum/action/proc/GiveAction(mob/viewer)
@@ -222,14 +287,14 @@
 			our_button.id = bitflag
 			return
 
-/datum/action/proc/apply_unavailable_effect(atom/movable/screen/movable/action_button/B)
-	var/image/img = image('icons/mob/screen_white.dmi', icon_state = "template")
-	img.alpha = 200
-	img.appearance_flags = RESET_COLOR | RESET_ALPHA
-	img.color = "#000000"
-	img.plane = FLOAT_PLANE + 1
-	B.add_overlay(img)
-
+/datum/action/proc/apply_unavailable_effect(atom/movable/screen/movable/action_button/button)
+	button.cut_overlay(unavailable_effect)
+	unavailable_effect = image('icons/mob/screen_white.dmi', icon_state = "template")
+	unavailable_effect.alpha = 200
+	unavailable_effect.appearance_flags = RESET_COLOR | RESET_ALPHA
+	unavailable_effect.color = "#000000"
+	unavailable_effect.plane = FLOAT_PLANE + 1
+	button.add_overlay(unavailable_effect)
 
 // /datum/action/proc/apply_button_overlay(atom/movable/screen/movable/action_button/current_button)
 // 	current_button.cut_overlays()
@@ -305,3 +370,22 @@
 
 	current_button.icon = button_icon
 	current_button.icon_state = button_icon_state
+
+/// Updates our buttons if our target's icon was updated
+/datum/action/proc/on_target_icon_update(datum/source, updates, updated)
+	SIGNAL_HANDLER
+
+	var/update_flag = NONE
+	var/forced = FALSE
+	if(updates & UPDATE_ICON_STATE)
+		update_flag |= UPDATE_BUTTON_ICON
+		forced = TRUE
+	if(updates & UPDATE_OVERLAYS)
+		update_flag |= UPDATE_BUTTON_OVERLAY
+		forced = TRUE
+	if(updates & (UPDATE_NAME|UPDATE_DESC))
+		update_flag |= UPDATE_BUTTON_NAME
+	// Status is not relevant, and background is not relevant. Neither will change
+
+	// Force the update if an icon state or overlay change was done
+	build_all_button_icons(update_flag, forced)
