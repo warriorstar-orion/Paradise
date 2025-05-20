@@ -20,7 +20,7 @@
 	deconstruct(TRUE)
 	return TRUE
 
-/obj/structure/kitchenspike_frame/attackby__legacy__attackchain(obj/item/I, mob/user, params)
+/obj/structure/kitchenspike_frame/item_interaction(mob/living/user, obj/item/I, list/modifiers)
 	add_fingerprint(user)
 	if(istype(I, /obj/item/stack/rods))
 		var/obj/item/stack/rods/R = I
@@ -30,9 +30,9 @@
 			new /obj/structure/kitchenspike(loc)
 			add_fingerprint(user)
 			qdel(src)
-		return
-	else
-		return ..()
+		return ITEM_INTERACT_COMPLETE
+
+	return ..()
 
 /obj/structure/kitchenspike_frame/examine(mob/user)
 	. = ..()
@@ -56,6 +56,7 @@
 	buckle_lying = FALSE
 	can_buckle = TRUE
 	max_integrity = 250
+	var/impale_time = 6 SECONDS
 
 /obj/structure/kitchenspike/examine(mob/user)
 	. = ..()
@@ -103,7 +104,7 @@
 		"<span class='danger'>[user] tries to slam [victim] onto the meat spike!</span>",
 		"<span class='userdanger'>[user] tries to slam you onto the meat spike!</span>"
 	)
-	if(do_mob(user, victim, 6 SECONDS))
+	if(do_mob(user, victim, impale_time))
 		end_spike(victim, user)
 
 /obj/structure/kitchenspike/proc/end_spike(mob/living/victim, mob/user)

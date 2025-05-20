@@ -2,8 +2,37 @@
 "a" = (
 /turf/simulated/floor/plasteel,
 /area/game_test)
+"b" = (
+/obj/structure/ore_box,
+/turf/simulated/floor/plasteel,
+/area/game_test)
+"c" = (
+/obj/structure/target_stake,
+/turf/space,
+/turf/simulated/floor/plasteel,
+/area/game_test)
+"d" = (
+/obj/structure/beebox,
+/turf/simulated/floor/plasteel,
+/area/game_test)
+"e" = (
+/obj/structure/bed,
+/turf/simulated/floor/plasteel,
+/area/game_test)
+"f" = (
+/obj/structure/statue/plasma/xeno,
+/turf/simulated/floor/plasteel,
+/area/game_test)
 "g" = (
 /obj/structure/cult/functional/forge,
+/turf/simulated/floor/plasteel,
+/area/game_test)
+"h" = (
+/obj/structure/windoor_assembly,
+/turf/simulated/floor/plasteel,
+/area/game_test)
+"i" = (
+/obj/structure/loom,
 /turf/simulated/floor/plasteel,
 /area/game_test)
 "j" = (
@@ -22,17 +51,41 @@
 /obj/structure/grille,
 /turf/simulated/floor/plasteel,
 /area/game_test)
+"n" = (
+/obj/structure/shelf,
+/turf/simulated/floor/plasteel,
+/area/game_test)
 "o" = (
 /obj/structure/barricade/wooden,
+/turf/simulated/floor/plasteel,
+/area/game_test)
+"p" = (
+/obj/structure/mineral_door/iron,
+/turf/simulated/floor/plasteel,
+/area/game_test)
+"q" = (
+/obj/structure/reflector/single,
+/turf/simulated/floor/plasteel,
+/area/game_test)
+"r" = (
+/obj/structure/fermenting_barrel,
 /turf/simulated/floor/plasteel,
 /area/game_test)
 "s" = (
 /obj/structure/girder,
 /turf/simulated/floor/plasteel,
 /area/game_test)
+"t" = (
+/obj/structure/snowman,
+/turf/simulated/floor/plasteel,
+/area/game_test)
 "u" = (
 /obj/structure/machine_frame,
 /turf/simulated/floor/plasteel,
+/area/game_test)
+"v" = (
+/obj/structure/mirror,
+/turf/simulated/wall/r_wall,
 /area/game_test)
 "w" = (
 /obj/structure/extinguisher_cabinet,
@@ -40,6 +93,18 @@
 /area/game_test)
 "x" = (
 /turf/simulated/wall/r_wall,
+/area/game_test)
+"y" = (
+/obj/structure/filingcabinet,
+/turf/simulated/floor/plasteel,
+/area/game_test)
+"z" = (
+/obj/structure/kitchenspike,
+/turf/simulated/floor/plasteel,
+/area/game_test)
+"A" = (
+/obj/structure/safe,
+/turf/simulated/floor/plasteel,
 /area/game_test)
 "B" = (
 /obj/effect/landmark{
@@ -51,6 +116,10 @@
 /obj/effect/landmark/game_test/bottom_left_corner,
 /turf/simulated/floor/plasteel,
 /area/game_test)
+"C" = (
+/obj/structure/lattice,
+/turf/simulated/floor/plasteel,
+/area/game_test)
 "D" = (
 /obj/structure/computerframe,
 /turf/simulated/floor/plasteel,
@@ -59,8 +128,24 @@
 /obj/structure/firelock_frame,
 /turf/simulated/floor/plasteel,
 /area/game_test)
+"F" = (
+/obj/structure/noticeboard,
+/turf/simulated/wall/r_wall,
+/area/game_test)
+"G" = (
+/obj/structure/rack,
+/turf/simulated/floor/plasteel,
+/area/game_test)
 "H" = (
 /obj/structure/ai_core,
+/turf/simulated/floor/plasteel,
+/area/game_test)
+"I" = (
+/obj/structure/disposalconstruct,
+/turf/simulated/floor/plating,
+/area/game_test)
+"J" = (
+/obj/structure/particle_accelerator/fuel_chamber,
 /turf/simulated/floor/plasteel,
 /area/game_test)
 "K" = (
@@ -75,8 +160,40 @@
 /obj/structure/door_assembly,
 /turf/simulated/floor/plasteel,
 /area/game_test)
+"N" = (
+/obj/structure/clockwork/wall_gear,
+/turf/simulated/floor/plasteel,
+/area/game_test)
+"O" = (
+/obj/structure/morgue,
+/turf/simulated/floor/plasteel,
+/area/game_test)
+"P" = (
+/obj/effect/spawner/window,
+/turf/simulated/floor/plasteel,
+/area/game_test)
 "Q" = (
 /obj/effect/landmark/game_test/top_right_corner,
+/turf/simulated/floor/plasteel,
+/area/game_test)
+"R" = (
+/obj/structure/flora/ash,
+/turf/simulated/floor/plasteel,
+/area/game_test)
+"S" = (
+/obj/structure/chair,
+/turf/simulated/floor/plasteel,
+/area/game_test)
+"U" = (
+/obj/structure/kitchenspike_frame,
+/turf/simulated/floor/plasteel,
+/area/game_test)
+"V" = (
+/obj/structure/big_delivery,
+/turf/simulated/floor/plasteel,
+/area/game_test)
+"W" = (
+/obj/structure/inflatable,
 /turf/simulated/floor/plasteel,
 /area/game_test)
 "X" = (
@@ -143,9 +260,9 @@ m
 a
 j
 a
+i
 a
-a
-a
+f
 a
 a
 B
@@ -183,9 +300,9 @@ s
 a
 Y
 a
+v
 a
-a
-a
+n
 a
 a
 a
@@ -221,11 +338,11 @@ L
 a
 s
 a
+W
 a
+O
 a
-a
-a
-a
+t
 a
 a
 a
@@ -261,11 +378,11 @@ M
 a
 s
 a
+C
 a
+F
 a
-a
-a
-a
+e
 a
 a
 a
@@ -301,11 +418,11 @@ w
 a
 l
 a
+z
 a
+q
 a
-a
-a
-a
+S
 a
 a
 a
@@ -339,13 +456,13 @@ E
 a
 k
 a
+U
 a
+p
 a
+A
 a
-a
-a
-a
-a
+G
 a
 a
 a
@@ -375,17 +492,17 @@ x
 (15,1,1) = {"
 x
 a
+c
 a
+h
 a
+P
 a
+d
 a
+r
 a
-a
-a
-a
-a
-a
-a
+R
 a
 a
 a
@@ -395,7 +512,7 @@ x
 (16,1,1) = {"
 x
 a
-Q
+a
 a
 a
 a
@@ -415,6 +532,26 @@ x
 (17,1,1) = {"
 x
 a
+Q
+a
+y
+a
+b
+a
+V
+a
+N
+a
+J
+a
+I
+a
+a
+x
+"}
+(18,1,1) = {"
+x
+a
 a
 a
 a
@@ -432,7 +569,7 @@ a
 a
 x
 "}
-(18,1,1) = {"
+(19,1,1) = {"
 x
 x
 x
