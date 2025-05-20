@@ -196,7 +196,7 @@
 		return FALSE
 
 	// We'll limit it to mob actions because they're mostly set up for random mobs already, and spells take some extra finagling for wizard clothing etc
-	var/static/list/all_mob_actions = sort_list(subtypesof(/datum/action/cooldown/mob_cooldown), GLOBAL_PROC_REF(cmp_typepaths_asc))
+	var/static/list/all_mob_actions = sortTim(subtypesof(/datum/action/cooldown/mob_cooldown), GLOBAL_PROC_REF(cmp_typepaths_asc))
 	var/static/list/actions_by_name = list()
 	if (!length(actions_by_name))
 		for (var/datum/action/cooldown/mob_cooldown as anything in all_mob_actions)
@@ -255,7 +255,7 @@
 		return FALSE
 
 	// Sadly gotta copy/paste this here too
-	var/static/list/all_mob_actions = sort_list(subtypesof(/datum/action/cooldown/mob_cooldown), GLOBAL_PROC_REF(cmp_typepaths_asc))
+	var/static/list/all_mob_actions = sortTim(subtypesof(/datum/action/cooldown/mob_cooldown), GLOBAL_PROC_REF(cmp_typepaths_asc))
 	var/static/list/actions_by_name = list()
 	if (!length(actions_by_name))
 		for (var/datum/action/cooldown/mob_cooldown as anything in all_mob_actions)

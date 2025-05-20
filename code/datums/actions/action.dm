@@ -3,7 +3,6 @@
 	var/desc = null
 	var/obj/target = null
 	var/check_flags = 0
-
 	/// This is the icon state state for the BACKGROUND underlay icon of the button
 	/// (If set to ACTION_BUTTON_DEFAULT_BACKGROUND, uses the hud's default background)
 	var/background_icon = 'icons/mob/actions/actions.dmi'
@@ -34,6 +33,8 @@
 	var/mutable_appearance/unavailable_effect
 	/// If False, the owner of this action does not get a hud and cannot activate it on their own
 	var/owner_has_control = TRUE
+	/// The appearance used as an overlay for when the action is unavailable
+	var/mutable_appearance/unavailable_effect
 
 /datum/action/New(target)
 	link_to(target)
