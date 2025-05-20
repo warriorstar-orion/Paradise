@@ -72,7 +72,7 @@
 	button.maptext_height = 16
 	return button
 
-/datum/action/cooldown/UpdateButton(atom/movable/screen/movable/action_button/button, status_only, force)
+/datum/action/cooldown/update_button_status(atom/movable/screen/movable/action_button/button, force = FALSE)
 	. = ..()
 	var/time_left = max(next_use_time - world.time, 0)
 	if(!text_cooldown || !owner || time_left == 0 || time_left >= COOLDOWN_NO_DISPLAY_TIME)
@@ -117,7 +117,7 @@
 	. = ..()
 	if(!owner)
 		return
-	UpdateButtons()
+	build_all_button_icons()
 	if(next_use_time > world.time)
 		START_PROCESSING(SSfastprocess, src)
 	RegisterSignal(granted_to, COMSIG_HOSTILE_PRE_ATTACKINGTARGET, PROC_REF(handle_melee_attack))
@@ -174,7 +174,7 @@
 	// Don't start a cooldown if we have a cooldown time of 0 seconds
 	if(next_use_time == world.time)
 		return
-	UpdateButtons(status_only = TRUE)
+	build_all_button_icons(UPDATE_BUTTON_STATUS)
 	START_PROCESSING(SSfastprocess, src)
 
 /// Starts a cooldown time for other abilities that share a cooldown with this. Has some niche usage with more complicated attack ai!
@@ -193,17 +193,17 @@
 /// Resets the cooldown of this ability
 /datum/action/cooldown/proc/ResetCooldown()
 	next_use_time = world.time
-	UpdateButtons(status_only = TRUE)
+	build_all_button_icons(UPDATE_BUTTON_STATUS)
 
 /// Re-enables this cooldown action
 /datum/action/cooldown/proc/enable()
 	action_disabled = FALSE
-	UpdateButtons(status_only = TRUE)
+	build_all_button_icons(UPDATE_BUTTON_STATUS)
 
 /// Disables this cooldown action
 /datum/action/cooldown/proc/disable()
 	action_disabled = TRUE
-	UpdateButtons(status_only = TRUE)
+	build_all_button_icons(UPDATE_BUTTON_STATUS)
 
 /// Re-enables all cooldown actions
 /datum/action/cooldown/proc/enable_cooldown_actions()
@@ -295,11 +295,11 @@
 
 /datum/action/cooldown/process()
 	if(!owner || (next_use_time - world.time) <= 0)
-		UpdateButtons(status_only = TRUE)
+		build_all_button_icons(UPDATE_BUTTON_STATUS)
 		STOP_PROCESSING(SSfastprocess, src)
 		return
 
-	UpdateButtons(status_only = TRUE)
+	build_all_button_icons(UPDATE_BUTTON_STATUS)
 
 /**
  * Set our action as the click override on the passed mob.
@@ -312,7 +312,7 @@
 		on_who.client?.mouse_override_icon = ranged_mousepointer
 		#warn mouse pointer shits
 		// on_who.update_mouse_pointer()
-	UpdateButtons(status_only = TRUE)
+	build_all_button_icons(UPDATE_BUTTON_STATUS)
 	return TRUE
 
 /**
@@ -329,7 +329,7 @@
 		on_who.client?.mouse_override_icon = initial(on_who.client?.mouse_override_icon)
 		#warn mouse pointer shits
 		// on_who.update_mouse_pointer()
-	UpdateButtons(status_only = TRUE)
+	build_all_button_icons(UPDATE_BUTTON_STATUS)
 	return TRUE
 
 /// Formats the action to be returned to the stat panel.
