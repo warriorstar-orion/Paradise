@@ -3,8 +3,8 @@
  * and apply it as an overlay of the action button
  */
 /datum/component/action_item_overlay
-	/// Weakref to what item the component uses to apply as an overlay.
-	var/datum/weakref/item_ref
+	/// UID of the item the component uses to apply as an overlay.
+	var/item_uid
 	/// Callback that dictates what item the component uses to apply as an overlay.
 	var/datum/callback/item_callback
 
@@ -21,11 +21,11 @@
 		stack_trace("[type] created without a reference item or an item callback - one or the other is required.")
 		return COMPONENT_INCOMPATIBLE
 
-	src.item_ref = WEAKREF(item)
+	src.item_uid = item.UID()
 	src.item_callback = item_callback
 
 /datum/component/action_item_overlay/Destroy(force)
-	item_ref = null
+	item_uid = null
 	item_callback = null
 	item_appearance = null
 	return ..()
@@ -56,7 +56,7 @@
 			item_appearance = null
 		return
 
-	var/atom/movable/muse = item_callback?.Invoke() || item_ref?.resolve()
+	var/atom/movable/muse = item_callback?.Invoke() || locateUID(item_uid)
 	if(!istype(muse))
 		if(item_appearance) // New item does not exist but we have an old appearance
 			current_button.cut_overlay(item_appearance)

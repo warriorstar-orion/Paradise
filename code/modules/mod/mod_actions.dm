@@ -4,9 +4,8 @@
 	background_icon = 'icons/mob/actions/actions_mod.dmi'
 	background_icon_state = "bg_mod"
 	check_flags = AB_CHECK_CONSCIOUS
-	use_itemicon = FALSE
 
-/datum/action/item_action/mod/New(Target, custom_icon, custom_icon_state)
+/datum/action/item_action/mod/New(Target)
 	..()
 	if(!ismodcontrol(Target))
 		qdel(src)
@@ -96,12 +95,13 @@
 	/// A ref to the mob we are pinned to.
 	var/pinner_uid
 
-/datum/action/item_action/mod/pinned_module/New(Target, custom_icon, custom_icon_state, obj/item/mod/module/linked_module, mob/user)
+/datum/action/item_action/mod/pinned_module/New(Target, obj/item/mod/module/linked_module, mob/user)
+	button_icon = linked_module.icon
+	button_icon_state = linked_module.icon_state
 	name = "Activate [capitalize(linked_module.name)]"
 	desc = "Quickly activate [linked_module]."
 	..()
 	module = linked_module
-	button_icon_state = module.icon_state
 	background_icon_state = ((module.module_type == MODULE_TOGGLE && module.active) ? "bg_mod_active" : "bg_mod")
 	if(linked_module.allow_flags & MODULE_ALLOW_INCAPACITATED)
 		// clears check hands
