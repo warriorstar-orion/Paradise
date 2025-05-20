@@ -211,7 +211,6 @@
 /datum/action/item_action/mod_recall
 	name = "Recall MOD"
 	desc = "Recall a MODsuit anyplace, anytime."
-	use_itemicon = FALSE
 	check_flags = AB_CHECK_CONSCIOUS
 	button_icon = 'icons/mob/actions/actions_mod.dmi'
 	button_icon_state = "recall"

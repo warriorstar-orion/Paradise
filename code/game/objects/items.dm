@@ -70,10 +70,6 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 	var/list/actions = list()
 	/// List of paths of action datums to give to the item on New().
 	var/list/actions_types = list()
-	/// List of icons-sheets for a given action to override the icon.
-	var/list/action_icon = list()
-	/// List of icon states for a given action to override the icon_state.
-	var/list/action_icon_state = list()
 
 	/// What materials the item yields when broken down. Some methods will not recover everything (autolathes only recover metal and glass, for example).
 	var/list/materials = list()

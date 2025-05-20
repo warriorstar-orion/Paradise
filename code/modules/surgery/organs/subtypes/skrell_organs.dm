@@ -16,7 +16,6 @@
 	var/obj/item/held_item
 
 /datum/action/item_action/organ_action/toggle/headpocket
-	use_itemicon = FALSE
 	button_icon_state = "skrell_headpocket_in"
 
 /obj/item/organ/internal/headpocket/proc/update_button_state()

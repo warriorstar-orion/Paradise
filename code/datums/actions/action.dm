@@ -200,33 +200,6 @@
 	if(should_draw_cooldown())
 		apply_unavailable_effect(button)
 
-
-// /datum/action/proc/UpdateButton(atom/movable/screen/movable/action_button/button, status_only = FALSE, force = FALSE)
-// 	if(!button)
-// 		return
-// 	if(!status_only)
-// 		button.name = name
-// 		if(desc)
-// 			button.desc = "[desc] [initial(button.desc)]"
-// 		if(owner?.hud_used && background_icon_state == ACTION_BUTTON_DEFAULT_BACKGROUND)
-// 			var/list/settings = owner.hud_used.get_action_buttons_icons()
-// 			if(button.icon != settings["bg_icon"])
-// 				button.icon = settings["bg_icon"]
-// 			if(button.icon_state != settings["bg_state"])
-// 				button.icon_state = settings["bg_state"]
-// 		else
-// 			if(button.icon != background_icon)
-// 				button.icon = background_icon
-// 			if(button.icon_state != background_icon_state)
-// 				button.icon_state = background_icon_state
-
-// 		apply_button_overlay(button, force)
-
-// 	if(should_draw_cooldown())
-// 		apply_unavailable_effect(button)
-// 	else
-// 		return TRUE
-
 //Give our action button to the player
 /datum/action/proc/GiveAction(mob/viewer)
 	var/datum/hud/our_hud = viewer.hud_used
@@ -294,14 +267,12 @@
 			return
 
 /datum/action/proc/apply_unavailable_effect(atom/movable/screen/movable/action_button/button)
-	// log_debug("[button.UID()] cutting unavailable effect overlay [unavailable_effect.UID()]")
 	unavailable_effect = mutable_appearance('icons/mob/screen_white.dmi', icon_state = "template")
 	unavailable_effect.alpha = 200
 	unavailable_effect.appearance_flags = RESET_COLOR | RESET_ALPHA
 	unavailable_effect.color = "#000000"
 	unavailable_effect.plane = FLOAT_PLANE + 1
 	button.add_overlay(unavailable_effect)
-	// log_debug("[button.UID()] adding unavailable effect overlay [unavailable_effect.UID()]")
 
 /**
  * Applies any overlays to our button
@@ -315,12 +286,9 @@
 	if(!overlay_icon || !overlay_icon_state || (button.active_overlay_icon_state == overlay_icon_state && !force))
 		return
 
-	// if(button?.button_overlay)
-	// 	log_debug("[button.UID()] cutting overlay [button.button_overlay.UID()]")
 	button.cut_overlay(button.button_overlay)
 	button.button_overlay = mutable_appearance(icon = overlay_icon, icon_state = overlay_icon_state, appearance_flags = (RESET_COLOR|RESET_ALPHA))
 	button.add_overlay(button.button_overlay)
-	// log_debug("[button.UID()] adding overlay [button.button_overlay.UID()]")
 	button.active_overlay_icon_state = overlay_icon_state
 
 /// Checks if our action is actively selected. Used for selecting icons primarily.
@@ -355,11 +323,9 @@
 	var/used_icon_key = is_action_active(button) ? "bg_state_active" : "bg_state"
 
 	// Make the underlay
-	// log_debug("[button.UID()] cutting underlays")
 	button.underlays.Cut()
 	var/image/underlay = image(icon = icon_settings["bg_icon"], icon_state = icon_settings[used_icon_key])
 	button.underlays += underlay
-	// log_debug("[button.UID()] adding underlay [underlay.UID()]")
 	button.active_underlay_icon_state = icon_settings[used_icon_key]
 
 /**

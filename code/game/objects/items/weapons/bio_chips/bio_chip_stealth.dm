@@ -20,7 +20,6 @@
 	check_flags = AB_CHECK_HANDS_BLOCKED | AB_CHECK_IMMOBILE | AB_CHECK_CONSCIOUS | AB_CHECK_STUNNED
 	background_icon_state = "bg_agent"
 	button_icon_state = "deploy_box"
-	use_itemicon = FALSE
 	/// If TRUE, the box can't be deployed
 	var/on_cooldown = FALSE
 
