@@ -87,8 +87,8 @@
 	TEST_ASSERT_LAST_CHATLOG(player, "You hit [displaycase] with [baton]")
 	qdel(baton)
 
-	var/obj/structure/door_assembly/assembly = teleport_to_first(player, /obj/structure/door_assembly)
-	var/obj/item/wrench/wrench = player.spawn_fast_tool(/obj/item/wrench)
+	var/atom/assembly = teleport_to_first(player, /obj/structure/door_assembly)
+	var/atom/wrench = player.spawn_fast_tool(/obj/item/wrench)
 	player.click_on(assembly)
 	TEST_ASSERT_LAST_CHATLOG(player, "You secure [assembly].")
 	player.put_away(wrench)
@@ -97,7 +97,7 @@
 	TEST_ASSERT_LAST_CHATLOG(player, "You wire the airlock assembly.")
 	player.put_away(cable)
 
-	var/obj/structure/girder/girder = teleport_to_first(player, /obj/structure/girder/cult)
+	var/atom/girder = teleport_to_first(player, /obj/structure/girder/cult)
 	player.puppet.mind.add_antag_datum(/datum/antagonist/cultist)
 	player.spawn_obj_in_hand(/obj/item/melee/cultblade/dagger)
 	player.click_on(girder)
@@ -122,7 +122,7 @@
 	TEST_ASSERT_LAST_CHATLOG(player, "You sharpen the large blade of [guillotine]")
 	player.drop_held_item()
 
-	var/obj/item/weldingtool/weldingtool = player.spawn_fast_tool(/obj/item/weldingtool)
+	var/atom/weldingtool = player.spawn_fast_tool(/obj/item/weldingtool)
 	player.use_item_in_hand()
 	player.set_intent(INTENT_HARM)
 	player.click_on(guillotine)
@@ -139,3 +139,23 @@
 	var/table = player.find_nearby(/obj/structure/table)
 	player.click_on(table)
 	TEST_ASSERT_LAST_CHATLOG(player, "You dismantle [table]")
+	player.drop_held_item()
+
+	var/atom/inflatable = teleport_to_first(player, /obj/structure/inflatable)
+	player.spawn_obj_in_hand(/obj/item/kitchen/knife)
+	player.click_on(inflatable)
+	TEST_ASSERT_LAST_CHATLOG(player, "[inflatable] rapidly deflates!")
+	player.drop_held_item()
+
+	var/atom/kitchenspike_frame = teleport_to_first(player, /obj/structure/kitchenspike_frame)
+	player.spawn_obj_in_hand(/obj/item/stack/rods/ten)
+	player.click_on(kitchenspike_frame)
+	TEST_ASSERT_LAST_CHATLOG(player, "You add spikes to the frame.")
+	player.drop_held_item()
+
+	var/obj/structure/kitchenspike/spike = teleport_to_first(player, /obj/structure/kitchenspike)
+	spike.impale_time = 0
+	var/mob/living/pig = player.spawn_mob_nearby(/mob/living/basic/pig)
+	pig.grabbedby(player.puppet)
+	player.click_on(spike)
+	TEST_ASSERT_LAST_CHATLOG(player, "[player.puppet] slams [pig] onto the meat spike!")
