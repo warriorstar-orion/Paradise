@@ -54,19 +54,17 @@
 	if(!istype(S))
 		return ..()
 
-	button.cut_overlay(unavailable_effect)
-	var/alpha = S.cooldown_handler.get_cooldown_alpha()
-
-	unavailable_effect = image('icons/mob/screen_white.dmi', icon_state = "template")
+	unavailable_effect = mutable_appearance('icons/mob/screen_white.dmi', icon_state = "template")
 	unavailable_effect.appearance_flags = RESET_COLOR | RESET_ALPHA
-	unavailable_effect.alpha = alpha
 	unavailable_effect.color = "#000000"
 	unavailable_effect.plane = FLOAT_PLANE + 1
-	button.add_overlay(unavailable_effect)
+	unavailable_effect.alpha = S.cooldown_handler.get_cooldown_alpha()
+
 	// Make a holder for the charge text
-	var/image/count_down_holder = image('icons/effects/effects.dmi', icon_state = "nothing")
-	count_down_holder.plane = FLOAT_PLANE + 1.1
+	var/image/count_down_holder = mutable_appearance('icons/effects/effects.dmi', icon_state = "nothing", appearance_flags = RESET_COLOR | RESET_ALPHA)
 	var/text = S.cooldown_handler.cooldown_info()
+	count_down_holder.maptext_y = 4
 	count_down_holder.maptext = "<div style=\"font-size:6pt;color:[recharge_text_color];font:'Small Fonts';text-align:center;\" valign=\"bottom\">[text]</div>"
 	unavailable_effect.add_overlay(count_down_holder)
-	// button.add_overlay(count_down_holder)
+
+	button.overlays |= unavailable_effect
