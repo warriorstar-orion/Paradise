@@ -3,15 +3,18 @@
 	var/desc = null
 	var/obj/target = null
 	var/check_flags = 0
-	/// This is the file for the icon that appears on the button
-	var/button_icon = 'icons/mob/actions/actions.dmi'
-	/// This is the icon state for the icon that appears on the button
-	var/button_icon_state = ACTION_BUTTON_DEFAULT_OVERLAY
+
 	/// This is the icon state state for the BACKGROUND underlay icon of the button
 	/// (If set to ACTION_BUTTON_DEFAULT_BACKGROUND, uses the hud's default background)
 	var/background_icon = 'icons/mob/actions/actions.dmi'
 	/// Icon state of screen object background
 	var/background_icon_state = ACTION_BUTTON_DEFAULT_BACKGROUND
+
+	/// This is the file for the icon that appears on the button
+	var/button_icon = 'icons/mob/actions/actions.dmi'
+	/// This is the icon state for the icon that appears on the button
+	var/button_icon_state = ACTION_BUTTON_DEFAULT_OVERLAY
+
 	/// This is the file for any FOREGROUND overlay icons on the button (such as borders)
 	var/overlay_icon = 'icons/mob/actions/actions.dmi'
 	/// This is the icon state for any FOREGROUND overlay icons on the button (such as borders)
@@ -175,7 +178,7 @@
 /**
  * Updates the name and description of the button to match our action name and discription.
  *
- * current_button - what button are we editing?
+ * button - what button are we editing?
  * force - whether an update is forced regardless of existing status
  */
 /datum/action/proc/update_button_name(atom/movable/screen/movable/action_button/button, force = FALSE)
@@ -187,12 +190,15 @@
  * Any other miscellaneous "status" updates within the action button is handled here,
  * such as redding out when unavailable or modifying maptext.
  *
- * current_button - what button are we editing?
+ * button - what button are we editing?
  * force - whether an update is forced regardless of existing status
  */
-/datum/action/proc/update_button_status(atom/movable/screen/movable/action_button/current_button, force = FALSE)
+/datum/action/proc/update_button_status(atom/movable/screen/movable/action_button/button, force = FALSE)
+	// button.cut_overlay(unavailable_effect)
+	button.overlays -= unavailable_effect
+	button.maptext = ""
 	if(should_draw_cooldown())
-		apply_unavailable_effect(current_button)
+		apply_unavailable_effect(button)
 
 
 // /datum/action/proc/UpdateButton(atom/movable/screen/movable/action_button/button, status_only = FALSE, force = FALSE)
@@ -288,52 +294,47 @@
 			return
 
 /datum/action/proc/apply_unavailable_effect(atom/movable/screen/movable/action_button/button)
-	button.cut_overlay(unavailable_effect)
-	unavailable_effect = image('icons/mob/screen_white.dmi', icon_state = "template")
+	// log_debug("[button.UID()] cutting unavailable effect overlay [unavailable_effect.UID()]")
+	unavailable_effect = mutable_appearance('icons/mob/screen_white.dmi', icon_state = "template")
 	unavailable_effect.alpha = 200
 	unavailable_effect.appearance_flags = RESET_COLOR | RESET_ALPHA
 	unavailable_effect.color = "#000000"
 	unavailable_effect.plane = FLOAT_PLANE + 1
 	button.add_overlay(unavailable_effect)
-
-// /datum/action/proc/apply_button_overlay(atom/movable/screen/movable/action_button/current_button)
-// 	current_button.cut_overlays()
-// 	if(button_icon && button_icon_state)
-// 		var/image/img = image(button_icon, current_button, button_icon_state)
-// 		img.appearance_flags = RESET_COLOR | RESET_ALPHA
-// 		img.pixel_x = 0
-// 		img.pixel_y = 0
-// 		current_button.add_overlay(img)
+	// log_debug("[button.UID()] adding unavailable effect overlay [unavailable_effect.UID()]")
 
 /**
  * Applies any overlays to our button
  *
- * current_button - what button are we editing?
+ * button - what button are we editing?
  * force - whether an update is forced regardless of existing status
  */
-/datum/action/proc/apply_button_overlay(atom/movable/screen/movable/action_button/current_button, force = FALSE)
-	SEND_SIGNAL(src, COMSIG_ACTION_OVERLAY_APPLY, current_button, force)
+/datum/action/proc/apply_button_overlay(atom/movable/screen/movable/action_button/button, force = FALSE)
+	SEND_SIGNAL(src, COMSIG_ACTION_OVERLAY_APPLY, button, force)
 
-	if(!overlay_icon || !overlay_icon_state || (current_button.active_overlay_icon_state == overlay_icon_state && !force))
+	if(!overlay_icon || !overlay_icon_state || (button.active_overlay_icon_state == overlay_icon_state && !force))
 		return
 
-	current_button.cut_overlay(current_button.button_overlay)
-	current_button.button_overlay = mutable_appearance(icon = overlay_icon, icon_state = overlay_icon_state, appearance_flags = (RESET_COLOR|RESET_ALPHA))
-	current_button.add_overlay(current_button.button_overlay)
-	current_button.active_overlay_icon_state = overlay_icon_state
+	// if(button?.button_overlay)
+	// 	log_debug("[button.UID()] cutting overlay [button.button_overlay.UID()]")
+	button.cut_overlay(button.button_overlay)
+	button.button_overlay = mutable_appearance(icon = overlay_icon, icon_state = overlay_icon_state, appearance_flags = (RESET_COLOR|RESET_ALPHA))
+	button.add_overlay(button.button_overlay)
+	// log_debug("[button.UID()] adding overlay [button.button_overlay.UID()]")
+	button.active_overlay_icon_state = overlay_icon_state
 
 /// Checks if our action is actively selected. Used for selecting icons primarily.
-/datum/action/proc/is_action_active(atom/movable/screen/movable/action_button/current_button)
+/datum/action/proc/is_action_active(atom/movable/screen/movable/action_button/button)
 	return FALSE
 
 /**
  * Creates the background underlay for the button
  *
- * current_button - what button are we editing?
+ * button - what button are we editing?
  * force - whether an update is forced regardless of existing status
  */
-/datum/action/proc/apply_button_background(atom/movable/screen/movable/action_button/current_button, force = FALSE)
-	if(!background_icon || !background_icon_state || (current_button.active_underlay_icon_state == background_icon_state && !force))
+/datum/action/proc/apply_button_background(atom/movable/screen/movable/action_button/button, force = FALSE)
+	if(!background_icon || !background_icon_state || (button.active_underlay_icon_state == background_icon_state && !force))
 		return
 
 	// What icons we use for our background
@@ -351,25 +352,28 @@
 		icon_settings = owner.hud_used.get_action_buttons_icons()
 
 	// Determine which icon to use
-	var/used_icon_key = is_action_active(current_button) ? "bg_state_active" : "bg_state"
+	var/used_icon_key = is_action_active(button) ? "bg_state_active" : "bg_state"
 
 	// Make the underlay
-	current_button.underlays.Cut()
-	current_button.underlays += image(icon = icon_settings["bg_icon"], icon_state = icon_settings[used_icon_key])
-	current_button.active_underlay_icon_state = icon_settings[used_icon_key]
+	// log_debug("[button.UID()] cutting underlays")
+	button.underlays.Cut()
+	var/image/underlay = image(icon = icon_settings["bg_icon"], icon_state = icon_settings[used_icon_key])
+	button.underlays += underlay
+	// log_debug("[button.UID()] adding underlay [underlay.UID()]")
+	button.active_underlay_icon_state = icon_settings[used_icon_key]
 
 /**
  * Applies our button icon and icon state to the button
  *
- * current_button - what button are we editing?
+ * button - what button are we editing?
  * force - whether an update is forced regardless of existing status
  */
-/datum/action/proc/apply_button_icon(atom/movable/screen/movable/action_button/current_button, force = FALSE)
-	if(!button_icon || !button_icon_state || (current_button.icon_state == button_icon_state && !force))
+/datum/action/proc/apply_button_icon(atom/movable/screen/movable/action_button/button, force = FALSE)
+	if(!button_icon || !button_icon_state || (button.icon_state == button_icon_state && !force))
 		return
 
-	current_button.icon = button_icon
-	current_button.icon_state = button_icon_state
+	button.icon = button_icon
+	button.icon_state = button_icon_state
 
 /// Updates our buttons if our target's icon was updated
 /datum/action/proc/on_target_icon_update(datum/source, updates, updated)
