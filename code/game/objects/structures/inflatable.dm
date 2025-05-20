@@ -49,11 +49,12 @@
 /obj/structure/inflatable/attack_hand(mob/user)
 	add_fingerprint(user)
 
-/obj/structure/inflatable/attackby__legacy__attackchain(obj/item/I, mob/living/user, params)
+/obj/structure/inflatable/item_interaction(mob/living/user, obj/item/I, list/modifiers)
 	if(I.sharp || is_type_in_typecache(I, GLOB.pointed_types))
 		user.do_attack_animation(src, used_item = I)
 		deconstruct(FALSE)
-		return FALSE
+		return ITEM_INTERACT_COMPLETE
+
 	return ..()
 
 /obj/structure/inflatable/AltClick()
