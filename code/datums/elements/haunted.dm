@@ -1,4 +1,4 @@
-///Attaching this element to something will make it float, get a special ai controller, and gives it a spooky outline.
+/// Attaching this element to something will make it float, get a special ai controller, and gives it a spooky outline.
 /datum/element/haunted
 
 /datum/element/haunted/Attach(datum/target, haunt_color = "#f8f8ff")
@@ -11,7 +11,7 @@
 		return ELEMENT_INCOMPATIBLE
 
 	//Make em look spooky
-	master.add_filter("haunt_glow", 2, list("type" = "outline", "color" = haunt_color, "size" = 1))
+	master.add_filter("haunt_glow", 2, list("type" = "outline", "color" = haunt_color, "size" = 2))
 	master.ai_controller = new /datum/ai_controller/haunted(master)
 	animate_ghostly_presence(master)
 	ADD_TRAIT(master, TRAIT_FLYING, ELEMENT_TRAIT(type))
@@ -23,7 +23,6 @@
 	animate(master, pixel_y = 0, transform = initial(master.transform), time = 1 SECONDS)
 	QDEL_NULL(master.ai_controller)
 	REMOVE_TRAIT(master, TRAIT_FLYING, ELEMENT_TRAIT(type))
-	// master.RemoveElement(/datum/element/movetype_handler)
 
 /atom/movable/proc/make_haunted(source, color) //if not haunted, make haunted
 	if(!HAS_TRAIT(src, TRAIT_HAUNTED))
