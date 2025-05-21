@@ -372,8 +372,8 @@
 
 	item_to_possess.AddComponent(/datum/component/haunted_item, \
 		haunt_color = "#823abb", \
-		haunt_duration = rand(1 MINUTES, 3 MINUTES), \
-		aggro_radius = 4, \
+		haunt_duration = rand(60 SECONDS, 90 SECONDS), \
+		aggro_radius = 7, \
 		spawn_message = "<span class='notice'>[item_to_possess] rises into the air and begins to float!</span>", \
 		despawn_message = "<span class='notice'>[item_to_possess] falls back to the ground, stationary once more.</span>", \
 	)

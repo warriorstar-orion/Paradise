@@ -13,13 +13,14 @@
 	//Make em look spooky
 	master.add_filter("haunt_glow", 2, list("type" = "outline", "color" = haunt_color, "size" = 1))
 	master.ai_controller = new /datum/ai_controller/haunted(master)
-	// master.AddElement(/datum/element/movetype_handler)
+	animate_ghostly_presence(master)
 	ADD_TRAIT(master, TRAIT_FLYING, ELEMENT_TRAIT(type))
 
 /datum/element/haunted/Detach(datum/source)
 	. = ..()
 	var/atom/movable/master = source
 	master.remove_filter("haunt_glow")
+	animate(master, pixel_y = 0, transform = initial(master.transform), time = 1 SECONDS)
 	QDEL_NULL(master.ai_controller)
 	REMOVE_TRAIT(master, TRAIT_FLYING, ELEMENT_TRAIT(type))
 	// master.RemoveElement(/datum/element/movetype_handler)

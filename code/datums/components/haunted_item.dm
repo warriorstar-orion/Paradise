@@ -45,17 +45,7 @@
 		haunted_item.visible_message(spawn_message)
 
 	if(!isnull(aggro_radius))
-		// We were given an aggro radius, we'll start attacking people nearby
-		for(var/mob/living/victim in view(aggro_radius, haunted_item))
-			if(victim.stat != CONSCIOUS)
-				continue
-			if(victim.mob_biotypes & MOB_SPIRIT)
-				continue
-			if(victim.invisibility >= INVISIBILITY_REVENANT)
-				continue
-			// This gives all mobs in view "5" haunt level
-			// For reference picking one up gives "2"
-			haunted_item.ai_controller.add_blackboard_key_assoc(BB_TO_HAUNT_LIST, victim, 5)
+		haunted_item.ai_controller.set_blackboard_key(BB_HAUNT_AGGRO_RADIUS, aggro_radius)
 
 	if(haunted_item.throwforce < throw_force_max)
 		pre_haunt_throwforce = haunted_item.throwforce
@@ -113,15 +103,25 @@
  * * haunt_chance - The percent chance that an object caught in the epicenter will be haunted.
  * * duration - How long the haunting will remain for.
  */
+/proc/haunt_outburst(epicenter, range = 4, haunt_chance = 50, duration = 1 MINUTES)
+	for(var/obj/item/nearby_item in range(range, epicenter))
+		// Don't throw around anchored things or dense things
+		// (Or things not on a turf but I am not sure if range can catch that)
+		if(nearby_item.anchored || nearby_item.density || nearby_item.move_resist == INFINITY || !isturf(nearby_item.loc))
+			continue
+		// Don't throw abstract things
+		if(nearby_item.flags & ABSTRACT)
+			continue
+		// Don't throw things we can't see
+		if(nearby_item.invisibility > SEE_INVISIBLE_LIVING)
+			continue
 
-/proc/haunt_outburst(epicenter, range, haunt_chance, duration = 1 MINUTES)
-	for(var/obj/item/object_to_possess in range(range, epicenter))
 		if(!prob(haunt_chance))
 			continue
-		object_to_possess.AddComponent(/datum/component/haunted_item, \
+		nearby_item.AddComponent(/datum/component/haunted_item, \
 			haunt_color = "#52336e", \
 			haunt_duration = duration, \
 			aggro_radius = range, \
-			spawn_message = "<span class='notice'>[object_to_possess] slowly rises upward, hanging menacingly in the air...</span>", \
-			despawn_message = "<span class='notice'>[object_to_possess] settles to the floor, lifeless and unmoving.</span>", \
+			spawn_message = "<span class='notice'>[nearby_item] rises into the air and begins to float!</span>", \
+			despawn_message = "<span class='notice'>[nearby_item] falls back to the ground, stationary once more.</span>", \
 		)

@@ -1,21 +1,19 @@
-///This behavior is for obj/items, it is used to free themselves out of the hands of whoever is holding them
+/// This behavior is for obj/items, it is used to free themselves out of the hands of whoever is holding them
 /datum/ai_behavior/item_escape_grasp
 
 /datum/ai_behavior/item_escape_grasp/perform(seconds_per_tick, datum/ai_controller/controller)
 	var/obj/item/item_pawn = controller.pawn
 	var/mob/item_holder = item_pawn.loc
 	if(!istype(item_holder))
-		//We're no longer being held. abort abort!!
+		// We're no longer being held. abort abort!!
 		return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_FAILED
 	item_pawn.visible_message("<span class='warning'>[item_pawn] slips out of the hands of [item_holder]!</span>")
 	item_holder.drop_item_to_ground(item_pawn, force = TRUE)
 	return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_SUCCEEDED
 
-
-///This behavior is for obj/items, it is used to move closer to a target and throw themselves towards them.
+/// This behavior is for obj/items, it is used to move closer to a target and throw themselves towards them.
 /datum/ai_behavior/item_move_close_and_attack
 	required_distance = 3
-	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT
 	action_cooldown = 20
 	///Sound to use
 	var/attack_sound
@@ -25,7 +23,7 @@
 /datum/ai_behavior/item_move_close_and_attack/setup(datum/ai_controller/controller, target_key, throw_count_key)
 	. = ..()
 	var/atom/target = controller.blackboard[target_key]
-	if (isnull(target))
+	if(isnull(target))
 		return FALSE
 	set_movement_target(controller, target)
 
@@ -36,6 +34,7 @@
 	item_pawn.visible_message("<span class='warning'>[item_pawn] hurls towards [throw_target]!</span>")
 	item_pawn.throw_at(throw_target, rand(4,5), 9)
 	playsound(item_pawn.loc, attack_sound, 100, TRUE)
+	animate_ghostly_presence(item_pawn) // Restart the floating animation after the attack animation, as it will be cancelled.
 	controller.add_blackboard_key(throw_count_key, 1)
 	if(controller.blackboard[throw_count_key] >= max_attempts)
 		return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_SUCCEEDED
