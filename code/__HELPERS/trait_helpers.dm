@@ -130,6 +130,8 @@
 #define HAS_MIND_TRAIT(target, trait) (istype(target, /datum/mind) ? HAS_TRAIT(target, trait) : (target.mind ? HAS_TRAIT(target.mind, trait) : FALSE))
 /// Gives a unique trait source for any given datum
 #define UNIQUE_TRAIT_SOURCE(target) "unique_source_[target.UID()]"
+/// Trait applied by element
+#define ELEMENT_TRAIT(source) "element_trait_[source]"
 /// Returns a list of trait sources for this trait. Only useful for wacko cases and internal futzing
 /// You should not be using this
 #define GET_TRAIT_SOURCES(target, trait) (target.status_traits?[trait] || list())
@@ -223,7 +225,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_CONTORTED_BODY	"contorted_body"
 #define TRAIT_DEFLECTS_PROJECTILES "trait_deflects_projectiles"
 #define TRAIT_XENO_INTERACTABLE	"can_be_interacted_with_by_xenos"
-#define TRAIT_DODGE_ALL_OBJECTS "dodges_all_objects" /// Allows a mob to dodge all thrown objects
 #define TRAIT_BADASS "trait_badass"
 #define TRAIT_FORCED_STANDING "forced_standing" // The mob cannot be floored, or lie down
 #define TRAIT_IPC_JOINTS_MAG "ipc_joints_mag" // IPC has weaker limbs but can re-attach them with ease
@@ -303,6 +304,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_ITEM_ACTIVE "item_active"
 /// Forbids running broadcast_examine() in examinate().
 #define TRAIT_HIDE_EXAMINE "hide_examine"
+/// determines whether or not objects are haunted and teleport/attack randomly
+#define TRAIT_HAUNTED "haunted"
 
 /// A surgical tool; when in hand in help intent (and with a surgery in progress) won't attack the user
 #define TRAIT_SURGICAL			"surgical_tool"

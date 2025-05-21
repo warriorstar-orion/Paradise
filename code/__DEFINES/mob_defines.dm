@@ -202,6 +202,7 @@
 #define STATUS_UPDATE_NONE 0
 #define STATUS_UPDATE_ALL (~0)
 #define INVISIBILITY_ABSTRACT 101
+#define INVISIBILITY_REVENANT 45
 #define UNHEALING_EAR_DAMAGE 100
 
 /// Nian and Nian Worme cocoon do_after delay, in seconds.
