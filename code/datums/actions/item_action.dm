@@ -66,15 +66,9 @@
 /datum/action/item_action/set_internals
 	name = "Set Internals"
 
-/datum/action/item_action/set_internals/build_button_icon(atom/movable/screen/movable/action_button/button, update_flags, force)
-	. = ..()
-	if(!..()) // no button available
-		return
-	if(!iscarbon(owner))
-		return
-	var/mob/living/carbon/C = owner
-	if(target == C.internal)
-		button.icon_state = "template_active"
+/datum/action/item_action/set_internals/is_action_active(atom/movable/screen/movable/action_button/button)
+	var/mob/living/carbon/carbon_owner = owner
+	return istype(carbon_owner) && target == carbon_owner.internal
 
 /datum/action/item_action/toggle_mister
 	name = "Toggle Mister"

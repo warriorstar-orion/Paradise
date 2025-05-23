@@ -219,10 +219,9 @@
 	closeToolTip(usr)
 	return ..()
 
-/mob/proc/update_action_buttons_icon(update_flags = ALL)
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.build_button_icon(update_flags)
+/mob/proc/update_action_buttons_icon(update_flags = ALL, force = FALSE)
+	for(var/datum/action/current_action as anything in actions)
+		current_action.build_all_button_icons(update_flags, force)
 
 //This is the proc used to update all the action buttons.
 /mob/proc/update_action_buttons(reload_screen)
