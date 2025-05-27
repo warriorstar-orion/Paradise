@@ -320,13 +320,15 @@ SUBSYSTEM_DEF(mapping)
 	var/watch = start_watch()
 	log_startup_progress("Loading [map_datum.fluff_name]...")
 	// This should always be Z2, but you never know
-	var/map_z_level = GLOB.space_manager.add_new_zlevel(
-		MAIN_STATION,
-		linkage = CROSSLINKED,
-		traits = list(STATION_LEVEL, STATION_CONTACT, REACHABLE_BY_CREW, REACHABLE_SPACE_ONLY, AI_OK),
-		transition_tag = TRANSITION_TAG_SPACE
-	)
-	GLOB.maploader.load_map(wrap_file(map_datum.map_path), z_offset = map_z_level)
+	var/list/map_zlevels = list()
+	for(var/i in 1 to length(map_datum.level_traits))
+		map_zlevels += GLOB.space_manager.add_new_zlevel(
+			map_datum.level_names[i],
+			linkage = map_datum.linkage,
+			traits = map_datum.level_traits[i],
+			transition_tag = map_datum.transition_tag
+		)
+	GLOB.maploader.load_map(wrap_file(map_datum.map_path), z_offset = map_zlevels[1])
 	log_startup_progress("Loaded [map_datum.fluff_name] in [stop_watch(watch)]s")
 
 	// Save station name in the DB

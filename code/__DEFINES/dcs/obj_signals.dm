@@ -41,3 +41,7 @@
 /// from /datum/component/shelver/shelf_items()
 #define COMSIG_SHELF_ATTEMPT_PICKUP "shelf_attempt_pickup"
 	#define SHELF_PICKUP_FAILURE (1 << 0)
+
+/// Called on a mob attempting to use a ladder to go in either direction.  (entrance_ladder, exit_ladder, going_up)
+#define COMSIG_LADDER_TRAVEL "ladder-travel"
+	#define LADDER_TRAVEL_BLOCK (1<<0)

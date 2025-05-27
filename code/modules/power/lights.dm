@@ -306,6 +306,51 @@
 	light_type = /obj/item/light/bulb
 	deconstruct_type = /obj/machinery/light_construct/small
 
+/obj/machinery/light/small/deepmaints
+	brightness_range = 3
+	brightness_color = "#fdc28b"
+	nightshift_light_range = 3
+	nightshift_light_color = "#fdc28b"
+
+/obj/machinery/light/small/autoattach/Initialize(mapload)
+	. = ..()
+
+	for(var/obj/machinery/light/small/autoattach/light as anything in SSmachines.get_by_type(/obj/machinery/light/small/autoattach))
+		if(get_dist(loc, light) <= 6)
+			return INITIALIZE_HINT_QDEL
+
+	var/turf/T = null
+	var/gotdir = 0
+
+	for(var/i = 1, i <= 8; i += i)
+		T = get_ranged_target_turf(src, i, 2)
+
+		if(iswallturf(T) || ismineralturf(T))
+			//If someone knows a better way to do this, let me know. -Giacom
+			switch(i)
+				if(NORTH)
+					src.setDir(NORTH)
+					forceMove(get_step(loc, NORTH))
+				if(SOUTH)
+					src.setDir(SOUTH)
+					forceMove(get_step(loc, SOUTH))
+				if(WEST)
+					src.setDir(WEST)
+					forceMove(get_step(loc, WEST))
+				if(EAST)
+					src.setDir(EAST)
+					forceMove(get_step(loc, EAST))
+			gotdir = dir
+			break
+	if(!gotdir)
+		return INITIALIZE_HINT_QDEL
+
+/obj/machinery/light/small/autoattach/deepmaints
+	brightness_range = 3
+	brightness_color = "#fdc28b"
+	nightshift_light_range = 3
+	nightshift_light_color = "#fdc28b"
+
 /obj/machinery/light/spot
 	name = "spotlight"
 	light_type = /obj/item/light/tube/large

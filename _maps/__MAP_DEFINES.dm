@@ -34,8 +34,13 @@
 	/// A level used for spawning map areas in tests
 	#define GAME_TEST_LEVEL "Game Test Level"
 
+	/// Whether this z level is linked up/down.
+	#define ZTRAIT_UP "Up"
+	#define ZTRAIT_DOWN "Down"
+
 // Level names
 	#define MAIN_STATION "Main Station"
+	#define SUB_STATION "Sub Station"
 	#define CENTCOMM "CentComm"
 	#define TELECOMMS "Telecomms Satellite"
 	#define DERELICT "Derelicted Station"

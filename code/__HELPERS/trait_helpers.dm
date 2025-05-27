@@ -464,6 +464,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 // Causes the effect to go through a teleporter instead of being deleted by it.
 #define TRAIT_EFFECT_CAN_TELEPORT "trait_effect_can_teleport"
 
+///Used for managing KEEP_TOGETHER in [/atom/var/appearance_flags]
+#define TRAIT_KEEP_TOGETHER "keep-together"
+
 //***** MOVABLE ATOM TRAITS *****//
 // Prevents the atom from being transitioned to another Z level when approaching the edge of the map.
 #define TRAIT_NO_EDGE_TRANSITIONS "trait_no_edge_transitions"
