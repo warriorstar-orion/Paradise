@@ -255,7 +255,7 @@
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/mixed
 	loot = list(
-		/obj/effect/spawner/random/pool/spaceloot/syndicate/common = 30,
+		/obj/effect/spawner/random/pool/spaceloot/syndicate/common = 25,
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/rare = 20,
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/officer = 5,
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/armory = 1,
@@ -402,4 +402,147 @@
 
 	loot = list(
 		/obj/item/gun/projectile/c_foam_launcher
+	)
+
+/obj/effect/spawner/random/pool/spaceloot/trader_departments
+	name = "trader department loot spawner"
+
+/obj/effect/spawner/random/pool/spaceloot/trader_departments/civilian
+	loot = /obj/effect/spawner/random/traders/civilian::loot
+
+/obj/effect/spawner/random/pool/spaceloot/trader_departments/science
+	loot = /obj/effect/spawner/random/traders/science::loot
+
+/obj/effect/spawner/random/pool/spaceloot/trader_departments/engineering
+	loot = /obj/effect/spawner/random/traders/engineering::loot
+
+/obj/effect/spawner/random/pool/spaceloot/trader_departments/medical
+	loot = /obj/effect/spawner/random/traders/medical::loot
+
+/obj/effect/spawner/random/pool/spaceloot/trader_departments/security
+	loot = /obj/effect/spawner/random/traders/security::loot
+
+/obj/effect/spawner/random/pool/spaceloot/trader_departments/common
+	point_value = 30
+
+	loot = list(
+		/obj/effect/spawner/random/pool/spaceloot/trader_departments/civilian = 20,
+		/obj/effect/spawner/random/pool/spaceloot/trader_departments/science = 10,
+		/obj/effect/spawner/random/pool/spaceloot/trader_departments/engineering = 10,
+	)
+
+/obj/effect/spawner/random/pool/spaceloot/trader_departments/rare
+	point_value = 80
+	loot = list(
+		/obj/effect/spawner/random/pool/spaceloot/trader_departments/medical = 5,
+		/obj/effect/spawner/random/pool/spaceloot/trader_departments/security = 1,
+	)
+
+/obj/effect/spawner/random/pool/spaceloot/trader_organizations
+	name = "trader organization loot spawner"
+
+/obj/effect/spawner/random/pool/spaceloot/trader_organizations/federation_minor
+	loot = /obj/effect/spawner/random/traders/federation_minor::loot
+
+/obj/effect/spawner/random/pool/spaceloot/trader_organizations/ussp_minor
+	loot = /obj/effect/spawner/random/traders/ussp_minor::loot
+
+/obj/effect/spawner/random/pool/spaceloot/trader_organizations/steadfast_minor
+	loot = /obj/effect/spawner/random/traders/steadfast_minor::loot
+
+/obj/effect/spawner/random/pool/spaceloot/trader_organizations/merchantguild_major
+	loot = /obj/effect/spawner/random/traders/merchantguild_major::loot
+
+/obj/effect/spawner/random/pool/spaceloot/trader_organizations/cybersun_minor
+	loot = /obj/effect/spawner/random/traders/cybersun_minor::loot
+
+/obj/effect/spawner/random/pool/spaceloot/trader_organizations/glintscale_minor
+	loot = /obj/effect/spawner/random/traders/glintscale_minor::loot
+
+/obj/effect/spawner/random/pool/spaceloot/trader_organizations/steadfast_major
+	loot = /obj/effect/spawner/random/traders/steadfast_major::loot
+
+/obj/effect/spawner/random/pool/spaceloot/trader_organizations/syntheticunion_minor
+	loot = /obj/effect/spawner/random/traders/syntheticunion_minor::loot
+
+/obj/effect/spawner/random/pool/spaceloot/trader_organizations/skipjack_minor
+	loot = /obj/effect/spawner/random/traders/skipjack_minor::loot
+
+/obj/effect/spawner/random/pool/spaceloot/trader_organizations/solarcentral_minor
+	loot = /obj/effect/spawner/random/traders/solarcentral_minor::loot
+
+/obj/effect/spawner/random/pool/spaceloot/trader_organizations/merchantguild_minor
+	loot = /obj/effect/spawner/random/traders/merchantguild_minor::loot
+
+/obj/effect/spawner/random/pool/spaceloot/trader_organizations/federation_major
+	loot = /obj/effect/spawner/random/traders/federation_major::loot
+
+/obj/effect/spawner/random/pool/spaceloot/trader_organizations/ussp_major
+	loot = /obj/effect/spawner/random/traders/ussp_major::loot
+
+/obj/effect/spawner/random/pool/spaceloot/trader_organizations/glintscale_major
+	loot = /obj/effect/spawner/random/traders/glintscale_major::loot
+
+/obj/effect/spawner/random/pool/spaceloot/trader_organizations/syntheticunion_major
+	loot = /obj/effect/spawner/random/traders/syntheticunion_major::loot
+
+/obj/effect/spawner/random/pool/spaceloot/trader_organizations/skipjack_major
+	loot = /obj/effect/spawner/random/traders/skipjack_major::loot
+
+/obj/effect/spawner/random/pool/spaceloot/trader_organizations/solarcentral_major
+	loot = /obj/effect/spawner/random/traders/solarcentral_major::loot
+
+/obj/effect/spawner/random/pool/spaceloot/trader_organizations/technocracy_minor
+	loot = /obj/effect/spawner/random/traders/technocracy_minor::loot
+
+/obj/effect/spawner/random/pool/spaceloot/trader_organizations/technocracy_major
+	loot = /obj/effect/spawner/random/traders/technocracy_major::loot
+
+/obj/effect/spawner/random/pool/spaceloot/trader_organizations/common
+	point_value = 30
+	loot = list(
+		/obj/effect/spawner/random/pool/spaceloot/trader_organizations/federation_minor,
+		/obj/effect/spawner/random/pool/spaceloot/trader_organizations/ussp_minor,
+		/obj/effect/spawner/random/pool/spaceloot/trader_organizations/steadfast_minor,
+		/obj/effect/spawner/random/pool/spaceloot/trader_organizations/merchantguild_major,
+	)
+
+/obj/effect/spawner/random/pool/spaceloot/trader_organizations/uncommon
+	point_value = 50
+	loot = list(
+		/obj/effect/spawner/random/pool/spaceloot/trader_organizations/cybersun_minor,
+		/obj/effect/spawner/random/pool/spaceloot/trader_organizations/glintscale_minor,
+		/obj/effect/spawner/random/pool/spaceloot/trader_organizations/steadfast_major,
+		/obj/effect/spawner/random/pool/spaceloot/trader_organizations/syntheticunion_minor,
+		/obj/effect/spawner/random/pool/spaceloot/trader_organizations/skipjack_minor,
+		/obj/effect/spawner/random/pool/spaceloot/trader_organizations/solarcentral_minor,
+		/obj/effect/spawner/random/pool/spaceloot/trader_organizations/merchantguild_minor,
+	)
+
+/obj/effect/spawner/random/pool/spaceloot/trader_organizations/rare
+	point_value = 150
+	loot = list(
+		/obj/effect/spawner/random/pool/spaceloot/trader_organizations/federation_major,
+		/obj/effect/spawner/random/pool/spaceloot/trader_organizations/ussp_major,
+		/obj/effect/spawner/random/pool/spaceloot/trader_organizations/glintscale_major,
+		/obj/effect/spawner/random/pool/spaceloot/trader_organizations/syntheticunion_major,
+		/obj/effect/spawner/random/pool/spaceloot/trader_organizations/skipjack_major,
+		/obj/effect/spawner/random/pool/spaceloot/trader_organizations/solarcentral_major,
+		/obj/effect/spawner/random/pool/spaceloot/trader_organizations/technocracy_minor,
+		/obj/effect/spawner/random/pool/spaceloot/trader_organizations/technocracy_major,
+	)
+
+/obj/effect/spawner/random/pool/spaceloot/trader_mixed
+	loot = list(
+		/obj/effect/spawner/random/pool/spaceloot/trader_departments/common = 10,
+		/obj/effect/spawner/random/pool/spaceloot/trader_organizations/common = 10,
+		/obj/effect/spawner/random/pool/spaceloot/trader_organizations/uncommon = 5,
+		/obj/effect/spawner/random/pool/spaceloot/trader_departments/rare = 2,
+		/obj/effect/spawner/random/pool/spaceloot/trader_organizations/rare = 2,
+	)
+
+/obj/effect/spawner/random/pool/spaceloot/mixed
+	loot = list(
+		/obj/effect/spawner/random/pool/spaceloot/trader_mixed,
+		/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed
 	)
