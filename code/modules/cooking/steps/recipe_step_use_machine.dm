@@ -154,7 +154,7 @@
 /datum/cooking/recipe_step/use_machine/grill/attempt_autochef_perform(datum/autochef_task/follow_recipe/task)
 	. = ..()
 	if(. == AUTOCHEF_ACT_WAIT_FOR_RESULT)
-		RegisterSignal(task.container, COMSIG_COOK_GRILL_NO_FUEL)
+		task.RegisterSignal(task.container, COMSIG_COOK_GRILL_NO_FUEL, TYPE_PROC_REF(/datum/autochef_task/follow_recipe, on_machine_step_interrupted), override = TRUE)
 
 /datum/cooking/recipe_step/use_machine/deepfryer
 	machine_type = /obj/machinery/cooking/deepfryer
