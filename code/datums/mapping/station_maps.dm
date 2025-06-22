@@ -34,10 +34,25 @@
 	webmap_url = "https://affectedarc07.co.uk/emerald.html"
 	welcome_sound = 'sound/AI/welcome_diagoras.ogg'
 
+#warn adjust all these before release
+
 /datum/map/prototypestation
 	fluff_name = "Avernus Complex"
 	technical_name = "PrototypeStation"
 	map_path = "_maps/map_files/stations/prototypestation.dmm"
+	level_names = list(
+		SUB_STATION,
+		MAIN_STATION,
+	)
+	level_traits = list(
+		list(STATION_LEVEL, STATION_CONTACT, REACHABLE_BY_CREW, AI_OK, ZTRAIT_UP),
+		list(STATION_LEVEL, STATION_CONTACT, REACHABLE_BY_CREW, AI_OK, ZTRAIT_DOWN),
+	)
+
+/datum/map/moonstation
+	fluff_name = "Avernus Complex"
+	technical_name = "MoonStation"
+	map_path = "_maps/map_files/stations/moonstation.dmm"
 	level_names = list(
 		SUB_STATION,
 		MAIN_STATION,
