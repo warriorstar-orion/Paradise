@@ -70,11 +70,13 @@
 	else
 		..()
 
-/obj/structure/kitchenspike/attackby__legacy__attackchain(obj/item/I, mob/user)
+/obj/structure/kitchenspike/item_interaction(mob/living/user, obj/item/I, list/modifiers)
 	if(istype(I, /obj/item/grab))
 		var/obj/item/grab/G = I
 		if(G.affecting && isliving(G.affecting))
 			start_spike(G.affecting, user)
+		return ITEM_INTERACT_COMPLETE
+
 	return ..()
 
 /obj/structure/kitchenspike/crowbar_act(mob/living/user, obj/item/I)
