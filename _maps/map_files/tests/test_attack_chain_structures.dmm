@@ -64,7 +64,7 @@
 /turf/simulated/floor/plasteel,
 /area/game_test)
 "q" = (
-/obj/structure/reflector/single,
+/obj/structure/reflector,
 /turf/simulated/floor/plasteel,
 /area/game_test)
 "r" = (
@@ -84,8 +84,10 @@
 /turf/simulated/floor/plasteel,
 /area/game_test)
 "v" = (
-/obj/structure/mirror,
-/turf/simulated/wall/r_wall,
+/obj/structure/mirror/magic{
+	pixel_y = 32
+	},
+/turf/simulated/floor/plasteel,
 /area/game_test)
 "w" = (
 /obj/structure/extinguisher_cabinet,
@@ -117,7 +119,7 @@
 /turf/simulated/floor/plasteel,
 /area/game_test)
 "C" = (
-/obj/structure/lattice,
+/obj/structure/holosign/barrier/atmos,
 /turf/simulated/floor/plasteel,
 /area/game_test)
 "D" = (
@@ -183,6 +185,10 @@
 "S" = (
 /obj/structure/chair,
 /turf/simulated/floor/plasteel,
+/area/game_test)
+"T" = (
+/obj/structure/lattice,
+/turf/space,
 /area/game_test)
 "U" = (
 /obj/structure/kitchenspike_frame,
@@ -300,8 +306,8 @@ s
 a
 Y
 a
+x
 v
-a
 n
 a
 a
@@ -357,7 +363,7 @@ a
 a
 a
 a
-a
+C
 a
 a
 a
@@ -376,8 +382,8 @@ D
 a
 M
 a
-s
-a
+C
+T
 C
 a
 F
@@ -397,7 +403,7 @@ a
 a
 a
 a
-a
+C
 a
 a
 a

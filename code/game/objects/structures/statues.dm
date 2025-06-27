@@ -108,13 +108,13 @@
 			PlasmaBurn()
 	..()
 
-/obj/structure/statue/plasma/attackby__legacy__attackchain(obj/item/W, mob/user, params)
+/obj/structure/statue/plasma/item_interaction(mob/living/user, obj/item/W, list/modifiers)
 	if(W.get_heat() > 300)//If the temperature of the object is over 300, then ignite
 		message_admins("[key_name_admin(user)] ignited a plasma statue at [COORD(loc)]")
 		log_game("[key_name(user)] ignited plasma a statue at [COORD(loc)]")
 		investigate_log("[key_name(user)] ignited a plasma statue at [COORD(loc)]", INVESTIGATE_ATMOS)
 		ignite(W.get_heat())
-		return
+		return ITEM_INTERACT_COMPLETE
 	return ..()
 
 /obj/structure/statue/plasma/welder_act(mob/user, obj/item/I)
