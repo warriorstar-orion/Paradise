@@ -297,6 +297,14 @@
 	doorOpen = 'sound/machines/airlock_ext_open.ogg'
 	doorClose = 'sound/machines/airlock_ext_close.ogg'
 
+/obj/machinery/door/airlock/external/multitool_act(mob/user, obj/item/multitool/multitool)
+	if(panel_open || !istype(multitool))
+		return ..()
+
+	multitool.buffer_uid = UID()
+	to_chat(user, "<span class='notice'>You save [src] into [multitool]'s buffer.</span>")
+	return ITEM_INTERACT_COMPLETE
+
 /obj/machinery/door/airlock/external/glass
 	opacity = FALSE
 	glass = TRUE

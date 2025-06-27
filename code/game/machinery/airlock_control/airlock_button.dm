@@ -16,11 +16,17 @@ GLOBAL_LIST_EMPTY(all_airlock_access_buttons)
 	/// Command, whether this button cycles in or out. This is /tmp/ so mappers dont try and define it in a map. Its assigned at runtime.
 	var/tmp/assigned_command
 
-/obj/machinery/access_button/Initialize(mapload)
+/obj/machinery/access_button/Initialize(mapload, direction)
 	. = ..()
 	GLOB.all_airlock_access_buttons += src
 	if(assigned_command)
 		stack_trace("A mapper tried to set assigned_command to [assigned_command] on [type] at [x],[y],[z]. This should not be mapped in.")
+
+	if(direction)
+		setDir(direction)
+
+	if(!mapload)
+		set_pixel_offsets_from_dir(25, -25, 25, -25)
 
 /obj/machinery/access_button/Destroy()
 	GLOB.all_airlock_access_buttons -= src
@@ -31,6 +37,14 @@ GLOBAL_LIST_EMPTY(all_airlock_access_buttons)
 		icon_state = "access_button_standby"
 	else
 		icon_state = "access_button_off"
+
+/obj/machinery/access_button/multitool_act(mob/living/user, obj/item/multitool/multitool)
+	if(!istype(multitool))
+		return
+
+	multitool.buffer_uid = UID()
+	to_chat(user, "<span class='notice'>You save [src] into [multitool]'s buffer.</span>")
+	return ITEM_INTERACT_COMPLETE
 
 /obj/machinery/access_button/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	// Swiping ID on the access button
