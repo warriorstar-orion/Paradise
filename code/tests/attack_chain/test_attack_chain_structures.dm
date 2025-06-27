@@ -235,3 +235,26 @@
 	player.click_on(shelf)
 	TEST_ASSERT_LAST_CHATLOG(player, "You disassemble [shelf].")
 	player.drop_held_item()
+
+	var/obj/structure/statue/hop_statue = teleport_to_first(player, /obj/structure/statue/gold/hop)
+	player.spawn_fast_tool(/obj/item/gun/energy/plasmacutter)
+	player.click_on(hop_statue)
+	TEST_ASSERT_LAST_CHATLOG(player, "You slice apart the [hop_statue].")
+	player.drop_held_item()
+
+	var/obj/structure/snowman/built/snowman = teleport_to_first(player, /obj/structure/snowman/built)
+	var/old_integrity = snowman.obj_integrity
+	player.spawn_fast_tool(/obj/item/weldingtool)
+	player.set_intent(INTENT_HARM)
+	player.click_on(snowman)
+	TEST_ASSERT_NOTEQUAL(snowman.obj_integrity, old_integrity, "snowman didn't take damage")
+	player.drop_held_item()
+	player.spawn_obj_in_hand(/obj/item/snowball)
+	player.set_intent(INTENT_HELP)
+	player.click_on(snowman)
+	TEST_ASSERT_LAST_CHATLOG(player, "You patch some of the damage on [snowman]")
+
+	var/obj/structure/bed/roller/roller_bed = teleport_to_first(player, /obj/structure/bed/roller)
+	player.spawn_obj_in_hand(/obj/item/roller_holder)
+	player.click_on(roller_bed)
+	TEST_ASSERT_LAST_CHATLOG(player, "You collapse \the [roller_bed].")

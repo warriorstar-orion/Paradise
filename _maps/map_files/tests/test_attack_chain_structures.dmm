@@ -16,11 +16,11 @@
 /turf/simulated/floor/plasteel,
 /area/game_test)
 "e" = (
-/obj/structure/bed,
+/obj/structure/bed/roller,
 /turf/simulated/floor/plasteel,
 /area/game_test)
 "f" = (
-/obj/structure/statue/plasma/xeno,
+/obj/structure/statue/gold/hop,
 /turf/simulated/floor/plasteel,
 /area/game_test)
 "g" = (
@@ -76,7 +76,7 @@
 /turf/simulated/floor/plasteel,
 /area/game_test)
 "t" = (
-/obj/structure/snowman,
+/obj/structure/snowman/built,
 /turf/simulated/floor/plasteel,
 /area/game_test)
 "u" = (
