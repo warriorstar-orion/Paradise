@@ -55,6 +55,10 @@
 "x" = (
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
+"A" = (
+/obj/item/rcd/combat/admin,
+/turf/simulated/floor/mineral/titanium/blue,
+/area/shuttle/arrival/station)
 "B" = (
 /turf/simulated/wall,
 /area/shuttle/arrival/station)
@@ -32618,7 +32622,7 @@ x
 x
 W
 b
-x
+A
 x
 x
 x

@@ -1,11 +1,3 @@
-#define LINK_STAGE_NOT_STARTED 0
-#define LINK_STAGE_EXTERIOR_BUTTONS 1
-#define LINK_STAGE_EXTERIOR_AIRLOCKS 2
-#define LINK_STAGE_INTERIOR_BUTTONS 3
-#define LINK_STAGE_INTERIOR_AIRLOCKS 4
-#define LINK_STAGE_VENTS 5
-#define LINK_STAGE_COMPLETE 6
-
 //base type for controllers of two-door systems
 /obj/machinery/airlock_controller
 	layer = ON_EDGED_TURF_LAYER
@@ -45,11 +37,6 @@
 	// Program vars
 	var/target_pressure
 
-	var/obj/item/airlock_electronics/access_electronics
-	var/link_stage = LINK_STAGE_NOT_STARTED
-	var/final_link_stage = LINK_STAGE_INTERIOR_BUTTONS
-	var/frame_type
-
 /obj/machinery/airlock_controller/Initialize(mapload, direction)
 	. = ..()
 
@@ -63,23 +50,6 @@
 		int_door_link_id = INT_DOOR_ID(UID())
 		ext_button_link_id = EXT_BTN_ID(UID())
 		int_button_link_id = INT_BTN_ID(UID())
-
-/obj/machinery/airlock_controller/examine(mob/user)
-	. = ..()
-	switch(link_stage)
-		if(LINK_STAGE_NOT_STARTED)
-			. += "<span class='notice'>It requires its exterior buttons linked by multitool next.</span>"
-		if(LINK_STAGE_EXTERIOR_BUTTONS)
-			. += "<span class='notice'>It requires its exterior airlocks linked by multitool next.</span>"
-		if(LINK_STAGE_EXTERIOR_AIRLOCKS)
-			. += "<span class='notice'>It requires its interior buttons linked by multitool next.</span>"
-		if(LINK_STAGE_INTERIOR_BUTTONS)
-			. += "<span class='notice'>It requires its interior airlocks linked by multitool next.</span>"
-		if(final_link_stage)
-			. += "<span class='notice'>It is ready to complete with a screwdriver.</span>"
-
-	if(link_stage != LINK_STAGE_COMPLETE)
-		. += "<span class='notice'>Airlock electronics may be placed in it to configure access for all its airlocks and buttons.</span>"
 
 /obj/machinery/airlock_controller/proc/link_all_items()
 	for(var/obj/machinery/door/airlock/A in GLOB.airlocks)
@@ -108,144 +78,6 @@
 		stack_trace("[src] at [x],[y],[z] didnt setup any interior buttons! Please double check the IDs!")
 	if(!eb_setup)
 		stack_trace("[src] at [x],[y],[z] didnt setup any exterior buttons! Please double check the IDs!")
-
-	link_stage = LINK_STAGE_COMPLETE
-
-/obj/machinery/airlock_controller/proc/unlink_all_items()
-	interior_doors.Cut()
-	exterior_doors.Cut()
-	for(var/obj/machinery/access_button/B as anything in GLOB.all_airlock_access_buttons)
-		if(B.autolink_id == int_button_link_id)
-			B.autolink_id = null
-			B.controller_uid = null
-			B.assigned_command = null
-
-	link_stage = final_link_stage
-
-/obj/machinery/airlock_controller/item_interaction(mob/living/user, obj/item/used, list/modifiers)
-	var/obj/item/airlock_electronics/airlock_electronics = used
-	if(istype(airlock_electronics))
-		if(istype(access_electronics))
-			to_chat(user, "<span class='notice'>There is already \a [access_electronics] in [src].</span>")
-		else
-			if(user.unequip(used))
-				access_electronics = airlock_electronics
-				used.forceMove(src)
-			else
-				to_chat(user, "<span class='notice'>You can't put [airlock_electronics] in [src].</span>")
-
-	return ..()
-
-/obj/machinery/airlock_controller/wrench_act(mob/living/user, obj/item/wrench/wrench)
-	if(!istype(wrench))
-		return ..()
-
-	if(link_stage == LINK_STAGE_COMPLETE)
-		return ..()
-
-	. = ITEM_INTERACT_COMPLETE
-
-	if(istype(access_electronics))
-		to_chat(user, "<span class='notice'>You must remove [access_electronics] before unwrenching [src].</span>")
-		return
-
-	if(!wrench.tool_use_check(user, 0))
-		return
-
-	user.visible_message(
-		"<span class='notice'>[user] starts unwrenching [src] from the wall...</span>",
-		"<span class='notice'>You are unwrenching [src] from the wall...</span>",
-		"<span class='warning'>You hear ratcheting.</span>",
-	)
-	if(!wrench.use_tool(src, user, 3 SECONDS, volume = wrench.tool_volume))
-		return
-
-	WRENCH_UNANCHOR_WALL_MESSAGE
-	new frame_type(get_turf(src))
-	qdel(src)
-
-/obj/machinery/airlock_controller/crowbar_act(mob/living/user, obj/item/crowbar/crowbar)
-	if(!istype(crowbar))
-		return ..()
-
-	if(istype(access_electronics))
-		access_electronics.forceMove(get_turf(user))
-		to_chat(user, "<span class='notice'>You crowbar [access_electronics] out of [src].</span>")
-		return ITEM_INTERACT_COMPLETE
-
-	return ..()
-
-/obj/machinery/airlock_controller/screwdriver_act(mob/living/user, obj/item/screwdriver/screwdriver)
-	if(!istype(screwdriver))
-		return ..()
-
-	if(link_stage == LINK_STAGE_COMPLETE)
-		to_chat(user, "<span class='notice'>You deactivate [src], unlinking all connected parts.</span>")
-		unlink_all_items()
-		return ITEM_INTERACT_COMPLETE
-
-	if(link_stage != final_link_stage)
-		to_chat(user, "<span class='notice'>[src] has not had all its required parts linked!</span>")
-		return ITEM_INTERACT_COMPLETE
-
-	link_all_items()
-	to_chat(user, "<span class='notice'>You finish configuring [src].</span>")
-	return ITEM_INTERACT_COMPLETE
-
-/obj/machinery/airlock_controller/multitool_act(mob/living/user, obj/item/multitool/multitool)
-	var/atom/buffer_object = locateUID(multitool.buffer_uid)
-	if(!istype(buffer_object))
-		to_chat(user, "<span class='notice'>The linked item in [multitool]'s buffer no longer exists.</span>")
-		return
-
-	return manual_item_link(user, buffer_object)
-
-/obj/machinery/airlock_controller/proc/manual_item_link(mob/living/user, atom/target)
-	SHOULD_CALL_PARENT(TRUE)
-
-	var/obj/machinery/door/airlock/external/airlock = target
-	var/obj/machinery/access_button/button = target
-	switch(link_stage)
-		if(LINK_STAGE_COMPLETE)
-			to_chat(user, "<span class='notice'>[src] has already been linked to its components.</span>")
-			return TRUE
-		if(LINK_STAGE_NOT_STARTED)
-			if(!istype(button))
-				to_chat(user, "<span class='notice'>[src] must have its exterior buttons linked first.</span>")
-				return TRUE
-			link_stage = LINK_STAGE_EXTERIOR_BUTTONS
-			return manual_item_link(user, target)
-		if(LINK_STAGE_EXTERIOR_BUTTONS)
-			if(istype(button))
-				to_chat(user, "<span class='notice'>You link [button] to [src].</span>")
-				button.autolink_id = ext_button_link_id
-				return TRUE
-			if(istype(airlock))
-				link_stage = LINK_STAGE_EXTERIOR_AIRLOCKS
-				return manual_item_link(user, target)
-		if(LINK_STAGE_EXTERIOR_AIRLOCKS)
-			if(istype(airlock))
-				to_chat(user, "<span class='notice'>You link [airlock] to [src].</span>")
-				airlock.id_tag = ext_door_link_id
-				return TRUE
-			if(istype(button))
-				link_stage = LINK_STAGE_INTERIOR_BUTTONS
-				return manual_item_link(user, target)
-		if(LINK_STAGE_INTERIOR_BUTTONS)
-			if(istype(button))
-				to_chat(user, "<span class='notice'>You link [button] to [src].</span>")
-				button.autolink_id = int_button_link_id
-				return TRUE
-			if(istype(airlock))
-				link_stage = LINK_STAGE_INTERIOR_AIRLOCKS
-				return manual_item_link(user, target)
-		if(LINK_STAGE_INTERIOR_AIRLOCKS)
-			if(istype(airlock))
-				to_chat(user, "<span class='notice'>You link [airlock] to [src].</span>")
-				airlock.id_tag = int_door_link_id
-				return TRUE
-
-	return FALSE
 
 /obj/machinery/airlock_controller/attack_ghost(mob/user)
 	ui_interact(user)
@@ -511,8 +343,8 @@ send an additional command to open the door again.
 	if(doorCommand)
 		signalDoors(doors, doorCommand)
 
-// MARK: Access Controller
 
+/* =============================== ACCESS CONTROLLER - No cycling required */
 /obj/machinery/airlock_controller/access_controller
 	name = "airlock access controller"
 	icon_state = "access_control_standby"
@@ -551,11 +383,7 @@ send an additional command to open the door again.
 		if(MODE_EXTERIOR)
 			cycleDoors(TARGET_OUTOPEN)
 
-/obj/machinery/airlock_controller/air_cycler
-	final_link_stage = LINK_STAGE_VENTS
-
-// MARK: Air Cycler
-
+/* =============================== AIR CYCLER - Ensures internal pressure matches (just about) the void or the normal atmosphere */
 /obj/machinery/airlock_controller/air_cycler/link_all_items()
 	. = ..()
 
@@ -566,14 +394,6 @@ send an additional command to open the door again.
 	if(!length(vents))
 		stack_trace("[src] at [x],[y],[z] didnt setup any vents! Please double check the IDs!")
 
-/obj/machinery/airlock_controller/air_cycler/unlink_all_items()
-	. = ..()
-	for(var/vent_uid in vents)
-		var/obj/machinery/atmospherics/unary/vent_pump/vent = locateUID(vent_uid)
-		if(istype(vent))
-			vent.autolink_id = null
-
-	vents.Cut()
 
 /obj/machinery/airlock_controller/air_cycler/ui_state(mob/user)
 	return GLOB.default_state
@@ -602,23 +422,5 @@ send an additional command to open the door again.
 			begin_cycle_in()
 		if(MODE_EXTERIOR)
 			begin_cycle_out()
-
-/obj/machinery/airlock_controller/air_cycler/manual_item_link(mob/living/user, atom/target)
-	. = ..()
-
-	if(.)
-		return
-
-	var/obj/machinery/atmospherics/unary/vent_pump/vent = target
-	switch(link_stage)
-		if(LINK_STAGE_INTERIOR_AIRLOCKS)
-			if(istype(vent))
-				link_stage = LINK_STAGE_VENTS
-				return manual_item_link(user, target)
-		if(LINK_STAGE_VENTS)
-			if(istype(vent))
-				to_chat(user, "<span class='notice'>You link [vent] to [src].</span>")
-				vent.autolink_id = vent_link_id
-				return TRUE
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/airlock_controller/air_cycler, 25, 25)

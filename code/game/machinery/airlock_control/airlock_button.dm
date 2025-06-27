@@ -38,14 +38,6 @@ GLOBAL_LIST_EMPTY(all_airlock_access_buttons)
 	else
 		icon_state = "access_button_off"
 
-/obj/machinery/access_button/multitool_act(mob/living/user, obj/item/multitool/multitool)
-	if(!istype(multitool))
-		return
-
-	multitool.buffer_uid = UID()
-	to_chat(user, "<span class='notice'>You save [src] into [multitool]'s buffer.</span>")
-	return ITEM_INTERACT_COMPLETE
-
 /obj/machinery/access_button/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	// Swiping ID on the access button
 	if(istype(used, /obj/item/card/id) || istype(used, /obj/item/pda))
