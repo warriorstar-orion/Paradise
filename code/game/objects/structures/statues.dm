@@ -8,11 +8,11 @@
 	var/oreAmount = 5
 	var/material_drop_type = /obj/item/stack/sheet/metal
 
-/obj/structure/statue/attackby__legacy__attackchain(obj/item/W, mob/living/user, params)
+/obj/structure/statue/item_interaction(mob/living/user, obj/item/W, list/modifiers)
 	add_fingerprint(user)
 	if(!(flags & NODECONSTRUCT))
 		if(default_unfasten_wrench(user, W))
-			return
+			return ITEM_INTERACT_COMPLETE
 		if(istype(W, /obj/item/gun/energy/plasmacutter))
 			playsound(src, W.usesound, 100, 1)
 			user.visible_message("[user] is slicing apart the [name]...", \
@@ -23,7 +23,7 @@
 				user.visible_message("[user] slices apart the [name].", \
 									"<span class='notice'>You slice apart the [name].</span>")
 				deconstruct(TRUE)
-			return
+			return ITEM_INTERACT_COMPLETE
 	return ..()
 
 /obj/structure/statue/welder_act(mob/user, obj/item/I)
@@ -321,11 +321,12 @@
 	new /obj/item/grown/log(drop_location())
 	return ..()
 
-/obj/structure/snowman/built/attackby__legacy__attackchain(obj/item/I, mob/user)
+/obj/structure/snowman/built/item_interaction(mob/living/user, obj/item/I, list/modifiers)
 	if(istype(I, /obj/item/snowball) && obj_integrity < max_integrity)
 		to_chat(user, "<span class='notice'>You patch some of the damage on [src] with [I].</span>")
 		obj_integrity = max_integrity
 		qdel(I)
+		return ITEM_INTERACT_COMPLETE
 	else
 		return ..()
 
