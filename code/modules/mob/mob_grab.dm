@@ -188,7 +188,8 @@
 			hud.screen_loc = ui_rhand
 		else
 			hud.screen_loc = ui_lhand
-		assailant.client.screen += hud
+		if(assailant.client)
+			assailant.client.screen += hud
 
 /obj/item/grab/process()
 	if(!confirm())
