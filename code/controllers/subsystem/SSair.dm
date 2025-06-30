@@ -138,6 +138,16 @@ SUBSYSTEM_DEF(air)
 /datum/controller/subsystem/air/get_cost()
 	return cost_full.to_string()
 
+/datum/controller/subsystem/air/proc/write_all_turfs_to_milla()
+	setup_allturfs()
+	setup_write_to_milla()
+	setup_atmos_machinery(GLOB.machines)
+	setup_pipenets(GLOB.machines)
+	for(var/obj/machinery/atmospherics/A in machinery_to_construct)
+		A.initialize_atmos_network()
+
+	in_milla_safe_code = FALSE
+
 /datum/controller/subsystem/air/get_stat_details()
 	var/list/msg = list()
 	msg += "C:{"
