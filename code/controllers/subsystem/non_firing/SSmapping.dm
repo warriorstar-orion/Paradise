@@ -137,19 +137,6 @@ SUBSYSTEM_DEF(mapping)
 	// Setup the Z-level linkage
 	GLOB.space_manager.do_transition_setup()
 
-	if(GLOB.configuration.ruins.enable_lavaland)
-		// Spawn Lavaland ruins and rivers.
-		log_startup_progress("Populating lavaland...")
-		var/lavaland_setup_timer = start_watch()
-		seedRuins(list(level_name_to_num(MINING)), GLOB.configuration.ruins.lavaland_ruin_budget, /area/lavaland/surface/outdoors/unexplored, GLOB.lava_ruins_templates)
-		if(lavaland_theme)
-			lavaland_theme.setup()
-			lavaland_theme.setup_caves()
-		var/time_spent = stop_watch(lavaland_setup_timer)
-		log_startup_progress("Successfully populated lavaland in [time_spent]s.")
-	else
-		log_startup_progress("Skipping lavaland ruins...")
-
 	// World name
 	if(GLOB.configuration.general.server_name)
 		world.name = "[GLOB.configuration.general.server_name]: [station_name()]"
@@ -299,18 +286,6 @@ SUBSYSTEM_DEF(mapping)
 		if(picked && is_station_level(picked.z))
 			existing_station_areas += AR
 		CHECK_TICK
-
-// Do not confuse with seedRuins()
-/datum/controller/subsystem/mapping/proc/handleRuins()
-	// load in extra levels of space ruins
-	var/load_zlevels_timer = start_watch()
-	log_startup_progress("Creating random space levels...")
-	var/num_extra_space = rand(GLOB.configuration.ruins.extra_levels_min, GLOB.configuration.ruins.extra_levels_max)
-	for(var/i in 1 to num_extra_space)
-		GLOB.space_manager.add_new_zlevel("Ruin Area #[i]", linkage = CROSSLINKED, traits = list(REACHABLE_BY_CREW, SPAWN_RUINS, REACHABLE_SPACE_ONLY))
-		CHECK_TICK
-
-	log_startup_progress("Added [zlevel_count] space levels in [stop_watch(watch)]s.")
 
 /datum/controller/subsystem/mapping/proc/generate_lavaland_zlevels()
 	var/zlevel_count = rand(GLOB.configuration.ruins.minimum_lavaland_zlevels, GLOB.configuration.ruins.maximum_lavaland_zlevels)
