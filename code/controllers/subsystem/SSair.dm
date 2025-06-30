@@ -139,10 +139,12 @@ SUBSYSTEM_DEF(air)
 	return cost_full.to_string()
 
 /datum/controller/subsystem/air/proc/write_all_turfs_to_milla()
-	setup_allturfs()
-	setup_write_to_milla()
-	setup_atmos_machinery(GLOB.machines)
-	setup_pipenets(GLOB.machines)
+	in_milla_safe_code = TRUE
+
+	setup_overlays() // Assign icons and such for gas-turf-overlays
+	setup_turfs()
+	setup_atmos_machinery(SSmachines.get_by_type(/obj/machinery/atmospherics))
+	setup_pipenets(SSmachines.get_by_type(/obj/machinery/atmospherics))
 	for(var/obj/machinery/atmospherics/A in machinery_to_construct)
 		A.initialize_atmos_network()
 
@@ -178,18 +180,6 @@ SUBSYSTEM_DEF(air)
 	cust["windy turfs"] = windy_tile_count
 	.["cost"] = cost_full.last_complete_ms
 	.["custom"] = cust
-
-/datum/controller/subsystem/air/Initialize()
-	in_milla_safe_code = TRUE
-
-	setup_overlays() // Assign icons and such for gas-turf-overlays
-	setup_turfs()
-	setup_atmos_machinery(SSmachines.get_by_type(/obj/machinery/atmospherics))
-	setup_pipenets(SSmachines.get_by_type(/obj/machinery/atmospherics))
-	for(var/obj/machinery/atmospherics/A in machinery_to_construct)
-		A.initialize_atmos_network()
-
-	in_milla_safe_code = FALSE
 
 /datum/controller/subsystem/air/Recover()
 	pipenets_to_build = SSair.pipenets_to_build
