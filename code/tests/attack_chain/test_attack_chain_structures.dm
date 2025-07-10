@@ -1,8 +1,8 @@
-/datum/game_test/attack_chain_structures
+/datum/game_test/room_test/attack_chain_structures
 	testing_area_name = "test_attack_chain_structures.dmm"
 	var/list/structure_instances_by_type = list()
 
-/datum/game_test/attack_chain_structures/proc/teleport_to_first(datum/test_puppeteer/player, obj_type, dir=EAST)
+/datum/game_test/room_test/attack_chain_structures/proc/teleport_to_first(datum/test_puppeteer/player, obj_type, dir=EAST)
 	if(length(structure_instances_by_type[obj_type]))
 		for(var/obj/object in structure_instances_by_type[obj_type])
 			if(!QDELETED(object))
@@ -10,13 +10,13 @@
 				return object
 	TEST_FAIL("could not find [obj_type] to teleport puppet to")
 
-/datum/game_test/attack_chain_structures/New()
+/datum/game_test/room_test/attack_chain_structures/New()
 	. = ..()
 	for(var/turf/T in available_turfs)
 		for(var/obj/structure/structure in T)
 			LAZYOR(structure_instances_by_type[structure.type], structure)
 
-/datum/game_test/attack_chain_structures/Run()
+/datum/game_test/room_test/attack_chain_structures/Run()
 	var/datum/test_puppeteer/player = new(src)
 	player.puppet.name = "Player"
 
@@ -258,3 +258,9 @@
 	player.spawn_obj_in_hand(/obj/item/roller_holder)
 	player.click_on(roller_bed)
 	TEST_ASSERT_LAST_CHATLOG(player, "You collapse \the [roller_bed].")
+
+	var/obj/structure/big_delivery/delivery = teleport_to_first(player, /obj/structure/big_delivery)
+	var/obj/item/dest_tagger/tagger = player.spawn_obj_in_hand(/obj/item/dest_tagger)
+	tagger.currTag = GLOB.TAGGERLOCATIONS[0]
+	player.click_on(delivery)
+	TEST_ASSERT_LAST_CHATLOG(player, "*Disposals*")
