@@ -225,10 +225,10 @@
 
 	var/obj/structure/shelf/shelf = teleport_to_first(player, /obj/structure/shelf)
 	var/obj/box = player.spawn_obj_in_hand(/obj/item/storage/box/beakers)
-	player.click_on(shelf, "icon-x=10;icon-y=10")
+	player.click_on(shelf, "icon-x=8;icon-y=10")
 	TEST_ASSERT_LAST_CHATLOG(player, "You place [box] on [shelf].")
 	var/obj/wrench = player.spawn_fast_tool(/obj/item/wrench)
-	player.click_on(shelf)
+	player.click_on(shelf, "icon-x=24;icon-y=10")
 	TEST_ASSERT_LAST_CHATLOG(player, "You place [wrench] on [shelf].")
 	player.spawn_fast_tool(/obj/item/wrench)
 	player.set_intent(INTENT_HARM)
@@ -239,7 +239,7 @@
 	var/obj/structure/statue/hop_statue = teleport_to_first(player, /obj/structure/statue/gold/hop)
 	player.spawn_fast_tool(/obj/item/gun/energy/plasmacutter)
 	player.click_on(hop_statue)
-	TEST_ASSERT_LAST_CHATLOG(player, "You slice apart the [hop_statue].")
+	TEST_ASSERT_LAST_CHATLOG(player, "You slice apart [hop_statue].")
 	player.drop_held_item()
 
 	var/obj/structure/snowman/built/snowman = teleport_to_first(player, /obj/structure/snowman/built)
@@ -258,6 +258,7 @@
 	player.spawn_obj_in_hand(/obj/item/roller_holder)
 	player.click_on(roller_bed)
 	TEST_ASSERT_LAST_CHATLOG(player, "You collapse \the [roller_bed].")
+	player.drop_held_item()
 
 	var/obj/structure/big_delivery/delivery = teleport_to_first(player, /obj/structure/big_delivery)
 	var/obj/item/dest_tagger/tagger = player.spawn_obj_in_hand(/obj/item/dest_tagger)
