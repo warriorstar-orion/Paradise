@@ -167,6 +167,10 @@ if __name__ == "__main__":
     dme = DME.from_file("paradise.dme", parse_procs=True)
 
     for pth in dme.subtypesof("/"):
+        if pth in IGNORED_TYPES:
+            continue
+
+        print(pth)
         td = dme.types[pth]
         if any(
             [
