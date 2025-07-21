@@ -2044,6 +2044,8 @@
 #include "code\modules\cooking\steps\recipe_step_add_meathunk.dm"
 #include "code\modules\cooking\steps\recipe_step_add_produce.dm"
 #include "code\modules\cooking\steps\recipe_step_add_reagent.dm"
+#include "code\modules\cooking\steps\recipe_step_expose_to.dm"
+#include "code\modules\cooking\steps\recipe_step_surround_with.dm"
 #include "code\modules\cooking\steps\recipe_step_use_machine.dm"
 #include "code\modules\countdown\countdown.dm"
 #include "code\modules\crafting\craft.dm"

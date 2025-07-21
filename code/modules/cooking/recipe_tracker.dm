@@ -28,8 +28,12 @@
 
 /datum/cooking/recipe_tracker/New(obj/item/reagent_containers/cooking/container)
 	container_uid = container.UID()
+	START_PROCESSING(SSobj, container)
 
 /datum/cooking/recipe_tracker/Destroy(force, ...)
+	var/obj/container = locateUID(container_uid)
+	if(istype(container))
+		STOP_PROCESSING(SSobj, container)
 	// Not QDEL_LIST_CONTENTS because there's references to the global recipe
 	// singletons.
 	recipes_last_completed_step.Cut()

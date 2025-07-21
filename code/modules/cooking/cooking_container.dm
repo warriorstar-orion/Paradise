@@ -164,6 +164,11 @@
 			clear_cooking_data()
 			update_appearance(UPDATE_ICON)
 
+/obj/item/reagent_containers/cooking/process()
+	if(tracker)
+		var/process_reaction = tracker.process_item_wrap(null, null)
+		react_to_process(process_reaction, null, null)
+
 /obj/item/reagent_containers/cooking/proc/handle_burning()
 	// Only create a burnt mess with objects in us, so boiled water doesn't
 	// turn into a burnt mess when left on the stove too long.
