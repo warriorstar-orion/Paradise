@@ -265,3 +265,9 @@
 	tagger.currTag = GLOB.TAGGERLOCATIONS[0]
 	player.click_on(delivery)
 	TEST_ASSERT_LAST_CHATLOG(player, "*Disposals*")
+	player.drop_held_item()
+
+	var/obj/structure/windoor_assembly/assembly = teleport_to_first(player, /obj/structure/windoor_assembly)
+	player.spawn_fast_tool(/obj/item/stack/cable_coil)
+	player.click_on(assembly)
+	TEST_ASSERT_LAST_CHATLOG(player, "You wire the windoor.")

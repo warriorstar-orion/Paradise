@@ -945,15 +945,15 @@
 		step(O, get_dir(O, src))
 		return TRUE
 
-/obj/structure/rack/attackby__legacy__attackchain(obj/item/W, mob/user, params)
+/obj/structure/rack/item_interaction(mob/living/user, obj/item/W, list/modifiers)
 	if(isrobot(user))
 		return
 	if(user.a_intent == INTENT_HARM)
-		return ..()
+		return
 	if(!(W.flags & ABSTRACT))
 		if(user.drop_item())
 			W.Move(loc)
-	return
+	return ITEM_INTERACT_COMPLETE
 
 /obj/structure/rack/wrench_act(mob/user, obj/item/I)
 	. = TRUE
