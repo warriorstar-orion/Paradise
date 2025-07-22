@@ -72,14 +72,6 @@
 	icon_state = "purple"
 	},
 /area/template_noop)
-"C" = (
-/obj/structure/chair/office/light{
-	dir = 1
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "purple"
-	},
-/area/template_noop)
 "F" = (
 /obj/machinery/chem_master,
 /turf/simulated/floor/plasteel{
@@ -851,7 +843,7 @@ U
 u
 t
 v
-C
+u
 U
 S
 U
@@ -1463,7 +1455,7 @@ U
 u
 t
 v
-C
+u
 U
 S
 U

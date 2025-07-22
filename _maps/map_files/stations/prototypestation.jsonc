@@ -13,8 +13,8 @@
 				"marker": "/obj/effect/map_effect/marker/mapmanip/submap/insert/deepmaints/small",
 				"width": 3,
 				"height": 3,
-				"min": 7,
-				"max": 9
+				"min": 5,
+				"max": 8
 			},
 			{
 				"marker": "/obj/effect/map_effect/marker/mapmanip/submap/insert/deepmaints/medium",
@@ -22,6 +22,13 @@
 				"height": 5,
 				"min": 2,
 				"max": 3
+			},
+			{
+				"marker": "/obj/effect/map_effect/marker/mapmanip/submap/insert/deepmaints/long",
+				"width": 7,
+				"height": 3,
+				"min": 1,
+				"max": 1
 			}
 		]
 	},
@@ -33,7 +40,7 @@
 		"submaps_dmm": "submaps/deepmaints_small.dmm",
 		"marker_extract": "/obj/effect/map_effect/marker/mapmanip/submap/extract/deepmaints/small",
 		"marker_insert": "/obj/effect/map_effect/marker/mapmanip/submap/insert/deepmaints/small",
-		"submaps_can_repeat": true
+		"submaps_can_repeat": false
 	},
 	{
 		"type": "SubmapExtractInsert",
@@ -43,7 +50,17 @@
 		"submaps_dmm": "submaps/deepmaints_medium.dmm",
 		"marker_extract": "/obj/effect/map_effect/marker/mapmanip/submap/extract/deepmaints/medium",
 		"marker_insert": "/obj/effect/map_effect/marker/mapmanip/submap/insert/deepmaints/medium",
-		"submaps_can_repeat": true
+		"submaps_can_repeat": false
+	},
+	{
+		"type": "SubmapExtractInsert",
+		"submap_size_x": 21,
+		"submap_size_y": 9,
+		"submap_size_z": 1,
+		"submaps_dmm": "submaps/deepmaints_long.dmm",
+		"marker_extract": "/obj/effect/map_effect/marker/mapmanip/submap/extract/deepmaints/long",
+		"marker_insert": "/obj/effect/map_effect/marker/mapmanip/submap/insert/deepmaints/long",
+		"submaps_can_repeat": false
 	},
 	{
 		"type": "SubmapExtractInsert",

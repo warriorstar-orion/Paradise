@@ -132,3 +132,11 @@
 /obj/effect/map_effect/marker/mapmanip/submap/insert/deepmaints/hallroom_5x5
 	name = "deepmaints hall room 5x5"
 	color = COLOR_YELLOW
+
+/obj/effect/map_effect/marker/mapmanip/submap/extract/deepmaints/long
+	name = "deepmaints room long"
+	color = COLOR_ASSEMBLY_LBLUE
+
+/obj/effect/map_effect/marker/mapmanip/submap/insert/deepmaints/long
+	name = "deepmaints room long"
+	color = COLOR_ASSEMBLY_LBLUE
