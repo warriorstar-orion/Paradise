@@ -27,20 +27,6 @@
 		parent.Blend(current_typepath::color, ICON_MULTIPLY)
 	return parent
 
-/datum/decal_painter_setting
-	var/icon
-	var/icon_state
-	var/color
-	var/decal_typepath
-	var/painter_category
-
-/datum/decal_painter_setting/New(obj/effect/turf_decal/decal_type)
-	icon = decal_type::icon
-	icon_state = decal_type::icon_state
-	color = decal_type::color
-	decal_typepath = decal_type
-	painter_category = decal_type::painter_category
-
 /datum/painter/decal
 	module_name = "decal painter"
 	module_state = "decal_painter"
@@ -61,7 +47,7 @@
 			/obj/effect/turf_decal/sand
 		)
 	)
-	/// Assoc list with icon_state of the decal as the key, and decal path as the value.
+	/// List of typepaths of turf decals exposed by the painter.
 	var/static/list/lookup_cache_decals = list()
 
 /datum/painter/decal/New(obj/item/painter/parent_painter)
@@ -73,7 +59,7 @@
 				continue
 			if(decal::icon_state == "blank")
 				continue
-			lookup_cache_decals["[decal]"] = new/datum/decal_painter_setting(decal)
+			lookup_cache_decals += decal
 
 /datum/painter/decal/paint_atom(atom/target, mob/user)
 	if(!istype(target, /turf/simulated/floor))
@@ -87,8 +73,9 @@
 	if(length(decals) >= max_decals)
 		to_chat(user, "<span class='warning'>You can't fit more decals on [target].</span>")
 		return FALSE
-	var/datum/decal_painter_setting/setting = lookup_cache_decals[selected_type]
-	new setting.decal_typepath(target_turf, selected_dir)
+
+	if(ispath(selected_type, /obj/effect/turf_decal))
+		new selected_type(target_turf, selected_dir)
 	return TRUE
 
 /datum/painter/decal/pick_color(mob/user)
@@ -129,15 +116,15 @@
 		data["icon"] = decal_icon
 		var/list/availableStyles = list()
 
-		for(var/decal_typestring in lookup_cache_decals)
-			var/datum/decal_painter_setting/setting = lookup_cache_decals[decal_typestring]
-			if(!(setting.painter_category in availableStyles))
-				availableStyles[setting.painter_category] = list()
-			availableStyles[setting.painter_category] += list(list(
-				"icon" = setting.icon,
-				"icon_state" = setting.icon_state,
-				"color" = setting.color,
-				"typepath" = setting.decal_typepath,
+		for(var/decal in lookup_cache_decals)
+			var/obj/effect/turf_decal/decal_type = decal
+			if(!(decal_type::painter_category in availableStyles))
+				availableStyles[decal_type::painter_category] = list()
+			availableStyles[decal_type::painter_category] += list(list(
+				"icon" = decal_type::icon,
+				"icon_state" = decal_type::icon_state,
+				"color" = decal_type::color,
+				"typepath" = decal_type,
 			))
 
 		data["availableStyles"] = availableStyles
