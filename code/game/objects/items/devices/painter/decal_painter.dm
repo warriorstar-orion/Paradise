@@ -144,8 +144,8 @@
 			if(new_dir != 0)
 				selected_dir = new_dir
 		if("set_decal_type")
-			var/new_decal_type = params["decal_type"]
-			if(lookup_cache_decals.Find(new_decal_type) != 0)
+			var/new_decal_type = text2path(params["decal_type"])
+			if(ispath(new_decal_type))
 				selected_type = new_decal_type
 				removal_mode = FALSE
 		if("toggle_removal_mode")
