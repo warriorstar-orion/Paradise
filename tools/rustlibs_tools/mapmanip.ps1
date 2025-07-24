@@ -12,8 +12,8 @@ echo "Should launch the actual server to get stacktraces and the like."
 echo "*****"
 
 # find path to rustlibs.dll
-if (Test-Path "./rust/target/i686-pc-windows-msvc/release/rustlibs.dll") {
-	$BapiPath = "./rust/target/i686-pc-windows-msvc/release/rustlibs.dll"
+if (Test-Path "./rust/target/i686-pc-windows-msvc/release/rustlibs_515.dll") {
+	$BapiPath = "./rust/target/i686-pc-windows-msvc/release/rustlibs_515.dll"
 }
 elseif (Test-Path "./rust/target/i686-pc-windows-msvc/debug/rustlibs_515.dll") {
 	$BapiPath = "./rust/target/i686-pc-windows-msvc/debug/rustlibs_515.dll"
@@ -26,7 +26,7 @@ else {
 }
 
 # run ffi function from rustlibs.dll
-echo ("Executing from {0}..." -f $BapiPath)
+echo "Executing..."
 $BapiDllFunction = "all_mapmanip_configs_execute_ffi"
 $BapiExecutionTime = Measure-Command {
 	# `rundll` runs a function from a dll

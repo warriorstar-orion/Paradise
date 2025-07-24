@@ -292,7 +292,7 @@
 
 /obj/item/projectile/tentacle/fire(setAngle)
 	if(firer)
-		chain = firer.Beam(src, icon_state = "tentacle", time = INFINITY, maxdistance = INFINITY, beam_sleep_time = 1)
+		chain = firer.Beam(src, icon_state = "tentacle", time = INFINITY, maxdistance = INFINITY)
 	..()
 
 /mob/proc/tentacle_stab(mob/living/carbon/C)
@@ -541,7 +541,7 @@
 
 	// snowflake checks my beloved
 	// this will become tooltype checks I swear
-	if(!istype(I, /obj/item/circular_saw) && !istype(I, /obj/item/chainsaw) && !istype(I, /obj/item/butcher_chainsaw))
+	if(!istype(I, /obj/item/circular_saw) && !istype(I, /obj/item/chainsaw))
 		return
 
 	user.visible_message(
