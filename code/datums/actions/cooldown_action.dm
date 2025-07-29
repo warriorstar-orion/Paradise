@@ -63,7 +63,7 @@
 	if(original)
 		create_sequence_actions()
 
-/datum/action/cooldown/CreateButton()
+/datum/action/cooldown/create_button()
 	var/atom/movable/screen/movable/action_button/button = ..()
 	button.maptext = ""
 	button.maptext_x = 4
@@ -132,7 +132,7 @@
 		ability.Remove(removed_from)
 	return ..()
 
-/datum/action/cooldown/IsAvailable(feedback = FALSE)
+/datum/action/cooldown/IsAvailable(show_message = TRUE)
 	return ..() && (next_use_time <= world.time)
 
 /// Initializes any sequence actions
@@ -251,7 +251,7 @@
 
 /// Intercepts client owner clicks to activate the ability
 /datum/action/cooldown/proc/InterceptClickOn(mob/living/clicker, params, atom/target)
-	if(!IsAvailable(feedback = TRUE))
+	if(!IsAvailable(show_message = TRUE))
 		return FALSE
 	if(!target)
 		return FALSE

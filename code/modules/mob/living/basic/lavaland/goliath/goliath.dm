@@ -34,8 +34,7 @@
 	faction = list("mining")
 	var/pre_attack = FALSE
 	var/pre_attack_icon = "Goliath_preattack"
-	// loot = list(/obj/item/stack/sheet/animalhide/goliath_hide)
-	// footstep_type = FOOTSTEP_MOB_HEAVY
+	loot = list(/obj/item/stack/sheet/animalhide/goliath_hide)
 	/// Our base tentacles ability
 	var/datum/action/cooldown/mob_cooldown/goliath_tentacles/tentacles
 	/// Things we want to eat off the floor (or a plate, we're not picky)
@@ -112,7 +111,11 @@
 	// throw_message = "does nothing to the tough hide of the"
 	pre_attack_icon = "goliath2"
 	// crusher_loot = /obj/item/crusher_trophy/goliath_tentacle
-	butcher_results = list(/obj/item/food/monstermeat/goliath = 2, /obj/item/stack/sheet/animalhide/goliath_hide = 1, /obj/item/stack/sheet/bone = 2)
+	butcher_results = list(
+		/obj/item/food/monstermeat/goliath = 2,
+		/obj/item/stack/sheet/animalhide/goliath_hide = 1,
+		/obj/item/stack/sheet/bone = 2,
+	)
 	// loot = list()
 	// stat_attack = UNCONSCIOUS
 	// robust_searching = TRUE
@@ -131,7 +134,10 @@
 	pre_attack_icon = "Goliath_preattack"
 	// throw_message = "does nothing to the rocky hide of the"
 	// loot = list(/obj/item/stack/sheet/animalhide/goliath_hide) //A throwback to the asteroid days
-	butcher_results = list(/obj/item/food/monstermeat/goliath= 2, /obj/item/stack/sheet/bone = 2)
+	butcher_results = list(
+		/obj/item/food/monstermeat/goliath = 2,
+		/obj/item/stack/sheet/bone = 2,
+	)
 	// crusher_loot = /obj/item/crusher_trophy/goliath_tentacle/ancient
 	// crusher_drop_mod = 100 //These things are rare (1/100 per spawner). You shouldn't have to hope for another stroke of luck to get it's trophy after finding it
 	// wander = FALSE
@@ -139,27 +145,13 @@
 	var/turf/last_location
 	var/tentacle_recheck_cooldown = 100
 
-// /mob/living/basic/mining/goliath/beast/ancient/Life()
-// 	. = ..()
-// 	if(!.) // dead
-// 		return
-// 	if(target && isturf(loc))
-// 		if(!LAZYLEN(cached_tentacle_turfs) || loc != last_location || tentacle_recheck_cooldown <= world.time)
-// 			LAZYCLEARLIST(cached_tentacle_turfs)
-// 			last_location = loc
-// 			tentacle_recheck_cooldown = world.time + initial(tentacle_recheck_cooldown)
-// 			for(var/turf/simulated/floor/T in orange(4, loc))
-// 				LAZYADD(cached_tentacle_turfs, T)
-// 		for(var/t in cached_tentacle_turfs)
-// 			if(isfloorturf(t))
-// 				if(prob(10))
-// 					new /obj/effect/temp_visual/goliath_tentacle(t, src)
-// 			else
-// 				cached_tentacle_turfs -= t
-
 /mob/living/basic/mining/goliath/beast/tendril
 
 /mob/living/basic/mining/goliath/beast/tendril/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_FROM_TENDRIL, "[UID()]")
 
+/mob/living/basic/mining/goliath/space
+
+/mob/living/basic/mining/goliath/space/Process_Spacemove(movement_dir, continuous_move)
+	return TRUE
