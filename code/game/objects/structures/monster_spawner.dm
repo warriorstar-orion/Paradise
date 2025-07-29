@@ -72,7 +72,7 @@
 	mob_types = list(/mob/living/basic/mining/goliath)
 
 /obj/structure/spawner/mining/goliath/space
-	mob_types = list(/mob/living/simple_animal/hostile/asteroid/goliath/space)
+	mob_types = list(/mob/living/basic/mining/goliath/space)
 
 /obj/structure/spawner/mining/hivelord
 	name = "hivelord den"
