@@ -45,3 +45,7 @@
 /// Called on a mob attempting to use a ladder to go in either direction.  (entrance_ladder, exit_ladder, going_up)
 #define COMSIG_LADDER_TRAVEL "ladder-travel"
 	#define LADDER_TRAVEL_BLOCK (1<<0)
+
+/// from /datum/component/supermatter_crystal/proc/consume()
+/// called on the thing consumed, passes the thing which consumed it
+#define COMSIG_SUPERMATTER_CONSUMED "sm_consumed_this"
