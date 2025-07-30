@@ -299,7 +299,6 @@
 "bN" = (
 /obj/effect/spawner/window/reinforced/plasma/grilled,
 /obj/effect/spawner/airlock/e_to_w,
-/turf/space,
 /turf/simulated/floor/plating,
 /area/iceplanet/surface)
 "bO" = (
@@ -505,7 +504,6 @@
 /area/iceplanet/surface)
 "cT" = (
 /obj/effect/spawner/window/reinforced,
-/turf/space,
 /turf/simulated/floor/plating,
 /area/iceplanet/surface)
 "cZ" = (
@@ -2437,6 +2435,12 @@
 	icon_state = "whiteyellowfull"
 	},
 /area/iceplanet/surface)
+"oz" = (
+/obj/machinery/light/outdoors{
+	dir = 1
+	},
+/turf/simulated/floor/dome/pavement/road,
+/area/iceplanet/surface)
 "oA" = (
 /obj/machinery/chem_master,
 /turf/simulated/floor/plasteel{
@@ -2476,7 +2480,6 @@
 /area/iceplanet/surface)
 "oL" = (
 /obj/effect/spawner/window/reinforced/grilled,
-/turf/space,
 /turf/simulated/floor/plating,
 /area/iceplanet/surface)
 "oN" = (
@@ -2711,8 +2714,10 @@
 /turf/simulated/floor/plasteel/dark,
 /area/iceplanet/surface)
 "qw" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/turf/space,
+/obj/machinery/smartfridge/food/chef,
+/turf/simulated/floor/plasteel{
+	icon_state = "cafeteria"
+	},
 /area/iceplanet/surface)
 "qy" = (
 /obj/machinery/smartfridge/food/chef,
@@ -3048,7 +3053,7 @@
 /area/iceplanet/surface)
 "so" = (
 /obj/machinery/smartfridge/food/chef,
-/turf/space,
+/turf/simulated/floor/plating,
 /area/iceplanet/surface)
 "sp" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
@@ -3101,7 +3106,10 @@
 /turf/simulated/floor/dome/pavement/brick,
 /area/iceplanet/surface)
 "sG" = (
-/turf/space,
+/obj/machinery/light/outdoors{
+	dir = 4
+	},
+/turf/simulated/floor/dome/pavement/brick,
 /area/iceplanet/surface)
 "sH" = (
 /obj/structure/cable/yellow{
@@ -3662,7 +3670,6 @@
 /area/iceplanet/surface)
 "wn" = (
 /obj/effect/spawner/window/reinforced/plasma/grilled,
-/turf/space,
 /turf/simulated/floor/plating,
 /area/iceplanet/surface)
 "wo" = (
@@ -4509,8 +4516,10 @@
 /turf/simulated/floor/carpet/red,
 /area/iceplanet/surface)
 "Bb" = (
-/obj/effect/spawner/window/reinforced/plasma/grilled,
-/turf/space,
+/obj/machinery/light/outdoors{
+	dir = 4
+	},
+/turf/simulated/floor/plating/asteroid/snow/iceplanet,
 /area/iceplanet/surface)
 "Bd" = (
 /obj/machinery/computer/security,
@@ -5624,7 +5633,6 @@
 /obj/effect/spawner/window/reinforced/polarized/grilled{
 	id = "rd"
 	},
-/turf/space,
 /turf/simulated/floor/plating,
 /area/iceplanet/surface)
 "Hu" = (
@@ -5949,7 +5957,6 @@
 "IU" = (
 /obj/effect/spawner/window/reinforced,
 /turf/simulated/floor/plating/asteroid/snow/iceplanet,
-/turf/simulated/floor/plating,
 /turf/simulated/floor/plating,
 /area/iceplanet/surface)
 "IW" = (
@@ -6332,9 +6339,11 @@
 	},
 /area/iceplanet/surface)
 "Lm" = (
-/obj/effect/spawner/window/reinforced,
-/turf/space,
-/area/station/medical/medbay)
+/obj/machinery/light/outdoors{
+	dir = 8
+	},
+/turf/simulated/floor/plating/asteroid/snow/iceplanet,
+/area/iceplanet/surface)
 "Ln" = (
 /obj/structure/sink/directional/west,
 /turf/simulated/floor/plasteel{
@@ -6938,8 +6947,6 @@
 /area/iceplanet/surface)
 "OE" = (
 /obj/effect/spawner/window/reinforced/plasma/grilled,
-/turf/space,
-/turf/simulated/floor/plating,
 /turf/simulated/floor/plating,
 /area/iceplanet/surface)
 "OG" = (
@@ -7034,7 +7041,7 @@
 	id_tag = "janitor";
 	name = "Janitor Shutters"
 	},
-/turf/space,
+/turf/simulated/floor/plating,
 /area/iceplanet/surface)
 "Pj" = (
 /obj/structure/chair{
@@ -7485,7 +7492,6 @@
 /obj/effect/spawner/window/reinforced/polarized/grilled{
 	id = "Detective"
 	},
-/turf/space,
 /turf/simulated/floor/plating,
 /area/iceplanet/surface)
 "RV" = (
@@ -81895,9 +81901,9 @@ EK
 EK
 Ul
 Ul
-Bb
-Bb
-Bb
+OW
+OW
+OW
 Ul
 Ul
 EK
@@ -82414,8 +82420,8 @@ sQ
 Em
 eg
 Ul
-Bb
-Bb
+OW
+OW
 Ul
 Ul
 yg
@@ -83197,9 +83203,9 @@ Hx
 Ul
 Ul
 Ul
-Bb
-Bb
-Bb
+OW
+OW
+OW
 Ul
 EK
 EK
@@ -83949,7 +83955,7 @@ gI
 en
 en
 Ul
-qw
+tj
 so
 Ul
 Ul
@@ -84743,8 +84749,8 @@ pY
 YH
 Ul
 Ul
-Bb
-Bb
+OW
+OW
 Ul
 Ul
 Ul
@@ -85620,9 +85626,9 @@ QL
 QL
 QL
 Ul
-Bb
-Bb
-Bb
+OW
+OW
+OW
 Ul
 oS
 Ul
@@ -85880,7 +85886,7 @@ Ul
 DS
 Ov
 DS
-Bb
+OW
 Ti
 Ul
 EK
@@ -86125,7 +86131,7 @@ EK
 EK
 EK
 EK
-Bb
+OW
 QL
 QL
 QL
@@ -86382,7 +86388,7 @@ EK
 EK
 EK
 EK
-Bb
+OW
 UZ
 Kl
 QL
@@ -86550,9 +86556,9 @@ YZ
 jD
 If
 Ul
-Bb
-Bb
-Bb
+OW
+OW
+OW
 Ul
 Ul
 Ul
@@ -86639,7 +86645,7 @@ uw
 NB
 EK
 EK
-Bb
+OW
 Il
 Kl
 QL
@@ -86783,44 +86789,44 @@ Ul
 QL
 Ul
 Ul
-qw
+tj
 YW
 VR
-qw
-qw
+tj
+tj
 Ul
 Ul
 QL
 Ul
 Ul
-qw
-qw
+tj
+tj
 qX
-qw
-Ul
-Ul
-qX
-qw
-qw
-Ul
-Ul
-Ul
+tj
 Ul
 Ul
 qX
-qX
-qX
+tj
+tj
+Ul
+Ul
+Ul
+Ul
 Ul
 qX
 qX
 qX
+Ul
 qX
 qX
 qX
 qX
 qX
 qX
-Bb
+qX
+qX
+qX
+OW
 EK
 EK
 rx
@@ -87077,7 +87083,7 @@ qX
 qX
 qX
 qX
-Bb
+OW
 EK
 EK
 rx
@@ -87291,7 +87297,7 @@ EK
 EK
 EK
 EK
-Bb
+OW
 qX
 qX
 qX
@@ -87334,7 +87340,7 @@ qX
 qX
 qX
 qX
-Bb
+OW
 EK
 EK
 rx
@@ -87548,7 +87554,7 @@ EK
 EK
 EK
 EK
-Bb
+OW
 qX
 qX
 qX
@@ -87811,11 +87817,11 @@ Ul
 Ul
 Ul
 Ul
-Bb
-Bb
-Bb
-Bb
-Bb
+OW
+OW
+OW
+OW
+OW
 Ul
 Ul
 Ul
@@ -87845,7 +87851,7 @@ qX
 qX
 qX
 qX
-qw
+tj
 qX
 qX
 Ul
@@ -91818,10 +91824,10 @@ Ti
 Ul
 Ul
 Ul
-wn
-wn
-wn
-wn
+OW
+OW
+OW
+OW
 Ul
 Ul
 EK
@@ -99464,7 +99470,7 @@ wW
 wW
 wW
 wW
-so
+qw
 US
 US
 AG
@@ -104069,10 +104075,10 @@ hm
 Kz
 Kz
 Kz
-Lm
-Lm
-Lm
-Lm
+dh
+dh
+dh
+dh
 Kz
 Kz
 LV
@@ -110529,8 +110535,8 @@ Ti
 Ti
 oC
 oC
-Bb
-Bb
+OW
+OW
 oC
 oC
 oC
@@ -111308,7 +111314,7 @@ oC
 Ti
 Ti
 Ti
-Bb
+OW
 EK
 EK
 EK
@@ -111565,7 +111571,7 @@ oC
 Ti
 Ti
 Ti
-Bb
+OW
 EK
 EK
 EK
@@ -116904,6 +116910,7 @@ EK
 EK
 EK
 EK
+Lm
 EK
 EK
 EK
@@ -116913,8 +116920,7 @@ EK
 EK
 EK
 EK
-EK
-EK
+Lm
 EK
 EK
 EK
@@ -117699,7 +117705,7 @@ EK
 EK
 EK
 EK
-EK
+Lm
 EK
 EK
 EK
@@ -118228,7 +118234,7 @@ EK
 EK
 EK
 EK
-EK
+Lm
 EK
 EK
 EK
@@ -119464,7 +119470,7 @@ OW
 lC
 lC
 oC
-rx
+oz
 rx
 rx
 EK
@@ -119519,8 +119525,8 @@ EK
 EK
 EK
 EK
-EK
 EQ
+EK
 rx
 rx
 rx
@@ -121021,7 +121027,7 @@ EK
 EK
 EK
 EK
-EK
+Bb
 EK
 EK
 EK
@@ -121541,7 +121547,7 @@ oC
 EK
 EK
 EK
-EK
+Bb
 EK
 EK
 oC
@@ -121832,8 +121838,8 @@ EK
 EK
 EK
 EK
-EK
 EQ
+EK
 rx
 rx
 rx
@@ -122293,7 +122299,7 @@ GJ
 Ul
 lC
 lC
-lC
+sG
 lC
 OW
 OW
@@ -124145,8 +124151,8 @@ EK
 EK
 EK
 EK
-EK
 EQ
+EK
 rx
 rx
 rx
@@ -131812,9 +131818,9 @@ EK
 EK
 EK
 EK
-sG
-sG
-sG
+Ti
+Ti
+Ti
 EK
 EK
 EK
