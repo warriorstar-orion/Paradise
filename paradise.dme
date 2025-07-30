@@ -2412,6 +2412,7 @@
 #include "code\modules\mob\living\stat_states.dm"
 #include "code\modules\mob\living\taste.dm"
 #include "code\modules\mob\living\basic\basic_mob.dm"
+#include "code\modules\mob\living\basic\hostile\avernus_mobs.dm"
 #include "code\modules\mob\living\basic\hostile\bats.dm"
 #include "code\modules\mob\living\basic\hostile\bear.dm"
 #include "code\modules\mob\living\basic\hostile\carp.dm"

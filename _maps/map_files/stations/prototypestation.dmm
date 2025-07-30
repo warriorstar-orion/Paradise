@@ -6598,8 +6598,8 @@
 /turf/simulated/floor/dome/pavement/brick,
 /area/iceplanet/surface)
 "MM" = (
-/obj/effect/spawner/window/reinforced,
-/turf/simulated/floor/plasteel,
+/obj/effect/spawner/random/avernus_monsters,
+/turf/simulated/floor/plating/asteroid/snow/iceplanet,
 /area/iceplanet/surface)
 "MN" = (
 /obj/effect/landmark{
@@ -76412,7 +76412,7 @@ EK
 EK
 EK
 EK
-EK
+MM
 EK
 EK
 EK
@@ -77185,7 +77185,7 @@ EK
 EK
 EK
 EK
-EK
+MM
 EK
 EK
 EK
@@ -78467,7 +78467,7 @@ EK
 EK
 EK
 EK
-EK
+MM
 EK
 EK
 EK
@@ -100073,7 +100073,7 @@ EK
 EK
 EK
 EK
-EK
+MM
 EK
 EK
 EK
@@ -100841,7 +100841,7 @@ EK
 (104,1,2) = {"
 EK
 EK
-EK
+MM
 EK
 EK
 EK
@@ -101872,7 +101872,7 @@ EK
 EK
 EK
 EK
-EK
+MM
 EK
 EK
 EK
@@ -121501,14 +121501,14 @@ Bb
 EK
 EK
 oC
-gI
-gI
-gI
-gI
-gI
-gI
-gI
-gI
+OE
+OE
+OE
+OE
+OE
+OE
+OE
+OE
 uw
 uw
 uw
@@ -121765,7 +121765,7 @@ QL
 QL
 QL
 QL
-gI
+OE
 EK
 ka
 EK
@@ -122022,7 +122022,7 @@ QL
 QL
 QL
 QL
-gI
+OE
 fM
 fM
 fM
@@ -122279,7 +122279,7 @@ QL
 QL
 QL
 QL
-gI
+OE
 fM
 fM
 fM
@@ -122536,7 +122536,7 @@ QL
 QL
 QL
 QL
-gI
+OE
 EK
 EK
 ot
@@ -122793,7 +122793,7 @@ QL
 QL
 QL
 QL
-gI
+OE
 uw
 uw
 uw
@@ -123050,7 +123050,7 @@ QL
 QL
 QL
 QL
-gI
+OE
 EK
 EK
 EK
@@ -123305,9 +123305,9 @@ QL
 QL
 QL
 QL
-gI
-gI
-gI
+OE
+OE
+OE
 EK
 EK
 EK
@@ -123552,14 +123552,14 @@ oC
 oC
 oC
 oC
-KP
+AI
 GJ
-KP
+AI
 oC
 oC
 oC
-MM
-MM
+AI
+AI
 Bi
 oC
 oC
@@ -123819,7 +123819,7 @@ QL
 QL
 QL
 QL
-gI
+OE
 EK
 Ul
 Ul
@@ -124076,7 +124076,7 @@ QL
 QL
 QL
 QL
-gI
+OE
 EK
 TY
 uI
@@ -124333,7 +124333,7 @@ QL
 QL
 QL
 QL
-gI
+OE
 EK
 OE
 gr
@@ -124590,7 +124590,7 @@ QL
 QL
 QL
 QL
-gI
+OE
 EK
 TY
 wr
@@ -125104,7 +125104,7 @@ QL
 QL
 QL
 QL
-gI
+OE
 EK
 TY
 az
@@ -125361,7 +125361,7 @@ QL
 QL
 QL
 QL
-gI
+OE
 EK
 OE
 XE
@@ -125618,7 +125618,7 @@ QL
 QL
 QL
 QL
-gI
+OE
 EK
 TY
 Mc
@@ -126132,7 +126132,7 @@ QL
 QL
 QL
 QL
-gI
+OE
 EK
 Ue
 SK
@@ -126389,7 +126389,7 @@ QL
 QL
 QL
 QL
-gI
+OE
 EK
 OE
 hY
@@ -126646,7 +126646,7 @@ QL
 QL
 QL
 QL
-gI
+OE
 EK
 ww
 bz
@@ -127160,7 +127160,7 @@ QL
 QL
 QL
 QL
-gI
+OE
 EK
 TY
 vs
@@ -127417,7 +127417,7 @@ QL
 QL
 QL
 QL
-gI
+OE
 EK
 OE
 Mx
@@ -127674,7 +127674,7 @@ QL
 QL
 QL
 QL
-gI
+OE
 EK
 TY
 FX
@@ -127919,7 +127919,7 @@ QL
 QL
 QL
 QL
-KP
+AI
 QL
 QL
 QL
@@ -127931,7 +127931,7 @@ QL
 QL
 QL
 QL
-gI
+OE
 EK
 Ul
 Ul
@@ -128188,7 +128188,7 @@ QL
 QL
 QL
 QL
-gI
+OE
 EK
 EK
 EK
@@ -128433,7 +128433,7 @@ QL
 QL
 QL
 QL
-KP
+AI
 QL
 QL
 QL
@@ -129205,17 +129205,17 @@ QL
 oC
 oC
 oC
-gI
-gI
-gI
+OE
+OE
+OE
 Ul
-gI
-gI
-gI
+OE
+OE
+OE
 Ul
-gI
-gI
-gI
+OE
+OE
+OE
 Ul
 Ul
 Ul
@@ -135780,7 +135780,7 @@ EK
 EK
 EK
 EK
-EK
+MM
 EK
 EK
 EK
@@ -137061,6 +137061,7 @@ EK
 EK
 EK
 EK
+MM
 EK
 EK
 EK
@@ -137068,8 +137069,7 @@ EK
 EK
 EK
 EK
-EK
-EK
+MM
 EK
 EK
 EK
@@ -137078,7 +137078,7 @@ EK
 (245,1,2) = {"
 EK
 EK
-EK
+MM
 EK
 EK
 EK
@@ -137339,7 +137339,7 @@ EK
 EK
 EK
 EK
-EK
+MM
 EK
 EK
 EK
@@ -138093,7 +138093,7 @@ EK
 EK
 EK
 EK
-EK
+MM
 EK
 EK
 EK
@@ -138108,7 +138108,7 @@ EK
 EK
 EK
 EK
-EK
+MM
 EK
 EK
 EK
