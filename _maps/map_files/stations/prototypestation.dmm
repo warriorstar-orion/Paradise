@@ -612,6 +612,9 @@
 /obj/effect/mapping_helpers/airlock/access/all/engineering/external,
 /obj/effect/map_effect/dynamic_airlock/door/interior,
 /obj/machinery/access_button/offset/southeast,
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/iceplanet/surface)
 "dH" = (
@@ -2752,6 +2755,15 @@
 	},
 /turf/simulated/floor/engine/n2,
 /area/iceplanet/surface)
+"qG" = (
+/obj/machinery/atmospherics/unary/portables_connector{
+	dir = 1
+	},
+/obj/machinery/atmospherics/portable/canister/air,
+/turf/simulated/floor/plasteel{
+	icon_state = "whiteyellowfull"
+	},
+/area/iceplanet/surface)
 "qI" = (
 /obj/structure/rack,
 /obj/item/stack/sheet/metal{
@@ -3065,6 +3077,10 @@
 	icon_state = "dark"
 	},
 /area/iceplanet/surface)
+"sz" = (
+/obj/structure/closet/crate/trashcart,
+/turf/simulated/floor/plating/asteroid/snow/iceplanet,
+/area/iceplanet/surface)
 "sB" = (
 /obj/machinery/atmospherics/binary/pump{
 	dir = 4;
@@ -3337,6 +3353,12 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
+/area/iceplanet/surface)
+"uz" = (
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 6
+	},
+/turf/simulated/floor/plasteel,
 /area/iceplanet/surface)
 "uA" = (
 /obj/structure/chair/sofa/pew/right{
@@ -3743,6 +3765,13 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
+/area/iceplanet/surface)
+"wU" = (
+/obj/machinery/atmospherics/unary/portables_connector{
+	dir = 1
+	},
+/obj/machinery/atmospherics/portable/canister/air,
+/turf/simulated/floor/plasteel,
 /area/iceplanet/surface)
 "wV" = (
 /obj/structure/machine_frame,
@@ -4378,6 +4407,13 @@
 	icon_state = "whitepurplefull"
 	},
 /area/iceplanet/surface)
+"Aq" = (
+/obj/effect/map_effect/dynamic_airlock,
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/iceplanet/surface)
 "Ar" = (
 /obj/machinery/atmospherics/unary/outlet_injector/on{
 	dir = 8;
@@ -4574,6 +4610,11 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
+/area/iceplanet/surface)
+"BE" = (
+/obj/effect/map_effect/dynamic_airlock,
+/obj/machinery/light/small,
+/turf/simulated/floor/dome/pavement/brick,
 /area/iceplanet/surface)
 "BF" = (
 /turf/simulated/floor/plating,
@@ -5062,6 +5103,10 @@
 	icon_state = "dark"
 	},
 /area/iceplanet/surface)
+"EQ" = (
+/obj/structure/streetlight,
+/turf/simulated/floor/plating/asteroid/snow/iceplanet,
+/area/iceplanet/surface)
 "ET" = (
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plasteel{
@@ -5156,10 +5201,22 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/iceplanet/surface)
+"FH" = (
+/obj/machinery/light/outdoors,
+/turf/simulated/floor/plating/asteroid/snow/iceplanet,
+/area/iceplanet/surface)
 "FJ" = (
 /obj/machinery/plantgenes,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkgreenfull"
+	},
+/area/iceplanet/surface)
+"FK" = (
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 10
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "whiteyellowfull"
 	},
 /area/iceplanet/surface)
 "FL" = (
@@ -7269,6 +7326,12 @@
 "QL" = (
 /turf/simulated/floor/plasteel,
 /area/iceplanet/surface)
+"QM" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel,
+/area/iceplanet/surface)
 "QN" = (
 /obj/effect/turf_decal/woodsiding/end{
 	dir = 4
@@ -7602,6 +7665,13 @@
 "SM" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan,
 /turf/simulated/floor/engine,
+/area/iceplanet/surface)
+"SN" = (
+/obj/effect/map_effect/dynamic_airlock,
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 8
+	},
+/turf/simulated/floor/dome/pavement/brick,
 /area/iceplanet/surface)
 "SO" = (
 /turf/simulated/floor/beach/away/coastline,
@@ -7942,6 +8012,14 @@
 "UZ" = (
 /obj/machinery/atmospherics/unary/thermomachine/freezer,
 /turf/simulated/floor/plasteel,
+/area/iceplanet/surface)
+"Vb" = (
+/obj/machinery/door/airlock/external,
+/obj/effect/map_effect/dynamic_airlock/door/interior,
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 4
+	},
+/turf/simulated/floor/dome/pavement/brick,
 /area/iceplanet/surface)
 "Vc" = (
 /obj/structure/railing{
@@ -8597,6 +8675,10 @@
 	dir = 8
 	},
 /turf/simulated/floor/plasteel,
+/area/iceplanet/surface)
+"YI" = (
+/obj/machinery/light/outdoors,
+/turf/simulated/floor/dome/pavement/road,
 /area/iceplanet/surface)
 "YK" = (
 /obj/machinery/door/airlock/public/glass{
@@ -116615,7 +116697,7 @@ EK
 rx
 rx
 rx
-EK
+FH
 oC
 oC
 Ti
@@ -118158,7 +118240,7 @@ rx
 rx
 rx
 EK
-EK
+FH
 oC
 Ti
 Ti
@@ -119389,6 +119471,7 @@ EK
 EK
 EK
 EK
+EQ
 EK
 EK
 EK
@@ -119398,8 +119481,7 @@ EK
 EK
 EK
 EK
-EK
-EK
+EQ
 EK
 EK
 EK
@@ -119411,6 +119493,7 @@ rx
 rx
 rx
 EK
+EQ
 EK
 EK
 EK
@@ -119420,6 +119503,7 @@ EK
 EK
 EK
 EK
+EQ
 EK
 EK
 EK
@@ -119428,6 +119512,7 @@ EK
 EK
 EK
 EK
+EQ
 EK
 EK
 EK
@@ -119435,10 +119520,7 @@ EK
 EK
 EK
 EK
-EK
-EK
-EK
-EK
+EQ
 rx
 rx
 rx
@@ -119701,12 +119783,12 @@ rx
 rx
 EK
 EK
-EK
+FH
 oC
 Ti
 Ti
 oC
-QL
+QM
 QL
 QL
 QL
@@ -120475,11 +120557,11 @@ EU
 EK
 EK
 EK
-EK
+sz
 oC
 QL
-QL
-QL
+uz
+wU
 QL
 QL
 GN
@@ -120732,10 +120814,10 @@ EU
 EK
 EK
 EK
-EK
+sz
 oC
 ta
-ta
+Vb
 oC
 OW
 OW
@@ -120992,7 +121074,7 @@ rx
 rx
 oC
 jX
-jX
+SN
 oC
 EK
 tj
@@ -121249,7 +121331,7 @@ rx
 rx
 oC
 jX
-jX
+BE
 oC
 EK
 tj
@@ -121503,7 +121585,7 @@ EU
 rx
 rx
 rx
-rx
+YI
 oC
 bd
 bd
@@ -121751,7 +121833,7 @@ EK
 EK
 EK
 EK
-EK
+EQ
 rx
 rx
 rx
@@ -122708,7 +122790,7 @@ EK
 EK
 Ul
 KM
-Op
+Aq
 Ul
 Ti
 Ti
@@ -123222,8 +123304,8 @@ Ul
 Ul
 Ul
 LA
-GJ
-GJ
+FK
+qG
 GJ
 GJ
 Ul
@@ -124064,7 +124146,7 @@ EK
 EK
 EK
 EK
-EK
+EQ
 rx
 rx
 rx
@@ -127163,6 +127245,23 @@ EK
 EK
 EK
 EK
+EQ
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EQ
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EQ
 EK
 EK
 EK
@@ -127171,24 +127270,7 @@ EK
 EK
 EK
 EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
+EQ
 EK
 rx
 rx
@@ -130015,7 +130097,7 @@ EK
 EK
 EK
 EK
-EK
+EQ
 EK
 rx
 rx
@@ -132842,7 +132924,7 @@ EK
 EK
 EK
 EK
-EK
+EQ
 EK
 rx
 rx
@@ -135669,7 +135751,7 @@ EK
 EK
 EK
 EK
-EK
+EQ
 EK
 rx
 rx

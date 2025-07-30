@@ -278,6 +278,10 @@
 	var/fire_mode = FALSE // if true, the light swaps over to emergency colour
 	var/no_emergency = FALSE	// if true, this light cannot ever have an emergency mode
 
+/obj/machinery/light/outdoors
+	brightness_color = "#facd7f"
+	nightshift_light_color = "#facd7f"
+
 /**
   * # Small light fixture
   *
