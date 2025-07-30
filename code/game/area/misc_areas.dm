@@ -71,3 +71,9 @@
 	always_unpowered = TRUE
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 	valid_territory = FALSE
+
+/area/iceplanet
+	name = "Ice Planet"
+
+/area/iceplanet/surface
+	name = "Ice Planet Surface"

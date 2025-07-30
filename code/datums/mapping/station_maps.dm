@@ -41,6 +41,7 @@
 	fluff_name = "Avernus Complex"
 	technical_name = "PrototypeStation"
 	map_path = "_maps/map_files/stations/prototypestation.dmm"
+	linkage = UNAFFECTED
 	level_names = list(
 		SUB_STATION,
 		MAIN_STATION,

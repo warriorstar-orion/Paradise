@@ -8098,9 +8098,8 @@
 /turf/simulated/floor/snow,
 /area/space)
 "wNb" = (
-/obj/machinery/door/airlock/multi_tile/glass/directional/east{
-	name = "Cryogenic Dormitories";
-	dir = 1
+/obj/machinery/door/airlock/multi_tile/glass{
+	name = "Cryogenic Dormitories"
 	},
 /turf/simulated/floor/plating,
 /area/space)
