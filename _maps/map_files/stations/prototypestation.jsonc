@@ -101,5 +101,15 @@
 		"marker_extract": "/obj/effect/map_effect/marker/mapmanip/submap/extract/deepmaints/hallroom_5x5",
 		"marker_insert": "/obj/effect/map_effect/marker/mapmanip/submap/insert/deepmaints/hallroom_5x5",
 		"submaps_can_repeat": true
+	},
+	{
+		"type": "SubmapExtractInsert",
+		"submap_size_x": 16,
+		"submap_size_y": 16,
+		"submap_size_z": 1,
+		"submaps_dmm": "submaps/avernus_topside_ruins.dmm",
+		"marker_extract": "/obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/avernus_topside",
+		"marker_insert": "/obj/effect/map_effect/marker/mapmanip/submap/insert/ruin/avernus_topside",
+		"submaps_can_repeat": false
 	}
 ]
