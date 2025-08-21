@@ -1,4 +1,4 @@
-import { Button, DmIcon, Section, Stack, Table, Tabs } from 'tgui-core/components';
+import { Button, DmIcon, Icon, Section, Stack, Table, Tabs } from 'tgui-core/components';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
@@ -51,7 +51,23 @@ const AutochefNavigation = () => {
 };
 
 const AutochefTaskQueue = () => {
-  return <></>;
+  const { act, data } = useBackend<AutochefData>();
+  const { task_queue } = data;
+  return (
+    <Section title="Task Queue" fill scrollable>
+      <Table>
+        {task_queue.map((task) => {
+          return (
+            <Table.Row className="candystripe" style={{ lineHeight: '32px' }}>
+              <Table.Cell p={0.5}>
+                {task.desc} ({task.state}){!!task.repeating && <Icon name="repeat" />}
+              </Table.Cell>
+            </Table.Row>
+          );
+        })}
+      </Table>
+    </Section>
+  );
 };
 
 const AutochefLinkedItems = () => {
@@ -99,9 +115,16 @@ type Recipe = {
   type: string;
 };
 
+type AutochefTask = {
+  desc: string;
+  type: string;
+  state: AutochefActState;
+  repeating: BooleanLike;
+};
+
 type AutochefData = {
   linked_items: LinkedItem[];
-  task_queue: string[];
+  task_queue: AutochefTask[];
   recipe_memory: Recipe[];
   current_recipe: string;
   current_state: AutochefState;

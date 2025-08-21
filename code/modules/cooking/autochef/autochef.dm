@@ -136,11 +136,14 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 /obj/machinery/autochef/proc/toggle_state()
 	switch(current_state)
 		if(AUTOCHEF_IDLE, AUTOCHEF_INTERRUPTED)
+			set_display(null)
 			if(!length(recipe_memory) || !current_recipe)
 				atom_say("Please provide a food item to create.")
 				return
 			if(!length(task_queue))
 				var/datum/autochef_task/make_item/task = new(src, current_recipe)
+				task.repeating = TRUE
+				task_queue.Add(task)
 
 			current_state = AUTOCHEF_RUNNING
 		if(AUTOCHEF_RUNNING)
@@ -303,6 +306,7 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 			"desc" = task.human_readable_desc(),
 			"type" = "[task.type]",
 			"state" = task.current_state,
+			"repeating" = task.repeating,
 		))
 
 	.["recipe_memory"] = list()
