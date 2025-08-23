@@ -258,7 +258,7 @@
 	spawn_loot_chance = 30
 	spawn_scatter_radius = 1
 	loot = list(
-		/mob/living/simple_animal/hostile/poison/giant_spider
+		/mob/living/basic/giant_spider
 	)
 
 /obj/effect/spawner/random/giant_spiders/Initialize(mapload)

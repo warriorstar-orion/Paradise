@@ -53,9 +53,8 @@
 /turf/simulated/floor/plasteel,
 /area/template_noop)
 "gG" = (
-/obj/effect/spawner/themed_mess/engineering,
 /obj/effect/spawner/random/dirt/frequent,
-/mob/living/simple_animal/cockroach,
+/mob/living/basic/cockroach,
 /turf/simulated/floor/plasteel,
 /area/template_noop)
 "gO" = (
@@ -153,11 +152,6 @@
 /obj/effect/spawner/random/dirt/frequent,
 /obj/machinery/light/small/autoattach/deepmaints,
 /obj/effect/spawner/random/crew_corpse,
-/turf/simulated/floor/plasteel,
-/area/template_noop)
-"pV" = (
-/obj/effect/spawner/random/dirt/frequent,
-/mob/living/simple_animal/cockroach,
 /turf/simulated/floor/plasteel,
 /area/template_noop)
 "qI" = (
@@ -1127,7 +1121,7 @@ bP
 BE
 Jw
 Jw
-Jw
+gG
 BE
 bP
 bP
@@ -1505,7 +1499,7 @@ Jw
 Jw
 Jw
 Jw
-pV
+Jw
 Jw
 Jw
 Jw
@@ -2711,7 +2705,7 @@ bP
 bP
 Jw
 Jw
-Jw
+gG
 Jw
 kA
 Jw
@@ -3414,7 +3408,7 @@ bP
 bP
 BE
 AM
-gG
+ya
 OY
 BE
 bP
@@ -5269,7 +5263,7 @@ Jw
 bP
 bP
 Jw
-Jw
+gG
 Jw
 bP
 bP
