@@ -710,6 +710,7 @@
 		PCWJ_ADD_ITEM(/obj/item/food/meat/human),
 		PCWJ_ADD_ITEM(/obj/item/food/meat/human),
 		PCWJ_ADD_REAGENT("flour", 10),
+		PCWJ_USE_STOVE(J_MED, 2 SECONDS),
 		PCWJ_USE_STOVE(J_MED, 20 SECONDS),
 	)
 	appear_in_default_catalog = FALSE
