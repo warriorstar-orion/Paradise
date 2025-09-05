@@ -438,7 +438,7 @@ By design, d1 is the smallest direction and d2 is the highest
 	src.strengthened = FALSE
 	UnregisterSignal(demon, COMSIG_MOB_DEATH)
 
-/obj/structure/cable/conduit
+/obj/structure/conduit
 	name = "conduit"
 	desc = "A conduit, for passing cable between locations vertically."
 
