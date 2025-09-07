@@ -186,6 +186,8 @@
 /obj/machinery/reagentgrinder/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/kitchen/utensil/fork))
 		return NONE
+	if(istype(used, /obj/item/autochef_remote)) // hate this is here
+		return NONE
 
 	if(istype(used, /obj/item/storage/part_replacer))
 		. = ..()
@@ -449,6 +451,8 @@
 		if(beaker.reagents.holder_full())
 			return
 
+	SEND_SIGNAL(src, COMSIG_MACHINE_PROCESS_COMPLETE)
+
 /obj/machinery/reagentgrinder/proc/grind()
 	power_change()
 	if(stat & (NOPOWER|BROKEN))
@@ -465,6 +469,7 @@
 		pixel_x = initial(pixel_x) // Return to its spot after shaking
 		operating = FALSE
 		SStgui.update_uis(src)
+		SEND_SIGNAL(src, COMSIG_MACHINE_PROCESS_COMPLETE)
 
 	// Snacks and Plants
 	for(var/obj/item/food/O in holdingitems)

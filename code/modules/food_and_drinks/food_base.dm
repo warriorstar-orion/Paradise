@@ -344,6 +344,24 @@
 		to_chat(user, SPAN_WARNING("You cannot slice [src] here! You need a table or at least a tray to do it."))
 		return ITEM_INTERACT_COMPLETE
 
+	convert_to_slices(used, inaccurate)
+	if(!inaccurate)
+		user?.visible_message(
+			SPAN_NOTICE("[user] slices [src] with [used]."),
+			SPAN_NOTICE("You slice [src] with [used].")
+		)
+	else
+		user?.visible_message(
+			SPAN_NOTICE("[user] crudely slices [src] with [used], destroying some in the process!"),
+			SPAN_NOTICE("You crudely slice [src] with [used], destroying some in the process!")
+		)
+
+	qdel(src)
+	return ITEM_INTERACT_COMPLETE
+
+/obj/item/food/sliceable/proc/convert_to_slices(obj/item/used, inaccurate)
+	. = list()
+
 	var/initial_volume = 0 // the total some of reagents this food had initially
 	for(var/ingredient in list_reagents)
 		initial_volume += list_reagents[ingredient]
@@ -353,16 +371,7 @@
 	// we want to account for how much has been eaten already, reduce slices by how is left vs. how much food we started with
 	slices_num = clamp(slices_num * (reagents.total_volume / initial_volume), 1, slices_num)
 	var/slices_lost
-	if(!inaccurate)
-		user.visible_message(
-			SPAN_NOTICE("[user] slices [src] with [used]."),
-			SPAN_NOTICE("You slice [src] with [used].")
-		)
-	else
-		user.visible_message(
-			SPAN_NOTICE("[user] crudely slices [src] with [used], destroying some in the process!"),
-			SPAN_NOTICE("You crudely slice [src] with [used], destroying some in the process!")
-		)
+	if(inaccurate)
 		slices_lost = rand(1, min(1, round(slices_num / 2)))
 	// Low efficiency means more loss.
 	if(used.bit_efficiency_mod < 1)
@@ -372,8 +381,7 @@
 		var/obj/slice = new slice_path (loc, TRUE)
 		reagents.trans_to(slice,reagents_per_slice)
 		slice.scatter_atom()
-	qdel(src)
-	return ITEM_INTERACT_COMPLETE
+		. += slice
 
 /obj/item/food/badrecipe
 	name = "burned mess"

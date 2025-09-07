@@ -5069,21 +5069,6 @@
 /obj/effect/turf_decal/tiles/jobs/bar/checker,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/derelict/hallway/primary)
-"oi" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/table/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/item/kitchen/rollingpin,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/tiles/department/security/side{
-	dir = 8
-	},
-/turf/simulated/floor/plasteel/white,
-/area/ruin/space/derelict/hallway/primary)
 "oj" = (
 /obj/machinery/light/spot,
 /turf/simulated/floor/plasteel/white,
@@ -5201,17 +5186,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tiles/jobs/bar/checker,
 /turf/simulated/floor/plasteel,
-/area/ruin/space/derelict/hallway/primary)
-"oz" = (
-/obj/structure/table/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/item/kitchen/knife/butcher,
-/obj/effect/turf_decal/tiles/department/security/side{
-	dir = 8
-	},
-/turf/simulated/floor/plasteel/white,
 /area/ruin/space/derelict/hallway/primary)
 "oA" = (
 /obj/structure/table/reinforced,
@@ -6858,6 +6832,18 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/derelict/arrival)
+"TW" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/item/kitchen/knife/butcher,
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 8
+	},
+/obj/item/kitchen/rollingpin,
+/turf/simulated/floor/plasteel/white,
+/area/ruin/space/derelict/hallway/primary)
 "TY" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Engineering Wing";
@@ -6868,6 +6854,21 @@
 	},
 /obj/effect/turf_decal/tiles/dark/corner,
 /turf/simulated/floor/plasteel,
+/area/ruin/space/derelict/hallway/primary)
+"UE" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tiles/department/security/side{
+	dir = 8
+	},
+/obj/effect/spawner/random/kitchen_equipment,
+/turf/simulated/floor/plasteel/white,
 /area/ruin/space/derelict/hallway/primary)
 "UY" = (
 /obj/structure/sign/command/conference,
@@ -11357,8 +11358,8 @@ mo
 lU
 lU
 nT
-oi
-oz
+UE
+TW
 nz
 dW
 ag

@@ -85,9 +85,10 @@
 	var/time = 40
 
 /datum/food_processor_process/proc/process_food(loc, process_in, obj/machinery/processor/processor)
+	. = list()
 	if(output && loc && processor)
 		for(var/i = 0, i < processor.rating_amount, i++)
-			new output(loc)
+			. += new output(loc)
 	if(process_in)
 		qdel(process_in)
 
@@ -133,6 +134,8 @@
 /////////////////////////
 ///END OBJECT RECIPES////
 /////////////////////////
+/datum/food_processor_process/mob
+	output = null
 
 /datum/food_processor_process/mob/process_food(loc, what, processor)
 	..()
@@ -197,6 +200,8 @@
 /obj/machinery/processor/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/kitchen/utensil/fork))
 		return NONE
+	if(istype(used, /obj/item/autochef_remote))
+		return NONE
 
 	if(processing)
 		to_chat(user, SPAN_WARNING("\the [src] is already processing something!"))
@@ -244,11 +249,16 @@
 	if(length(contents) == 0)
 		to_chat(user, SPAN_WARNING("\the [src] is empty."))
 		return 1
-	processing = TRUE
-	update_icon(UPDATE_ICON_STATE)
 	user.visible_message("[user] turns on [src].", \
 		SPAN_NOTICE("You turn on [src]."), \
 		SPAN_ITALICS("You hear a food processor."))
+
+	activate()
+
+/obj/machinery/processor/proc/activate()
+	processing = TRUE
+	update_icon(UPDATE_ICON_STATE)
+
 	playsound(loc, 'sound/machines/blender.ogg', 50, 1)
 	use_power(500)
 	var/total_time = 0
@@ -265,7 +275,8 @@
 		if(!P)
 			log_debug("The [O] in processor([src]) does not have a suitable recipe, but it was somehow put inside of the processor anyways.")
 			continue
-		P.process_food(loc, O, src)
+		var/list/created = P.process_food(loc, O, src)
+		SEND_SIGNAL(src, COMSIG_MACHINE_PROCESS_COMPLETE, created)
 	processing = FALSE
 	update_icon(UPDATE_ICON_STATE)
 

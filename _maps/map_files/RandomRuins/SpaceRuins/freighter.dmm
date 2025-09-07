@@ -474,6 +474,12 @@
 /obj/item/toy/plushie/nianplushie,
 /turf/simulated/floor/wood,
 /area/ruin/space/powered)
+"Jb" = (
+/obj/effect/turf_decal/tiles/dark/checker,
+/obj/structure/table,
+/obj/effect/spawner/random/kitchen_equipment,
+/turf/simulated/floor/plasteel/white,
+/area/ruin/space/powered)
 "Jw" = (
 /obj/structure/rack,
 /obj/item/stack/sheet/metal/fifty{
@@ -1070,7 +1076,7 @@ MX
 zV
 nj
 xJ
-xJ
+Jb
 Br
 La
 oy

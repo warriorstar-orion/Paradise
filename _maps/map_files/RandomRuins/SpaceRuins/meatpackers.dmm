@@ -684,10 +684,6 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/simulated/floor/plasteel/white,
 /area/ruin/unpowered/bmp_ship/aft)
-"cR" = (
-/obj/item/crowbar,
-/turf/simulated/floor/plasteel/white,
-/area/ruin/unpowered/bmp_ship/aft)
 "cS" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -2005,6 +2001,11 @@
 /mob/living/basic/pirate,
 /turf/simulated/floor/plating,
 /area/ruin/unpowered/bmp_ship/midship)
+"qo" = (
+/obj/item/crowbar,
+/obj/effect/spawner/random/kitchen_equipment,
+/turf/simulated/floor/plasteel/white,
+/area/ruin/unpowered/bmp_ship/aft)
 "qM" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -4734,7 +4735,7 @@ aj
 bM
 ad
 cz
-cR
+qo
 cl
 dE
 cv
