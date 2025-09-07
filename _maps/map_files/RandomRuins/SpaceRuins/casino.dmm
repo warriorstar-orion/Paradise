@@ -677,6 +677,12 @@
 "sO" = (
 /turf/simulated/wall,
 /area/ruin/space/powered/casino/kitchen)
+"sX" = (
+/obj/structure/table,
+/obj/effect/spawner/random/kitchen_equipment,
+/obj/effect/turf_decal/tiles/dark/checker,
+/turf/simulated/floor/plasteel/white,
+/area/ruin/space/powered/casino/kitchen)
 "tu" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -1037,11 +1043,6 @@
 /obj/machinery/light/exterior/warning,
 /turf/template_noop,
 /area/template_noop)
-"DM" = (
-/obj/structure/table,
-/obj/effect/turf_decal/tiles/dark/checker,
-/turf/simulated/floor/plasteel/white,
-/area/ruin/space/powered/casino/kitchen)
 "DR" = (
 /obj/machinery/light{
 	dir = 8
@@ -1603,6 +1604,7 @@
 /area/ruin/space/powered/casino/hall)
 "UO" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
+/obj/effect/spawner/random/kitchen_equipment,
 /turf/simulated/floor/plasteel{
 	icon_state = "showroomfloor"
 	},
@@ -2441,7 +2443,7 @@ sO
 UW
 EK
 ql
-DM
+sX
 sO
 nT
 nT

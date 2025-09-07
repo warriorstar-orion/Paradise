@@ -144,6 +144,8 @@
 /obj/machinery/chem_master/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/kitchen/utensil/fork))
 		return NONE
+	if(istype(used, /obj/item/autochef_remote)) // hate this is here
+		return NONE
 
 	if(istype(used, /obj/item/storage/part_replacer))
 		return ..()
