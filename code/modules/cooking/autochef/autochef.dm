@@ -12,6 +12,8 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 	var/list/linked_cooking_containers = list()
 	var/list/linked_machines = list()
 	var/list/linked_storages = list()
+	var/list/linked_misc = list()
+	var/list/expansion_cards = list()
 	var/list/task_queue = list()
 
 	var/screen_icon_state
@@ -19,6 +21,13 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 	var/next_step_cooldown_delay = 2 SECONDS
 	var/upgrade_level = 0
 	var/impatience_meter = 0
+	/// A list of non-cooking machines the autochef can use,
+	/// typically for expansion cards.
+	var/list/misc_machine_types = list(
+		/obj/machinery/chem_dispenser,
+		/obj/machinery/processor,
+		/obj/machinery/reagentgrinder,
+	)
 
 	COOLDOWN_DECLARE(ingredient_search_giveup_cd)
 	COOLDOWN_DECLARE(next_step_cd)
@@ -198,6 +207,12 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 			continue
 
 		return container
+
+/obj/machinery/autochef/proc/find_available_resource_of_type(resource_type)
+	for(var/obj/machinery/smartfridge/smartfridge in linked_storages)
+		for(var/atom/content in smartfridge.contents)
+			if(istype(content, resource_type))
+				return content
 
 /obj/machinery/autochef/process()
 	if(!..())
