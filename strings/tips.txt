@@ -145,6 +145,7 @@ As the Chef, you can rename your custom made food with a pen.
 As the Chef, if you are low on ingredients, consider making something that has several servings to last longer among the crew.
 As the Chef, you have access to the very powerful CQC martial art while inside the kitchen and bar!
 As the Chef or Bartender, you can vault over tables almost instantly.
+As the Chef, your autochef has rare expansion cards that can automate even more recipe steps than normal. Ask explorers to search the kitchen areas of space ruins for these elusive add-ons.
 As the Bartender, you can use a circular saw on your shotgun to make it easier to store. Remember to unload it first!
 As the Bartender, while you are inside the bar, you can instantly reload your shotgun as long as you still have shells left in your bandoiler by simply using it in-hand.
 As a Janitor, if someone steals your janicart, you can instead use your space cleaner spray, grenades, water sprayer or order another from Cargo.
