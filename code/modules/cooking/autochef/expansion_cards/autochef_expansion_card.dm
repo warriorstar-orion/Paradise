@@ -10,7 +10,7 @@
 /obj/item/autochef_expansion_card/proc/can_produce(obj/machinery/autochef/autochef, target_type)
 	return FALSE
 
-/obj/item/autochef_expansion_card/proc/perform_step(obj/machinery/autochef/autochef, target_type)
+/obj/item/autochef_expansion_card/proc/perform_step(datum/autochef_task/origin_task, obj/machinery/autochef/autochef, target_type)
 	return AUTOCHEF_ACT_FAILED
 
 /obj/item/autochef_expansion_card/interact_with_atom(atom/target, mob/living/user, list/modifiers)
@@ -30,6 +30,9 @@
 	icon_state = "autochef_expansion_card_blue"
 	task_message = "Basic prepping"
 	var/static/list/sliceable_foods
+	var/static/list/rollable_foods = list(
+		/obj/item/food/sliceable/flatdough = /obj/item/food/dough,
+	)
 
 /obj/item/autochef_expansion_card/basic_prep/Initialize(mapload)
 	. = ..()
@@ -40,21 +43,47 @@
 			sliceable_foods[sliceable_food_type::slice_path] = sliceable_food_type
 
 /obj/item/autochef_expansion_card/basic_prep/can_produce(obj/machinery/autochef/autochef, target_type)
-	if(!(target_type in sliceable_foods))
-		return FALSE
+	if(target_type in sliceable_foods)
+		return TRUE
+	if(target_type in rollable_foods)
+		return TRUE
 
-	return TRUE
+	return FALSE
 
-/obj/item/autochef_expansion_card/basic_prep/perform_step(obj/machinery/autochef/autochef, target_type)
-	var/sliceable_food_type = sliceable_foods[target_type]
-	for(var/obj/machinery/smartfridge/smartfridge in autochef.linked_storages)
-		var/obj/item/food/sliceable/ingredient = smartfridge.directly_move_to(sliceable_food_type, autochef)
-		if(ingredient)
-			var/list/output = ingredient.convert_to_slices(inaccurate = FALSE)
-			for(var/atom/movable/A in output)
-				A.forceMove(src) // that's right we're putting the results in the card itself
+/obj/item/autochef_expansion_card/basic_prep/perform_step(datum/autochef_task/origin_task, obj/machinery/autochef/autochef, target_type)
+	if(target_type in sliceable_foods)
+		var/sliceable_food_type = sliceable_foods[target_type]
+		for(var/obj/machinery/smartfridge/smartfridge in autochef.linked_storages)
+			var/obj/item/food/sliceable/ingredient = smartfridge.directly_move_to(sliceable_food_type, autochef)
+			if(ingredient)
+				var/list/output = ingredient.convert_to_slices(inaccurate = FALSE)
+				for(var/atom/movable/A in output)
+					A.forceMove(src) // that's right we're putting the results in the card itself
 
-			return AUTOCHEF_ACT_STEP_COMPLETE
+				return AUTOCHEF_ACT_COMPLETE
+		if(autochef.upgrade_level > 2)
+			var/datum/autochef_task/task = autochef.handle_missing_item(sliceable_food_type)
+			if(istype(task))
+				autochef.add_task(task, origin_task)
+				return AUTOCHEF_ACT_ADDED_TASK
+
+		return AUTOCHEF_ACT_MISSING_INGREDIENT
+	else if(target_type in rollable_foods)
+		var/rollable_food_type = rollable_foods[target_type]
+		for(var/obj/machinery/smartfridge/smartfridge in autochef.linked_storages)
+			var/atom/movable/ingredient = smartfridge.directly_move_to(rollable_food_type, autochef)
+			if(ingredient)
+				qdel(ingredient)
+				new target_type(src)
+				return AUTOCHEF_ACT_COMPLETE
+
+		if(autochef.upgrade_level > 2)
+			var/datum/autochef_task/task = autochef.handle_missing_item(rollable_food_type)
+			if(istype(task))
+				autochef.add_task(task, origin_task)
+				return AUTOCHEF_ACT_ADDED_TASK
+
+		return AUTOCHEF_ACT_MISSING_INGREDIENT
 
 	return AUTOCHEF_ACT_FAILED
 

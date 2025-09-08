@@ -2214,6 +2214,16 @@
 	icon_state = "dark"
 	},
 /area/ruin/space/deepstorage)
+"mK" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/effect/spawner/random/kitchen_equipment,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "black"
+	},
+/area/ruin/space/deepstorage)
 "mL" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/airless,
@@ -11660,7 +11670,7 @@ jB
 kh
 Az
 lO
-Az
+mK
 Cw
 rx
 xw

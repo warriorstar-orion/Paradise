@@ -16,7 +16,7 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 	var/list/expansion_cards = list()
 	/// Expansion cards can allow for other machines to be linked, which are tracked here.
 	var/list/linked_misc = list()
-	var/list/task_queue = list()
+	VAR_PRIVATE/list/task_queue = list()
 
 	var/screen_icon_state
 	var/current_state = AUTOCHEF_IDLE
@@ -47,6 +47,8 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 
 	RefreshParts()
 
+	new /obj/item/autochef_expansion_card/basic_prep(loc)
+
 /obj/machinery/autochef/RefreshParts()
 	. = ..()
 	var/new_level = 0
@@ -59,7 +61,8 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 	QDEL_LIST_CONTENTS(task_queue)
 	var/turf/T = get_turf(src)
 	for(var/card_type in expansion_cards)
-		expansion_cards[card_type].forceMove(T)
+		var/atom/movable/M = expansion_cards[card_type]
+		M.forceMove(T)
 	. = ..()
 
 /obj/machinery/autochef/attack_hand(mob/user)
@@ -140,7 +143,7 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 
 		var/datum/autochef_task/make_item/task = new(src, food_item.type)
 		task.repeating = TRUE
-		task_queue.Add(task)
+		add_task(task)
 		set_display(null)
 		atom_say("Recipe selected: [initial(food_item.name)].")
 	else
@@ -251,11 +254,13 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 			var/datum/autochef_task/current_task = task_queue[1]
 			current_task.resume()
 
+			log_debug("autochef process task=[current_task.to_string()]@[current_task.UID()]")
+
 			switch(current_task.current_state)
 				if(AUTOCHEF_ACT_COMPLETE)
 					current_task.finalize()
 					if(!current_task.repeating)
-						task_queue.Remove(current_task)
+						remove_task(current_task)
 				if(AUTOCHEF_ACT_INTERRUPTED)
 					current_state = AUTOCHEF_IDLE
 					atom_say("Recipe interrupted!")
@@ -281,3 +286,68 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 	var/datum/autochef_task/current_task = task_queue[1]
 	current_task.current_state = AUTOCHEF_ACT_INTERRUPTED
 	set_display("screen-error")
+
+/obj/machinery/autochef/proc/handle_missing_item(obj/item/item_type)
+	for(var/container_type in GLOB.pcwj_recipe_dictionary)
+		for(var/datum/cooking/recipe/next_recipe in GLOB.pcwj_recipe_dictionary[container_type])
+			if(next_recipe.product_type == item_type)
+				var/datum/autochef_task/make_item/task = new(src, item_type)
+				atom_say("Making [item_type::name] first.")
+				return task
+
+	for(var/card_type in expansion_cards)
+		var/obj/item/autochef_expansion_card/card = expansion_cards[card_type]
+		if(card.can_produce(src, item_type))
+			var/datum/autochef_task/make_item/task = new(src, item_type)
+			atom_say("[card.task_message] [item_type::name] first.")
+			return task
+
+	atom_say("Cannot find [item_type::name].")
+
+/obj/machinery/autochef/proc/handle_missing_item_from_step(datum/cooking/recipe_step/step)
+	var/datum/cooking/recipe_step/add_item/add_item_step = step
+	if(istype(add_item_step))
+		return handle_missing_item(add_item_step.item_type)
+	var/datum/cooking/recipe_step/add_produce/add_produce_step = step
+	if(istype(add_produce_step))
+		atom_say("Cannot find [add_produce_step.produce_type::name].")
+		return
+
+	atom_say("Unknown failure. Please contact customer support.")
+	return
+
+/obj/machinery/autochef/proc/move_output_from_container(atom/source)
+	var/moved = FALSE
+	for(var/i = length(linked_storages); i >= 1; i--)
+		var/obj/machinery/smartfridge/storage = linked_storages[i]
+		if(!istype(storage))
+			continue
+		for(var/atom/movable/result in source.contents)
+			if(isInSight(src, storage) && storage.load(result))
+				storage.Beam(get_turf(source), icon_state = "rped_upgrade", icon = 'icons/effects/effects.dmi', time = 5)
+				SStgui.update_uis(storage)
+				moved = TRUE
+		if(moved)
+			break
+
+	// If we can't find somewhere to store it, just toss it
+	// on a nearby table.
+	if(!moved)
+		var/turf/center = get_turf(source)
+		for(var/turf/T in RANGE_EDGE_TURFS(1, center))
+			if(locate(/obj/structure/table) in T)
+				for(var/atom/movable/content in source.contents)
+					if(content.forceMove(T))
+						content.pixel_x = rand(-8, 8)
+						content.pixel_y = rand(-8, 8)
+					else
+						content.forceMove(content.loc)
+
+/obj/machinery/autochef/proc/remove_task(datum/autochef_task/task)
+	log_debug("autochef@[UID()] removing task [task.type]")
+	task_queue.Remove(task)
+
+/obj/machinery/autochef/proc/add_task(datum/autochef_task/task, datum/autochef_task/origin)
+	var/idx = isnull(origin) ? 1 : task_queue.Find(origin)
+	task_queue.Insert(idx, task)
+	log_debug("autochef@[UID()] adding task [task.type]")

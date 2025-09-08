@@ -13,6 +13,9 @@
 	container = null
 	recipe = null
 
+/datum/autochef_task/follow_recipe/to_string()
+	return "[type]: recipe=[recipe.type] current_step=[current_step] current_state=[autochef_act_to_string(current_state)]"
+
 /datum/autochef_task/follow_recipe/proc/register_for_completion(obj/item/reagent_containers/cooking/container)
 	RegisterSignal(container, COMSIG_COOK_MACHINE_STEP_COMPLETE, PROC_REF(on_machine_step_complete), override = TRUE)
 	RegisterSignal(container, COMSIG_COOK_MACHINE_STEP_INTERRUPTED, PROC_REF(on_machine_step_interrupted), override = TRUE)
@@ -76,7 +79,7 @@
 /datum/autochef_task/follow_recipe/finalize()
 	autochef.atom_say("Recipe complete.")
 	autochef.set_display("screen-complete")
-	move_output_from_container(container)
+	autochef.move_output_from_container(container)
 	container.unclaim()
 	container.do_empty()
 

@@ -1970,6 +1970,7 @@
 "gx" = (
 /obj/structure/closet/secure_closet/freezer/kitchen,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/kitchen_equipment,
 /turf/simulated/floor/plasteel{
 	icon_state = "showroomfloor";
 	temperature = 273.15
