@@ -12,8 +12,10 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 	var/list/linked_cooking_containers = list()
 	var/list/linked_machines = list()
 	var/list/linked_storages = list()
-	var/list/linked_misc = list()
+	/// The list of installed expansion cards.
 	var/list/expansion_cards = list()
+	/// Expansion cards can allow for other machines to be linked, which are tracked here.
+	var/list/linked_misc = list()
 	var/list/task_queue = list()
 
 	var/screen_icon_state
@@ -21,13 +23,6 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 	var/next_step_cooldown_delay = 2 SECONDS
 	var/upgrade_level = 0
 	var/impatience_meter = 0
-	/// A list of non-cooking machines the autochef can use,
-	/// typically for expansion cards.
-	var/list/misc_machine_types = list(
-		/obj/machinery/chem_dispenser,
-		/obj/machinery/processor,
-		/obj/machinery/reagentgrinder,
-	)
 
 	COOLDOWN_DECLARE(ingredient_search_giveup_cd)
 	COOLDOWN_DECLARE(next_step_cd)
@@ -62,6 +57,9 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 
 /obj/machinery/autochef/Destroy()
 	QDEL_LIST_CONTENTS(task_queue)
+	var/turf/T = get_turf(src)
+	for(var/card_type in expansion_cards)
+		expansion_cards[card_type].forceMove(T)
 	. = ..()
 
 /obj/machinery/autochef/attack_hand(mob/user)
@@ -85,6 +83,9 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 	if(istype(used, /obj/item/storage/part_replacer) || (used.flags & ABSTRACT))
 		return ..()
 
+	if(istype(used, /obj/item/autochef_expansion_card))
+		return
+
 	var/obj/item/autochef_remote/remote = used
 	if(istype(remote))
 		for(var/container in linked_cooking_containers)
@@ -93,6 +94,8 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 			UnregisterSignal(machine, COMSIG_PARENT_QDELETING)
 		for(var/storage in linked_storages)
 			UnregisterSignal(storage, COMSIG_PARENT_QDELETING)
+		for(var/misc in linked_misc)
+			UnregisterSignal(misc, COMSIG_PARENT_QDELETING)
 
 		if(!length(remote.linkable_machine_uids))
 			to_chat(user, "<span class='notice'>You unlink all items from [src].</span>")
@@ -110,6 +113,12 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 				else if(istype(obj, /obj/machinery/smartfridge))
 					linked_storages |= obj
 					success = TRUE
+				else
+					for(var/card_type in expansion_cards)
+						var/obj/item/autochef_expansion_card/card = expansion_cards[card_type]
+						if(is_type_in_list(obj, card.registerable_machines))
+							linked_misc |= obj
+							success = TRUE
 
 			if(success)
 				RegisterSignal(obj, COMSIG_PARENT_QDELETING, PROC_REF(unlink), override = TRUE)
@@ -213,6 +222,15 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 		for(var/atom/content in smartfridge.contents)
 			if(istype(content, resource_type))
 				return content
+
+/obj/machinery/autochef/proc/try_insert_expansion(mob/user, obj/item/autochef_expansion_card/card)
+	if(card.type in expansion_cards)
+		to_chat(user, "<span class='notice'>[src] already contains \a [card].</span>")
+		return
+
+	expansion_cards[card.type] = card
+	card.forceMove(src)
+	to_chat(user, "<span class='notice'>You install [card] into [src].</span>")
 
 /obj/machinery/autochef/process()
 	if(!..())

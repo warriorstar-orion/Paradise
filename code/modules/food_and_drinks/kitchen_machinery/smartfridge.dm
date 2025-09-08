@@ -413,6 +413,14 @@
 /obj/machinery/smartfridge/proc/accept_check(obj/item/O)
 	return is_type_in_typecache(O, accepted_items_typecache)
 
+/obj/machinery/smartfridge/proc/directly_move_to(item_type, atom/destination)
+	for(var/obj/I in contents)
+		if(istype(I, item_type) && item_quants[I.name] > 0)
+			I.forceMove(destination)
+			item_quants[I.name]--
+			update_icon(UPDATE_OVERLAYS)
+			return I
+
 /**
   * # Secure Fridge
   *

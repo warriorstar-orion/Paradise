@@ -6,22 +6,19 @@
 	target_type = target_type_
 
 /datum/autochef_task/make_item/resume()
+	var/output = "No recipes found for [target_type::name]."
 	var/list/possible_recipes = autochef.find_recipes(target_type)
-	if(!length(possible_recipes))
-		autochef.atom_say("No recipes found for [target_type::name].")
-		current_state = AUTOCHEF_ACT_FAILED
-		return
+	if(length(possible_recipes))
+		var/list/capable_recipes = list()
+		for(var/datum/cooking/recipe/recipe in possible_recipes)
+			var/can_use_recipe = handle_recipe(recipe)
+			if(can_use_recipe)
+				capable_recipes.Add(recipe)
 
-	var/list/capable_recipes = list()
-	for(var/datum/cooking/recipe/recipe in possible_recipes)
-		var/can_use_recipe = handle_recipe(recipe)
-		if(can_use_recipe)
-			capable_recipes.Add(recipe)
-
-	if(length(capable_recipes))
-		autochef.task_queue.Insert(autochef.task_queue.Find(src), new/datum/autochef_task/follow_recipe(autochef, capable_recipes[1]))
-		current_state = AUTOCHEF_ACT_COMPLETE
-		return
+		if(length(capable_recipes))
+			autochef.task_queue.Insert(autochef.task_queue.Find(src), new/datum/autochef_task/follow_recipe(autochef, capable_recipes[1]))
+			current_state = AUTOCHEF_ACT_COMPLETE
+			return
 
 	autochef.atom_say("Cannot make [target_type::name].")
 	current_state = AUTOCHEF_ACT_FAILED
@@ -79,6 +76,13 @@
 					autochef.task_queue.Insert(autochef.task_queue.Find(src), new/datum/autochef_task/make_item(autochef, add_item_step.item_type))
 					autochef.atom_say("Making [add_item_step.item_type::name] first.")
 					return AUTOCHEF_ACT_ADDED_TASK
+
+		for(var/card_type in autochef.expansion_cards)
+			var/obj/item/autochef_expansion_card/card = autochef.expansion_cards[card_type]
+			if(card.can_produce(autochef, add_item_step.item_type))
+				autochef.task_queue.Insert(autochef.task_queue.Find(src), new/datum/autochef_task/use_expansion_card(autochef, card, add_item_step.item_type))
+				autochef.atom_say("[card.task_message] [add_item_step.item_type::name] first.")
+				return AUTOCHEF_ACT_ADDED_TASK
 		autochef.atom_say("Cannot find [add_item_step.item_type::name].")
 		return AUTOCHEF_ACT_MISSING_INGREDIENT
 	var/datum/cooking/recipe_step/add_produce/add_produce_step = step
