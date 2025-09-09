@@ -47,7 +47,9 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 
 	RefreshParts()
 
-	new /obj/item/autochef_expansion_card/basic_prep(loc)
+	new /obj/item/autochef_expansion_card/basic(loc)
+	new /obj/item/autochef_expansion_card/processing(loc)
+	new /obj/item/autochef_expansion_card/mixing(loc)
 
 /obj/machinery/autochef/RefreshParts()
 	. = ..()
@@ -271,6 +273,10 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 					set_display("screen-error")
 				if(AUTOCHEF_ACT_WAIT_FOR_RESULT)
 					set_display("screen-fire")
+				if(AUTOCHEF_ACT_MISSING_MACHINE)
+					current_state = AUTOCHEF_IDLE
+					current_task.reset()
+					set_display("screen-error")
 
 /obj/machinery/autochef/proc/on_claimed_container_equip(obj/item/reagent_containers/cooking/container)
 	if(current_state == AUTOCHEF_INTERRUPTED || current_state == AUTOCHEF_IDLE)
@@ -297,10 +303,18 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 
 	for(var/card_type in expansion_cards)
 		var/obj/item/autochef_expansion_card/card = expansion_cards[card_type]
-		if(card.can_produce(src, item_type))
-			var/datum/autochef_task/make_item/task = new(src, item_type)
-			atom_say("[card.task_message] [item_type::name] first.")
-			return task
+		var/result = card.can_produce(src, item_type)
+		switch(result)
+			if(AUTOCHEF_ACT_VALID)
+				if(ispath(item_type))
+					var/datum/autochef_task/make_item/task = new(src, item_type)
+					atom_say("[card.task_message] [item_type::name] first.")
+					return task
+				else
+					var/datum/autochef_task/make_item/task = new(src, item_type)
+					var/datum/reagent/reagent = GLOB.chemical_reagents_list[item_type]
+					atom_say("[card.task_message] [reagent.name] first.")
+					return task
 
 	atom_say("Cannot find [item_type::name].")
 
@@ -315,6 +329,20 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 
 	atom_say("Unknown failure. Please contact customer support.")
 	return
+
+/obj/machinery/autochef/proc/handle_missing_reagent(reagent_id)
+	for(var/card_type in expansion_cards)
+		var/obj/item/autochef_expansion_card/card = expansion_cards[card_type]
+		var/result = card.can_produce(src, reagent_id)
+		switch(result)
+			if(AUTOCHEF_ACT_VALID)
+				var/datum/autochef_task/make_item/task = new(src, reagent_id)
+				return task
+
+/obj/machinery/autochef/proc/handle_missing_reagent_from_step(datum/cooking/recipe_step/step)
+	var/datum/cooking/recipe_step/add_reagent/add_reagent_step = step
+	if(istype(add_reagent_step))
+		return handle_missing_reagent(add_reagent_step.reagent_id)
 
 /obj/machinery/autochef/proc/move_output_from_container(atom/source)
 	var/moved = FALSE
@@ -351,3 +379,9 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 	var/idx = isnull(origin) ? 1 : task_queue.Find(origin)
 	task_queue.Insert(idx, task)
 	log_debug("autochef@[UID()] adding task [task.type]")
+
+/obj/machinery/autochef/proc/get_linked_objects(object_type)
+	. = list()
+	for(var/atom/misc in linked_misc)
+		if(istype(misc, object_type))
+			. += misc

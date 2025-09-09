@@ -136,7 +136,7 @@
 			return "AUTOCHEF_ACT_VALID"
 
 #define COMSIG_COOK_GRILL_NO_FUEL "cook_grill_no_fuel"
-#define COMSIG_COOK_MACHINE_STEP_COMPLETE "cook_machine_step_complete"
-#define COMSIG_COOK_MACHINE_STEP_INTERRUPTED "cook_machine_step_interrupted"
+#define COMSIG_MACHINE_STEP_COMPLETE "cook_machine_step_complete"
+#define COMSIG_MACHINE_STEP_INTERRUPTED "cook_machine_step_interrupted"
 
 #define COMSIG_AUTOCHEF_FIND_MACHINE(name) "autochef_find_machine_[name]"

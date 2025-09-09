@@ -157,6 +157,8 @@
 	default_unfasten_wrench(user, I)
 
 /obj/machinery/reagentgrinder/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(istype(used, /obj/item/autochef_remote)) // hate this is here
+		return
 	if(istype(used, /obj/item/storage/part_replacer))
 		. = ..()
 		SStgui.update_uis(src)
@@ -413,6 +415,8 @@
 		if(beaker.reagents.holder_full())
 			return
 
+	SEND_SIGNAL(src, COMSIG_MACHINE_STEP_COMPLETE)
+
 /obj/machinery/reagentgrinder/proc/grind()
 	power_change()
 	if(stat & (NOPOWER|BROKEN))
@@ -540,3 +544,26 @@
 			remove_object(O)
 		if(beaker.reagents.holder_full())
 			return
+
+	SEND_SIGNAL(src, COMSIG_MACHINE_STEP_COMPLETE)
+
+/obj/machinery/reagentgrinder/proc/can_make(reagent_id)
+	. = list()
+
+	.["grind"] = list()
+	.["juice"] = list()
+
+	for(var/blend_item in blend_items)
+		var/list/results = blend_items[blend_item]
+		if(reagent_id in results)
+			.["grind"] += blend_item
+
+	for(var/juice_item in juice_items)
+		var/list/results = juice_items[juice_item]
+		if(reagent_id in results)
+			.["juice"] += juice_item
+
+	if(!length(.["grind"]) && !length(.["juice"]))
+		// give us something falsey if we know we have nothing
+		// so we don't have to check both list lengths later
+		return FALSE

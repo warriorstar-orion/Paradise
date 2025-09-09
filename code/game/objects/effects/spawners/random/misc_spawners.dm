@@ -349,17 +349,17 @@
 		) = 50,
 
 		list(
-			/obj/item/autochef_expansion_card/basic_prep,
+			/obj/item/autochef_expansion_card/basic,
 		) = 10,
 
 		list(
 			/obj/item/kitchen/knife,
 			/obj/item/kitchen/knife/cheese,
 			/obj/item/kitchen/knife/pizza_cutter,
-			/obj/item/autochef_expansion_card/mixing_prep,
+			/obj/item/autochef_expansion_card/mixing,
 		) = 5,
 
 		list(
-			/obj/item/autochef_expansion_card/processing_prep,
+			/obj/item/autochef_expansion_card/processing,
 		) = 1,
 	)

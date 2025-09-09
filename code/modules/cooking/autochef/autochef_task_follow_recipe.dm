@@ -17,21 +17,21 @@
 	return "[type]: recipe=[recipe.type] current_step=[current_step] current_state=[autochef_act_to_string(current_state)]"
 
 /datum/autochef_task/follow_recipe/proc/register_for_completion(obj/item/reagent_containers/cooking/container)
-	RegisterSignal(container, COMSIG_COOK_MACHINE_STEP_COMPLETE, PROC_REF(on_machine_step_complete), override = TRUE)
-	RegisterSignal(container, COMSIG_COOK_MACHINE_STEP_INTERRUPTED, PROC_REF(on_machine_step_interrupted), override = TRUE)
+	RegisterSignal(container, COMSIG_MACHINE_STEP_COMPLETE, PROC_REF(on_machine_step_complete), override = TRUE)
+	RegisterSignal(container, COMSIG_MACHINE_STEP_INTERRUPTED, PROC_REF(on_machine_step_interrupted), override = TRUE)
 
 /datum/autochef_task/follow_recipe/proc/unregister_for_completion()
-	UnregisterSignal(src, list(COMSIG_COOK_MACHINE_STEP_COMPLETE, COMSIG_COOK_MACHINE_STEP_INTERRUPTED))
+	UnregisterSignal(src, list(COMSIG_MACHINE_STEP_COMPLETE, COMSIG_MACHINE_STEP_INTERRUPTED))
 
-/datum/autochef_task/follow_recipe/proc/on_machine_step_complete(obj/item/reagent_containers/cooking/container, datum/cooking_surface/surface)
-	SIGNAL_HANDLER // COMSIG_COOK_MACHINE_STEP_COMPLETE
+/datum/autochef_task/follow_recipe/proc/on_machine_step_complete(datum/source, datum/cooking_surface/surface)
+	SIGNAL_HANDLER // COMSIG_MACHINE_STEP_COMPLETE
 	if(istype(surface))
 		surface.turn_off()
 	unregister_for_completion()
 	current_state = AUTOCHEF_ACT_COMPLETE
 
-/datum/autochef_task/follow_recipe/proc/on_machine_step_interrupted(datum/cooking/recipe_tracker, datum/cooking_surface/surface)
-	SIGNAL_HANDLER // COMSIG_COOK_MACHINE_STEP_INTERRUPTED
+/datum/autochef_task/follow_recipe/proc/on_machine_step_interrupted(datum/source, datum/cooking_surface/surface)
+	SIGNAL_HANDLER // COMSIG_MACHINE_STEP_INTERRUPTED
 	if(istype(surface))
 		surface.turn_off()
 	unregister_for_completion()

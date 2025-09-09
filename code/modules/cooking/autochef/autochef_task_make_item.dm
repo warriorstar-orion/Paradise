@@ -31,10 +31,19 @@
 	if(length(autochef.expansion_cards))
 		for(var/card_type in autochef.expansion_cards)
 			var/obj/item/autochef_expansion_card/card = autochef.expansion_cards[card_type]
-			if(card.can_produce(autochef, target_type))
-				autochef.add_task(new/datum/autochef_task/use_expansion_card(autochef, card, target_type), src)
-				current_state = AUTOCHEF_ACT_ADDED_TASK
-				return
+			var/result = card.can_produce(autochef, target_type)
+			switch(result)
+				if(AUTOCHEF_ACT_VALID)
+					autochef.add_task(new/datum/autochef_task/use_expansion_card(autochef, card, target_type), src)
+					current_state = AUTOCHEF_ACT_ADDED_TASK
+					return
+				if(AUTOCHEF_ACT_MISSING_MACHINE)
+					current_state = AUTOCHEF_ACT_MISSING_MACHINE
+					return
+				if(AUTOCHEF_ACT_FAILED)
+					current_state = AUTOCHEF_ACT_FAILED
+					autochef.atom_say("Failure accessing [card]. Please contact customer support.")
+					return
 
 	autochef.atom_say("Cannot make [target_type::name].")
 	current_state = AUTOCHEF_ACT_FAILED
@@ -75,7 +84,16 @@
 			else
 				return FALSE
 		if(AUTOCHEF_ACT_MISSING_REAGENT)
-			return FALSE
+			if(autochef.upgrade_level > 2)
+				var/datum/autochef_task/task = autochef.handle_missing_reagent_from_step(step)
+				if(istype(task))
+					autochef.add_task(task, src)
+					current_state = AUTOCHEF_ACT_ADDED_TASK
+				else
+					current_state = AUTOCHEF_ACT_MISSING_REAGENT
+					return FALSE
+			else
+				return FALSE
 		if(AUTOCHEF_ACT_FAILED)
 			autochef.atom_say("Unknown error.")
 			return FALSE
