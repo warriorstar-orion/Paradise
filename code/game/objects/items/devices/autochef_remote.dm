@@ -12,6 +12,7 @@ RESTRICT_TYPE(/obj/item/autochef_remote)
 		/obj/item/reagent_containers/cooking,
 		/obj/machinery/cooking,
 		/obj/machinery/smartfridge,
+		/obj/machinery/chem_dispenser,
 		/obj/machinery/chem_master/condimaster,
 		/obj/machinery/processor,
 		/obj/machinery/reagentgrinder,

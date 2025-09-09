@@ -9,6 +9,7 @@
 	return "[type]: target_type=[target_type] current_state=[autochef_act_to_string(current_state)]"
 
 /datum/autochef_task/make_item/resume()
+	log_debug("[to_string()]::resume()")
 	if(current_state == AUTOCHEF_ACT_ADDED_TASK)
 		// if we added a task before and are back here,
 		// i guess we'll assume we got what we needed

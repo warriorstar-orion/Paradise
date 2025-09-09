@@ -84,6 +84,8 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 			set_display(null)
 			current_state = AUTOCHEF_IDLE
 
+	update_appearance()
+
 /obj/machinery/autochef/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/storage/part_replacer) || (used.flags & ABSTRACT))
 		return ..()
@@ -171,6 +173,8 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 		. += image(icon, icon_state = screen_icon_state)
 	if(panel_open)
 		. += image(icon = icon, icon_state = "panel-open")
+	if(current_state == AUTOCHEF_RUNNING)
+		. += image(icon = icon, icon_state = "light-active")
 
 /obj/machinery/autochef/AltClick(mob/user, modifiers)
 	. = ..()
@@ -277,6 +281,8 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 					current_state = AUTOCHEF_IDLE
 					current_task.reset()
 					set_display("screen-error")
+
+	update_appearance()
 
 /obj/machinery/autochef/proc/on_claimed_container_equip(obj/item/reagent_containers/cooking/container)
 	if(current_state == AUTOCHEF_INTERRUPTED || current_state == AUTOCHEF_IDLE)

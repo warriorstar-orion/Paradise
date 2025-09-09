@@ -23,7 +23,3 @@
 
 	autochef.try_insert_expansion(user, src)
 	return ITEM_INTERACT_COMPLETE
-
-
-
-

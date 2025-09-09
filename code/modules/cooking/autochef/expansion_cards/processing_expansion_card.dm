@@ -21,16 +21,25 @@ RESTRICT_TYPE(/obj/item/autochef_expansion_card/processing)
 	var/valid_condimasters = 0
 
 	for(var/obj/machinery/reagentgrinder/grinder in autochef.get_linked_objects(/obj/machinery/reagentgrinder))
-		if(grinder.can_make(target_type))
-			valid_grinders++
+		valid_grinders++
 
 	for(var/obj/machinery/chem_master/condimaster/condimaster in autochef.get_linked_objects(/obj/machinery/chem_master/condimaster))
 		valid_condimasters++
 
-	if(valid_grinders && valid_condimasters)
+	if(!valid_grinders || !valid_condimasters)
+		return AUTOCHEF_ACT_MISSING_MACHINE
+
+	var/available_reagent = 0
+	for(var/obj/machinery/smartfridge/fridge in autochef.linked_storages)
+		for(var/obj/item/food/grown/grown in fridge)
+			var/datum/reagent/reagent = grown.reagents.has_reagent(target_type)
+			if(reagent)
+				available_reagent += reagent.volume
+
+	if(available_reagent > 0)
 		return AUTOCHEF_ACT_VALID
 
-	return AUTOCHEF_ACT_MISSING_MACHINE
+	return AUTOCHEF_ACT_MISSING_INGREDIENT
 
 /obj/item/autochef_expansion_card/processing/perform_step(datum/autochef_task/origin_task, obj/machinery/autochef/autochef, target_type)
 	autochef.set_display("screen-gear")
