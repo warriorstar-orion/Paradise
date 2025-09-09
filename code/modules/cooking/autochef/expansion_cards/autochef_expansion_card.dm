@@ -66,8 +66,6 @@
 			if(istype(task))
 				autochef.add_task(task, origin_task)
 				return AUTOCHEF_ACT_ADDED_TASK
-
-		return AUTOCHEF_ACT_MISSING_INGREDIENT
 	else if(target_type in rollable_foods)
 		var/rollable_food_type = rollable_foods[target_type]
 		for(var/obj/machinery/smartfridge/smartfridge in autochef.linked_storages)
@@ -83,8 +81,10 @@
 				autochef.add_task(task, origin_task)
 				return AUTOCHEF_ACT_ADDED_TASK
 
-		return AUTOCHEF_ACT_MISSING_INGREDIENT
-
+	// if an expansion card fails, we take the task off the list and let
+	// whatever step called it find the best solution, which may not be
+	// the expansion card still
+	autochef.remove_task(origin_task)
 	return AUTOCHEF_ACT_FAILED
 
 /obj/item/autochef_expansion_card/mixing_prep

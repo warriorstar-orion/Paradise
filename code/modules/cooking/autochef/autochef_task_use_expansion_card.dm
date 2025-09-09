@@ -14,6 +14,8 @@ RESTRICT_TYPE(/datum/autochef_task/use_expansion_card)
 	expected_result_type = expected_result_type_
 
 /datum/autochef_task/use_expansion_card/resume()
+	autochef.set_display("screen-knife")
+
 	current_state = card.perform_step(src, autochef, expected_result_type)
 	if(current_state == AUTOCHEF_ACT_COMPLETE && length(card.contents))
 		autochef.move_output_from_container(card)

@@ -254,7 +254,7 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 			var/datum/autochef_task/current_task = task_queue[1]
 			current_task.resume()
 
-			log_debug("autochef process task=[current_task.to_string()]@[current_task.UID()]")
+			log_debug("autochef process task=[current_task.to_string()]@[current_task.UID()] state=[autochef_act_to_string(current_task.current_state)]")
 
 			switch(current_task.current_state)
 				if(AUTOCHEF_ACT_COMPLETE)
