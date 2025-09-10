@@ -4,13 +4,14 @@
 	icon_state = "autochef_expansion_card"
 	new_attack_chain = TRUE
 
+	var/obj/machinery/autochef/autochef
 	var/task_message
 	var/list/registerable_machines = list()
 
 /obj/item/autochef_expansion_card/proc/can_produce(obj/machinery/autochef/autochef, target_type)
 	return AUTOCHEF_ACT_FAILED
 
-/obj/item/autochef_expansion_card/proc/perform_step(datum/autochef_task/origin_task, obj/machinery/autochef/autochef, target_type)
+/obj/item/autochef_expansion_card/proc/perform_step(datum/autochef_task/origin_task, target_type)
 	return AUTOCHEF_ACT_FAILED
 
 /obj/item/autochef_expansion_card/interact_with_atom(atom/target, mob/living/user, list/modifiers)

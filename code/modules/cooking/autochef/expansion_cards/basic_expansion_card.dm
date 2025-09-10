@@ -26,7 +26,9 @@ RESTRICT_TYPE(/obj/item/autochef_expansion_card/basic)
 
 	return FALSE
 
-/obj/item/autochef_expansion_card/basic/perform_step(datum/autochef_task/origin_task, obj/machinery/autochef/autochef, target_type)
+/obj/item/autochef_expansion_card/basic/perform_step(datum/autochef_task/origin_task, target_type)
+	var/obj/item/item_type = target_type
+	autochef.atom_say("Prepping [item_type::name].")
 	autochef.set_display("screen-knife")
 
 	if(target_type in sliceable_foods)

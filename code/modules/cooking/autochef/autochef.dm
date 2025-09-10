@@ -47,9 +47,9 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 
 	RefreshParts()
 
-	new /obj/item/autochef_expansion_card/basic(loc)
-	new /obj/item/autochef_expansion_card/processing(loc)
-	new /obj/item/autochef_expansion_card/mixing(loc)
+	// new /obj/item/autochef_expansion_card/basic(loc)
+	// new /obj/item/autochef_expansion_card/processing(loc)
+	// new /obj/item/autochef_expansion_card/mixing(loc)
 
 /obj/machinery/autochef/RefreshParts()
 	. = ..()
@@ -63,8 +63,9 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 	QDEL_LIST_CONTENTS(task_queue)
 	var/turf/T = get_turf(src)
 	for(var/card_type in expansion_cards)
-		var/atom/movable/M = expansion_cards[card_type]
-		M.forceMove(T)
+		var/obj/item/autochef_expansion_card/card = expansion_cards[card_type]
+		card.forceMove(T)
+		card.autochef = null
 	. = ..()
 
 /obj/machinery/autochef/attack_hand(mob/user)
@@ -120,13 +121,9 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 				else if(istype(obj, /obj/machinery/smartfridge))
 					linked_storages |= obj
 					success = TRUE
-				else
-					for(var/card_type in expansion_cards)
-						var/obj/item/autochef_expansion_card/card = expansion_cards[card_type]
-						if(is_type_in_list(obj, card.registerable_machines))
-							linked_misc |= obj
-							success = TRUE
-
+				else if(remote.can_link_machine(obj))
+					linked_misc |= obj
+					success = TRUE
 			if(success)
 				RegisterSignal(obj, COMSIG_PARENT_QDELETING, PROC_REF(unlink), override = TRUE)
 				to_chat(user, "<span class='notice'>[obj] is registered to [src].</span>")
@@ -239,6 +236,7 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 
 	expansion_cards[card.type] = card
 	card.forceMove(src)
+	card.autochef = src
 	to_chat(user, "<span class='notice'>You install [card] into [src].</span>")
 
 /obj/machinery/autochef/process()
@@ -275,8 +273,6 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 					current_state = AUTOCHEF_IDLE
 					current_task.reset()
 					set_display("screen-error")
-				if(AUTOCHEF_ACT_WAIT_FOR_RESULT)
-					set_display("screen-fire")
 				if(AUTOCHEF_ACT_MISSING_MACHINE)
 					current_state = AUTOCHEF_IDLE
 					current_task.reset()
@@ -304,7 +300,6 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 		for(var/datum/cooking/recipe/next_recipe in GLOB.pcwj_recipe_dictionary[container_type])
 			if(next_recipe.product_type == item_type)
 				var/datum/autochef_task/make_item/task = new(src, item_type)
-				atom_say("Making [item_type::name] first.")
 				return task
 
 	for(var/card_type in expansion_cards)
@@ -314,12 +309,9 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 			if(AUTOCHEF_ACT_VALID)
 				if(ispath(item_type))
 					var/datum/autochef_task/make_item/task = new(src, item_type)
-					atom_say("[card.task_message] [item_type::name] first.")
 					return task
 				else
 					var/datum/autochef_task/make_item/task = new(src, item_type)
-					var/datum/reagent/reagent = GLOB.chemical_reagents_list[item_type]
-					atom_say("[card.task_message] [reagent.name] first.")
 					return task
 
 	atom_say("Cannot find [item_type::name].")

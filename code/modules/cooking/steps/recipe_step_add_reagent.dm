@@ -122,6 +122,4 @@ RESTRICT_TYPE(/datum/cooking/recipe_step/add_reagent)
 			if(container.reagents.has_reagent(reagent_id, amount))
 				return AUTOCHEF_ACT_VALID
 
-	var/datum/reagent/reagent = GLOB.chemical_reagents_list[reagent_id]
-	autochef.atom_say("Cannot find [reagent.name].")
 	return AUTOCHEF_ACT_MISSING_REAGENT

@@ -4,7 +4,6 @@ RESTRICT_TYPE(/obj/item/autochef_expansion_card/processing)
 #define MODE_GRIND 1
 #define MODE_JUICE 2
 
-
 /obj/item/autochef_expansion_card/processing
 	name = "Autochef Expansion Card: Processing"
 	desc = "This extremely rare expansion card enables autochefs to utilize grinders and food processors."
@@ -15,45 +14,62 @@ RESTRICT_TYPE(/obj/item/autochef_expansion_card/processing)
 		/obj/machinery/processor,
 		/obj/machinery/reagentgrinder,
 	)
+	// gross to hang on to this but idk how to get this from the task to the card
+	// after the grinder has finished grinding something
+	var/obj/machinery/reagentgrinder/current_grinder
 
 /obj/item/autochef_expansion_card/processing/can_produce(obj/machinery/autochef/autochef, target_type)
-	var/valid_grinders = 0
 	var/valid_condimasters = 0
+	var/available_reagent = 0
 
 	for(var/obj/machinery/reagentgrinder/grinder in autochef.get_linked_objects(/obj/machinery/reagentgrinder))
-		valid_grinders++
+		// lots of early breakouts because of horrid nested loop
+		if(available_reagent > 0)
+			break
+		for(var/obj/machinery/smartfridge/fridge in autochef.linked_storages)
+			if(available_reagent > 0)
+				break
+			for(var/obj/item/food/grown/grown in fridge)
+				var/datum/reagent/reagent = grown.reagents.has_reagent(target_type)
+				if(reagent)
+					available_reagent += reagent.volume
+					break
+
+				var/list/blend = grinder.get_special_blend(grown)
+				if(blend && (target_type in blend))
+					available_reagent++ // sentinel increase, calculating available values hard
+					break
+
+				var/list/juice = grinder.get_special_juice(grown)
+				if(juice && (target_type in juice))
+					available_reagent++ // sentinel increase, calculating available values hard
+					break
 
 	for(var/obj/machinery/chem_master/condimaster/condimaster in autochef.get_linked_objects(/obj/machinery/chem_master/condimaster))
 		valid_condimasters++
 
-	if(!valid_grinders || !valid_condimasters)
+	if(!valid_condimasters)
 		return AUTOCHEF_ACT_MISSING_MACHINE
-
-	var/available_reagent = 0
-	for(var/obj/machinery/smartfridge/fridge in autochef.linked_storages)
-		for(var/obj/item/food/grown/grown in fridge)
-			var/datum/reagent/reagent = grown.reagents.has_reagent(target_type)
-			if(reagent)
-				available_reagent += reagent.volume
 
 	if(available_reagent > 0)
 		return AUTOCHEF_ACT_VALID
 
 	return AUTOCHEF_ACT_MISSING_INGREDIENT
 
-/obj/item/autochef_expansion_card/processing/perform_step(datum/autochef_task/origin_task, obj/machinery/autochef/autochef, target_type)
+/obj/item/autochef_expansion_card/processing/perform_step(datum/autochef_task/origin_task, target_type)
 	autochef.set_display("screen-gear")
 
 	switch(origin_task.current_state)
 		if(AUTOCHEF_ACT_STARTED)
-			attempt_grinding(origin_task, autochef, target_type)
+			return attempt_grinding(origin_task, target_type)
+		if(AUTOCHEF_ACT_STEP_COMPLETE)
+			return attempt_bottling()
 		if(AUTOCHEF_ACT_WAIT_FOR_RESULT)
 			return AUTOCHEF_ACT_WAIT_FOR_RESULT
 
-/obj/item/autochef_expansion_card/processing/proc/attempt_grinding(datum/autochef_task/origin_task, obj/machinery/autochef/autochef, target_type)
-	var/obj/machinery/chem_master/condimaster/condimaster
-	var/obj/machinery/reagentgrinder/grinder
-
+/obj/item/autochef_expansion_card/processing/proc/attempt_grinding(datum/autochef_task/origin_task, target_type)
+	var/obj/item/item_type = target_type
+	autochef.atom_say("Grinding [item_type::name].")
 	// for each grinder we have access to:
 	// - see if it can make what we need
 	// - see if it has something in the output container already (no mixing outputs!)
@@ -64,32 +80,32 @@ RESTRICT_TYPE(/obj/item/autochef_expansion_card/processing)
 	//   and then just repeatedly test to see if we've made enough
 	// - oh yeah and since we can't make bottles out of thin air we need to connect
 	//   to a condimaster too to make bottles of things! amazing!
-	for(var/obj/machinery/reagentgrinder/G in autochef.get_linked_objects(/obj/machinery/reagentgrinder))
-		if(!G.beaker)
+	for(var/obj/machinery/reagentgrinder/grinder in autochef.get_linked_objects(/obj/machinery/reagentgrinder))
+		if(!grinder.beaker)
 			continue
 
-		if(!G.beaker.reagents.is_empty())
+		if(!grinder.beaker.reagents.is_empty())
 			continue
 
 		var/mode = MODE_NONE
 
-		var/sole_input_type
+		var/sole_input
 		var/list/found_inputs = list()
-		for(var/atom/movable/AM in G.holdingitems)
+		for(var/atom/movable/AM in grinder.holdingitems)
 			found_inputs[AM.type]++
-			sole_input_type = AM.type
+			sole_input = AM
 
 		if(length(found_inputs) > 1)
 			return AUTOCHEF_ACT_NO_AVAILABLE_MACHINES
 
 		var/contains_valid_input_already = FALSE
 		if(length(found_inputs) == 1)
-			var/list/blend_items = G.get_special_blend(sole_input_type)
+			var/list/blend_items = grinder.get_special_blend(sole_input)
 			if(blend_items && (target_type in blend_items))
 				mode = MODE_GRIND
 				contains_valid_input_already = TRUE
 				break
-			var/list/juice_items = G.get_special_juice(sole_input_type)
+			var/list/juice_items = grinder.get_special_juice(sole_input)
 			if(juice_items && (target_type in juice_items))
 				mode = MODE_JUICE
 				contains_valid_input_already = TRUE
@@ -101,12 +117,18 @@ RESTRICT_TYPE(/obj/item/autochef_expansion_card/processing)
 				for(var/obj/item/food/grown/possible_item in fridge)
 					if(possible_item.reagents.has_reagent(target_type))
 						possible_items += possible_item
-					var/list/blend_items = G.get_special_blend(possible_item.type)
+						mode = MODE_GRIND
+						continue
+					var/list/blend_items = grinder.get_special_blend(possible_item)
 					if(blend_items && (target_type in blend_items))
 						possible_items += possible_item
-					var/list/juice_items = G.get_special_juice(possible_item.type)
+						mode = MODE_GRIND
+						continue
+					var/list/juice_items = grinder.get_special_juice(possible_item)
 					if(juice_items && (target_type in juice_items))
 						possible_items += possible_item
+						mode = MODE_JUICE
+						continue
 
 		while(length(grinder.holdingitems) < grinder.limit && length(possible_items))
 			var/obj/input_item = possible_items[possible_items.len]
@@ -116,56 +138,64 @@ RESTRICT_TYPE(/obj/item/autochef_expansion_card/processing)
 			if(!istype(fridge) || !(isInSight(autochef, fridge)))
 				continue
 
-			grinder.item_interaction(null, input_item)
 			input_item.forceMove(grinder)
+			grinder.holdingitems += input_item
 			fridge.item_quants[input_item.name]--
 			fridge.Beam(grinder, icon_state = "rped_upgrade", icon = 'icons/effects/effects.dmi', time = 5)
 
-		if(mode == MODE_JUICE)
-			grinder.juice()
-			RegisterSignal(grinder, COMSIG_MACHINE_STEP_COMPLETE, PROC_REF(on_machine_step_complete))
-			origin_task.current_state = AUTOCHEF_ACT_WAIT_FOR_RESULT
-			return
-		if(mode == MODE_GRIND)
-			grinder.grind()
-			RegisterSignal(grinder, COMSIG_MACHINE_STEP_COMPLETE, PROC_REF(on_machine_step_complete))
-			origin_task.current_state = AUTOCHEF_ACT_WAIT_FOR_RESULT
-			return
-		if(mode == MODE_NONE)
-			autochef.atom_say("Unknown error in [src]. please contact customer support.")
+		var/datum/autochef_task/use_expansion_card/card_task = origin_task
+		switch(mode)
+			if(MODE_JUICE)
+				current_grinder = grinder
+				card_task.RegisterSignal(current_grinder, COMSIG_MACHINE_STEP_COMPLETE, TYPE_PROC_REF(/datum/autochef_task/use_expansion_card, on_machine_step_complete))
+				current_grinder.juice()
+				return AUTOCHEF_ACT_WAIT_FOR_RESULT
+			if(MODE_GRIND)
+				current_grinder = grinder
+				card_task.RegisterSignal(current_grinder, COMSIG_MACHINE_STEP_COMPLETE, TYPE_PROC_REF(/datum/autochef_task/use_expansion_card, on_machine_step_complete))
+				current_grinder.grind()
+				return AUTOCHEF_ACT_WAIT_FOR_RESULT
+			if(MODE_NONE)
+				autochef.atom_say("Unknown error in [src]. please contact customer support.")
+				return AUTOCHEF_ACT_FAILED
 
-	for(var/obj/machinery/chem_master/condimaster/C in autochef.get_linked_objects(/obj/machinery/chem_master/condimaster))
-		if(C.beaker)
+/obj/item/autochef_expansion_card/processing/proc/attempt_bottling()
+	autochef.atom_say("Bottling reagents.")
+	if(!current_grinder || !isInSight(current_grinder, autochef))
+		return AUTOCHEF_ACT_MISSING_MACHINE
+
+	for(var/obj/machinery/chem_master/condimaster/condimaster in autochef.get_linked_objects(/obj/machinery/chem_master/condimaster))
+		if(condimaster.beaker)
 			continue
-		if(length(C.reagents.reagent_list))
+		if(length(condimaster.reagents.reagent_list))
 			continue
-		condimaster = C
 
-	if(!condimaster)
-		return AUTOCHEF_ACT_NO_AVAILABLE_MACHINES
+		autochef.Beam(current_grinder, icon_state = "rped_upgrade", icon = 'icons/effects/effects.dmi', time = 5)
+		autochef.Beam(condimaster, icon_state = "rped_upgrade", icon = 'icons/effects/effects.dmi', time = 5)
+		current_grinder.beaker.forceMove(condimaster)
+		condimaster.beaker = current_grinder.beaker
+		condimaster.update_appearance()
+		current_grinder.beaker = null
+		current_grinder.update_appearance()
 
-	autochef.Beam(grinder, icon_state = "rped_upgrade", icon = 'icons/effects/effects.dmi', time = 5)
-	autochef.Beam(condimaster, icon_state = "rped_upgrade", icon = 'icons/effects/effects.dmi', time = 5)
-	grinder.beaker.forceMove(condimaster)
-	condimaster.beaker = grinder.beaker
-	condimaster.update_appearance()
-	grinder.beaker = null
-	grinder.update_appearance()
+		var/datum/chemical_production_mode/production_mode = condimaster.production_modes["condi_bottles"]
+		if(!production_mode)
+			return AUTOCHEF_ACT_FAILED
+		while(!condimaster.beaker.reagents.is_empty())
+			production_mode.synthesize(null, src, condimaster.beaker.reagents)
 
-	var/datum/chemical_production_mode/production_mode = condimaster.production_modes["condi_bottles"]
-	if(!production_mode)
-		return AUTOCHEF_ACT_FAILED
-	while(!condimaster.beaker.reagents.is_empty())
-		production_mode.synthesize(null, src, condimaster.beaker.reagents)
+		if(length(contents))
+			if(!current_grinder.beaker)
+				condimaster.beaker.forceMove(current_grinder)
+				current_grinder.beaker = condimaster.beaker
+				condimaster.beaker = null
+				current_grinder.update_appearance()
+				condimaster.update_appearance()
 
-	if(length(contents))
-		return AUTOCHEF_ACT_COMPLETE
+			current_grinder = null
+			return AUTOCHEF_ACT_COMPLETE
 
 	return AUTOCHEF_ACT_FAILED
-
-/obj/item/autochef_expansion_card/proc/on_machine_step_complete(datum/source)
-	SIGNAL_HANDLER // COMSIG_MACHINE_STEP_COMPLETE
-	return
 
 #undef MODE_NONE
 #undef MODE_GRIND

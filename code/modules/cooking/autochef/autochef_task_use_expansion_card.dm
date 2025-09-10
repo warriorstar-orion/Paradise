@@ -16,7 +16,7 @@ RESTRICT_TYPE(/datum/autochef_task/use_expansion_card)
 	expected_result_amount = expected_result_amount_
 
 /datum/autochef_task/use_expansion_card/resume()
-	current_state = card.perform_step(src, autochef, expected_result_type)
+	current_state = card.perform_step(src, expected_result_type)
 	if(current_state == AUTOCHEF_ACT_COMPLETE && length(card.contents))
 		autochef.move_output_from_container(card)
 		return
@@ -26,3 +26,7 @@ RESTRICT_TYPE(/datum/autochef_task/use_expansion_card)
 
 /datum/autochef_task/use_expansion_card/reset()
 	return
+
+/datum/autochef_task/use_expansion_card/proc/on_machine_step_complete(datum/source)
+	SIGNAL_HANDLER // COMSIG_MACHINE_STEP_COMPLETE
+	current_state = AUTOCHEF_ACT_STEP_COMPLETE
