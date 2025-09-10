@@ -293,3 +293,64 @@
 		/obj/item/stack/sheet/mineral/uranium/ten = 5,
 		/obj/item/stack/sheet/mineral/diamond/ten = 1,
 	)
+
+/obj/effect/spawner/random/kitchen_equipment
+	name = "random kitchen equipment"
+	icon_state = "kitchen"
+	loot = list(
+		list(
+			/obj/item/clothing/accessory/armband/service,
+			/obj/item/clothing/accessory/waistcoat,
+			/obj/item/clothing/head/beret/white,
+			/obj/item/clothing/head/chefhat,
+			/obj/item/clothing/head/helmet/space/plasmaman/chef,
+			/obj/item/clothing/head/soft/white,
+			/obj/item/clothing/shoes/black,
+			/obj/item/clothing/shoes/laceup,
+			/obj/item/clothing/shoes/white,
+			/obj/item/clothing/suit/chef,
+			/obj/item/clothing/suit/chef/classic,
+			/obj/item/clothing/under/misc/waiter,
+			/obj/item/clothing/under/plasmaman/chef,
+			/obj/item/clothing/under/rank/civilian/chef,
+			/obj/item/storage/belt/chef,
+		) = 300,
+
+		list(
+			/obj/item/cartridge/chef,
+			/obj/item/reagent_containers/glass/rag,
+			/obj/item/storage/box/crewvend,
+			/obj/item/storage/box/dish_drive,
+		) = 100,
+
+		list(
+			/obj/item/kitchen/rollingpin,
+			/obj/item/kitchen/utensil/fork,
+			/obj/item/reagent_containers/condiment/pack/hotsauce,
+			/obj/item/reagent_containers/condiment/pack/ketchup,
+			/obj/item/reagent_containers/condiment/peppermill,
+			/obj/item/reagent_containers/condiment/saltshaker,
+			/obj/item/reagent_containers/cooking/mould/ball,
+			/obj/item/reagent_containers/cooking/mould/bean,
+			/obj/item/reagent_containers/cooking/mould/bear,
+			/obj/item/reagent_containers/cooking/mould/cane,
+			/obj/item/reagent_containers/cooking/mould/cash,
+			/obj/item/reagent_containers/cooking/mould/coin,
+			/obj/item/reagent_containers/cooking/mould/loli,
+			/obj/item/reagent_containers/cooking/mould/worm,
+			/obj/item/reagent_containers/cooking/sushimat,
+			/obj/item/reagent_containers/drinks/drinkingglass,
+			/obj/item/storage/bag/tray,
+			/obj/item/storage/box/papersack,
+			/obj/item/trash/bowl,
+			/obj/item/trash/plate,
+			/obj/item/kitchen/cutter,
+			/obj/item/storage/box/autochef,
+		) = 50,
+
+		list(
+			/obj/item/kitchen/knife,
+			/obj/item/kitchen/knife/cheese,
+			/obj/item/kitchen/knife/pizza_cutter,
+		) = 5,
+	)

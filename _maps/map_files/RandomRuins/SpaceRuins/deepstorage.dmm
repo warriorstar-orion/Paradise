@@ -827,7 +827,7 @@
 	},
 /area/ruin/space/deepstorage)
 "cN" = (
-/obj/item/trash/tastybread,
+/obj/effect/spawner/random/food_trash,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/deepstorage)
 "cP" = (
@@ -2111,7 +2111,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/item/trash/cheesie,
+/obj/effect/spawner/random/food_trash,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "black"
@@ -2295,7 +2295,7 @@
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/can,
-/obj/item/trash/waffles,
+/obj/effect/spawner/random/kitchen_equipment,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "black"
@@ -2919,7 +2919,7 @@
 /obj/item/chair{
 	dir = 4
 	},
-/obj/item/trash/syndi_cakes,
+/obj/effect/spawner/random/food_trash,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "black"
@@ -4505,10 +4505,6 @@
 	icon_state = "white"
 	},
 /area/ruin/space/deepstorage)
-"BH" = (
-/obj/item/trash/candy,
-/turf/simulated/floor/plasteel,
-/area/ruin/space/deepstorage)
 "BI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/reagent_containers/glass/beaker/waterbottle/empty{
@@ -4684,7 +4680,7 @@
 /area/ruin/space/deepstorage)
 "CD" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/trash/sosjerky,
+/obj/effect/spawner/random/food_trash,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/deepstorage)
 "CG" = (
@@ -5849,6 +5845,7 @@
 	pixel_y = 9;
 	pixel_x = 6
 	},
+/obj/effect/spawner/random/food_trash,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "blackcorner"
@@ -5959,7 +5956,7 @@
 /area/ruin/space/deepstorage)
 "Mp" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/trash/fried_vox,
+/obj/effect/spawner/random/food_trash,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "black"
@@ -6168,7 +6165,7 @@
 /turf/simulated/floor/plating/asteroid/basalt/lowpressure,
 /area/ruin/space/deepstorage)
 "Oo" = (
-/obj/item/trash/chips,
+/obj/effect/spawner/random/food_trash,
 /turf/simulated/floor/plasteel{
 	icon_state = "black"
 	},
@@ -7444,7 +7441,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/trash/twimsts,
+/obj/effect/spawner/random/food_trash,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/deepstorage)
 "Xg" = (
@@ -11871,7 +11868,7 @@ QF
 zD
 Ei
 Rw
-BH
+cN
 CA
 BI
 zN
