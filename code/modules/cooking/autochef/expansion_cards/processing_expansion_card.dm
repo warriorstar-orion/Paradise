@@ -67,8 +67,7 @@ RESTRICT_TYPE(/obj/item/autochef_expansion_card/processing)
 			return AUTOCHEF_ACT_WAIT_FOR_RESULT
 
 /obj/item/autochef_expansion_card/processing/proc/attempt_grinding(datum/autochef_task/origin_task, target_type)
-	var/obj/item/item_type = target_type
-	autochef.atom_say("Grinding [item_type::name].")
+	var/datum/reagent/reagent = GLOB.chemical_reagents_list[target_type]
 	// for each grinder we have access to:
 	// - see if it can make what we need
 	// - see if it has something in the output container already (no mixing outputs!)
@@ -146,11 +145,13 @@ RESTRICT_TYPE(/obj/item/autochef_expansion_card/processing)
 		var/datum/autochef_task/use_expansion_card/card_task = origin_task
 		switch(mode)
 			if(MODE_JUICE)
+				autochef.atom_say("Juicing [reagent.name].")
 				current_grinder = grinder
 				card_task.RegisterSignal(current_grinder, COMSIG_MACHINE_PROCESS_COMPLETE, TYPE_PROC_REF(/datum/autochef_task/use_expansion_card, on_machine_process_complete))
 				current_grinder.juice()
 				return AUTOCHEF_ACT_WAIT_FOR_RESULT
 			if(MODE_GRIND)
+				autochef.atom_say("Grinding [reagent.name].")
 				current_grinder = grinder
 				card_task.RegisterSignal(current_grinder, COMSIG_MACHINE_PROCESS_COMPLETE, TYPE_PROC_REF(/datum/autochef_task/use_expansion_card, on_machine_process_complete))
 				current_grinder.grind()
@@ -181,8 +182,19 @@ RESTRICT_TYPE(/obj/item/autochef_expansion_card/processing)
 		var/datum/chemical_production_mode/production_mode = condimaster.production_modes["condi_bottles"]
 		if(!production_mode)
 			return AUTOCHEF_ACT_FAILED
+
 		while(!condimaster.beaker.reagents.is_empty())
-			production_mode.synthesize(null, src, condimaster.beaker.reagents)
+			for(var/datum/reagent/R in condimaster.beaker.reagents.reagent_list)
+				var/datum/reagents/temp = new
+				condimaster.beaker.reagents.trans_id_to(temp, R.id, 50)
+				production_mode.synthesize(null, src, temp)
+
+			for(var/obj/item/reagent_containers/condiment/bottle in contents)
+				if(bottle.name == "condiment bottle" && length(bottle.reagents.reagent_list) == 1)
+					var/name = bottle.reagents.get_master_reagent_name()
+					bottle.name = "[name] bottle"
+					bottle.desc = "An autochef produced bottle of [name]."
+					bottle.update_appearance(UPDATE_NAME|UPDATE_DESC)
 
 		if(length(contents))
 			if(!current_grinder.beaker)

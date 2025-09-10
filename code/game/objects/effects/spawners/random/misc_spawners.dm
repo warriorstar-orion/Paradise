@@ -314,14 +314,14 @@
 			/obj/item/clothing/under/plasmaman/chef,
 			/obj/item/clothing/under/rank/civilian/chef,
 			/obj/item/storage/belt/chef,
-		) = 200,
+		) = 400,
 
 		list(
 			/obj/item/cartridge/chef,
 			/obj/item/reagent_containers/glass/rag,
 			/obj/item/storage/box/crewvend,
 			/obj/item/storage/box/dish_drive,
-		) = 100,
+		) = 150,
 
 		list(
 			/obj/item/kitchen/rollingpin,
@@ -356,7 +356,7 @@
 			/obj/item/kitchen/knife,
 			/obj/item/kitchen/knife/cheese,
 			/obj/item/kitchen/knife/pizza_cutter,
-			/obj/item/autochef_expansion_card/mixing,
+			/obj/item/autochef_expansion_card/butchering,
 		) = 5,
 
 		list(

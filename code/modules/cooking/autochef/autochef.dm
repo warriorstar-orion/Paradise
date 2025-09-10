@@ -306,16 +306,9 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 	for(var/card_type in expansion_cards)
 		var/obj/item/autochef_expansion_card/card = expansion_cards[card_type]
 		var/result = card.can_produce(src, item_type)
-		switch(result)
-			if(AUTOCHEF_ACT_VALID)
-				if(ispath(item_type))
-					var/datum/autochef_task/make_item/task = new(src, item_type)
-					return task
-				else
-					var/datum/autochef_task/make_item/task = new(src, item_type)
-					return task
-
-	atom_say("Cannot find [item_type::name].")
+		if(result == AUTOCHEF_ACT_VALID)
+			var/datum/autochef_task/make_item/task = new(src, item_type)
+			return task
 
 /obj/machinery/autochef/proc/handle_missing_item_from_step(datum/cooking/recipe_step/step)
 	var/datum/cooking/recipe_step/add_item/add_item_step = step
@@ -333,10 +326,9 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 	for(var/card_type in expansion_cards)
 		var/obj/item/autochef_expansion_card/card = expansion_cards[card_type]
 		var/result = card.can_produce(src, reagent_id)
-		switch(result)
-			if(AUTOCHEF_ACT_VALID)
-				var/datum/autochef_task/make_item/task = new(src, reagent_id)
-				return task
+		if(result == AUTOCHEF_ACT_VALID)
+			var/datum/autochef_task/make_item/task = new(src, reagent_id)
+			return task
 
 /obj/machinery/autochef/proc/handle_missing_reagent_from_step(datum/cooking/recipe_step/step)
 	var/datum/cooking/recipe_step/add_reagent/add_reagent_step = step

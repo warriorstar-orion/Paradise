@@ -6958,6 +6958,7 @@
 "VR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
+/obj/effect/spawner/random/kitchen_equipment,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
