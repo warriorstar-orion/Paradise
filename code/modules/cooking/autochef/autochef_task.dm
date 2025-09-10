@@ -15,5 +15,5 @@
 /datum/autochef_task/proc/reset()
 	return
 
-/datum/autochef_task/proc/to_string()
+/datum/autochef_task/proc/debug_string()
 	return

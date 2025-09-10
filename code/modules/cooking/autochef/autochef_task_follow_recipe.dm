@@ -13,8 +13,8 @@
 	container = null
 	recipe = null
 
-/datum/autochef_task/follow_recipe/to_string()
-	return "[type]: recipe=[recipe.type] current_step=[current_step] current_state=[autochef_act_to_string(current_state)]"
+/datum/autochef_task/follow_recipe/debug_string()
+	return "[type]: recipe=[recipe.type] current_step=[current_step] current_state=[autochef_act_debug_string(current_state)]"
 
 /datum/autochef_task/follow_recipe/proc/register_for_completion(obj/item/reagent_containers/cooking/container)
 	RegisterSignal(container, COMSIG_MACHINE_STEP_COMPLETE, PROC_REF(on_machine_step_complete), override = TRUE)

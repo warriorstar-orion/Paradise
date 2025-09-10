@@ -353,11 +353,18 @@
 			/obj/item/storage/box/crewvend,
 			/obj/item/storage/box/dish_drive,
 			/obj/item/storage/box/papersack,
+			/obj/item/autochef_expansion_card/basic,
 		) = 20,
 
 		list(
 			/obj/item/kitchen/knife,
 			/obj/item/kitchen/knife/cheese,
 			/obj/item/kitchen/knife/pizza_cutter,
+
+			/obj/item/autochef_expansion_card/butchering,
 		) = 5,
+
+		list(
+			/obj/item/autochef_expansion_card/processing,
+		) = 1
 	)

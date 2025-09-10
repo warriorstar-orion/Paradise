@@ -2019,7 +2019,6 @@
 #include "code\modules\cooking\autochef\expansion_cards\autochef_expansion_card.dm"
 #include "code\modules\cooking\autochef\expansion_cards\basic_expansion_card.dm"
 #include "code\modules\cooking\autochef\expansion_cards\butchering_expansion_card.dm"
-#include "code\modules\cooking\autochef\expansion_cards\mixing_expansion_card.dm"
 #include "code\modules\cooking\autochef\expansion_cards\processing_expansion_card.dm"
 #include "code\modules\cooking\machines\cooking_machine.dm"
 #include "code\modules\cooking\machines\cooking_surface.dm"

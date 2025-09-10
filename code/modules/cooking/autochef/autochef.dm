@@ -47,11 +47,6 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 
 	RefreshParts()
 
-	new /obj/item/autochef_expansion_card/basic(loc)
-	new /obj/item/autochef_expansion_card/processing(loc)
-	new /obj/item/autochef_expansion_card/mixing(loc)
-	new /obj/item/autochef_expansion_card/butchering(loc)
-
 /obj/machinery/autochef/RefreshParts()
 	. = ..()
 	var/new_level = 0
@@ -259,7 +254,9 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 			var/datum/autochef_task/current_task = task_queue[1]
 			current_task.resume()
 
-			log_debug("autochef process task=[current_task.to_string()]@[current_task.UID()] state=[autochef_act_to_string(current_task.current_state)]")
+#ifdef PCWJ_DEBUG
+			log_debug("autochef process task=[current_task.debug_string()]@[current_task.UID()] state=[autochef_act_debug_string(current_task.current_state)]")
+#endif
 
 			switch(current_task.current_state)
 				if(AUTOCHEF_ACT_COMPLETE)
@@ -364,13 +361,11 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 						content.forceMove(content.loc)
 
 /obj/machinery/autochef/proc/remove_task(datum/autochef_task/task)
-	log_debug("autochef@[UID()] removing task [task.type]")
 	task_queue.Remove(task)
 
 /obj/machinery/autochef/proc/add_task(datum/autochef_task/task, datum/autochef_task/origin)
 	var/idx = isnull(origin) ? 1 : task_queue.Find(origin)
 	task_queue.Insert(idx, task)
-	log_debug("autochef@[UID()] adding task [task.type]")
 
 /obj/machinery/autochef/proc/get_linked_objects(object_type)
 	. = list()
