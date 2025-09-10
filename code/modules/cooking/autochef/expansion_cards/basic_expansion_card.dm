@@ -23,6 +23,9 @@ RESTRICT_TYPE(/obj/item/autochef_expansion_card/basic)
 		return AUTOCHEF_ACT_VALID
 	if(target_type in rollable_foods)
 		return AUTOCHEF_ACT_VALID
+	// special case yay
+	if(ispath(target_type, /obj/item/food/cutlet))
+		return AUTOCHEF_ACT_VALID
 
 	return FALSE
 
@@ -60,6 +63,18 @@ RESTRICT_TYPE(/obj/item/autochef_expansion_card/basic)
 			if(istype(task))
 				autochef.add_task(task, origin_task)
 				return AUTOCHEF_ACT_ADDED_TASK
+	else if(ispath(target_type, /obj/item/food/cutlet))
+		var/meat_type = /obj/item/food/meat
+		// i think asking the autochef to find a source of meat is
+		// probably the start of a horror story so if we can't find
+		// any we just give up
+		for(var/obj/machinery/smartfridge/smartfridge in autochef.linked_storages)
+			var/obj/item/food/meat/meat = smartfridge.directly_move_to(meat_type, autochef)
+			if(istype(meat))
+				meat.make_cutlets(src)
+				return AUTOCHEF_ACT_COMPLETE
+
+		return AUTOCHEF_ACT_MISSING_INGREDIENT
 
 	// if an expansion card fails, we take the task off the list and let
 	// whatever step called it find the best solution, which may not be

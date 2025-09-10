@@ -14,6 +14,9 @@
 /obj/item/autochef_expansion_card/proc/perform_step(datum/autochef_task/origin_task, target_type)
 	return AUTOCHEF_ACT_FAILED
 
+/obj/item/autochef_expansion_card/proc/is_valid_output(atom/movable/object)
+	return FALSE
+
 /obj/item/autochef_expansion_card/interact_with_atom(atom/target, mob/living/user, list/modifiers)
 	var/obj/machinery/autochef/autochef = target
 	if(!istype(autochef))

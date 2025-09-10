@@ -34,6 +34,15 @@ RESTRICT_TYPE(/datum/autochef_task/use_expansion_card)
 	// move those things to our card so they can be dealt with.
 	if(islist(created))
 		for(var/atom/movable/AM in created)
-			AM.forceMove(card)
+			if(card.is_valid_output(AM))
+				AM.forceMove(card)
+
+	current_state = AUTOCHEF_ACT_STEP_COMPLETE
+
+/datum/autochef_task/use_expansion_card/proc/on_atom_after_successful_initialized_on(datum/source, atom/movable/object)
+	SIGNAL_HANDLER // COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON
+
+	if(istype(object) && card.is_valid_output(object))
+		object.forceMove(card)
 
 	current_state = AUTOCHEF_ACT_STEP_COMPLETE
