@@ -78,9 +78,10 @@
 
 /// WHO NAME A PARAMETER FOR A PROC "what" holy hell
 /datum/food_processor_process/proc/process_food(loc, what, obj/machinery/processor/processor)
+	. = list()
 	if(output && loc && processor)
 		for(var/i = 0, i < processor.rating_amount, i++)
-			new output(loc)
+			. += new output(loc)
 	if(what)
 		qdel(what)
 
@@ -126,18 +127,20 @@
 /////////////////////////
 ///END OBJECT RECIPIES///
 /////////////////////////
+/datum/food_processor_process/living
+	output = null
 
-/datum/food_processor_process/mob/process_food(loc, what, processor)
+/datum/food_processor_process/living/process_food(loc, what, processor)
 	..()
 
 //////////////////////
 /////MOB RECIPIES/////
 //////////////////////
-/datum/food_processor_process/mob/slime
+/datum/food_processor_process/living/slime
 	input = /mob/living/simple_animal/slime
 	output = null
 
-/datum/food_processor_process/mob/slime/process_food(loc, what, obj/machinery/processor/processor)
+/datum/food_processor_process/living/slime/process_food(loc, what, obj/machinery/processor/processor)
 	var/mob/living/simple_animal/slime/S = what
 	var/C = S.cores
 	if(S.stat != DEAD)
@@ -149,11 +152,11 @@
 		SSblackbox.record_feedback("tally", "slime_core_harvested", 1, S.colour)
 	..()
 
-/datum/food_processor_process/mob/monkey
+/datum/food_processor_process/living/monkey
 	input = /mob/living/carbon/human/monkey
 	output = null
 
-/datum/food_processor_process/mob/monkey/process_food(loc, what, processor)
+/datum/food_processor_process/living/monkey/process_food(loc, what, processor)
 	var/mob/living/carbon/human/monkey/O = what
 	if(O.client) //grief-proof
 		O.loc = loc
@@ -180,7 +183,7 @@
 //END RECIPE DATUMS
 
 /obj/machinery/processor/proc/select_recipe(X)
-	for(var/Type in subtypesof(/datum/food_processor_process) - /datum/food_processor_process/mob)
+	for(var/Type in subtypesof(/datum/food_processor_process) - /datum/food_processor_process/living)
 		var/datum/food_processor_process/P = new Type()
 		if(!istype(X, P.input))
 			continue
@@ -188,6 +191,9 @@
 	return 0
 
 /obj/machinery/processor/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(istype(used, /obj/item/autochef_remote))
+		return
+
 	if(processing)
 		to_chat(user, "<span class='warning'>\the [src] is already processing something!</span>")
 		return ITEM_INTERACT_COMPLETE
@@ -234,11 +240,16 @@
 	if(length(contents) == 0)
 		to_chat(user, "<span class='warning'>\the [src] is empty.</span>")
 		return 1
-	processing = TRUE
-	update_icon(UPDATE_ICON_STATE)
 	user.visible_message("[user] turns on [src].", \
 		"<span class='notice'>You turn on [src].</span>", \
 		"<span class='italics'>You hear a food processor.</span>")
+
+	activate()
+
+/obj/machinery/processor/proc/activate()
+	processing = TRUE
+	update_icon(UPDATE_ICON_STATE)
+
 	playsound(loc, 'sound/machines/blender.ogg', 50, 1)
 	use_power(500)
 	var/total_time = 0
@@ -255,7 +266,8 @@
 		if(!P)
 			log_debug("The [O] in processor([src]) does not have a suitable recipe, but it was somehow put inside of the processor anyways.")
 			continue
-		P.process_food(loc, O, src)
+		var/list/created = P.process_food(loc, O, src)
+		SEND_SIGNAL(src, COMSIG_MACHINE_PROCESS_COMPLETE, created)
 	processing = FALSE
 	update_icon(UPDATE_ICON_STATE)
 

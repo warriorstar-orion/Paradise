@@ -5,13 +5,12 @@ RESTRICT_TYPE(/obj/item/autochef_expansion_card/processing)
 #define MODE_JUICE 2
 
 /obj/item/autochef_expansion_card/processing
-	name = "Autochef Expansion Card: Processing"
+	name = "\improper Autochef Expansion Card: Processing"
 	desc = "This extremely rare expansion card enables autochefs to utilize grinders and food processors."
-	icon_state = "autochef_expansion_card_red"
+	icon_state = "autochef_expansion_card_purple"
 	task_message = "Food-processing"
 	registerable_machines = list(
 		/obj/machinery/chem_master/condimaster,
-		/obj/machinery/processor,
 		/obj/machinery/reagentgrinder,
 	)
 	// gross to hang on to this but idk how to get this from the task to the card
@@ -142,17 +141,18 @@ RESTRICT_TYPE(/obj/item/autochef_expansion_card/processing)
 			grinder.holdingitems += input_item
 			fridge.item_quants[input_item.name]--
 			fridge.Beam(grinder, icon_state = "rped_upgrade", icon = 'icons/effects/effects.dmi', time = 5)
+			fridge.update_appearance()
 
 		var/datum/autochef_task/use_expansion_card/card_task = origin_task
 		switch(mode)
 			if(MODE_JUICE)
 				current_grinder = grinder
-				card_task.RegisterSignal(current_grinder, COMSIG_MACHINE_STEP_COMPLETE, TYPE_PROC_REF(/datum/autochef_task/use_expansion_card, on_machine_step_complete))
+				card_task.RegisterSignal(current_grinder, COMSIG_MACHINE_PROCESS_COMPLETE, TYPE_PROC_REF(/datum/autochef_task/use_expansion_card, on_machine_process_complete))
 				current_grinder.juice()
 				return AUTOCHEF_ACT_WAIT_FOR_RESULT
 			if(MODE_GRIND)
 				current_grinder = grinder
-				card_task.RegisterSignal(current_grinder, COMSIG_MACHINE_STEP_COMPLETE, TYPE_PROC_REF(/datum/autochef_task/use_expansion_card, on_machine_step_complete))
+				card_task.RegisterSignal(current_grinder, COMSIG_MACHINE_PROCESS_COMPLETE, TYPE_PROC_REF(/datum/autochef_task/use_expansion_card, on_machine_process_complete))
 				current_grinder.grind()
 				return AUTOCHEF_ACT_WAIT_FOR_RESULT
 			if(MODE_NONE)

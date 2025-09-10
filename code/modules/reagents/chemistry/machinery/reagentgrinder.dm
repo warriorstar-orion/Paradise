@@ -415,7 +415,7 @@
 		if(beaker.reagents.holder_full())
 			return
 
-	SEND_SIGNAL(src, COMSIG_MACHINE_STEP_COMPLETE)
+	SEND_SIGNAL(src, COMSIG_MACHINE_PROCESS_COMPLETE)
 
 /obj/machinery/reagentgrinder/proc/grind()
 	power_change()
@@ -433,7 +433,7 @@
 		pixel_x = initial(pixel_x) // Return to its spot after shaking
 		operating = FALSE
 		SStgui.update_uis(src)
-		SEND_SIGNAL(src, COMSIG_MACHINE_STEP_COMPLETE)
+		SEND_SIGNAL(src, COMSIG_MACHINE_PROCESS_COMPLETE)
 
 	// Snacks and Plants
 	for(var/obj/item/food/O in holdingitems)

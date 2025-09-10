@@ -1,7 +1,7 @@
 RESTRICT_TYPE(/obj/item/autochef_expansion_card/basic)
 
 /obj/item/autochef_expansion_card/basic
-	name = "Autochef Expansion Card: Basic"
+	name = "\improper Autochef Expansion Card: Basic"
 	desc = "This fairly common expansion card enables autochefs to perform basic cutting, rolling, and shaping tasks."
 	icon_state = "autochef_expansion_card_blue"
 	task_message = "Basic prepping"

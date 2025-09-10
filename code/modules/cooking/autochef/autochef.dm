@@ -47,9 +47,10 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 
 	RefreshParts()
 
-	// new /obj/item/autochef_expansion_card/basic(loc)
-	// new /obj/item/autochef_expansion_card/processing(loc)
-	// new /obj/item/autochef_expansion_card/mixing(loc)
+	new /obj/item/autochef_expansion_card/basic(loc)
+	new /obj/item/autochef_expansion_card/processing(loc)
+	new /obj/item/autochef_expansion_card/mixing(loc)
+	new /obj/item/autochef_expansion_card/butchering(loc)
 
 /obj/machinery/autochef/RefreshParts()
 	. = ..()
@@ -354,6 +355,7 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 				SStgui.update_uis(storage)
 				moved = TRUE
 		if(moved)
+			storage.update_appearance()
 			break
 
 	// If we can't find somewhere to store it, just toss it

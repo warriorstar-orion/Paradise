@@ -27,6 +27,13 @@ RESTRICT_TYPE(/datum/autochef_task/use_expansion_card)
 /datum/autochef_task/use_expansion_card/reset()
 	return
 
-/datum/autochef_task/use_expansion_card/proc/on_machine_step_complete(datum/source)
-	SIGNAL_HANDLER // COMSIG_MACHINE_STEP_COMPLETE
+/datum/autochef_task/use_expansion_card/proc/on_machine_process_complete(datum/source, list/created)
+	SIGNAL_HANDLER // COMSIG_MACHINE_PROCESS_COMPLETE
+
+	// if the machine's process resulted in newly created things,
+	// move those things to our card so they can be dealt with.
+	if(islist(created))
+		for(var/atom/movable/AM in created)
+			AM.forceMove(card)
+
 	current_state = AUTOCHEF_ACT_STEP_COMPLETE
