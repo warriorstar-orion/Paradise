@@ -484,7 +484,7 @@
 /area/ruin/space/clown_mime_ruin)
 "zz" = (
 /obj/effect/mapping_helpers/turfs/damage,
-/obj/structure/largecrate,
+/obj/effect/landmark/freight_spawn,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/clown_mime_ruin)
 "zU" = (

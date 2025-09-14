@@ -303,3 +303,9 @@ SUBSYSTEM_DEF(events)
 			EC.next_event = null
 
 	Interact(usr)
+
+/datum/controller/subsystem/events/proc/active_events_of_type(event_type)
+	. = list()
+	for(var/datum/event/event in active_events)
+		if(istype(event, event_type))
+			. |= event

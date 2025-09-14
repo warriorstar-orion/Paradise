@@ -292,3 +292,6 @@
 		playsound(loc, 'sound/mail/mailapproved.ogg', 50, TRUE)
 		GLOB.station_money_database.credit_account(SSeconomy.cargo_account, MAIL_DELIVERY_BONUS, "Mail Delivery Compensation", "Nanotrasen Mail and Interstellar Logistics", supress_log = FALSE)
 		SSblackbox.record_feedback("amount", "successful_mail_delivery", 1)
+	if(istype(A, /obj/structure/freight))
+		var/obj/structure/freight/freight = A
+		to_chat(user, "<span class='notice'>You scan [freight] and the scanner reports an order code of [freight.order_code].</span>")

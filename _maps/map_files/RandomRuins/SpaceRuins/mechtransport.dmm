@@ -444,7 +444,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/closet,
+/obj/effect/landmark/freight_spawn,
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/mech_transport)
 "Gk" = (

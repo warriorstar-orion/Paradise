@@ -1189,6 +1189,13 @@
 	},
 /turf/template_noop,
 /area/template_noop)
+"zA" = (
+/obj/effect/landmark/freight_spawn,
+/turf/simulated/floor/plasteel{
+	dir = 6;
+	icon_state = "whitepurple"
+	},
+/area/template_noop)
 "zF" = (
 /obj/effect/spawner/random/dirt/maybe,
 /turf/template_noop,
@@ -4681,7 +4688,7 @@ fk
 lm
 vL
 fk
-JG
+zA
 nK
 nK
 DX

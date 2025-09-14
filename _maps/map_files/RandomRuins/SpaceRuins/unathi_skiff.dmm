@@ -52,8 +52,7 @@
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/unathi_breacher/engineering)
 "fJ" = (
-/obj/structure/rack,
-/obj/item/storage/box/breacher,
+/obj/effect/landmark/freight_spawn,
 /turf/simulated/floor/pod/dark,
 /area/ruin/space/unathi_breacher/hold)
 "fN" = (
@@ -350,9 +349,10 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/unathi_breacher/bridge)
 "AA" = (
-/obj/structure/rack,
 /obj/item/salvage/loot/pirate,
 /obj/item/salvage/loot/pirate,
+/obj/structure/shelf,
+/obj/item/storage/box/breacher,
 /turf/simulated/floor/pod/dark,
 /area/ruin/space/unathi_breacher/hold)
 "AL" = (

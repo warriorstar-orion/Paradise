@@ -190,7 +190,7 @@
 	},
 /area/ruin/space/wreck_cargoship)
 "if" = (
-/obj/structure/largecrate,
+/obj/effect/landmark/freight_spawn,
 /turf/simulated/floor/plasteel{
 	icon_state = "yellowsiding";
 	dir = 1
@@ -488,8 +488,8 @@
 /turf/template_noop,
 /area/space/nearstation)
 "qr" = (
-/obj/structure/largecrate,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/freight_spawn,
 /turf/simulated/floor/plating,
 /area/ruin/space/wreck_cargoship)
 "qY" = (
@@ -895,7 +895,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/cobweb,
-/obj/structure/largecrate,
+/obj/effect/landmark/freight_spawn,
 /turf/simulated/floor/plasteel{
 	icon_state = "blackcorner"
 	},
