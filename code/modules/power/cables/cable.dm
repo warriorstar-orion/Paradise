@@ -348,6 +348,17 @@ By design, d1 is the smallest direction and d2 is the highest
 	T = get_turf(src)
 	. += T.power_list(src, d2) //get on turf matching cables
 
+	// If we're not on a multi-story map, don't bother dealing with conduits
+	if(!length(SSmapping.map_datum.level_names))
+		return
+
+	T = get_turf(src)
+	var/obj/structure/conduit/conduit = locate(/obj/structure/conduit) in T
+	if(!istype(conduit))
+		return
+
+
+
 //should be called after placing a cable which extends another cable, creating a "smooth" cable that no longer terminates in the centre of a turf.
 //needed as this can, unlike other placements, disconnect cables
 /obj/structure/cable/proc/denode()
@@ -442,6 +453,29 @@ By design, d1 is the smallest direction and d2 is the highest
 /obj/structure/conduit
 	name = "conduit"
 	desc = "A conduit, for passing cable between locations vertically."
+	icon = 'icons/obj/power.dmi'
+	icon_state = "breakerbox"
+
+/obj/structure/conduit/proc/get_connected_cables()
+	. = list()
+	var/turf/T = get_turf(src)
+
+	var/datum/space_level/current = GLOB.space_manager.get_zlev(T.z)
+	var/datum/space_level/opposing
+	if(ZTRAIT_UP in current.flags)
+		opposing = GLOB.space_manager.get_zlev_by_trait(ZTRAIT_DOWN)
+	else if (ZTRAIT_DOWN in current.flags)
+		opposing = GLOB.space_manager.get_zlev_by_trait(ZTRAIT_UP)
+	if(!istype(opposing))
+		return
+	var/turf/U = locate(x, y, opposing.zpos)
+	if(!(locate(/obj/structure/conduit) in U))
+		return
+
+	for(var/obj/structure/cable/cable in T)
+		. |= cable
+	for(var/obj/structure/cable/cable in U)
+		. |= cable
 
 //
 //	This ASCII art represents my brain after looking at cable

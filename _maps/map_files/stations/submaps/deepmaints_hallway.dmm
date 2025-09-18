@@ -121,11 +121,6 @@
 /obj/effect/spawner/random/dirt/frequent,
 /turf/simulated/floor/plasteel,
 /area/template_noop)
-"mk" = (
-/obj/effect/spawner/random/dirt/frequent,
-/obj/machinery/light/small/deepmaints,
-/turf/simulated/floor/plasteel,
-/area/template_noop)
 "mv" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/structure/closet/firecloset,
@@ -176,6 +171,12 @@
 /obj/item/trash/spentcasing/bullet,
 /turf/simulated/floor/plasteel,
 /area/template_noop)
+"rU" = (
+/obj/effect/spawner/themed_mess/engineering,
+/obj/effect/spawner/random/dirt/frequent,
+/obj/effect/spawner/random/pool/avernus_deepmaints_power,
+/turf/simulated/floor/plasteel,
+/area/template_noop)
 "sT" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/structure/shelf,
@@ -197,13 +198,6 @@
 "vg" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/machinery/door/firedoor,
-/turf/simulated/floor/plasteel,
-/area/template_noop)
-"vn" = (
-/obj/effect/spawner/random/dirt/frequent,
-/obj/machinery/light/small/deepmaints{
-	dir = 1
-	},
 /turf/simulated/floor/plasteel,
 /area/template_noop)
 "wY" = (
@@ -342,13 +336,6 @@
 /obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel,
 /area/template_noop)
-"IF" = (
-/obj/machinery/light/small/deepmaints{
-	dir = 4
-	},
-/obj/effect/spawner/random/dirt/frequent,
-/turf/simulated/floor/plasteel,
-/area/template_noop)
 "IT" = (
 /turf/simulated/wall/r_wall,
 /area/template_noop)
@@ -368,9 +355,7 @@
 /area/template_noop)
 "Jx" = (
 /obj/effect/spawner/random/dirt/frequent,
-/obj/machinery/light/small/deepmaints{
-	dir = 1
-	},
+/obj/machinery/light/small/autoattach/deepmaints,
 /obj/effect/turf_decal{
 	dir = 4
 	},
@@ -399,13 +384,6 @@
 /obj/machinery/floodlight,
 /turf/simulated/floor/plasteel,
 /area/template_noop)
-"LW" = (
-/obj/effect/spawner/random/dirt/frequent,
-/obj/machinery/light/small/deepmaints{
-	dir = 8
-	},
-/turf/simulated/floor/plasteel,
-/area/template_noop)
 "Md" = (
 /obj/effect/spawner/themed_mess/robotic,
 /obj/effect/spawner/random/dirt/frequent,
@@ -423,11 +401,6 @@
 /obj/machinery/computer/mech_bay_power_console{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel,
-/area/template_noop)
-"OY" = (
-/obj/machinery/light/small/deepmaints,
-/obj/effect/spawner/random/dirt/frequent,
 /turf/simulated/floor/plasteel,
 /area/template_noop)
 "Pc" = (
@@ -470,6 +443,11 @@
 /obj/machinery/bookbinder,
 /turf/simulated/floor/plasteel,
 /area/template_noop)
+"Ti" = (
+/obj/effect/spawner/random/dirt/frequent,
+/obj/effect/spawner/random/pool/avernus_deepmaints_power,
+/turf/simulated/floor/plasteel,
+/area/template_noop)
 "Uh" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/machinery/mech_bay_recharge_port/upgraded/unsimulated,
@@ -491,17 +469,13 @@
 /turf/simulated/floor/mech_bay_recharge_floor,
 /area/template_noop)
 "Wf" = (
-/obj/machinery/light/small/deepmaints{
-	dir = 8
-	},
+/obj/machinery/light/small/autoattach/deepmaints,
 /obj/effect/spawner/random/dirt/frequent,
 /turf/simulated/floor/plasteel,
 /area/template_noop)
 "WB" = (
 /obj/effect/spawner/random/dirt/frequent,
-/obj/machinery/light/small/deepmaints{
-	dir = 1
-	},
+/obj/machinery/light/small/autoattach/deepmaints,
 /obj/effect/turf_decal{
 	dir = 8
 	},
@@ -510,13 +484,6 @@
 "WG" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /obj/effect/spawner/random/dirt/frequent,
-/turf/simulated/floor/plasteel,
-/area/template_noop)
-"WJ" = (
-/obj/effect/spawner/random/dirt/frequent,
-/obj/machinery/light/small/deepmaints{
-	dir = 4
-	},
 /turf/simulated/floor/plasteel,
 /area/template_noop)
 "WR" = (
@@ -540,13 +507,6 @@
 /obj/effect/spawner/random/dirt/frequent,
 /obj/structure/table,
 /obj/effect/spawner/random/plushies,
-/turf/simulated/floor/plasteel,
-/area/template_noop)
-"YM" = (
-/obj/machinery/light/small/deepmaints{
-	dir = 1
-	},
-/obj/effect/spawner/random/dirt/frequent,
 /turf/simulated/floor/plasteel,
 /area/template_noop)
 "ZE" = (
@@ -744,7 +704,7 @@ bP
 bP
 BE
 Jw
-Jw
+Ti
 Jw
 BE
 bP
@@ -756,7 +716,7 @@ bP
 bP
 BE
 Jw
-Jw
+Ti
 Jw
 BE
 bP
@@ -774,7 +734,7 @@ BE
 BE
 bP
 Bu
-LW
+jW
 Bh
 bP
 bP
@@ -872,7 +832,7 @@ bP
 bP
 KA
 Jw
-Jw
+Ti
 Jw
 Jw
 Jw
@@ -884,7 +844,7 @@ bP
 bP
 KA
 Jw
-Jw
+Ti
 Jw
 Jw
 iv
@@ -901,7 +861,7 @@ bP
 Es
 Jw
 Jw
-OY
+Wf
 BE
 bP
 bP
@@ -913,7 +873,7 @@ bP
 BE
 Jw
 iv
-OY
+Wf
 BE
 bP
 bP
@@ -1368,7 +1328,7 @@ bP
 bP
 bP
 Jw
-Jw
+Ti
 Jw
 bP
 bP
@@ -1380,7 +1340,7 @@ bP
 bP
 BE
 Jw
-Jw
+Ti
 Jw
 bP
 bP
@@ -1496,7 +1456,7 @@ bP
 bP
 KA
 Jw
-Jw
+Ti
 Jw
 Jw
 Jw
@@ -1508,7 +1468,7 @@ bP
 bP
 KA
 Jw
-Jw
+Ti
 Jw
 Jw
 Jw
@@ -1522,7 +1482,7 @@ bP
 KA
 bP
 bP
-vn
+jW
 Jw
 Jw
 Jw
@@ -1551,7 +1511,7 @@ Jw
 Jw
 Jw
 Jw
-WJ
+jW
 Jw
 Jw
 Jw
@@ -1563,7 +1523,7 @@ Jw
 Jw
 Jw
 Jw
-WJ
+jW
 Jw
 Jw
 Jw
@@ -1590,7 +1550,7 @@ BE
 Jw
 Jw
 Jw
-OY
+Wf
 bP
 bP
 bP
@@ -2019,7 +1979,7 @@ bP
 HW
 Jw
 Jw
-LW
+jW
 Jw
 Jw
 Jw
@@ -2083,7 +2043,7 @@ Jw
 Jw
 Jw
 Jw
-LW
+jW
 Jw
 Jw
 Jw
@@ -2127,12 +2087,12 @@ IT
 IT
 IT
 Jw
-Jw
+Ti
 bP
 bP
 KA
 Jw
-Jw
+Ti
 Jw
 Jw
 Jw
@@ -2150,7 +2110,7 @@ BE
 Jw
 ya
 Jw
-Jw
+Ti
 bP
 bP
 bP
@@ -2159,7 +2119,7 @@ KA
 bP
 bP
 BE
-vn
+jW
 Jw
 Jw
 bP
@@ -2227,7 +2187,7 @@ bP
 UI
 Jw
 Jw
-WJ
+jW
 Jw
 Jw
 Jw
@@ -2316,7 +2276,7 @@ bP
 bP
 BE
 Jw
-Jw
+Ti
 Jw
 Oz
 bP
@@ -2564,7 +2524,7 @@ bP
 bP
 bP
 Jw
-Jw
+Ti
 Jw
 bP
 bP
@@ -2628,7 +2588,7 @@ bP
 bP
 BE
 Jw
-Jw
+Ti
 Jw
 BE
 bP
@@ -2743,7 +2703,7 @@ bP
 (43,1,1) = {"
 bP
 KA
-Jw
+Ti
 Ct
 DS
 DS
@@ -2751,12 +2711,12 @@ DS
 DS
 DS
 Ct
-Jw
+Ti
 bP
 bP
 KA
 Jw
-Jw
+Ti
 Jw
 Jw
 kA
@@ -2941,7 +2901,7 @@ bP
 BE
 Jw
 Jw
-OY
+Wf
 BE
 bP
 bP
@@ -2980,7 +2940,7 @@ bP
 bP
 bP
 Jw
-Jw
+Ti
 Jw
 bP
 bP
@@ -3240,7 +3200,7 @@ bP
 bP
 BE
 Jw
-Jw
+Ti
 Jw
 bP
 bP
@@ -3252,7 +3212,7 @@ bP
 bP
 BE
 Jw
-Jw
+Ti
 Jw
 BE
 bP
@@ -3386,7 +3346,7 @@ Jw
 ya
 Jw
 Jw
-ya
+rU
 Jw
 bP
 bP
@@ -3395,10 +3355,10 @@ KA
 bP
 bP
 BE
-vn
+jW
 Jw
 Jw
-mk
+jW
 bP
 bP
 bP
@@ -3409,7 +3369,7 @@ bP
 BE
 AM
 ya
-OY
+Wf
 BE
 bP
 bP
@@ -3863,7 +3823,7 @@ bP
 bP
 bP
 bP
-vn
+jW
 Jw
 Jw
 XI
@@ -3927,7 +3887,7 @@ bP
 bP
 bP
 BE
-YM
+Wf
 Jw
 Jw
 ij
@@ -4010,7 +3970,7 @@ Jw
 Jw
 Jw
 Jw
-Jw
+Ti
 Jw
 bP
 bP
@@ -4059,7 +4019,7 @@ Jw
 Jw
 Jw
 Jw
-IF
+Wf
 Jw
 Jw
 Jw
@@ -4175,7 +4135,7 @@ bP
 bP
 bP
 bP
-vn
+jW
 fe
 Jw
 Cd
@@ -4188,7 +4148,7 @@ bP
 bP
 BE
 Jw
-Jw
+Ti
 Jw
 BE
 bP
@@ -4488,7 +4448,7 @@ bP
 bP
 BE
 Jw
-Jw
+Ti
 Jw
 BE
 bP
@@ -4634,7 +4594,7 @@ Jw
 Jw
 Jw
 Jw
-Jw
+Ti
 Jw
 bP
 bP
@@ -4643,7 +4603,7 @@ KA
 bP
 bP
 BE
-vn
+jW
 ya
 Jw
 WR
@@ -4683,7 +4643,7 @@ Jw
 Jw
 Jw
 Jw
-WJ
+jW
 Jw
 Jw
 Jw
