@@ -18,6 +18,7 @@
 	icon_state = null
 	density = FALSE
 	move_resist = INFINITY
+	invisibility = 0
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	faction = null
 	alerts = null
