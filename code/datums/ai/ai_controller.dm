@@ -55,6 +55,8 @@ RESTRICT_TYPE(/datum/ai_controller)
 
 	/// The idle behavior this AI performs when it has no actions.
 	var/datum/idle_behavior/idle_behavior = null
+	/// Our current cell grid.
+	var/datum/cell_tracker/our_cells
 
 	// Movement related things here
 	/// Reference to the movement datum we use. Is a type on initialize but becomes a ref afterwards.
@@ -79,11 +81,8 @@ RESTRICT_TYPE(/datum/ai_controller)
 	var/able_to_plan = TRUE
 	/// are we currently on failed planning timeout?
 	var/on_failed_planning_timeout = FALSE
-	var/datum/proximity_monitor/ai_interesting_dist/proxmon
 
 /datum/ai_controller/New(atom/new_pawn)
-	proxmon = new(src)
-
 	change_ai_movement_type(ai_movement)
 	init_subtrees()
 
@@ -96,6 +95,7 @@ RESTRICT_TYPE(/datum/ai_controller)
 /datum/ai_controller/Destroy(force)
 	set_ai_status(AI_STATUS_OFF)
 	unpossess_pawn(FALSE)
+	our_cells = null
 	set_movement_target(type, null)
 	if(ai_movement.moving_controllers[src])
 		ai_movement.stop_moving_towards(src)
@@ -103,8 +103,6 @@ RESTRICT_TYPE(/datum/ai_controller)
 	planned_behaviors.Cut()
 	LAZYCLEARLIST(planning_subtrees)
 	current_behaviors.Cut()
-
-	qdel(proxmon)
 
 	return ..()
 
@@ -180,6 +178,18 @@ RESTRICT_TYPE(/datum/ai_controller)
 	update_able_to_run()
 	setup_able_to_run()
 
+	our_cells = new(interesting_dist, interesting_dist, 1)
+	set_new_cells()
+
+	RegisterSignal(pawn, COMSIG_MOVABLE_MOVED, PROC_REF(update_grid))
+
+/datum/ai_controller/proc/update_grid(datum/source, datum/spatial_grid_cell/new_cell)
+	SIGNAL_HANDLER // COMSIG_MOVABLE_MOVED
+
+	set_new_cells()
+	if(current_movement_target)
+		check_target_max_distance()
+
 /datum/ai_controller/proc/on_movement_target_move(datum/source)
 	SIGNAL_HANDLER // COMSIG_MOVABLE_MOVED
 	check_target_max_distance()
@@ -192,15 +202,65 @@ RESTRICT_TYPE(/datum/ai_controller)
 	if(get_dist(current_movement_target, pawn) > max_target_distance)
 		cancel_actions()
 
-/datum/ai_controller/proc/should_idle()
-	if(!can_idle)
-		return FALSE
-	// TODO: one of the connection points for spatial grid is here
-	// and should be converted over if/when spatial grid is ported
-	if(proxmon.has_client_mobs_nearby())
-		return FALSE
+/datum/ai_controller/proc/set_new_cells()
+	if(isnull(our_cells))
+		return
 
+	var/turf/our_turf = get_turf(pawn)
+
+	if(isnull(our_turf))
+		return
+
+	var/list/cell_collections = our_cells.recalculate_cells(our_turf)
+
+	for(var/datum/old_grid as anything in cell_collections[2])
+		UnregisterSignal(old_grid, list(SPATIAL_GRID_CELL_ENTERED(SPATIAL_GRID_CONTENTS_TYPE_CLIENTS), SPATIAL_GRID_CELL_EXITED(SPATIAL_GRID_CONTENTS_TYPE_CLIENTS)))
+
+	for(var/datum/spatial_grid_cell/new_grid as anything in cell_collections[1])
+		RegisterSignal(new_grid, SPATIAL_GRID_CELL_ENTERED(SPATIAL_GRID_CONTENTS_TYPE_CLIENTS), PROC_REF(on_client_enter))
+		RegisterSignal(new_grid, SPATIAL_GRID_CELL_EXITED(SPATIAL_GRID_CONTENTS_TYPE_CLIENTS), PROC_REF(on_client_exit))
+
+	recalculate_idle()
+
+/datum/ai_controller/proc/should_idle()
+	if(!can_idle || isnull(our_cells))
+		return FALSE
+	for(var/datum/spatial_grid_cell/grid as anything in our_cells.member_cells)
+		if(locate(/mob/living) in grid.client_contents)
+			return FALSE
 	return TRUE
+
+/datum/ai_controller/proc/recalculate_idle(datum/exited)
+	if(ai_status == AI_STATUS_OFF)
+		return
+
+	var/distance = INFINITY
+	if(islist(exited))
+		var/list/exited_list = exited
+		distance = get_dist(pawn, exited_list[1])
+	else if(isatom(exited))
+		var/atom/exited_atom = exited
+		distance = get_dist(pawn, exited_atom)
+
+	if(distance <= interesting_dist) //is our target in between interesting cells?
+		return
+
+	if(should_idle())
+		set_ai_status(AI_STATUS_IDLE)
+
+/datum/ai_controller/proc/on_client_enter(datum/source, list/target_list)
+	SIGNAL_HANDLER // COMSIG_CLIENT_ENTER
+
+	if (!(locate(/mob/living) in target_list))
+		return
+
+	if(ai_status == AI_STATUS_IDLE)
+		set_ai_status(AI_STATUS_ON)
+
+/datum/ai_controller/proc/on_client_exit(datum/source, datum/exited)
+	SIGNAL_HANDLER // COMSIG_CLIENT_EXIT
+
+	recalculate_idle(exited)
 
 /// Sets the AI on or off based on current conditions, call to reset after you've manually disabled it somewhere
 /datum/ai_controller/proc/reset_ai_status()

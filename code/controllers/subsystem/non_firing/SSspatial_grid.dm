@@ -80,6 +80,7 @@
 SUBSYSTEM_DEF(spatial_grid)
 	flags = SS_NO_FIRE
 	name = "Spatial Grid"
+	init_order = INIT_ORDER_SPATIAL_GRID
 
 	///list of the spatial_grid_cell datums per z level, arranged in the order of y index then x index
 	var/list/grids_by_z_level = list()
