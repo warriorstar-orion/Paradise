@@ -53,6 +53,7 @@
 #define BB_OBSTACLE_TARGETING_WHITELIST "BB_targeting_whitelist"
 /// some behaviors that check current_target also set this on deep crit mobs
 #define BB_BASIC_MOB_EXECUTION_TARGET "BB_basic_execution_target"
+#define BB_THREAT_MONITOR "BB_THREAT_MONITOR"
 
 //Hunting BB keys
 
