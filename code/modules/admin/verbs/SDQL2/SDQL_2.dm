@@ -15,21 +15,6 @@
 
 */
 
-/client/proc/SDQL2_query()
-	set category = "Debug"
-
-	if(!check_rights(R_PROCCALL))  //Shouldn't happen... but just to be safe.
-		message_admins("<span class='danger'>ERROR: Non-admin [key_name_admin(usr)] attempted to execute a SDQL query!</span>")
-		log_admin("Non-admin [key_name(usr)] attempted to execute a SDQL query!")
-		return
-
-	var/query_text = input("SDQL2 query") as message
-
-	if(!query_text || length(query_text) < 1)
-		return
-
-	run_sdql2_query(query_text)
-
 /client/proc/run_sdql2_query(query_text)
 	if(!check_rights(R_PROCCALL))  //Shouldn't happen... but just to be safe.
 		message_admins("<span class='danger'>ERROR: Non-admin [key_name_admin(usr)] attempted to execute an SDQL query!</span>")

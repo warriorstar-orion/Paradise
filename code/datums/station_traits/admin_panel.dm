@@ -1,11 +1,3 @@
-/// Opens the station traits admin panel
-/datum/admins/proc/station_traits_panel()
-	set name = "Modify Station Traits"
-	set category = "Event"
-
-	var/static/datum/ui_module/station_traits_panel/station_traits_panel = new
-	station_traits_panel.ui_interact(usr)
-
 /datum/ui_module/station_traits_panel
 	var/static/list/future_traits
 

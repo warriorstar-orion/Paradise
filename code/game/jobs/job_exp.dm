@@ -34,44 +34,6 @@ GLOBAL_LIST_INIT(role_playtime_requirements, list(
 
 // Admin Verbs
 
-/client/proc/cmd_mentor_check_player_exp()	//Allows admins to determine who the newer players are.
-	set category = "Admin"
-	set name = "Check Player Playtime"
-	if(!check_rights(R_ADMIN|R_MOD|R_MENTOR))
-		return
-	var/list/msg = list()
-	msg  += "<html><meta charset='utf-8'><head><title>Playtime Report</title></head><body>"
-	var/datum/job/theirjob
-	var/jtext
-	msg += "<table border ='1'><tr><th>Player</th><th>Job</th><th>Crew</th>"
-	for(var/thisdept in EXP_DEPT_TYPE_LIST)
-		msg += "<TH>[thisdept]</TH>"
-	msg += "</TR>"
-	for(var/client/C in GLOB.clients)
-		if(C?.holder?.fakekey && !check_rights(R_ADMIN, FALSE))
-			continue // Skip those in stealth mode if an admin isnt viewing the panel
-
-		msg += "<TR>"
-		if(check_rights(R_ADMIN, 0))
-			msg += "<TD>[key_name_admin(C.mob)]</TD>"
-		else
-			msg += "<TD>[key_name_mentor(C.mob)]</TD>"
-
-		jtext = "-"
-		if(C.mob.mind && C.mob.mind.assigned_role)
-			theirjob = SSjobs.GetJob(C.mob.mind.assigned_role)
-			if(theirjob)
-				jtext = theirjob.title
-		msg += "<TD>[jtext]</TD>"
-
-		msg += "<TD><A href='byond://?_src_=holder;getplaytimewindow=[C.mob.UID()]'>" + C.get_exp_type(EXP_TYPE_CREW) + "</a></TD>"
-		msg += "[C.get_exp_dept_string()]"
-		msg += "</TR>"
-
-	msg += "</TABLE></BODY></HTML>"
-	src << browse(msg.Join(""), "window=Player_playtime_check")
-
-
 /datum/admins/proc/cmd_mentor_show_exp_panel(client/C)
 	if(!C)
 		to_chat(usr, "ERROR: Client not found.")

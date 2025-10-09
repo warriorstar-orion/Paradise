@@ -104,14 +104,3 @@
 	var/datum/browser/popup = new(user, "ccbdblookup-[ckey]", "<div align='center'>CC Ban DB Lookup - [ckey]</div>", 700, 600)
 	popup.set_content(popup_data.Join())
 	popup.open(FALSE)
-
-// Just a simple verb so admins can do manual lookups
-/client/proc/ccbdb_lookup_ckey()
-	set name = "Global Ban DB Lookup"
-	set category = "Admin"
-
-	if(!check_rights(R_ADMIN))
-		return
-
-	var/input_ckey = input(usr, "Please enter a ckey to lookup", "Global Ban DB Lookup")
-	holder.create_ccbdb_lookup(input_ckey)

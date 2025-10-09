@@ -137,14 +137,11 @@
 		var/datum/ui_module/colour_matrix_tester/CMT = new(target=src)
 		CMT.ui_interact(usr)
 
+ADMIN_VERB_ONLY_CONTEXT_MENU(debug_variables, R_ADMIN|R_VIEWRUNTIMES, "\[Admin\] View Variables", datum/thing in world)
+	user.debug_variables(thing)
+
 /client/proc/debug_variables(datum/D in world)
-	set name = "\[Admin\] View Variables"
-
 	var/static/cookieoffset = rand(1, 9999) //to force cookies to reset after the round.
-
-	if(!check_rights(R_ADMIN|R_VIEWRUNTIMES))
-		to_chat(usr, "<span class='warning'>You need to be an administrator to access this.</span>")
-		return
 
 	if(!D)
 		return
