@@ -64,7 +64,9 @@
 	. += "<span class='notice'><b>Ctrl-Click</b> on a surface to set its timer, temperature, and toggle it on or off.</span>"
 
 /obj/machinery/cooking/grill/process()
-	. = ..()
+	// this isn't standardized or anything but this tells us if we have power basically
+	if(..())
+		return
 
 	for(var/datum/cooking_surface/surface in surfaces)
 		if(surface.on)

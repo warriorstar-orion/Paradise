@@ -20,6 +20,11 @@ RESTRICT_TYPE(/obj/machinery/cooking)
 	return ..()
 
 /obj/machinery/cooking/process()
+	// would love to use is_inoperable but interact_offline can't comprehend
+	// something that can do only some things when unpowered but not others.
+	if(stat & (NOPOWER|BROKEN))
+		return
+
 	if(any_surface_active())
 		makeSpeedProcess()
 	else
