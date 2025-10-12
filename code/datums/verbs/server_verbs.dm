@@ -159,7 +159,7 @@
 	SSticker.mode_result = "admin ended"
 
 ADMIN_VERB(toggle_ooc, R_ADMIN, "Toggle OOC", "Globally Toggles OOC", VERB_CATEGORY_SERVER)
-	user.toggle_ooc()
+	toggle_ooc()
 	log_and_message_admins("toggled OOC.")
 	BLACKBOX_LOG_ADMIN_VERB("Toggle OOC")
 

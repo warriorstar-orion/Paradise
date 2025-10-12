@@ -136,7 +136,7 @@ ADMIN_VERB(assume_direct_control, R_ADMIN|R_DEBUG, "Assume direct control", "Dir
 ADMIN_VERB(imprison, R_ADMIN, "Prison", "Send a mob to prison.", VERB_CATEGORY_ADMIN, mob/M as mob in GLOB.mob_list)
 	if(ismob(M))
 		if(is_ai(M))
-			alert(user, "The AI can't be sent to prison you jerk!", null, null, null, null, null)
+			alert(user, "The AI can't be sent to prison you jerk!", null, null, null, null)
 			return
 		//strip their stuff before they teleport into a cell :downs:
 		for(var/obj/item/W in M)
@@ -331,7 +331,7 @@ ADMIN_VERB(send_mob, R_ADMIN, "Send Mob", "Send mob to an area.", VERB_CATEGORY_
 	BLACKBOX_LOG_ADMIN_VERB("Send Mob")
 
 ADMIN_VERB(player_notes, R_ADMIN|R_MOD, "Player Notes", "Open Player Notes panel.", VERB_CATEGORY_ADMIN)
-	user.show_note()
+	show_note()
 
 ADMIN_VERB(player_notes_target, R_ADMIN|R_MOD, "Show Player Notes", "Show Player Notes panel for a given ckey.", VERB_CATEGORY_ADMIN, key as text)
 	show_note(key)
