@@ -407,3 +407,16 @@
 /area/station/maintenance/engineering/subterranean
 	name = "\improper Subterranean Engineering Maintenance"
 	icon_state = "engimaint"
+
+// MARK: Supply
+
+/area/station/maintenance/supply
+	name = "\improper Supply Maintenance"
+
+//  MARK: Service
+
+/area/station/maintenance/janitor
+	name = "\improper Janitor Maintenance"
+
+/area/station/maintenance/kitchen
+	name = "\improper Kitchen Maintenance"
