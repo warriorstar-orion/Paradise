@@ -325,6 +325,9 @@ ADMIN_VERB(vpn_whitelist, R_BAN, "VPN Ckey Whitelist", "Modify ckey's presence o
 	onclose(usr, "game_panel")
 	return
 
+/////////////////////////////////////////////////////////////////////////////////////////////////admins2.dm merge
+//i.e. buttons/verbs
+
 ADMIN_VERB(restart_server, R_SERVER, "Restart", "Restarts the world.", VERB_CATEGORY_SERVER)
 	// Give an extra popup if they are rebooting a live server
 	var/is_live_server = TRUE
@@ -437,7 +440,7 @@ ADMIN_VERB(toggle_emoji, R_ADMIN, "Toggle OOC Emoji", "Toggle OOC Emoji", VERB_C
 	GLOB.configuration.general.enable_ooc_emoji = !(GLOB.configuration.general.enable_ooc_emoji)
 	log_admin("[key_name(usr)] toggled OOC Emoji.")
 	message_admins("[key_name_admin(usr)] toggled OOC Emoji.", 1)
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Toggle OOC Emoji") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Toggle OOC Emoji")
 
 ADMIN_VERB(start_server_now, R_SERVER, "Start Now", "Start the round RIGHT NOW", VERB_CATEGORY_SERVER)
 	if(SSticker.current_state < GAME_STATE_STARTUP)

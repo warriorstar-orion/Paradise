@@ -216,173 +216,6 @@ ADMIN_VERB(air_status, R_DEBUG, "Air Status in Location", "Print out the local a
 	usr.show_message(t, 1)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Air Status (Location)") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/robust_dress_shop(list/potential_minds)
-	var/list/special_outfits = list(
-		"Naked",
-		"As Job...",
-		"Custom..."
-	)
-	if(length(potential_minds))
-		special_outfits += "Recover destroyed body..."
-
-	var/list/outfits = list()
-	var/list/paths = subtypesof(/datum/outfit) - typesof(/datum/outfit/job) - list(/datum/outfit/varedit, /datum/outfit/admin)
-	for(var/path in paths)
-		var/datum/outfit/O = path //not much to initalize here but whatever
-		if(initial(O.can_be_admin_equipped))
-			outfits[initial(O.name)] = path
-	outfits = special_outfits + sortTim(outfits, GLOBAL_PROC_REF(cmp_text_asc))
-
-	var/dresscode = input("Select outfit", "Robust quick dress shop") as null|anything in outfits
-	if(isnull(dresscode))
-		return
-
-	if(outfits[dresscode])
-		dresscode = outfits[dresscode]
-
-	if(dresscode == "As Job...")
-		var/list/job_paths = subtypesof(/datum/outfit/job)
-		var/list/job_outfits = list()
-		for(var/path in job_paths)
-			var/datum/outfit/O = path
-			if(initial(O.can_be_admin_equipped))
-				job_outfits[initial(O.name)] = path
-		job_outfits = sortTim(job_outfits, GLOBAL_PROC_REF(cmp_text_asc))
-
-		dresscode = input("Select job equipment", "Robust quick dress shop") as null|anything in job_outfits
-		dresscode = job_outfits[dresscode]
-		if(isnull(dresscode))
-			return
-
-	if(dresscode == "Custom...")
-		var/list/custom_names = list()
-		for(var/datum/outfit/D in GLOB.custom_outfits)
-			custom_names[D.name] = D
-		var/selected_name = input("Select outfit", "Robust quick dress shop") as null|anything in custom_names
-		dresscode = custom_names[selected_name]
-		if(isnull(dresscode))
-			return
-
-	if(dresscode == "Recover destroyed body...")
-		dresscode = input("Select body to rebuild", "Robust quick dress shop") as null|anything in potential_minds
-
-	return dresscode
-
-ADMIN_VERB_VISIBILITY(start_singulo, VERB_VISIBILITY_FLAG_MOREDEBUG)
-ADMIN_VERB(start_singulo, R_DEBUG, "Start Singularity", "Sets up the singularity and all machines to get power flowing through the station", VERB_CATEGORY_DEBUG)
-	if(alert(user, "Are you sure? This will start up the engine. Should only be used during debug!", null,"Yes","No") != "Yes")
-		return
-
-	for(var/obj/machinery/power/emitter/E in SSmachines.get_by_type(/obj/machinery/power/emitter))
-		if(E.anchored)
-			E.active = TRUE
-
-	for(var/obj/machinery/field/generator/F in SSmachines.get_by_type(/obj/machinery/field/generator))
-		if(!F.active)
-			F.active = TRUE
-			F.state = 2
-			F.energy = 125
-			F.anchored = TRUE
-			F.warming_up = 3
-			F.start_fields()
-			F.update_icon()
-
-	spawn(30)
-		for(var/obj/machinery/the_singularitygen/G in SSmachines.get_by_type(/obj/machinery/the_singularitygen))
-			if(G.anchored)
-				var/obj/singularity/S = new /obj/singularity(get_turf(G))
-				S.energy = 800
-				break
-
-	for(var/obj/machinery/power/rad_collector/Rad in SSmachines.get_by_type(/obj/machinery/power/rad_collector))
-		if(Rad.anchored)
-			if(!Rad.loaded_tank)
-				var/obj/item/tank/internals/plasma/Plasma = new/obj/item/tank/internals/plasma(Rad)
-				Plasma.air_contents.set_toxins(70)
-				Rad.drainratio = 0
-				Rad.loaded_tank = Plasma
-				Plasma.loc = Rad
-
-			if(!Rad.active)
-				Rad.toggle_power()
-
-	for(var/obj/machinery/power/smes/SMES in SSmachines.get_by_type(/obj/machinery/power/smes))
-		if(SMES.anchored)
-			SMES.input_attempt = 1
-
-ADMIN_VERB(debug_mob_lists, R_DEBUG, "Debug Mob Lists", "For when you just gotta know", VERB_CATEGORY_DEBUG)
-	switch(input("Which list?") in list("Players", "Admins", "Mobs", "Living Mobs", "Alive Mobs", "Dead Mobs", "Silicons", "Clients", "Respawnable Mobs"))
-		if("Players")
-			to_chat(user, jointext(GLOB.player_list, ","))
-		if("Admins")
-			to_chat(user, jointext(GLOB.admins, ","))
-		if("Mobs")
-			to_chat(user, jointext(GLOB.mob_list, ","))
-		if("Living Mobs")
-			to_chat(user, jointext(GLOB.mob_living_list, ","))
-		if("Alive Mobs")
-			to_chat(user, jointext(GLOB.alive_mob_list, ","))
-		if("Dead Mobs")
-			to_chat(user, jointext(GLOB.dead_mob_list, ","))
-		if("Silicons")
-			to_chat(user, jointext(GLOB.silicon_mob_list, ","))
-		if("Clients")
-			to_chat(user, jointext(GLOB.clients, ","))
-		if("Respawnable Mobs")
-			var/list/respawnable_mobs
-			for(var/mob/potential_respawnable in GLOB.player_list)
-				if(HAS_TRAIT(potential_respawnable, TRAIT_RESPAWNABLE))
-					respawnable_mobs += potential_respawnable
-			to_chat(user, jointext(respawnable_mobs, ", "))
-
-ADMIN_VERB(display_del_log, R_DEBUG|R_VIEWRUNTIMES, "Display del() Log", "Display del's log of everything that's passed through it.", VERB_CATEGORY_DEBUG)
-	var/list/dellog = list("<B>List of things that have gone through qdel this round</B><BR><BR><ol>")
-	sortTim(SSgarbage.items, GLOBAL_PROC_REF(cmp_qdel_item_time), TRUE)
-	for(var/path in SSgarbage.items)
-		var/datum/qdel_item/I = SSgarbage.items[path]
-		dellog += "<li><u>[path]</u><ul>"
-		if(I.failures)
-			dellog += "<li>Failures: [I.failures]</li>"
-		dellog += "<li>qdel() Count: [I.qdels]</li>"
-		dellog += "<li>Destroy() Cost: [I.destroy_time]ms</li>"
-		if(I.hard_deletes)
-			dellog += "<li>Total Hard Deletes [I.hard_deletes]</li>"
-			dellog += "<li>Time Spent Hard Deleting: [I.hard_delete_time]ms</li>"
-			dellog += "<li>Average References During Hardel: [I.reference_average] references.</li>"
-		if(I.slept_destroy)
-			dellog += "<li>Sleeps: [I.slept_destroy]</li>"
-		if(I.no_respect_force)
-			dellog += "<li>Ignored force: [I.no_respect_force]</li>"
-		if(I.no_hint)
-			dellog += "<li>No hint: [I.no_hint]</li>"
-		dellog += "</ul></li>"
-
-	dellog += "</ol>"
-
-	user << browse(dellog.Join(), "window=dellog")
-
-ADMIN_VERB(display_del_log_simple, R_DEBUG|R_VIEWRUNTIMES, "Display Simple del() Log", \
-		"Display a compacted del's log.", VERB_CATEGORY_DEBUG)
-	var/dat = "<B>List of things that failed to GC this round</B><BR><BR>"
-	for(var/path in SSgarbage.items)
-		var/datum/qdel_item/I = SSgarbage.items[path]
-		if(I.failures)
-			dat += "[I] - [I.failures] times<BR>"
-
-	dat += "<B>List of paths that did not return a qdel hint in Destroy()</B><BR><BR>"
-	for(var/path in SSgarbage.items)
-		var/datum/qdel_item/I = SSgarbage.items[path]
-		if(I.no_hint)
-			dat += "[I]<BR>"
-
-	dat += "<B>List of paths that slept in Destroy()</B><BR><BR>"
-	for(var/path in SSgarbage.items)
-		var/datum/qdel_item/I = SSgarbage.items[path]
-		if(I.slept_destroy)
-			dat += "[I]<BR>"
-
-	user << browse(dat, "window=simpledellog")
-
 /client/proc/cmd_admin_robotize(mob/M in GLOB.mob_list)
 	set category = "Event"
 	set name = "Make Robot"
@@ -728,6 +561,173 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(select_equipment, R_EVENT, "\[Admin\] Select equipm
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Select Equipment") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_admin("[key_name(user)] changed the equipment of [key_name(M)] to [dresscode].")
 	message_admins("<span class='notice'>[key_name_admin(user)] changed the equipment of [key_name_admin(M)] to [dresscode].</span>", 1)
+
+/client/proc/robust_dress_shop(list/potential_minds)
+	var/list/special_outfits = list(
+		"Naked",
+		"As Job...",
+		"Custom..."
+	)
+	if(length(potential_minds))
+		special_outfits += "Recover destroyed body..."
+
+	var/list/outfits = list()
+	var/list/paths = subtypesof(/datum/outfit) - typesof(/datum/outfit/job) - list(/datum/outfit/varedit, /datum/outfit/admin)
+	for(var/path in paths)
+		var/datum/outfit/O = path //not much to initalize here but whatever
+		if(initial(O.can_be_admin_equipped))
+			outfits[initial(O.name)] = path
+	outfits = special_outfits + sortTim(outfits, GLOBAL_PROC_REF(cmp_text_asc))
+
+	var/dresscode = input("Select outfit", "Robust quick dress shop") as null|anything in outfits
+	if(isnull(dresscode))
+		return
+
+	if(outfits[dresscode])
+		dresscode = outfits[dresscode]
+
+	if(dresscode == "As Job...")
+		var/list/job_paths = subtypesof(/datum/outfit/job)
+		var/list/job_outfits = list()
+		for(var/path in job_paths)
+			var/datum/outfit/O = path
+			if(initial(O.can_be_admin_equipped))
+				job_outfits[initial(O.name)] = path
+		job_outfits = sortTim(job_outfits, GLOBAL_PROC_REF(cmp_text_asc))
+
+		dresscode = input("Select job equipment", "Robust quick dress shop") as null|anything in job_outfits
+		dresscode = job_outfits[dresscode]
+		if(isnull(dresscode))
+			return
+
+	if(dresscode == "Custom...")
+		var/list/custom_names = list()
+		for(var/datum/outfit/D in GLOB.custom_outfits)
+			custom_names[D.name] = D
+		var/selected_name = input("Select outfit", "Robust quick dress shop") as null|anything in custom_names
+		dresscode = custom_names[selected_name]
+		if(isnull(dresscode))
+			return
+
+	if(dresscode == "Recover destroyed body...")
+		dresscode = input("Select body to rebuild", "Robust quick dress shop") as null|anything in potential_minds
+
+	return dresscode
+
+ADMIN_VERB_VISIBILITY(start_singulo, VERB_VISIBILITY_FLAG_MOREDEBUG)
+ADMIN_VERB(start_singulo, R_DEBUG, "Start Singularity", "Sets up the singularity and all machines to get power flowing through the station", VERB_CATEGORY_DEBUG)
+	if(alert(user, "Are you sure? This will start up the engine. Should only be used during debug!", null,"Yes","No") != "Yes")
+		return
+
+	for(var/obj/machinery/power/emitter/E in SSmachines.get_by_type(/obj/machinery/power/emitter))
+		if(E.anchored)
+			E.active = TRUE
+
+	for(var/obj/machinery/field/generator/F in SSmachines.get_by_type(/obj/machinery/field/generator))
+		if(!F.active)
+			F.active = TRUE
+			F.state = 2
+			F.energy = 125
+			F.anchored = TRUE
+			F.warming_up = 3
+			F.start_fields()
+			F.update_icon()
+
+	spawn(30)
+		for(var/obj/machinery/the_singularitygen/G in SSmachines.get_by_type(/obj/machinery/the_singularitygen))
+			if(G.anchored)
+				var/obj/singularity/S = new /obj/singularity(get_turf(G))
+				S.energy = 800
+				break
+
+	for(var/obj/machinery/power/rad_collector/Rad in SSmachines.get_by_type(/obj/machinery/power/rad_collector))
+		if(Rad.anchored)
+			if(!Rad.loaded_tank)
+				var/obj/item/tank/internals/plasma/Plasma = new/obj/item/tank/internals/plasma(Rad)
+				Plasma.air_contents.set_toxins(70)
+				Rad.drainratio = 0
+				Rad.loaded_tank = Plasma
+				Plasma.loc = Rad
+
+			if(!Rad.active)
+				Rad.toggle_power()
+
+	for(var/obj/machinery/power/smes/SMES in SSmachines.get_by_type(/obj/machinery/power/smes))
+		if(SMES.anchored)
+			SMES.input_attempt = 1
+
+ADMIN_VERB(debug_mob_lists, R_DEBUG, "Debug Mob Lists", "For when you just gotta know", VERB_CATEGORY_DEBUG)
+	switch(input("Which list?") in list("Players", "Admins", "Mobs", "Living Mobs", "Alive Mobs", "Dead Mobs", "Silicons", "Clients", "Respawnable Mobs"))
+		if("Players")
+			to_chat(user, jointext(GLOB.player_list, ","))
+		if("Admins")
+			to_chat(user, jointext(GLOB.admins, ","))
+		if("Mobs")
+			to_chat(user, jointext(GLOB.mob_list, ","))
+		if("Living Mobs")
+			to_chat(user, jointext(GLOB.mob_living_list, ","))
+		if("Alive Mobs")
+			to_chat(user, jointext(GLOB.alive_mob_list, ","))
+		if("Dead Mobs")
+			to_chat(user, jointext(GLOB.dead_mob_list, ","))
+		if("Silicons")
+			to_chat(user, jointext(GLOB.silicon_mob_list, ","))
+		if("Clients")
+			to_chat(user, jointext(GLOB.clients, ","))
+		if("Respawnable Mobs")
+			var/list/respawnable_mobs
+			for(var/mob/potential_respawnable in GLOB.player_list)
+				if(HAS_TRAIT(potential_respawnable, TRAIT_RESPAWNABLE))
+					respawnable_mobs += potential_respawnable
+			to_chat(user, jointext(respawnable_mobs, ", "))
+
+ADMIN_VERB(display_del_log, R_DEBUG|R_VIEWRUNTIMES, "Display del() Log", "Display del's log of everything that's passed through it.", VERB_CATEGORY_DEBUG)
+	var/list/dellog = list("<B>List of things that have gone through qdel this round</B><BR><BR><ol>")
+	sortTim(SSgarbage.items, GLOBAL_PROC_REF(cmp_qdel_item_time), TRUE)
+	for(var/path in SSgarbage.items)
+		var/datum/qdel_item/I = SSgarbage.items[path]
+		dellog += "<li><u>[path]</u><ul>"
+		if(I.failures)
+			dellog += "<li>Failures: [I.failures]</li>"
+		dellog += "<li>qdel() Count: [I.qdels]</li>"
+		dellog += "<li>Destroy() Cost: [I.destroy_time]ms</li>"
+		if(I.hard_deletes)
+			dellog += "<li>Total Hard Deletes [I.hard_deletes]</li>"
+			dellog += "<li>Time Spent Hard Deleting: [I.hard_delete_time]ms</li>"
+			dellog += "<li>Average References During Hardel: [I.reference_average] references.</li>"
+		if(I.slept_destroy)
+			dellog += "<li>Sleeps: [I.slept_destroy]</li>"
+		if(I.no_respect_force)
+			dellog += "<li>Ignored force: [I.no_respect_force]</li>"
+		if(I.no_hint)
+			dellog += "<li>No hint: [I.no_hint]</li>"
+		dellog += "</ul></li>"
+
+	dellog += "</ol>"
+
+	user << browse(dellog.Join(), "window=dellog")
+
+ADMIN_VERB(display_del_log_simple, R_DEBUG|R_VIEWRUNTIMES, "Display Simple del() Log", \
+		"Display a compacted del's log.", VERB_CATEGORY_DEBUG)
+	var/dat = "<B>List of things that failed to GC this round</B><BR><BR>"
+	for(var/path in SSgarbage.items)
+		var/datum/qdel_item/I = SSgarbage.items[path]
+		if(I.failures)
+			dat += "[I] - [I.failures] times<BR>"
+
+	dat += "<B>List of paths that did not return a qdel hint in Destroy()</B><BR><BR>"
+	for(var/path in SSgarbage.items)
+		var/datum/qdel_item/I = SSgarbage.items[path]
+		if(I.no_hint)
+			dat += "[I]<BR>"
+
+	dat += "<B>List of paths that slept in Destroy()</B><BR><BR>"
+	for(var/path in SSgarbage.items)
+		var/datum/qdel_item/I = SSgarbage.items[path]
+		if(I.slept_destroy)
+			dat += "[I]<BR>"
+
+	user << browse(dat, "window=simpledellog")
 
 ADMIN_VERB(show_gc_queues, R_DEBUG|R_VIEWRUNTIMES, "View GC Queue", \
 		"Shows the list of whats currently in a GC queue", VERB_CATEGORY_DEBUG)

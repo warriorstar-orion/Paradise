@@ -1,18 +1,11 @@
 GLOBAL_LIST_INIT(admin_verbs_admin, list(
-	/client/proc/cmd_mentor_say,
 	/client/proc/update_mob_sprite,
 	/client/proc/man_up,
 	/client/proc/aooc,
 	/client/proc/debug_variables,
-	/client/proc/toggle_mentor_chat,
 	/client/proc/view_instances,
 	/client/proc/ping_all_admins,
 ))
-GLOBAL_LIST_INIT(admin_verbs_sounds, list(
-	/client/proc/play_intercomm_sound,
-	/client/proc/stop_sounds_global,
-	/client/proc/play_sound_tgchat
-	))
 GLOBAL_LIST_INIT(admin_verbs_event, list(
 	/client/proc/object_talk,
 	/client/proc/cmd_admin_gib_self,
@@ -85,12 +78,10 @@ GLOBAL_LIST_INIT(admin_verbs_debug, list(
 	// /client/proc/allow_browser_inspect,
 	))
 GLOBAL_LIST_INIT(admin_verbs_mod, list(
-	/client/proc/cmd_mentor_say,
 	/client/proc/debug_variables,		/*allows us to -see- the variables of any instance in the game. +VAREDIT needed to modify*/
 ))
 GLOBAL_LIST_INIT(admin_verbs_mentor, list(
 	/client/proc/openMentorTicketUI,
-	/client/proc/cmd_mentor_say,	/* mentor say*/
 ))
 GLOBAL_LIST_INIT(admin_verbs_ticket, list(
 	/client/proc/openAdminTicketUI,
@@ -122,7 +113,7 @@ GLOBAL_LIST_INIT(view_runtimes_verbs, list(
 /client/proc/remove_admin_verbs()
 	SSadmin_verbs.deassociate_admin(src)
 
-ADMIN_VERB(hide_verbs, R_NONE, "Adminverbs - Hide All", "Hide most of your admin verbs.", ADMIN_CATEGORY_MAIN)
+ADMIN_VERB(hide_verbs, R_NONE, "Adminverbs - Hide All", "Hide most of your admin verbs.", VERB_CATEGORY_ADMIN)
 	user.remove_admin_verbs()
 	add_verb(user, /client/proc/show_verbs)
 
@@ -154,9 +145,6 @@ ADMIN_VERB(hide_verbs, R_NONE, "Adminverbs - Hide All", "Hide most of your admin
 
 	do_aghost()
 
-ADMIN_VERB(admin_ghost, R_ADMIN|R_MOD, "Aghost", "Aghost self.", VERB_CATEGORY_ADMIN)
-	user.do_aghost()
-
 /client/proc/do_aghost()
 	if(isobserver(mob))
 		//re-enter
@@ -183,6 +171,9 @@ ADMIN_VERB(admin_ghost, R_ADMIN|R_MOD, "Aghost", "Aghost self.", VERB_CATEGORY_A
 		log_admin("[key_name(usr)] has admin-ghosted")
 		// TODO: SStgui.on_transfer() to move windows from old and new
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Aghost") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+ADMIN_VERB(admin_ghost, R_ADMIN|R_MOD, "Aghost", "Aghost self.", VERB_CATEGORY_ADMIN)
+	user.do_aghost()
 
 /// Allow an admin to observe someone.
 /// mentors are allowed to use this verb while living, but with some stipulations:

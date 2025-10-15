@@ -650,21 +650,6 @@ ADMIN_VERB(list_open_jobs, R_ADMIN, "List free slots", "List available station j
 		to_chat(src, "<b>Currently filled job slots (Excluding unlimited): [currentpositiontally] / [totalpositiontally] ([totalpositiontally - currentpositiontally])</b>")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "List Free Slots") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-ADMIN_VERB(gib_mob, R_ADMIN|R_EVENT, "Gib", "Gibs a chosen mob.", VERB_CATEGORY_ADMIN, mob/M as mob in GLOB.mob_list)
-	var/confirm = alert(user, "You sure?", "Confirm", "Yes", "No")
-	if(confirm != "Yes") return
-	//Due to the delay here its easy for something to have happened to the mob
-	if(!M)	return
-
-	log_admin("[key_name(user)] has gibbed [key_name(M)]")
-	message_admins("[key_name_admin(user)] has gibbed [key_name_admin(M)]", 1)
-
-	if(isobserver(M))
-		gibs(M.loc)
-		return
-
-	M.gib()
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Gib") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /client/proc/cmd_admin_explosion(atom/O as obj|mob|turf in view())
 	set category = "Event"
 	set name = "Explosion"
@@ -718,6 +703,22 @@ ADMIN_VERB(gib_mob, R_ADMIN|R_EVENT, "Gib", "Gibs a chosen mob.", VERB_CATEGORY_
 		return
 	else
 		return
+
+ADMIN_VERB(gib_mob, R_ADMIN|R_EVENT, "Gib", "Gibs a chosen mob.", VERB_CATEGORY_ADMIN, mob/M as mob in GLOB.mob_list)
+	var/confirm = alert(user, "You sure?", "Confirm", "Yes", "No")
+	if(confirm != "Yes") return
+	//Due to the delay here its easy for something to have happened to the mob
+	if(!M)	return
+
+	log_admin("[key_name(user)] has gibbed [key_name(M)]")
+	message_admins("[key_name_admin(user)] has gibbed [key_name_admin(M)]", 1)
+
+	if(isobserver(M))
+		gibs(M.loc)
+		return
+
+	M.gib()
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Gib") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_gib_self()
 	set name = "Gibself"

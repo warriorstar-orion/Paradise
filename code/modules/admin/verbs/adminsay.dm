@@ -1,3 +1,10 @@
+#define SAY_ENABLED TRUE
+#define SAY_DISABLED FALSE
+
+GLOBAL_LIST_INIT(say_status, list(
+	"msay" = SAY_ENABLED,
+))
+
 ADMIN_VERB(admin_say, R_ADMIN, "Asay", "Asay", VERB_CATEGORY_HIDDEN, msg as text)
 	msg = emoji_parse(copytext_char(sanitize(msg), 1, MAX_MESSAGE_LEN))
 	if(!msg)
@@ -97,29 +104,16 @@ ADMIN_VERB(staff_say, R_ADMIN|R_MENTOR|R_DEV_TEAM, "Staffsay", "Staffsay", VERB_
 
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Staffsay") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_mentor_say(msg as text)
-	set name = "Msay"
-	set hidden = 1
-
-	#warn fix
-	// if(check_rights(R_MENTOR, FALSE)) // Mentor detected, check if the verb has been disabled for mentors
-	// 	var/msay_found = FALSE
-	// 	for(var/procs as anything in GLOB.admin_verbs_mentor)
-	// 		if(procs == /client/proc/cmd_mentor_say)
-	// 			msay_found = TRUE
-	// 			break
-	// 	if(!msay_found)
-	// 		to_chat(src, "<b>Mentor chat has been disabled.</b>")
-	// 		return
-
-	// else if(!check_rights(R_ADMIN|R_MOD)) // Catch any other non-admins trying to use this proc
-	// 	return
+ADMIN_VERB(mentor_say, R_ADMIN|R_MENTOR|R_MOD, "Msay", "Use mentorsay.", VERB_CATEGORY_HIDDEN, msg as text)
+	if(GLOB.say_status["msay"] != SAY_ENABLED)
+		to_chat(user, "<b>Mentor chat has been disabled.</b>")
+		return
 
 	msg = emoji_parse(copytext_char(sanitize(msg), 1, MAX_MESSAGE_LEN))
 	log_mentorsay(msg, src)
 	var/datum/say/msay = new(usr.ckey, usr.client.holder.rank, msg, world.timeofday)
 	GLOB.msays += msay
-	mob.create_log(OOC_LOG, "MSAY: [msg]")
+	user.mob.create_log(OOC_LOG, "MSAY: [msg]")
 
 	if(!msg)
 		return
@@ -132,38 +126,29 @@ ADMIN_VERB(staff_say, R_ADMIN|R_MENTOR|R_DEV_TEAM, "Staffsay", "Staffsay", VERB_
 		data["message"] = html_decode(msg)
 		SSredis.publish("byond.msay", json_encode(data))
 
-	var/display_color = get_staffsay_color()
+	var/display_color = user.get_staffsay_color()
 	for(var/client/C in GLOB.admins)
 		if(check_rights(R_ADMIN|R_MOD|R_MENTOR, 0, C.mob))
-			var/display_name = key
-			if(holder.fakekey)
+			var/display_name = user.key
+			if(user.holder.fakekey)
 				if(C.holder && C.holder.rights & R_ADMIN)
-					display_name = "[holder.fakekey]/([key])"
+					display_name = "[user.holder.fakekey]/([user.key])"
 				else
-					display_name = holder.fakekey
+					display_name = user.holder.fakekey
 			msg = "<span class='emoji_enabled'>[msg]</span>"
-			to_chat(C, "<span class='[check_rights(R_ADMIN, 0) ? "mentor_channel_admin" : "mentor_channel"]'>MENTOR: <font color='[display_color]'>[display_name]</font> ([admin_jump_link(mob)]): <span class='message'>[msg]</span></span>", MESSAGE_TYPE_MENTORCHAT, confidential = TRUE)
+			to_chat(C, "<span class='[check_rights(R_ADMIN, 0) ? "mentor_channel_admin" : "mentor_channel"]'>MENTOR: <font color='[display_color]'>[display_name]</font> ([admin_jump_link(user.mob)]): <span class='message'>[msg]</span></span>", MESSAGE_TYPE_MENTORCHAT, confidential = TRUE)
 
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Msay") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/toggle_mentor_chat()
-	set category = "Server"
-	set name = "Toggle Mentor Chat"
-	set desc = "Toggle whether mentors have access to the msay command"
-
-	if(!check_rights(R_ADMIN))
-		return
-
+ADMIN_VERB(toggle_mentor_chat, R_ADMIN, "Toggle Mentor Chat", "Toggle whether mentors have access to the msay command", VERB_CATEGORY_SERVER)
 	var/enabling
-	var/msay = /client/proc/cmd_mentor_say
 
-	#warn fix
-	// if(msay in GLOB.admin_verbs_mentor)
-	// 	enabling = FALSE
-	// 	GLOB.admin_verbs_mentor -= msay
-	// else
-	// 	enabling = TRUE
-	// 	GLOB.admin_verbs_mentor += msay
+	if(GLOB.say_status["msay"] == SAY_ENABLED)
+		enabling = FALSE
+		GLOB.say_status["msay"] = SAY_DISABLED
+	else
+		enabling = TRUE
+		GLOB.say_status["msay"] = SAY_ENABLED
 
 	for(var/client/C in GLOB.admins)
 		if(check_rights(R_ADMIN|R_MOD, 0, C.mob))
@@ -171,10 +156,8 @@ ADMIN_VERB(staff_say, R_ADMIN|R_MENTOR|R_DEV_TEAM, "Staffsay", "Staffsay", VERB_
 		if(!check_rights(R_MENTOR, 0, C.mob))
 			continue
 		if(enabling)
-			add_verb(C, msay)
 			to_chat(C, "<b>Mentor chat has been enabled.</b> Use 'msay' to speak in it.")
 		else
-			remove_verb(C, msay)
 			to_chat(C, "<b>Mentor chat has been disabled.</b>")
 
 	log_and_message_admins("toggled mentor chat [enabling ? "on" : "off"].")
@@ -184,3 +167,6 @@ ADMIN_VERB(staff_say, R_ADMIN|R_MENTOR|R_DEV_TEAM, "Staffsay", "Staffsay", VERB_
 	if(!GLOB.configuration.admin.allow_admin_ooc_colour || !check_rights(R_ADMIN, FALSE))
 		return client2rankcolour(src)
 	return prefs.ooccolor
+
+#undef SAY_ENABLED
+#undef SAY_DISABLED
