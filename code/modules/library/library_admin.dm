@@ -2,6 +2,11 @@
 #define LIBRARY_MENU_CKEY     2
 #define LIBRARY_MENU_REPORTS  3
 
+ADMIN_VERB(library_manager, R_ADMIN, "Manage Library", "Manage Flagged Books and Perform Maintenance on the Library System", VERB_CATEGORY_ADMIN)
+	var/datum/ui_module/library_manager/L = new()
+	L.ui_interact(user.mob)
+	BLACKBOX_LOG_ADMIN_VERB("Manage Library")
+
 /datum/ui_module/library_manager
 	name = "Library Manager"
 	///Where we will store our cachedbook datums

@@ -1,3 +1,53 @@
+/// Allows right clicking mobs to send an admin PM to their client.
+/// Forwards the selected mob's client to cmd_admin_pm.
+ADMIN_VERB_ONLY_CONTEXT_MENU(admin_pm_target, R_ADMIN|R_MENTOR, "\[Admin\] Admin PM Mob", mob/M as mob)
+	if(!ismob(M) || !M.client)
+		return
+	user.cmd_admin_pm(M.client, null)
+	BLACKBOX_LOG_ADMIN_VERB("Admin PM Mob")
+
+/// Shows a list of clients we could send PMs to, then forwards our choice to cmd_admin_pm.
+ADMIN_VERB(admin_pm_panel, R_ADMIN|R_MENTOR, "Admin PM Name", "Send a PM by player name.", VERB_CATEGORY_ADMIN)
+	var/list/client/targets[0]
+	for(var/client/T)
+		if(T.mob)
+			if(isnewplayer(T.mob))
+				targets["(New Player) - [T]"] = T
+			else if(isobserver(T.mob))
+				targets["[T.mob.name](Ghost) - [T]"] = T
+			else
+				targets["[T.mob.real_name](as [T.mob.name]) - [T]"] = T
+		else
+			targets["(No Mob) - [T]"] = T
+	var/list/sorted = sortList(targets)
+	var/target = input(src,"To whom shall we send a message?","Admin PM",null) as null|anything in sorted
+	if(!target)
+		return
+	user.cmd_admin_pm(targets[target], null)
+	BLACKBOX_LOG_ADMIN_VERB("Admin PM Name")
+
+/// Shows a list of clients we could send PMs to, then forwards our choice to cmd_admin_pm.
+ADMIN_VERB(admin_pm_by_key_panel, R_ADMIN|R_MENTOR, "Admin PM Key", "Send a PM by key.", VERB_CATEGORY_ADMIN)
+	var/list/client/targets[0]
+	for(var/client/T)
+		if(T?.holder?.big_brother && !check_rights_client(R_PERMISSIONS, FALSE, user)) // normal admins can't see BB
+			continue
+		if(T.mob)
+			if(isnewplayer(T.mob))
+				targets["[T] - (New Player)"] = T
+			else if(isobserver(T.mob))
+				targets["[T] - [T.mob.name](Ghost)"] = T
+			else
+				targets["[T] - [T.mob.real_name](as [T.mob.name])"] = T
+		else
+			targets["(No Mob) - [T]"] = T
+	var/list/sorted = sortList(targets)
+	var/target = input(src,"To whom shall we send a message?","Admin PM",null) as null|anything in sorted
+	if(!target)
+		return
+	user.cmd_admin_pm(targets[target], null)
+	BLACKBOX_LOG_ADMIN_VERB("Admin PM Key")
+
 //takes input from cmd_admin_pm_context, cmd_admin_pm_panel or /client/Topic and sends them a PM.
 //Fetching a message if needed. src is the sender and C is the target client
 /client/proc/cmd_admin_pm(whom, msg, type = "PM", ticket_id = -1)

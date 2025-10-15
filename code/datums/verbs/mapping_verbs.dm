@@ -1,114 +1,3 @@
-ADMIN_VERB_VISIBILITY(mapping_area_test, VERB_VISIBILITY_FLAG_MOREDEBUG)
-ADMIN_VERB(mapping_area_test, R_DEBUG, "Test areas", "Run mapping area test", VERB_CATEGORY_MAPPING)
-	var/list/areas_all = list()
-	var/list/areas_with_APC = list()
-	var/list/areas_with_air_alarm = list()
-	var/list/areas_with_RC = list()
-	var/list/areas_with_light = list()
-	var/list/areas_with_LS = list()
-	var/list/areas_with_intercom = list()
-	var/list/areas_with_camera = list()
-
-	var/list/areas_with_multiple_APCs = list()
-	var/list/areas_with_multiple_air_alarms = list()
-
-	for(var/area/A in world)
-		areas_all |= A.type
-
-	for(var/thing in GLOB.apcs)
-		var/obj/machinery/power/apc/APC = thing
-		var/area/A = get_area(APC)
-		if(!A)
-			continue
-		if(!(A.type in areas_with_APC))
-			areas_with_APC |= A.type
-		else
-			areas_with_multiple_APCs |= A.type
-
-	for(var/thing in GLOB.air_alarms)
-		var/obj/machinery/alarm/alarm = thing
-		var/area/A = get_area(alarm)
-		if(!A)
-			continue
-		if(!(A.type in areas_with_air_alarm))
-			areas_with_air_alarm |= A.type
-		else
-			areas_with_multiple_air_alarms |= A.type
-
-	for(var/obj/machinery/requests_console/RC in SSmachines.get_by_type(/obj/machinery/requests_console))
-		var/area/A = get_area(RC)
-		if(!A)
-			continue
-		areas_with_RC |= A.type
-
-	for(var/obj/machinery/light/L in SSmachines.get_by_type(/obj/machinery/light))
-		var/area/A = get_area(L)
-		if(!A)
-			continue
-		areas_with_light |= A.type
-
-	for(var/obj/machinery/light_switch/LS in SSmachines.get_by_type(/obj/machinery/light_switch))
-		var/area/A = get_area(LS)
-		if(!A)
-			continue
-		areas_with_LS |= A.type
-
-	for(var/obj/item/radio/intercom/I in SSmachines.get_by_type(/obj/item/radio/intercom))
-		var/area/A = get_area(I)
-		if(!A)
-			continue
-		areas_with_intercom |= A.type
-
-	for(var/obj/machinery/camera/C in SSmachines.get_by_type(/obj/machinery/camera))
-		var/area/A = get_area(C)
-		if(!A)
-			continue
-		areas_with_camera |= A.type
-
-	var/list/areas_without_APC = areas_all - areas_with_APC
-	var/list/areas_without_air_alarm = areas_all - areas_with_air_alarm
-	var/list/areas_without_RC = areas_all - areas_with_RC
-	var/list/areas_without_light = areas_all - areas_with_light
-	var/list/areas_without_LS = areas_all - areas_with_LS
-	var/list/areas_without_intercom = areas_all - areas_with_intercom
-	var/list/areas_without_camera = areas_all - areas_with_camera
-
-	to_chat(world, "<b>AREAS WITHOUT AN APC:</b>")
-	for(var/areatype in areas_without_APC)
-		to_chat(world, "* [areatype]")
-
-	to_chat(world, "<b>AREAS WITHOUT AN AIR ALARM:</b>")
-	for(var/areatype in areas_without_air_alarm)
-		to_chat(world, "* [areatype]")
-
-	to_chat(world, "<b>AREAS WITH TOO MANY APCS:</b>")
-	for(var/areatype in areas_with_multiple_APCs)
-		to_chat(world, "* [areatype]")
-
-	to_chat(world, "<b>AREAS WITH TOO MANY AIR ALARMS:</b>")
-	for(var/areatype in areas_with_multiple_air_alarms)
-		to_chat(world, "* [areatype]")
-
-	to_chat(world, "<b>AREAS WITHOUT A REQUEST CONSOLE:</b>")
-	for(var/areatype in areas_without_RC)
-		to_chat(world, "* [areatype]")
-
-	to_chat(world, "<b>AREAS WITHOUT ANY LIGHTS:</b>")
-	for(var/areatype in areas_without_light)
-		to_chat(world, "* [areatype]")
-
-	to_chat(world, "<b>AREAS WITHOUT A LIGHT SWITCH:</b>")
-	for(var/areatype in areas_without_LS)
-		to_chat(world, "* [areatype]")
-
-	to_chat(world, "<b>AREAS WITHOUT ANY INTERCOMS:</b>")
-	for(var/areatype in areas_without_intercom)
-		to_chat(world, "* [areatype]")
-
-	to_chat(world, "<b>AREAS WITHOUT ANY CAMERAS:</b>")
-	for(var/areatype in areas_without_camera)
-		to_chat(world, "* [areatype]")
-
 //- Are all the floors with or without air, as they should be? (regular or airless)
 //- Does the area have an APC?
 //- Does the area have an Air Alarm?
@@ -265,3 +154,23 @@ ADMIN_VERB(debug_object_count_world, R_DEBUG, "Count Objects All", "Count Object
 
 	to_chat(world, "There are [count] objects of type [type_path] in the game world.")
 	BLACKBOX_LOG_ADMIN_VERB("Count Objects (Global)")
+
+ADMIN_VERB(set_next_map, R_SERVER, "Set Next Map", "Set Next Map", VERB_CATEGORY_SERVER)
+	var/list/map_datums = list()
+	for(var/x in subtypesof(/datum/map))
+		var/datum/map/M = x
+		if(initial(M.voteable))
+			map_datums["[initial(M.fluff_name)] ([initial(M.technical_name)])"] = M // Put our map in
+
+	var/target_map_name = input(usr, "Select target map", "Next map", null) as null|anything in map_datums
+
+	if(!target_map_name)
+		return
+
+	var/datum/map/TM = map_datums[target_map_name]
+	SSmapping.next_map = new TM
+	var/announce_to_players = alert(usr, "Do you wish to tell the playerbase about your choice?", "Announce", "Yes", "No")
+	message_admins("[key_name_admin(usr)] has set the next map to [SSmapping.next_map.fluff_name] ([SSmapping.next_map.technical_name])")
+	log_admin("[key_name(usr)] has set the next map to [SSmapping.next_map.fluff_name] ([SSmapping.next_map.technical_name])")
+	if(announce_to_players == "Yes")
+		to_chat(world, "<span class='boldannounceooc'>[user.key] has chosen the following map for next round: <font color='cyan'>[SSmapping.next_map.fluff_name] ([SSmapping.next_map.technical_name])</font></span>")

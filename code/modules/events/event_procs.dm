@@ -1,3 +1,14 @@
+ADMIN_VERB_VISIBILITY(trigger_event, VERB_VISIBILITY_FLAG_MOREDEBUG)
+ADMIN_VERB(trigger_event, R_EVENT, "Trigger Event", "Trigger Event", VERB_CATEGORY_EVENT, event_type in SSevents.allEvents)
+	if(ispath(event_type))
+		new event_type(new /datum/event_meta(EVENT_LEVEL_MAJOR))
+		message_admins("[key_name_admin(usr)] has triggered an event. ([event_type])", 1)
+
+ADMIN_VERB(event_manager_panel, R_EVENT, "Event Manager Panel", "Event Manager Panel", VERB_CATEGORY_EVENT)
+	if(SSevents)
+		SSevents.Interact(usr)
+	BLACKBOX_LOG_ADMIN_VERB("Event Manager")
+
 /proc/findEventArea() //Here's a nice proc to use to find an area for your event to land in!
 	var/list/safe_areas = typecacheof(list(
 		/area/station/turret_protected/ai,

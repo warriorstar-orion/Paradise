@@ -58,6 +58,16 @@ ADMIN_VERB(jump_to, R_ADMIN, "Jump to...", "Area, Mob, Key or Coordinate", VERB_
 		message_admins("[key_name_admin(usr)] jumped to [A]")
 	BLACKBOX_LOG_ADMIN_VERB("Jump To Area")
 
+ADMIN_VERB_ONLY_CONTEXT_MENU(jump_to_turf, R_ADMIN, "\[Admin\] Jump to Turf", turf/T in world)
+	if(isobj(user.mob.loc))
+		var/obj/O = user.mob.loc
+		O.force_eject_occupant(user.mob)
+	log_admin("[key_name(user)] jumped to [T.x], [T.y], [T.z] in [T.loc]")
+	if(!isobserver(user.mob))
+		message_admins("[key_name_admin(user.mob)] jumped to [T.x], [T.y], [T.z] in [T.loc]", 1)
+	admin_forcemove(user.mob, T)
+	BLACKBOX_LOG_ADMIN_VERB("Jump To Turf")
+
 /client/proc/jumptomob(mob/M)
 	set name = "Jump to Mob"
 	if(!M || !check_rights(R_ADMIN))
@@ -107,6 +117,52 @@ ADMIN_VERB(jump_to, R_ADMIN, "Jump to...", "Area, Mob, Key or Coordinate", VERB_
 		O.force_eject_occupant(usr)
 	admin_forcemove(usr, M.loc)
 	BLACKBOX_LOG_ADMIN_VERB("Jump To Key")
+
+ADMIN_VERB_AND_CONTEXT_MENU(teleport_mob, R_ADMIN, "Teleport Mob", "Teleport a mob to your location.", VERB_CATEGORY_ADMIN, mob/M in GLOB.mob_list)
+	if(!istype(M))
+		return
+
+	if(isobj(M.loc))
+		var/obj/O = M.loc
+		O.force_eject_occupant(M)
+	admin_forcemove(M, get_turf(user.mob))
+	log_admin("[key_name(user)] teleported [key_name(M)]")
+	message_admins("[key_name_admin(user)] teleported [key_name_admin(M)]", 1)
+	BLACKBOX_LOG_ADMIN_VERB("Get Mob")
+
+ADMIN_VERB_AND_CONTEXT_MENU(teleport_ckey, R_ADMIN, "Teleport Client", "Teleport a mob to your location by client.", VERB_CATEGORY_ADMIN)
+	var/list/keys = list()
+	for(var/mob/M in GLOB.player_list)
+		keys += M.client
+	var/selection = input("Please, select a player!", "Admin Jumping", null, null) as null|anything in sortKey(keys)
+	if(!selection)
+		return
+	var/mob/M = selection:mob
+
+	if(!M)
+		return
+	log_admin("[key_name(usr)] teleported [key_name(M)]")
+	message_admins("[key_name_admin(usr)] teleported [key_name(M)]", 1)
+	if(M)
+		if(isobj(M.loc))
+			var/obj/O = M.loc
+			O.force_eject_occupant(M)
+		admin_forcemove(M, get_turf(usr))
+		admin_forcemove(usr, M.loc)
+		BLACKBOX_LOG_ADMIN_VERB("Get Key")
+
+ADMIN_VERB(send_mob, R_ADMIN, "Send Mob", "Send mob to an area.", VERB_CATEGORY_ADMIN, mob/M in GLOB.mob_list)
+	var/area/A = input(user, "Pick an area.", "Pick an area") as null|anything in return_sorted_areas()
+	if(!A)
+		return
+
+	if(isobj(M.loc))
+		var/obj/O = M.loc
+		O.force_eject_occupant(M)
+	admin_forcemove(M, pick(get_area_turfs(A)))
+	log_admin("[key_name(user)] teleported [key_name(M)] to [A]")
+	message_admins("[key_name_admin(user)] teleported [key_name_admin(M)] to [A]", 1)
+	BLACKBOX_LOG_ADMIN_VERB("Send Mob")
 
 /proc/admin_forcemove(mob/mover, atom/newloc)
 	mover.forceMove(newloc)
