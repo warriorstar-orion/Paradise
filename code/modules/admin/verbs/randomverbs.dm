@@ -720,22 +720,17 @@ ADMIN_VERB(gib_mob, R_ADMIN|R_EVENT, "Gib", "Gibs a chosen mob.", VERB_CATEGORY_
 	M.gib()
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Gib") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_gib_self()
-	set name = "Gibself"
-	set category = "Event"
-
-	if(!check_rights(R_ADMIN|R_EVENT))
-		return
-
-	var/confirm = alert(src, "You sure?", "Confirm", "Yes", "No")
+ADMIN_VERB(gib_self, R_ADMIN|R_EVENT, "Gibself", "Gibself.", VERB_CATEGORY_EVENT)
+	var/mob/mob = user.mob
+	var/confirm = alert(user, "You sure?", "Confirm", "Yes", "No")
 	if(confirm == "Yes")
 		if(isobserver(mob)) // so they don't spam gibs everywhere
 			return
 		else
 			mob.gib()
 
-		log_admin("[key_name(usr)] used gibself.")
-		message_admins("<span class='notice'>[key_name_admin(usr)] used gibself.</span>", 1)
+		log_admin("[key_name(user)] used gibself.")
+		message_admins("<span class='notice'>[key_name_admin(user)] used gibself.</span>", 1)
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Gibself") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB_ONLY_CONTEXT_MENU(admin_check_contents, R_ADMIN, "\[Admin\] Check Contents", mob/living/M as mob)
@@ -828,22 +823,17 @@ ADMIN_VERB(open_attack_log, R_ADMIN, "Attack Log", "Prints the attack log.", VER
 		to_chat(user, t)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Attack Log") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/everyone_random()
-	set category = "Event"
-	set name = "Make Everyone Random"
-	set desc = "Make everyone have a random appearance. You can only use this before rounds!"
-
-	if(!check_rights(R_SERVER|R_EVENT))
-		return
-
+ADMIN_VERB(everyone_random, R_SERVER|R_EVENT, "Make Everyone Random", \
+		"Make everyone have a random appearance. You can only use this before rounds!", \
+		VERB_CATEGORY_EVENT)
 	if(SSticker && SSticker.mode)
-		to_chat(usr, "Nope you can't do this, the game's already started. This only works before rounds!")
+		to_chat(user, "Nope you can't do this, the game's already started. This only works before rounds!")
 		return
 
 	if(SSticker.random_players)
 		SSticker.random_players = 0
-		message_admins("Admin [key_name_admin(usr)] has disabled \"Everyone is Special\" mode.", 1)
-		to_chat(usr, "Disabled.")
+		message_admins("Admin [key_name_admin(user)] has disabled \"Everyone is Special\" mode.", 1)
+		to_chat(user, "Disabled.")
 		return
 
 
@@ -851,25 +841,20 @@ ADMIN_VERB(open_attack_log, R_ADMIN, "Attack Log", "Prints the attack log.", VER
 	if(notifyplayers == "Cancel")
 		return
 
-	log_admin("Admin [key_name(src)] has forced the players to have random appearances.")
-	message_admins("Admin [key_name_admin(usr)] has forced the players to have random appearances.", 1)
+	log_admin("Admin [key_name(user)] has forced the players to have random appearances.")
+	message_admins("Admin [key_name_admin(user)] has forced the players to have random appearances.", 1)
 
 	if(notifyplayers == "Yes")
-		to_chat(world, "<span class='notice'><b>Admin [usr.key] has forced the players to have completely random identities!</b></span>")
+		to_chat(world, "<span class='notice'><b>Admin [user.key] has forced the players to have completely random identities!</b></span>")
 
-	to_chat(usr, "<i>Remember: you can always disable the randomness by using the verb again, assuming the round hasn't started yet</i>.")
+	to_chat(user, "<i>Remember: you can always disable the randomness by using the verb again, assuming the round hasn't started yet</i>.")
 
 	SSticker.random_players = 1
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Make Everyone Random") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/toggle_random_events()
-	set category = "Event"
-	set name = "Toggle random events on/off"
-
-	set desc = "Toggles random events such as meteors, black holes, blob (but not space dust) on/off"
-	if(!check_rights(R_SERVER|R_EVENT))
-		return
-
+ADMIN_VERB(toggle_random_events, R_SERVER|R_EVENT, "Toggle random events on/off", \
+		"Toggles random events such as meteors, black holes, blob (but not space dust) on/off", \
+		VERB_CATEGORY_EVENT)
 	if(!GLOB.configuration.event.enable_random_events)
 		GLOB.configuration.event.enable_random_events = TRUE
 		to_chat(usr, "Random events enabled")
@@ -978,14 +963,7 @@ ADMIN_VERB(list_ssds_afks, R_ADMIN, "List SSDs and AFKs", "List SSDs and AFK pla
 	msg += "</TABLE></BODY></HTML>"
 	user << browse(msg, "window=Player_ssd_afk_check;size=600x300")
 
-/client/proc/toggle_ert_calling()
-	set category = "Event"
-	set name = "Toggle ERT"
-
-	set desc = "Toggle the station's ability to call a response team."
-	if(!check_rights(R_EVENT))
-		return
-
+ADMIN_VERB(toggle_ert_calling, R_EVENT, "Toggle ERT", "Toggle the station's ability to call a response team.", VERB_CATEGORY_EVENT)
 	if(SSticker.mode.ert_disabled)
 		SSticker.mode.ert_disabled = FALSE
 		to_chat(usr, "<span class='notice'>ERT has been <b>Enabled</b>.</span>")
@@ -997,16 +975,10 @@ ADMIN_VERB(list_ssds_afks, R_ADMIN, "List SSDs and AFKs", "List SSDs and AFK pla
 		log_admin("Admin [key_name(src)] has disabled ERT calling.")
 		message_admins("Admin [key_name_admin(usr)] has disabled ERT calling.", 1)
 
-/client/proc/show_tip()
-	set category = "Event"
-	set name = "Show Custom Tip"
-	set desc = "Sends a tip (that you specify) to all players. After all \
-		you're the experienced player here."
-
-	if(!check_rights(R_EVENT))
-		return
-
-	var/input = input(usr, "Please specify your tip that you want to send to the players.", "Tip", "") as message|null
+ADMIN_VERB(show_tip, R_EVENT, "Show Custom Tip", \
+		"Sends a tip (that you specify) to all players. After all, you're the experienced player here.", \
+		VERB_CATEGORY_EVENT)
+	var/input = input(user, "Please specify your tip that you want to send to the players.", "Tip", "") as message|null
 	if(!input)
 		return
 
@@ -1018,21 +990,15 @@ ADMIN_VERB(list_ssds_afks, R_ADMIN, "List SSDs and AFKs", "List SSDs and AFK pla
 	// If we've already tipped, then send it straight away.
 	if(SSticker.tipped)
 		SSticker.send_tip_of_the_round()
-		message_admins("[key_name_admin(usr)] sent a custom Tip of the round.")
-		log_admin("[key_name(usr)] sent \"[input]\" as the Tip of the Round.")
+		message_admins("[key_name_admin(user)] sent a custom Tip of the round.")
+		log_admin("[key_name(user)] sent \"[input]\" as the Tip of the Round.")
 		return
 
-	message_admins("[key_name_admin(usr)] set the Tip of the round to \"[html_encode(SSticker.selected_tip)]\".")
-	log_admin("[key_name(usr)] sent \"[input]\" as the Tip of the Round.")
+	message_admins("[key_name_admin(user)] set the Tip of the round to \"[html_encode(SSticker.selected_tip)]\".")
+	log_admin("[key_name(user)] sent \"[input]\" as the Tip of the Round.")
 
-/client/proc/modify_goals()
-	set category = "Event"
-	set name = "Modify Station Goals"
-
-	if(!check_rights(R_EVENT))
-		return
-
-	holder.modify_goals()
+ADMIN_VERB(modify_goals, R_EVENT, "Modify Station Goals", "Modify station goals.", VERB_CATEGORY_EVENT)
+	user.holder.modify_goals()
 
 /datum/admins/proc/modify_goals()
 	if(SSticker.current_state < GAME_STATE_PLAYING)

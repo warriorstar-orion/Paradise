@@ -73,6 +73,7 @@ _ADMIN_VERB(verb_path_name, verb_permissions, verb_name, verb_desc, verb_categor
 #define VERB_CATEGORY_DEBUG "Debug"
 #define VERB_CATEGORY_SERVER "Server"
 #define VERB_CATEGORY_MAPPING "Mapping"
+#define VERB_CATEGORY_OOC "OOC"
 
 /// Used in logging uses of admin verbs (and sometimes some non-admin or debug verbs) to the blackbox
 /// Only pass it a string key, the verb being used.

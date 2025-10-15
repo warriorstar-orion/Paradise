@@ -739,13 +739,7 @@ ADMIN_VERB(show_traitor_panel, R_ADMIN|R_MOD, "Show Traitor Panel", "Edit mob's 
 	log_admin("[key_name(usr)] checked the AI laws")
 	message_admins("[key_name_admin(usr)] checked the AI laws")
 
-/client/proc/update_mob_sprite(mob/living/carbon/human/H as mob)
-	set name = "\[Admin\] Update Mob Sprite"
-	set desc = "Should fix any mob sprite update errors."
-
-	if(!check_rights(R_ADMIN))
-		return
-
+ADMIN_VERB_ONLY_CONTEXT_MENU(update_mob_sprite, R_ADMIN, "\[Admin\] Update Mob Sprite", mob/living/carbon/human/H as mob)
 	if(istype(H))
 		H.regenerate_icons()
 

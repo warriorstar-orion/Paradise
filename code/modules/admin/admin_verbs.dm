@@ -1,30 +1,10 @@
-GLOBAL_LIST_INIT(admin_verbs_admin, list(
-	/client/proc/update_mob_sprite,
-	/client/proc/man_up,
-	/client/proc/aooc,
-	/client/proc/debug_variables,
-	/client/proc/view_instances,
-	/client/proc/ping_all_admins,
-))
 GLOBAL_LIST_INIT(admin_verbs_event, list(
-	/client/proc/object_talk,
-	/client/proc/cmd_admin_gib_self,
-	/client/proc/one_click_antag,
-	/client/proc/economy_manager,
-	/client/proc/everyone_random,
-	/client/proc/make_sound,
-	/client/proc/toggle_random_events,
-	/client/proc/toggle_random_events,
-	/client/proc/toggle_ert_calling,
-	/client/proc/set_holiday,
-	/client/proc/show_tip,
 	/client/proc/cmd_admin_change_custom_event,
 	/client/proc/cmd_admin_subtle_message,	/*send an message to somebody as a 'voice in their head'*/
 	/client/proc/cmd_admin_direct_narrate,	/*send text directly to a player with no padding. Useful for narratives and fluff-text*/
 	/client/proc/response_team, // Response Teams admin verb
 	/client/proc/cmd_admin_create_centcom_report,
 	/client/proc/fax_panel,
-	// /client/proc/event_manager_panel,
 	/client/proc/modify_goals,
 	/client/proc/outfit_manager,
 	/client/proc/cmd_admin_headset_message,
@@ -57,16 +37,10 @@ GLOBAL_LIST_INIT(admin_verbs_debug, list(
 	/client/proc/map_template_load,
 	/client/proc/map_template_upload,
 	/client/proc/map_template_load_lazy,
-	// /client/proc/view_runtimes,
 	/client/proc/admin_serialize,
 	/client/proc/uid_log,
 	/client/proc/reestablish_db_connection,
 	/client/proc/ss_breakdown,
-	#ifdef REFERENCE_TRACKING
-	/datum/proc/find_refs,
-	/datum/proc/qdel_then_find_references,
-	/datum/proc/qdel_then_if_fail_find_references,
-	#endif
 	/client/proc/dmapi_debug,
 	/client/proc/dmapi_log,
 	/client/proc/timer_log,
@@ -75,7 +49,6 @@ GLOBAL_LIST_INIT(admin_verbs_debug, list(
 	/client/proc/debug_global_variables,
 	/client/proc/debug_atom_init,
 	/client/proc/debug_bloom,
-	// /client/proc/allow_browser_inspect,
 	))
 GLOBAL_LIST_INIT(admin_verbs_mod, list(
 	/client/proc/debug_variables,		/*allows us to -see- the variables of any instance in the game. +VAREDIT needed to modify*/
@@ -475,21 +448,15 @@ ADMIN_VERB(disease_outbreak, R_EVENT, "Disease Outbreak", "Creates a disease and
 	else
 		message_admins("[key_name_admin(user)] has triggered a custom virus outbreak of [given_disease.name]!")
 
-/client/proc/make_sound(obj/O in view()) // -- TLE
-	set name = "\[Admin\] Make Sound"
-	set desc = "Display a message to everyone who can hear the target"
-
-	if(!check_rights(R_EVENT))
-		return
-
+ADMIN_VERB_ONLY_CONTEXT_MENU(make_sound, R_EVENT, "\[Admin\] Make Sound", obj/O in view())
 	if(O)
 		var/message = clean_input("What do you want the message to be?", "Make Sound")
 		if(!message)
 			return
 		for(var/mob/V in hearers(O))
 			V.show_message(admin_pencode_to_html(message), 2)
-		log_admin("[key_name(usr)] made [O] at [O.x], [O.y], [O.z] make a sound")
-		message_admins("<span class='notice'>[key_name_admin(usr)] made [O] at [O.x], [O.y], [O.z] make a sound</span>")
+		log_admin("[key_name(user)] made [O] at [O.x], [O.y], [O.z] make a sound")
+		message_admins("<span class='notice'>[key_name_admin(user)] made [O] at [O.x], [O.y], [O.z] make a sound</span>")
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Make Sound") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB(toggle_build_mode_self, R_EVENT, "Toggle Build Mode Self", "Toggle Build Mode on yourself.", VERB_CATEGORY_EVENT)
@@ -497,13 +464,8 @@ ADMIN_VERB(toggle_build_mode_self, R_EVENT, "Toggle Build Mode Self", "Toggle Bu
 		togglebuildmode(user.mob)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Toggle Build Mode") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/object_talk(msg as text) // -- TLE
-	set name = "oSay"
-	set desc = "Display a message to everyone who can hear the target"
-
-	if(!check_rights(R_EVENT))
-		return
-
+ADMIN_VERB(object_talk, R_EVENT, "oSay", "Display a message to everyone who can hear the target", VERB_CATEGORY_EVENT, msg as text)
+	var/mob/living/mob = user.mob
 	if(mob.control_object)
 		if(!msg)
 			return
@@ -625,18 +587,12 @@ ADMIN_VERB(free_job_slot, R_ADMIN, "Free Job Slot", "Frees a station job role.",
 		message_admins("[key_name_admin(user)] has freed a job slot for [job].")
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Free Job Slot") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/man_up(mob/T as mob in GLOB.player_list)
-	set name = "\[Admin\] Man Up"
-	set desc = "Tells mob to man up and deal with it."
-
-	if(!check_rights(R_ADMIN))
-		return
-
+ADMIN_VERB_ONLY_CONTEXT_MENU(man_up, R_ADMIN, "\[Admin\] Man Up", mob/T as mob in GLOB.player_list)
 	to_chat(T, chat_box_notice_thick("<span class='notice'><b><font size=4>Man up.<br> Deal with it.</font></b><br>Move on.</span>"))
 	SEND_SOUND(T, sound('sound/voice/manup1.ogg'))
 
-	log_admin("[key_name(usr)] told [key_name(T)] to man up and deal with it.")
-	message_admins("[key_name_admin(usr)] told [key_name(T)] to man up and deal with it.")
+	log_admin("[key_name(user)] told [key_name(T)] to man up and deal with it.")
+	message_admins("[key_name_admin(user)] told [key_name(T)] to man up and deal with it.")
 
 ADMIN_VERB(global_man_up, R_ADMIN, "Man Up Global", "Tells everyone to man up and deal with it.", VERB_CATEGORY_ADMIN)
 	if(tgui_alert(user, "Are you sure you want to send the global message?", "Confirm Man Up Global", list("Yes", "No")) != "No")
