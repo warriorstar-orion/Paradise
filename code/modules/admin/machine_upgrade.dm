@@ -12,4 +12,4 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(machine_upgrade, R_DEBUG, "\[Admin\] Tweak Componen
 		message_admins("[key_name_admin(user)] has set the component rating of [M] to [new_rating]")
 		log_admin("[key_name(user)] has set the component rating of [M] to [new_rating]")
 
-	BLACKBOX_LOG_ADMIN_VERB("Machine Upgrade")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Machine Upgrade") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

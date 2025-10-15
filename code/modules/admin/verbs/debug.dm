@@ -173,7 +173,7 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(call_proc_datum, R_PROCCALL, "\[Admin\] Atom ProcCa
 		var/returnval = WrapAdminProcCall(A, procname, lst) // Pass the lst as an argument list to the proc
 		to_chat(user, "<span class='notice'>[procname] returned: [!isnull(returnval) ? returnval : "null"]</span>")
 
-	BLACKBOX_LOG_ADMIN_VERB("Atom Proc-Call")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Atom Proc-Call") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/get_callproc_args()
 	var/argnum = input("Number of arguments","Number:",0) as num|null
@@ -567,7 +567,7 @@ ADMIN_VERB(grant_full_access, R_EVENT, "Grant Full Access", "Gives mob all-acces
 			H.update_inv_wear_id()
 	else
 		alert(user, "Invalid mob")
-	BLACKBOX_LOG_ADMIN_VERB("Grant Full Access")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Grant Full Access") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_admin("[key_name(user)] has granted [M.key] full access.")
 	message_admins("<span class='notice'>[key_name_admin(user)] has granted [M.key] full access.</span>", 1)
 
@@ -725,7 +725,7 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(select_equipment, R_EVENT, "\[Admin\] Select equipm
 
 	H.regenerate_icons()
 
-	BLACKBOX_LOG_ADMIN_VERB("Select Equipment")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Select Equipment") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_admin("[key_name(user)] changed the equipment of [key_name(M)] to [dresscode].")
 	message_admins("<span class='notice'>[key_name_admin(user)] changed the equipment of [key_name_admin(M)] to [dresscode].</span>", 1)
 

@@ -40,4 +40,4 @@ ADMIN_VERB(dsay, R_ADMIN|R_MOD, "Dsay", "Deadsay", VERB_CATEGORY_HIDDEN, msg as 
 	if(user.holder.fakekey)
 		prefix = "Administrator"
 	say_dead_direct("<span class='name'>[prefix]</span> says, <span class='message'>\"[msg]\"</span>")
-	BLACKBOX_LOG_ADMIN_VERB("Dsay")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Dsay") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

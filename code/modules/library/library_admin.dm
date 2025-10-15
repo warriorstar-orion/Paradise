@@ -5,7 +5,7 @@
 ADMIN_VERB(library_manager, R_ADMIN, "Manage Library", "Manage Flagged Books and Perform Maintenance on the Library System", VERB_CATEGORY_ADMIN)
 	var/datum/ui_module/library_manager/L = new()
 	L.ui_interact(user.mob)
-	BLACKBOX_LOG_ADMIN_VERB("Manage Library")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Manage Library") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/ui_module/library_manager
 	name = "Library Manager"

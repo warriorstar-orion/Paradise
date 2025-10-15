@@ -52,7 +52,7 @@ ADMIN_VERB(debug_camera_view, R_DEBUG, "Camera Range Display", "Camera Range Dis
 				if(!(F in view(7, C.loc)))
 					qdel(F)
 
-	BLACKBOX_LOG_ADMIN_VERB("Camera Range Display")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Camera Range Display") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB_VISIBILITY(debug_camera_report, VERB_VISIBILITY_FLAG_MOREDEBUG)
 ADMIN_VERB(debug_camera_report, R_DEBUG, "Camera Report", "Camera Report", VERB_CATEGORY_MAPPING)
@@ -86,7 +86,7 @@ ADMIN_VERB(debug_camera_report, R_DEBUG, "Camera Report", "Camera Report", VERB_
 
 	output += "</ul>"
 	user << browse(output,"window=airreport;size=1000x500")
-	BLACKBOX_LOG_ADMIN_VERB("Camera Report")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Camera Report") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB_VISIBILITY(debug_view_intercoms, VERB_VISIBILITY_FLAG_MOREDEBUG)
 ADMIN_VERB(debug_view_intercoms, R_DEBUG, "Intercom Range Display", "Intercom Range Display", VERB_CATEGORY_MAPPING)
@@ -137,7 +137,7 @@ ADMIN_VERB(debug_object_count_zlevel, R_DEBUG, "Count Objects On Level", "Count 
 					atom_list += A
 
 	to_chat(world, "There are [count] objects of type [type_path] on z-level [num_level].")
-	BLACKBOX_LOG_ADMIN_VERB("Count Objects (On Level)")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Count Objects (On Level)") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB_VISIBILITY(debug_object_count_world, VERB_VISIBILITY_FLAG_MOREDEBUG)
 ADMIN_VERB(debug_object_count_world, R_DEBUG, "Count Objects All", "Count Objects All", VERB_CATEGORY_MAPPING)
@@ -153,7 +153,7 @@ ADMIN_VERB(debug_object_count_world, R_DEBUG, "Count Objects All", "Count Object
 			count++
 
 	to_chat(world, "There are [count] objects of type [type_path] in the game world.")
-	BLACKBOX_LOG_ADMIN_VERB("Count Objects (Global)")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Count Objects (Global)") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB(set_next_map, R_SERVER, "Set Next Map", "Set Next Map", VERB_CATEGORY_SERVER)
 	var/list/map_datums = list()

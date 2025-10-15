@@ -9,7 +9,7 @@ ADMIN_VERB(redo_space_transitions, R_ADMIN|R_DEBUG, "Remake Space Transitions", 
 	GLOB.space_manager.do_transition_setup()
 	log_admin("[key_name(usr)] re-assigned all space transitions")
 
-	BLACKBOX_LOG_ADMIN_VERB("Remake Space Transitions")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Remake Space Transitions") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB_VISIBILITY(make_turf_space_map, VERB_VISIBILITY_FLAG_MOREDEBUG)
 ADMIN_VERB(make_turf_space_map, R_ADMIN|R_DEBUG, "Make Space Map", "Create a map of the space levels as turfs at your feet", VERB_CATEGORY_DEBUG)
@@ -29,4 +29,4 @@ ADMIN_VERB(make_turf_space_map, R_ADMIN|R_DEBUG, "Make Space Map", "Create a map
 	GLOB.space_manager.map_as_turfs(get_turf(user), sectortype)
 	log_admin("[key_name(user)] made a space map")
 
-	BLACKBOX_LOG_ADMIN_VERB("Make Space Map")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Make Space Map") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

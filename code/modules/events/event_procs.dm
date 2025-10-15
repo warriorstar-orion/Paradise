@@ -7,7 +7,7 @@ ADMIN_VERB(trigger_event, R_EVENT, "Trigger Event", "Trigger Event", VERB_CATEGO
 ADMIN_VERB(event_manager_panel, R_EVENT, "Event Manager Panel", "Event Manager Panel", VERB_CATEGORY_EVENT)
 	if(SSevents)
 		SSevents.Interact(usr)
-	BLACKBOX_LOG_ADMIN_VERB("Event Manager")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Event Manager") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /proc/findEventArea() //Here's a nice proc to use to find an area for your event to land in!
 	var/list/safe_areas = typecacheof(list(

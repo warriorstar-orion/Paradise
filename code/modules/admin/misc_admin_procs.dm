@@ -285,7 +285,7 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(show_player_panel, R_ADMIN|R_MOD, "\[Admin\] Show P
 	"}
 
 	user << browse(body, "window=adminplayeropts;size=550x615")
-	BLACKBOX_LOG_ADMIN_VERB("Show Player Panel")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Show Player Panel") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 #define PLAYER_NOTES_ENTRIES_PER_PAGE 50
 
@@ -342,7 +342,7 @@ ADMIN_VERB(restart_server, R_SERVER, "Restart", "Restarts the world.", VERB_CATE
 			return FALSE
 
 	if(result)
-		BLACKBOX_LOG_ADMIN_VERB("Reboot World")
+		SSblackbox.record_feedback("tally", "admin_verb", 1, "Reboot World") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 		var/init_by = "Initiated by [usr.client.holder.fakekey ? "Admin" : usr.key]."
 		switch(result)
 
@@ -401,12 +401,12 @@ ADMIN_VERB(announce, R_ADMIN, "Announce", "Announce your desires to the world", 
 			if(clients_to_alert.prefs?.sound & SOUND_ADMINHELP)
 				SEND_SOUND(clients_to_alert, sound('sound/misc/server_alert.ogg'))
 
-	BLACKBOX_LOG_ADMIN_VERB("Announce")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Announce") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB(toggle_ooc, R_ADMIN, "Toggle OOC", "Globally Toggles OOC", VERB_CATEGORY_SERVER)
 	toggle_ooc()
 	log_and_message_admins("toggled OOC.")
-	BLACKBOX_LOG_ADMIN_VERB("Toggle OOC")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Toggle OOC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB(toggle_looc, R_ADMIN, "Toggle LOOC", "Globally Toggles LOOC", VERB_CATEGORY_SERVER)
 	GLOB.looc_enabled = !(GLOB.looc_enabled)
@@ -415,7 +415,7 @@ ADMIN_VERB(toggle_looc, R_ADMIN, "Toggle LOOC", "Globally Toggles LOOC", VERB_CA
 	else
 		to_chat(world, "<B>The LOOC channel has been globally disabled!</B>")
 	log_and_message_admins("toggled LOOC.")
-	BLACKBOX_LOG_ADMIN_VERB("Toggle LOOC")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Toggle LOOC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB(toggle_dsay, R_ADMIN, "Toggle DSAY", "Globally Toggles DSAY", VERB_CATEGORY_SERVER)
 	GLOB.dsay_enabled = !(GLOB.dsay_enabled)
@@ -425,19 +425,19 @@ ADMIN_VERB(toggle_dsay, R_ADMIN, "Toggle DSAY", "Globally Toggles DSAY", VERB_CA
 		to_chat(world, "<b>Deadchat has been globally disabled!</b>", MESSAGE_TYPE_DEADCHAT)
 	log_admin("[key_name(usr)] toggled deadchat.")
 	message_admins("[key_name_admin(usr)] toggled deadchat.", 1)
-	BLACKBOX_LOG_ADMIN_VERB("Toggle Deadchat")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Toggle Deadchat") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB(toggle_ooc_dead, R_ADMIN, "Toggle Dead OOC", "Toggle Dead OOC.", VERB_CATEGORY_SERVER)
 	GLOB.dooc_enabled = !(GLOB.dooc_enabled)
 	log_admin("[key_name(usr)] toggled Dead OOC.")
 	message_admins("[key_name_admin(usr)] toggled Dead OOC.", 1)
-	BLACKBOX_LOG_ADMIN_VERB("Toggle Dead OOC")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Toggle Dead OOC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB(toggle_emoji, R_ADMIN, "Toggle OOC Emoji", "Toggle OOC Emoji", VERB_CATEGORY_SERVER)
 	GLOB.configuration.general.enable_ooc_emoji = !(GLOB.configuration.general.enable_ooc_emoji)
 	log_admin("[key_name(usr)] toggled OOC Emoji.")
 	message_admins("[key_name_admin(usr)] toggled OOC Emoji.", 1)
-	BLACKBOX_LOG_ADMIN_VERB("Toggle OOC Emoji")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Toggle OOC Emoji") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB(start_server_now, R_SERVER, "Start Now", "Start the round RIGHT NOW", VERB_CATEGORY_SERVER)
 	if(SSticker.current_state < GAME_STATE_STARTUP)
@@ -459,7 +459,7 @@ ADMIN_VERB(start_server_now, R_SERVER, "Start Now", "Start the round RIGHT NOW",
 		if(SSticker.current_state == GAME_STATE_STARTUP)
 			msg = " (The server is still setting up, but the round will be started as soon as possible.)"
 		message_admins("<span class='darkmblue'>[user.key] has started the game.[msg]</span>")
-		BLACKBOX_LOG_ADMIN_VERB("Start Game")
+		SSblackbox.record_feedback("tally", "admin_verb", 1, "Start Game") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 		return 1
 	else
 		to_chat(user, "<font color='red'>Error: Start Now: Game has already started.</font>")
@@ -478,7 +478,7 @@ ADMIN_VERB(toggle_enter, R_SERVER, "Toggle Entering", "People can't enter", VERB
 	log_admin("[key_name(usr)] toggled new player game entering.")
 	message_admins("[key_name_admin(usr)] toggled new player game entering.", 1)
 	world.update_status()
-	BLACKBOX_LOG_ADMIN_VERB("Toggle Entering")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Toggle Entering") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB(toggle_ai_role, R_EVENT, "Toggle AI", "People can't be AI", VERB_CATEGORY_EVENT)
 	GLOB.configuration.jobs.allow_ai = !(GLOB.configuration.jobs.allow_ai)
@@ -489,7 +489,7 @@ ADMIN_VERB(toggle_ai_role, R_EVENT, "Toggle AI", "People can't be AI", VERB_CATE
 	message_admins("[key_name_admin(user)] toggled AI allowed.")
 	log_admin("[key_name(user)] toggled AI allowed.")
 	world.update_status()
-	BLACKBOX_LOG_ADMIN_VERB("Toggle AI")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Toggle AI") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB(toggle_respawn, R_SERVER, "Toggle Respawn", "Toggle the ability for players to respawn.", VERB_CATEGORY_SERVER)
 	if(!user.is_connecting_from_localhost())
@@ -504,7 +504,7 @@ ADMIN_VERB(toggle_respawn, R_SERVER, "Toggle Respawn", "Toggle the ability for p
 	message_admins("[key_name_admin(user)] toggled respawn to [GLOB.configuration.general.respawn_enabled ? "On" : "Off"].", 1)
 	log_admin("[key_name(user)] toggled respawn to [GLOB.configuration.general.respawn_enabled ? "On" : "Off"].")
 	world.update_status()
-	BLACKBOX_LOG_ADMIN_VERB("Toggle Respawn")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Toggle Respawn") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/delay()
 	set category = "Server"
@@ -523,7 +523,7 @@ ADMIN_VERB(toggle_respawn, R_SERVER, "Toggle Respawn", "Toggle the ability for p
 			return
 
 	if(SSblackbox)
-		BLACKBOX_LOG_ADMIN_VERB("Delay")
+		SSblackbox.record_feedback("tally", "admin_verb", 1, "Delay") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 	if(SSticker.current_state > GAME_STATE_PREGAME)
 		SSticker.delay_end = !SSticker.delay_end
@@ -679,7 +679,7 @@ ADMIN_VERB(show_traitor_panel, R_ADMIN|R_MOD, "Show Traitor Panel", "Edit mob's 
 		return
 
 	M.mind.edit_memory()
-	BLACKBOX_LOG_ADMIN_VERB("Show Traitor Panel")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Show Traitor Panel") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/toggleguests()
 	set category = "Server"

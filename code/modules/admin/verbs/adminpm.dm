@@ -4,7 +4,7 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(admin_pm_target, R_ADMIN|R_MENTOR, "\[Admin\] Admin
 	if(!ismob(M) || !M.client)
 		return
 	user.cmd_admin_pm(M.client, null)
-	BLACKBOX_LOG_ADMIN_VERB("Admin PM Mob")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Admin PM Mob") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /// Shows a list of clients we could send PMs to, then forwards our choice to cmd_admin_pm.
 ADMIN_VERB(admin_pm_panel, R_ADMIN|R_MENTOR, "Admin PM Name", "Send a PM by player name.", VERB_CATEGORY_ADMIN)
@@ -24,7 +24,7 @@ ADMIN_VERB(admin_pm_panel, R_ADMIN|R_MENTOR, "Admin PM Name", "Send a PM by play
 	if(!target)
 		return
 	user.cmd_admin_pm(targets[target], null)
-	BLACKBOX_LOG_ADMIN_VERB("Admin PM Name")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Admin PM Name") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /// Shows a list of clients we could send PMs to, then forwards our choice to cmd_admin_pm.
 ADMIN_VERB(admin_pm_by_key_panel, R_ADMIN|R_MENTOR, "Admin PM Key", "Send a PM by key.", VERB_CATEGORY_ADMIN)
@@ -46,7 +46,7 @@ ADMIN_VERB(admin_pm_by_key_panel, R_ADMIN|R_MENTOR, "Admin PM Key", "Send a PM b
 	if(!target)
 		return
 	user.cmd_admin_pm(targets[target], null)
-	BLACKBOX_LOG_ADMIN_VERB("Admin PM Key")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Admin PM Key") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 //takes input from cmd_admin_pm_context, cmd_admin_pm_panel or /client/Topic and sends them a PM.
 //Fetching a message if needed. src is the sender and C is the target client

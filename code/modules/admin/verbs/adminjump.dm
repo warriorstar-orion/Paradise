@@ -56,7 +56,7 @@ ADMIN_VERB(jump_to, R_ADMIN, "Jump to...", "Area, Mob, Key or Coordinate", VERB_
 	log_admin("[key_name(usr)] jumped to [A]")
 	if(!isobserver(usr))
 		message_admins("[key_name_admin(usr)] jumped to [A]")
-	BLACKBOX_LOG_ADMIN_VERB("Jump To Area")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Jump To Area") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB_ONLY_CONTEXT_MENU(jump_to_turf, R_ADMIN, "\[Admin\] Jump to Turf", turf/T in world)
 	if(isobj(user.mob.loc))
@@ -66,7 +66,7 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(jump_to_turf, R_ADMIN, "\[Admin\] Jump to Turf", tu
 	if(!isobserver(user.mob))
 		message_admins("[key_name_admin(user.mob)] jumped to [T.x], [T.y], [T.z] in [T.loc]", 1)
 	admin_forcemove(user.mob, T)
-	BLACKBOX_LOG_ADMIN_VERB("Jump To Turf")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Jump To Turf") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/jumptomob(mob/M)
 	set name = "Jump to Mob"
@@ -83,7 +83,7 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(jump_to_turf, R_ADMIN, "\[Admin\] Jump to Turf", tu
 		var/mob/A = src.mob
 		var/turf/T = get_turf(M)
 		if(T && isturf(T))
-			BLACKBOX_LOG_ADMIN_VERB("Jump To Mob")
+			SSblackbox.record_feedback("tally", "admin_verb", 1, "Jump To Mob") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 			admin_forcemove(A, M.loc)
 		else
 			to_chat(A, "This mob is not located in the game world.")
@@ -101,7 +101,7 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(jump_to_turf, R_ADMIN, "\[Admin\] Jump to Turf", tu
 		if(isobserver(usr))
 			var/mob/dead/observer/O = usr
 			O.manual_follow(T)
-		BLACKBOX_LOG_ADMIN_VERB("Jump To Coordinate")
+		SSblackbox.record_feedback("tally", "admin_verb", 1, "Jump To Coordinate") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	if(!isobserver(usr))
 		message_admins("[key_name_admin(usr)] jumped to coordinates [tx], [ty], [tz]")
 
@@ -116,7 +116,7 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(jump_to_turf, R_ADMIN, "\[Admin\] Jump to Turf", tu
 		var/obj/O = usr.loc
 		O.force_eject_occupant(usr)
 	admin_forcemove(usr, M.loc)
-	BLACKBOX_LOG_ADMIN_VERB("Jump To Key")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Jump To Key") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB_AND_CONTEXT_MENU(teleport_mob, R_ADMIN, "Teleport Mob", "Teleport a mob to your location.", VERB_CATEGORY_ADMIN, mob/M in GLOB.mob_list)
 	if(!istype(M))
@@ -128,7 +128,7 @@ ADMIN_VERB_AND_CONTEXT_MENU(teleport_mob, R_ADMIN, "Teleport Mob", "Teleport a m
 	admin_forcemove(M, get_turf(user.mob))
 	log_admin("[key_name(user)] teleported [key_name(M)]")
 	message_admins("[key_name_admin(user)] teleported [key_name_admin(M)]", 1)
-	BLACKBOX_LOG_ADMIN_VERB("Get Mob")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Get Mob") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB_AND_CONTEXT_MENU(teleport_ckey, R_ADMIN, "Teleport Client", "Teleport a mob to your location by client.", VERB_CATEGORY_ADMIN)
 	var/list/keys = list()
@@ -149,7 +149,7 @@ ADMIN_VERB_AND_CONTEXT_MENU(teleport_ckey, R_ADMIN, "Teleport Client", "Teleport
 			O.force_eject_occupant(M)
 		admin_forcemove(M, get_turf(usr))
 		admin_forcemove(usr, M.loc)
-		BLACKBOX_LOG_ADMIN_VERB("Get Key")
+		SSblackbox.record_feedback("tally", "admin_verb", 1, "Get Key") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB(send_mob, R_ADMIN, "Send Mob", "Send mob to an area.", VERB_CATEGORY_ADMIN, mob/M in GLOB.mob_list)
 	var/area/A = input(user, "Pick an area.", "Pick an area") as null|anything in return_sorted_areas()
@@ -162,7 +162,7 @@ ADMIN_VERB(send_mob, R_ADMIN, "Send Mob", "Send mob to an area.", VERB_CATEGORY_
 	admin_forcemove(M, pick(get_area_turfs(A)))
 	log_admin("[key_name(user)] teleported [key_name(M)] to [A]")
 	message_admins("[key_name_admin(user)] teleported [key_name_admin(M)] to [A]", 1)
-	BLACKBOX_LOG_ADMIN_VERB("Send Mob")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Send Mob") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /proc/admin_forcemove(mob/mover, atom/newloc)
 	mover.forceMove(newloc)

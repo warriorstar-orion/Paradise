@@ -28,7 +28,7 @@ ADMIN_VERB(admin_say, R_ADMIN, "Asay", "Asay", VERB_CATEGORY_HIDDEN, msg as text
 			temp_message = "<span class='emoji_enabled'>[temp_message]</span>"
 			to_chat(C, "<span class='admin_channel'>ADMIN: <font color='[display_color]'>[key_name(usr, 1)]</font> ([admin_jump_link(user.mob)]): <span class='message'>[temp_message]</span></span>", MESSAGE_TYPE_ADMINCHAT, confidential = TRUE)
 
-	BLACKBOX_LOG_ADMIN_VERB("Asay")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Asay") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB(dev_say, R_ADMIN|R_DEV_TEAM, "Devsay", "Devsay", VERB_CATEGORY_HIDDEN, msg as text)
 	msg = emoji_parse(copytext_char(sanitize(msg), 1, MAX_MESSAGE_LEN))
@@ -60,7 +60,7 @@ ADMIN_VERB(dev_say, R_ADMIN|R_DEV_TEAM, "Devsay", "Devsay", VERB_CATEGORY_HIDDEN
 			msg = "<span class='emoji_enabled'>[msg]</span>"
 			to_chat(C, "<span class='[check_rights(R_ADMIN, 0) ? "dev_channel_admin" : "dev_channel"]'>DEV: <font color='[display_color]'>[display_name]</font> ([admin_jump_link(user.mob)]): <span class='message'>[msg]</span></span>", MESSAGE_TYPE_DEVCHAT, confidential = TRUE)
 
-	BLACKBOX_LOG_ADMIN_VERB("Devsay")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Devsay") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB(staff_say, R_ADMIN|R_MENTOR|R_DEV_TEAM, "Staffsay", "Staffsay", VERB_CATEGORY_HIDDEN, msg as text)
 	if(!check_rights())
@@ -95,7 +95,7 @@ ADMIN_VERB(staff_say, R_ADMIN|R_MENTOR|R_DEV_TEAM, "Staffsay", "Staffsay", VERB_
 			msg = "<span class='emoji_enabled'>[msg]</span>"
 			to_chat(C, "<span class='[check_rights(R_ADMIN, 0) ? "staff_channel_admin" : "staff_channel"]'>STAFF: <font color='[display_color]'>[display_name]</font> ([admin_jump_link(user.mob)]): <span class='message'>[msg]</span></span>", MESSAGE_TYPE_STAFFCHAT, confidential = TRUE)
 
-	BLACKBOX_LOG_ADMIN_VERB("Staffsay")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Staffsay") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_mentor_say(msg as text)
 	set name = "Msay"
@@ -144,7 +144,7 @@ ADMIN_VERB(staff_say, R_ADMIN|R_MENTOR|R_DEV_TEAM, "Staffsay", "Staffsay", VERB_
 			msg = "<span class='emoji_enabled'>[msg]</span>"
 			to_chat(C, "<span class='[check_rights(R_ADMIN, 0) ? "mentor_channel_admin" : "mentor_channel"]'>MENTOR: <font color='[display_color]'>[display_name]</font> ([admin_jump_link(mob)]): <span class='message'>[msg]</span></span>", MESSAGE_TYPE_MENTORCHAT, confidential = TRUE)
 
-	BLACKBOX_LOG_ADMIN_VERB("Msay")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Msay") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/toggle_mentor_chat()
 	set category = "Server"

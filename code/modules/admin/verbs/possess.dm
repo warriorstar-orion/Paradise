@@ -27,7 +27,7 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(possess_object, R_POSSESS, "\[Admin\] Possess Obj",
 	client_mob.name = O.name
 	client_mob.client.eye = O
 	client_mob.control_object = O
-	BLACKBOX_LOG_ADMIN_VERB("Possess Object")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Possess Object") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB_ONLY_CONTEXT_MENU(release_object, R_POSSESS, "\[Admin\] Release Obj", obj/O as obj in world)
 	var/mob/client_mob = user.mob

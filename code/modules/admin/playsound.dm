@@ -41,13 +41,13 @@ ADMIN_VERB(play_sound, R_SOUNDS, "Legacy Play Global Sound", "Send a sound to pl
 			to_chat(M, "<span class='boldannounceic'>[user.ckey] played <code>[S]</code> (<a href='byond://?src=[this_uid];action=silenceSound'>SILENCE</a>) (<a href='byond://?src=[this_uid];action=muteAdmin&a=[user.ckey]'>ALWAYS SILENCE THIS ADMIN</a>)</span>")
 			SEND_SOUND(M, uploaded_sound)
 
-	BLACKBOX_LOG_ADMIN_VERB("Play Global Sound")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Play Global Sound") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB(play_local_sound, R_SOUNDS, "Play Local Sound", "Send a sound to players", VERB_CATEGORY_EVENT, S as sound)
 	log_admin("[key_name(user)] played a local sound [S]")
 	message_admins("[key_name_admin(user)] played a local sound [S]", 1)
 	playsound(get_turf(user.mob), S, 50, FALSE, 0)
-	BLACKBOX_LOG_ADMIN_VERB("Play Local Sound")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Play Local Sound") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB(play_server_sound, R_SOUNDS, "Play Server Sound", "Send a sound to players", VERB_CATEGORY_EVENT)
 	var/list/sounds = file2list("sound/serversound_list.txt")

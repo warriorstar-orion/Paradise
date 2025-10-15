@@ -37,7 +37,7 @@ ADMIN_VERB(imprison, R_ADMIN, "Prison", "Send a mob to prison.", VERB_CATEGORY_A
 			to_chat(M, "<span class='warning'>You have been sent to the prison station!</span>")
 		log_admin("[key_name(usr)] sent [key_name(M)] to the prison station.")
 		message_admins("<span class='notice'>[key_name_admin(usr)] sent [key_name_admin(M)] to the prison station.</span>", 1)
-		BLACKBOX_LOG_ADMIN_VERB("Prison")
+		SSblackbox.record_feedback("tally", "admin_verb", 1, "Prison") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_subtle_message(mob/M as mob in GLOB.mob_list)
 	set name = "\[Admin\] Subtle Message"
@@ -183,7 +183,7 @@ ADMIN_VERB(godmode, R_ADMIN, "Godmode", "Toggles godmode on a mob.", VERB_CATEGO
 
 	log_admin("[key_name(usr)] has toggled [key_name(M)]'s nodamage to [(M.status_flags & GODMODE) ? "On" : "Off"]")
 	message_admins("[key_name_admin(usr)] has toggled [key_name_admin(M)]'s nodamage to [(M.status_flags & GODMODE) ? "On" : "Off"]", 1)
-	BLACKBOX_LOG_ADMIN_VERB("Godmode")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Godmode") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /proc/cmd_admin_mute(mob/M as mob, mute_type, automute = 0)
 	if(automute)
@@ -227,7 +227,7 @@ ADMIN_VERB(godmode, R_ADMIN, "Godmode", "Toggles godmode on a mob.", VERB_CATEGO
 		log_admin("SPAM AUTOMUTE: [muteunmute] [key_name(M)] from [mute_string]")
 		message_admins("SPAM AUTOMUTE: [muteunmute] [key_name_admin(M)] from [mute_string].", 1)
 		to_chat(M, "You have been [muteunmute] from [mute_string] by the SPAM AUTOMUTE system. Contact an admin.")
-		BLACKBOX_LOG_ADMIN_VERB("Automute")
+		SSblackbox.record_feedback("tally", "admin_verb", 1, "Automute") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 		return
 
 	toggle_mute(M.client.ckey, mute_type)
@@ -240,7 +240,7 @@ ADMIN_VERB(godmode, R_ADMIN, "Godmode", "Toggles godmode on a mob.", VERB_CATEGO
 	log_admin("[key_name(usr)] has [muteunmute] [key_name(M)] from [mute_string]")
 	message_admins("[key_name_admin(usr)] has [muteunmute] [key_name_admin(M)] from [mute_string].", 1)
 	to_chat(M, "You have been [muteunmute] from [mute_string].")
-	BLACKBOX_LOG_ADMIN_VERB("Mute")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Mute") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB(add_random_ai_law, R_EVENT, "Add Random AI Law", "Add a random law to the AI.", VERB_CATEGORY_EVENT)
 	var/confirm = alert(user, "You sure?", "Confirm", "Yes", "No")
@@ -551,7 +551,7 @@ ADMIN_VERB(add_freeform_ai_law, R_EVENT, "Add Custom AI law", "Add custom AI law
 	var/announce_ion_laws = (show_log == "Yes" ? 1 : -1)
 
 	new /datum/event/ion_storm(botEmagChance = 0, announceEvent = announce_ion_laws, ionMessage = input)
-	BLACKBOX_LOG_ADMIN_VERB("Add Custom AI Law")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Add Custom AI Law") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB_VISIBILITY(admin_rejuvenate, VERB_VISIBILITY_FLAG_MOREDEBUG)
 ADMIN_VERB_ONLY_CONTEXT_MENU(admin_rejuvenate, R_REJUVINATE, "\[Admin\] Rejuvenate", mob/living/M as mob in GLOB.mob_list)
@@ -562,7 +562,7 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(admin_rejuvenate, R_REJUVINATE, "\[Admin\] Rejuvena
 
 	log_admin("[key_name(user)] healed / revived [key_name(M)]")
 	message_admins("<span class='warning'>Admin [key_name_admin(user)] healed / revived [key_name_admin(M)]!</span>", 1)
-	BLACKBOX_LOG_ADMIN_VERB("Rejuvenate")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Rejuvenate") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_create_centcom_report()
 	set category = "Event"
@@ -628,7 +628,7 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(admin_delete, R_ADMIN, "\[Admin\] Delete", atom/A a
 	if(alert(src, "Are you sure you want to delete:\n[D]\n[coords]?", "Confirmation", "Yes", "No") == "Yes")
 		log_admin("[key_name(usr)] deleted [D] [coords]")
 		message_admins("[key_name_admin(usr)] deleted [D] [coords]", 1)
-		BLACKBOX_LOG_ADMIN_VERB("Delete")
+		SSblackbox.record_feedback("tally", "admin_verb", 1, "Delete") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 		if(isturf(D))
 			var/turf/T = D
 			T.ChangeTurf(T.baseturf)
@@ -648,7 +648,7 @@ ADMIN_VERB(list_open_jobs, R_ADMIN, "List free slots", "List available station j
 				currentpositiontally += job.current_positions
 				totalpositiontally += job.total_positions
 		to_chat(src, "<b>Currently filled job slots (Excluding unlimited): [currentpositiontally] / [totalpositiontally] ([totalpositiontally - currentpositiontally])</b>")
-	BLACKBOX_LOG_ADMIN_VERB("List Free Slots")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "List Free Slots") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB(gib_mob, R_ADMIN|R_EVENT, "Gib", "Gibs a chosen mob.", VERB_CATEGORY_ADMIN, mob/M as mob in GLOB.mob_list)
 	var/confirm = alert(user, "You sure?", "Confirm", "Yes", "No")
@@ -664,7 +664,7 @@ ADMIN_VERB(gib_mob, R_ADMIN|R_EVENT, "Gib", "Gibs a chosen mob.", VERB_CATEGORY_
 		return
 
 	M.gib()
-	BLACKBOX_LOG_ADMIN_VERB("Gib")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Gib") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /client/proc/cmd_admin_explosion(atom/O as obj|mob|turf in view())
 	set category = "Event"
 	set name = "Explosion"
@@ -691,7 +691,7 @@ ADMIN_VERB(gib_mob, R_ADMIN|R_EVENT, "Gib", "Gibs a chosen mob.", VERB_CATEGORY_
 		explosion(O, devastation, heavy, light, flash, null, null,flames, cause = "[ckey]: Explosion command")
 		log_admin("[key_name(usr)] created an explosion ([devastation],[heavy],[light],[flames]) at ([O.x],[O.y],[O.z])")
 		message_admins("[key_name_admin(usr)] created an explosion ([devastation],[heavy],[light],[flames]) at ([O.x],[O.y],[O.z])")
-		BLACKBOX_LOG_ADMIN_VERB("EXPL")
+		SSblackbox.record_feedback("tally", "admin_verb", 1, "EXPL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 		return
 	else
 		return
@@ -713,7 +713,7 @@ ADMIN_VERB(gib_mob, R_ADMIN|R_EVENT, "Gib", "Gibs a chosen mob.", VERB_CATEGORY_
 		empulse(O, heavy, light)
 		log_admin("[key_name(usr)] created an EM pulse ([heavy], [light]) at ([O.x],[O.y],[O.z])")
 		message_admins("[key_name_admin(usr)] created an EM pulse ([heavy], [light]) at ([O.x],[O.y],[O.z])", 1)
-		BLACKBOX_LOG_ADMIN_VERB("EMP")
+		SSblackbox.record_feedback("tally", "admin_verb", 1, "EMP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 		return
 	else
@@ -735,14 +735,14 @@ ADMIN_VERB(gib_mob, R_ADMIN|R_EVENT, "Gib", "Gibs a chosen mob.", VERB_CATEGORY_
 
 		log_admin("[key_name(usr)] used gibself.")
 		message_admins("<span class='notice'>[key_name_admin(usr)] used gibself.</span>", 1)
-		BLACKBOX_LOG_ADMIN_VERB("Gibself")
+		SSblackbox.record_feedback("tally", "admin_verb", 1, "Gibself") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB_ONLY_CONTEXT_MENU(admin_check_contents, R_ADMIN, "\[Admin\] Check Contents", mob/living/M as mob)
 	var/list/L = M.get_contents()
 	for(var/t in L)
 		to_chat(user, "[t]")
 
-	BLACKBOX_LOG_ADMIN_VERB("Check Contents")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Check Contents") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB(toggle_view_range, R_ADMIN, "Change View Range", "Change tile view range.", VERB_CATEGORY_ADMIN)
 	if(user.view == world.view)
@@ -751,7 +751,7 @@ ADMIN_VERB(toggle_view_range, R_ADMIN, "Change View Range", "Change tile view ra
 		user.view = world.view
 
 	log_admin("[key_name(user)] changed their view range to [user.view].")
-	BLACKBOX_LOG_ADMIN_VERB("Change View Range")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Change View Range") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB(call_shuttle, R_ADMIN, "Call Shuttle", "Calls the shuttle.", VERB_CATEGORY_ADMIN)
 	if(SSshuttle.emergency.mode >= SHUTTLE_DOCKED)
@@ -772,7 +772,7 @@ ADMIN_VERB(call_shuttle, R_ADMIN, "Call Shuttle", "Calls the shuttle.", VERB_CAT
 
 	log_admin("[key_name(usr)] admin-called the emergency shuttle.")
 	message_admins("<span class='adminnotice'>[key_name_admin(usr)] admin-called the emergency shuttle.</span>")
-	BLACKBOX_LOG_ADMIN_VERB("Call Shuttle")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Call Shuttle") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB(cancel_shuttle, R_ADMIN, "Cancel Shuttle", "Cancels the shuttle.", VERB_CATEGORY_ADMIN)
 	if(alert(user, "You sure?", "Confirm", "Yes", "No") != "Yes") return
@@ -794,7 +794,7 @@ ADMIN_VERB(cancel_shuttle, R_ADMIN, "Cancel Shuttle", "Cancels the shuttle.", VE
 
 	log_admin("[key_name(usr)] admin-recalled the emergency shuttle.")
 	message_admins("<span class='adminnotice'>[key_name_admin(usr)] admin-recalled the emergency shuttle.</span>")
-	BLACKBOX_LOG_ADMIN_VERB("Cancel Shuttle")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Cancel Shuttle") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB(deny_shuttle, R_ADMIN, "Toggle Deny Shuttle", "Toggles crew shuttle calling-ability.", VERB_CATEGORY_ADMIN)
 	if(SSticker.current_state < GAME_STATE_PLAYING)
@@ -805,7 +805,7 @@ ADMIN_VERB(deny_shuttle, R_ADMIN, "Toggle Deny Shuttle", "Toggles crew shuttle c
 	if(alert == "Cancel")
 		return
 
-	BLACKBOX_LOG_ADMIN_VERB("Toggle Deny Shuttle")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Toggle Deny Shuttle") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 	if(alert == "Allow")
 		if(!length(SSshuttle.hostile_environments))
@@ -825,7 +825,7 @@ ADMIN_VERB(open_attack_log, R_ADMIN, "Attack Log", "Prints the attack log.", VER
 	to_chat(user, "<span class='danger'>Attack Log for [M]</span>")
 	for(var/t in M.attack_log_old)
 		to_chat(user, t)
-	BLACKBOX_LOG_ADMIN_VERB("Attack Log")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Attack Log") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/everyone_random()
 	set category = "Event"
@@ -889,7 +889,7 @@ ADMIN_VERB(reset_telecoms, R_ADMIN, "Reset NTTC Configuration", "Resets NTTC to 
 
 	log_admin("[key_name(user)] reset NTTC scripts.")
 	message_admins("[key_name_admin(user)] reset NTTC scripts.")
-	BLACKBOX_LOG_ADMIN_VERB("Reset NTTC Configuration")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Reset NTTC Configuration") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB(list_ssds_afks, R_ADMIN, "List SSDs and AFKs", "List SSDs and AFK players", VERB_CATEGORY_ADMIN)
 	/* ======== SSD Section ========= */

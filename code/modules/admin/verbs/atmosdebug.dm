@@ -1,6 +1,6 @@
 ADMIN_VERB_VISIBILITY(debug_check_piping, VERB_VISIBILITY_FLAG_MOREDEBUG)
 ADMIN_VERB(debug_check_piping, R_ADMIN, "Check Piping", "Check Piping", VERB_CATEGORY_MAPPING)
-	BLACKBOX_LOG_ADMIN_VERB("Check Piping")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Check Piping") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 	if(alert(user, "WARNING: This command should not be run on a live server. Do you want to continue?", "Check Piping", "No", "Yes") == "No")
 		return
@@ -36,7 +36,7 @@ ADMIN_VERB(debug_check_piping, R_ADMIN, "Check Piping", "Check Piping", VERB_CAT
 
 ADMIN_VERB_VISIBILITY(debug_power, VERB_VISIBILITY_FLAG_MOREDEBUG)
 ADMIN_VERB(debug_power, R_ADMIN, "Check Power", "Check Power", VERB_CATEGORY_MAPPING)
-	BLACKBOX_LOG_ADMIN_VERB("Check Power")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Check Power") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 	for(var/datum/regional_powernet/PN in SSmachines.powernets)
 		if(!PN.nodes || !length(PN.nodes))
