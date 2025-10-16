@@ -39,30 +39,23 @@ ADMIN_VERB(imprison, R_ADMIN, "Prison", "Send a mob to prison.", VERB_CATEGORY_A
 		message_admins("<span class='notice'>[key_name_admin(usr)] sent [key_name_admin(M)] to the prison station.</span>", 1)
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Prison") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_subtle_message(mob/M as mob in GLOB.mob_list)
-	set name = "\[Admin\] Subtle Message"
-
+ADMIN_VERB_ONLY_CONTEXT_MENU(subtle_message, R_EVENT, "\[Admin\] Subtle Message", mob/M as mob in GLOB.mob_list)
 	if(!ismob(M))
 		return
 
-	if(!check_rights(R_EVENT))
-		return
-
-	var/msg = clean_input("Message:", "Subtle PM to [M.key]")
+	var/msg = clean_input(user, "Message:", "Subtle PM to [M.key]")
 
 	if(!msg)
 		return
 
 	msg = admin_pencode_to_html(msg)
 
-	if(usr)
-		if(usr.client)
-			if(usr.client.holder)
-				to_chat(M, "<b>You hear a voice in your head... <i>[msg]</i></b>")
+	if(user.holder)
+		to_chat(M, "<b>You hear a voice in your head... <i>[msg]</i></b>")
 
-	log_admin("SubtlePM: [key_name(usr)] -> [key_name(M)] : [msg]")
-	message_admins("<span class='boldnotice'>Subtle Message: [key_name_admin(usr)] -> [key_name_admin(M)] : [msg]</span>", 1)
-	M.create_log(MISC_LOG, "Subtle Message: [msg]", "From: [key_name_admin(usr)]")
+	log_admin("SubtlePM: [key_name(user)] -> [key_name(M)] : [msg]")
+	message_admins("<span class='boldnotice'>Subtle Message: [key_name_admin(user)] -> [key_name_admin(M)] : [msg]</span>", 1)
+	M.create_log(MISC_LOG, "Subtle Message: [msg]", "From: [key_name_admin(user)]")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Subtle Message") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ADMIN_VERB(check_new_players, R_MENTOR|R_MOD|R_ADMIN, "Check New Players", "Perform a player account age check.", VERB_CATEGORY_ADMIN)
@@ -118,34 +111,27 @@ ADMIN_VERB(global_narrate, R_SERVER|R_EVENT, "Global Narrate", "Narrate text to 
 	message_admins("<span class='boldnotice'>GlobalNarrate: [key_name_admin(user)]: [msg]<BR></span>", 1)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Global Narrate")
 
-/client/proc/cmd_admin_direct_narrate(mob/M)	// Targetted narrate -- TLE
-	set name = "\[Admin\] Direct Narrate"
-
-	if(!check_rights(R_SERVER|R_EVENT))
-		return
-
+ADMIN_VERB_ONLY_CONTEXT_MENU(direct_narrate, R_SERVER|R_EVENT, "\[Admin\] Direct Narrate", mob/M)
 	if(!M)
-		M = input("Direct narrate to who?", "Active Players") as null|anything in get_mob_with_client_list()
+		M = input(user, "Direct narrate to who?", "Active Players") as null|anything in get_mob_with_client_list()
 
 	if(!M)
 		return
 
-	var/msg = clean_input("Message:", "Enter the text you wish to appear to your target:")
+	var/msg = clean_input(user, "Message:", "Enter the text you wish to appear to your target:")
 
 	if(!msg)
 		return
 	msg = admin_pencode_to_html(msg)
 
 	to_chat(M, msg)
-	log_admin("DirectNarrate: [key_name(usr)] to ([key_name(M)]): [msg]")
-	message_admins("<span class='boldnotice'>Direct Narrate: [key_name_admin(usr)] to ([key_name_admin(M)]): [msg]<br></span>", 1)
-	M.create_log(MISC_LOG, "Direct Narrate: [msg]", "From: [key_name_admin(usr)]")
+	log_admin("DirectNarrate: [key_name(user)] to ([key_name(M)]): [msg]")
+	message_admins("<span class='boldnotice'>Direct Narrate: [key_name_admin(user)] to ([key_name_admin(M)]): [msg]<br></span>", 1)
+	M.create_log(MISC_LOG, "Direct Narrate: [msg]", "From: [key_name_admin(user)]")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Direct Narrate") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_headset_message(mob/M in GLOB.mob_list)
-	set name = "\[Admin\] Headset Message"
-
-	admin_headset_message(M)
+ADMIN_VERB_ONLY_CONTEXT_MENU(headset_message, R_SERVER|R_EVENT, "\[Admin\] Headset Message", mob/M in GLOB.mob_list)
+	user.admin_headset_message(M)
 
 /client/proc/admin_headset_message(mob/M in GLOB.mob_list, sender = null)
 	var/mob/living/carbon/human/H = M
@@ -564,14 +550,8 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(admin_rejuvenate, R_REJUVINATE, "\[Admin\] Rejuvena
 	message_admins("<span class='warning'>Admin [key_name_admin(user)] healed / revived [key_name_admin(M)]!</span>", 1)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Rejuvenate") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_create_centcom_report()
-	set category = "Event"
-	set name = "Create Communications Report"
-
-	if(!check_rights(R_SERVER|R_EVENT))
-		return
-
-//the stuff on the list is |"report type" = "report title"|, if that makes any sense
+ADMIN_VERB(create_centcom_report, R_SERVER|R_EVENT, "Create Communications Report", "Send an IC announcement to the game world.", VERB_CATEGORY_EVENT)
+	//the stuff on the list is |"report type" = "report title"|, if that makes any sense
 	var/list/MsgType = list("Central Command Report" = "Nanotrasen Update",
 		"Syndicate Communique" = "Syndicate Message",
 		"Space Wizard Federation Message" = "Sorcerous Message",
@@ -1062,16 +1042,11 @@ ADMIN_VERB(modify_goals, R_EVENT, "Modify Station Goals", "Modify station goals.
 						return
 			REMOVE_TRAIT(D, chosen_trait, source)
 
-/client/proc/create_crate(object as text)
-	set name = "Create Crate"
-	set desc = "Spawn a crate from a supplypack datum. Append a period to the text in order to exclude subtypes of paths matching the input."
-	set category = "Event"
-
-	if(!check_rights(R_SPAWN))
-		return
-
+ADMIN_VERB(create_crate, R_SPAWN, "Create Crate", \
+		"Spawn a crate from a supplypack datum. Append a period to the text in order to exclude subtypes of paths matching the input.", \
+		VERB_CATEGORY_EVENT,
+		object as text)
 	var/list/types = SSeconomy.supply_packs
-
 	var/list/matches = list()
 
 	var/include_subtypes = TRUE
@@ -1092,12 +1067,12 @@ ADMIN_VERB(modify_goals, R_EVENT, "Modify Station Goals", "Modify station goals.
 	if(!length(matches))
 		return
 
-	var/chosen = input("Select a supply crate type", "Create Crate", matches[1]) as null|anything in matches
+	var/chosen = input(user, "Select a supply crate type", "Create Crate", matches[1]) as null|anything in matches
 	if(!chosen)
 		return
 	var/datum/supply_packs/the_pack = new chosen()
 
-	var/spawn_location = get_turf(usr)
+	var/spawn_location = get_turf(user)
 	if(!spawn_location)
 		return
 	var/obj/structure/closet/crate/crate = the_pack.create_package(spawn_location)
@@ -1106,5 +1081,5 @@ ADMIN_VERB(modify_goals, R_EVENT, "Modify Station Goals", "Modify station goals.
 		A.admin_spawned = TRUE
 	qdel(the_pack)
 
-	log_admin("[key_name(usr)] created a '[chosen]' crate at ([usr.x],[usr.y],[usr.z])")
+	log_admin("[key_name(user)] created a '[chosen]' crate at ([COORD(user.mob)])")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Create Crate") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

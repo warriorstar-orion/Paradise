@@ -2533,7 +2533,7 @@
 			to_chat(owner, "<span class='notice'>You sent [reason] to [H] via a secure channel.</span>")
 			to_chat(H, "<span class='specialnotice bold'>Incoming priority transmission from Central Command. Message as follows,</span><span class='specialnotice'> Your ERT request has been denied for the following reasons: [reason].</span>")
 		else
-			owner.response_team()
+			SSadmin_verbs.invoke_verb(owner, /datum/admin_verb/dispatch_ert)
 
 
 	else if(href_list["AdminFaxView"])
@@ -2779,23 +2779,18 @@
 		SSadmin_verbs.invoke_verb(usr, /datum/admin_verb/send_mob, M)
 
 	else if(href_list["narrateto"])
-		if(!check_rights(R_ADMIN))	return
-
 		var/mob/M = locateUID(href_list["narrateto"])
 		if(!ismob(M))
 			to_chat(usr, "<span class='warning'>This can only be used on instances of type /mob</span>")
 			return
-		usr.client.cmd_admin_direct_narrate(M)
+		SSadmin_verbs.invoke_verb(usr, /datum/admin_verb/direct_narrate, M)
 
 	else if(href_list["subtlemessage"])
-		if(!check_rights(R_EVENT))
-			return
-
 		var/mob/M = locateUID(href_list["subtlemessage"])
 		if(!ismob(M))
 			to_chat(usr, "<span class='warning'>This can only be used on instances of type /mob</span>")
 			return
-		usr.client.cmd_admin_subtle_message(M)
+		SSadmin_verbs.invoke_verb(usr, /datum/admin_verb/subtle_message, M)
 
 	else if(href_list["traitor"])
 		if(SSticker.current_state < GAME_STATE_PLAYING)

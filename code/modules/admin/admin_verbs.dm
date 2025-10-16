@@ -1,27 +1,4 @@
-GLOBAL_LIST_INIT(admin_verbs_event, list(
-	/client/proc/cmd_admin_change_custom_event,
-	/client/proc/cmd_admin_subtle_message,	/*send an message to somebody as a 'voice in their head'*/
-	/client/proc/cmd_admin_direct_narrate,	/*send text directly to a player with no padding. Useful for narratives and fluff-text*/
-	/client/proc/response_team, // Response Teams admin verb
-	/client/proc/cmd_admin_create_centcom_report,
-	/client/proc/fax_panel,
-	/client/proc/modify_goals,
-	/client/proc/outfit_manager,
-	/client/proc/cmd_admin_headset_message,
-	/client/proc/change_human_appearance_admin,	/* Allows an admin to change the basic appearance of human-based mobs */
-	/client/proc/change_human_appearance_self,	/* Allows the human-based mob itself to change its basic appearance */
-	))
-
-GLOBAL_LIST_INIT(admin_verbs_spawn, list(
-	/client/proc/admin_deserialize,
-	/client/proc/create_crate,
-	/client/proc/json_spawn_menu
-	))
 GLOBAL_LIST_INIT(admin_verbs_server, list(
-	/client/proc/reload_admins,
-	/datum/admins/proc/end_round,
-	/datum/admins/proc/delay,
-	/datum/admins/proc/toggleguests,	/*toggles whether guests can join the current game*/
 	/client/proc/toggle_log_hrefs,
 	/client/proc/toggle_antagHUD_use,
 	/client/proc/toggle_antagHUD_restrictions,
@@ -29,11 +6,6 @@ GLOBAL_LIST_INIT(admin_verbs_server, list(
 	/client/proc/add_queue_server_bypass
 	))
 GLOBAL_LIST_INIT(admin_verbs_debug, list(
-	/client/proc/debug_controller,
-	/client/proc/restart_controller,
-	/client/proc/check_bomb_impacts,
-	/client/proc/test_movable_UI,
-	/client/proc/test_snap_UI,
 	/client/proc/map_template_load,
 	/client/proc/map_template_upload,
 	/client/proc/map_template_load_lazy,
@@ -50,29 +22,11 @@ GLOBAL_LIST_INIT(admin_verbs_debug, list(
 	/client/proc/debug_atom_init,
 	/client/proc/debug_bloom,
 	))
-GLOBAL_LIST_INIT(admin_verbs_mod, list(
-	/client/proc/debug_variables,		/*allows us to -see- the variables of any instance in the game. +VAREDIT needed to modify*/
-))
-GLOBAL_LIST_INIT(admin_verbs_mentor, list(
-	/client/proc/openMentorTicketUI,
-))
 GLOBAL_LIST_INIT(admin_verbs_ticket, list(
 	/client/proc/openAdminTicketUI,
-	/client/proc/openMentorTicketUI,
 	/client/proc/resolveAllAdminTickets,
-	/client/proc/resolveAllMentorTickets
-))
-// In this list are verbs that should ONLY be executed by maintainers, aka people who know how badly this will break the server
-// If you are adding something here, you MUST justify it
-GLOBAL_LIST_INIT(admin_verbs_maintainer, list(
-	/client/proc/ticklag, // This adjusts the server tick rate and is VERY easy to hard lockup the server with
-	/client/proc/debugNatureMapGenerator, // This lags like hell, and is very easy to nuke half the server with
-	/client/proc/vv_by_ref, // This allows you to lookup **ANYTHING** in the server memory by spamming refs. Locked for security.
-	/client/proc/cinematic, // This will break everyone's screens in the round. Dont use this for adminbus.
-	/client/proc/throw_runtime, // Do I even need to explain why this is locked?
 ))
 GLOBAL_LIST_INIT(view_runtimes_verbs, list(
-	// /client/proc/view_runtimes,
 	/client/proc/debug_variables, /*allows us to -see- the variables of any instance in the game. +VAREDIT needed to modify*/
 	/client/proc/ss_breakdown,
 	/client/proc/debug_global_variables,
@@ -514,13 +468,7 @@ ADMIN_VERB(open_law_manager, R_ADMIN, "Manage Silicon Laws", "Open the law manag
 	log_and_message_admins("has opened [S]'s law manager.")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Manage Silicon Laws") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/change_human_appearance_admin(mob/living/carbon/human/H in GLOB.mob_list)
-	set name = "\[Admin\] C.M.A. - Admin"
-	set desc = "Allows you to change the mob appearance"
-
-	if(!check_rights(R_EVENT))
-		return
-
+ADMIN_VERB_ONLY_CONTEXT_MENU(change_human_appearance, R_EVENT, "\[Admin\] C.M.A. - Admin", mob/living/carbon/human/H in GLOB.mob_list)
 	if(!istype(H))
 		if(isbrain(H))
 			var/mob/living/brain/B = H
@@ -534,18 +482,12 @@ ADMIN_VERB(open_law_manager, R_ADMIN, "Manage Silicon Laws", "Open the law manag
 		else
 			return
 
-	if(holder)
+	if(user.holder)
 		log_and_message_admins("is altering the appearance of [H].")
 		H.change_appearance(APPEARANCE_ALL, usr, usr, check_species_whitelist = 0)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "CMA - Admin") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/change_human_appearance_self(mob/living/carbon/human/H in GLOB.mob_list)
-	set name = "\[Admin\] C.M.A. - Self"
-	set desc = "Allows the mob to change its appearance"
-
-	if(!check_rights(R_EVENT))
-		return
-
+ADMIN_VERB_ONLY_CONTEXT_MENU(change_human_appearance_self, R_EVENT, "\[Admin\] C.M.A. - Self",mob/living/carbon/human/H in GLOB.mob_list)
 	if(!istype(H))
 		if(isbrain(H))
 			var/mob/living/brain/B = H
@@ -560,10 +502,10 @@ ADMIN_VERB(open_law_manager, R_ADMIN, "Manage Silicon Laws", "Open the law manag
 			return
 
 	if(!H.client)
-		to_chat(usr, "Only mobs with clients can alter their own appearance.")
+		to_chat(user, "Only mobs with clients can alter their own appearance.")
 		return
 
-	switch(alert("Do you wish for [H] to be allowed to select non-whitelisted races?","Alter Mob Appearance","Yes","No","Cancel"))
+	switch(alert(user, "Do you wish for [H] to be allowed to select non-whitelisted races?","Alter Mob Appearance","Yes","No","Cancel"))
 		if("Yes")
 			log_and_message_admins("has allowed [H] to change [H.p_their()] appearance, without whitelisting of races.")
 			H.change_appearance(APPEARANCE_ALL, H.loc, check_species_whitelist = 0)
