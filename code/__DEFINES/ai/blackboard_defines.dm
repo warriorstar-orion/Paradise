@@ -233,6 +233,7 @@
 /// Are we active?
 #define BB_MALF_DRONE_PASSIVE "BB_MALF_DRONE_PASSIVE"
 
+
 // bee keys
 /// the bee hive we live inside
 #define BB_CURRENT_HOME "BB_current_home"
@@ -248,3 +249,8 @@
 // Nian Caterpillar Keys
 /// Key that stores the silk spin ability
 #define BB_NIAN_CATERPILLAR_SPIN_MOTHSILK_ACTION "BB_nian_caterpillar_spin_mothsilk_action"
+
+// Threat Levels
+#define BB_THREAT_AGGRESS_TARGET "BB_THREAT_AGGRESS_TARGET"
+#define BB_THREAT_LEVELS "BB_THREAT_LEVELS"
+#define BB_THREAT_WARN_TARGET "BB_THREAT_WARN_TARGET"

@@ -522,6 +522,7 @@
 #include "code\datums\ai\generic\find_and_set.dm"
 #include "code\datums\ai\generic\generic_behaviors.dm"
 #include "code\datums\ai\idle_behaviors\idle_behavior.dm"
+#include "code\datums\ai\threat_level\threat_level_subtree.dm"
 #include "code\datums\ai\idle_behaviors\idle_random_walk.dm"
 #include "code\datums\ai\movement\ai_movement.dm"
 #include "code\datums\ai\movement\ai_movement_jps.dm"
