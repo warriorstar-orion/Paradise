@@ -3332,6 +3332,7 @@
 #include "code\modules\vehicle\tg_vehicles\sealed.dm"
 #include "code\modules\vehicle\tg_vehicles\tg_vehicle_actions.dm"
 #include "code\modules\vehicle\tg_vehicles\tg_vehicles.dm"
+#include "code\modules\vehicle\tg_vehicles\cars\avernus\truck.dm"
 #include "code\modules\vehicle\tg_vehicles\cars\car.dm"
 #include "code\modules\vehicle\tg_vehicles\cars\clowncar.dm"
 #include "code\modules\vehicle\tg_vehicles\cars\avernus\truck.dm"
