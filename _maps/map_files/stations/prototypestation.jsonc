@@ -22,13 +22,6 @@
 				"height": 5,
 				"min": 2,
 				"max": 3
-			},
-			{
-				"marker": "/obj/effect/map_effect/marker/mapmanip/submap/insert/deepmaints/long",
-				"width": 7,
-				"height": 3,
-				"min": 1,
-				"max": 1
 			}
 		]
 	},
