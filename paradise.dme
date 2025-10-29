@@ -3349,7 +3349,6 @@
 #include "code\modules\vehicle\tg_vehicles\cars\avernus\truck.dm"
 #include "code\modules\vehicle\tg_vehicles\cars\car.dm"
 #include "code\modules\vehicle\tg_vehicles\cars\clowncar.dm"
-#include "code\modules\vehicle\tg_vehicles\cars\avernus\truck.dm"
 #include "code\modules\virology\virology_goals.dm"
 #include "code\modules\vote\vote_datum.dm"
 #include "code\modules\vote\vote_presets.dm"
