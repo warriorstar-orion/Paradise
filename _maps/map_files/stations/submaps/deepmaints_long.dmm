@@ -3,20 +3,16 @@
 /turf/template_noop,
 /area/template_noop)
 "J" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/tiles/dark/checker,
+/turf/simulated/floor/plasteel/white,
 /area/template_noop)
 "K" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/template_noop)
 "Y" = (
 /obj/effect/map_effect/marker/mapmanip/submap/extract/deepmaints/long,
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/tiles/dark/checker,
+/turf/simulated/floor/plasteel/white,
 /area/template_noop)
 
 (1,1,1) = {"

@@ -5,15 +5,15 @@
 /obj/item/stack/sheet/wood{
 	amount = 25
 	},
-/turf/simulated/floor/plasteel{
-	icon_regular_floor = "yellowsiding";
-	icon_state = "tranquillite"
+/obj/effect/turf_decal/tiles/dark/checker,
+/turf/simulated/floor/plasteel/white{
+	icon_regular_floor = "yellowsiding"
 	},
 /area/template_noop)
 "cj" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/machinery/computer/security/telescreen/entertainment/television,
-/turf/simulated/floor/plasteel/grimy,
+/turf/simulated/floor/carpet/grimey,
 /area/template_noop)
 "cC" = (
 /obj/effect/spawner/random/dirt/frequent,
@@ -32,9 +32,8 @@
 /obj/machinery/light/small/deepmaints{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/tiles/dark/checker,
+/turf/simulated/floor/plasteel/white,
 /area/template_noop)
 "cX" = (
 /obj/effect/spawner/random/dirt/frequent,
@@ -58,18 +57,17 @@
 /obj/machinery/light/small/deepmaints{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "blue"
+/obj/effect/turf_decal/tiles/department/medical/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "dz" = (
 /obj/effect/map_effect/marker/mapmanip/submap/extract/deepmaints/hallroom_5x5,
 /obj/effect/spawner/random/dirt/frequent,
 /obj/machinery/cooking/deepfryer/loaded,
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/tiles/dark/checker,
+/turf/simulated/floor/plasteel/white,
 /area/template_noop)
 "dC" = (
 /obj/effect/spawner/random/dirt/frequent,
@@ -84,20 +82,20 @@
 "em" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/structure/closet/wardrobe/black,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "black"
+/obj/effect/turf_decal/tiles/dark/side{
+	dir = 5
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "gI" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/machinery/light/small/deepmaints{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "black"
+/obj/effect/turf_decal/tiles/dark/side{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "he" = (
 /obj/effect/spawner/random/dirt/frequent,
@@ -105,22 +103,19 @@
 	dir = 4
 	},
 /obj/structure/sign/poster/official/random/directional/north,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkbluefull"
-	},
+/obj/effect/turf_decal/tiles/department/command,
+/turf/simulated/floor/plasteel/dark,
 /area/template_noop)
 "hZ" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/structure/table,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkbluefull"
-	},
+/obj/effect/turf_decal/tiles/department/command,
+/turf/simulated/floor/plasteel/dark,
 /area/template_noop)
 "ja" = (
 /obj/effect/spawner/random/dirt/frequent,
-/turf/simulated/floor/plasteel{
-	icon_state = "blue"
-	},
+/obj/effect/turf_decal/tiles/department/medical/side,
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "jW" = (
 /obj/effect/spawner/random/dirt/frequent,
@@ -129,22 +124,20 @@
 /area/template_noop)
 "kq" = (
 /obj/effect/spawner/random/dirt/frequent,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "blue"
+/obj/effect/turf_decal/tiles/department/medical/side{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "ky" = (
 /obj/effect/spawner/random/dirt/frequent,
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/tiles/dark/checker,
+/turf/simulated/floor/plasteel/white,
 /area/template_noop)
 "kU" = (
 /obj/effect/spawner/random/dirt/frequent,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkbluefull"
-	},
+/obj/effect/turf_decal/tiles/department/command,
+/turf/simulated/floor/plasteel/dark,
 /area/template_noop)
 "mJ" = (
 /obj/effect/spawner/random/dirt/frequent,
@@ -165,41 +158,37 @@
 "og" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/machinery/light/small/deepmaints,
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/tiles/dark/checker,
+/turf/simulated/floor/plasteel/white,
 /area/template_noop)
 "pG" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/structure/table,
 /obj/item/flashlight/lamp/green,
-/turf/simulated/floor/plasteel{
-	icon_state = "black"
-	},
+/obj/effect/turf_decal/tiles/dark/side,
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "qt" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/machinery/computer/nonfunctional{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "darkbluefull"
-	},
+/obj/effect/turf_decal/tiles/department/command,
+/turf/simulated/floor/plasteel/dark,
 /area/template_noop)
 "re" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/structure/chair,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "black"
+/obj/effect/turf_decal/tiles/dark/side{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "rC" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/machinery/cooking/oven/loaded,
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/tiles/dark/checker,
+/turf/simulated/floor/plasteel/white,
 /area/template_noop)
 "rI" = (
 /obj/effect/spawner/random/dirt/frequent,
@@ -213,10 +202,10 @@
 /area/template_noop)
 "sP" = (
 /obj/effect/spawner/random/dirt/frequent,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "blue"
+/obj/effect/turf_decal/tiles/department/medical/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "tH" = (
 /obj/effect/spawner/random/dirt/frequent,
@@ -233,36 +222,35 @@
 /area/template_noop)
 "vF" = (
 /obj/effect/spawner/random/dirt/frequent,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "blue"
+/obj/effect/turf_decal/tiles/department/medical/side{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "wb" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/machinery/light/small/deepmaints{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "blue"
+/obj/effect/turf_decal/tiles/department/medical/side{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "wo" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/structure/morgue,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "blue"
+/obj/effect/turf_decal/tiles/department/medical/side{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "wt" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/structure/table,
 /obj/machinery/kitchen_machine/microwave,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkbluefull"
-	},
+/obj/effect/turf_decal/tiles/department/command,
+/turf/simulated/floor/plasteel/dark,
 /area/template_noop)
 "yR" = (
 /obj/effect/spawner/random/dirt/frequent,
@@ -271,9 +259,9 @@
 	pixel_y = 6;
 	pixel_x = 1
 	},
-/turf/simulated/floor/plasteel{
-	icon_regular_floor = "yellowsiding";
-	icon_state = "tranquillite"
+/obj/effect/turf_decal/tiles/dark/checker,
+/turf/simulated/floor/plasteel/white{
+	icon_regular_floor = "yellowsiding"
 	},
 /area/template_noop)
 "yY" = (
@@ -283,10 +271,10 @@
 /obj/effect/spawner/random/bureaucracy,
 /obj/effect/spawner/random/bureaucracy,
 /obj/effect/map_effect/marker/mapmanip/submap/extract/deepmaints/hallroom_5x5,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "black"
+/obj/effect/turf_decal/tiles/dark/side{
+	dir = 10
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "zl" = (
 /obj/effect/spawner/random/dirt/frequent,
@@ -299,9 +287,8 @@
 /obj/effect/spawner/random/dirt/frequent,
 /obj/structure/table,
 /obj/item/storage/box/donkpockets,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkbluefull"
-	},
+/obj/effect/turf_decal/tiles/department/command,
+/turf/simulated/floor/plasteel/dark,
 /area/template_noop)
 "zS" = (
 /obj/effect/spawner/random/dirt/frequent,
@@ -312,17 +299,15 @@
 /obj/effect/spawner/random/dirt/frequent,
 /obj/effect/map_effect/marker/mapmanip/submap/extract/deepmaints/hallroom_5x5,
 /obj/structure/shelf,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkbluefull"
-	},
+/obj/effect/turf_decal/tiles/department/command,
+/turf/simulated/floor/plasteel/dark,
 /area/template_noop)
 "Au" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/structure/table,
 /obj/machinery/cooking/grill/loaded,
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/tiles/dark/checker,
+/turf/simulated/floor/plasteel/white,
 /area/template_noop)
 "CQ" = (
 /obj/effect/spawner/random/dirt/frequent,
@@ -335,10 +320,10 @@
 /obj/structure/morgue{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "blue"
+/obj/effect/turf_decal/tiles/department/medical/side{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "DJ" = (
 /obj/effect/spawner/random/dirt/frequent,
@@ -349,21 +334,21 @@
 	name = "west bump";
 	pixel_x = -27
 	},
-/turf/simulated/floor/plasteel/grimy,
+/turf/simulated/floor/carpet/grimey,
 /area/template_noop)
 "DP" = (
 /obj/effect/spawner/random/dirt/frequent,
-/turf/simulated/floor/plasteel{
-	icon_regular_floor = "yellowsiding";
-	icon_state = "tranquillite"
+/obj/effect/turf_decal/tiles/dark/checker,
+/turf/simulated/floor/plasteel/white{
+	icon_regular_floor = "yellowsiding"
 	},
 /area/template_noop)
 "EE" = (
 /obj/effect/spawner/random/dirt/frequent,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "black"
+/obj/effect/turf_decal/tiles/dark/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "EH" = (
 /obj/effect/spawner/random/dirt/frequent,
@@ -394,10 +379,10 @@
 /area/template_noop)
 "GZ" = (
 /obj/effect/spawner/random/dirt/frequent,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "black"
+/obj/effect/turf_decal/tiles/dark/side{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "HI" = (
 /obj/effect/spawner/random/dirt/frequent,
@@ -416,19 +401,18 @@
 	pixel_y = 3;
 	pixel_x = 3
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "blue"
-	},
+/obj/effect/turf_decal/tiles/department/medical/side,
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "Ih" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/machinery/computer/med_data{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "blue"
+/obj/effect/turf_decal/tiles/department/medical/side{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "Ij" = (
 /obj/effect/spawner/random/dirt/frequent,
@@ -442,16 +426,14 @@
 /obj/effect/spawner/random/dirt/frequent,
 /obj/structure/table,
 /obj/item/flashlight/lamp,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkbluefull"
-	},
+/obj/effect/turf_decal/tiles/department/command,
+/turf/simulated/floor/plasteel/dark,
 /area/template_noop)
 "JM" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/structure/shelf,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkbluefull"
-	},
+/obj/effect/turf_decal/tiles/department/command,
+/turf/simulated/floor/plasteel/dark,
 /area/template_noop)
 "JU" = (
 /obj/effect/spawner/random/dirt/frequent,
@@ -469,10 +451,10 @@
 "KZ" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/structure/closet/crate/can,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "black"
+/obj/effect/turf_decal/tiles/dark/side{
+	dir = 6
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "Lr" = (
 /obj/effect/spawner/random/dirt/frequent,
@@ -493,10 +475,10 @@
 /obj/effect/spawner/random/dirt/frequent,
 /obj/effect/map_effect/marker/mapmanip/submap/extract/deepmaints/hallroom_5x5,
 /obj/machinery/optable,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "blue"
+/obj/effect/turf_decal/tiles/department/medical/side{
+	dir = 10
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "MZ" = (
 /obj/effect/spawner/random/dirt/frequent,
@@ -507,9 +489,8 @@
 /obj/effect/spawner/random/dirt/frequent,
 /obj/structure/table,
 /obj/machinery/cooking/stovetop/loaded,
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/tiles/dark/checker,
+/turf/simulated/floor/plasteel/white,
 /area/template_noop)
 "Or" = (
 /obj/effect/spawner/random/dirt/frequent,
@@ -522,18 +503,18 @@
 /obj/item/storage/bag/tray,
 /obj/effect/spawner/random/food_or_drink/dinner,
 /obj/effect/spawner/random/food_or_drink/dinner,
-/turf/simulated/floor/plasteel{
-	icon_regular_floor = "yellowsiding";
-	icon_state = "tranquillite"
+/obj/effect/turf_decal/tiles/dark/checker,
+/turf/simulated/floor/plasteel/white{
+	icon_regular_floor = "yellowsiding"
 	},
 /area/template_noop)
 "PJ" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/machinery/economy/atm/directional/north,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "black"
+/obj/effect/turf_decal/tiles/dark/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "PK" = (
 /obj/effect/spawner/random/dirt/frequent,
@@ -552,31 +533,29 @@
 "SY" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/machinery/economy/vending/dinnerware,
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/tiles/dark/checker,
+/turf/simulated/floor/plasteel/white,
 /area/template_noop)
 "Tg" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/structure/table,
 /obj/effect/spawner/random/food_or_drink/three_course_meal,
-/turf/simulated/floor/plasteel/grimy,
+/turf/simulated/floor/carpet/grimey,
 /area/template_noop)
 "Tt" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/structure/morgue,
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "blue"
+/obj/effect/turf_decal/tiles/department/medical/side{
+	dir = 9
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "TD" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/structure/coatrack,
 /obj/item/clothing/suit/hooded/wintercoat,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkbluefull"
-	},
+/obj/effect/turf_decal/tiles/department/command,
+/turf/simulated/floor/plasteel/dark,
 /area/template_noop)
 "TG" = (
 /obj/effect/spawner/random/dirt/frequent,
@@ -593,17 +572,16 @@
 /area/template_noop)
 "UU" = (
 /obj/effect/spawner/random/dirt/frequent,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "black"
+/obj/effect/turf_decal/tiles/dark/side{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "Vc" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/machinery/economy/vending/chefdrobe,
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/tiles/dark/checker,
+/turf/simulated/floor/plasteel/white,
 /area/template_noop)
 "Vd" = (
 /obj/effect/spawner/random/dirt/frequent,
@@ -611,23 +589,22 @@
 /area/template_noop)
 "Vg" = (
 /obj/effect/spawner/random/dirt/frequent,
-/turf/simulated/floor/plasteel{
-	icon_state = "black"
-	},
+/obj/effect/turf_decal/tiles/dark/side,
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "VJ" = (
 /obj/effect/spawner/random/dirt/frequent,
 /obj/structure/morgue{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "blue"
+/obj/effect/turf_decal/tiles/department/medical/side{
+	dir = 5
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "Wj" = (
 /obj/effect/spawner/random/dirt/frequent,
-/turf/simulated/floor/plasteel/grimy,
+/turf/simulated/floor/carpet/grimey,
 /area/template_noop)
 "Wp" = (
 /obj/effect/spawner/random/dirt/frequent,
@@ -639,9 +616,8 @@
 	name = "north bump";
 	pixel_y = 30
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
+/obj/effect/turf_decal/tiles/dark/checker,
+/turf/simulated/floor/plasteel/white,
 /area/template_noop)
 "XQ" = (
 /obj/effect/spawner/random/dirt/frequent,
@@ -659,10 +635,10 @@
 /obj/structure/table,
 /obj/item/storage/surgical_tray,
 /obj/item/scalpel,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "blue"
+/obj/effect/turf_decal/tiles/department/medical/side{
+	dir = 6
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "Zh" = (
 /obj/effect/spawner/random/dirt/frequent,

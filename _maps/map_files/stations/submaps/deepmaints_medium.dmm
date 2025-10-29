@@ -3,140 +3,131 @@
 /turf/template_noop,
 /area/template_noop)
 "b" = (
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "purple"
+/obj/effect/turf_decal/tiles/department/science/side{
+	dir = 6
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "c" = (
 /obj/structure/table,
 /obj/effect/spawner/random/science_equipment,
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "purple"
+/obj/effect/turf_decal/tiles/department/science/side{
+	dir = 9
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "e" = (
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "purple"
+/obj/effect/turf_decal/tiles/department/science/side{
+	dir = 4
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "h" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/template_noop)
 "i" = (
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "purple"
+/obj/effect/turf_decal/tiles/department/science/side{
+	dir = 9
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "k" = (
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "purple"
+/obj/effect/turf_decal/tiles/department/science/side{
+	dir = 8
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "o" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "darkgreenfull"
-	},
+/obj/effect/turf_decal/tiles/department/virology,
+/turf/simulated/floor/plasteel/dark,
 /area/template_noop)
 "r" = (
 /obj/effect/map_effect/marker/mapmanip/submap/extract/deepmaints/medium,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkgreenfull"
-	},
+/obj/effect/turf_decal/tiles/department/virology,
+/turf/simulated/floor/plasteel/dark,
 /area/template_noop)
 "t" = (
 /obj/structure/window,
 /turf/simulated/floor/plasteel,
 /area/template_noop)
 "u" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "purple"
-	},
+/obj/effect/turf_decal/tiles/department/science/side,
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "v" = (
 /obj/machinery/computer/nonfunctional,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "purple"
+/obj/effect/turf_decal/tiles/department/science/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "z" = (
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "purple"
+/obj/effect/turf_decal/tiles/department/science/side{
+	dir = 10
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "F" = (
 /obj/machinery/chem_master,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "purple"
+/obj/effect/turf_decal/tiles/department/science/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "I" = (
 /obj/structure/table,
 /obj/effect/spawner/random/science_equipment,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "purple"
+/obj/effect/turf_decal/tiles/department/science/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "J" = (
 /obj/effect/map_effect/marker/mapmanip/submap/extract/deepmaints/medium,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/plasteel/dark,
 /area/template_noop)
 "K" = (
 /obj/effect/map_effect/marker/mapmanip/submap/extract/deepmaints/medium,
 /turf/simulated/floor/plasteel,
 /area/template_noop)
 "O" = (
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "purple"
+/obj/effect/turf_decal/tiles/department/science/side{
+	dir = 5
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "Q" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "darkbluefull"
-	},
+/obj/effect/turf_decal/tiles/department/command,
+/turf/simulated/floor/plasteel/dark,
 /area/template_noop)
 "R" = (
 /obj/effect/map_effect/marker/mapmanip/submap/extract/deepmaints/medium,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkbluefull"
-	},
+/obj/effect/turf_decal/tiles/department/command,
+/turf/simulated/floor/plasteel/dark,
 /area/template_noop)
 "S" = (
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "purple"
+/obj/effect/turf_decal/tiles/department/science/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "T" = (
 /obj/structure/table,
 /obj/effect/spawner/random/science_equipment,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "purple"
+/obj/effect/turf_decal/tiles/department/science/side{
+	dir = 5
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 "U" = (
 /turf/simulated/floor/plasteel,
 /area/template_noop)
 "X" = (
 /obj/machinery/chem_heater,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "purple"
+/obj/effect/turf_decal/tiles/department/science/side{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel,
 /area/template_noop)
 
 (1,1,1) = {"
