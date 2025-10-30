@@ -767,14 +767,12 @@
 // returns if the light has power /but/ is manually turned off
 // if a light is turned off, it won't activate emergency power
 /obj/machinery/light/proc/turned_off()
-	var/area/machine_area = get_area(src)
-	return !machine_area.lightswitch && machine_area.powernet.has_power(PW_CHANNEL_LIGHTING)
+	return !machine_powernet?.is_lightswitch_on() && machine_powernet?.has_power(PW_CHANNEL_LIGHTING)
 
 // returns whether this light has power
 // true if area has power and lightswitch is on
 /obj/machinery/light/has_power()
-	var/area/machine_area = get_area(src)
-	return machine_area.lightswitch && machine_area.powernet.has_power(PW_CHANNEL_LIGHTING)
+	return machine_powernet?.is_lightswitch_on() && machine_powernet?.has_power(PW_CHANNEL_LIGHTING)
 
 // attempts to set emergency lights
 /obj/machinery/light/proc/set_emergency_lights()
@@ -948,9 +946,8 @@
 
 // called when area power state changes
 /obj/machinery/light/power_change()
-	var/area/A = get_area(src)
-	if(A)
-		seton(A.lightswitch && A.powernet.has_power(PW_CHANNEL_LIGHTING))
+	if(machine_powernet.powernet_area)
+		seton(machine_powernet.is_lightswitch_on() && machine_powernet.has_power(PW_CHANNEL_LIGHTING))
 
 // called when on fire
 

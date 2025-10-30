@@ -39,14 +39,16 @@
 /obj/machinery/Initialize(mapload)
 	. = ..()
 	SSmachines.register_machine(src)
-
 	var/area/machine_area = get_area(src)
-	if(machine_area)
+	register_to_powernet_in(machine_area)
+
+/obj/machinery/proc/register_to_powernet_in(area/target)
+	if(target)
 		// areas don't always initialize before machines so we need to check to see if the powernet exists first
-		if(machine_area.powernet)
-			machine_powernet = machine_area.powernet
+		if(target.powernet)
+			machine_powernet = target.powernet
 		else
-			machine_powernet = machine_area.create_powernet()
+			machine_powernet = target.create_powernet()
 		machine_powernet.register_machine(src)
 		switch(power_state)
 			if(IDLE_POWER_USE)

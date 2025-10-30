@@ -4,26 +4,26 @@
 /area/template_noop)
 "c" = (
 /obj/effect/decal/cleanable/glass,
-/turf/simulated/floor/plating/asteroid/snow/iceplanet,
+/turf/simulated/floor/iceplanet/snow,
 /area/template_noop)
 "e" = (
 /obj/structure/table_frame/wood,
 /obj/item/stack/sheet/wood,
-/turf/simulated/floor/plating/asteroid/snow/iceplanet,
+/turf/simulated/floor/iceplanet/snow,
 /area/template_noop)
 "f" = (
 /obj/item/kirbyplants/large/dead,
-/turf/simulated/floor/plating/asteroid/snow/iceplanet,
+/turf/simulated/floor/iceplanet/snow,
 /area/template_noop)
 "g" = (
 /turf/simulated/floor/plating,
 /area/ruin/unpowered)
 "h" = (
 /obj/effect/mob_spawn/human/corpse/skeleton,
-/turf/simulated/floor/plating/asteroid/snow/iceplanet,
+/turf/simulated/floor/iceplanet/snow,
 /area/template_noop)
 "i" = (
-/turf/simulated/floor/plating/asteroid/snow/iceplanet,
+/turf/simulated/floor/iceplanet/snow,
 /area/ruin/unpowered)
 "l" = (
 /obj/structure/table/wood,
@@ -36,11 +36,11 @@
 /area/template_noop)
 "n" = (
 /obj/structure/flora/ash/rock/style_random,
-/turf/simulated/floor/plating/asteroid/snow/iceplanet,
+/turf/simulated/floor/iceplanet/snow,
 /area/template_noop)
 "o" = (
 /obj/structure/flora/ash/rock/style_2,
-/turf/simulated/floor/plating/asteroid/snow/iceplanet,
+/turf/simulated/floor/iceplanet/snow,
 /area/template_noop)
 "p" = (
 /obj/structure/table/wood,
@@ -48,15 +48,15 @@
 /area/ruin/unpowered)
 "q" = (
 /obj/structure/closet/crate/hydroponics/prespawned,
-/turf/simulated/floor/plating/asteroid/snow/iceplanet,
+/turf/simulated/floor/iceplanet/snow,
 /area/template_noop)
 "t" = (
 /obj/effect/map_effect/marker/mapmanip/submap/extract/ruin/avernus_topside,
-/turf/simulated/floor/plating/asteroid/snow/iceplanet,
+/turf/simulated/floor/iceplanet/snow,
 /area/template_noop)
 "u" = (
 /obj/structure/flora/ash/rock/style_3,
-/turf/simulated/floor/plating/asteroid/snow/iceplanet,
+/turf/simulated/floor/iceplanet/snow,
 /area/template_noop)
 "z" = (
 /obj/structure/bed,
@@ -72,7 +72,7 @@
 /area/ruin/unpowered)
 "E" = (
 /obj/item/grown/log,
-/turf/simulated/floor/plating/asteroid/snow/iceplanet,
+/turf/simulated/floor/iceplanet/snow,
 /area/template_noop)
 "F" = (
 /obj/structure/mineral_door/wood,
@@ -84,32 +84,32 @@
 /area/ruin/unpowered)
 "H" = (
 /obj/item/stack/sheet/wood,
-/turf/simulated/floor/plating/asteroid/snow/iceplanet,
+/turf/simulated/floor/iceplanet/snow,
 /area/template_noop)
 "I" = (
 /obj/structure/table/wood,
-/turf/simulated/floor/plating/asteroid/snow/iceplanet,
+/turf/simulated/floor/iceplanet/snow,
 /area/template_noop)
 "J" = (
 /obj/structure/lightable/bonfire/lit,
-/turf/simulated/floor/plating/asteroid/snow/iceplanet,
+/turf/simulated/floor/iceplanet/snow,
 /area/template_noop)
 "L" = (
 /turf/simulated/wall,
 /area/ruin/unpowered)
 "M" = (
 /obj/machinery/hydroponics/soil,
-/turf/simulated/floor/plating/asteroid/snow/iceplanet,
+/turf/simulated/floor/iceplanet/snow,
 /area/template_noop)
 "N" = (
 /turf/simulated/wall/mineral/wood,
 /area/template_noop)
 "P" = (
-/turf/simulated/floor/plating/asteroid/snow/iceplanet,
+/turf/simulated/floor/iceplanet/snow,
 /area/template_noop)
 "Q" = (
 /obj/structure/flora/tree/dead,
-/turf/simulated/floor/plating/asteroid/snow/iceplanet,
+/turf/simulated/floor/iceplanet/snow,
 /area/template_noop)
 "R" = (
 /turf/simulated/wall/mineral/wood,
@@ -123,7 +123,7 @@
 /area/ruin/unpowered)
 "Z" = (
 /obj/structure/table_frame/wood,
-/turf/simulated/floor/plating/asteroid/snow/iceplanet,
+/turf/simulated/floor/iceplanet/snow,
 /area/template_noop)
 
 (1,1,1) = {"

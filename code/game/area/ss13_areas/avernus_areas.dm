@@ -8,3 +8,5 @@
 /area/station/garage/security
 
 /area/station/engineering/entrance
+
+/area/station/sealant_dome
