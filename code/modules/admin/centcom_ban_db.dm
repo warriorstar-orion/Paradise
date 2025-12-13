@@ -104,8 +104,3 @@
 	var/datum/browser/popup = new(user, "ccbdblookup-[ckey]", "<div align='center'>CC Ban DB Lookup - [ckey]</div>", 700, 600)
 	popup.set_content(popup_data.Join())
 	popup.open(FALSE)
-
-/// Just a simple verb so admins can do manual lookups
-USER_VERB(ccbdb_lookup_ckey, R_ADMIN, "Global Ban DB Lookup", "Lookup global bans by ckey.", VERB_CATEGORY_ADMIN)
-	var/input_ckey = input(client, "Please enter a ckey to lookup", "Global Ban DB Lookup")
-	client.holder.create_ccbdb_lookup(input_ckey)

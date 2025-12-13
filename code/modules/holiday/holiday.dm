@@ -319,35 +319,3 @@
 
 //	to_chat(world, "Easter calculates to be on [begin_day] of [begin_month] ([days_early] early) to [end_day] of [end_month] ([days_extra] extra) for 20[yy]")
 	return ..()
-
-USER_VERB(set_holiday, R_SERVER, "Set Holiday", \
-		"Force-set the Holiday variable to make the game think it's a certain day.", \
-		VERB_CATEGORY_EVENT, \
-		T as text|null)
-	var/list/choice = list()
-	for(var/H in subtypesof(/datum/holiday))
-		choice += "[H]"
-
-	choice += "--CANCEL--"
-
-	var/selected = input(client, "What holiday would you like to force?","Holiday Forcing","--CANCEL--") in choice
-
-	if(selected == "--CANCEL--")
-		return
-
-	var/selected2path = text2path(selected)
-	if(!ispath(selected2path) || !selected2path)	return
-
-	var/datum/holiday/H = new selected2path
-	if(!istype(H))	return
-
-	H.celebrate()
-	if(!SSholiday.holidays)
-		SSholiday.holidays = list()
-	SSholiday.holidays[H.name] = H
-
-	//update our hub status
-	world.update_status()
-
-	message_admins(SPAN_NOTICE("ADMIN: Event: [key_name_admin(client)] force-set Holiday to \"[H]\""))
-	log_admin("[key_name(client)] force-set Holiday to \"[H]\"")

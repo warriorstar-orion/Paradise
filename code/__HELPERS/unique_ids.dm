@@ -78,17 +78,3 @@ GLOBAL_LIST_EMPTY(uid_log)
 		var/datum/A = locateUID(datum_UID)
 		if(istype(D, A))
 			return datum_UID
-
-/**
-  * Opens a log of UIDs
-  *
-  * In-round ability to view what has created a UID, and how many times a UID for that path has been declared
-  */
-USER_VERB(uid_log, R_DEBUG, "View UID Log", "Shows the log of created UIDs this round", VERB_CATEGORY_DEBUG)
-	var/list/sorted = sortTim(GLOB.uid_log, GLOBAL_PROC_REF(cmp_numeric_dsc), TRUE)
-	var/list/text = list("<h1>UID Log</h1>", "<p>Current UID: [GLOB.next_unique_datum_id]</p>", "<ul>")
-	for(var/key in sorted)
-		text += "<li>[key] - [sorted[key]]</li>"
-
-	text += "</ul>"
-	client << browse(text.Join(), "window=uidlog")

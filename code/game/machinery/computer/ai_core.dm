@@ -267,27 +267,6 @@
 		GLOB.empty_playable_ai_cores -= src
 	return ..()
 
-USER_VERB(empty_ai_core_toggle_latejoin, R_ADMIN, "Toggle AI Core Latejoin", "Toggle AI Core Latejoin", VERB_CATEGORY_ADMIN)
-	var/list/cores = list()
-	for(var/obj/structure/ai_core/deactivated/D in world)
-		cores["[D] ([D.loc.loc])"] = D
-
-	if(!length(cores))
-		to_chat(client, "No deactivated AI cores were found.")
-
-	var/id = input(client, "Which core?", "Toggle AI Core Latejoin", null) as null|anything in cores
-	if(!id) return
-
-	var/obj/structure/ai_core/deactivated/D = cores[id]
-	if(!D) return
-
-	if(D in GLOB.empty_playable_ai_cores)
-		GLOB.empty_playable_ai_cores -= D
-		to_chat(client, "\The [id] is now <font color=\"#ff0000\">not available</font> for latejoining AIs.")
-	else
-		GLOB.empty_playable_ai_cores += D
-		to_chat(client, "\The [id] is now <font color=\"#008000\">available</font> for latejoining AIs.")
-
 /*
 This is a good place for AI-related object verbs so I'm sticking it here.
 If adding stuff to this, don't forget that an AI need to cancel_camera() whenever it physically moves to a different location.
