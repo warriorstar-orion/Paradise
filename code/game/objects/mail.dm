@@ -268,6 +268,11 @@
 	return ..()
 
 /obj/item/mail_scanner/interact_with_atom(atom/target, mob/living/user, list/modifiers)
+	if(istype(A, /obj/structure/freight))
+		var/obj/structure/freight/freight = A
+		to_chat(user, SPAN_NOTICE("You scan [freight] and the scanner reports an order code of [freight.order_code]."))
+		return ITEM_INTERACT_COMPLETE
+
 	if(istype(target, /obj/item/envelope))
 		scan_envelope(target, user)
 		return ITEM_INTERACT_COMPLETE

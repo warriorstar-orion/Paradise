@@ -1256,6 +1256,11 @@
 "LK" = (
 /turf/simulated/wall,
 /area/ruin/space/powered/casino/arrivals)
+"Mg" = (
+/obj/effect/spawner/random/dirt/maybe,
+/obj/effect/landmark/freight_spawn,
+/turf/simulated/floor/plating,
+/area/ruin/space/powered/casino/maints)
 "Mm" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
@@ -2340,7 +2345,7 @@ dd
 dd
 vf
 GP
-CH
+Mg
 CH
 CH
 rp

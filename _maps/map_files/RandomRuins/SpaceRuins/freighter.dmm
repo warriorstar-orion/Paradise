@@ -662,7 +662,7 @@
 /turf/simulated/floor/plasteel,
 /area/ruin/space/powered)
 "Sp" = (
-/obj/structure/largecrate,
+/obj/effect/landmark/freight_spawn,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered)
 "SL" = (
@@ -960,7 +960,7 @@ Nl
 Sp
 zu
 Nl
-Nl
+Sp
 tV
 fY
 Kh

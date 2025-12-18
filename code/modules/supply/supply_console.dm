@@ -208,6 +208,7 @@
 	data["moving"] = SSshuttle.supply.mode != SHUTTLE_IDLE
 	data["at_station"] = SSshuttle.supply.getDockedId() == "supply_home"
 	data["timeleft"] = SSshuttle.supply.timeLeft(60 SECONDS)
+	data["modal"] = ui_modal_data(src)
 
 	return data
 
@@ -259,6 +260,9 @@
 
 	. = TRUE
 	add_fingerprint(user)
+
+	if(ui_act_modal(action, params))
+		return TRUE
 
 	switch(action)
 		if("moveShuttle")
@@ -339,6 +343,29 @@
 			var/datum/browser/ccmsg_browser = new(user, "ccmsg", "Central Command Cargo Message Log", 800, 600)
 			ccmsg_browser.set_content(SSeconomy.centcom_message)
 			ccmsg_browser.open()
+
+/obj/machinery/computer/supplycomp/proc/ui_act_modal(action, params)
+	. = TRUE
+	var/id = params["id"] // The modal's ID
+	var/list/arguments = istext(params["arguments"]) ? json_decode(params["arguments"]) : params["arguments"]
+	switch(ui_modal_act(src, action, params))
+		if(UI_MODAL_OPEN)
+			switch(id)
+				if("lookupFreight")
+					ui_modal_input(src, id, "Please enter the freight order code to check:", null, arguments, "", UI_MODAL_INPUT_MAX_LENGTH_NAME)
+				else
+					return FALSE
+		if(UI_MODAL_ANSWER)
+			var/answer = params["answer"]
+			switch(id)
+				if("lookupFreight")
+					for(var/datum/space_freight/freight in GLOB.space_freight_manager.known_freights)
+						if(freight.order_code == answer)
+							ui_modal_message(src, "getFreightInfo", "", arguments = freight.ui_data())
+				else
+					return FALSE
+		else
+			return FALSE
 
 /obj/machinery/computer/supplycomp/proc/order_crate(mob/user, datum/supply_order/order, datum/money_account/account)
 	var/datum/money_account/selected_account = account
