@@ -1265,6 +1265,11 @@
 "LK" = (
 /turf/simulated/wall,
 /area/ruin/space/powered/casino/arrivals)
+"Mg" = (
+/obj/effect/spawner/random/dirt/maybe,
+/obj/effect/landmark/freight_spawn,
+/turf/simulated/floor/plating,
+/area/ruin/space/powered/casino/maints)
 "Mt" = (
 /turf/simulated/wall/mineral/plastitanium,
 /area/ruin/space/powered/casino/docked_ships)
@@ -2332,7 +2337,7 @@ dd
 dd
 vf
 GP
-CH
+Mg
 CH
 CH
 rp

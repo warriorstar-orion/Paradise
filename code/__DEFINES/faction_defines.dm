@@ -1,0 +1,5 @@
+#define FACTION_SYNDICATE "syndicate"
+#define FACTION_SPACEPIRATE "spacepirate"
+#define FACTION_USSP "ussp"
+#define FACTION_DRAKEHOUND "drakehound"
+#define FACTION_NANOTRASEN "nt"

@@ -1,6 +1,7 @@
 
 GLOBAL_LIST_EMPTY(weighted_randomevent_locations)
 GLOBAL_LIST_EMPTY(weighted_mundaneevent_locations)
+GLOBAL_LIST_EMPTY(trade_destinations)
 
 /datum/trade_destination
 	var/name = ""
@@ -10,8 +11,13 @@ GLOBAL_LIST_EMPTY(weighted_mundaneevent_locations)
 	var/list/willing_to_sell = list()
 	var/can_shuttle_here = 0		//one day crew from the exodus will be able to travel to this destination
 	var/list/viable_random_events = list()
-	var/list/temp_price_change[TRADE_GOOD_BIOMEDICAL]
 	var/list/viable_mundane_events = list()
+
+/datum/trade_destination/ui_data(mob/user)
+	. = list()
+	.["name"] = name
+	.["description"] = description
+	.["distance"] = distance
 
 //distance is measured in AU and co-relates to travel time
 /datum/trade_destination/centcomm

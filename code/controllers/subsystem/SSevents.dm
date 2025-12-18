@@ -341,3 +341,9 @@ SUBSYSTEM_DEF(events)
 	var/datum/browser/popup = new(usr, "resources", "Resources", window_x, window_y)
 	popup.set_content(html)
 	popup.open()
+
+/datum/controller/subsystem/events/proc/active_events_of_type(event_type)
+	. = list()
+	for(var/datum/event/event in active_events)
+		if(istype(event, event_type))
+			. |= event

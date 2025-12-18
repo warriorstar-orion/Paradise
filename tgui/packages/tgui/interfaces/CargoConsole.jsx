@@ -1,10 +1,12 @@
 import { filter, sortBy } from 'common/collections';
 import { useState } from 'react';
 import { Box, Button, Dropdown, Input, LabeledList, Modal, Section, Stack, Table } from 'tgui-core/components';
+import { ComplexModal, modalOpen, modalRegisterBodyOverride } from './common/ComplexModal';
 import { createSearch } from 'tgui-core/string';
 
 import { useBackend, useSharedState } from '../backend';
 import { Window } from '../layouts';
+import { createLogger } from '../logging';
 
 export const CargoConsole = (props) => {
   const [contentsModal, setContentsModal] = useState(null);
@@ -12,6 +14,7 @@ export const CargoConsole = (props) => {
   const [selectedAccount, setSelectedAccount] = useState('selectedAccount');
   return (
     <Window width={900} height={800}>
+      <ComplexModal />
       <Window.Content>
         <Stack fill vertical>
           <ContentsModal
@@ -101,6 +104,7 @@ const StatusPane = (_properties) => {
             <LabeledList.Item label="Controls">
               <Button content={shuttleButtonText} disabled={moving} onClick={() => act('moveShuttle')} />
               <Button content="View Central Command Messages" onClick={() => act('showMessages')} />
+              <Button content="Freight Lookup" onClick={() => modalOpen('lookupFreight')} />
             </LabeledList.Item>
           )}
         </LabeledList>
@@ -379,3 +383,20 @@ const DetailsPane = (_properties) => {
     </Section>
   );
 };
+
+const getFreightInfoOverride = (modal) => {
+  const freight = modal.args;
+  return (
+    <Section m="-1rem" pb="1.5rem" title={`Order Lookup ${freight.order_code}`}>
+      <Box mx="0.5rem">
+        <LabeledList>
+          <LabeledList.Item label="Order Category">{freight.freight_name}</LabeledList.Item>
+          <LabeledList.Item label="Sender">{freight.origin.name}</LabeledList.Item>
+          <LabeledList.Item label="Destination">{freight.destination.name}</LabeledList.Item>
+        </LabeledList>
+      </Box>
+    </Section>
+  );
+};
+
+modalRegisterBodyOverride('getFreightInfo', getFreightInfoOverride);

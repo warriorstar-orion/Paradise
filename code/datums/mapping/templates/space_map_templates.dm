@@ -1,6 +1,8 @@
 /datum/map_template/ruin/space
 	prefix = "_maps/map_files/RandomRuins/SpaceRuins/"
 	ci_exclude = /datum/map_template/ruin/space
+	/// A faction name if the ruin has an obvious lore allegiance
+	var/faction
 
 /datum/map_template/ruin/space/zoo
 	id = "zoo"
@@ -150,6 +152,7 @@
 	name = "Syndie Listening Post"
 	description = "What happens to Nuclear Operatives that fail in their mission? \
 		Certainly not assignment to a backwater listening post..."
+	faction = FACTION_SYNDICATE
 
 /datum/map_template/ruin/space/empty_shell
 	id = "empty-shell"
@@ -190,6 +193,7 @@
 		Rampant Golem and Yellow Hound. Can I take your order?"
 	allow_duplicates = FALSE //it spawn ship docking, no more than one to avoid duplication in console.
 	always_place = TRUE
+	faction = FACTION_SPACEPIRATE
 
 /datum/map_template/ruin/space/turreted_outpost
 	id = "turreted-outpost"
@@ -199,6 +203,7 @@
 	the Syndicate deployed this asset right in the open and bolted enough guns onto the hull to keep all but the most determined attackers at bay. \
 	The jolly crew perform raiding operations against poorly protected NT assets."
 	allow_duplicates = FALSE
+	faction = FACTION_SYNDICATE
 
 /datum/map_template/ruin/space/way_home
 	id = "way-home"
@@ -214,6 +219,7 @@
 	hivebots. Can the surviving crew overcome the odds and survive and rebuild, or will the cold embrace of the stars become their new home?"
 	always_place = TRUE
 	allow_duplicates = FALSE
+	faction = FACTION_NANOTRASEN
 
 /datum/map_template/ruin/space/wizardcrash
 	id = "wizardcrash"
@@ -253,12 +259,14 @@
 	name = "Soviet DJ Station"
 	description = "A USSP listening post masquerading as a popular Soviet entertainment broadcaster, keeping tabs on Nanotrasen activity in the system and relaying it back to the Union."
 	allow_duplicates = FALSE
+	faction = FACTION_USSP
 
 /datum/map_template/ruin/space/druglab
 	id = "druglab"
 	suffix = "druglab.dmm"
 	name = "Drug Lab"
 	description = "An old abandoned \"Chemistry\" site, which has a strong aura of amphetamines around it."
+	faction = FACTION_SPACEPIRATE
 
 /datum/map_template/ruin/space/syndicatedruglab
 	id = "syndicatedruglab"
@@ -266,6 +274,7 @@
 	name = "Suspicious Station"
 	description = "A syndicate drug laboratory hidden on an asteroid. It is strangely well-protected."
 	allow_duplicates = FALSE
+	faction = FACTION_SYNDICATE
 
 /datum/map_template/ruin/space/syndiedepot
 	id = "syndiedepot"
@@ -273,6 +282,7 @@
 	name = "Suspicious Supply Depot"
 	description = "A syndicate supply depot, heavily stocked, but heavily guarded with an assortment of shields, sentry bots, armed operatives and more."
 	allow_duplicates = FALSE // One of these is enough
+	faction = FACTION_SYNDICATE
 
 /datum/map_template/ruin/space/ussp_tele
 	id = "ussp_tele"
@@ -280,6 +290,7 @@
 	name = "Derelict USSP Teleporter"
 	description = "An experimental teleporter of USSP origin, some terrible calamity has ripped it free from a larger structure and sent drifting through space."
 	allow_duplicates = FALSE // One uniquely flavoured abandoned tele to keep the flavour fresh.
+	faction = FACTION_USSP
 
 /datum/map_template/ruin/space/ussp
 	id = "ussp"
@@ -287,6 +298,7 @@
 	name = "USSP"
 	description = "A decript station of seemingly Soviet origin. The last contact had with this station was a distress signal, and the rest was dark."
 	allow_duplicates = FALSE // One of these has enough loot
+	faction = FACTION_USSP
 
 /datum/map_template/ruin/space/whiteship
 	id = "whiteship"
@@ -311,6 +323,7 @@
 	suffix = "syndie_space_base.dmm"
 	always_place = TRUE
 	allow_duplicates = FALSE
+	faction = FACTION_SYNDICATE
 
 /datum/map_template/ruin/space/syndiecakesfactory
 	id = "Syndiecakes Factory"
@@ -318,6 +331,7 @@
 	name = "Syndicakes Factory"
 	description = "Syndicate used to get funds selling corgi cakes produced here. Was it hit by meteors or by a Nanotrasen comando?"
 	allow_duplicates = FALSE
+	faction = FACTION_SYNDICATE
 
 /datum/map_template/ruin/space/debris1
 	id = "debris1"
@@ -371,6 +385,7 @@
 	name = "Abandoned NT Engineering Satellite"
 	description = "A derelict operating base for NT engineering crew."
 	allow_duplicates = FALSE
+	faction = FACTION_NANOTRASEN
 
 /datum/map_template/ruin/space/rocky_motel
 	id = "rocky_motel"
@@ -385,6 +400,7 @@
 	name = "Dorian Casino"
 	description = "A swanky space casino."
 	allow_duplicates = FALSE
+	faction = FACTION_SPACEPIRATE
 
 /datum/map_template/ruin/space/abandoned_security_shuttle
 	id = "abandoned_sec_shuttle"
@@ -398,6 +414,7 @@
 	suffix = "freighter.dmm"
 	name = "Voidhopper of Nexus"
 	description = "A cargo ship headed to a nearby system."
+	faction = FACTION_SPACEPIRATE
 
 /datum/map_template/ruin/space/drakehound_breacher
 	id = "drakehound_breacher"
@@ -405,6 +422,7 @@
 	name = "Damaged Drakehound Skiff"
 	description = "A small Drakehound craft, damaged from an engine malfunction."
 	allow_duplicates = FALSE
+	faction = FACTION_DRAKEHOUND
 
 /datum/map_template/ruin/space/sieged_lab
 	id = "sieged_lab"
@@ -412,6 +430,7 @@
 	name = "Sieged Lab"
 	description = "A destroyed laboratory, under siege from forces unknown."
 	allow_duplicates = FALSE
+	faction = FACTION_SYNDICATE
 
 /datum/map_template/ruin/space/clockwork_monastery
 	id = "clockwork_monastery"
@@ -421,7 +440,6 @@
 		The constructs that were left behind to guard the monastery will ruthlessly cut down anyone that does not swear their fealty to Ratvar."
 	allow_duplicates = FALSE
 
-
 /datum/map_template/ruin/space/bluespace_relay_beacon
 	id = "bluespace_relay_beacon"
 	suffix = "bluespace_relay_beacon.dmm"
@@ -429,6 +447,7 @@
 	description = "Nanotrasen uses relays like these to further extend telecommunications around an area of space, as well as long range beacons for easier deployment in the future. \
 		Unfortunately, the anomalous activity around Epsilon Eridani, along with orbital debris and space-faring hostiles, has rendered many of these relay stations inoperable, leaving their communications and teleportation systems offline."
 	never_spawn_on_the_same_level = list("bluespace_relay_beacon")
+	faction = FACTION_NANOTRASEN
 
 /datum/map_template/ruin/space/alien_cache_site
 	id = "alien_cache_site"

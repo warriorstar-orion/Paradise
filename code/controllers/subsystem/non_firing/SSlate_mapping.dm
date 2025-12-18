@@ -52,6 +52,7 @@ SUBSYSTEM_DEF(late_mapping)
 	maintenance_mice()
 
 	GLOB.spawn_pool_manager.process_pools()
+	GLOB.space_freight_manager.generate_freights()
 
 /**
  * Randomly spawns mice in maintenance instead of being purely fixed spawn points

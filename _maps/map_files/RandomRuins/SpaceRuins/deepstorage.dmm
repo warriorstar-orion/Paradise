@@ -2416,6 +2416,17 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/deepstorage)
+"qb" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/freight_spawn,
+/turf/simulated/floor/plasteel/dark,
+/area/ruin/space/deepstorage)
 "qc" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -5348,16 +5359,6 @@
 "OC" = (
 /obj/structure/flora/ash/rock/style_random,
 /turf/simulated/floor/plating/asteroid/basalt,
-/area/ruin/space/deepstorage)
-"OO" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel/dark,
 /area/ruin/space/deepstorage)
 "OU" = (
 /obj/effect/turf_decal/tiles/dark/corner,
@@ -9477,7 +9478,7 @@ sk
 sk
 Fk
 Fk
-OO
+qb
 bU
 wh
 sk

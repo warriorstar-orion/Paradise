@@ -192,13 +192,6 @@
 	dir = 4
 	},
 /area/ruin/space/wreck_cargoship)
-"if" = (
-/obj/structure/largecrate,
-/obj/effect/turf_decal/yellow_siding{
-	dir = 1
-	},
-/turf/simulated/floor/plasteel,
-/area/ruin/space/wreck_cargoship)
 "it" = (
 /obj/structure/railing{
 	dir = 8
@@ -498,8 +491,8 @@
 /turf/template_noop,
 /area/space/nearstation)
 "qr" = (
-/obj/structure/largecrate,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/freight_spawn,
 /turf/simulated/floor/plating,
 /area/ruin/space/wreck_cargoship)
 "qY" = (
@@ -569,6 +562,16 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/molten_object/large,
 /turf/simulated/floor/plasteel/dark,
+/area/ruin/space/wreck_cargoship)
+"tB" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb,
+/obj/effect/turf_decal/tiles/dark/corner,
+/obj/effect/landmark/freight_spawn,
+/turf/simulated/floor/plasteel,
 /area/ruin/space/wreck_cargoship)
 "tD" = (
 /obj/effect/decal/cleanable/cobweb,
@@ -759,6 +762,13 @@
 	dir = 8
 	},
 /area/ruin/space/wreck_cargoship)
+"EP" = (
+/obj/effect/turf_decal/yellow_siding{
+	dir = 1
+	},
+/obj/effect/landmark/freight_spawn,
+/turf/simulated/floor/plasteel,
+/area/ruin/space/wreck_cargoship)
 "ES" = (
 /obj/machinery/light{
 	dir = 4
@@ -896,16 +906,6 @@
 /obj/effect/turf_decal/tiles/department/engineering/corner{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel,
-/area/ruin/space/wreck_cargoship)
-"KZ" = (
-/obj/effect/turf_decal/stripes/corner{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/cobweb,
-/obj/structure/largecrate,
-/obj/effect/turf_decal/tiles/dark/corner,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/wreck_cargoship)
 "Ll" = (
@@ -1583,7 +1583,7 @@ ea
 ea
 ea
 gE
-KZ
+tB
 nl
 Mt
 gi
@@ -1989,7 +1989,7 @@ kt
 sd
 gu
 nx
-if
+EP
 ru
 ea
 ea

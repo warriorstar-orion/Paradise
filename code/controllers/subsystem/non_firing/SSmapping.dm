@@ -517,3 +517,16 @@ SUBSYSTEM_DEF(mapping)
 /// Schedules a group of turfs to be handed back to the reservation system's control
 /datum/controller/subsystem/mapping/proc/unreserve_turfs(list/turfs)
 	lists_to_reserve += list(turfs)
+
+/datum/controller/subsystem/mapping/proc/get_sector_factions(zlevel)
+	. = list()
+
+	var/datum/space_level/level = GLOB.space_manager.get_zlev(zlevel)
+	for(var/ruin_id in level.our_ruin_list)
+		for(var/ruin_name in GLOB.space_ruins_templates)
+			var/datum/map_template/ruin/space/ruin = GLOB.space_ruins_templates[ruin_name]
+			if(ruin.id == ruin_id && ruin.faction)
+				// the bigger the ruin, the higher the influence
+				.[ruin.faction] += ruin.get_cost()
+
+	return .

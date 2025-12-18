@@ -1518,6 +1518,13 @@
 /obj/item/chair/stool/bar,
 /turf/simulated/floor/wood,
 /area/template_noop)
+"Gk" = (
+/obj/effect/turf_decal/tiles/department/science/side{
+	dir = 6
+	},
+/obj/effect/landmark/freight_spawn,
+/turf/simulated/floor/plasteel/white,
+/area/template_noop)
 "Gl" = (
 /obj/effect/mapping_helpers/turfs/burn,
 /obj/effect/turf_decal/tiles/department/engineering/side{
@@ -4620,7 +4627,7 @@ fk
 lm
 vL
 fk
-JG
+Gk
 nK
 nK
 DX

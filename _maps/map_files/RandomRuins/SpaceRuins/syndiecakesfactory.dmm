@@ -294,6 +294,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/effect/landmark/freight_spawn,
 /turf/simulated/floor/engine,
 /area/ruin/space/syndicakefactory)
 "oo" = (

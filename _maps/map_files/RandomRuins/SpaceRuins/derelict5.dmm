@@ -90,7 +90,7 @@
 /turf/simulated/floor/plasteel,
 /area/ruin/space/unpowered)
 "lE" = (
-/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
+/obj/effect/landmark/freight_spawn,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/unpowered)
 "mn" = (
@@ -349,6 +349,7 @@
 /area/ruin/space/unpowered)
 "ZP" = (
 /obj/structure/table_frame,
+/obj/effect/spawner/random/pool/spaceloot/syndicate/mixed,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/unpowered)
 "ZZ" = (
