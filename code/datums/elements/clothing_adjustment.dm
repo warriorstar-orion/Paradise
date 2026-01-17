@@ -142,11 +142,7 @@
 	if(cache_index != FACEMASK_LAYER || !istype(source))
 		return
 
-	var/datum/species = source.dna?.species
-	if(!istype(species))
-		return
-
-	if(!istype(species, /datum/species/skulk))
+	if(!isskulk(source))
 		return
 
 	var/icon/I = new()
@@ -192,11 +188,7 @@
 	if(cache_index != GLASSES_OVER_LAYER || !istype(source))
 		return
 
-	var/datum/species = source.dna?.species
-	if(!istype(species))
-		return
-
-	if(!istype(species, /datum/species/skulk))
+	if(!isskulk(source))
 		return
 
 	var/icon/I = new()
