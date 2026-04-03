@@ -433,8 +433,8 @@
 		if(length(SSticker.mode.apprentices))
 			dat += check_role_table("Apprentices", SSticker.mode.apprentices)
 
-		/*if(length(ticker.mode.ninjas))
-			dat += check_role_table("Ninjas", ticker.mode.ninjas)*/
+		if(length(SSticker.mode.ninjas))
+			dat += check_role_table("Ninjas", SSticker.mode.ninjas)
 
 		if(SSticker.mode.cult_team)
 			dat += check_role_table("Cultists", SSticker.mode.cult_team.members)
@@ -457,6 +457,9 @@
 
 		if(length(SSticker.mode.mindflayers))
 			dat += check_role_table("Mindflayers", SSticker.mode.mindflayers)
+
+		if(length(SSticker.mode.heretics))
+			dat += check_role_table("Heretics", SSticker.mode.heretics)
 
 		if(length(SSticker.mode.vampire_enthralled))
 			dat += check_role_table("Vampire Thralls", SSticker.mode.vampire_enthralled)

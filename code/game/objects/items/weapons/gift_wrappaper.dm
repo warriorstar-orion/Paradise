@@ -15,14 +15,13 @@
 	resistance_flags = FLAMMABLE
 	scatter_distance = 10
 
-/obj/item/a_gift/New()
-	..()
+/obj/item/a_gift/Initialize(mapload)
+	. = ..()
 	scatter_atom()
 	if(w_class > 0 && w_class < 4)
 		icon_state = "gift[w_class]"
 	else
 		icon_state = "gift[pick(1, 2, 3)]"
-	return
 
 /obj/item/gift/attack_self__legacy__attackchain(mob/user as mob)
 	user.drop_item()
@@ -135,5 +134,7 @@
 	max_amount = 25
 	resistance_flags = FLAMMABLE
 
-/obj/item/stack/wrapping_paper/attack_self__legacy__attackchain(mob/user)
+/obj/item/stack/wrapping_paper/activate_self(mob/user)
+	. = ..()
 	to_chat(user, SPAN_NOTICE("You need to use it on a package that has already been wrapped!"))
+	return ITEM_INTERACT_COMPLETE

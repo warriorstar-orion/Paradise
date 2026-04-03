@@ -24,6 +24,9 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list (new/datum/stack_recipe/cable_restrain
 	slot_flags = ITEM_SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
 	usesound = 'sound/items/deconstruct.ogg'
+	/// Deletes the cable coil upon getting empty.
+	/// Used for RCL cable spools to stop the stack from being eaten.
+	var/destroy_upon_empty = TRUE
 	/// Type of cable this coil makes
 	var/cable_type = /obj/structure/cable
 	/// Bitflag of the types of cable we can add cable to with this coil.
@@ -66,7 +69,7 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list (new/datum/stack_recipe/cable_restrain
 
 /obj/item/stack/cable_coil/examine(mob/user)
 	. = ..()
-	if(!in_range(user, src) || is_cyborg)
+	if(!in_range(user, src))
 		return
 	if(get_amount() == 1)
 		. += "A short piece of power cable."
@@ -83,27 +86,32 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list (new/datum/stack_recipe/cable_restrain
 	return . && ..()
 
 //you can use wires to heal robotics
-/obj/item/stack/cable_coil/attack__legacy__attackchain(mob/M, mob/user)
-	if(!ishuman(M))
+/obj/item/stack/cable_coil/interact_with_atom(atom/target, mob/living/user, list/modifiers)
+	if(!ishuman(target))
 		return ..()
-	var/mob/living/carbon/human/H = M
+
+	var/mob/living/carbon/human/H = target
 	var/obj/item/organ/external/S = H.bodyparts_by_name[user.zone_selected]
 
-	if(!S && ismachineperson(M) && user.a_intent == INTENT_HELP)
-		to_chat(user, SPAN_NOTICE("[M.p_they(TRUE)] [M.p_are()] missing that limb!"))
-		return
+	if(!S && ismachineperson(target) && user.a_intent == INTENT_HELP)
+		to_chat(user, SPAN_NOTICE("[H.p_they(TRUE)] [H.p_are()] missing that limb!"))
+		return ITEM_INTERACT_COMPLETE
 
 	if(!S?.is_robotic() || user.a_intent != INTENT_HELP || S.open == ORGAN_SYNTHETIC_OPEN)
 		return ..()
+
 	if(S.burn_dam > ROBOLIMB_SELF_REPAIR_CAP)
 		to_chat(user, SPAN_DANGER("The damage is far too severe to patch over externally."))
-		return
+		return ITEM_INTERACT_COMPLETE
+
 	if(!S.burn_dam)
 		to_chat(user, SPAN_NOTICE("Nothing to fix!"))
-		return
+		return ITEM_INTERACT_COMPLETE
+
 	if(H == user)
 		if(!do_mob(user, H, 10))
-			return FALSE
+			return ITEM_INTERACT_COMPLETE
+
 	var/cable_used = 0
 	var/childlist
 	if(!isnull(S.children))
@@ -125,12 +133,12 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list (new/datum/stack_recipe/cable_restrain
 		else
 			break
 		while(cable_used <= MAXCABLEPERHEAL && E.burn_dam && amount >= 1)
-			use(1)
+			use(1, destroy_upon_empty)
 			cable_used += 1
 			E.heal_damage(0, HEALPERCABLE, 0, TRUE)
 		H.UpdateDamageIcon()
-		user.visible_message(SPAN_ALERT("[user] repairs some burn damage on [M]'s [E.name] with [src]."))
-	return TRUE
+		user.visible_message(SPAN_ALERT("[user] repairs some burn damage on [H]'s [E.name] with [src]."))
+	return ITEM_INTERACT_COMPLETE
 
 /obj/item/stack/cable_coil/split()
 	var/obj/item/stack/cable_coil/C = ..()
@@ -140,27 +148,31 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list (new/datum/stack_recipe/cable_restrain
 // Items usable on a cable coil :
 //   - Wirecutters : cut them duh !
 //   - Cable coil : merge cables
-/obj/item/stack/cable_coil/attackby__legacy__attackchain(obj/item/W, mob/user)
-	. = ..()
-	if(istype(W, /obj/item/stack/cable_coil))
-		var/obj/item/stack/cable_coil/C = W
+/obj/item/stack/cable_coil/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(istype(used, /obj/item/stack/cable_coil))
+		var/obj/item/stack/cable_coil/C = used
 		// Cable merging is handled by parent proc
 		if(C.cable_merge_id != cable_merge_id)
 			to_chat(user, "These coils are of different types.")
-			return
+			return ITEM_INTERACT_COMPLETE
+
 		if(C.get_amount() >= MAXCOIL)
 			to_chat(user, "The coil is as long as it will get.")
-			return
+			return ITEM_INTERACT_COMPLETE
+
 		if((C.get_amount() + get_amount() <= MAXCOIL))
 			to_chat(user, "You join the cable coils together.")
-			return
-		else
-			to_chat(user, "You transfer [get_amount_transferred()] length\s of cable from one coil to the other.")
-			return
+			return ITEM_INTERACT_COMPLETE
 
-	if(istype(W, /obj/item/toy/crayon))
-		var/obj/item/toy/crayon/C = W
+		to_chat(user, "You transfer [get_amount_transferred()] length\s of cable from one coil to the other.")
+		return ITEM_INTERACT_COMPLETE
+
+	if(istype(used, /obj/item/toy/crayon))
+		var/obj/item/toy/crayon/C = used
 		cable_color(C.dye_color)
+		return ITEM_INTERACT_COMPLETE
+
+	return ..()
 
 ///////////////////////////////////////////////
 // Cable laying procedures
@@ -215,7 +227,7 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list (new/datum/stack_recipe/cable_restrain
 	if(IS_DIR_DIAGONAL(C.d2))// if the cable is layed diagonally, check the others 2 possible directions
 		C.merge_diagonal_networks(C.d2)
 
-	use(1)
+	use(1, destroy_upon_empty)
 
 	if(C.shock(user, 50))
 		if(prob(50)) //fail
@@ -281,7 +293,7 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list (new/datum/stack_recipe/cable_restrain
 		if(IS_DIR_DIAGONAL(NC.d2))	// if the cable is layed diagonally, check the others 2 possible directions
 			NC.merge_diagonal_networks(NC.d2)
 
-		use(1)
+		use(1, destroy_upon_empty)
 
 		if(NC.shock(user, 50))
 			if(prob(50)) //fail
@@ -327,7 +339,7 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list (new/datum/stack_recipe/cable_restrain
 		if(C.d2 & (C.d2 - 1))// if the cable is layed diagonally, check the others 2 possible directions
 			C.merge_connected_networks(C.d2)
 
-		use(1)
+		use(1, destroy_upon_empty)
 
 		if(C.shock(user, 50))
 			if(prob(50)) //fail
@@ -399,6 +411,7 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list (new/datum/stack_recipe/cable_restrain
 	name = "heavy duty cable coil"
 	singular_name = "heavy duty cable"
 	icon = 'icons/obj/cable_coils/heavy_duty.dmi'
+	materials = list(MAT_METAL = 30, MAT_GLASS = 30)
 	color = null
 	cable_type = /obj/structure/cable/extra_insulated
 	cable_merge_id = CABLE_MERGE_HIGH_POWER
@@ -413,9 +426,11 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list (new/datum/stack_recipe/cable_restrain
 			cable_type = /obj/structure/cable/extra_insulated/pre_connect
 			icon = 'icons/obj/cable_coils/heavy_duty_connected.dmi'
 
-/obj/item/stack/cable_coil/extra_insulated/attackby__legacy__attackchain(obj/item/I, mob/living/user)
-	if(I.GetID())
+/obj/item/stack/cable_coil/extra_insulated/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+	if(used.GetID())
 		toggle_connection(user)
+		return ITEM_INTERACT_COMPLETE
+
 	return ..()
 
 /obj/item/stack/cable_coil/cut
@@ -426,29 +441,6 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list (new/datum/stack_recipe/cable_restrain
 	src.amount = rand(1,2)
 	update_appearance(UPDATE_NAME|UPDATE_ICON_STATE)
 	update_wclass()
-
-/obj/item/stack/cable_coil/cyborg
-	energy_type = /datum/robot_storage/energy/cable
-	is_cyborg = TRUE
-
-/obj/item/stack/cable_coil/cyborg/update_icon_state()
-	return // icon_state should always be a full cable
-
-/obj/item/stack/cable_coil/cyborg/attack_self__legacy__attackchain(mob/user)
-	var/cablecolor = tgui_input_list(usr, "Pick a cable color.", "Cable Color", list("red","yellow","green","blue","pink","orange","cyan","white"))
-	cable_color(cablecolor)
-	update_icon()
-
-/obj/item/stack/cable_coil/extra_insulated/cyborg
-	energy_type = /datum/robot_storage/energy/cable
-	is_cyborg = TRUE
-
-/obj/item/stack/cable_coil/extra_insulated/cyborg/attack_self__legacy__attackchain(mob/user)
-	toggle_connection(user)
-	update_icon()
-
-/obj/item/stack/cable_coil/extra_insulated/cyborg/update_icon_state()
-	return // icon_state should always be a full cable
 
 #undef HEALPERCABLE
 #undef MAXCABLEPERHEAL
