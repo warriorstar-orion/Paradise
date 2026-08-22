@@ -4,12 +4,12 @@ import { useBackend } from '../backend';
 import { Window } from '../layouts';
 import { routingError } from '../routes';
 
-const RequirePDAInterface = require.context('./pda', false, /\.jsx$/);
+const RequirePDAInterface = require.context('./pda', false, /\.tsx$/);
 
 const GetApp = (name) => {
   let appModule;
   try {
-    appModule = RequirePDAInterface(`./${name}.jsx`);
+    appModule = RequirePDAInterface(`./${name}.tsx`);
   } catch (err) {
     if (err.code === 'MODULE_NOT_FOUND') {
       return routingError('notFound', name);
