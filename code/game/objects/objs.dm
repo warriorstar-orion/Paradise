@@ -179,6 +179,7 @@
 	return
 
 /obj/proc/hear_talk(mob/M, list/message_pieces)
+	SEND_SIGNAL(src, COMSIG_OBJ_HEAR_TALK, M, message_pieces)
 	return
 
 /obj/proc/hear_message(mob/M, text)
