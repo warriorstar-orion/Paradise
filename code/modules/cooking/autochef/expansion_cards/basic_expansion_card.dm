@@ -5,6 +5,7 @@ RESTRICT_TYPE(/obj/item/autochef_expansion_card/basic)
 	desc = "This fairly common expansion card enables autochefs to perform basic cutting, rolling, and shaping tasks."
 	icon_state = "autochef_expansion_card_blue"
 	task_message = "Basic prepping"
+	var/obj/item/kitchen/knife/internal_knife
 	var/static/list/sliceable_foods
 	var/static/list/rollable_foods = list(
 		/obj/item/food/sliceable/flatdough = /obj/item/food/dough,
@@ -12,11 +13,16 @@ RESTRICT_TYPE(/obj/item/autochef_expansion_card/basic)
 
 /obj/item/autochef_expansion_card/basic/Initialize(mapload)
 	. = ..()
+	internal_knife = new
 	if(!sliceable_foods)
 		sliceable_foods = list()
 		for(var/food_type in subtypesof(/obj/item/food/sliceable))
 			var/obj/item/food/sliceable/sliceable_food_type = food_type
 			sliceable_foods[sliceable_food_type::slice_path] = sliceable_food_type
+
+/obj/item/autochef_expansion_card/basic/Destroy()
+	QDEL_NULL(internal_knife)
+	. = ..()
 
 /obj/item/autochef_expansion_card/basic/can_produce(obj/machinery/autochef/autochef, target_type)
 	if(target_type in sliceable_foods)
@@ -39,7 +45,7 @@ RESTRICT_TYPE(/obj/item/autochef_expansion_card/basic)
 		for(var/obj/machinery/smartfridge/smartfridge in autochef.linked_storages)
 			var/obj/item/food/sliceable/ingredient = smartfridge.directly_move_to(sliceable_food_type, autochef)
 			if(ingredient)
-				var/list/output = ingredient.convert_to_slices(inaccurate = FALSE)
+				var/list/output = ingredient.convert_to_slices(internal_knife, inaccurate = FALSE)
 				for(var/atom/movable/A in output)
 					A.forceMove(src) // that's right we're putting the results in the card itself
 

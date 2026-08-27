@@ -255,7 +255,7 @@ RESTRICT_TYPE(/obj/machinery/autochef)
 			current_task.resume()
 
 			#ifdef PCWJ_DEBUG
-				log_debug("autochef process task=[current_task.debug_string()]@[current_task.UID()] state=[autochef_act_to_string(current_task.current_state)]")
+			log_debug("autochef process task=[current_task.debug_string()]@[current_task.UID()] state=[autochef_act_to_string(current_task.current_state)]")
 			#endif
 
 			switch(current_task.current_state)
